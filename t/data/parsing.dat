@@ -5,19 +5,16 @@
 http://
 #scheme http
 #host 
-#path 
 
 #data
 HTTP://
 #scheme HTTP
 #host
-#path
 
 #data
 http://www.example.com
 #scheme http
 #host www.example.com
-#path 
 
 #data
 http://www.example.com/
@@ -30,3 +27,388 @@ HTTP://example.com/
 #scheme HTTP
 #host example.com
 #path /
+
+#data escaped
+\u0020\u0020http://test\u0020\u0020
+#scheme http
+#host test
+
+#data escaped
+\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020http://test\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020
+#scheme http
+#host test
+
+#data escaped
+\u007Fhttp://test\u007F
+#scheme escaped
+\u007Fhttp
+#path escaped
+//test\u007F
+
+#data escaped
+\u0080http://test\u0080
+#scheme escaped
+\u0080http
+#path escaped
+//test\u0080
+
+#data
+:abc
+#invalid 1
+
+#data
+http:
+#scheme http
+#host
+
+#data
+http:/
+#scheme http
+#host
+
+#data
+http:/test/abc
+#scheme http
+#host test
+#path /abc
+
+#data
+hTtP://test/
+#scheme hTtP
+#host test
+#path /
+
+#data
+/::ab
+#scheme /
+#path :ab
+
+#data
+http://foo#bar
+#scheme http
+#host foo
+#path
+#fragment bar
+
+#data
+http://foo?bar
+#scheme http
+#host foo
+#path 
+#query bar
+
+#data
+http://foo/bar
+#scheme http
+#host foo
+#path /bar
+
+#data
+http://foo;bar
+#scheme http
+#host foo
+#path ;bar
+
+#data
+http://foo\bar
+#scheme http
+#host foo
+#path \bar
+
+#data
+http:////foo/bar
+#scheme http
+#host foo
+#path /bar
+
+#data
+http:\\foo\bar
+#scheme http
+#host foo
+#path \bar
+
+#data
+http:/\/\/\foo\/bar
+#scheme http
+#host foo
+#path \/bar
+
+#data
+http://foo?bar#baz
+#scheme http
+#host foo
+#path
+#query bar
+#fragment baz
+
+#data
+http://foo?bar?baz
+#scheme http
+#host foo
+#path
+#query bar?baz
+
+#data
+http://foo#bar#baz
+#scheme http
+#host foo
+#path
+#fragment bar#baz
+
+#data
+http://foo#
+#scheme http
+#host foo
+#path
+#fragment
+
+#data
+http://foo?
+#scheme http
+#host foo
+#path 
+#query
+
+#data
+http://foo/#
+#scheme http
+#host foo
+#path /
+#fragment
+
+#data
+http://foo/?
+#scheme http
+#host foo
+#path /
+#query
+
+#data
+http://foo/#bar?baz
+#scheme http
+#host foo
+#path /
+#fragment bar?baz
+
+#data
+http://foo#bar/baz
+#scheme http
+#host foo
+#path 
+#fragment bar/baz
+
+#data
+http://foo?bar/baz
+#scheme http
+#host foo
+#path
+#query bar/baz
+
+#data
+http:///foo
+#scheme http
+#host foo
+
+#data
+http:///foo/
+#scheme http
+#host foo
+#path /
+
+#data
+http:///?bar
+#scheme http
+#host
+#path
+#query bar
+
+#data
+http:///#bar
+#scheme http
+#host
+#path
+#fragment bar
+
+#data
+http://a@b/
+#scheme http
+#user a
+#host b
+#path /
+
+#data
+http://a@b@c
+#scheme http
+#user a@b
+#host c
+
+#data
+http://a:b@c
+#scheme http
+#user a
+#password b
+#host c
+
+#data
+http://a@b@c:d@e
+#scheme http
+#user a@b@c
+#password d
+#host e
+
+#data
+http://@/
+#scheme http
+#user
+#host
+#path /
+
+#data
+http://@@@@@@@@
+#scheme http
+#user @@@@@@@
+#host
+
+#data
+http://:@
+#scheme http
+#user
+#password
+#host
+
+#data
+http://[]
+#scheme http
+#host []
+
+#data
+http://[]/
+#scheme http
+#host []
+#path /
+
+#data
+http://[?]
+#scheme http
+#host [
+#path
+#query ]
+
+#data
+http://[#]
+#scheme http
+#host [
+#path
+#fragment ]
+
+#data
+http://[/]
+#scheme http
+#host [
+#path /]
+
+#data
+http://[\]
+#scheme http
+#host [
+#path \]
+
+#data
+http://[:]
+#scheme http
+#host [:]
+
+#data
+http://[:80]
+#scheme http
+#host [:80]
+
+#data
+http://foo:80
+#scheme http
+#host foo
+#port 80
+
+#data
+http://foo:80:98
+#scheme http
+#host foo:80
+#port 98
+
+#data
+http://foo:
+#scheme http
+#host foo
+#port
+
+#data
+http://foo::
+#scheme http
+#host foo:
+#port 
+
+#data
+http://foo:/
+#scheme http
+#host foo
+#port
+#path /
+
+#data
+http://[foo:80
+#scheme http
+#host [foo
+#port 80
+
+#data
+http://[1:2:4
+#scheme http
+#host [1:2
+#port 4
+
+#data
+http://[1:2:3/4:5]
+#scheme http
+#host [1:2
+#port 3
+#path /4:5]
+
+#data
+http://:080
+#scheme http
+#host
+#port 080
+
+#data
+http://[foo;bar=a]:80
+#scheme http
+#host [foo
+#path ;bar=a]:80
+
+#data
+http://:@bar
+#scheme http
+#user
+#password
+#host bar
+
+#data
+http://abc:@
+#scheme http
+#user abc
+#password
+#host
+
+#data
+http://ab:c:de@
+#scheme http
+#user ab
+#password c:de
+#host
+
+#data
+http://:::::@
+#scheme http
+#user
+#password ::::
+#host

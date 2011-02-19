@@ -41,9 +41,14 @@ sub parse_url ($$) {
       delete $result->{authority};
     }
     if (defined $result->{user_info}) {
-      ($result->{user}, $result->{password}) = split /:/, $result->{user_info}, 2;
-      delete $result->{password} unless defined $result->{password};
-      delete $result->{user_info};
+      if ($result->{user_info} eq '') {
+        $result->{user} = '';
+        delete $result->{user_info};
+      } else {
+        ($result->{user}, $result->{password}) = split /:/, $result->{user_info}, 2;
+        delete $result->{password} unless defined $result->{password};
+        delete $result->{user_info};
+      }
     }
     return $result;
   }
@@ -71,22 +76,22 @@ sub find_scheme ($$) {
 sub find_authority_path_query_fragment ($$$) {
   my ($class, $inputref => $result) = @_;
 
-  $$inputref =~ s{\A/+}{};
+  ## Slash characters
+  $$inputref =~ s{\A[/\\]+}{};
 
-  ## Authority terminating characters
-  if ($$inputref =~ s{\A([^/?\#;]*)(?=[/?\#;])}{}) {
+  ## Authority terminating characters (including slash characters)
+  if ($$inputref =~ s{\A([^/\\?\#;]*)(?=[/\\?\#;])}{}) {
     $result->{authority} = $1;
   } else {
-    $result->{authority} = $$inputref;
-    $result->{path} = ''; # Not in url-spec
+    $result->{authority} = $$inputref; 
     return;
   }
 
-  if ($$inputref =~ s{\A\#(.*)}{}) {
+  if ($$inputref =~ s{\#(.*)\z}{}) {
     $result->{fragment} = $1;
   }
 
-  if ($$inputref =~ s{\A\?([^\#]*)}{}) {
+  if ($$inputref =~ s{\?([^\#]*)\z}{}) {
     $result->{query} = $1;
   }
 
@@ -112,7 +117,7 @@ sub find_user_info_host_port ($$$) {
     return;
   }
 
-  if ($input =~ /:([^:]*)\z/) {
+  if ($input =~ s/:([^:]*)\z//) {
     $result->{port} = $1;
   }
 

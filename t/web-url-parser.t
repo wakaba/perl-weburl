@@ -18,7 +18,7 @@ sub _parse : Tests {
     my $test = shift;
     my $result = {};
     for (qw(
-      scheme host path invalid
+      scheme user password host port path query fragment invalid
     )) {
       next unless $test->{$_};
       if (length $test->{$_}->[0]) {
