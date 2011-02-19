@@ -1,0 +1,32 @@
+#data
+#invalid 1
+
+#data
+http://
+#scheme http
+#host 
+#path 
+
+#data
+HTTP://
+#scheme HTTP
+#host
+#path
+
+#data
+http://www.example.com
+#scheme http
+#host www.example.com
+#path 
+
+#data
+http://www.example.com/
+#scheme http
+#host www.example.com
+#path /
+
+#data
+HTTP://example.com/
+#scheme HTTP
+#host example.com
+#path /

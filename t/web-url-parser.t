@@ -3,26 +3,36 @@ use strict;
 use warnings;
 use Path::Class;
 use lib file (__FILE__)->dir->parent->subdir ('lib')->stringify;
+use lib file (__FILE__)->dir->parent->subdir ('modules', 'testdataparser', 'lib')->stringify;
 use base qw(Test::Class);
 use Test::Differences;
+use Test::HTCT::Parser;
 use Web::URL::Parser;
 
-our $Data = [
-  [q<> => {invalid => 1}],
-  [q<http://> => {scheme => 'http', host => '', path => ''}],
-  [q<HTTP://> => {scheme => 'HTTP', host => '', path => ''}],
-  [q<http://www.example.com> => {scheme => 'http', host => 'www.example.com', path => ''}],
-  [q<http://www.example.com/> => {scheme => 'http', host => 'www.example.com', path => '/'}],
-  [q<HTTP://example.com/> => {scheme => 'HTTP', host => 'example.com', path => '/'}],
-]; # $Data
+my $test_data_f = file (__FILE__)->dir->subdir ('data')->file ('parsing.dat');
 
-sub _parse : Test(4) {
-  for (@$Data) {
-    if (defined $_->[1]->{scheme}) {
-      $_->[1]->{scheme_normalized} = $_->[1]->{scheme};
-      $_->[1]->{scheme_normalized} =~ tr/A-Z/a-z/;
+sub _parse : Tests {
+  for_each_test $test_data_f->stringify, {
+    
+  }, sub ($) {
+    my $test = shift;
+    my $result = {};
+    for (qw(
+      scheme host path invalid
+    )) {
+      next unless $test->{$_};
+      if (length $test->{$_}->[0]) {
+        $result->{$_} = $test->{$_}->[0];
+      } else {
+        $result->{$_} = $test->{$_}->[1]->[0];
+        $result->{$_} = '' unless defined $result->{$_};
+      }
     }
-    eq_or_diff +Web::URL::Parser->parse_url ($_->[0]), $_->[1];
+    if (defined $result->{scheme}) {
+      $result->{scheme_normalized} = $result->{scheme};
+      $result->{scheme_normalized} =~ tr/A-Z/a-z/;
+    }
+    eq_or_diff +Web::URL::Parser->parse_url ($test->{data}->[0]), $result;
   }
 } # _parse
 
