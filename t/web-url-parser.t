@@ -9,10 +9,12 @@ use Test::Differences;
 use Test::HTCT::Parser;
 use Web::URL::Parser;
 
-my $test_data_f = file (__FILE__)->dir->subdir ('data')->file ('parsing.dat');
+my $data_d = file (__FILE__)->dir->subdir ('data');
+my $parse_data_f = $data_d->file ('parsing.dat');
+my $resolve_data_f = $data_d->file ('resolving.dat');
 
 sub _parse : Tests {
-  for_each_test $test_data_f->stringify, {
+  for_each_test $parse_data_f->stringify, {
     
   }, sub ($) {
     my $test = shift;
@@ -32,9 +34,45 @@ sub _parse : Tests {
       $result->{scheme_normalized} = $result->{scheme};
       $result->{scheme_normalized} =~ tr/A-Z/a-z/;
     }
-    eq_or_diff +Web::URL::Parser->parse_url ($test->{data}->[0]), $result;
+    eq_or_diff
+        +Web::URL::Parser->parse_absolute_url
+            ($test->{data}->[0]),
+        $result;
   }
 } # _parse
+
+sub _resolve : Tests {
+  for_each_test $resolve_data_f->stringify, {
+    data => {is_prefixed => 1},
+  }, sub ($) {
+    my $test = shift;
+    my $result = {};
+    for (qw(
+      scheme user password host port path query fragment invalid
+    )) {
+      next unless $test->{$_};
+      if (length $test->{$_}->[0]) {
+        $result->{$_} = $test->{$_}->[0];
+      } else {
+        $result->{$_} = $test->{$_}->[1]->[0];
+        $result->{$_} = '' unless defined $result->{$_};
+      }
+    }
+    if (defined $result->{scheme}) {
+      $result->{scheme_normalized} = $result->{scheme};
+      $result->{scheme_normalized} =~ tr/A-Z/a-z/;
+    }
+    my $resolved_base_url = Web::URL::Parser->parse_absolute_url
+        (length $test->{base}->[0]
+             ? $test->{base}->[0]
+             : defined $test->{base}->[1]->[0]
+                 ? $test->{base}->[1]->[0] : '');
+    eq_or_diff
+        +Web::URL::Parser->resolve_url
+            ($test->{data}->[0], $resolved_base_url),
+        $result;
+  }
+} # _resolve
 
 __PACKAGE__->runtests;
 

@@ -6,13 +6,14 @@ our $IsHierarchicalScheme = {
   http => 1,
   https => 1,
   ftp => 1,
+  ldap => 1,
 };
 
-sub parse_url ($$) {
+sub parse_absolute_url ($$) {
   my ($class, $input) = @_;
   my $result = {};
 
-  $class->find_scheme (\$input => $result);
+  $class->_find_scheme (\$input => $result);
   return $result if $result->{invalid};
 
   if (defined $result->{scheme_normalized} and
@@ -35,9 +36,9 @@ sub parse_url ($$) {
 
   if (defined $result->{scheme_normalized} and
       $IsHierarchicalScheme->{$result->{scheme_normalized}}) {
-    $class->find_authority_path_query_fragment (\$input => $result);
+    $class->_find_authority_path_query_fragment (\$input => $result);
     if (defined $result->{authority}) {
-      $class->find_user_info_host_port (\($result->{authority}) => $result);
+      $class->_find_user_info_host_port (\($result->{authority}) => $result);
       delete $result->{authority};
     }
     if (defined $result->{user_info}) {
@@ -55,9 +56,9 @@ sub parse_url ($$) {
 
   $result->{path} = $input;
   return $result;
-} # parse_url
+} # parse_absolute_url
 
-sub find_scheme ($$) {
+sub _find_scheme ($$) {
   my ($class, $inputref => $result) = @_;
   
   ## Control characters
@@ -67,13 +68,13 @@ sub find_scheme ($$) {
   if ($$inputref =~ s/^([^:]+)://) {
     $result->{scheme} = $1;
     $result->{scheme_normalized} = $result->{scheme};
-    $result->{scheme_normalized} =~ tr/A-Z/a-z/;
+    $result->{scheme_normalized} =~ tr/A-Z/a-z/; # XXX percent-decode
   } else {
     $result->{invalid} = 1;
   }
-} # find_scheme
+} # _find_scheme
 
-sub find_authority_path_query_fragment ($$$) {
+sub _find_authority_path_query_fragment ($$$) {
   my ($class, $inputref => $result) = @_;
 
   ## Slash characters
@@ -87,18 +88,18 @@ sub find_authority_path_query_fragment ($$$) {
     return;
   }
 
-  if ($$inputref =~ s{\#(.*)\z}{}) {
+  if ($$inputref =~ s{\#(.*)\z}{}s) {
     $result->{fragment} = $1;
   }
 
-  if ($$inputref =~ s{\?([^\#]*)\z}{}) {
+  if ($$inputref =~ s{\?(.*)\z}{}s) {
     $result->{query} = $1;
   }
 
   $result->{path} = $$inputref;
-} # find_authority_path_query_fragment
+} # _find_authority_path_query_fragment
 
-sub find_user_info_host_port ($$$) {
+sub _find_user_info_host_port ($$$) {
   my ($class, $inputref => $result) = @_;
   my $input = $$inputref;
   if ($input =~ s/\@([^\@]*)\z//) {
@@ -122,6 +123,154 @@ sub find_user_info_host_port ($$$) {
   }
 
   $result->{host} = $input;
-} # find_user_info_host_port
+} # _find_user_info_host_port
+
+sub resolve_url ($$$) {
+  my ($class, $spec, $parsed_base_url) = @_;
+
+  ## NOTE: Not in the spec.
+  if ($parsed_base_url->{invalid}) {
+    return {invalid => 1};
+  }
+
+  # XXX trim $spec
+  
+  my $parsed_spec = $class->parse_absolute_url ($spec);
+  if ($parsed_spec->{invalid} or
+
+      ## XXX Valid schme characters
+      $parsed_spec->{scheme} =~ /[^A-Za-z0-9_+-]/) {
+    return $class->_resolve_relative_url (\$spec, $parsed_base_url);
+  }
+
+  if ($parsed_spec->{scheme_normalized} eq
+      $parsed_base_url->{scheme_normalized} and
+      $IsHierarchicalScheme->{$parsed_spec->{scheme_normalized}}) {
+    $spec = substr $spec, 1 + length $parsed_spec->{scheme};
+    return $class->_resolve_relative_url (\$spec, $parsed_base_url);
+  }
+
+  return $parsed_spec;
+} # resolve_url
+
+sub _resolve_relative_url ($$$) {
+  my ($class, $specref, $parsed_base_url) = @_;
+
+  # XXX non-hierarchical URL
+
+  if ($$specref eq '') {
+    my $url = {%$parsed_base_url};
+    delete $url->{fragment};
+    return $url;
+  }
+
+  if ($$specref =~ m{\A//}) {
+    ## Resolve as a scheme-relative URL
+    return $class->parse_absolute_url
+        ($parsed_base_url->{scheme} . ':' . $$specref);
+  } elsif ($$specref =~ m{\A/}) {
+    ## Resolve as an authority-relative URL
+    my $authority = $parsed_base_url->{host};
+    $authority .= ':' . $parsed_base_url->{port}
+        if defined $parsed_base_url->{port};
+    $authority = $parsed_base_url->{user} .
+        (defined $parsed_base_url->{password}
+           ? ':' . $parsed_base_url->{password}
+           : '') .
+        '@' . $authority if defined $parsed_base_url->{user};
+    return $class->parse_absolute_url
+        ($parsed_base_url->{scheme} . '://' . $authority . $$specref);
+  } elsif ($$specref =~ /\A\?/) {
+    ## Resolve as a query-relative URL
+    my $authority = $parsed_base_url->{host};
+    $authority .= ':' . $parsed_base_url->{port}
+        if defined $parsed_base_url->{port};
+    $authority = $parsed_base_url->{user} .
+        (defined $parsed_base_url->{password}
+           ? ':' . $parsed_base_url->{password}
+           : '') .
+        '@' . $authority if defined $parsed_base_url->{user};
+    return $class->parse_absolute_url
+        ($parsed_base_url->{scheme} . '://' . $authority .
+         (defined $parsed_base_url->{path} ? $parsed_base_url->{path} : '') .
+         $$specref);
+  } elsif ($$specref =~ /\A\#/) {
+    ## Resolve as a fragment-relative URL
+    my $authority = $parsed_base_url->{host};
+    $authority .= ':' . $parsed_base_url->{port}
+        if defined $parsed_base_url->{port};
+    $authority = $parsed_base_url->{user} .
+        (defined $parsed_base_url->{password}
+           ? ':' . $parsed_base_url->{password}
+           : '') .
+        '@' . $authority if defined $parsed_base_url->{user};
+    return $class->parse_absolute_url
+        ($parsed_base_url->{scheme} . '://' . $authority .
+         (defined $parsed_base_url->{path} ? $parsed_base_url->{path} : '') .
+         # XXX This would not save existence of /query/ component
+         '?' . (defined $parsed_base_url->{query} ? $parsed_base_url->{query} : '') .
+         $$specref);
+  } else {
+    ## Resolve as a path-relative URL
+
+    ## XXX Not defined yet in url-spec (The following is based on RFC
+    ## 3986 algorithm)
+
+    ## -- Merge
+    my $path_merge = sub ($$) {
+      my ($bpath, $rpath) = @_;
+      if ($bpath eq '') {
+        return '/'.$rpath;
+      }
+      $bpath =~ s/[^\/]*\z//;
+      return $bpath . $rpath;
+    }; # merge
+    
+    ## -- Removing Dot Segments
+    my $remove_dot_segments = sub ($) {
+      local $_ = shift;
+      my $buf = '';
+      L: while (length $_) {
+        next L if s/^\.\.?\///;
+        next L if s/^\/\.(?:\/|\z)/\//;
+        if (s/^\/\.\.(\/|\z)/\//) {
+          $buf =~ s/\/?[^\/]*$//;
+          next L;
+        }
+        last Z if s/^\.\.?\z//;
+        s/^(\/?[^\/]*)//;
+        $buf .= $1;
+      }
+      return $buf;
+    }; # remove_dot_segments
+
+    ## -- Transformation
+    my $r_path = $$specref;
+    my $r_query;
+    my $r_fragment;
+    if ($r_path =~ s{\#(.*)\z}{}s) {
+      $r_fragment = $1;
+    }
+    if ($r_path =~ s{\?(.*)\z}{}s) {
+      $r_query = $1;
+    }
+
+    my $result = {%$parsed_base_url};
+    my $b_path = defined $parsed_base_url->{path} ? $parsed_base_url->{path} : '';
+    $result->{path} = $remove_dot_segments->($path_merge->($b_path, $r_path));
+    if (defined $r_query) {
+      $result->{query} = $r_query;
+    } else {
+      delete $result->{query};
+    }
+    if (defined $r_fragment) {
+      $result->{query} = '' unless defined $result->{query}; # for consistency
+      $result->{fragment} = $r_fragment;
+    } else {
+      delete $result->{fragment};
+    }
+    return $result;
+  }
+} # _resolve_relative_url
 
 1;
