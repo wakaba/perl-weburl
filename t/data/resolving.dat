@@ -369,6 +369,36 @@ http:#abc
 #query q
 #fragment abc
 
+#data escaped
+?foo\u000Abar
+#base http://hoge/
+#scheme http
+#host hoge
+#path /
+#query escaped
+foo\u000Abar
+
+#data escaped
+?foo\u000Abar#abc\u000Adef
+#base http://hoge/
+#scheme http
+#host hoge
+#path /
+#query escaped
+foo\u000Abar
+#fragment escaped
+abc\u000Adef
+
+#data escaped
+| #foo\u000Abar
+#base http://hoge/
+#scheme http
+#host hoge
+#path /
+#query
+#fragment escaped
+foo\u000Abar
+
 #note
 Following test cases have no applicable spec at the moment...
 #data
@@ -743,3 +773,17 @@ http:.
 #scheme http
 #host a
 #path /b/c/g:h
+
+#data
+./a/b/c/./d/./e/../f/g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/a/b/c/d/f/g
+
+#data
+%2E/a/b/%2E%2E/%2e
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/%2E/a/b/%2E%2E/%2e

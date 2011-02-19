@@ -696,3 +696,29 @@ http://example.org/%7Euser
 #scheme http
 #host example.org
 #path /%7Euser
+
+#data escaped
+http://hoge/?foo\u000Abar
+#scheme http
+#host hoge
+#path /
+#query escaped
+foo\u000Abar
+
+#data escaped
+http://hoge/?foo\u000Abar#abc\u000Adef
+#scheme http
+#host hoge
+#path /
+#query escaped
+foo\u000Abar
+#fragment escaped
+abc\u000Adef
+
+#data escaped
+http://hoge/#foo\u000Abar
+#scheme http
+#host hoge
+#path /
+#fragment escaped
+foo\u000Abar
