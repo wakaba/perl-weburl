@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+
+<p id=result class=FAIL>FAIL (noscript)</p>
+
+<pre id=result-tap style="white-space:pre-wrap"></pre>
+
+<script src="http://suika.fam.cx/www/js/sami/script/sami-core.js"></script>
+<script src="http://suika.fam.cx/www/js/sami/script/sami-test.js"></script>
+<iframe style="width: 0; height: 0"></iframe>
+
+<script>
+  var r = document.getElementById ('result');
+  var tap = document.getElementById ('result-tap');
+  var tm = new SAMI.Test.Manager (r, new SAMI.StringContainer.Element (tap));
+  var iframe = document.getElementsByTagName ('iframe')[0];
+
+  SAMI.Test.executeTestsByURL ('../data/decomps.dat', {
+    data: {isPrefixed: true}
+  }, function (test) {
+    var originalURL = test.getField ('data');
+    var baseURL = test.getFieldValue ('base');
+
+    var url = getURL (originalURL, baseURL);
+
+    var actual = {
+      url: url.href,
+      scheme: url.protocol,
+      host: url.hostname,
+      port: url.port,
+      path: url.pathname,
+      query: url.search,
+      fragment: url.hash
+    };
+    actual.hostport = url.host;
+    var expected = {
+      url: test.getFieldValue ('canon'),
+      scheme: test.getFieldValue ('scheme'),
+      host: test.getFieldValue ('host'),
+      port: test.getFieldValue ('port'),
+      path: test.getFieldValue ('path'),
+      query: test.getFieldValue ('query'),
+      fragment: test.getFieldValue ('fragment')
+    };
+    expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
+    expected.host = expected.host || '';
+    expected.port = expected.port || '';
+    expected.path = expected.path || '';
+    expected.query = expected.query == null ? '' : '?' + expected.query;
+    expected.fragment = expected.fragment == null ? '' : '#' + expected.fragment;
+    expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+    
+    var name = originalURL + ' + ' + baseURL;
+    tm.is (actual.url, expected.url, name + ' canonical');
+    tm.is (actual.scheme, expected.scheme, name + ' scheme');
+    tm.is (actual.host, expected.host, name + ' host');
+    tm.is (actual.port, expected.port, name + ' port');
+    tm.is (actual.hostport, expected.hostport, name + ' hostport');
+    tm.is (actual.path, expected.path, name + ' path');
+    tm.is (actual.query, expected.query, name + ' query');
+    tm.is (actual.fragment, expected.fragment, name + ' fragment');
+  }, function () {
+    tm.done ();
+  }, function (e) {
+    tm.abort (e.type + ' - ' + e.text);
+  });
+
+  function getURL (url, baseURL) {
+    var doc = iframe.contentWindow.document;
+    doc.open ();
+    doc.write ('<!DOCTYPE HTML>');
+    doc.write ('<base href="' + SAMI.String.htescape (baseURL) + '">');
+    doc.write ('<a href="' + SAMI.String.htescape (url) + '">xx</a>');
+    doc.close ();
+    
+    return doc.getElementsByTagName ('a')[0];
+  } // getURL
+</script>

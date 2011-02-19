@@ -1,0 +1,7 @@
+#data
+http://foo/bar
+#base http://baz
+#canon http://foo/bar
+#scheme http
+#host foo
+#path /bar
