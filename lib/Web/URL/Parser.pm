@@ -216,35 +216,6 @@ sub _resolve_relative_url ($$$) {
     ## XXX Not defined yet in url-spec (The following is based on RFC
     ## 3986 algorithm)
 
-    ## -- Merge
-    my $path_merge = sub ($$) {
-      my ($bpath, $rpath) = @_;
-      if ($bpath eq '') {
-        return '/'.$rpath;
-      }
-      $bpath =~ s/[^\/]*\z//;
-      return $bpath . $rpath;
-    }; # merge
-    
-    ## -- Removing Dot Segments
-    my $remove_dot_segments = sub ($) {
-      local $_ = shift;
-      my $buf = '';
-      L: while (length $_) {
-        next L if s/^\.\.?\///;
-        next L if s/^\/\.(?:\/|\z)/\//;
-        if (s/^\/\.\.(\/|\z)/\//) {
-          $buf =~ s/\/?[^\/]*$//;
-          next L;
-        }
-        last Z if s/^\.\.?\z//;
-        s/^(\/?[^\/]*)//;
-        $buf .= $1;
-      }
-      return $buf;
-    }; # remove_dot_segments
-
-    ## -- Transformation
     my $r_path = $$specref;
     my $r_query;
     my $r_fragment;
@@ -257,7 +228,16 @@ sub _resolve_relative_url ($$$) {
 
     my $result = {%$parsed_base_url};
     my $b_path = defined $parsed_base_url->{path} ? $parsed_base_url->{path} : '';
-    $result->{path} = $remove_dot_segments->($path_merge->($b_path, $r_path));
+    {
+      ## Merge path (RFC 3986)
+      if ($b_path eq '') {
+        $r_path = '/'.$r_path;
+      } else {
+        $b_path =~ s{[^/]*\z}{};
+        $r_path = $b_path . $r_path;
+      }
+    }
+    $result->{path} = $class->_remove_dot_segments ($r_path);
     if (defined $r_query) {
       $result->{query} = $r_query;
     } else {
@@ -272,5 +252,23 @@ sub _resolve_relative_url ($$$) {
     return $result;
   }
 } # _resolve_relative_url
+
+sub _remove_dot_segments ($$) {
+  ## Removing dot-segments (RFC 3986)
+  local $_ = $_[1];
+  my $buf = '';
+  L: while (length $_) {
+    next L if s/^\.\.?\///;
+    next L if s/^\/\.(?:\/|\z)/\//;
+    if (s/^\/\.\.(\/|\z)/\//) {
+      $buf =~ s/\/?[^\/]*$//;
+      next L;
+    }
+    last Z if s/^\.\.?\z//;
+    s/^(\/?[^\/]*)//;
+    $buf .= $1;
+  }
+  return $buf;
+} # _remove_dot_segments
 
 1;
