@@ -19,6 +19,7 @@
   }, function (test) {
     var originalURL = test.getField ('data');
     var baseURL = test.getFieldValue ('base');
+    if (baseURL == null) baseURL = originalURL;
 
     var url = getURL (originalURL, baseURL);
 
@@ -41,6 +42,7 @@
       query: test.getFieldValue ('query'),
       fragment: test.getFieldValue ('fragment')
     };
+    if (expected.url == null) expected.url = originalURL;
     expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
     expected.host = expected.host || '';
     expected.port = expected.port || '';
