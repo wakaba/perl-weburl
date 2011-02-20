@@ -279,7 +279,8 @@ sub canonicalize_url ($$) {
   $parsed_url->{scheme} = $parsed_url->{scheme_normalized};
 
   if ($IsHierarchicalScheme->{$parsed_url->{scheme}}) {
-    $parsed_url->{path} = '/' if not defined $parsed_url->{path};
+    $parsed_url->{path} = '/'
+        if not defined $parsed_url->{path} or not length $parsed_url->{path};
   }
 
   return $parsed_url;
