@@ -271,4 +271,44 @@ sub _remove_dot_segments ($$) {
   return $buf;
 } # _remove_dot_segments
 
+sub canonicalize_url ($$) {
+  my ($class, $parsed_url) = @_;
+
+  return $parsed_url;
+} # canonicalize_url
+
+sub serialize_url ($$) {
+  my ($class, $parsed_url) = @_;
+
+  return undef if $parsed_url->{invalid};
+
+  my $u = $parsed_url->{scheme} . ':';
+  if (defined $parsed_url->{host} or
+      defined $parsed_url->{port} or
+      defined $parsed_url->{user} or
+      defined $parsed_url->{password}) {
+    $u .= '//';
+    if (defined $parsed_url->{user} or
+        defined $parsed_url->{password}) {
+      $u .= $parsed_url->{user} if defined $parsed_url->{user};
+      if (defined $parsed_url->{password}) {
+        $u .= ':' . $parsed_url->{password};
+      }
+      $u .= '@';
+    }
+    $u .= $parsed_url->{host} if defined $parsed_url->{host};
+    if (defined $parsed_url->{port}) {
+      $u .= ':' . $parsed_url->{port};
+    }
+  }
+  $u .= $parsed_url->{path} if defined $parsed_url->{path};
+  if (defined $parsed_url->{query}) {
+    $u .= '?' . $parsed_url->{query};
+  }
+  if (defined $parsed_url->{fragment}) {
+    $u .= '#' . $parsed_url->{fragment};
+  }
+  return $u;
+} # serialize_url
+
 1;
