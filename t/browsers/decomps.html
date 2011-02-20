@@ -20,10 +20,16 @@
     ftp: true,
     ldap: true
   };
+  var schemeDefaultPort = {
+    http: 80,
+    https: 443,
+    ftp: 21
+  };
 
   var compatMode = location.search.match (/compat/);
   var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
   var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
+  var isIE = compatMode && document.all;
 
   if (isWebKit || isGecko) {
     delete isHierarchicalScheme.ldap;
@@ -36,18 +42,32 @@
     var baseURL = test.getFieldValue ('base');
     if (baseURL == null) baseURL = originalURL;
 
-    var url = getURL (originalURL, baseURL);
+    var u = getURL (originalURL, baseURL);
 
-    var actual = {
-      url: url.href,
-      scheme: url.protocol,
-      host: url.hostname,
-      port: url.port,
-      path: url.pathname,
-      query: url.search,
-      fragment: url.hash
-    };
-    actual.hostport = url.host;
+    var actual;
+    try {
+      actual = {
+        url: u.href,
+        scheme: u.protocol,
+        host: u.hostname,
+        port: u.port,
+        path: u.pathname,
+        query: u.search,
+        fragment: u.hash
+      };
+      actual.hostport = u.host;
+    } catch (e) {
+      actual = {
+        url: null,
+        scheme: null,
+        host: null,
+        port: null,
+        path: null,
+        query: null,
+        fragment: null
+      };
+      actual.hostport = null;
+    }
     var expected = {
       url: test.getFieldValue ('canon'),
       scheme: test.getFieldValue ('scheme'),
@@ -58,7 +78,8 @@
       fragment: test.getFieldValue ('fragment')
     };
     if (expected.url == null) expected.url = originalURL;
-    if (isHierarchicalScheme[(expected.scheme || '').toLowerCase ()]) {
+    var schemeNormalized = (expected.scheme || '').toLowerCase ();
+    if (isHierarchicalScheme[schemeNormalized]) {
       expected.host = expected.host || '';
       expected.port = expected.port || '';
       expected.path = expected.path || '';
@@ -67,7 +88,7 @@
     } else {
       expected.host = '';
       expected.port = '';
-      if (isWebKit) {
+      if (isWebKit || isIE) {
         expected.path = expected.path || '';
       } else {
         expected.path = '';
@@ -81,9 +102,14 @@
     if (isWebKit) {
       if (expected.port == '') expected.port = "0";
     }
-    if (isGecko || isWebKit) {
+    if (isGecko || isWebKit || isIE) {
       if (expected.query == '?') expected.query = '';
       if (expected.fragment == '#') expected.fragment = '';
+    }
+    if (isIE) {
+      if (expected.port == '') expected.port = schemeDefaultPort[schemeNormalized] || '';
+      expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+      expected.path = expected.path.replace (/^\//, '');
     }
     
     var name = originalURL + ' + ' + baseURL;
