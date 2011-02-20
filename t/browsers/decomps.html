@@ -33,6 +33,7 @@
   var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
   var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
   var isIE = compatMode && document.all;
+  var isOpera = compatMode && window.opera;
 
   if (isWebKit || isGecko) {
     delete isHierarchicalScheme.ldap;
@@ -42,7 +43,7 @@
   var labels = [];
   var classes = [];
   var results = [];
-  SAMI.Test.executeTestsByURL ('../data/decomps.dat', {
+  SAMI.Test.executeTestsByURL ('../data/decomps.dat?' + Math.random (), {
     data: {isPrefixed: true}
   }, function (test) {
     var originalURL = test.getField ('data');
@@ -113,9 +114,9 @@
       if (expected.query == '?') expected.query = '';
       if (expected.fragment == '#') expected.fragment = '';
     }
-    if (isIE) {
+    if (isIE || isOpera) {
       if (expected.port == '') expected.port = schemeDefaultPort[schemeNormalized] || '';
-      expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+      if (!isOpera) expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
       expected.path = expected.path.replace (/^\//, '');
     }
     
