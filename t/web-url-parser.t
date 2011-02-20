@@ -63,15 +63,16 @@ sub _resolve : Tests {
       $result->{scheme_normalized} = $result->{scheme};
       $result->{scheme_normalized} =~ tr/A-Z/a-z/;
     }
-    my $resolved_base_url = Web::URL::Parser->parse_absolute_url
-        (length $test->{base}->[0]
+    my $base_url = length $test->{base}->[0]
              ? $test->{base}->[0]
              : defined $test->{base}->[1]->[0]
-                 ? $test->{base}->[1]->[0] : '');
+                 ? $test->{base}->[1]->[0] : '';
+    my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
     eq_or_diff
         +Web::URL::Parser->resolve_url
             ($test->{data}->[0], $resolved_base_url),
-        $result;
+        $result,
+        $test->{data}->[0] . ' - ' . $base_url;
   }
 } # _resolve
 
@@ -96,17 +97,18 @@ sub _canon : Tests {
       $result->{scheme_normalized} = $result->{scheme};
       $result->{scheme_normalized} =~ tr/A-Z/a-z/;
     }
-    my $resolved_base_url = Web::URL::Parser->parse_absolute_url
-        ($test->{base} && length $test->{base}->[0]
+    my $base_url = $test->{base} && length $test->{base}->[0]
              ? $test->{base}->[0]
              : defined $test->{base}->[1]->[0]
-                 ? $test->{base}->[1]->[0] : '');
+                 ? $test->{base}->[1]->[0] : '';
+    my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
     my $resolved_url = Web::URL::Parser->resolve_url
         ($test->{data}->[0], $resolved_base_url);
     Web::URL::Parser->canonicalize_url ($resolved_url);
     my $url = Web::URL::Parser->serialize_url ($resolved_url);
     $resolved_url->{canon} = $url;
-    eq_or_diff $resolved_url, $result;
+    eq_or_diff $resolved_url, $result,
+        $test->{data}->[0] . ' - ' . $base_url;
   }
 }
 
