@@ -21,7 +21,8 @@
     http: true,
     https: true,
     ftp: true,
-    ldap: true
+    ldap: true,
+    file: true
   };
   var schemeDefaultPort = {
     http: 80,
@@ -109,6 +110,7 @@
 
     if (isWebKit) {
       if (expected.port == '') expected.port = "0";
+      if (expected.scheme == '') expected.scheme = ':';
     }
     if (isGecko || isWebKit || isIE) {
       if (expected.query == '?') expected.query = '';

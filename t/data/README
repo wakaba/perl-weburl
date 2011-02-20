@@ -1,0 +1,17 @@
+URL test data
+~~~~~~~~~~~~~
+
+* Acknowledgements
+
+URLs in these test cases come from various sources, including:
+
+- RFC 3986
+- <http://www.gbiv.com/protocols/uri/test/rel_examples1.html>
+- <http://www.w3.org/2004/04/uri-rel-test.html>
+- <https://github.com/abarth/url-spec/raw/master/tests/gurl-results/by-browser.txt>
+- <http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/>
+- <http://www.mozilla.org/quality/networking/testing/datatests.html>
+- <http://commons.apache.org/vfs/filesystems.html>
+- <http://suika.fam.cx/gate/git/wi/manakai.git/blob/HEAD:/lib/Message/URI/Generic.dis>
+- <http://suika.fam.cx/~wakaba/-temp/test/uri/>
+- <http://suika.fam.cx/%7Ewakaba/wiki/sw/n/file%3A>

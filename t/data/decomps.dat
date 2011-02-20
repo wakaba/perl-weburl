@@ -774,6 +774,51 @@ urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 #path oasis:names:specification:docbook:dtd:xml:4.1.2
 
 #data
+jar:../lib/classes.jar!/META-INF/manifest.mf
+#scheme jar
+#path ../lib/classes.jar!/META-INF/manifest.mf
+
+#data
+zip:http://somehost/downloads/somefile.zip
+#scheme zip
+#path http://somehost/downloads/somefile.zip
+
+#data
+jar:zip:outer.zip!/nested.jar!/somedir
+#scheme jar
+#path zip:outer.zip!/nested.jar!/somedir
+
+#data
+jar:zip:outer.zip!/nested.jar!/some%21dir
+#scheme jar
+#path zip:outer.zip!/nested.jar!/some%21dir
+
+#data
+tar:gz:http://anyhost/dir/mytar.tar.gz!/mytar.tar!/path/in/tar/README.txt
+#scheme tar
+#path gz:http://anyhost/dir/mytar.tar.gz!/mytar.tar!/path/in/tar/README.txt
+
+#data
+tgz:file://anyhost/dir/mytar.tgz!/somepath/somefile
+#scheme tgz
+#path file://anyhost/dir/mytar.tgz!/somepath/somefile
+
+#data
+gz:/my/gz/file.gz
+#scheme gz
+#path /my/gz/file.gz
+
+#data
+res:path/in/classpath/image.png
+#scheme res
+#path path/in/classpath/image.png
+
+#data
+jar:file://my/path/to/images.jar!/path/in/classpath/image.png
+#scheme jar
+#path file://my/path/to/images.jar!/path/in/classpath/image.png
+
+#data
 mid:a%b@foo.example
 #scheme mid
 #path a%b@foo.example
@@ -931,7 +976,7 @@ foo\u000Abar
 #data
 | #hoge
 #base http://foo?bar
-#canon http://foo/?bar
+#canon http://foo/?bar#hoge
 #scheme http
 #host foo
 #path /
@@ -3027,3 +3072,1583 @@ mailto:\U00010300
 #canon mailto:%F0%90%8C%80
 #scheme mailto
 #path %F0%90%8C%80
+
+#data
+data:
+#scheme data
+#path
+
+#data
+DATA:
+#canon data:
+#scheme data
+#path
+
+#data
+Data:
+#canon data:
+#scheme data
+#path
+
+#data
+data:,
+#scheme data
+#path ,
+
+#data
+data:%2C
+#scheme data
+#path %2C
+
+#data
+data:text
+#scheme data
+#path text
+
+#data
+data:test
+#scheme data
+#path test
+
+#data
+data:,
+#scheme data
+#path ,
+
+#data
+data:text/plain
+#scheme data
+#path text/plain
+
+#data
+data:text/plain,
+#scheme data
+#path text/plain,
+
+#data
+data:text/plain;charset=utf-16,
+#scheme data
+#path text/plain;charset=utf-16,
+
+#data
+data:text,abc
+#scheme data
+#path text,abc
+
+#data
+data:text/plain;charset=us-ascii;abc
+#scheme data
+#path text/plain;charset=us-ascii;abc
+
+#data
+data:text/plain;charset=us-ascii,abc
+#scheme data
+#path text/plain;charset=us-ascii,abc
+
+#data
+data:,a,b
+#scheme data
+#path ,a,b
+
+#data
+data:,foo bar
+#canon data:,foo%20bar
+#scheme data
+#path ,foo%20bar
+
+#data
+data:,abc#def
+#scheme data
+#path ,abc#def
+
+#data
+data:,abc#def#ghi
+#scheme data
+#path ,abc#def#ghi
+
+#data
+data:text / plain,abc
+#canon
+data:text%20/%20plain,abc
+#scheme data
+#path text%20/%20plain,abc
+
+#data
+data: text/plain ,abc
+#canon data:%20text/plain%20,abc
+#scheme data
+#path %20text/plain%20,abc
+
+#data
+data:TEXT/PLAIN,ABC
+#scheme data
+#path TEXT/PLAIN,ABC
+
+#data
+data:text\plain,abc
+#canon data:text/plain,abc
+#scheme data
+#path text/plain,abc
+
+#data
+data:text/./plain,abc
+#scheme data
+#path text/./plain,abc
+
+#data
+data:application/../text/plain,abc
+#scheme data
+#path application/../text/plain,abc
+
+#data
+data:;,test
+#scheme data
+#path ;,test
+
+#data
+data:text/plain;,abc
+#scheme data
+#path text/plain;,abc
+
+#data
+data:,A%20brief%20note
+#scheme data
+#path ,A%20brief%20note
+
+#data
+data:text/plain;charset,abc
+#scheme data
+#path text/plain;charset,abc
+
+#data
+data:text/plain; charset=us-ascii,abc
+#canon
+data:text/plain;%20charset=us-ascii,abc
+#scheme data
+#path text/plain;%20charset=us-ascii,abc
+
+#data
+data:text/plain;charset=US-ASCII,test
+#scheme data
+#path text/plain;charset=US-ASCII,test
+
+#data
+data:;charset=UTF-8,Hello
+#scheme data
+#path ;charset=UTF-8,Hello
+
+#data
+data:text/plain;charset=iso-8859-1,%A1%A2
+#canon data:text/plain;charset=iso-8859-1,%A1%A2
+#scheme data
+#path text/plain;charset=iso-8859-1,%A1%A2
+
+#data
+data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset=iso-8859-7,%b8%f7%fe
+#scheme data
+#path text/plain;charset=iso-8859-7,%b8%f7%fe
+
+#data
+data:text/plain;charset=iso-8859-1;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=iso-8859-1;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;CHARSET=us-ascii,abc
+#scheme data
+#path text/plain;CHARSET=us-ascii,abc
+
+#data
+data:text/plain;charset=us-ascii ,abc
+#canon data:text/plain;charset=us-ascii%20,abc
+#scheme data
+#path text/plain;charset=us-ascii%20,abc
+
+#data
+data:text/plain;charset="us-ascii",abc
+#canon data:text/plain;charset=%22us-ascii%22,abc
+#scheme data
+#path text/plain;charset=%22us-ascii%22,abc
+
+#data
+data:text/plain;charset="euc-jp",%A1%A2
+#canon
+data:text/plain;charset=%22euc-jp%22,%A1%A2
+#scheme data
+#path text/plain;charset=%22euc-jp%22,%A1%A2
+
+#data
+data:text/plain;charset='euc-jp',%A1%A2
+#scheme data
+#path text/plain;charset='euc-jp',%A1%A2
+
+#data
+data:text/plain;noncharset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;noncharset=euc-jp,%A1%A2
+
+#data
+data:text/plain;noncharset=euc-jp;charset=iso-8859-1,%A1%A2
+#scheme data
+#path text/plain;noncharset=euc-jp;charset=iso-8859-1,%A1%A2
+
+#data
+data:text/plain;charset=%22euc-jp%22,%A1%A2
+#scheme data
+#path text/plain;charset=%22euc-jp%22,%A1%A2
+
+#data
+data:text/plain;charset="\euc-jp",%A1%A2
+#canon data:text/plain;charset=%22%5Ceuc-jp%22,%A1%A2
+#scheme data
+#path text/plain;charset=%22%5Ceuc-jp%22,%A1%A2
+
+#data
+data:text/plain;x-data="#",abc
+#canon data:text/plain;x-data=%22#%22,abc
+#scheme data
+#path text/plain;x-data=%22#%22,abc
+
+#data
+data:text/plain;x-title="Hello,%20FAIL";,PASS
+#canon data:text/plain;x-title=%22Hello,%20FAIL%22;,PASS
+#scheme data
+#path text/plain;x-title=%22Hello,%20FAIL%22;,PASS
+
+#data
+data:t%65xt/plain;charset=euc-jp,%A1%A2
+#canon data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text%2Fplain;charset=euc-jp,%A1%A2
+#scheme data
+#path text%2Fplain;charset=euc-jp,%A1%A2
+
+#data
+data:text/pl%61in;charset=euc-jp,%A1%A2
+#canon
+data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain%3Bcharset=euc-jp,%A1%A2
+#scheme data
+#path text/plain%3Bcharset=euc-jp,%A1%A2
+
+#data
+data:text/plain;%63harset=euc-jp,%A1%A2
+#canon
+data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset%3Deuc-jp,%A1%A2
+#scheme data
+#path text/plain;charset%3Deuc-jp,%A1%A2
+
+#data
+data:text/plain;charset=eu%63-jp,%A1%A2
+#canon data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset=us-ascii%2Cabc
+#scheme data
+#path text/plain;charset=us-ascii%2Cabc
+
+#data
+data:text/plain;charset=iso-8859-8-i,%f9%ec%e5%ed
+#scheme data
+#path text/plain;charset=iso-8859-8-i,%f9%ec%e5%ed
+
+#data
+data:text/plain;charset=UTF-8,%d7%a9%d7%9c%d7%95%d7%9d
+#scheme data
+#path text/plain;charset=UTF-8,%d7%a9%d7%9c%d7%95%d7%9d
+
+#data
+data:,;test
+#scheme data
+#path ,;test
+
+#data
+data:,a+b+c
+#scheme data
+#path ,a+b+c
+
+#data
+data:,a/../b
+#scheme data
+#path ,a/../b
+
+#data
+data:,a/./b
+#scheme data
+#path ,a/./b
+
+#data
+data:text/plain;charset=thing;base64;test
+#scheme data
+#path text/plain;charset=thing;base64;test
+
+#data
+data:text/plain;charset=unknown;base64,test
+#scheme data
+#path text/plain;charset=unknown;base64,test
+
+#data
+data:;charset=,test
+#scheme data
+#path ;charset=,test
+
+#data
+data:application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local
+#scheme data
+#path application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local
+
+#data
+data:application/octet-stream;name=filename.dat,abc
+#scheme data
+#path application/octet-stream;name=filename.dat,abc
+
+#data
+data:application/x-unknown;name=filename.dat,abc
+#scheme data
+#path application/x-unknown;name=filename.dat,abc
+
+#data
+data:;base64,
+#scheme data
+#path ;base64,
+
+#data
+data:;base64,hello
+#scheme data
+#path ;base64,hello
+
+#data
+data:text/plain;charset=iso-8859-8-i;base64,+ezl7Q==
+#scheme data
+#path text/plain;charset=iso-8859-8-i;base64,+ezl7Q==
+
+#data
+data:text/plain;charset=UTF-8;base64,16nXnNeV150=
+#scheme data
+#path text/plain;charset=UTF-8;base64,16nXnNeV150=
+
+#data
+data:text/html;base64,VGhpcyBpcyBhIHRlc3QK
+#scheme data
+#path text/html;base64,VGhpcyBpcyBhIHRlc3QK
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?!?
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?!?
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK#fragment
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK#fragment
+
+#data
+data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
+#canon
+data:text/plain;base64,VG!h$pcy%5DBpcyBh%5BIHRl%3Ec3QK
+#scheme data
+#path text/plain;base64,VG!h$pcy%5DBpcyBh%5BIHRl%3Ec3QK
+
+#data
+data:text/plain,a
+bcde
+#scheme data
+#path
+text/plain,a%0Abcde
+
+#data
+data:,Data%20was:%20'%%%%'
+#scheme data
+#path ,Data%20was:%20'%%%%'
+
+#data
+javascript:
+#scheme javascript
+#path
+
+#data
+JavaScript:
+#canon javascript:
+#scheme javascript
+#path
+
+#data
+JAVASCRIPT:
+#canon javascript:
+#scheme javascript
+#path
+
+#data
+javascript:void(0)
+#scheme javascript
+#path void(0)
+
+#data
+javascript:""
+#scheme javascript
+#path
+""
+
+#data
+javascript:"abc"
+#scheme javascript
+#path
+"abc"
+
+#data
+javascript:"abc#def"
+#scheme javascript
+#path
+"abc#def"
+
+#data
+javascript:"abc"#def
+#scheme javascript
+#path
+"abc"#def
+
+#data
+javascript:"abc#def#ghi"
+#scheme javascript
+#path
+"abc#def#ghi"
+
+#data
+javascript:"abc?def"
+#scheme javascript
+#path 
+"abc?def"
+
+#data
+javascript://www.example.com/
+#scheme javascript
+#path //www.example.com/
+
+#data
+javascript:javascript:"abc"
+#scheme javascript
+#path 
+javascript:"abc"
+
+#data
+javascript:123;%0A"abc"
+#scheme javascript
+#path 
+123;%0A"abc"
+
+#data
+javascript:123;%0D"abc"
+#scheme javascript
+#path
+123;%0D"abc"
+
+#data
+javascript:123;%0D%0A"abc"
+#scheme javascript
+#path
+123;%0D%0A"abc"
+
+#data
+javascript:123;%09"abc"
+#scheme javascript
+#path 
+123;%09"abc"
+
+#data
+javascript:123;%0B"abc"
+#scheme javascript
+#path 
+123;%0B"abc"
+
+#data
+javascript:123;%0C"abc"
+#scheme javascript
+#path 
+123;%0C"abc"
+
+#data
+javascript:"abc%25def"
+#scheme javascript
+#path 
+"abc%25def"
+
+#data
+javascript:"abc%0Adef"
+#scheme javascript
+#path
+"abc%0Adef"
+
+#data
+javascript:"abc\%0Adef"
+#scheme javascript
+#path
+"abc\%0Adef"
+
+#data
+javascript:return false
+#scheme javascript
+#path 
+return false
+
+#data
+javascript:14 % 4
+#scheme javascript
+#path
+14 % 4
+
+#data escaped
+javascript: // \u4e00
+#scheme javascript
+#path
+ // \u4e00
+
+#data escaped
+javascript: // # \u4e00
+#scheme javascript
+#path
+ // \u4e00
+
+#data escaped
+jscript:a % 55 // # \u4e00
+#scheme jscript
+#path escaped
+a % 55 // # \u4e00
+
+#data escaped
+vbscript:a % 55 ' # \u4e00
+#scheme vbscript
+#path escaped
+a % 55 ' # \u4e00
+
+#data escaped
+mocha:a % 55 // # \u4e00
+#scheme mocha
+#path escaped
+a % 55 // # \u4e00
+
+#data escaped
+livescript:a % 55 // # \u4e00
+#scheme livescript
+#path escaped
+a % 55 // # \u4e00
+
+#data
+.
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+%2E
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+./
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+%2E/
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+..
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+%2E.
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+.%2E
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+%2E%2E
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+../
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+%2E./
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+.%2E/
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+%2E%2E/
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/
+#scheme http
+#host foo
+#path /a/b/
+
+#data
+aa/.
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/aa/
+#scheme http
+#host foo
+#path /a/b/c/aa/
+
+#data
+aa/%2E
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/aa/
+#scheme http
+#host foo
+#path /a/b/c/aa/
+
+#data
+aa/./
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/aa/
+#scheme http
+#host foo
+#path /a/b/c/aa/
+
+#data
+aa/%2E/
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/aa/
+#scheme http
+#host foo
+#path /a/b/c/aa/
+
+#data
+aa/..
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+aa/%2E.
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+aa/.%2E
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+aa/%2E%2E
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+aa/../
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+aa/%2E./
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+aa/.%2E/
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+aa/%2E%2E/
+#base http://foo/a/b/c/d
+#canon http://foo/a/b/c/
+#scheme http
+#host foo
+#path /a/b/c/
+
+#data
+http://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+%68ttp://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+h%74tp://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+h%74%74p://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+htt%70://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+%68%74%74%70://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://%73uika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://%73%75%69%6B%61.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://suika%2Efam%2Ecx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://%73%75%69%6B%61.%66%61%6D.%63%78/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://%73%75%69%6B%61%2E%66%61%6D%2E%63%78/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://suika.fam.cx:80/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://suika.fam.cx:%380/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://suika.fam.cx:8%30/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://suika.fam.cx:%38%30/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://foo./
+#canon http://foo./
+#scheme http
+#host foo.
+#path /
+
+#data
+http://foo.bar./
+#canon http://foo.bar./
+#scheme http
+#host foo.bar.
+#path /
+
+#data
+http://.foo.bar/
+#canon http://.foo.bar/
+#scheme http
+#host .foo.bar
+#path /
+
+#data
+./foo/bar
+#base data:text/plain,abc
+#canon
+
+#data
+foo
+#base data:text/plain,abc
+#canon
+
+#data
+./foo/bar
+#base javascript:alert(1)
+#canon
+
+#data
+foo
+#base javascript:alert(1)
+#canon
+
+#data
+./foo/bar
+#base mailto:foo@bar
+#canon
+
+#data
+foo
+#base mailto:foo@bar
+#canon
+
+#data
+file:
+#base http://a/b/c
+#canon file:///
+#scheme file
+#host
+#path /
+
+#data
+file://
+#base http://a/b/c
+#canon file:///
+#scheme file
+#host
+#path /
+
+#data
+file:///
+#base http://a/b/c
+#canon file:///
+#scheme file
+#host
+#path /
+
+#data
+file:///c:/
+#canon file:///C:/
+#scheme file
+#host 
+#path /C:/
+
+#data
+file:///c%3A/
+#canon file:///C:/
+#scheme file
+#host 
+#path /C:/
+
+#data
+file:///c|/
+#canon file:///C:/
+#scheme file
+#host 
+#path /C:/
+
+#data
+file:///c%7C/
+#canon file:///C:/
+#scheme file
+#host 
+#path /C:/
+
+#data
+file:///c/
+#canon file:///c/
+#scheme file
+#host 
+#path /c/
+
+#data
+file://c:/
+#canon file:///C:/
+#scheme file
+#host 
+#path /C:/
+
+#data
+file://localhost/c:/
+#canon file://localhost/C:/
+#scheme file
+#host localhost
+#path /C:/
+
+#data
+file:/c:/
+#canon file:///C:/
+#scheme file
+#host 
+#path /C:/
+
+#data
+file:c:/foo/bar.html
+#canon file:///C:/foo/bar.html
+#scheme file
+#host
+#path /C:/foo/bar.html
+
+#data
+file:c:\foo\bar.html
+#base http://a/b/c
+#canon file:///C:/foo/bar.html
+#scheme file
+#host
+#path /C:/foo/bar.html
+
+#data
+file:c:\\foo\\bar.html
+#base http://a/b/c
+#canon file:///C://foo//bar.html
+#scheme file
+#host
+#path /C://foo//bar.html
+
+#data
+file:///c:%5Cwindows%5Cexplorer.exe
+#canon file:///C:/windows/explorer.exe
+#scheme file
+#host
+#path /C:/windows/explorer.exe
+
+#data
+file:///c:%2Fwindows%2Fexplorer.exe
+#canon file:///C:/windows/explorer.exe
+#scheme file
+#host
+#path /C:/windows/explorer.exe
+
+#data
+file:///c:/windows\system32%5Cdrivers/etc/hosts
+#canon file:///C:/windows/system32/drivers/etc/hosts
+#scheme file
+#host
+#path /C:/windows/system32/drivers/etc/hosts
+
+#data
+  File:c|////foo\bar.html
+#base http://a/b/c
+#canon file:///C:////foo/bar.html
+#scheme file
+#host
+#path /C:////foo/bar.html
+
+#data
+file://///somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file:UNChost/path
+#base http://a/b/c
+#canon file://unchost/path
+#scheme file
+#host unchost
+#path /path
+
+#data
+file:///C:\ 
+#canon file:///C:/
+#scheme file
+#host
+#path /C:/
+
+#data
+c:\foo\bar
+#base http://a/b/c
+#canon file:///C:/foo/bar
+#scheme file
+#host
+#path /C:/foo/bar
+
+#data
+C|/foo/bar
+#base http://a/b/c
+#canon file:///C:/foo/bar
+#scheme file
+#host
+#path /C:/foo/bar
+
+#data
+/C|\foo\bar
+#base http://a/b/c
+#canon http://a/C%7C/foo/bar
+#scheme http
+#host a
+#path /C%7C/foo/bar
+
+#data
+/C|\foo\bar
+#base file:///b/c
+#canon file:///C:/foo/bar
+#scheme file
+#host
+#path /C:/foo/bar
+
+#data
+//C|/foo/bar
+#base http://a/b/c
+#canon http://c%7C/foo/bar
+#scheme http
+#host c%7C
+#path /foo/bar
+
+#data
+//C|/foo/bar
+#base file://a/b/c
+#canon file:///C:/foo/bar
+#scheme file
+#host
+#path /C:/foo/bar
+
+#data
+//server/file
+#base http://a/b/c
+#canon http://server/file
+#scheme http
+#host server
+#path /file
+
+#data
+//server/file
+#base file://a/b/c
+#canon file://server/file
+#scheme file
+#host server
+#path /file
+
+#data
+\\server\file
+#base http://a/b/c
+#canon file://server/file
+#scheme file
+#host server
+#path /file
+
+#data
+\\server\file
+#base file://a/b/c
+#canon file://server/file
+#scheme file
+#host server
+#path /file
+
+#data
+/\server/file
+#base http://a/b/c
+#canon http://server/file
+#scheme http
+#host server
+#path /file
+
+#data
+/\server/file
+#base file://a/b/c
+#canon file://server/file
+#scheme file
+#host server
+#path /file
+
+#data
+file:c:foo/bar.html
+#base http://a/b/c
+#canon file:///C:/foo/bar.html
+#scheme file
+#host
+#path /C:/foo/bar.html
+
+#data
+file:/\/\C:\\//foo\bar.html
+#base http://a/b/c
+#canon file:///C:////foo/bar.html
+#scheme file
+#host
+#path /C:////foo/bar.html
+
+#data
+file:///foo/bar.txt
+#base http://a/b/c
+#canon file:///foo/bar.txt
+#scheme file
+#host
+#path /foo/bar.txt
+
+#data
+FILE:/\/\7:\\//foo\bar.html
+#base http://a/b/c
+#canon file://7:////foo/bar.html
+#scheme file
+#host 7:
+#path ////foo/bar.html
+
+#data
+file://\\host\sharename\dir\file
+#canon file://host/sharename/dir/file
+#scheme file
+#host host
+#path /sharename/dir/file
+
+#data
+file://./backofficestorage/domain/MBX/username/Calendar
+#scheme file
+#host .
+#path /backofficestorage/domain/MBX/username/Calendar
+
+#data
+file://\windows\default-home.htm
+#canon file:///windows/default-home.htm
+#scheme file
+#host
+#path /windows/default-home.htm
+
+#data
+file:filer/home\me
+#base http://a/b/c
+#canon file://filer/home/me
+#scheme file
+#host filer
+#path /home/me
+
+#data
+../D|/foo/
+#base file:///C|/
+#canon file:///C:/D%7C/foo/
+#scheme file
+#host
+#path file:///C:/D%7C/foo/
+
+#data
+file:///C:/foo/../../../bar.html
+#base http://a/b/c
+#canon file:///C:/bar.html
+#scheme file
+#host
+#path /C:/bar.html
+
+#data escaped
+file:///c:/foo/\u4e00
+#base http://a/b/c
+#canon escaped
+file:///C:/foo/\u4e00
+#scheme file
+#host
+#path escaped
+/C:/foo/\u4e00
+
+#data escaped
+file:///C:/asdf#\u00C2
+#base http://a/b/c
+#canon escaped
+file:///C:/asdf#\u00FD
+#scheme file
+#host
+#path /C:/asdf
+#fragment \u00FD
+
+#data escaped
+file:///c:/foo/?4e00
+#base http://a/b/c
+#canon escaped
+file:///C:/foo/?4e00
+#scheme file
+#host
+#path escaped
+/C:/foo/
+#query 4e00
+
+#data escaped
+file:///c:/foo/#4e00
+#base http://a/b/c
+#canon escaped
+file:///C:/foo/#4e00
+#scheme file
+#host
+#path escaped
+/C:/foo/
+#fragment 4e00
+
+#data
+file:///home/me
+#base http://a/b/c
+#canon file:///home/me
+#scheme file
+#path /home/me
+
+#data
+file:c:\foo\bar.html
+#base http://a/b/c
+#canon file:///C:/foo/bar.html
+#scheme file
+#host
+#path /C:/foo/bar.html
+
+#data
+file:c|//foo\bar.html
+#base http://a/b/c
+#canon file:///C://foo/bar.html
+#scheme file
+#host
+#path /C://foo/bar.html
+
+#data
+//
+#base file:///c:/foo/bar.html
+#canon file:///
+#scheme file
+#host
+#path /
+
+#data
+///
+#base file:///c:/foo/bar.html
+#canon file:///
+#scheme file
+#host
+#path /
+
+#data
+//test
+#base file:///c:/foo/bar.html
+#canon file://test/
+#scheme file
+#host test
+#path /
+
+#data
+//test/
+#base file:///c:/foo/bar.html
+#canon file://test/
+#scheme file
+#host test
+#path /
+
+#data
+//test:80
+#base file:///c:/foo/bar.html
+#canon file://test:80/
+#scheme file
+#host test
+#port 80
+#path /
+
+#data
+//localhost
+#base file:///c:/foo/bar.html
+#canon file://localhost/
+#scheme file
+#host localhost
+#path /
+
+#data
+//foo@bar
+#base file:///c:/foo/bar.html
+#canon file:///foo@bar/
+#scheme file
+#user foo
+#host bar
+#path /
+
+#data
+file://test/
+#base http://a/b/c
+#canon file://test/
+#scheme file
+#host test
+#path /
+
+#data
+file://localhost/
+#base http://a/b/c
+#canon file://localhost/
+#scheme file
+#host localhost
+#path /
+
+#data
+file://LOCALHOST/
+#base http://a/b/c
+#canon file://localhost/
+#scheme file
+#host localhost
+#path /
+
+#data
+file://localhost/test
+#base http://a/b/c
+#canon file://localhost/test
+#scheme file
+#host localhost
+#path /test
+
+#data
+file://localhost.localdomain/test
+#base http://a/b/c
+#canon file://localhost.localdomain/test
+#scheme file
+#host localhost.localdomain
+#path /test
+
+#data
+file:///test a/b/c
+#base http://a/b/c
+#canon file:///test%20a/b/c
+#scheme file
+#host 
+#path /test%20a/b/c
+
+#data
+file:///test%20a/b/c
+#base http://a/b/c
+#canon file:///test%20a/b/c
+#scheme file
+#host 
+#path /test%20a/b/c
+
+#data
+file:///test%a/b/c
+#base http://a/b/c
+#canon file:///test%a/b/c
+#scheme file
+#host 
+#path /test%a/b/c
+
+#data
+file:///C:/foo/bar/baz/.
+#canon file:///C:/foo/bar/baz/
+#scheme file
+#host
+#path /C:/foo/bar/baz/
+
+#data
+file:///C:/foo/bar/baz/..
+#canon file:///C:/foo/bar/
+#scheme file
+#host
+#path /C:/foo/bar/
+
+#data
+file:///C:/foo/bar/baz/...
+#canon file:///C:/foo/bar/baz/...
+#scheme file
+#host
+#path /C:/foo/bar/baz/...
+
+#data
+file:///cygdrive/c/windows/explorer.exe
+#canon file:///cygdrive/c/windows/explorer.exe
+#scheme file
+#host
+#path /cygdrive/c/windows/explorer.exe
+
+#data
+file:~user/path/to/file
+#canon file:///~user/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file:%7Euser/path/to/file
+#canon file:///%7Euser/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file:/~user/path/to/file
+#canon file:///~user/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file:/%7Euser/path/to/file
+#canon file:///%7Euser/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file://~user/path/to/file
+#canon file:///~user/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file://%7Euser/path/to/file
+#canon file:///%7Euser/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file:///~user/path/to/file
+#canon file:///~user/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file:///%7Euser/path/to/file
+#canon file:///%7Euser/path/to/file
+#scheme file
+#host
+#path /~user/path/to/file
+
+#data
+file:///::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D
+#scheme file
+#host
+#path /::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D
+
+#data
+file://Folder Settings\folder.htt
+#canon file:///Folder%20Settings/folder.htt
+#scheme file
+#path /Folder%20Settings/folder.htt
+
+#data
+file://folder.htt
+#canon file:///folder.htt
+#scheme file
+#host
+#path /folder.htt
+
+#data
+file:///?/c:/windows/
+#scheme file
+#path /
+#query /c:/windows/
+
+#data
+\\?\c:\windows
+#base http://a/b/c
+#canon file:///C:/windows
+#scheme file
+#host 
+#path /C:/windows
+
+#data
+//?/c:/windows
+#base http://a/b/c
+#canon file:///C:/windows
+#scheme file
+#host 
+#path /C:/windows
