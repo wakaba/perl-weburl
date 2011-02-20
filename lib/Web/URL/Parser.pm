@@ -274,6 +274,14 @@ sub _remove_dot_segments ($$) {
 sub canonicalize_url ($$) {
   my ($class, $parsed_url) = @_;
 
+  return $parsed_url if $parsed_url->{invalid};
+
+  $parsed_url->{scheme} = $parsed_url->{scheme_normalized};
+
+  if ($IsHierarchicalScheme->{$parsed_url->{scheme}}) {
+    $parsed_url->{path} = '/' if not defined $parsed_url->{path};
+  }
+
   return $parsed_url;
 } # canonicalize_url
 

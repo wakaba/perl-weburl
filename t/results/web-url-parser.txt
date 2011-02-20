@@ -1289,37 +1289,10 @@ not ok 145 -  canon
 # +----+---------------------------------------------------------+---------------------------------------------------------+
 ok 146 -  canon
 ok 147 -  canon
-not ok 148 -  canon
-#   Failed test ' canon'
-#   at web-url-parser.t line 109.
-#   (in test::Web::URL::Parser->_canon)
-# +----+-------------------------------------+------------------------------------------+
-# | Elt|Got                                  |Expected                                  |
-# +----+-------------------------------------+------------------------------------------+
-# *   0|canon,host,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  *
-# *   1|http://hoge,hoge,http,http           |http://hoge/,hoge,/,http,http             *
-# +----+-------------------------------------+------------------------------------------+
+ok 148 -  canon
 ok 149 -  canon
-not ok 150 -  canon
-#   Failed test ' canon'
-#   at web-url-parser.t line 109.
-#   (in test::Web::URL::Parser->_canon)
-# +----+-------------------------------------+------------------------------------------+
-# | Elt|Got                                  |Expected                                  |
-# +----+-------------------------------------+------------------------------------------+
-# *   0|canon,host,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  *
-# *   1|http://abc,abc,http,http             |http://abc/,abc,/,http,http               *
-# +----+-------------------------------------+------------------------------------------+
-not ok 151 -  canon
-#   Failed test ' canon'
-#   at web-url-parser.t line 109.
-#   (in test::Web::URL::Parser->_canon)
-# +----+-------------------------------------+------------------------------------------+
-# | Elt|Got                                  |Expected                                  |
-# +----+-------------------------------------+------------------------------------------+
-# *   0|canon,host,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  *
-# *   1|http://abc,abc,http,http             |http://abc/,abc,/,http,http               *
-# +----+-------------------------------------+------------------------------------------+
+ok 150 -  canon
+ok 151 -  canon
 ok 152 -  canon
 ok 153 -  canon
 not ok 154 -  canon
@@ -1377,16 +1350,7 @@ ok 169 -  canon
 ok 170 -  canon
 ok 171 -  canon
 ok 172 -  canon
-not ok 173 -  canon
-#   Failed test ' canon'
-#   at web-url-parser.t line 109.
-#   (in test::Web::URL::Parser->_canon)
-# +----+-------------------------------------+------------------------------------------+
-# | Elt|Got                                  |Expected                                  |
-# +----+-------------------------------------+------------------------------------------+
-# *   0|canon,host,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  *
-# *   1|http://g,g,http,http                 |http://g/,g,/,http,http                   *
-# +----+-------------------------------------+------------------------------------------+
+ok 173 -  canon
 ok 174 -  canon
 ok 175 -  canon
 ok 176 -  canon
@@ -4830,7 +4794,7 @@ not ok 576 -  canon
 # | Elt|Got                                                   |Expected                                                   |
 # +----+------------------------------------------------------+-----------------------------------------------------------+
 # *   0|canon,path,scheme,scheme_normalized                   |canon,host,path,scheme,scheme_normalized                   *
-# *   1|File:c|////foo\bar.html,c|////foo\bar.html,File,file  |file:///C:////foo/bar.html,,/C:////foo/bar.html,file,file  *
+# *   1|file:c|////foo\bar.html,c|////foo\bar.html,file,file  |file:///C:////foo/bar.html,,/C:////foo/bar.html,file,file  *
 # +----+------------------------------------------------------+-----------------------------------------------------------+
 not ok 577 -  canon
 #   Failed test ' canon'
@@ -5013,7 +4977,7 @@ not ok 595 -  canon
 # | Elt|Got                                                           |Expected                                                 |
 # +----+--------------------------------------------------------------+---------------------------------------------------------+
 # *   0|canon,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized                 *
-# *   1|FILE:/\/\7:\\//foo\bar.html,/\/\7:\\//foo\bar.html,FILE,file  |file://7:////foo/bar.html,7:,////foo/bar.html,file,file  *
+# *   1|file:/\/\7:\\//foo\bar.html,/\/\7:\\//foo\bar.html,file,file  |file://7:////foo/bar.html,7:,////foo/bar.html,file,file  *
 # +----+--------------------------------------------------------------+---------------------------------------------------------+
 not ok 596 -  canon
 #   Failed test ' canon'
@@ -5698,4 +5662,4 @@ ok 859 -  resolve
 ok 860 -  resolve
 ok 861 -  resolve
 1..861
-# Looks like you failed 537 tests of 861.
+# Looks like you failed 533 tests of 861.
