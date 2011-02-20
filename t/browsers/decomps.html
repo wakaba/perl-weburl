@@ -130,7 +130,7 @@
     tm.is (actual.query, expected.query, name + ' query');
     tm.is (actual.fragment, expected.fragment, name + ' fragment');
 
-    names.push (encodeURIComponent (name));
+    names.push (percentEncode (name));
     labels.push (originalURL + "\n" + baseURL);
     classes.push (actual.url == expected.url ? 'PASS' : 'FAIL');
     results.push (actual.url);
@@ -139,10 +139,10 @@
 
     var data = 'env-name=' + encodeURIComponent (navigator.userAgent);
     for (var i = 0; i < names.length; i++) {
-      data += '&test-name=' + encodeURIComponent (names[i]);
-      data += '&test-label=' + encodeURIComponent (labels[i]);
-      data += '&test-class=' + encodeURIComponent (classes[i]);
-      data += '&test-result=' + encodeURIComponent (results[i]);
+      data += '&test-name=' + percentEncode (names[i]);
+      data += '&test-label=' + percentEncode (labels[i]);
+      data += '&test-class=' + percentEncode (classes[i]);
+      data += '&test-result=' + percentEncode (results[i]);
     }
     button.value = data;
   }, function (e) {
@@ -159,6 +159,17 @@
     
     return doc.getElementsByTagName ('a')[0];
   } // getURL
+
+  function percentEncode (s) {
+    try {
+      return encodeURIComponent (s);
+    } catch (e) {
+      s = s.replace (/[\uD800-\uDFFF]/g, function (c) {
+        return "\\u" + c.charCodeAt (0).toString (16).toUpperCase ();
+      });
+      return encodeURIComponent (s);
+    }
+  }
 
   var testsetName = 'test1';
   button.onclick = function () {

@@ -1831,3 +1831,1199 @@ http:.
 #scheme http
 #host a
 #path /b/c/%2E/a/b/%2E%2E/%2e
+
+#data
+HTTP://example.com/
+#canon http://example.com/
+#scheme http
+#host example.com
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01%2e/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01./
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%3g%78%63%30%2e%30%32%35%30%2E.01/
+#canon http://%253gxc0.0250..01/
+#scheme http
+#host %253gxc0.0250..01
+#path /
+
+#data escaped
+http://%E4%BD%A0%E5%A5%BD\u4F60\u597D/
+#canon http://xn--6qqa088eba/
+#scheme http
+#host xn--6qqa088eba
+#path /
+
+#data
+http://xn--%e4%bd%a0%e5%a5%bd-5g72ap39l/
+#canon http://xn--%e4%bd%a0%e5%a5%bd-5g72ap39l/
+#scheme http
+#host xn--%e4%bd%a0%e5%a5%bd-5g72ap39l
+#path /
+
+#data
+http://%ef%b7%90zyx.com/
+#canon http://%EF%BF%BDzyx.com/
+#scheme http
+#host %EF%BF%BDzyx.com
+#path /
+
+#data
+http://%EF%B7%90zyx.com/
+#canon http://%EF%BF%BDzyx.com/
+#scheme http
+#host %EF%BF%BDzyx.com
+#path /
+
+#data
+http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
+#canon http://%00.com/
+#scheme http
+#host %00.com
+#path /
+
+#data
+http://%00.com/
+#canon http://%00.com/
+#scheme http
+#host %00.com
+#path /
+
+#data
+http://%ef%bc%85%ef%bc%94%ef%bc%91.com/
+#canon http://a.com/
+#scheme http
+#host a.com
+#path /
+
+#data
+http://%zz%66%a/
+#canon http://%25zzf%25a/
+#scheme http
+#host %25zzf%25a
+#path /
+
+#data
+http://%25zzf%25a/
+#canon http://%25zzf%25a/
+#scheme http
+#host %25zzf%25a
+#path /
+
+#data
+http://192.168.0.1 hello/
+#canon http://192.168.0.1%20hello/
+#scheme http
+#host 192.168.0.1%20hello
+#path /
+
+#data
+http://192.168.0.1%20hello/
+#canon http://192.168.0.1%20hello/
+#scheme http
+#host 192.168.0.1%20hello
+#path /
+
+#data
+http://GOO 　goo.com/
+#canon http://goo%20%20goo.com/
+#scheme http
+#host goo%20%20goo.com
+
+#data
+http://goo%20%20goo.com/
+#canon http://goo%20%20goo.com/
+#scheme http
+#host goo%20%20goo.com
+
+#data
+http://GoOgLe.CoM/
+#canon http://google.com/
+#scheme http
+#host google.com
+#path /
+
+#data
+http://Goo%20 goo%7C|.com/
+#canon http://goo%20%20goo%7C%7C.com/
+#scheme http
+#host goo%20%20goo%7C%7C.com
+#path /
+
+#data
+http://goo%20%20goo%7C%7C.com/
+#canon http://goo%20%20goo%7C%7C.com/
+#scheme http
+#host goo%20%20goo%7C%7C.com
+#path /
+
+#data
+http://goo%20%20goo%7c%7c.com/
+#canon http://goo%20%20goo%7c%7c.com/
+#scheme http
+#host goo%20%20goo%7c%7c.com
+#path /
+
+#data
+http://[google.com]/
+#canon http://[google.com]/
+#scheme http
+#host [google.com]
+#path /
+
+#data
+http://hello%00/
+#canon http://hello%00/
+#scheme http
+#host hello%00
+#path /
+
+#data escaped
+http://\u0442(/
+#canon http://xn--%28-7ed/
+#scheme http
+#host xn--%28-7ed
+#path /
+
+#data
+http://xn--(-8tb/
+#canon http://xn--%28-8tb/
+#scheme http
+#host xn--%28-8tb
+#path /
+
+#data escaped
+http://\u4F60\u597D\u4F60\u597D/
+#canon http://xn--6qqa088eba/
+#scheme http
+#host xn--6qqa088eba
+#path /
+
+#data escaped
+http://\uFDD0zyx.com/
+#canon http://%EF%BF%BDzyx.com/
+#scheme http
+#host %EF%BF%BDzyx.com
+#path /
+
+#data escaped
+http://\uFFFDzyx.com/
+#canon http://%EF%BF%BDzyx.com/
+#scheme http
+#host %EF%BF%BDzyx.com
+#path /
+
+#data escaped
+http://%EF%BF%BDzyx.com/
+#canon http://%EF%BF%BDzyx.com/
+#scheme http
+#host %EF%BF%BDzyx.com
+#path /
+
+#data escaped
+http://\uFF05\uFF05\uFF05/
+#canon http://%25%25%25.com/
+#scheme http
+#host %25%25%25.com
+#path /
+
+#data escaped
+http://\uFF05\uFF10\uFF10/
+#canon http://%00.com/
+#scheme http
+#host %00.com
+#path /
+
+#data escaped
+http://\uFF05\uFF14\uFF11.com/
+#canon http://a.com/
+#scheme http
+#host a.com
+#path /
+
+#data escaped
+http://\uFF05\uFF16\uFF11.com/
+#canon http://a.com/
+#scheme http
+#host a.com
+#path /
+
+#data
+http://%41.com/
+#canon http://a.com/
+#scheme http
+#host a.com
+#path /
+
+#data escaped
+http://\uFF10\uFF38\uFF43\uFF10\uFF0E\uFF10\uFF12\uFF15\uFF10\uFF0E\uFF10\uFF11/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://www.example.com:as df/
+#canon http://www.example.com:as%20df/
+#scheme http
+#host www.example.com
+#port as%20df
+#path /
+
+#data
+http://www.example.com:as%20df/
+#canon http://www.example.com:as%20df/
+#scheme http
+#host www.example.com
+#port as%20df
+#path /
+
+#data
+http://www.example.com:-2/
+#canon http://www.example.com:-2/
+#scheme http
+#host www.example.com
+#port -2
+#path /
+
+#data
+http://example.com////../..
+#canon http://example.com//
+#scheme http
+#host example.com
+#path //
+
+#data escaped
+http://example.com/foo\u0009bar
+#canon http://example.com/foo%09bar
+#scheme http
+#host example.com
+#path /foo%09bar
+
+#data escaped
+http://example.com/foo\u0009\u0091
+#canon http://example.com/foo%09%C2%91%91
+#scheme http
+#host example.com
+#path /foo%C2%91%91
+
+#data escaped
+http://example.com/foo%09%C2%91%91
+#canon http://example.com/foo%09%C2%91%91
+#scheme http
+#host example.com
+#path /foo%C2%91%91
+
+#data escaped
+http://example.com/foo%91
+#canon http://example.com/foo%91
+#scheme http
+#host example.com
+#path /foo%91
+
+#data
+http://example.com/foo%
+#canon http://example.com/foo%
+#scheme http
+#host example.com
+#path /foo%
+
+#data
+http://example.com/foo%00%51
+#canon http://example.com/foo%00Q
+#scheme http
+#host example.com
+#path /foo%00Q
+
+#data
+http://example.com/foo%2
+#canon http://example.com/foo%2
+#scheme http
+#host example.com
+#path /foo%2
+
+#data
+http://example.com/foo%2zbar
+#canon http://example.com/foo%2zbar
+#scheme http
+#host example.com
+#path /foo%2zbar
+
+#data escaped
+http://example.com/foo%2\u00C2\u00A9zbar
+#canon http://example.com/foo%2%C3%82%C2%A9zbar
+#scheme http
+#host example.com
+#path /foo%2%C3%82%C2%A9zbar
+
+#data
+http://example.com/foo%41%7a
+#canon http://example.com/fooAz
+#scheme http
+#host example.com
+#path /fooAz
+
+#data
+http://example.com/foo/%2e%2
+#canon http://example.com/foo/.%2
+#scheme http
+#host example.com
+#path /foo/.%2
+
+#data
+http://example.com/foo/%2e
+#canon http://example.com/foo/
+#scheme http
+#host example.com
+#path /foo/
+
+#data
+http://example.com/foo/%2e./%2e%2e/.%2e/%2e.bar
+#canon http://example.com/..bar
+#scheme http
+#host example.com
+#path /..bar
+
+#data
+http://example.com/%2e.bar
+#canon http://example.com/..bar
+#scheme http
+#host example.com
+#path /..bar
+
+#data escaped
+http://example.com/\u4F60\u597D
+#canon http://example.com/%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
+#scheme http
+#host example.com
+#path /%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
+
+#data escaped
+http://example.com/\uFDD0zyx
+#canon http://example.com/%EF%BF%BDzyx
+#scheme http
+#host example.com
+#path /%EF%BF%BDzyx
+
+#data
+http://example.com/%EF%BF%BDzyx
+#canon http://example.com/%EF%BF%BDzyx
+#scheme http
+#host example.com
+#path /%EF%BF%BDzyx
+
+#data escaped
+http://example.com/\uFFFDzyx
+#canon http://example.com/%EF%BF%BDzyx
+#scheme http
+#host example.com
+#path /%EF%BF%BDzyx
+
+#data
+http://example.com\foo\bar
+#canon http://example.com/foo/bar
+#scheme http
+#host example.com
+#path /foo/bar
+
+#data
+http://example.com\\foo\\bar
+#canon http://example.com//foo//bar
+#scheme http
+#host example.com
+#path //foo//bar
+
+#data escaped
+http://www.example.com/?\u0002hell\u007F bye
+#canon http://www.example.com/?%02hello%7F%20bye
+#scheme http
+#host www.example.com
+#path /
+#query %02hello%7F%20bye
+
+#data
+http://www.example.com/?q="asdf"
+#canon http://www.example.com/?q=%22asdf%22
+#scheme http
+#host www.example.com
+#path /
+#query %22asdf%22
+
+#data
+http://www.example.com/?q=<asdf>
+#canon http://www.example.com/?q=%3Casdf%3E
+#scheme http
+#host www.example.com
+#path /
+#query q=%3Casdf%3E
+
+#data escaped
+http://www.example.com/?q=\ud800\ud800
+#canon http://www.example.com/?q=%EF%BF%BD%EF%BF%BD
+#scheme http
+#host www.example.com
+#path /
+#query q=%EF%BF%BD%EF%BF%BD
+
+#data escaped
+http://www.example.com/?q=\u4F60\u597D
+#canon http://www.example.com/?q=%E4%BD%A0%E5%A5%BD
+#scheme http
+#host www.example.com
+#path /
+#query q=%E4%BD%A0%E5%A5%BD
+
+#data
+http://www.example.com/##asdf
+#canon http://www.example.com/##asdf
+#scheme http
+#host www.example.com
+#path /
+#fragment #asdf
+
+#data
+http://www.example.com/#%23asdf
+#canon http://www.example.com/#%23asdf
+#scheme http
+#host www.example.com
+#path /
+#fragment %23asdf
+
+#data escaped
+http://www.example.com/#\ud800\u597d
+#canon escaped
+http://www.example.com/#\uFFFD\u597D
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+\uFFFD\u597D
+
+#data escaped
+http://www.example.com/#%EF%BF%BD%E5%A5%BD
+#canon http://www.example.com/#%EF%BF%BD%E5%A5%BD
+#scheme http
+#host www.example.com
+#path /
+#fragment %EF%BF%BD%E5%A5%BD
+
+#data
+http://www.example.com/#%26%2355296%3B%26%2322909%3B
+#canon http://www.example.com/#%26%2355296%3B%26%2322909%3B
+#scheme http
+#host www.example.com
+#path /
+#fragment %26%2355296%3B%26%2322909%3B
+
+#data escaped
+http://www.example.com/#a\uFDD0
+#canon escaped
+http://www.example.com/#a\uFDD0
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+a\uFDD0
+
+#data
+http://www.example.com/#a%EF%B7%90
+#canon http://www.example.com/#a%EF%B7%90
+#scheme http
+#host www.example.com
+#path /
+#fragment a%EF%B7%90
+
+#data
+http://www.example.com/#asdf#qwer
+#canon http://www.example.com/#asdf#qwer
+#scheme http
+#host www.example.com
+#path /
+#fragment asdf#qwer
+
+#data
+http://www.example.com/#hello, world
+#canon
+http://www.example.com/#hello, world
+#scheme http
+#host www.example.com
+#path /
+#fragment 
+hello, world
+
+#data
+http://www.example.com/#hello,%20world.
+#canon http://www.example.com/#hello,%20world.
+#scheme http
+#host www.example.com
+#path /
+#fragment hello,%20world.
+
+#data escaped
+http://www.example.com/#\u00C2\u00A9
+#canon escaped
+http://www.example.com/#\u00C2\u00A9
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+\u00C2\u00A9
+
+#data
+http://www.example.com/#%C2%A9
+#canon http://www.example.com/#%C2%A9
+#scheme http
+#host www.example.com
+#path /
+#fragment %C2%A9
+
+#data
+http://www.example.com/#%C3%82%C2%A9
+#canon http://www.example.com/#%C3%82%C2%A9
+#scheme http
+#host www.example.com
+#path /
+#fragment %C3%82%C2%A9
+
+#data escaped
+http://www.example.com/#\U00010300ss
+#canon escaped
+http://www.example.com/#\U00010300ss
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+\U00010300ss
+
+#data
+http://www.example.com/#%F0%90%8C%80ss
+#canon
+http://www.example.com/#%F0%90%8C%80ss
+#scheme http
+#host www.example.com
+#path /
+#fragment %F0%90%8C%80ss
+
+#data
+ftp://foo/
+#canon ftp://foo/
+#scheme ftp
+#host foo
+#path /
+
+#data
+ftp://foo:21/
+#canon ftp://foo/
+#scheme ftp
+#host foo
+#path /
+
+#data
+ftp://foo:80/
+#canon ftp://foo:80/
+#scheme ftp
+#host foo
+#port 80
+#path /
+
+#data
+gopher://foo:70/
+#canon gopher://foo/
+#scheme gopher
+#host foo
+#path /
+
+#data
+http://%25DOMAIN:foobar@foodomain.com/
+#canon http://%25DOMAIN:foobar@foodomain.com/
+#scheme http
+#user %25DOMAIN
+#password foobar
+#host foodomain.com
+#path /
+
+#data
+http:////////user:@google.com:99?foo
+#canon http://user@google.com:99/?foo
+#scheme http
+#user user
+#host google.com
+#port 99
+#path /
+#query foo
+
+#data
+http:////////user@google.com:99?foo
+#canon http://user@google.com:99/?foo
+#scheme http
+#user user
+#host google.com
+#port 99
+#path /
+#query foo
+
+#data
+http://192.0x00A80001
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.0x00A80001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://user:pass@/
+#canon http://user:pass@/
+#scheme http
+#user user
+#password pass
+#host
+#path /
+
+#data escaped
+http://www.google.com/asdf#\ud800
+#canon escaped
+http://www.google.com/asdf#\uFFFD
+#scheme http
+#host www.google.com
+#path /asdf
+#fragment escaped
+\uFFFD
+
+#data
+http://www/foo%2Ehtml
+#canon http://www/foo.html
+#scheme http
+#host www
+#path /foo.html
+
+#data
+http:\\\\www.google.com\\foo
+#canon http://www.google.com/foo
+#scheme http
+#host www.google.com
+#path /foo
+
+#data
+http://\\www.google.com\foo/
+#canon
+http://www.google.com/foo/
+#scheme http
+#host www.google.com
+#path /foo/
+
+#data
+https://foo:443/
+#canon https://foo/
+#scheme https
+#host foo
+#path /
+
+#data
+https://foo:80/
+#canon https://foo:80/
+#scheme https
+#host foo
+#port 80
+#path /
+
+#data
+ws://foo:80/
+#canon ws://foo/
+#scheme ws
+#host foo
+#path /
+
+#data
+ws://foo/
+#canon ws://foo/
+#scheme ws
+#host foo
+#path /
+
+#data
+ws://foo:81/
+#canon ws://foo:81/
+#scheme ws
+#host foo
+#port 81
+#path /
+
+#data
+ws://foo:443/
+#canon ws://foo:443/
+#scheme ws
+#host foo
+#port 443
+#path /
+
+#data
+wss://foo/
+#canon wss://foo/
+#scheme wss
+#host foo
+#path /
+
+#data
+wss://foo:443/
+#canon wss://foo/
+#scheme wss
+#host foo
+#path /
+
+#data
+wss://foo:80/
+#canon wss://foo:80/
+#scheme wss
+#host foo
+#port 80
+#path /
+
+#data
+JavaScript:Foo
+#canon javascript:Foo
+#scheme javascript
+#path Foo
+
+#data
+http:///
+#canon http:///
+#scheme http
+#host 
+#path /
+
+#data
+http://0.0.0.0xFF/
+#canon http://0.0.0.255/
+#scheme http
+#host 0.0.0.255
+#path /
+
+#data
+http://0.0.0xFF.0/
+#canon http://0.0.255.0/
+#scheme http
+#host 0.0.255.0
+#path /
+
+#data
+http://0.0.0xFFFF/
+#canon http://0.0.255.255/
+#scheme http
+#host 0.0.255.255
+#path /
+
+#data
+http://0.0.0xffff/
+#canon http://0.0.255.255/
+#scheme http
+#host 0.0.255.255
+#path /
+
+#data
+http://0.00.0x.0x0/
+#canon http://0.0.0.0/
+#scheme http
+#host 0.0.0.0
+#path /
+
+#data
+http://0.0xFF.0.0/
+#canon http://0.255.0.0/
+#scheme http
+#host 0.255.0.0
+#path /
+
+#data
+http://0.255.255.255/
+#canon http://0.255.255.255/
+#scheme http
+#host 0.255.255.255
+#path /
+
+#data
+http://0.0xFFFFFF/
+#canon http://0.255.255.255/
+#scheme http
+#host 0.255.255.255
+#path /
+
+#data
+http://00000000000000000001/
+#canon http://0.0.0.1/
+#scheme http
+#host 00000000000000000001
+#path /
+
+#data
+http://0000000000000300.0x00000000000000fF.00000000000000001/
+#canon http://192.255.0.1/
+#scheme http
+#host 192.255.0.1
+#path /
+
+#data
+http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
+#canon http://0000000000000300.0xffffffffffffffff.3022415481470977/
+#scheme http
+#host 0000000000000300.0xffffffffffffffff.3022415481470977
+#path /
+
+#data
+http://000030052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0300.0250.00.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://030052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0X12C0a80001/
+#canon http://0x12c0a80001/
+#scheme http
+#host 0x12c0a80001
+#path /
+
+#data
+http://0xC0.0Xa8.0x0.0x1/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xC0a80001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xCG.0xA8.0x0.0x1/
+#canon http://0xcg.0xa8.0x0.0x1/
+#scheme http
+#host 0xcg.0xa8.0x0.0x1
+#path /
+
+#data
+http://0xFF.0.0.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFF.0.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFF.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFFFFFFFF/
+#canon http://255.255.255.255/
+#scheme http
+#host 255.255.255.255
+#path /
+
+#data
+http://0xc0.052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.0x00A80001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168.0.1. hello/
+#canon http://192.168.0.1.%20hello/
+#scheme http
+#host 192.168.0.1.%20hello
+#path /
+
+#data
+http://192.168.0.1./
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168.1/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168/
+#canon http://192.0.0.168/
+#scheme http
+#host 192.0.0.168
+#path /
+
+#data
+http://192/
+#canon http://0.0.0.192/
+#scheme http
+#host 0.0.0.192
+#path /
+
+#data
+http://[%]/
+#canon http://[%25]/
+#scheme http
+#host [%25]
+#path /
+
+#data
+http://[%25]/
+#canon http://[%25]/
+#scheme http
+#host [%25]
+#path /
+
+#data
+http://[000:01:02:003:004:5:6:007]/
+#canon http://[0:1:2:3:4:5:6:7]/
+#scheme http
+#host [0:1:2:3:4:5:6:7]
+#path /
+
+#data
+http://[0:1:2:3:4:5:6:7]/
+#canon http://[0:1:2:3:4:5:6:7]/
+#scheme http
+#host [0:1:2:3:4:5:6:7]
+#path /
+
+#data
+http://[0:0::0:0:8]/
+#canon http://[::8]/
+#scheme http
+#host [::8]
+#path /
+
+#data
+http://[1::2:0:0:3:0]/
+#canon http://[1::2:0:0:3:0]/
+#scheme http
+#host [1::2:0:0:3:0]
+#path /
+
+#data
+http://[1:0:0:2::3:0]/
+#canon http://[1::2:0:0:3:0]/
+#scheme http
+#host [1::2:0:0:3:0]
+#path /
+
+#data
+http://[1:2:3:4:5:6:0:8]/
+#canon http://[1:2:3:4:5:6:0:8]/
+#scheme http
+#host [1:2:3:4:5:6:0:8]
+#path /
+
+#data
+http://[1:2:3:4:5:6::8]/
+#canon http://[1:2:3:4:5:6:0:8]/
+#scheme http
+#host [1:2:3:4:5:6:0:8]
+#path /
+
+#data
+http://[1::%1]/
+#canon http://[1::%251]/
+#scheme http
+#host [1::%251]
+#path /
+
+#data
+http://[1::%251]/
+#canon http://[1::%251]/
+#scheme http
+#host [1::%251]
+#path /
+
+#data
+http://[1::%]/
+#canon http://[1::%25]/
+#scheme http
+#host [1::%25]
+#path /
+
+#data
+http://[1::%25]/
+#canon http://[1::%25]/
+#scheme http
+#host [1::%25]
+#path /
+
+#data
+http://[1::%25eth0]/
+#canon http://[1::%25eth0]/
+#scheme http
+#host [1::%25eth0]
+#path /
+
+#data
+http://[1::%eth0]/
+#canon http://[1::%25eth0]/
+#scheme http
+#host [1::%25eth0]
+#path /
+
+#data
+http://[:/
+#canon http://[/
+#scheme http
+#host [
+#path /
+
+#data
+http://[::%:]/
+#canon http://[::%25:]/
+#scheme http
+#host [::%25:]
+#path /
+
+#data
+http://[::%25:]/
+#canon http://[::%25:]/
+#scheme http
+#host [::%25:]
+#path /
+
+#data
+http://[::1 hello]/
+#canon http://[::1%20hello]/
+#scheme http
+#host [::1%20hello]
+#path /
+
+#data
+http://[::1%20hello]/
+#canon http://[::1%20hello]/
+#scheme http
+#host [::1%20hello]
+#path /
+
+#data
+http://[::192.168.0.1]/
+#canon http://[::c0a8:1]/
+#scheme http
+#host [::c0a8:1]
+#path /
+
+#data
+http://[::ffff:0xC0.0Xa8.0x0.0x1]/
+#canon http://[::ffff:c0a8:1]/
+#schene http
+#host [::ffff:c0a8:1]
+#path /
+
+#data
+http://[::ffff:c0a8:1]/
+#canon http://[::ffff:c0a8:1]/
+#schene http
+#host [::ffff:c0a8:1]
+#path /
+
+#data
+http://[::ffff:192.1.2]/
+#canon http://[::ffff:c001:2]/
+#scheme http
+#host [::ffff:c001:2]
+#path /
+
+#data
+http://[::ffff:192.168.0.1]/
+#canon http://[::ffff:c0a8:1]/
+#scheme http
+#host [::ffff:c0a8:1]
+#path /
+
+#data
+http://[A:b:c:DE:fF:0:1:aC]/
+#canon http://[a:b:c:de:ff:0:1:ac]/
+#scheme http
+#host [a:b:c:de:ff:0:1:ac]
+#path /
+
+#data escaped
+mailto:addr1    \u0020
+#canon mailto:addr1
+#scheme mailto
+#path addr1
+
+#data
+mailto:addr1, addr2
+#canon
+mailto:addr1,%20addr2
+#scheme mailto
+#path addr1,%20addr2
+
+#data escaped
+mailto:\U00010300
+#canon mailto:%F0%90%8C%80
+#scheme mailto
+#path %F0%90%8C%80
