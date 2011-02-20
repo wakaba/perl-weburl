@@ -133,8 +133,13 @@ sub resolve_url ($$$) {
     return {invalid => 1};
   }
 
-  # XXX trim $spec
-  
+  ## This is a "TODO" in url-spec.
+  {
+    ## Control characters
+    $spec =~ s/\A[\x00-\x20]+//;
+    $spec =~ s/[\x00-\x20]+\z//;
+  }
+
   my $parsed_spec = $class->parse_absolute_url ($spec);
   if ($parsed_spec->{invalid} or
 
