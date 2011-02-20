@@ -8,11 +8,14 @@
 <script src="http://suika.fam.cx/www/js/sami/script/sami-test.js"></script>
 <iframe style="width: 0; height: 0"></iframe>
 
+<button id=submit-button type=button>Submit result</button>
+
 <script>
   var r = document.getElementById ('result');
   var tap = document.getElementById ('result-tap');
   var tm = new SAMI.Test.Manager (r, new SAMI.StringContainer.Element (tap));
   var iframe = document.getElementsByTagName ('iframe')[0];
+  var button = document.getElementById ('submit-button');
 
   var isHierarchicalScheme = {
     http: true,
@@ -35,6 +38,10 @@
     delete isHierarchicalScheme.ldap;
   }
 
+  var names = [];
+  var labels = [];
+  var classes = [];
+  var results = [];
   SAMI.Test.executeTestsByURL ('../data/decomps.dat', {
     data: {isPrefixed: true}
   }, function (test) {
@@ -121,8 +128,22 @@
     tm.is (actual.path, expected.path, name + ' path');
     tm.is (actual.query, expected.query, name + ' query');
     tm.is (actual.fragment, expected.fragment, name + ' fragment');
+
+    names.push (encodeURIComponent (name));
+    labels.push (originalURL + "\n" + baseURL);
+    classes.push (actual.url == expected.url ? 'PASS' : 'FAIL');
+    results.push (actual.url);
   }, function () {
     tm.done ();
+
+    var data = 'env-name=' + encodeURIComponent (navigator.userAgent);
+    for (var i = 0; i < names.length; i++) {
+      data += '&test-name=' + encodeURIComponent (names[i]);
+      data += '&test-label=' + encodeURIComponent (labels[i]);
+      data += '&test-class=' + encodeURIComponent (classes[i]);
+      data += '&test-result=' + encodeURIComponent (results[i]);
+    }
+    button.value = data;
   }, function (e) {
     tm.abort (e.type + ' - ' + e.text);
   });
@@ -137,4 +158,19 @@
     
     return doc.getElementsByTagName ('a')[0];
   } // getURL
+
+  var testsetName = 'test1';
+  button.onclick = function () {
+    if (!button.value) return;
+    var url = 'http://suika.fam.cx/gate/test-results/list/' + testsetName;
+    var xhr = new XMLHttpRequest ();
+    xhr.open ('POST', url, true);
+    xhr.setRequestHeader ('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        button.appendChild (document.createTextNode (' (Done: ' + xhr.status + ')'));
+      }
+    };
+    xhr.send (button.value);
+  };
 </script>
