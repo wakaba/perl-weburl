@@ -155,6 +155,11 @@
     button.value = data;
   }, function (e) {
     tm.abort (e.type + ' - ' + e.text);
+  }, {
+    async: {
+      n: 30,
+      delay: 500
+    }
   });
 
   function getURL (url, baseURL) {
