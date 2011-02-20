@@ -14,6 +14,12 @@
   var tm = new SAMI.Test.Manager (r, new SAMI.StringContainer.Element (tap));
   var iframe = document.getElementsByTagName ('iframe')[0];
 
+  var isHierarchicalScheme = {
+    http: true,
+    https: true,
+    ftp: true
+  };
+
   SAMI.Test.executeTestsByURL ('../data/decomps.dat', {
     data: {isPrefixed: true}
   }, function (test) {
@@ -43,13 +49,21 @@
       fragment: test.getFieldValue ('fragment')
     };
     if (expected.url == null) expected.url = originalURL;
+    if (isHierarchicalScheme[expected.scheme]) {
+      expected.host = expected.host || '';
+      expected.port = expected.port || '';
+      expected.path = expected.path || '';
+      expected.query = expected.query == null ? '' : '?' + expected.query;
+      expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+    } else {
+      expected.host = '';
+      expected.port = '';
+      expected.path = '';
+      expected.query = '';
+      expected.hostport = '';
+    }
     expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
-    expected.host = expected.host || '';
-    expected.port = expected.port || '';
-    expected.path = expected.path || '';
-    expected.query = expected.query == null ? '' : '?' + expected.query;
     expected.fragment = expected.fragment == null ? '' : '#' + expected.fragment;
-    expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
     
     var name = originalURL + ' + ' + baseURL;
     tm.is (actual.url, expected.url, name + ' canonical');
