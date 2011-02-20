@@ -101,6 +101,7 @@ sub _canon : Tests {
              ? $test->{base}->[0]
              : defined $test->{base}->[1]->[0]
                  ? $test->{base}->[1]->[0] : '';
+    $base_url = $test->{data}->[0] unless length $base_url;
     my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
     my $resolved_url = Web::URL::Parser->resolve_url
         ($test->{data}->[0], $resolved_base_url);
