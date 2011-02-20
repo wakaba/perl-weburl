@@ -57,6 +57,14 @@ HTTP://example.com/
 #path /
 
 #data escaped
+\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020htest/foo\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020
+#base http://foo/bar
+#canon http://foo/htest/foo
+#scheme http
+#host foo
+#path /htest/foo
+
+#data escaped
 \u007Fhttp://test\u007F
 #base http://foo/bar
 #canon http://foo/%7Fhttp://test%7F
