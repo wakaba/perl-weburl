@@ -17,8 +17,17 @@
   var isHierarchicalScheme = {
     http: true,
     https: true,
-    ftp: true
+    ftp: true,
+    ldap: true
   };
+
+  var compatMode = location.search.match (/compat/);
+  var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
+  var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
+
+  if (isWebKit || isGecko) {
+    delete isHierarchicalScheme.ldap;
+  }
 
   SAMI.Test.executeTestsByURL ('../data/decomps.dat', {
     data: {isPrefixed: true}
@@ -49,7 +58,7 @@
       fragment: test.getFieldValue ('fragment')
     };
     if (expected.url == null) expected.url = originalURL;
-    if (isHierarchicalScheme[expected.scheme]) {
+    if (isHierarchicalScheme[(expected.scheme || '').toLowerCase ()]) {
       expected.host = expected.host || '';
       expected.port = expected.port || '';
       expected.path = expected.path || '';
@@ -58,12 +67,24 @@
     } else {
       expected.host = '';
       expected.port = '';
-      expected.path = '';
+      if (isWebKit) {
+        expected.path = expected.path || '';
+      } else {
+        expected.path = '';
+      }
       expected.query = '';
       expected.hostport = '';
     }
     expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
     expected.fragment = expected.fragment == null ? '' : '#' + expected.fragment;
+
+    if (isWebKit) {
+      if (expected.port == '') expected.port = "0";
+    }
+    if (isGecko || isWebKit) {
+      if (expected.query == '?') expected.query = '';
+      if (expected.fragment == '#') expected.fragment = '';
+    }
     
     var name = originalURL + ' + ' + baseURL;
     tm.is (actual.url, expected.url, name + ' canonical');
