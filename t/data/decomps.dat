@@ -2210,17 +2210,17 @@ http://example.com/foo%
 
 #data
 http://example.com/foo%00%51
-#canon http://example.com/foo%EF%BF%BDQ
+#canon http://example.com/foo%00Q
 #scheme http
 #host example.com
-#path /foo%EF%BF%BDQ
+#path /foo%00Q
 
 #data escaped
 http://example.com/a\u0000b
-#canon http://example.com/a%00b
+#canon http://example.com/a%EF%BF%BDb
 #scheme http
 #host example.com
-#path /a%00b
+#path /a%EF%BF%BDb
 
 #data escaped
 http://example.com/a\u0001b
