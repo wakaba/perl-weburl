@@ -4111,7 +4111,7 @@ http://example.com/%2e.bar
 #path /..bar
 
 #data escaped
-http://example.com/\u4F60\u597D
+http://example.com/\u4F60\u597D\u4F60\u597D
 #canon http://example.com/%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
 #scheme http
 #host example.com
