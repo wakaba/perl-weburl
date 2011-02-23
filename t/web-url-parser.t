@@ -12,7 +12,11 @@ use Web::URL::Parser;
 my $data_d = file (__FILE__)->dir->subdir ('data');
 my $parse_data_f = $data_d->file ('parsing.dat');
 my $resolve_data_f = $data_d->file ('resolving.dat');
-my $decomps_data_f = $data_d->file ('decomps.dat');
+my @decomps_data_f = (map { $data_d->file ($_) } qw(
+  decomps.dat decomps-authority.dat decomps-data.dat
+  decomps-file.dat decomps-javascript.dat decomps-mailto.dat
+  decomps-path.dat decomps-relative.dat decomps-scheme.dat
+));
 
 sub _parse : Tests {
   for_each_test $parse_data_f->stringify, {
@@ -77,7 +81,7 @@ sub _resolve : Tests {
 } # _resolve
 
 sub _canon : Tests {
-  for_each_test $decomps_data_f->stringify, {
+  for_each_test $_->stringify, {
     data => {is_prefixed => 1},
   }, sub ($) {
     my $test = shift;
@@ -111,7 +115,7 @@ sub _canon : Tests {
     $resolved_url->{canon} = $url;
     eq_or_diff $resolved_url, $result,
         $test->{data}->[0] . ' - ' . $base_url;
-  }
+  } for @decomps_data_f;
 }
 
 __PACKAGE__->runtests;

@@ -1,0 +1,437 @@
+
+#data
+data:
+#scheme data
+#path
+
+#data
+DATA:
+#canon data:
+#scheme data
+#path
+
+#data
+Data:
+#canon data:
+#scheme data
+#path
+
+#data
+data:,
+#scheme data
+#path ,
+
+#data
+data:%2C
+#scheme data
+#path %2C
+
+#data
+data:text
+#scheme data
+#path text
+
+#data
+data:test
+#scheme data
+#path test
+
+#data
+data:,
+#scheme data
+#path ,
+
+#data
+data:text/plain
+#scheme data
+#path text/plain
+
+#data
+data:text/plain,
+#scheme data
+#path text/plain,
+
+#data
+data:text/plain;charset=utf-16,
+#scheme data
+#path text/plain;charset=utf-16,
+
+#data
+data:text,abc
+#scheme data
+#path text,abc
+
+#data
+data:text/plain;charset=us-ascii;abc
+#scheme data
+#path text/plain;charset=us-ascii;abc
+
+#data
+data:text/plain;charset=us-ascii,abc
+#scheme data
+#path text/plain;charset=us-ascii,abc
+
+#data
+data:,a,b
+#scheme data
+#path ,a,b
+
+#data
+data:,foo bar
+#canon data:,foo%20bar
+#scheme data
+#path ,foo%20bar
+
+#data
+data:,abc#def
+#scheme data
+#path ,abc#def
+
+#data
+data:,abc#def#ghi
+#scheme data
+#path ,abc#def#ghi
+
+#data
+data:text / plain,abc
+#canon
+data:text%20/%20plain,abc
+#scheme data
+#path text%20/%20plain,abc
+
+#data
+data: text/plain ,abc
+#canon data:%20text/plain%20,abc
+#scheme data
+#path %20text/plain%20,abc
+
+#data
+data:TEXT/PLAIN,ABC
+#scheme data
+#path TEXT/PLAIN,ABC
+
+#data
+data:text\plain,abc
+#canon data:text/plain,abc
+#scheme data
+#path text/plain,abc
+
+#data
+data:text/./plain,abc
+#scheme data
+#path text/./plain,abc
+
+#data
+data:application/../text/plain,abc
+#scheme data
+#path application/../text/plain,abc
+
+#data
+data:;,test
+#scheme data
+#path ;,test
+
+#data
+data:text/plain;,abc
+#scheme data
+#path text/plain;,abc
+
+#data
+data:,A%20brief%20note
+#scheme data
+#path ,A%20brief%20note
+
+#data
+data:text/plain;charset,abc
+#scheme data
+#path text/plain;charset,abc
+
+#data
+data:text/plain; charset=us-ascii,abc
+#canon
+data:text/plain;%20charset=us-ascii,abc
+#scheme data
+#path text/plain;%20charset=us-ascii,abc
+
+#data
+data:text/plain;charset=US-ASCII,test
+#scheme data
+#path text/plain;charset=US-ASCII,test
+
+#data
+data:;charset=UTF-8,Hello
+#scheme data
+#path ;charset=UTF-8,Hello
+
+#data
+data:text/plain;charset=iso-8859-1,%A1%A2
+#canon data:text/plain;charset=iso-8859-1,%A1%A2
+#scheme data
+#path text/plain;charset=iso-8859-1,%A1%A2
+
+#data
+data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset=iso-8859-7,%b8%f7%fe
+#scheme data
+#path text/plain;charset=iso-8859-7,%b8%f7%fe
+
+#data
+data:text/plain;charset=iso-8859-1;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=iso-8859-1;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;CHARSET=us-ascii,abc
+#scheme data
+#path text/plain;CHARSET=us-ascii,abc
+
+#data
+data:text/plain;charset=us-ascii ,abc
+#canon data:text/plain;charset=us-ascii%20,abc
+#scheme data
+#path text/plain;charset=us-ascii%20,abc
+
+#data
+data:text/plain;charset="us-ascii",abc
+#canon data:text/plain;charset=%22us-ascii%22,abc
+#scheme data
+#path text/plain;charset=%22us-ascii%22,abc
+
+#data
+data:text/plain;charset="euc-jp",%A1%A2
+#canon
+data:text/plain;charset=%22euc-jp%22,%A1%A2
+#scheme data
+#path text/plain;charset=%22euc-jp%22,%A1%A2
+
+#data
+data:text/plain;charset='euc-jp',%A1%A2
+#scheme data
+#path text/plain;charset='euc-jp',%A1%A2
+
+#data
+data:text/plain;noncharset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;noncharset=euc-jp,%A1%A2
+
+#data
+data:text/plain;noncharset=euc-jp;charset=iso-8859-1,%A1%A2
+#scheme data
+#path text/plain;noncharset=euc-jp;charset=iso-8859-1,%A1%A2
+
+#data
+data:text/plain;charset=%22euc-jp%22,%A1%A2
+#scheme data
+#path text/plain;charset=%22euc-jp%22,%A1%A2
+
+#data
+data:text/plain;charset="\euc-jp",%A1%A2
+#canon data:text/plain;charset=%22%5Ceuc-jp%22,%A1%A2
+#scheme data
+#path text/plain;charset=%22%5Ceuc-jp%22,%A1%A2
+
+#data
+data:text/plain;x-data="#",abc
+#canon data:text/plain;x-data=%22#%22,abc
+#scheme data
+#path text/plain;x-data=%22#%22,abc
+
+#data
+data:text/plain;x-title="Hello,%20FAIL";,PASS
+#canon data:text/plain;x-title=%22Hello,%20FAIL%22;,PASS
+#scheme data
+#path text/plain;x-title=%22Hello,%20FAIL%22;,PASS
+
+#data
+data:t%65xt/plain;charset=euc-jp,%A1%A2
+#canon data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text%2Fplain;charset=euc-jp,%A1%A2
+#scheme data
+#path text%2Fplain;charset=euc-jp,%A1%A2
+
+#data
+data:text/pl%61in;charset=euc-jp,%A1%A2
+#canon
+data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain%3Bcharset=euc-jp,%A1%A2
+#scheme data
+#path text/plain%3Bcharset=euc-jp,%A1%A2
+
+#data
+data:text/plain;%63harset=euc-jp,%A1%A2
+#canon
+data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset%3Deuc-jp,%A1%A2
+#scheme data
+#path text/plain;charset%3Deuc-jp,%A1%A2
+
+#data
+data:text/plain;charset=eu%63-jp,%A1%A2
+#canon data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset=us-ascii%2Cabc
+#scheme data
+#path text/plain;charset=us-ascii%2Cabc
+
+#data
+data:text/plain;charset=iso-8859-8-i,%f9%ec%e5%ed
+#scheme data
+#path text/plain;charset=iso-8859-8-i,%f9%ec%e5%ed
+
+#data
+data:text/plain;charset=UTF-8,%d7%a9%d7%9c%d7%95%d7%9d
+#scheme data
+#path text/plain;charset=UTF-8,%d7%a9%d7%9c%d7%95%d7%9d
+
+#data
+data:,;test
+#scheme data
+#path ,;test
+
+#data
+data:,a+b+c
+#scheme data
+#path ,a+b+c
+
+#data
+data:,a/../b
+#scheme data
+#path ,a/../b
+
+#data
+data:,a/./b
+#scheme data
+#path ,a/./b
+
+#data
+data:text/plain;charset=thing;base64;test
+#scheme data
+#path text/plain;charset=thing;base64;test
+
+#data
+data:text/plain;charset=unknown;base64,test
+#scheme data
+#path text/plain;charset=unknown;base64,test
+
+#data
+data:;charset=,test
+#scheme data
+#path ;charset=,test
+
+#data
+data:application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local
+#scheme data
+#path application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local
+
+#data
+data:application/octet-stream;name=filename.dat,abc
+#scheme data
+#path application/octet-stream;name=filename.dat,abc
+
+#data
+data:application/x-unknown;name=filename.dat,abc
+#scheme data
+#path application/x-unknown;name=filename.dat,abc
+
+#data
+data:;base64,
+#scheme data
+#path ;base64,
+
+#data
+data:;base64,hello
+#scheme data
+#path ;base64,hello
+
+#data
+data:text/plain;charset=iso-8859-8-i;base64,+ezl7Q==
+#scheme data
+#path text/plain;charset=iso-8859-8-i;base64,+ezl7Q==
+
+#data
+data:text/plain;charset=UTF-8;base64,16nXnNeV150=
+#scheme data
+#path text/plain;charset=UTF-8;base64,16nXnNeV150=
+
+#data
+data:text/html;base64,VGhpcyBpcyBhIHRlc3QK
+#scheme data
+#path text/html;base64,VGhpcyBpcyBhIHRlc3QK
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?!?
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?!?
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK#fragment
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK#fragment
+
+#data
+data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
+#canon
+data:text/plain;base64,VG!h$pcy%5DBpcyBh%5BIHRl%3Ec3QK
+#scheme data
+#path text/plain;base64,VG!h$pcy%5DBpcyBh%5BIHRl%3Ec3QK
+
+#data
+data:text/plain,a
+bcde
+#scheme data
+#path
+text/plain,a%0Abcde
+
+#data
+data:,Data%20was:%20'%%%%'
+#scheme data
+#path ,Data%20was:%20'%%%%'
+
+#data
+data:text/plain,abcdefg/ef
+#scheme data
+#path text/plain,abcdefg/ef
+
+#data
+data:text/plain,abcdefg/ef#foo
+#scheme data
+#path text/plain,abcdefg/ef#foo
+
+#data
+./foo/bar
+#base data:text/plain,abc
+#canon
+
+#data
+foo
+#base data:text/plain,abc
+#canon

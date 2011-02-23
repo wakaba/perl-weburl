@@ -1,0 +1,58 @@
+
+#data
+%68ttp://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+h%74tp://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+h%74%74p://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+htt%70://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+%68%74%74%70://suika.fam.cx/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+HTTP://example.com/
+#canon http://example.com/
+#scheme http
+#host example.com
+#path /
+
+#data
+%D9%82%D9%87%D9%88%D8%A9://coffee.example/
+#base http://foo/bar
+#canon http://foo/%D9%82%D9%87%D9%88%D8%A9://coffee.example/
+#scheme http
+#host foo
+#path /%D9%82%D9%87%D9%88%D8%A9://coffee.example/
+
+#data
+%D9%82%D9%87%D9%88%D8%a9://coffee.example/
+#base http://foo/bar
+#canon http://foo/%D9%82%D9%87%D9%88%D8%a9://coffee.example/
+#scheme http
+#host foo
+#path /%D9%82%D9%87%D9%88%D8%a9://coffee.example/

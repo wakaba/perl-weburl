@@ -1,0 +1,187 @@
+
+#data
+javascript:
+#scheme javascript
+#path
+
+#data
+JavaScript:
+#canon javascript:
+#scheme javascript
+#path
+
+#data
+JAVASCRIPT:
+#canon javascript:
+#scheme javascript
+#path
+
+#data
+javascript:void(0)
+#scheme javascript
+#path void(0)
+
+#data
+javascript:""
+#scheme javascript
+#path
+""
+
+#data
+javascript:"abc"
+#scheme javascript
+#path
+"abc"
+
+#data
+javascript:"abc#def"
+#scheme javascript
+#path
+"abc#def"
+
+#data
+javascript:"abc"#def
+#scheme javascript
+#path
+"abc"#def
+
+#data
+javascript:"abc#def#ghi"
+#scheme javascript
+#path
+"abc#def#ghi"
+
+#data
+javascript:"abc?def"
+#scheme javascript
+#path 
+"abc?def"
+
+#data
+javascript://www.example.com/
+#scheme javascript
+#path //www.example.com/
+
+#data
+javascript:javascript:"abc"
+#scheme javascript
+#path 
+javascript:"abc"
+
+#data
+javascript:123;%0A"abc"
+#scheme javascript
+#path 
+123;%0A"abc"
+
+#data
+javascript:123;%0D"abc"
+#scheme javascript
+#path
+123;%0D"abc"
+
+#data
+javascript:123;%0D%0A"abc"
+#scheme javascript
+#path
+123;%0D%0A"abc"
+
+#data
+javascript:123;%09"abc"
+#scheme javascript
+#path 
+123;%09"abc"
+
+#data
+javascript:123;%0B"abc"
+#scheme javascript
+#path 
+123;%0B"abc"
+
+#data
+javascript:123;%0C"abc"
+#scheme javascript
+#path 
+123;%0C"abc"
+
+#data
+javascript:"abc%25def"
+#scheme javascript
+#path 
+"abc%25def"
+
+#data
+javascript:"abc%0Adef"
+#scheme javascript
+#path
+"abc%0Adef"
+
+#data
+javascript:"abc\%0Adef"
+#scheme javascript
+#path
+"abc\%0Adef"
+
+#data
+javascript:return false
+#scheme javascript
+#path 
+return false
+
+#data
+javascript:14 % 4
+#scheme javascript
+#path
+14 % 4
+
+#data escaped
+javascript: // \u4e00
+#scheme javascript
+#path
+ // \u4e00
+
+#data escaped
+javascript: // # \u4e00
+#scheme javascript
+#path
+ // \u4e00
+
+#data escaped
+jscript:a % 55 // # \u4e00
+#scheme jscript
+#path escaped
+a % 55 // # \u4e00
+
+#data escaped
+vbscript:a % 55 ' # \u4e00
+#scheme vbscript
+#path escaped
+a % 55 ' # \u4e00
+
+#data escaped
+mocha:a % 55 // # \u4e00
+#scheme mocha
+#path escaped
+a % 55 // # \u4e00
+
+#data escaped
+livescript:a % 55 // # \u4e00
+#scheme livescript
+#path escaped
+a % 55 // # \u4e00
+
+#data
+./foo/bar
+#base javascript:alert(1)
+#canon
+
+#data
+foo
+#base javascript:alert(1)
+#canon
+
+#data
+JavaScript:Foo
+#canon javascript:Foo
+#scheme javascript
+#path Foo

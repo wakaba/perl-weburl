@@ -1,0 +1,2074 @@
+
+#data
+http://example.com////../..
+#canon http://example.com//
+#scheme http
+#host example.com
+#path //
+
+#data escaped
+http://example.com/foo\u0009bar
+#canon http://example.com/foo%09bar
+#scheme http
+#host example.com
+#path /foo%09bar
+
+#data escaped
+http://example.com/foo\u0009\u0091
+#canon http://example.com/foo%09%C2%91%91
+#scheme http
+#host example.com
+#path /foo%C2%91%91
+
+#data escaped
+http://example.com/foo%09%C2%91%91
+#canon http://example.com/foo%09%C2%91%91
+#scheme http
+#host example.com
+#path /foo%C2%91%91
+
+#data escaped
+http://example.com/foo%91
+#canon http://example.com/foo%91
+#scheme http
+#host example.com
+#path /foo%91
+
+#data
+http://example.com/foo%
+#canon http://example.com/foo%
+#scheme http
+#host example.com
+#path /foo%
+
+#data
+http://example.com/foo%00%51
+#canon http://example.com/foo%00Q
+#scheme http
+#host example.com
+#path /foo%00Q
+
+#data escaped
+http://example.com/a\u0000b
+#canon http://example.com/a%EF%BF%BDb
+#scheme http
+#host example.com
+#path /a%EF%BF%BDb
+
+#data escaped
+http://example.com/a\u0001b
+#canon http://example.com/a%01b
+#scheme http
+#host example.com
+#path /a%01b
+
+#data escaped
+http://example.com/a\u0002b
+#canon http://example.com/a%02b
+#scheme http
+#host example.com
+#path /a%02b
+
+#data escaped
+http://example.com/a\u0003b
+#canon http://example.com/a%03b
+#scheme http
+#host example.com
+#path /a%03b
+
+#data escaped
+http://example.com/a\u0004b
+#canon http://example.com/a%04b
+#scheme http
+#host example.com
+#path /a%04b
+
+#data escaped
+http://example.com/a\u0005b
+#canon http://example.com/a%05b
+#scheme http
+#host example.com
+#path /a%05b
+
+#data escaped
+http://example.com/a\u0006b
+#canon http://example.com/a%06b
+#scheme http
+#host example.com
+#path /a%06b
+
+#data escaped
+http://example.com/a\u0007b
+#canon http://example.com/a%07b
+#scheme http
+#host example.com
+#path /a%07b
+
+#data escaped
+http://example.com/a\u0008b
+#canon http://example.com/a%08b
+#scheme http
+#host example.com
+#path /a%08b
+
+#data escaped
+http://example.com/a\u0009b
+#canon http://example.com/a%09b
+#scheme http
+#host example.com
+#path /a%09b
+
+#data escaped
+http://example.com/a\u000Ab
+#canon http://example.com/a%0Ab
+#scheme http
+#host example.com
+#path /a%0Ab
+
+#data escaped
+http://example.com/a\u000Bb
+#canon http://example.com/a%0Bb
+#scheme http
+#host example.com
+#path /a%0Bb
+
+#data escaped
+http://example.com/a\u000cb
+#canon http://example.com/a%0Cb
+#scheme http
+#host example.com
+#path /a%0Cb
+
+#data escaped
+http://example.com/a\u000db
+#canon http://example.com/a%0Db
+#scheme http
+#host example.com
+#path /a%0Db
+
+#data escaped
+http://example.com/a\u000Eb
+#canon http://example.com/a%0Eb
+#scheme http
+#host example.com
+#path /a%0Eb
+
+#data escaped
+http://example.com/a\u000fb
+#canon http://example.com/a%0Fb
+#scheme http
+#host example.com
+#path /a%0Fb
+
+#data escaped
+http://example.com/a\u0010b
+#canon http://example.com/a%10b
+#scheme http
+#host example.com
+#path /a%10b
+
+#data escaped
+http://example.com/a\u0011b
+#canon http://example.com/a%11b
+#scheme http
+#host example.com
+#path /a%11b
+
+#data escaped
+http://example.com/a\u0012b
+#canon http://example.com/a%12b
+#scheme http
+#host example.com
+#path /a%12b
+
+#data escaped
+http://example.com/a\u0013b
+#canon http://example.com/a%13b
+#scheme http
+#host example.com
+#path /a%13b
+
+#data escaped
+http://example.com/a\u0014b
+#canon http://example.com/a%14b
+#scheme http
+#host example.com
+#path /a%14b
+
+#data escaped
+http://example.com/a\u0015b
+#canon http://example.com/a%15b
+#scheme http
+#host example.com
+#path /a%15b
+
+#data escaped
+http://example.com/a\u0016b
+#canon http://example.com/a%16b
+#scheme http
+#host example.com
+#path /a%16b
+
+#data escaped
+http://example.com/a\u0017b
+#canon http://example.com/a%17b
+#scheme http
+#host example.com
+#path /a%17b
+
+#data escaped
+http://example.com/a\u0018b
+#canon http://example.com/a%18b
+#scheme http
+#host example.com
+#path /a%18b
+
+#data escaped
+http://example.com/a\u0019b
+#canon http://example.com/a%19b
+#scheme http
+#host example.com
+#path /a%19b
+
+#data escaped
+http://example.com/a\u001Ab
+#canon http://example.com/a%1Ab
+#scheme http
+#host example.com
+#path /a%1Ab
+
+#data escaped
+http://example.com/a\u001Bb
+#canon http://example.com/a%1Bb
+#scheme http
+#host example.com
+#path /a%1Bb
+
+#data escaped
+http://example.com/a\u001Cb
+#canon http://example.com/a%1Cb
+#scheme http
+#host example.com
+#path /a%1Cb
+
+#data escaped
+http://example.com/a\u001db
+#canon http://example.com/a%1Db
+#scheme http
+#host example.com
+#path /a%1Db
+
+#data escaped
+http://example.com/a\u001eb
+#canon http://example.com/a%1Eb
+#scheme http
+#host example.com
+#path /a%1Eb
+
+#data escaped
+http://example.com/a\u001fb
+#canon http://example.com/a%1Fb
+#scheme http
+#host example.com
+#path /a%1Fb
+
+#data escaped
+http://example.com/a\u0020b
+#canon http://example.com/a%20b
+#scheme http
+#host example.com
+#path /a%20b
+
+#data escaped
+http://example.com/a\u0021b
+#canon http://example.com/a!b
+#scheme http
+#host example.com
+#path /a!b
+
+#data escaped
+http://example.com/a\u0022b
+#canon http://example.com/a%22b
+#scheme http
+#host example.com
+#path /a%22b
+
+#data escaped
+http://example.com/a\u0023b
+#canon http://example.com/a#b
+#scheme http
+#host example.com
+#path /a
+#fragment b
+
+#data escaped
+http://example.com/a\u0024b
+#canon http://example.com/a$b
+#scheme http
+#host example.com
+#path /a$b
+
+#data escaped
+http://example.com/a\u0025b
+#canon http://example.com/a%b
+#scheme http
+#host example.com
+#path /a%b
+
+#data escaped
+http://example.com/a\u0026b
+#canon http://example.com/a&b
+#scheme http
+#host example.com
+#path /a&b
+
+#data escaped
+http://example.com/a\u0027b
+#canon http://example.com/a'b
+#scheme http
+#host example.com
+#path /a'b
+
+#data escaped
+http://example.com/a\u0028b
+#canon http://example.com/a(b
+#scheme http
+#host example.com
+#path /a(b
+
+#data escaped
+http://example.com/a\u0029b
+#canon http://example.com/a)b
+#scheme http
+#host example.com
+#path /a)b
+
+#data escaped
+http://example.com/a\u002Ab
+#canon http://example.com/a*b
+#scheme http
+#host example.com
+#path /a*b
+
+#data escaped
+http://example.com/a\u002Bb
+#canon http://example.com/a+b
+#scheme http
+#host example.com
+#path /a+b
+
+#data escaped
+http://example.com/a\u002Cb
+#canon http://example.com/a,b
+#scheme http
+#host example.com
+#path /a,b
+
+#data escaped
+http://example.com/a\u002Db
+#canon http://example.com/a-b
+#scheme http
+#host example.com
+#path /a-b
+
+#data escaped
+http://example.com/a\u002Eb
+#canon http://example.com/a.b
+#scheme http
+#host example.com
+#path /a.b
+
+#data escaped
+http://example.com/a\u002Fb
+#canon http://example.com/a/b
+#scheme http
+#host example.com
+#path /a/b
+
+#data escaped
+http://example.com/a\u0030b
+#canon http://example.com/a0b
+#scheme http
+#host example.com
+#path /a0b
+
+#data escaped
+http://example.com/a\u0031b
+#canon http://example.com/a1b
+#scheme http
+#host example.com
+#path /a1b
+
+#data escaped
+http://example.com/a\u0032b
+#canon http://example.com/a2b
+#scheme http
+#host example.com
+#path /a2b
+
+#data escaped
+http://example.com/a\u0033b
+#canon http://example.com/a3b
+#scheme http
+#host example.com
+#path /a3b
+
+#data escaped
+http://example.com/a\u0034b
+#canon http://example.com/a4b
+#scheme http
+#host example.com
+#path /a4b
+
+#data escaped
+http://example.com/a\u0035b
+#canon http://example.com/a5b
+#scheme http
+#host example.com
+#path /a5b
+
+#data escaped
+http://example.com/a\u0036b
+#canon http://example.com/a6b
+#scheme http
+#host example.com
+#path /a6b
+
+#data escaped
+http://example.com/a\u0037b
+#canon http://example.com/a7b
+#scheme http
+#host example.com
+#path /a7b
+
+#data escaped
+http://example.com/a\u0038b
+#canon http://example.com/a8b
+#scheme http
+#host example.com
+#path /a8b
+
+#data escaped
+http://example.com/a\u0039b
+#canon http://example.com/a9b
+#scheme http
+#host example.com
+#path /a9b
+
+#data escaped
+http://example.com/a\u003Ab
+#canon http://example.com/a:b
+#scheme http
+#host example.com
+#path /a:b
+
+#data escaped
+http://example.com/a\u003Bb
+#canon http://example.com/a;b
+#scheme http
+#host example.com
+#path /a;b
+
+#data escaped
+http://example.com/a\u003Cb
+#canon http://example.com/a%3Cb
+#scheme http
+#host example.com
+#path /a%3Cb
+
+#data escaped
+http://example.com/a\u003Db
+#canon http://example.com/a=b
+#scheme http
+#host example.com
+#path /a=b
+
+#data escaped
+http://example.com/a\u003Eb
+#canon http://example.com/a%3Eb
+#scheme http
+#host example.com
+#path /a%3Eb
+
+#data escaped
+http://example.com/a\u003Fb
+#canon http://example.com/a?b
+#scheme http
+#host example.com
+#path /a
+#query b
+
+#data escaped
+http://example.com/a\u0040b
+#canon http://example.com/a@b
+#scheme http
+#host example.com
+#path /a@b
+
+#data escaped
+http://example.com/a\u0041b
+#canon http://example.com/aAb
+#scheme http
+#host example.com
+#path /aAb
+
+#data escaped
+http://example.com/a\u0042b
+#canon http://example.com/aBb
+#scheme http
+#host example.com
+#path /aBb
+
+#data escaped
+http://example.com/a\u0043b
+#canon http://example.com/aCb
+#scheme http
+#host example.com
+#path /aCb
+
+#data escaped
+http://example.com/a\u0044b
+#canon http://example.com/aDb
+#scheme http
+#host example.com
+#path /aDb
+
+#data escaped
+http://example.com/a\u0045b
+#canon http://example.com/aEb
+#scheme http
+#host example.com
+#path /aEb
+
+#data escaped
+http://example.com/a\u0046b
+#canon http://example.com/aFb
+#scheme http
+#host example.com
+#path /aFb
+
+#data escaped
+http://example.com/a\u0047b
+#canon http://example.com/aGb
+#scheme http
+#host example.com
+#path /aGb
+
+#data escaped
+http://example.com/a\u0048b
+#canon http://example.com/aHb
+#scheme http
+#host example.com
+#path /aHb
+
+#data escaped
+http://example.com/a\u0049b
+#canon http://example.com/aIb
+#scheme http
+#host example.com
+#path /aIb
+
+#data escaped
+http://example.com/a\u004Ab
+#canon http://example.com/aJb
+#scheme http
+#host example.com
+#path /aJb
+
+#data escaped
+http://example.com/a\u004Bb
+#canon http://example.com/aKb
+#scheme http
+#host example.com
+#path /aKb
+
+#data escaped
+http://example.com/a\u004Cb
+#canon http://example.com/aLb
+#scheme http
+#host example.com
+#path /aLb
+
+#data escaped
+http://example.com/a\u004Db
+#canon http://example.com/aMb
+#scheme http
+#host example.com
+#path /aMb
+
+#data escaped
+http://example.com/a\u004Eb
+#canon http://example.com/aNb
+#scheme http
+#host example.com
+#path /aNb
+
+#data escaped
+http://example.com/a\u004Fb
+#canon http://example.com/aOb
+#scheme http
+#host example.com
+#path /aOb
+
+#data escaped
+http://example.com/a\u0050b
+#canon http://example.com/aPb
+#scheme http
+#host example.com
+#path /aPb
+
+#data escaped
+http://example.com/a\u0051b
+#canon http://example.com/aQb
+#scheme http
+#host example.com
+#path /aQb
+
+#data escaped
+http://example.com/a\u0052b
+#canon http://example.com/aRb
+#scheme http
+#host example.com
+#path /aRb
+
+#data escaped
+http://example.com/a\u0053b
+#canon http://example.com/aSb
+#scheme http
+#host example.com
+#path /aSb
+
+#data escaped
+http://example.com/a\u0054b
+#canon http://example.com/aTb
+#scheme http
+#host example.com
+#path /aTb
+
+#data escaped
+http://example.com/a\u0055b
+#canon http://example.com/aUb
+#scheme http
+#host example.com
+#path /aUb
+
+#data escaped
+http://example.com/a\u0056b
+#canon http://example.com/aVb
+#scheme http
+#host example.com
+#path /aVb
+
+#data escaped
+http://example.com/a\u0057b
+#canon http://example.com/aWb
+#scheme http
+#host example.com
+#path /aWb
+
+#data escaped
+http://example.com/a\u0058b
+#canon http://example.com/aXb
+#scheme http
+#host example.com
+#path /aXb
+
+#data escaped
+http://example.com/a\u0059b
+#canon http://example.com/aYb
+#scheme http
+#host example.com
+#path /aYb
+
+#data escaped
+http://example.com/a\u005Ab
+#canon http://example.com/aZb
+#scheme http
+#host example.com
+#path /aZb
+
+#data escaped
+http://example.com/a\u005Bb
+#canon http://example.com/a%5Bb
+#scheme http
+#host example.com
+#path /a%5Bb
+
+#data escaped
+http://example.com/a\u005Cb
+#canon http://example.com/a/b
+#scheme http
+#host example.com
+#path /a/b
+
+#data escaped
+http://example.com/a\u005Db
+#canon http://example.com/a%5Db
+#scheme http
+#host example.com
+#path /a%5Db
+
+#data escaped
+http://example.com/a\u005Eb
+#canon http://example.com/a%5Eb
+#scheme http
+#host example.com
+#path /a%5Eb
+
+#data escaped
+http://example.com/a\u005Fb
+#canon http://example.com/a_b
+#scheme http
+#host example.com
+#path /a_b
+
+#data escaped
+http://example.com/a\u0060b
+#canon http://example.com/a%60b
+#scheme http
+#host example.com
+#path /a%60b
+
+#data escaped
+http://example.com/a\u0061b
+#canon http://example.com/aab
+#scheme http
+#host example.com
+#path /aab
+
+#data escaped
+http://example.com/a\u0062b
+#canon http://example.com/abb
+#scheme http
+#host example.com
+#path /abb
+
+#data escaped
+http://example.com/a\u0063b
+#canon http://example.com/acb
+#scheme http
+#host example.com
+#path /acb
+
+#data escaped
+http://example.com/a\u0064b
+#canon http://example.com/adb
+#scheme http
+#host example.com
+#path /adb
+
+#data escaped
+http://example.com/a\u0065b
+#canon http://example.com/aeb
+#scheme http
+#host example.com
+#path /aeb
+
+#data escaped
+http://example.com/a\u0066b
+#canon http://example.com/afb
+#scheme http
+#host example.com
+#path /afb
+
+#data escaped
+http://example.com/a\u0067b
+#canon http://example.com/agb
+#scheme http
+#host example.com
+#path /agb
+
+#data escaped
+http://example.com/a\u0068b
+#canon http://example.com/ahb
+#scheme http
+#host example.com
+#path /ahb
+
+#data escaped
+http://example.com/a\u0069b
+#canon http://example.com/aib
+#scheme http
+#host example.com
+#path /aib
+
+#data escaped
+http://example.com/a\u006Ab
+#canon http://example.com/ajb
+#scheme http
+#host example.com
+#path /ajb
+
+#data escaped
+http://example.com/a\u006Bb
+#canon http://example.com/akb
+#scheme http
+#host example.com
+#path /akb
+
+#data escaped
+http://example.com/a\u006Cb
+#canon http://example.com/alb
+#scheme http
+#host example.com
+#path /alb
+
+#data escaped
+http://example.com/a\u006Db
+#canon http://example.com/amb
+#scheme http
+#host example.com
+#path /amb
+
+#data escaped
+http://example.com/a\u006Eb
+#canon http://example.com/anb
+#scheme http
+#host example.com
+#path /anb
+
+#data escaped
+http://example.com/a\u006Fb
+#canon http://example.com/aob
+#scheme http
+#host example.com
+#path /aob
+
+#data escaped
+http://example.com/a\u0070b
+#canon http://example.com/apb
+#scheme http
+#host example.com
+#path /apb
+
+#data escaped
+http://example.com/a\u0071b
+#canon http://example.com/aqb
+#scheme http
+#host example.com
+#path /aqb
+
+#data escaped
+http://example.com/a\u0072b
+#canon http://example.com/arb
+#scheme http
+#host example.com
+#path /arb
+
+#data escaped
+http://example.com/a\u0073b
+#canon http://example.com/asb
+#scheme http
+#host example.com
+#path /asb
+
+#data escaped
+http://example.com/a\u0074b
+#canon http://example.com/atb
+#scheme http
+#host example.com
+#path /atb
+
+#data escaped
+http://example.com/a\u0075b
+#canon http://example.com/aub
+#scheme http
+#host example.com
+#path /aub
+
+#data escaped
+http://example.com/a\u0076b
+#canon http://example.com/avb
+#scheme http
+#host example.com
+#path /avb
+
+#data escaped
+http://example.com/a\u0077b
+#canon http://example.com/awb
+#scheme http
+#host example.com
+#path /awb
+
+#data escaped
+http://example.com/a\u0078b
+#canon http://example.com/axb
+#scheme http
+#host example.com
+#path /axb
+
+#data escaped
+http://example.com/a\u0079b
+#canon http://example.com/ayb
+#scheme http
+#host example.com
+#path /ayb
+
+#data escaped
+http://example.com/a\u007Ab
+#canon http://example.com/azb
+#scheme http
+#host example.com
+#path /azb
+
+#data escaped
+http://example.com/a\u007Bb
+#canon http://example.com/a%7Bb
+#scheme http
+#host example.com
+#path /a%7Bb
+
+#data escaped
+http://example.com/a\u007Cb
+#canon http://example.com/a%7Cb
+#scheme http
+#host example.com
+#path /a%7Cb
+
+#data escaped
+http://example.com/a\u007Db
+#canon http://example.com/a%7Db
+#scheme http
+#host example.com
+#path /a%7Db
+
+#data escaped
+http://example.com/a\u007Eb
+#canon http://example.com/a~b
+#scheme http
+#host example.com
+#path /a~b
+
+#data escaped
+http://example.com/a\u007Fb
+#canon http://example.com/a%7Fb
+#scheme http
+#host example.com
+#path /a%7Fb
+
+#data escaped
+http://example.com/a\u0080b
+#canon http://example.com/a%C2%80b
+#scheme http
+#host example.com
+#path /a%C2%80b
+
+#data escaped
+http://example.com/a\u0081b
+#canon http://example.com/a%C2%81b
+#scheme http
+#host example.com
+#path /a%C2%81b
+
+#data escaped
+http://example.com/a\u0082b
+#canon http://example.com/a%C2%82b
+#scheme http
+#host example.com
+#path /a%C2%82b
+
+#data escaped
+http://example.com/a\u0083b
+#canon http://example.com/a%C2%83b
+#scheme http
+#host example.com
+#path /a%C2%83b
+
+#data escaped
+http://example.com/a\u0084b
+#canon http://example.com/a%C2%84b
+#scheme http
+#host example.com
+#path /a%C2%84b
+
+#data escaped
+http://example.com/a\u0085b
+#canon http://example.com/a%C2%85b
+#scheme http
+#host example.com
+#path /a%C2%85b
+
+#data escaped
+http://example.com/a\u0086b
+#canon http://example.com/a%C2%86b
+#scheme http
+#host example.com
+#path /a%C2%86b
+
+#data escaped
+http://example.com/a\u0087b
+#canon http://example.com/a%C2%87b
+#scheme http
+#host example.com
+#path /a%C2%87b
+
+#data escaped
+http://example.com/a\u0088b
+#canon http://example.com/a%C2%88b
+#scheme http
+#host example.com
+#path /a%C2%88b
+
+#data escaped
+http://example.com/a\u0089b
+#canon http://example.com/a%C2%89b
+#scheme http
+#host example.com
+#path /a%C2%89b
+
+#data escaped
+http://example.com/a\u008Ab
+#canon http://example.com/a%C2%8Ab
+#scheme http
+#host example.com
+#path /a%C2%8Ab
+
+#data escaped
+http://example.com/a\u008Bb
+#canon http://example.com/a%C2%8Bb
+#scheme http
+#host example.com
+#path /a%C2%8Bb
+
+#data escaped
+http://example.com/a\u008Cb
+#canon http://example.com/a%C2%8Cb
+#scheme http
+#host example.com
+#path /a%C2%8Cb
+
+#data escaped
+http://example.com/a\u008Db
+#canon http://example.com/a%C2%8Db
+#scheme http
+#host example.com
+#path /a%C2%8Db
+
+#data escaped
+http://example.com/a\u008Eb
+#canon http://example.com/a%C2%8Eb
+#scheme http
+#host example.com
+#path /a%C2%8Eb
+
+#data escaped
+http://example.com/a\u008Fb
+#canon http://example.com/a%C2%8Fb
+#scheme http
+#host example.com
+#path /a%C2%8Fb
+
+#data escaped
+http://example.com/a\u0090b
+#canon http://example.com/a%C2%90b
+#scheme http
+#host example.com
+#path /a%C2%90b
+
+#data escaped
+http://example.com/a\u0091b
+#canon http://example.com/a%C2%91b
+#scheme http
+#host example.com
+#path /a%C2%91b
+
+#data escaped
+http://example.com/a\u0092b
+#canon http://example.com/a%C2%92b
+#scheme http
+#host example.com
+#path /a%C2%92b
+
+#data escaped
+http://example.com/a\u0093b
+#canon http://example.com/a%C2%93b
+#scheme http
+#host example.com
+#path /a%C2%93b
+
+#data escaped
+http://example.com/a\u0094b
+#canon http://example.com/a%C2%94b
+#scheme http
+#host example.com
+#path /a%C2%94b
+
+#data escaped
+http://example.com/a\u0095b
+#canon http://example.com/a%C2%95b
+#scheme http
+#host example.com
+#path /a%C2%95b
+
+#data escaped
+http://example.com/a\u0096b
+#canon http://example.com/a%C2%96b
+#scheme http
+#host example.com
+#path /a%C2%96b
+
+#data escaped
+http://example.com/a\u0097b
+#canon http://example.com/a%C2%97b
+#scheme http
+#host example.com
+#path /a%C2%97b
+
+#data escaped
+http://example.com/a\u0098b
+#canon http://example.com/a%C2%98b
+#scheme http
+#host example.com
+#path /a%C2%98b
+
+#data escaped
+http://example.com/a\u0099b
+#canon http://example.com/a%C2%99b
+#scheme http
+#host example.com
+#path /a%C2%99b
+
+#data escaped
+http://example.com/a\u009Ab
+#canon http://example.com/a%C2%9Ab
+#scheme http
+#host example.com
+#path /a%C2%9Ab
+
+#data escaped
+http://example.com/a\u009Bb
+#canon http://example.com/a%C2%9Bb
+#scheme http
+#host example.com
+#path /a%C2%9Bb
+
+#data escaped
+http://example.com/a\u009Cb
+#canon http://example.com/a%C2%9Cb
+#scheme http
+#host example.com
+#path /a%C2%9Cb
+
+#data escaped
+http://example.com/a\u009Db
+#canon http://example.com/a%C2%9Db
+#scheme http
+#host example.com
+#path /a%C2%9Db
+
+#data escaped
+http://example.com/a\u009Eb
+#canon http://example.com/a%C2%9Eb
+#scheme http
+#host example.com
+#path /a%C2%9Eb
+
+#data escaped
+http://example.com/a\u009Fb
+#canon http://example.com/a%C2%9Fb
+#scheme http
+#host example.com
+#path /a%C2%9Fb
+
+#data escaped
+http://example.com/a\u00a0b
+#canon http://example.com/a%C2%A0b
+#scheme http
+#host example.com
+#path /a%C2%A0b
+
+#data escaped
+http://example.com/a\u00a1b
+#canon http://example.com/a%C2%A1b
+#scheme http
+#host example.com
+#path /a%C2%A1b
+
+#data escaped
+http://example.com/a\u00a2b
+#canon http://example.com/a%C2%A2b
+#scheme http
+#host example.com
+#path /a%C2%A2b
+
+#data escaped
+http://example.com/a\u00a3b
+#canon http://example.com/a%C2%A3b
+#scheme http
+#host example.com
+#path /a%C2%A3b
+
+#data escaped
+http://example.com/a\u00a4b
+#canon http://example.com/a%C2%A4b
+#scheme http
+#host example.com
+#path /a%C2%A4b
+
+#data escaped
+http://example.com/a\u00a5b
+#canon http://example.com/a%C2%A5b
+#scheme http
+#host example.com
+#path /a%C2%A5b
+
+#data escaped
+http://example.com/a\u00a6b
+#canon http://example.com/a%C2%A6b
+#scheme http
+#host example.com
+#path /a%C2%A6b
+
+#data escaped
+http://example.com/a\u00a7b
+#canon http://example.com/a%C2%A7b
+#scheme http
+#host example.com
+#path /a%C2%A7b
+
+#data escaped
+http://example.com/a\u00a8b
+#canon http://example.com/a%C2%A8b
+#scheme http
+#host example.com
+#path /a%C2%A8b
+
+#data escaped
+http://example.com/a\u00a9b
+#canon http://example.com/a%C2%A9b
+#scheme http
+#host example.com
+#path /a%C2%A9b
+
+#data escaped
+http://example.com/a\u00aAb
+#canon http://example.com/a%C2%AAb
+#scheme http
+#host example.com
+#path /a%C2%AAb
+
+#data escaped
+http://example.com/a\u00ABb
+#canon http://example.com/a%C2%ABb
+#scheme http
+#host example.com
+#path /a%C2%ABb
+
+#data escaped
+http://example.com/a\u00aCb
+#canon http://example.com/a%C2%ACb
+#scheme http
+#host example.com
+#path /a%C2%ACb
+
+#data escaped
+http://example.com/a\u00aDb
+#canon http://example.com/a%C2%ADb
+#scheme http
+#host example.com
+#path /a%C2%ADb
+
+#data escaped
+http://example.com/a\u00aEb
+#canon http://example.com/a%C2%AEb
+#scheme http
+#host example.com
+#path /a%C2%AEb
+
+#data escaped
+http://example.com/a\u00aFb
+#canon http://example.com/a%C2%AFb
+#scheme http
+#host example.com
+#path /a%C2%AFb
+
+#data escaped
+http://example.com/a\u00B0b
+#canon http://example.com/a%C2%B0b
+#scheme http
+#host example.com
+#path /a%C2%B0b
+
+#data escaped
+http://example.com/a\u00B1b
+#canon http://example.com/a%C2%B1b
+#scheme http
+#host example.com
+#path /a%C2%B1b
+
+#data escaped
+http://example.com/a\u00B2b
+#canon http://example.com/a%C2%B2b
+#scheme http
+#host example.com
+#path /a%C2%B2b
+
+#data escaped
+http://example.com/a\u00B3b
+#canon http://example.com/a%C2%B3b
+#scheme http
+#host example.com
+#path /a%C2%B3b
+
+#data escaped
+http://example.com/a\u00B4b
+#canon http://example.com/a%C2%B4b
+#scheme http
+#host example.com
+#path /a%C2%B4b
+
+#data escaped
+http://example.com/a\u00B5b
+#canon http://example.com/a%C2%B5b
+#scheme http
+#host example.com
+#path /a%C2%B5b
+
+#data escaped
+http://example.com/a\u00B6b
+#canon http://example.com/a%C2%B6b
+#scheme http
+#host example.com
+#path /a%C2%B6b
+
+#data escaped
+http://example.com/a\u00B7b
+#canon http://example.com/a%C2%B7b
+#scheme http
+#host example.com
+#path /a%C2%B7b
+
+#data escaped
+http://example.com/a\u00B8b
+#canon http://example.com/a%C2%B8b
+#scheme http
+#host example.com
+#path /a%C2%B8b
+
+#data escaped
+http://example.com/a\u00B9b
+#canon http://example.com/a%C2%B9b
+#scheme http
+#host example.com
+#path /a%C2%B9b
+
+#data escaped
+http://example.com/a\u00BAb
+#canon http://example.com/a%C2%BAb
+#scheme http
+#host example.com
+#path /a%C2%BAb
+
+#data escaped
+http://example.com/a\u00BBb
+#canon http://example.com/a%C2%BBb
+#scheme http
+#host example.com
+#path /a%C2%BBb
+
+#data escaped
+http://example.com/a\u00BCb
+#canon http://example.com/a%C2%BCb
+#scheme http
+#host example.com
+#path /a%C2%BCb
+
+#data escaped
+http://example.com/a\u00BDb
+#canon http://example.com/a%C2%BDb
+#scheme http
+#host example.com
+#path /a%C2%BDb
+
+#data escaped
+http://example.com/a\u00BEb
+#canon http://example.com/a%C2%BEb
+#scheme http
+#host example.com
+#path /a%C2%BEb
+
+#data escaped
+http://example.com/a\u00BFb
+#canon http://example.com/a%C2%BFb
+#scheme http
+#host example.com
+#path /a%C2%BFb
+
+#data escaped
+http://example.com/a\u00C0b
+#canon http://example.com/a%C3%80b
+#scheme http
+#host example.com
+#path /a%C3%80b
+
+#data escaped
+http://example.com/a\u00C1b
+#canon http://example.com/a%C3%81b
+#scheme http
+#host example.com
+#path /a%C3%81b
+
+#data escaped
+http://example.com/a\u00C2b
+#canon http://example.com/a%C3%82b
+#scheme http
+#host example.com
+#path /a%C3%82b
+
+#data escaped
+http://example.com/a\u00C3b
+#canon http://example.com/a%C3%83b
+#scheme http
+#host example.com
+#path /a%C3%83b
+
+#data escaped
+http://example.com/a\u00C4b
+#canon http://example.com/a%C3%84b
+#scheme http
+#host example.com
+#path /a%C3%84b
+
+#data escaped
+http://example.com/a\u00C5b
+#canon http://example.com/a%C3%85b
+#scheme http
+#host example.com
+#path /a%C3%85b
+
+#data escaped
+http://example.com/a\u00C6b
+#canon http://example.com/a%C3%86b
+#scheme http
+#host example.com
+#path /a%C3%86b
+
+#data escaped
+http://example.com/a\u00C7b
+#canon http://example.com/a%C3%87b
+#scheme http
+#host example.com
+#path /a%C3%87b
+
+#data escaped
+http://example.com/a\u00C8b
+#canon http://example.com/a%C3%88b
+#scheme http
+#host example.com
+#path /a%C3%88b
+
+#data escaped
+http://example.com/a\u00C9b
+#canon http://example.com/a%C3%89b
+#scheme http
+#host example.com
+#path /a%C3%89b
+
+#data escaped
+http://example.com/a\u00CAb
+#canon http://example.com/a%C3%8Ab
+#scheme http
+#host example.com
+#path /a%C3%8Ab
+
+#data escaped
+http://example.com/a\u00CBb
+#canon http://example.com/a%C3%8Bb
+#scheme http
+#host example.com
+#path /a%C3%8Bb
+
+#data escaped
+http://example.com/a\u00CCb
+#canon http://example.com/a%C3%8Cb
+#scheme http
+#host example.com
+#path /a%C3%8Cb
+
+#data escaped
+http://example.com/a\u00CDb
+#canon http://example.com/a%C3%8Db
+#scheme http
+#host example.com
+#path /a%C3%8Db
+
+#data escaped
+http://example.com/a\u00CEb
+#canon http://example.com/a%C3%8Eb
+#scheme http
+#host example.com
+#path /a%C3%8Eb
+
+#data escaped
+http://example.com/a\u00CFb
+#canon http://example.com/a%C3%8Fb
+#scheme http
+#host example.com
+#path /a%C3%8Fb
+
+#data escaped
+http://example.com/a\u00D0b
+#canon http://example.com/a%C3%90b
+#scheme http
+#host example.com
+#path /a%C3%90b
+
+#data escaped
+http://example.com/a\u00D1b
+#canon http://example.com/a%C3%91b
+#scheme http
+#host example.com
+#path /a%C3%91b
+
+#data escaped
+http://example.com/a\u00D2b
+#canon http://example.com/a%C3%92b
+#scheme http
+#host example.com
+#path /a%C3%92b
+
+#data escaped
+http://example.com/a\u00D3b
+#canon http://example.com/a%C3%93b
+#scheme http
+#host example.com
+#path /a%C3%93b
+
+#data escaped
+http://example.com/a\u00D4b
+#canon http://example.com/a%C3%94b
+#scheme http
+#host example.com
+#path /a%C3%94b
+
+#data escaped
+http://example.com/a\u00D5b
+#canon http://example.com/a%C3%95b
+#scheme http
+#host example.com
+#path /a%C3%95b
+
+#data escaped
+http://example.com/a\u00D6b
+#canon http://example.com/a%C3%96b
+#scheme http
+#host example.com
+#path /a%C3%96b
+
+#data escaped
+http://example.com/a\u00D7b
+#canon http://example.com/a%C3%97b
+#scheme http
+#host example.com
+#path /a%C3%97b
+
+#data escaped
+http://example.com/a\u00D8b
+#canon http://example.com/a%C3%98b
+#scheme http
+#host example.com
+#path /a%C3%98b
+
+#data escaped
+http://example.com/a\u00D9b
+#canon http://example.com/a%C3%99b
+#scheme http
+#host example.com
+#path /a%C3%99b
+
+#data escaped
+http://example.com/a\u00DAb
+#canon http://example.com/a%C3%9Ab
+#scheme http
+#host example.com
+#path /a%C3%9Ab
+
+#data escaped
+http://example.com/a\u00DBb
+#canon http://example.com/a%C3%9Bb
+#scheme http
+#host example.com
+#path /a%C3%9Bb
+
+#data escaped
+http://example.com/a\u00DCb
+#canon http://example.com/a%C3%9Cb
+#scheme http
+#host example.com
+#path /a%C3%9Cb
+
+#data escaped
+http://example.com/a\u00DDb
+#canon http://example.com/a%C3%9Db
+#scheme http
+#host example.com
+#path /a%C3%9Db
+
+#data escaped
+http://example.com/a\u00DEb
+#canon http://example.com/a%C3%9Eb
+#scheme http
+#host example.com
+#path /a%C3%9Eb
+
+#data escaped
+http://example.com/a\u00DFb
+#canon http://example.com/a%C3%9Fb
+#scheme http
+#host example.com
+#path /a%C3%9Fb
+
+#data escaped
+http://example.com/a\u00E0b
+#canon http://example.com/a%C3%A0b
+#scheme http
+#host example.com
+#path /a%C3%A0b
+
+#data escaped
+http://example.com/a\u00E1b
+#canon http://example.com/a%C3%A1b
+#scheme http
+#host example.com
+#path /a%C3%A1b
+
+#data escaped
+http://example.com/a\u00E2b
+#canon http://example.com/a%C3%A2b
+#scheme http
+#host example.com
+#path /a%C3%A2b
+
+#data escaped
+http://example.com/a\u00E3b
+#canon http://example.com/a%C3%A3b
+#scheme http
+#host example.com
+#path /a%C3%A3b
+
+#data escaped
+http://example.com/a\u00E4b
+#canon http://example.com/a%C3%A4b
+#scheme http
+#host example.com
+#path /a%C3%A4b
+
+#data escaped
+http://example.com/a\u00E5b
+#canon http://example.com/a%C3%A5b
+#scheme http
+#host example.com
+#path /a%C3%A5b
+
+#data escaped
+http://example.com/a\u00E6b
+#canon http://example.com/a%C3%A6b
+#scheme http
+#host example.com
+#path /a%C3%A6b
+
+#data escaped
+http://example.com/a\u00E7b
+#canon http://example.com/a%C3%A7b
+#scheme http
+#host example.com
+#path /a%C3%A7b
+
+#data escaped
+http://example.com/a\u00E8b
+#canon http://example.com/a%C3%A8b
+#scheme http
+#host example.com
+#path /a%C3%A8b
+
+#data escaped
+http://example.com/a\u00E9b
+#canon http://example.com/a%C3%A9b
+#scheme http
+#host example.com
+#path /a%C3%A9b
+
+#data escaped
+http://example.com/a\u00EAb
+#canon http://example.com/a%C3%AAb
+#scheme http
+#host example.com
+#path /a%C3%AAb
+
+#data escaped
+http://example.com/a\u00EBb
+#canon http://example.com/a%C3%ABb
+#scheme http
+#host example.com
+#path /a%C3%ABb
+
+#data escaped
+http://example.com/a\u00ECb
+#canon http://example.com/a%C3%ACb
+#scheme http
+#host example.com
+#path /a%C3%ACb
+
+#data escaped
+http://example.com/a\u00EDb
+#canon http://example.com/a%C3%ADb
+#scheme http
+#host example.com
+#path /a%C3%ADb
+
+#data escaped
+http://example.com/a\u00EEb
+#canon http://example.com/a%C3%AEb
+#scheme http
+#host example.com
+#path /a%C3%AEb
+
+#data escaped
+http://example.com/a\u00EFb
+#canon http://example.com/a%C3%AFb
+#scheme http
+#host example.com
+#path /a%C3%AFb
+
+#data escaped
+http://example.com/a\u00F0b
+#canon http://example.com/a%C3%B0b
+#scheme http
+#host example.com
+#path /a%C3%B0b
+
+#data escaped
+http://example.com/a\u00F1b
+#canon http://example.com/a%C3%B1b
+#scheme http
+#host example.com
+#path /a%C3%B1b
+
+#data escaped
+http://example.com/a\u00F2b
+#canon http://example.com/a%C3%B2b
+#scheme http
+#host example.com
+#path /a%C3%B2b
+
+#data escaped
+http://example.com/a\u00F3b
+#canon http://example.com/a%C3%B3b
+#scheme http
+#host example.com
+#path /a%C3%B3b
+
+#data escaped
+http://example.com/a\u00F4b
+#canon http://example.com/a%C3%B4b
+#scheme http
+#host example.com
+#path /a%C3%B4b
+
+#data escaped
+http://example.com/a\u00F5b
+#canon http://example.com/a%C3%B5b
+#scheme http
+#host example.com
+#path /a%C3%B5b
+
+#data escaped
+http://example.com/a\u00F6b
+#canon http://example.com/a%C3%B6b
+#scheme http
+#host example.com
+#path /a%C3%B6b
+
+#data escaped
+http://example.com/a\u00F7b
+#canon http://example.com/a%C3%B7b
+#scheme http
+#host example.com
+#path /a%C3%B7b
+
+#data escaped
+http://example.com/a\u00F8b
+#canon http://example.com/a%C3%B8b
+#scheme http
+#host example.com
+#path /a%C3%B8b
+
+#data escaped
+http://example.com/a\u00F9b
+#canon http://example.com/a%C3%B9b
+#scheme http
+#host example.com
+#path /a%C3%B9b
+
+#data escaped
+http://example.com/a\u00FAb
+#canon http://example.com/a%C3%BAb
+#scheme http
+#host example.com
+#path /a%C3%BAb
+
+#data escaped
+http://example.com/a\u00FBb
+#canon http://example.com/a%C3%BBb
+#scheme http
+#host example.com
+#path /a%C3%BBb
+
+#data escaped
+http://example.com/a\u00FCb
+#canon http://example.com/a%C3%BCb
+#scheme http
+#host example.com
+#path /a%C3%BCb
+
+#data escaped
+http://example.com/a\u00FDb
+#canon http://example.com/a%C3%BDb
+#scheme http
+#host example.com
+#path /a%C3%BDb
+
+#data escaped
+http://example.com/a\u00FEb
+#canon http://example.com/a%C3%BEb
+#scheme http
+#host example.com
+#path /a%C3%BEb
+
+#data escaped
+http://example.com/a\u00FFb
+#canon http://example.com/a%C3%BFb
+#scheme http
+#host example.com
+#path /a%C3%BFb
+
+#data escaped
+http://example.com/a\u0100b
+#canon http://example.com/a%C4%80b
+#scheme http
+#host example.com
+#path /a%C4%80b
+
+#data escaped
+http://example.com/a\uF800b
+#canon http://example.com/a%EF%A0%80b
+#scheme http
+#host example.com
+#path /a%EF%A0%80b
+
+#data escaped
+http://example.com/a\uFFFEb
+#canon http://example.com/a%EF%BF%BDb
+#scheme http
+#host example.com
+#path /a%EF%BF%BDb
+
+#data escaped
+http://example.com/a\uFFFFb
+#base http://foo/bar
+#canon http://example.com/a%EF%BF%BDb
+#scheme http
+#host example.com
+#path /a%EF%BF%BDb
+
+#data escaped
+http://example.com/a\U00010000b
+#base http://foo/bar
+#canon http://example.com/a%F0%90%80%80b
+#scheme http
+#host example.com
+#path /a%F0%90%80%80b
+
+#data escaped
+http://example.com/a\U10000000b
+#base http://foo/bar
+#canon http://example.com/a%EF%BF%BDb
+#scheme http
+#host example.com
+#path /a%EF%BF%BDb
+
+#data
+http://example.com/foo%2
+#canon http://example.com/foo%2
+#scheme http
+#host example.com
+#path /foo%2
+
+#data
+http://example.com/foo%2zbar
+#canon http://example.com/foo%2zbar
+#scheme http
+#host example.com
+#path /foo%2zbar
+
+#data escaped
+http://example.com/foo%2\u00C2\u00A9zbar
+#canon http://example.com/foo%2%C3%82%C2%A9zbar
+#scheme http
+#host example.com
+#path /foo%2%C3%82%C2%A9zbar
+
+#data
+http://example.com/foo%41%7a
+#canon http://example.com/fooAz
+#scheme http
+#host example.com
+#path /fooAz
+
+#data
+http://example.com/foo/%2e%2
+#canon http://example.com/foo/.%2
+#scheme http
+#host example.com
+#path /foo/.%2
+
+#data
+http://example.com/foo/%2e
+#canon http://example.com/foo/
+#scheme http
+#host example.com
+#path /foo/
+
+#data
+http://example.com/foo/%2e./%2e%2e/.%2e/%2e.bar
+#canon http://example.com/..bar
+#scheme http
+#host example.com
+#path /..bar
+
+#data
+http://example.com/%2e.bar
+#canon http://example.com/..bar
+#scheme http
+#host example.com
+#path /..bar
+
+#data escaped
+http://example.com/\u4F60\u597D\u4F60\u597D
+#canon http://example.com/%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
+#scheme http
+#host example.com
+#path /%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
+
+#data escaped
+http://example.com/\uFDD0zyx
+#canon http://example.com/%EF%BF%BDzyx
+#scheme http
+#host example.com
+#path /%EF%BF%BDzyx
+
+#data
+http://example.com/%EF%BF%BDzyx
+#canon http://example.com/%EF%BF%BDzyx
+#scheme http
+#host example.com
+#path /%EF%BF%BDzyx
+
+#data escaped
+http://example.com/\uFFFDzyx
+#canon http://example.com/%EF%BF%BDzyx
+#scheme http
+#host example.com
+#path /%EF%BF%BDzyx
+
+#data
+http://example.com\foo\bar
+#canon http://example.com/foo/bar
+#scheme http
+#host example.com
+#path /foo/bar
+
+#data
+http://example.com\\foo\\bar
+#canon http://example.com//foo//bar
+#scheme http
+#host example.com
+#path //foo//bar
+
+#data escaped
+http://www.example.org/red%09ros\u00E9#red
+#canon http://www.example.org/red%09ros%C3%A9#red
+#scheme http
+#host www.example.org
+#path escaped
+/red%09ros%C3%A9
+#fragment red
+
+#data
+http://www.example.org/red%09ros%c3%a9#red
+#scheme http
+#host www.example.org
+#path /red%09ros%c3%a9
+#fragment red
+
+#data
+http://example.com/%F0%90%8C%80%F0%90%8C%81%F0%90%8C%82
+#scheme http
+#host example.com
+#path /%F0%90%8C%80%F0%90%8C%81%F0%90%8C%82
+
+#data escaped
+http://example.com/\U00010300\U00010301\U00010302
+#canon http://example.com/%F0%90%8C%80%F0%90%8C%81%F0%90%8C%82
+#scheme http
+#host example.com
+#path escaped
+/%F0%90%8C%80%F0%90%8C%81%F0%90%8C%82
+
+#data
+http://xn--99zt52a.example.org/%e2%80%ae
+#scheme http
+#host xn--99zt52a.example.org
+#path /%e2%80%ae
+
+#data
+http://example.org/~user
+#scheme http
+#host example.org
+#path /~user
+
+#data
+http://example.org/%7Euser
+#scheme http
+#host example.org
+#path /%7Euser
+
+#data
+eXAMPLE://a/./b/../b/%63/%7bfoo%7d
+#canon example://a/./b/../b/%63/%7bfoo%7d
+#scheme example
+#path //a/./b/../b/%63/%7bfoo%7d
+
+#data
+HtTp://a/./b/../b/%63/%7bfoo%7d
+#canon http://a/b/%63/%7bfoo%7d
+#scheme http
+#host a
+#path /b/%63/%7bfoo%7d
+
+#data
+eXAMPLE://a/./b/../b/c/%7bfoo%7d
+#canon example://a/./b/../b/c/%7bfoo%7d
+#scheme example
+#path //a/./b/../b/c/%7bfoo%7d
+
+#data
+HttP://a/./b/../b/c/%7bfoo%7d
+#canon http://a/b/c/%7bfoo%7d
+#scheme http
+#host a
+#path /b/c/%7bfoo%7d
+
+#data
+http://foo.example/%E4%B8%80
+#scheme http
+#host foo.example
+#path /%E4%B8%80
+
+#data escaped
+http://foo.example/\u4E00
+#canon http://foo.example/%E4%B8%80
+#scheme http
+#host foo.example
+#path escaped
+/%E4%B8%80

@@ -1,0 +1,38 @@
+#data escaped
+mailto:addr1    \u0020
+#canon mailto:addr1
+#scheme mailto
+#path addr1
+
+#data
+mailto:foo@example
+#scheme mailto
+#path foo@example
+
+#data
+mailto:foo@example#bar
+#scheme mailto
+#path foo@example#bar
+
+#data
+mailto:addr1, addr2
+#canon
+mailto:addr1,%20addr2
+#scheme mailto
+#path addr1,%20addr2
+
+#data escaped
+mailto:\U00010300
+#canon mailto:%F0%90%8C%80
+#scheme mailto
+#path %F0%90%8C%80
+
+#data
+./foo/bar
+#base mailto:foo@bar
+#canon
+
+#data
+foo
+#base mailto:foo@bar
+#canon

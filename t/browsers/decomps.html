@@ -11,9 +11,63 @@
 <button id=submit-button type=button>Submit result</button>
 
 <nav>
-<a href="decomps.html">Normal mode</a>
-<a href="decomps.html?compat">Compat mode</a>
-<a href="http://suika.fam.cx/gate/test-results/list/test1/all">Results</a>
+  <table>
+    <tr>
+      <th><code>decomps.dat</code>
+      <td>
+        <a href="decomps.html">Normal mode</a>
+      <td>
+        <a href="decomps.html?compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-authority.dat</code>
+      <td>
+        <a href="decomps.html?decomps-authority.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-authority.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-data.dat</code>
+      <td>
+        <a href="decomps.html?decomps-data.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-data.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-file.dat</code>
+      <td>
+        <a href="decomps.html?decomps-file.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-file.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-javascript.dat</code>
+      <td>
+        <a href="decomps.html?decomps-javascript.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-javascript.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-mailto.dat</code>
+      <td>
+        <a href="decomps.html?decomps-mailto.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-mailto.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-path.dat</code>
+      <td>
+        <a href="decomps.html?decomps-path.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-path.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-relative.dat</code>
+      <td>
+        <a href="decomps.html?decomps-relative.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-relative.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-scheme.dat</code>
+      <td>
+        <a href="decomps.html?decomps-scheme.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-scheme.dat;compat">Compat mode</a>
+  </table>
+  <a href="http://suika.fam.cx/gate/test-results/list/test1/all">Results</a>
 </nav>
 
 <script>
@@ -36,6 +90,10 @@
     ftp: 21
   };
 
+  var fileName = decodeURIComponent
+      ((location.search || '').replace (/^\?/, '').replace (/;.*/, ''));
+  if (!/\.dat$/.test(fileName)) fileName = 'decomps.dat';
+
   var compatMode = location.search.match (/compat/);
   var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
   var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
@@ -50,7 +108,7 @@
   var labels = [];
   var classes = [];
   var results = [];
-  SAMI.Test.executeTestsByURL ('../data/decomps.dat?' + Math.random (), {
+  SAMI.Test.executeTestsByURL ('../data/' + fileName + '?' + Math.random (), {
     data: {isPrefixed: true}
   }, function (test) {
     var originalURL = test.getField ('data');
