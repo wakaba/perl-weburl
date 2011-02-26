@@ -1,0 +1,51 @@
+
+- url-spec
+- WA1 decomposition attributes
+
+- Remove /control characters/ from beginning and end of relative URL
+
+* Unreserved characters
+
+The *unreserved characters* is: U+002D (-), U+002E (.), U+0030 (0) to
+U+0039 (9), U+0041 (A) to U+005A (Z), U+005F (_), U+0061 (a) to U+007A
+(z), and U+007E (~), inclusive.
+
+A *non-unreserved octet* is an octet that does not represent an
+unreserved character when the octet is interpreted as a US-ASCII
+character.
+
+* Percent-encode a character string /s/
+
+  Replace each character in the following range in /s/ by a U+FFFD
+  REPLACEMENT CHARACTER:
+
+    - U+0000
+    - U+D800 ... U+DFFF
+    - U+FDD0 ... U+FDEF
+    - U+FFFE, U+FFFF, U+1FFFE, U+1FFFF, U+2FFFE, U+2FFFF, U+3FFFE,
+      U+3FFFF, U+4FFFE, U+4FFFF, U+5FFFE, U+5FFFF, U+6FFFE, U+6FFFF,
+      U+7FFFE, U+7FFFF, U+8FFFE, U+8FFFF, U+9FFFE, U+9FFFF, U+AFFFE,
+      U+AFFFF, U+BFFFE, U+BFFFF, U+CFFFE, U+CFFFF, U+DFFFE, U+DFFFF,
+      U+EFFFE, U+EFFFF, U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF
+
+  Encode /s/ in UTF-8
+
+    Note.  Since a URL is a sequence of Unicode characters, in
+    environments where non-Unicode characters could be used in a
+    string, any non-Unicode character in /s/ would be encoded as
+    U+FFFD REPLACEMENT CHARACTER.
+
+  Percent-encode non-unreserved octets in /s/.
+
+* Canonicalize a URL /u/ (where /u/ is a character string)
+
+  Remove characters U+0009, U+000A, and U+000D from /u/.
+
+  Percent-decode percent-encoded representations of unreserved
+  characters in the |path| component of /u/.
+
+  Percent-encode characters in the |path| component of /u/ EXCEPT for:
+  unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%), U+0026
+  (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B (+),
+  U+002D (,), U+002E (.), U+002F (/), U+003A (:), U+003B (;), U+003D
+  (=), U+0040 (@), U+005B ([), U+005D (]).

@@ -113,17 +113,17 @@ http://example.com/a\u0008b
 
 #data escaped
 http://example.com/a\u0009b
-#canon http://example.com/a%09b
+#canon http://example.com/ab
 #scheme http
 #host example.com
-#path /a%09b
+#path /ab
 
 #data escaped
 http://example.com/a\u000Ab
-#canon http://example.com/a%0Ab
+#canon http://example.com/ab
 #scheme http
 #host example.com
-#path /a%0Ab
+#path /ab
 
 #data escaped
 http://example.com/a\u000Bb
@@ -141,10 +141,10 @@ http://example.com/a\u000cb
 
 #data escaped
 http://example.com/a\u000db
-#canon http://example.com/a%0Db
+#canon http://example.com/ab
 #scheme http
 #host example.com
-#path /a%0Db
+#path /ab
 
 #data escaped
 http://example.com/a\u000Eb
@@ -689,10 +689,10 @@ http://example.com/a\u005Ab
 
 #data escaped
 http://example.com/a\u005Bb
-#canon http://example.com/a%5Bb
+#canon http://example.com/a[b
 #scheme http
 #host example.com
-#path /a%5Bb
+#path /a[b
 
 #data escaped
 http://example.com/a\u005Cb
@@ -703,10 +703,10 @@ http://example.com/a\u005Cb
 
 #data escaped
 http://example.com/a\u005Db
-#canon http://example.com/a%5Db
+#canon http://example.com/a]b
 #scheme http
 #host example.com
-#path /a%5Db
+#path /a]b
 
 #data escaped
 http://example.com/a\u005Eb
@@ -2517,31 +2517,31 @@ http://foo/a%2cb
 
 #data
 http://foo/a%2Db
-#canon http://foo/a%2Db
+#canon http://foo/a-b
 #scheme http
 #host foo
-#path /a%2Db
+#path /a-b
 
 #data
 http://foo/a%2db
-#canon http://foo/a%2db
+#canon http://foo/a-b
 #scheme http
 #host foo
-#path /a%2db
+#path /a-b
 
 #data
 http://foo/a%2Eb
-#canon http://foo/a%2Eb
+#canon http://foo/a.b
 #scheme http
 #host foo
-#path /a%2Eb
+#path /a.b
 
 #data
 http://foo/a%2eb
-#canon http://foo/a%2eb
+#canon http://foo/a.b
 #scheme http
 #host foo
-#path /a%2eb
+#path /a.b
 
 #data
 http://foo/a%2Fb
@@ -2559,73 +2559,73 @@ http://foo/a%2fb
 
 #data
 http://foo/a%30b
-#canon http://foo/a%30b
+#canon http://foo/a0b
 #scheme http
 #host foo
-#path /a%30b
+#path /a0b
 
 #data
 http://foo/a%31b
-#canon http://foo/a%31b
+#canon http://foo/a1b
 #scheme http
 #host foo
-#path /a%31b
+#path /a1b
 
 #data
 http://foo/a%32b
-#canon http://foo/a%32b
+#canon http://foo/a2b
 #scheme http
 #host foo
-#path /a%32b
+#path /a2b
 
 #data
 http://foo/a%33b
-#canon http://foo/a%33b
+#canon http://foo/a3b
 #scheme http
 #host foo
-#path /a%33b
+#path /a3b
 
 #data
 http://foo/a%34b
-#canon http://foo/a%34b
+#canon http://foo/a4b
 #scheme http
 #host foo
-#path /a%34b
+#path /a4b
 
 #data
 http://foo/a%35b
-#canon http://foo/a%35b
+#canon http://foo/a5b
 #scheme http
 #host foo
-#path /a%35b
+#path /a5b
 
 #data
 http://foo/a%36b
-#canon http://foo/a%36b
+#canon http://foo/a6b
 #scheme http
 #host foo
-#path /a%36b
+#path /a6b
 
 #data
 http://foo/a%37b
-#canon http://foo/a%37b
+#canon http://foo/a7b
 #scheme http
 #host foo
-#path /a%37b
+#path /a7b
 
 #data
 http://foo/a%38b
-#canon http://foo/a%38b
+#canon http://foo/a8b
 #scheme http
 #host foo
-#path /a%38b
+#path /a8b
 
 #data
 http://foo/a%39b
-#canon http://foo/a%39b
+#canon http://foo/a9b
 #scheme http
 #host foo
-#path /a%39b
+#path /a9b
 
 #data
 http://foo/a%3Ab
@@ -2720,234 +2720,234 @@ http://foo/a%40b
 
 #data
 http://foo/a%41b
-#canon http://foo/a%41b
+#canon http://foo/aAb
 #scheme http
 #host foo
-#path /a%41b
+#path /aAb
 
 #data
 http://foo/a%42b
-#canon http://foo/a%42b
+#canon http://foo/aBb
 #scheme http
 #host foo
-#path /a%42b
+#path /aBb
 
 #data
 http://foo/a%43b
-#canon http://foo/a%43b
+#canon http://foo/aCb
 #scheme http
 #host foo
-#path /a%43b
+#path /aCb
 
 #data
 http://foo/a%44b
-#canon http://foo/a%44b
+#canon http://foo/aDb
 #scheme http
 #host foo
-#path /a%44b
+#path /aDb
 
 #data
 http://foo/a%45b
-#canon http://foo/a%45b
+#canon http://foo/aEb
 #scheme http
 #host foo
-#path /a%45b
+#path /aEb
 
 #data
 http://foo/a%46b
-#canon http://foo/a%46b
+#canon http://foo/aFb
 #scheme http
 #host foo
-#path /a%46b
+#path /aFb
 
 #data
 http://foo/a%47b
-#canon http://foo/a%47b
+#canon http://foo/aGb
 #scheme http
 #host foo
-#path /a%47b
+#path /aGb
 
 #data
 http://foo/a%48b
-#canon http://foo/a%48b
+#canon http://foo/aHb
 #scheme http
 #host foo
-#path /a%48b
+#path /aHb
 
 #data
 http://foo/a%49b
-#canon http://foo/a%49b
+#canon http://foo/aIb
 #scheme http
 #host foo
-#path /a%49b
+#path /aIb
 
 #data
 http://foo/a%4Ab
-#canon http://foo/a%4Ab
+#canon http://foo/aJb
 #scheme http
 #host foo
-#path /a%4Ab
+#path /aJb
 
 #data
 http://foo/a%4ab
-#canon http://foo/a%4ab
+#canon http://foo/aJb
 #scheme http
 #host foo
-#path /a%4ab
+#path /aJb
 
 #data
 http://foo/a%4Bb
-#canon http://foo/a%4Bb
+#canon http://foo/aKb
 #scheme http
 #host foo
-#path /a%4Bb
+#path /aKb
 
 #data
 http://foo/a%4bb
-#canon http://foo/a%4bb
+#canon http://foo/aKb
 #scheme http
 #host foo
-#path /a%4bb
+#path /aKb
 
 #data
 http://foo/a%4Cb
-#canon http://foo/a%4Cb
+#canon http://foo/aLb
 #scheme http
 #host foo
-#path /a%4Cb
+#path /aLb
 
 #data
 http://foo/a%4cb
-#canon http://foo/a%4cb
+#canon http://foo/aLb
 #scheme http
 #host foo
-#path /a%4cb
+#path /aLb
 
 #data
 http://foo/a%4Db
-#canon http://foo/a%4Db
+#canon http://foo/aMb
 #scheme http
 #host foo
-#path /a%4Db
+#path /aMb
 
 #data
 http://foo/a%4db
-#canon http://foo/a%4db
+#canon http://foo/aMb
 #scheme http
 #host foo
-#path /a%4db
+#path /aMb
 
 #data
 http://foo/a%4Eb
-#canon http://foo/a%4Eb
+#canon http://foo/aNb
 #scheme http
 #host foo
-#path /a%4Eb
+#path /aNb
 
 #data
 http://foo/a%4eb
-#canon http://foo/a%4eb
+#canon http://foo/aNb
 #scheme http
 #host foo
-#path /a%4eb
+#path /aNb
 
 #data
 http://foo/a%4Fb
-#canon http://foo/a%4Fb
+#canon http://foo/aOb
 #scheme http
 #host foo
-#path /a%4Fb
+#path /aOb
 
 #data
 http://foo/a%4fb
-#canon http://foo/a%4fb
+#canon http://foo/aOb
 #scheme http
 #host foo
-#path /a%4fb
+#path /aOb
 
 #data
 http://foo/a%50b
-#canon http://foo/a%50b
+#canon http://foo/aPb
 #scheme http
 #host foo
-#path /a%50b
+#path /aPb
 
 #data
 http://foo/a%51b
-#canon http://foo/a%51b
+#canon http://foo/aQb
 #scheme http
 #host foo
-#path /a%51b
+#path /aQb
 
 #data
 http://foo/a%52b
-#canon http://foo/a%52b
+#canon http://foo/aRb
 #scheme http
 #host foo
-#path /a%52b
+#path /aRb
 
 #data
 http://foo/a%53b
-#canon http://foo/a%53b
+#canon http://foo/aSb
 #scheme http
 #host foo
-#path /a%53b
+#path /aSb
 
 #data
 http://foo/a%54b
-#canon http://foo/a%54b
+#canon http://foo/aTb
 #scheme http
 #host foo
-#path /a%54b
+#path /aTb
 
 #data
 http://foo/a%55b
-#canon http://foo/a%55b
+#canon http://foo/aUb
 #scheme http
 #host foo
-#path /a%55b
+#path /aUb
 
 #data
 http://foo/a%56b
-#canon http://foo/a%56b
+#canon http://foo/aVb
 #scheme http
 #host foo
-#path /a%56b
+#path /aVb
 
 #data
 http://foo/a%57b
-#canon http://foo/a%57b
+#canon http://foo/aWb
 #scheme http
 #host foo
-#path /a%57b
+#path /aWb
 
 #data
 http://foo/a%58b
-#canon http://foo/a%58b
+#canon http://foo/aXb
 #scheme http
 #host foo
-#path /a%58b
+#path /aXb
 
 #data
 http://foo/a%59b
-#canon http://foo/a%59b
+#canon http://foo/aYb
 #scheme http
 #host foo
-#path /a%59b
+#path /aYb
 
 #data
 http://foo/a%5Ab
-#canon http://foo/a%5Ab
+#canon http://foo/aZb
 #scheme http
 #host foo
-#path /a%5Ab
+#path /aZb
 
 #data
 http://foo/a%5ab
-#canon http://foo/a%5ab
+#canon http://foo/aZb
 #scheme http
 #host foo
-#path /a%5ab
+#path /aZb
 
 #data
 http://foo/a%5Bb
@@ -3007,17 +3007,17 @@ http://foo/a%5eb
 
 #data
 http://foo/a%5Fb
-#canon http://foo/a%5Fb
+#canon http://foo/a_b
 #scheme http
 #host foo
-#path /a%5Fb
+#path /a_b
 
 #data
 http://foo/a%5fb
-#canon http://foo/a%5fb
+#canon http://foo/a_b
 #scheme http
 #host foo
-#path /a%5fb
+#path /a_b
 
 #data
 http://foo/a%60b
@@ -3028,234 +3028,234 @@ http://foo/a%60b
 
 #data
 http://foo/a%61b
-#canon http://foo/a%61b
+#canon http://foo/aab
 #scheme http
 #host foo
-#path /a%61b
+#path /aab
 
 #data
 http://foo/a%62b
-#canon http://foo/a%62b
+#canon http://foo/abb
 #scheme http
 #host foo
-#path /a%62b
+#path /abb
 
 #data
 http://foo/a%63b
-#canon http://foo/a%63b
+#canon http://foo/acb
 #scheme http
 #host foo
-#path /a%63b
+#path /acb
 
 #data
 http://foo/a%64b
-#canon http://foo/a%64b
+#canon http://foo/adb
 #scheme http
 #host foo
-#path /a%64b
+#path /adb
 
 #data
 http://foo/a%65b
-#canon http://foo/a%65b
+#canon http://foo/aeb
 #scheme http
 #host foo
-#path /a%65b
+#path /aeb
 
 #data
 http://foo/a%66b
-#canon http://foo/a%66b
+#canon http://foo/afb
 #scheme http
 #host foo
-#path /a%66b
+#path /afb
 
 #data
 http://foo/a%67b
-#canon http://foo/a%67b
+#canon http://foo/agb
 #scheme http
 #host foo
-#path /a%67b
+#path /agb
 
 #data
 http://foo/a%68b
-#canon http://foo/a%68b
+#canon http://foo/ahb
 #scheme http
 #host foo
-#path /a%68b
+#path /ahb
 
 #data
 http://foo/a%69b
-#canon http://foo/a%69b
+#canon http://foo/aib
 #scheme http
 #host foo
-#path /a%69b
+#path /aib
 
 #data
 http://foo/a%6Ab
-#canon http://foo/a%6Ab
+#canon http://foo/ajb
 #scheme http
 #host foo
-#path /a%6Ab
+#path /ajb
 
 #data
 http://foo/a%6ab
-#canon http://foo/a%6ab
+#canon http://foo/ajb
 #scheme http
 #host foo
-#path /a%6ab
+#path /ajb
 
 #data
 http://foo/a%6Bb
-#canon http://foo/a%6Bb
+#canon http://foo/akb
 #scheme http
 #host foo
-#path /a%6Bb
+#path /akb
 
 #data
 http://foo/a%6bb
-#canon http://foo/a%6bb
+#canon http://foo/akb
 #scheme http
 #host foo
-#path /a%6bb
+#path /akb
 
 #data
 http://foo/a%6Cb
-#canon http://foo/a%6Cb
+#canon http://foo/alb
 #scheme http
 #host foo
-#path /a%6Cb
+#path /alb
 
 #data
 http://foo/a%6cb
-#canon http://foo/a%6cb
+#canon http://foo/alb
 #scheme http
 #host foo
-#path /a%6cb
+#path /alb
 
 #data
 http://foo/a%6Db
-#canon http://foo/a%6Db
+#canon http://foo/amb
 #scheme http
 #host foo
-#path /a%6Db
+#path /amb
 
 #data
 http://foo/a%6db
-#canon http://foo/a%6db
+#canon http://foo/amb
 #scheme http
 #host foo
-#path /a%6db
+#path /amb
 
 #data
 http://foo/a%6Eb
-#canon http://foo/a%6Eb
+#canon http://foo/anb
 #scheme http
 #host foo
-#path /a%6Eb
+#path /anb
 
 #data
 http://foo/a%6eb
-#canon http://foo/a%6eb
+#canon http://foo/anb
 #scheme http
 #host foo
-#path /a%6eb
+#path /anb
 
 #data
 http://foo/a%6Fb
-#canon http://foo/a%6Fb
+#canon http://foo/aob
 #scheme http
 #host foo
-#path /a%6Fb
+#path /aob
 
 #data
 http://foo/a%6fb
-#canon http://foo/a%6fb
+#canon http://foo/aob
 #scheme http
 #host foo
-#path /a%6fb
+#path /aob
 
 #data
 http://foo/a%70b
-#canon http://foo/a%70b
+#canon http://foo/apb
 #scheme http
 #host foo
-#path /a%70b
+#path /apb
 
 #data
 http://foo/a%71b
-#canon http://foo/a%71b
+#canon http://foo/aqb
 #scheme http
 #host foo
-#path /a%71b
+#path /aqb
 
 #data
 http://foo/a%72b
-#canon http://foo/a%72b
+#canon http://foo/arb
 #scheme http
 #host foo
-#path /a%72b
+#path /arb
 
 #data
 http://foo/a%73b
-#canon http://foo/a%73b
+#canon http://foo/asb
 #scheme http
 #host foo
-#path /a%73b
+#path /asb
 
 #data
 http://foo/a%74b
-#canon http://foo/a%74b
+#canon http://foo/atb
 #scheme http
 #host foo
-#path /a%74b
+#path /atb
 
 #data
 http://foo/a%75b
-#canon http://foo/a%75b
+#canon http://foo/aub
 #scheme http
 #host foo
-#path /a%75b
+#path /aub
 
 #data
 http://foo/a%76b
-#canon http://foo/a%76b
+#canon http://foo/avb
 #scheme http
 #host foo
-#path /a%76b
+#path /avb
 
 #data
 http://foo/a%77b
-#canon http://foo/a%77b
+#canon http://foo/awb
 #scheme http
 #host foo
-#path /a%77b
+#path /awb
 
 #data
 http://foo/a%78b
-#canon http://foo/a%78b
+#canon http://foo/axb
 #scheme http
 #host foo
-#path /a%78b
+#path /axb
 
 #data
 http://foo/a%79b
-#canon http://foo/a%79b
+#canon http://foo/ayb
 #scheme http
 #host foo
-#path /a%79b
+#path /ayb
 
 #data
 http://foo/a%7Ab
-#canon http://foo/a%7Ab
+#canon http://foo/azb
 #scheme http
 #host foo
-#path /a%7Ab
+#path /azb
 
 #data
 http://foo/a%7ab
-#canon http://foo/a%7ab
+#canon http://foo/azb
 #scheme http
 #host foo
-#path /a%7ab
+#path /azb
 
 #data
 http://foo/a%7Bb
@@ -3301,17 +3301,17 @@ http://foo/a%7db
 
 #data
 http://foo/a%7Eb
-#canon http://foo/a%7Eb
+#canon http://foo/a~b
 #scheme http
 #host foo
-#path /a%7Eb
+#path /a~b
 
 #data
 http://foo/a%7eb
-#canon http://foo/a%7eb
+#canon http://foo/a~b
 #scheme http
 #host foo
-#path /a%7eb
+#path /a~b
 
 #data
 http://foo/a%7Fb
