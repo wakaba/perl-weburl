@@ -99,6 +99,8 @@ sub _canon : Tests {
           $result->{$_ . 8} = $test->{$_ . 8}->[1]->[0];
           $result->{$_ . 8} = '' unless defined $result->{$_ . 8};
         }
+        $result->{$_} = $result->{$_ . 8};
+        delete $result->{$_ . 8};
       } else {
         if (length $test->{$_}->[0]) {
           $result->{$_} = $test->{$_}->[0];

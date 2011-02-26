@@ -398,7 +398,7 @@ http://hoge/?foo\u000Abar
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 
 #data escaped
 http://hoge/?foo\u000Abar#abc\u000Adef
@@ -406,9 +406,9 @@ http://hoge/?foo\u000Abar#abc\u000Adef
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 #fragment escaped
-abc\u000Adef
+abcdef
 
 #data escaped
 http://hoge/#foo\u000Abar
@@ -416,10 +416,10 @@ http://hoge/#foo\u000Abar
 #host hoge
 #path /
 #fragment escaped
-foo\u000Abar
+foobar
 
 #data escaped
-http://www.example.com/?\u0002hell\u007F bye
+http://www.example.com/?\u0002hello\u007F bye
 #canon http://www.example.com/?%02hello%7F%20bye
 #scheme http
 #host www.example.com
@@ -432,7 +432,7 @@ http://www.example.com/?q="asdf"
 #scheme http
 #host www.example.com
 #path /
-#query %22asdf%22
+#query q=%22asdf%22
 
 #data
 http://www.example.com/?q=<asdf>
@@ -444,19 +444,23 @@ http://www.example.com/?q=<asdf>
 
 #data escaped
 http://www.example.com/?q=\ud800\ud800
-#canon http://www.example.com/?q=%EF%BF%BD%EF%BF%BD
+#canon escaped
+http://www.example.com/?q=%EF%BF%BD%EF%BF%BD
 #scheme http
 #host www.example.com
 #path /
-#query q=%EF%BF%BD%EF%BF%BD
+#query escaped
+q=%EF%BF%BD%EF%BF%BD
 
 #data escaped
 http://www.example.com/?q=\u4F60\u597D
-#canon http://www.example.com/?q=%E4%BD%A0%E5%A5%BD
+#canon escaped
+http://www.example.com/?q=%E4%BD%A0%E5%A5%BD
 #scheme http
 #host www.example.com
 #path /
-#query q=%E4%BD%A0%E5%A5%BD
+#query escaped
+q=%E4%BD%A0%E5%A5%BD
 
 #data
 http://www.example.com/##asdf

@@ -653,36 +653,36 @@ http:#abc
 ?foo\u000Abar
 #base http://hoge/
 #canon escaped
-http://hoge/?foo\u000Abar
+http://hoge/?foobar
 #scheme http
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 
 #data escaped
 ?foo\u000Abar#abc\u000Adef
 #base http://hoge/
 #canon escaped
-http://hoge/?foo\u000Abar#abc\u000Adef
+http://hoge/?foobar#abcdef
 #scheme http
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 #fragment escaped
-abc\u000Adef
+abcdef
 
 #data escaped
 | #foo\u000Abar
 #base http://hoge/
 #canon
-http://hoge/#foo\u000Abar
+http://hoge/#foobar
 #scheme http
 #host hoge
 #path /
 #fragment escaped
-foo\u000Abar
+foobar
 
 #data
 hoge

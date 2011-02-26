@@ -2065,7 +2065,8 @@ http://example.com/?a\uD800b
 
 #data escaped
 http://example.com/?a\uD800\uDFFFb
-#canon http://example.com/?a%F0%90%8F%BFb
+#canon escaped
+http://example.com/?a%F0%90%8F%BFb
 #canon8 http://example.com/?a%EF%BF%BD%EF%BF%BDb
 #scheme http
 #host example.com
