@@ -1153,3 +1153,19 @@ http:#bar
 #host foo
 #path /aaa
 #fragment bar
+
+#data
+//foo/bar/foo/../baz/abc/.
+#base http://a/b/c/
+#canon http://foo/bar/baz/abc/
+#scheme http
+#host foo
+#path /bar/baz/abc/
+
+#data
+http://foo/bar/foo/../baz/abc/.
+#base ftp://a/b/c/
+#canon http://foo/bar/baz/abc/
+#scheme http
+#host foo
+#path /bar/baz/abc/

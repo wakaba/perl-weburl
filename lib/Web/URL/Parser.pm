@@ -134,7 +134,6 @@ sub resolve_url ($$$) {
     return {invalid => 1};
   }
 
-  ## This is a "TODO" in url-spec.
   {
     ## Control characters
     $spec =~ s/\A(?:\x00|\x01|\x02|\x03|\x04|\x05|\x06|\x07|\x08|\x09|\x0A|\x0B|\x0C|\x0D|\x0E|\x0F|\x10|\x11|\x12|\x13|\x14|\x15|\x16|\x17|\x18|\x19|\x1A|\x1B|x1C|\x1D|\x1E|\x1F|\x20)+//;
@@ -154,6 +153,11 @@ sub resolve_url ($$$) {
       $IsHierarchicalScheme->{$parsed_spec->{scheme_normalized}}) {
     $spec = substr $spec, 1 + length $parsed_spec->{scheme};
     return $class->_resolve_relative_url (\$spec, $parsed_base_url);
+  } elsif ($IsHierarchicalScheme->{$parsed_spec->{scheme_normalized}}) {
+    if (defined $parsed_spec->{path}) {
+      $parsed_spec->{path} = $class->_remove_dot_segments
+          ($parsed_spec->{path});
+    }
   }
 
   return $parsed_spec;
@@ -172,6 +176,10 @@ sub _resolve_relative_url ($$$) {
 
   if ($$specref =~ m{\A//}) {
     ## Resolve as a scheme-relative URL
+
+    ## XXX It's still unclear how this resolution steps interact with
+    ## |file| URL's resolution (which might have special processing
+    ## rules in the parsing steps).
 
     my $r_authority;
     my $r_path = $$specref;
@@ -244,9 +252,6 @@ sub _resolve_relative_url ($$$) {
          $$specref);
   } else {
     ## Resolve as a path-relative URL
-
-    ## XXX Not defined yet in url-spec (The following is based on RFC
-    ## 3986 algorithm)
 
     my $r_path = $$specref;
     my $r_query;

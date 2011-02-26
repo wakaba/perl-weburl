@@ -1,5 +1,5 @@
 
-- url-spec
+- [url-spec]
 - WA1 decomposition attributes
 
 - Remove /control characters/ from beginning and end of relative URL
@@ -16,11 +16,27 @@ character.
 
 * Resolution
 
+  If parsing the base URL results in "invalid", the resolved URL
+  cannot be resolved.  Abort the steps.
+
+  Trim the control characters.
+
+  Apply url-spec's steps.
+
+  If the |scheme| components of resolved and base URLs differ, and if
+  the resolved URL's scheme is hierarchical, parse the resolved URL as
+  an absolute URL, and then remove dot-segments [RFC 3986] from the
+  |path| component, if any.
+
 ** Resolve as a scheme-relative URL
 
   Removing dot-segments [RFC 3986] from the |path| component.
 
   Apply url-spec's steps.
+
+** Resolve as a path-relative URL
+
+  Apply RFC 3986 algorithm.
 
 * Percent-encode a character string /s/
 
