@@ -14,6 +14,14 @@ A *non-unreserved octet* is an octet that does not represent an
 unreserved character when the octet is interpreted as a US-ASCII
 character.
 
+* Resolution
+
+** Resolve as a scheme-relative URL
+
+  Removing dot-segments [RFC 3986] from the |path| component.
+
+  Apply url-spec's steps.
+
 * Percent-encode a character string /s/
 
   Replace each character in the following range in /s/ by a U+FFFD
@@ -53,8 +61,6 @@ character.
   (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B (+),
   U+002D (,), U+002E (.), U+002F (/), U+003A (:), U+003B (;), U+003D
   (=), U+0040 (@), U+005B ([), U+005D (]).
-
-  XXX dot-segments
 
   Percent-encode characters in the |query| component of /u/ EXCEPT
   for: unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%),

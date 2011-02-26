@@ -16,6 +16,7 @@ my @decomps_data_f = (map { $data_d->file ($_) } qw(
   decomps.dat decomps-authority.dat decomps-data.dat
   decomps-file.dat decomps-javascript.dat decomps-mailto.dat
   decomps-path.dat decomps-relative.dat decomps-scheme.dat
+  decomps-query.dat decomps-fragment.dat
 ));
 
 sub _parse : Tests {

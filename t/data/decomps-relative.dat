@@ -1100,7 +1100,7 @@ http:.
 #data
 ./a/b/c/./d/./e/../f/g
 #base http://a/b/c/d;p?q
-#canon http://a/b/c/d/f/g
+#canon http://a/b/c/a/b/c/d/f/g
 #scheme http
 #host a
 #path /b/c/a/b/c/d/f/g

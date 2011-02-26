@@ -172,8 +172,34 @@ sub _resolve_relative_url ($$$) {
 
   if ($$specref =~ m{\A//}) {
     ## Resolve as a scheme-relative URL
-    return $class->parse_absolute_url
-        ($parsed_base_url->{scheme} . ':' . $$specref);
+
+    my $r_authority;
+    my $r_path = $$specref;
+    my $r_query;
+    my $r_fragment;
+    if ($r_path =~ s{\#(.*)\z}{}s) {
+      $r_fragment = $1;
+    }
+    if ($r_path =~ s{\?(.*)\z}{}s) {
+      $r_query = $1;
+    }
+    if ($r_path =~ s{\A([^/\\?\#;]*)(?=[/\\?\#;])}{}) {
+      $r_authority = $1;
+    } else {
+      $r_authority = $r_path;
+      $r_path = undef;
+    }
+
+    if (defined $r_path) {
+      $r_path = $class->_remove_dot_segments ($r_path);
+    }
+
+    my $url = $parsed_base_url->{scheme} . ':' . $r_authority;
+    $url .= $r_path if defined $r_path;
+    $url .= '?' . $r_query if defined $r_query;
+    $url .= '#' . $r_fragment if defined $r_fragment;
+
+    return $class->parse_absolute_url ($url);
   } elsif ($$specref =~ m{\A/}) {
     ## Resolve as an authority-relative URL
     my $authority = $parsed_base_url->{host};
@@ -271,7 +297,7 @@ sub _remove_dot_segments ($$) {
       next L;
     }
     last Z if s/^\.\.?\z//;
-    s/^(\/?[^\/]*)//;
+    s{^(/?(?:(?!/).)*)}{}s;
     $buf .= $1;
   }
   return $buf;
