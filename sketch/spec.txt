@@ -54,6 +54,8 @@ character.
   U+002D (,), U+002E (.), U+002F (/), U+003A (:), U+003B (;), U+003D
   (=), U+0040 (@), U+005B ([), U+005D (]).
 
+  XXX dot-segments
+
   Percent-encode characters in the |query| component of /u/ EXCEPT
   for: unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%),
   U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B

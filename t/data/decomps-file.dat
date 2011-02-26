@@ -549,7 +549,7 @@ file:~user/path/to/file
 
 #data
 file:%7Euser/path/to/file
-#canon file:///%7Euser/path/to/file
+#canon file:///~user/path/to/file
 #scheme file
 #host
 #path /~user/path/to/file
@@ -563,7 +563,7 @@ file:/~user/path/to/file
 
 #data
 file:/%7Euser/path/to/file
-#canon file:///%7Euser/path/to/file
+#canon file:///~user/path/to/file
 #scheme file
 #host
 #path /~user/path/to/file
@@ -577,7 +577,7 @@ file://~user/path/to/file
 
 #data
 file://%7Euser/path/to/file
-#canon file:///%7Euser/path/to/file
+#canon file:///~user/path/to/file
 #scheme file
 #host
 #path /~user/path/to/file
@@ -591,7 +591,7 @@ file:///~user/path/to/file
 
 #data
 file:///%7Euser/path/to/file
-#canon file:///%7Euser/path/to/file
+#canon file:///~user/path/to/file
 #scheme file
 #host
 #path /~user/path/to/file

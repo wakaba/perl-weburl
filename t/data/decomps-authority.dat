@@ -887,17 +887,17 @@ http://[#]
 
 #data
 http://[/]
-#canon http://[/%5D
+#canon http://[/]
 #scheme http
 #host [
-#path /%5D
+#path /]
 
 #data
 http://[\]
-#canon http://[/%5D
+#canon http://[/]
 #scheme http
 #host [
-#path /%5D
+#path /]
 
 #data
 http://[:]
@@ -982,11 +982,11 @@ http://[1:2:4
 
 #data
 http://[1:2:3/4:5]
-#canon http://[1%3A2:3/4:5%5D
+#canon http://[1%3A2:3/4:5]
 #scheme http
 #host [1%3A2
 #port 3
-#path /4:5%5D
+#path /4:5]
 
 #data
 http://:080
@@ -1004,7 +1004,7 @@ http://foo:080/
 
 #data
 http://[foo;bar=a]:80
-#canon http://[foo/;bar=a%5D:80
+#canon http://[foo/;bar=a]:80
 #scheme http
 #host [foo
 #path /;bar=a%5D:80

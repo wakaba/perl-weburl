@@ -8,14 +8,14 @@ http://example.com////../..
 
 #data escaped
 http://example.com/foo\u0009bar
-#canon http://example.com/foo%09bar
+#canon http://example.com/foobar
 #scheme http
 #host example.com
-#path /foo%09bar
+#path /foobar
 
 #data escaped
 http://example.com/foo\u0009\u0091
-#canon http://example.com/foo%09%C2%91%91
+#canon http://example.com/foo%C2%91%91
 #scheme http
 #host example.com
 #path /foo%C2%91%91
@@ -25,7 +25,7 @@ http://example.com/foo%09%C2%91%91
 #canon http://example.com/foo%09%C2%91%91
 #scheme http
 #host example.com
-#path /foo%C2%91%91
+#path /foo%09%C2%91%91
 
 #data escaped
 http://example.com/foo%91
@@ -2053,20 +2053,20 @@ http://example.org/~user
 http://example.org/%7Euser
 #scheme http
 #host example.org
-#path /%7Euser
+#path /~user
 
 #data
 eXAMPLE://a/./b/../b/%63/%7bfoo%7d
-#canon example://a/./b/../b/%63/%7bfoo%7d
+#canon example://a/./b/../b/c/%7bfoo%7d
 #scheme example
-#path //a/./b/../b/%63/%7bfoo%7d
+#path //a/./b/../b/c/%7bfoo%7d
 
 #data
 HtTp://a/./b/../b/%63/%7bfoo%7d
-#canon http://a/b/%63/%7bfoo%7d
+#canon http://a/b/c/%7bfoo%7d
 #scheme http
 #host a
-#path /b/%63/%7bfoo%7d
+#path /b/c/%7bfoo%7d
 
 #data
 eXAMPLE://a/./b/../b/c/%7bfoo%7d

@@ -1108,10 +1108,10 @@ http:.
 #data
 %2E/a/b/%2E%2E/%2e
 #base http://a/b/c/d;p?q
-#canon http://a/b/c/%2E/a/b/%2E%2E/%2e
+#canon http://a/b/c/./a/b/../.
 #scheme http
 #host a
-#path /b/c/%2E/a/b/%2E%2E/%2e
+#path /b/c/./a/b/./.
 
 #data
 http:
