@@ -97,3 +97,57 @@ character.
   U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF, non-Unicode characters.
 
   XXX Non-hierarchical
+
+* Serialization of parsed URL
+
+  If the parsed URL is /invalid/, abort these steps.
+
+  Let /s/ be the empty string.
+
+  Append the |scheme| component to /s/.
+
+  Append a U+003A COLON (:) character to /s/.
+
+  If there is at least one of |user|, |password|, |host|, and |port|
+  components (even if it is the empty string):
+
+    Append |//| (two U+002F SOLIDUS (/) characters) to /s/.
+
+    If there is at least one of |user| and |password| component (even
+    if it is the empty string):
+
+      Append the |user| component, if any, to /s/.
+
+      If there is the |password| component (even if it is the empty
+      string):
+
+        Append a U+003A COLON (:) character to /s/.
+
+        Append the |password| component to /s/.
+
+      Append a U+0040 COMMERCIAL AT (@) character to /s/.
+
+    Append the |host| component, if any, to /s/.
+
+    If there is the |port| component (even if it is the empty string):
+
+      Append a U+003A COLON (:) character to /s/.
+
+      Append the |port| component to /s/.
+
+  Append the |path| component, if any, to /s/.
+
+  If there is the |query| component (even if it is the empty string):
+
+    Append a U+003F QUESTION MARK (?) character to /s/.
+
+    Append the |query| component to /s/.
+
+  If there is the |fragment| component (even if it is the empty
+  string):
+
+    Append a U+0023 NUMBER SIGN (#) character to /s/.
+
+    Append the |fragment| component to /s/.
+
+  Return /s/.
