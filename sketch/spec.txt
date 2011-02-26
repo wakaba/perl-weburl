@@ -14,10 +14,38 @@ A *non-unreserved octet* is an octet that does not represent an
 unreserved character when the octet is interpreted as a US-ASCII
 character.
 
+* Preprocessing of a string /s/
+
+  Remove leading or trailing control characters [url-spec].
+
+  Replace any character in the following range by a U+FFFD REPLACEMENT
+  CHARACTER:
+
+    - U+D800 ... U+DFFF
+    - U+FDD0 ... U+FDEF
+    - U+FFFE, U+FFFF, U+1FFFE, U+1FFFF, U+2FFFE, U+2FFFF, U+3FFFE,
+      U+3FFFF, U+4FFFE, U+4FFFF, U+5FFFE, U+5FFFF, U+6FFFE, U+6FFFF,
+      U+7FFFE, U+7FFFF, U+8FFFE, U+8FFFF, U+9FFFE, U+9FFFF, U+AFFFE,
+      U+AFFFF, U+BFFFE, U+BFFFF, U+CFFFE, U+CFFFF, U+DFFFE, U+DFFFF,
+      U+EFFFE, U+EFFFF, U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF
+    - Non-Unicode characters
+
+  XXX maybe white space characters should be removed here.
+
+  XXX and U+0000 -> U+FFFD.
+
+* Parsing an absolute URL /s/
+
+  Preprocess the string /s/.
+
+  Apply url-spec's steps.
+
 * Resolution
 
   If parsing the base URL results in "invalid", the resolved URL
   cannot be resolved.  Abort the steps.
+
+  Preprocess the resolved URL as /s/.
 
   Trim the control characters.
 
@@ -44,13 +72,6 @@ character.
   REPLACEMENT CHARACTER:
 
     - U+0000
-    - U+D800 ... U+DFFF
-    - U+FDD0 ... U+FDEF
-    - U+FFFE, U+FFFF, U+1FFFE, U+1FFFF, U+2FFFE, U+2FFFF, U+3FFFE,
-      U+3FFFF, U+4FFFE, U+4FFFF, U+5FFFE, U+5FFFF, U+6FFFE, U+6FFFF,
-      U+7FFFE, U+7FFFF, U+8FFFE, U+8FFFF, U+9FFFE, U+9FFFF, U+AFFFE,
-      U+AFFFF, U+BFFFE, U+BFFFF, U+CFFFE, U+CFFFF, U+DFFFE, U+DFFFF,
-      U+EFFFE, U+EFFFF, U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF
 
   Encode /s/ in UTF-8
 

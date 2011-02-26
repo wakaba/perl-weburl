@@ -2,6 +2,7 @@ package Web::URL::Parser;
 use strict;
 use warnings;
 use Encode;
+require utf8;
 
 our $IsHierarchicalScheme = {
   http => 1,
@@ -10,9 +11,37 @@ our $IsHierarchicalScheme = {
   ldap => 1,
 };
 
+sub _preprocess_input ($$) {
+  if (utf8::is_utf8 ($_[1])) {
+    ## Replace surrogate code points, noncharacters, and non-Unicode
+    ## characters by U+FFFD REPLACEMENT CHARACTER, as they break
+    ## Perl's regular expression character class handling.
+    my $i = 0;
+    pos ($_[1]) = $i;
+    while (pos $_[1] < length $_[1]) {
+      my $code = ord substr $_[1], pos ($_[1]), 1;
+      if ((0xD800 <= $code and $code <= 0xDFFF) or
+          (0xFDD0 <= $code and $code <= 0xFDEF) or
+          ($code % 0x10000) == 0xFFFE or
+          ($code % 0x10000) == 0xFFFF or
+          $code > 0x10FFFF
+      ) {
+        substr ($_[1], pos ($_[1]), 1) = "\x{FFFD}";
+      }
+      pos ($_[1])++;
+    }
+  }
+
+  ## Remove leading and trailing control characters.
+  $_[1] =~ s{\A[\x00-\x20]+}{};
+  $_[1] =~ s{[\x00-\x20]+\z}{};
+} # _preprocess_input
+
 sub parse_absolute_url ($$) {
   my ($class, $input) = @_;
   my $result = {};
+
+  $class->_preprocess_input ($input);
 
   $class->_find_scheme (\$input => $result);
   return $result if $result->{invalid};
@@ -61,10 +90,6 @@ sub parse_absolute_url ($$) {
 
 sub _find_scheme ($$) {
   my ($class, $inputref => $result) = @_;
-
-  ## Control characters
-  $$inputref =~ s/\A(?:\x00|\x01|\x02|\x03|\x04|\x05|\x06|\x07|\x08|\x09|\x0A|\x0B|\x0C|\x0D|\x0E|\x0F|\x10|\x11|\x12|\x13|\x14|\x15|\x16|\x17|\x18|\x19|\x1A|\x1B|x1C|\x1D|\x1E|\x1F|\x20)+//;
-  $$inputref =~ s/(?:\x00|\x01|\x02|\x03|\x04|\x05|\x06|\x07|\x08|\x09|\x0A|\x0B|\x0C|\x0D|\x0E|\x0F|\x10|\x11|\x12|\x13|\x14|\x15|\x16|\x17|\x18|\x19|\x1A|\x1B|x1C|\x1D|\x1E|\x1F|\x20)+\z//;
 
   if ($$inputref =~ s/^([^:]+)://) {
     $result->{scheme} = $1;
@@ -134,11 +159,7 @@ sub resolve_url ($$$) {
     return {invalid => 1};
   }
 
-  {
-    ## Control characters
-    $spec =~ s/\A(?:\x00|\x01|\x02|\x03|\x04|\x05|\x06|\x07|\x08|\x09|\x0A|\x0B|\x0C|\x0D|\x0E|\x0F|\x10|\x11|\x12|\x13|\x14|\x15|\x16|\x17|\x18|\x19|\x1A|\x1B|x1C|\x1D|\x1E|\x1F|\x20)+//;
-    $spec =~ s/(?:\x00|\x01|\x02|\x03|\x04|\x05|\x06|\x07|\x08|\x09|\x0A|\x0B|\x0C|\x0D|\x0E|\x0F|\x10|\x11|\x12|\x13|\x14|\x15|\x16|\x17|\x18|\x19|\x1A|\x1B|x1C|\x1D|\x1E|\x1F|\x20)+\z//;
-  }
+  $class->_preprocess_input ($spec);
 
   my $parsed_spec = $class->parse_absolute_url ($spec);
   if ($parsed_spec->{invalid} or
