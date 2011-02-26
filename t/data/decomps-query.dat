@@ -2071,7 +2071,7 @@ http://example.com/?a\uD800\uDFFFb
 #host example.com
 #path /
 #query a%F0%90%8F%BFb
-#path8 /?a%EF%BF%BD%EF%BF%BDb
+#query8 a%EF%BF%BD%EF%BF%BDb
 
 #data escaped
 http://example.com/?a\uF800b

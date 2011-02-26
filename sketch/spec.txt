@@ -63,6 +63,13 @@ character.
 
     XXX Using document encoding.
 
-  XXX fragment
+  Percent-encode following characters in the |fragment| component of
+  /u/: U+0000 ... U+0020, U+0022 ("), U+003C (<), U+003E (>), U+007F
+  ... U+009F, U+D800 ... U+DFFF, U+FDD0 ... U+FDEF, U+FFFE, U+FFFF,
+  U+1FFFE, U+1FFFF, U+2FFFE, U+2FFFF, U+3FFFE, U+3FFFF, U+4FFFE,
+  U+4FFFF, U+5FFFE, U+5FFFF, U+6FFFE, U+6FFFF, U+7FFFE, U+7FFFF,
+  U+8FFFE, U+8FFFF, U+9FFFE, U+9FFFF, U+AFFFE, U+AFFFF, U+BFFFE,
+  U+BFFFF, U+CFFFE, U+CFFFF, U+DFFFE, U+DFFFF, U+EFFFE, U+EFFFF,
+  U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF, non-Unicode characters.
 
   XXX Non-hierarchical
