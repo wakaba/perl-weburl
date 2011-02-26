@@ -320,7 +320,6 @@ sub canonicalize_url ($$) {
         if not defined $parsed_url->{path} or not length $parsed_url->{path};
   }
 
-  # Path
   if (defined $parsed_url->{path}) {
     my $s = Encode::encode ('utf-8', $parsed_url->{path});
     $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
@@ -332,13 +331,24 @@ sub canonicalize_url ($$) {
     $parsed_url->{path} = $s;
   }
 
-  # Query
   if (defined $parsed_url->{query}) {
     my $s = Encode::encode ('utf-8', $parsed_url->{query});
     $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x7E])}{
       sprintf '%%%02X', ord $1;
     }ge;
     $parsed_url->{query} = $s;
+  }
+
+  if (defined $parsed_url->{fragment}) {
+    $parsed_url->{fragment} =~ s{(\x00|\x01|\x02|\x03|\x04|\x05|\x06|\x07|\x08|\x09|\x0A|\x0B|\x0C|\x0D|\x0E|\x0F|\x10|\x11|\x12|\x13|\x14|\x15|\x16|\x17|\x18|\x19|\x1A|\x1B|x1C|\x1D|\x1E|\x1F|\x20|\x22|\x3C|\x3E|\x7F)}{
+      sprintf '%%%02X', ord $1;
+    }ge;
+    $parsed_url->{fragment} =~ s{(\x80|\x81|\x82|\x83|\x84|\x85|\x86|\x87|\x88|\x89|\x8A|\x8B|\x8C|\x8D|\x8E|\x8F|\x90|\x91|\x92|\x93|\x94|\x95|\x96|\x97|\x98|\x99|\x9A|\x9B|\x9C|\x9D|\x9E|\x9F)}{
+      join '',
+          map { sprintf '%%%02X', ord $_ }
+          split //,
+          Encode::encode 'utf-8', $1;
+    }ge;
   }
 
   return $parsed_url;
