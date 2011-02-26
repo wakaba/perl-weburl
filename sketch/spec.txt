@@ -41,6 +41,10 @@ character.
 
   Remove characters U+0009, U+000A, and U+000D from /u/.
 
+  XXX scheme
+
+  XXX authority
+
   Percent-decode percent-encoded representations of unreserved
   characters in the |path| component of /u/.
 
@@ -49,3 +53,16 @@ character.
   (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B (+),
   U+002D (,), U+002E (.), U+002F (/), U+003A (:), U+003B (;), U+003D
   (=), U+0040 (@), U+005B ([), U+005D (]).
+
+  Percent-encode characters in the |query| component of /u/ EXCEPT
+  for: unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%),
+  U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B
+  (+), U+002D (,), U+002E (.), U+002F (/), U+003A (:), U+003B (;),
+  U+003D (=), U+0040 (@), U+005B ([), U+005D (]), U+005C (\), U+005E
+  (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}).
+
+    XXX Using document encoding.
+
+  XXX fragment
+
+  XXX Non-hierarchical
