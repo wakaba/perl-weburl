@@ -1,3 +1,48 @@
+
+#data escaped
+http://www.example.com/?\u0002hello\u007F bye
+#canon http://www.example.com/?%02hello%7F%20bye
+#scheme http
+#host www.example.com
+#path /
+#query %02hello%7F%20bye
+
+#data
+http://www.example.com/?q="asdf"
+#canon http://www.example.com/?q=%22asdf%22
+#scheme http
+#host www.example.com
+#path /
+#query q=%22asdf%22
+
+#data
+http://www.example.com/?q=<asdf>
+#canon http://www.example.com/?q=%3Casdf%3E
+#scheme http
+#host www.example.com
+#path /
+#query q=%3Casdf%3E
+
+#data escaped
+http://www.example.com/?q=\ud800\ud800
+#canon escaped
+http://www.example.com/?q=%EF%BF%BD%EF%BF%BD
+#scheme http
+#host www.example.com
+#path /
+#query escaped
+q=%EF%BF%BD%EF%BF%BD
+
+#data escaped
+http://www.example.com/?q=\u4F60\u597D
+#canon escaped
+http://www.example.com/?q=%E4%BD%A0%E5%A5%BD
+#scheme http
+#host www.example.com
+#path /
+#query escaped
+q=%E4%BD%A0%E5%A5%BD
+
 #data escaped
 http://example.com/?a\u0000b
 #canon http://example.com/?a%EF%BF%BDb

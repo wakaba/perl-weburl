@@ -1,3 +1,135 @@
+
+#data
+http://www.example.com/##asdf
+#canon http://www.example.com/##asdf
+#scheme http
+#host www.example.com
+#path /
+#fragment #asdf
+
+#data
+http://www.example.com/#%23asdf
+#canon http://www.example.com/#%23asdf
+#scheme http
+#host www.example.com
+#path /
+#fragment %23asdf
+
+#data escaped
+http://www.example.com/#\ud800\u597d
+#canon escaped
+http://www.example.com/#\uFFFD\u597D
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+\uFFFD\u597D
+
+#data escaped
+http://www.example.com/#%EF%BF%BD%E5%A5%BD
+#canon http://www.example.com/#%EF%BF%BD%E5%A5%BD
+#scheme http
+#host www.example.com
+#path /
+#fragment %EF%BF%BD%E5%A5%BD
+
+#data
+http://www.example.com/#%26%2355296%3B%26%2322909%3B
+#canon http://www.example.com/#%26%2355296%3B%26%2322909%3B
+#scheme http
+#host www.example.com
+#path /
+#fragment %26%2355296%3B%26%2322909%3B
+
+#data escaped
+http://www.example.com/#a\uFDD0
+#canon escaped
+http://www.example.com/#a\uFFFD
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+a\uFFFD
+
+#data
+http://www.example.com/#a%EF%B7%90
+#canon http://www.example.com/#a%EF%B7%90
+#scheme http
+#host www.example.com
+#path /
+#fragment a%EF%B7%90
+
+#data
+http://www.example.com/#asdf#qwer
+#canon http://www.example.com/#asdf#qwer
+#scheme http
+#host www.example.com
+#path /
+#fragment asdf#qwer
+
+#data
+http://www.example.com/#hello, world
+#canon
+http://www.example.com/#hello, world
+#scheme http
+#host www.example.com
+#path /
+#fragment 
+hello, world
+
+#data
+http://www.example.com/#hello,%20world.
+#canon http://www.example.com/#hello,%20world.
+#scheme http
+#host www.example.com
+#path /
+#fragment hello,%20world.
+
+#data escaped
+http://www.example.com/#\u00C2\u00A9
+#canon escaped
+http://www.example.com/#\u00C2\u00A9
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+\u00C2\u00A9
+
+#data
+http://www.example.com/#%C2%A9
+#canon http://www.example.com/#%C2%A9
+#scheme http
+#host www.example.com
+#path /
+#fragment %C2%A9
+
+#data
+http://www.example.com/#%C3%82%C2%A9
+#canon http://www.example.com/#%C3%82%C2%A9
+#scheme http
+#host www.example.com
+#path /
+#fragment %C3%82%C2%A9
+
+#data escaped
+http://www.example.com/#\U00010300ss
+#canon escaped
+http://www.example.com/#\U00010300ss
+#scheme http
+#host www.example.com
+#path /
+#fragment escaped
+\U00010300ss
+
+#data
+http://www.example.com/#%F0%90%8C%80ss
+#canon
+http://www.example.com/#%F0%90%8C%80ss
+#scheme http
+#host www.example.com
+#path /
+#fragment %F0%90%8C%80ss
+
 #data escaped
 http://example.com/#a\u0000b
 #canon escaped
