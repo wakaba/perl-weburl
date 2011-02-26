@@ -1950,6 +1950,12 @@ http://example.com/\u4F60\u597D\u4F60\u597D
 #host example.com
 #path /%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
 
+#data
+http://example.com/%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
+#scheme http
+#host example.com
+#path /%E4%BD%A0%E5%A5%BD%E4%BD%A0%E5%A5%BD
+
 #data escaped
 http://example.com/\uFDD0zyx
 #canon http://example.com/%EF%BF%BDzyx
