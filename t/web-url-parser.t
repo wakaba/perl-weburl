@@ -90,11 +90,21 @@ sub _canon : Tests {
       scheme user password host port path query fragment invalid canon
     )) {
       next unless $test->{$_};
-      if (length $test->{$_}->[0]) {
-        $result->{$_} = $test->{$_}->[0];
+
+      if ($test->{$_ . 8}) {
+        if (length $test->{$_ . 8}->[0]) {
+          $result->{$_ . 8} = $test->{$_ . 8}->[0];
+        } else {
+          $result->{$_ . 8} = $test->{$_ . 8}->[1]->[0];
+          $result->{$_ . 8} = '' unless defined $result->{$_ . 8};
+        }
       } else {
-        $result->{$_} = $test->{$_}->[1]->[0];
-        $result->{$_} = '' unless defined $result->{$_};
+        if (length $test->{$_}->[0]) {
+          $result->{$_} = $test->{$_}->[0];
+        } else {
+          $result->{$_} = $test->{$_}->[1]->[0];
+          $result->{$_} = '' unless defined $result->{$_};
+        }
       }
     }
     if (defined $result->{scheme}) {

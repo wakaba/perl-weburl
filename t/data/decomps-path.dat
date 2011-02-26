@@ -1850,6 +1850,22 @@ http://example.com/a\u0100b
 #path /a%C4%80b
 
 #data escaped
+http://example.com/a\uD800b
+#canon http://example.com/a%EF%BF%BDb
+#scheme http
+#host example.com
+#path /a%EF%BF%BDb
+
+#data escaped
+http://example.com/a\uD800\uDFFFb
+#canon http://example.com/a%F0%90%8F%BFb
+#canon8 http://example.com/a%EF%BF%BD%EF%BF%BDb
+#scheme http
+#host example.com
+#path /a%F0%90%8F%BFb
+#path8 /a%EF%BF%BD%EF%BF%BDb
+
+#data escaped
 http://example.com/a\uF800b
 #canon http://example.com/a%EF%A0%80b
 #scheme http
