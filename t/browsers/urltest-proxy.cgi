@@ -16,9 +16,12 @@ my $q = $ENV{QUERY_STRING} || '';
 
 if ($q =~ /^c=([^&]+)&u=([^&]+)&b=([^&]+)$/) {
   my $charset = {
-    'euc-jp' => 'euc-jp',
-    'utf-16' => 'utf-16',
-  }->{$1} || 'utf-8';
+    'euc-jp' => ['euc-jp', 'euc-jp'],
+    'utf-16' => ['utf-16', 'utf-16'],
+    'iso-2022-jp' => ['iso-2022-jp', 'iso-2022-jp'],
+    'shift_jis' => ['shift_jis', 'shift_jis'],
+    'ibm037' => ['ibm037', 'cp37'],
+  }->{$1} || ['utf-8', 'utf-8'];
   my $url = $2;
   my $base = $3;
   for ($url, $base) {
@@ -27,8 +30,8 @@ if ($q =~ /^c=([^&]+)&u=([^&]+)&b=([^&]+)$/) {
   }
   my $s = sprintf q{<!DOCTYPE HTML><base href="%s"><a href="%s">xx</a>},
       htescape $base, htescape $url;
-  print "Content-Type: text/html; charset=$charset\n\n";
-  print scalar encode $charset, $s;
+  print "Content-Type: text/html; charset=$charset->[0]\n\n";
+  print scalar encode $charset->[1], $s;
 } else {
   print "Status: 404 Not found\n\n";
 }

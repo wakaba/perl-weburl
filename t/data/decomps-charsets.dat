@@ -2,23 +2,23 @@
 http://foo/bar?\u4E00\u4E01
 #charset iso-2022-jp
 #canon escaped
-http://foo/bar?%E4%B8%80%E4%B8%81
+http://foo/bar?%1B$B0lCz%1B(B
 #scheme http
 #host foo
 #path /bar
 #query escaped
-%E4%B8%80%E4%B8%81
+%1B$B0lCz%1B(B
 
 #data escaped
 http://foo/bar?\u1000
 #charset iso-2022-jp
 #canon escaped
-http://foo/bar?%E1%80%80
+http://foo/bar??
 #scheme http
 #host foo
 #path /bar
 #query escaped
-%E1%80%80
+?
 
 #data escaped
 http://foo/bar?\u4E00\u4E01
@@ -30,6 +30,17 @@ http://foo/bar?%E4%B8%80%E4%B8%81
 #path /bar
 #query escaped
 %E4%B8%80%E4%B8%81
+
+#data escaped
+http://foo/bar?abcdef
+#charset utf-16
+#canon escaped
+http://foo/bar?abcdef
+#scheme http
+#host foo
+#path /bar
+#query escaped
+abcdef
 
 #data escaped
 http://foo/bar?\u1000
@@ -63,3 +74,58 @@ http://foo/bar??
 #path /bar
 #query escaped
 ?
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset shift_jis
+#canon escaped
+http://foo/bar?%88%EA%92%9A
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%88%EA%92%9A
+
+#data escaped
+http://foo/bar?\u1000
+#charset shift_jis
+#canon escaped
+http://foo/bar??
+#scheme http
+#host foo
+#path /bar
+#query escaped
+?
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset ibm037
+#canon escaped
+http://foo/bar???
+#scheme http
+#host foo
+#path /bar
+#query escaped
+??
+
+#data escaped
+http://foo/bar?\u1000
+#charset ibm037
+#canon escaped
+http://foo/bar??
+#scheme http
+#host foo
+#path /bar
+#query escaped
+?
+
+#data escaped
+http://foo/bar?abcdef
+#charset ibm037
+#canon escaped
+http://foo/bar?abcdef
+#scheme http
+#host foo
+#path /bar
+#query escaped
+abcdef
