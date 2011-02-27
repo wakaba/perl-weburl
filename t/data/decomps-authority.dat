@@ -1046,6 +1046,652 @@ http://:::::@
 #path /
 
 #data
+http://a%00b@foo/
+#canon http://a%00b@foo/
+#scheme http
+#user a%00b
+#host foo
+#path /
+
+#data
+http://a%20b@foo/
+#canon http://a%20b@foo/
+#scheme http
+#user a%20b
+#host foo
+#path /
+
+#data
+http://a%30b@foo/
+#canon http://a%30b@foo/
+#scheme http
+#user a%30b
+#host foo
+#path /
+
+#data
+http://a%40b@foo/
+#canon http://a%40b@foo/
+#scheme http
+#user a%40b
+#host foo
+#path /
+
+#data
+http://a%41b@foo/
+#canon http://a%41b@foo/
+#scheme http
+#user a%00b
+#host foo
+#path /
+
+#data
+http://a%7Eb@foo/
+#canon http://a%7Eb@foo/
+#scheme http
+#user a%7Eb
+#host foo
+#path /
+
+#data
+http://a%7eb@foo/
+#canon http://a%7eb@foo/
+#scheme http
+#user a%7eb
+#host foo
+#path /
+
+#data
+http://a%80b@foo/
+#canon http://a%80b@foo/
+#scheme http
+#user a%80b
+#host foo
+#path /
+
+#data
+http://a%dcb@foo/
+#canon http://a%dcb@foo/
+#scheme http
+#user a%dcb
+#host foo
+#path /
+
+#data escaped
+http://a\u0000b@foo/
+#canon http://a%EF%BF%BDb@foo/
+#scheme http
+#user a%EF%BF%BDb
+#host foo
+#path /
+
+#data escaped
+http://a\u0001b@foo/
+#canon http://a%01b@foo/
+#scheme http
+#user a%01b
+#host foo
+#path /
+
+#data escaped
+http://a!b@foo/
+#canon http://a!b@foo/
+#scheme http
+#user a!b
+#host foo
+#path /
+
+#data escaped
+http://a"b@foo/
+#canon http://a%22b@foo/
+#scheme http
+#user a%22b
+#host foo
+#path /
+
+#data escaped
+http://a$b@foo/
+#canon http://a$b@foo/
+#scheme http
+#user a$b
+#host foo
+#path /
+
+#data escaped
+http://a%b@foo/
+#canon http://a%b@foo/
+#scheme http
+#user a%b
+#host foo
+#path /
+
+#data escaped
+http://a&b@foo/
+#canon http://a&b@foo/
+#scheme http
+#user a&b
+#host foo
+#path /
+
+#data escaped
+http://a'b@foo/
+#canon http://a'b@foo/
+#scheme http
+#user a'b
+#host foo
+#path /
+
+#data escaped
+http://a(b@foo/
+#canon http://a(b@foo/
+#scheme http
+#user a(b
+#host foo
+#path /
+
+#data escaped
+http://a)b@foo/
+#canon http://a)b@foo/
+#scheme http
+#user a)b
+#host foo
+#path /
+
+#data escaped
+http://a*b@foo/
+#canon http://a*b@foo/
+#scheme http
+#user a*b
+#host foo
+#path /
+
+#data escaped
+http://a+b@foo/
+#canon http://a+b@foo/
+#scheme http
+#user a+b
+#host foo
+#path /
+
+#data escaped
+http://a-b@foo/
+#canon http://a-b@foo/
+#scheme http
+#user a-b
+#host foo
+#path /
+
+#data escaped
+http://a,b@foo/
+#canon http://a,b@foo/
+#scheme http
+#user a,b
+#host foo
+#path /
+
+#data escaped
+http://a.b@foo/
+#canon http://a.b@foo/
+#scheme http
+#user a.b
+#host foo
+#path /
+
+#data escaped
+http://a;b@foo/
+#canon http://a%3Bb@foo/
+#scheme http
+#user a%3Bb
+#host foo
+#path /
+
+#data escaped
+http://a<b@foo/
+#canon http://a%3Cb@foo/
+#scheme http
+#user a%3Cb
+#host foo
+#path /
+
+#data escaped
+http://a=b@foo/
+#canon http://a%3Db@foo/
+#scheme http
+#user a%3Db
+#host foo
+#path /
+
+#data escaped
+http://a>b@foo/
+#canon http://a%3Eb@foo/
+#scheme http
+#user a%3Eb
+#host foo
+#path /
+
+#data escaped
+http://a[b@foo/
+#canon http://a%5Bb@foo/
+#scheme http
+#user a%5Bb
+#host foo
+#path /
+
+#data escaped
+http://a]b@foo/
+#canon http://a%5Db@foo/
+#scheme http
+#user a%5Db
+#host foo
+#path /
+
+#data escaped
+http://a^b@foo/
+#canon http://a%5Eb@foo/
+#scheme http
+#user a%5Eb
+#host foo
+#path /
+
+#data escaped
+http://a_b@foo/
+#canon http://a_b@foo/
+#scheme http
+#user a_b
+#host foo
+#path /
+
+#data escaped
+http://a`b@foo/
+#canon http://a%60b@foo/
+#scheme http
+#user a%60b
+#host foo
+#path /
+
+#data escaped
+http://a{b@foo/
+#canon http://a%7Bb@foo/
+#scheme http
+#user a%7Bb
+#host foo
+#path /
+
+#data escaped
+http://a|b@foo/
+#canon http://a%7Cb@foo/
+#scheme http
+#user a%7Cb
+#host foo
+#path /
+
+#data escaped
+http://a}b@foo/
+#canon http://a%7Db@foo/
+#scheme http
+#user a%7Db
+#host foo
+#path /
+
+#data escaped
+http://a~b@foo/
+#canon http://a~b@foo/
+#scheme http
+#user a~b
+#host foo
+#path /
+
+#data escaped
+http://a\u4E00b@foo/
+#canon http://a%E4%B8%80b@foo/
+#scheme http
+#user a%E4%B8%80b
+#host foo
+#path /
+
+#data
+http://x:a%00b@foo/
+#canon http://x:a%00b@foo/
+#scheme http
+#user x
+#password a%00b
+#host foo
+#path /
+
+#data
+http://x:a%20b@foo/
+#canon http://x:a%20b@foo/
+#scheme http
+#user x
+#password a%20b
+#host foo
+#path /
+
+#data
+http://x:a%30b@foo/
+#canon http://x:a%30b@foo/
+#scheme http
+#user x
+#password a%30b
+#host foo
+#path /
+
+#data
+http://x:a%40b@foo/
+#canon http://x:a%40b@foo/
+#scheme http
+#user x
+#password a%40b
+#host foo
+#path /
+
+#data
+http://x:a%41b@foo/
+#canon http://x:a%41b@foo/
+#scheme http
+#user x
+#password a%00b
+#host foo
+#path /
+
+#data
+http://x:a%7Eb@foo/
+#canon http://x:a%7Eb@foo/
+#scheme http
+#user x
+#password a%7Eb
+#host foo
+#path /
+
+#data
+http://x:a%7eb@foo/
+#canon http://x:a%7eb@foo/
+#scheme http
+#user x
+#password a%7eb
+#host foo
+#path /
+
+#data
+http://x:a%80b@foo/
+#canon http://x:a%80b@foo/
+#scheme http
+#user x
+#password a%80b
+#host foo
+#path /
+
+#data
+http://x:a%dcb@foo/
+#canon http://x:a%dcb@foo/
+#scheme http
+#user x
+#password a%dcb
+#host foo
+#path /
+
+#data escaped
+http://x:a\u0000b@foo/
+#canon http://x:a%EF%BF%BDb@foo/
+#scheme http
+#user x
+#password a%EF%BF%BDb
+#host foo
+#path /
+
+#data escaped
+http://x:a\u0001b@foo/
+#canon http://x:a%01b@foo/
+#scheme http
+#user x
+#password a%01b
+#host foo
+#path /
+
+#data escaped
+http://x:a!b@foo/
+#canon http://x:a!b@foo/
+#scheme http
+#user x
+#password a!b
+#host foo
+#path /
+
+#data escaped
+http://x:a"b@foo/
+#canon http://x:a%22b@foo/
+#scheme http
+#user x
+#password a%22b
+#host foo
+#path /
+
+#data escaped
+http://x:a$b@foo/
+#canon http://x:a$b@foo/
+#scheme http
+#user x
+#password a$b
+#host foo
+#path /
+
+#data escaped
+http://x:a%b@foo/
+#canon http://x:a%b@foo/
+#scheme http
+#user x
+#password a%b
+#host foo
+#path /
+
+#data escaped
+http://x:a&b@foo/
+#canon http://x:a&b@foo/
+#scheme http
+#user x
+#password a&b
+#host foo
+#path /
+
+#data escaped
+http://x:a'b@foo/
+#canon http://x:a'b@foo/
+#scheme http
+#user x
+#password a'b
+#host foo
+#path /
+
+#data escaped
+http://x:a(b@foo/
+#canon http://x:a(b@foo/
+#scheme http
+#user x
+#password a(b
+#host foo
+#path /
+
+#data escaped
+http://x:a)b@foo/
+#canon http://x:a)b@foo/
+#scheme http
+#user x
+#password a)b
+#host foo
+#path /
+
+#data escaped
+http://x:a*b@foo/
+#canon http://x:a*b@foo/
+#scheme http
+#user x
+#password a*b
+#host foo
+#path /
+
+#data escaped
+http://x:a+b@foo/
+#canon http://x:a+b@foo/
+#scheme http
+#user x
+#password a+b
+#host foo
+#path /
+
+#data escaped
+http://x:a-b@foo/
+#canon http://x:a-b@foo/
+#scheme http
+#user x
+#password a-b
+#host foo
+#path /
+
+#data escaped
+http://x:a,b@foo/
+#canon http://x:a,b@foo/
+#scheme http
+#user x
+#password a,b
+#host foo
+#path /
+
+#data escaped
+http://x:a.b@foo/
+#canon http://x:a.b@foo/
+#scheme http
+#user x
+#password a.b
+#host foo
+#path /
+
+#data escaped
+http://x:a;b@foo/
+#canon http://x:a%3Bb@foo/
+#scheme http
+#user x
+#password a%3Bb
+#host foo
+#path /
+
+#data escaped
+http://x:a<b@foo/
+#canon http://x:a%3Cb@foo/
+#scheme http
+#user x
+#password a%3Cb
+#host foo
+#path /
+
+#data escaped
+http://x:a=b@foo/
+#canon http://x:a%3Db@foo/
+#scheme http
+#user x
+#password a%3Db
+#host foo
+#path /
+
+#data escaped
+http://x:a>b@foo/
+#canon http://x:a%3Eb@foo/
+#scheme http
+#user x
+#password a%3Eb
+#host foo
+#path /
+
+#data escaped
+http://x:a[b@foo/
+#canon http://x:a%5Bb@foo/
+#scheme http
+#user x
+#password a%5Bb
+#host foo
+#path /
+
+#data escaped
+http://x:a]b@foo/
+#canon http://x:a%5Db@foo/
+#scheme http
+#user x
+#password a%5Db
+#host foo
+#path /
+
+#data escaped
+http://x:a^b@foo/
+#canon http://x:a%5Eb@foo/
+#scheme http
+#user x
+#password a%5Eb
+#host foo
+#path /
+
+#data escaped
+http://x:a_b@foo/
+#canon http://x:a_b@foo/
+#scheme http
+#user x
+#password a_b
+#host foo
+#path /
+
+#data escaped
+http://x:a`b@foo/
+#canon http://x:a%60b@foo/
+#scheme http
+#user x
+#password a%60b
+#host foo
+#path /
+
+#data escaped
+http://x:a{b@foo/
+#canon http://x:a%7Bb@foo/
+#scheme http
+#user x
+#password a%7Bb
+#host foo
+#path /
+
+#data escaped
+http://x:a|b@foo/
+#canon http://x:a%7Cb@foo/
+#scheme http
+#user x
+#password a%7Cb
+#host foo
+#path /
+
+#data escaped
+http://x:a}b@foo/
+#canon http://x:a%7Db@foo/
+#scheme http
+#user x
+#password a%7Db
+#host foo
+#path /
+
+#data escaped
+http://x:a~b@foo/
+#canon http://x:a~b@foo/
+#scheme http
+#user x
+#password a~b
+#host foo
+#path /
+
+#data escaped
+http://x:a\u4E00b@foo/
+#canon http://x:a%E4%B8%80b@foo/
+#scheme http
+#user x
+#password a%E4%B8%80b
+#host foo
+#path /
+
+#data
 #canon http://suika.fam.cx/
 #scheme http
 #host suika.fam.cx

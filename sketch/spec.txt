@@ -111,7 +111,27 @@ character.
 
   XXX scheme
 
-  XXX authority - user, password, host
+  If there is the |user| component or the |password| component in /u/:
+
+    If there is the |password| component in /u/ and it is the empty
+    string, remove the |password| component (and preceding U+003A
+    COLON character (:)).
+
+    If the |user| component is the empty string and there is no
+    |password| component, remove the |user| component (and following
+    U+0040 COMMERCIAL AT character (@)).
+
+    Percent-encode characters EXCEPT for unreserved characters, U+0021
+    (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
+    U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |user|
+    component of /u/, using encoding |UTF-8|.
+
+    Percent-encode characters EXCEPT for unreserved characters, U+0021
+    (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
+    U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |password|
+    component of /u/, using encoding |UTF-8|, if any.
+
+  XXX host
 
   If there is the |port| component in /u/:
 
@@ -137,37 +157,32 @@ character.
 
     Otherwise, /u/ is invalid.  Abort the entire steps.
 
+  XXX If no path
+
   Percent-decode percent-encoded representations of unreserved
   characters in the |path| component of /u/.
 
   Percent-encode characters EXCEPT for unreserved characters, U+0021
   (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
-  U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002E (.), U+002F
-  (/), U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([),
-  U+005D (]), in the |path| component of /u/, using encoding |UTF-8|.
+  U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002F (/), U+003A
+  (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([), U+005D (]), in
+  the |path| component of /u/, using encoding |UTF-8|.
 
   Percent-encode characters EXCEPT for unreserved characters, U+0021
   (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
-  U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002E (.), U+002F
-  (/), U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([),
-  U+005D (]), U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C
-  (|), U+007D (}), in the |query| component of /u/, using encoding
-  /encoding/ [WA1].
+  U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002F (/), U+003A
+  (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([), U+005D (]),
+  U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D
+  (}), in the |query| component of /u/, using encoding /encoding/
+  [WA1].
 
   Percent-encode characters U+0000 ... U+0020, U+0022 ("), U+003C (<),
   U+003E (>), U+007F ... U+009F, in the |fragment| component of /u/,
   using encoding |UTF-8|.
 
-  Replace characters in range U+D800 ... U+DFFF, U+FDD0 ... U+FDEF,
-  U+FFFE, U+FFFF, U+1FFFE, U+1FFFF, U+2FFFE, U+2FFFF, U+3FFFE,
-  U+3FFFF, U+4FFFE, U+4FFFF, U+5FFFE, U+5FFFF, U+6FFFE, U+6FFFF,
-  U+7FFFE, U+7FFFF, U+8FFFE, U+8FFFF, U+9FFFE, U+9FFFF, U+AFFFE,
-  U+AFFFF, U+BFFFE, U+BFFFF, U+CFFFE, U+CFFFF, U+DFFFE, U+DFFFF,
-  U+EFFFE, U+EFFFF, U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF, non-Unicode
-  characters, in the |fragment| component of /u/ by U+FFFD REPLACEMENT
-  CHARACTER characters.
-
   XXX Non-hierarchical
+
+  XXX Non-http
 
 * Serialization of parsed URL
 
