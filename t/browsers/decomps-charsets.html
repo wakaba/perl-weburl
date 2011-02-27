@@ -24,23 +24,11 @@
       <td>
         <a href="decomps.html?compat">Compat mode</a>
     <tr>
-      <th><code>decomps-eucjp.dat</code>
+      <th><code>decomps-charsets.dat</code>
       <td>
-        <a href="decomps-charsets.html?decomps-eucjp.dat">Normal mode</a>
+        <a href="decomps-charsets.html?decomps-charsets.dat">Normal mode</a>
       <td>
-        <a href="decomps-charsets.html?decomps-eucjp.dat;compat">Compat mode</a>
-    <tr>
-      <th><code>decomps-iso2022jp.dat</code>
-      <td>
-        <a href="decomps-charsets.html?decomps-iso2022jp.dat">Normal mode</a>
-      <td>
-        <a href="decomps-charsets.html?decomps-iso2022jp.dat;compat">Compat mode</a>
-    <tr>
-      <th><code>decomps-utf16.dat</code>
-      <td>
-        <a href="decomps-charsets.html?decomps-utf16.dat">Normal mode</a>
-      <td>
-        <a href="decomps-charsets.html?decomps-utf16.dat;compat">Compat mode</a>
+        <a href="decomps-charsets.html?decomps-charsets.dat;compat">Compat mode</a>
   </table>
   <a href="http://suika.fam.cx/gate/test-results/list/test1/all">Results</a>
 </nav>
@@ -66,7 +54,7 @@
 
   var fileName = decodeURIComponent
       ((location.search || '').replace (/^\?/, '').replace (/;.*/, ''));
-  if (!/\.dat$/.test(fileName)) fileName = 'decomps.dat';
+  if (!/\.dat$/.test(fileName)) fileName = 'decomps-charsets.dat';
 
   var compatMode = location.search.match (/compat/);
   var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
