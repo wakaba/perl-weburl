@@ -352,8 +352,8 @@ sub _remove_dot_segments ($$) {
   return $buf;
 } # _remove_dot_segments
 
-sub canonicalize_url ($$) {
-  my ($class, $parsed_url) = @_;
+sub canonicalize_url ($$;$) {
+  my ($class, $parsed_url, $charset) = @_;
 
   return $parsed_url if $parsed_url->{invalid};
 
@@ -376,7 +376,8 @@ sub canonicalize_url ($$) {
   }
 
   if (defined $parsed_url->{query}) {
-    my $s = Encode::encode ('utf-8', $parsed_url->{query});
+    my $charset = $charset || 'utf-8';
+    my $s = Encode::encode ($charset, $parsed_url->{query});
     $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x7E])}{
       sprintf '%%%02X', ord $1;
     }ge;

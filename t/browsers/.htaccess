@@ -1,0 +1,5 @@
+AddCharset utf-8 .html
+AddCharset euc-jp .euc
+
+Options +ExecCGI
+AddHandler cgi-script .cgi

@@ -17,6 +17,7 @@ my @decomps_data_f = (map { $data_d->file ($_) } qw(
   decomps-file.dat decomps-javascript.dat decomps-mailto.dat
   decomps-path.dat decomps-relative.dat decomps-scheme.dat
   decomps-query.dat decomps-fragment.dat
+  decomps-eucjp.dat
 ));
 
 sub _parse : Tests {
@@ -88,7 +89,7 @@ sub _canon : Tests {
     my $test = shift;
     my $result = {};
     for (qw(
-      scheme user password host port path query fragment invalid canon
+      scheme user password host port path query fragment invalid canon charset
     )) {
       next unless $test->{$_};
 
@@ -110,6 +111,7 @@ sub _canon : Tests {
         }
       }
     }
+    my $charset = delete $result->{charset};
     if (defined $result->{scheme}) {
       $result->{scheme_normalized} = $result->{scheme};
       $result->{scheme_normalized} =~ tr/A-Z/a-z/;
@@ -123,7 +125,7 @@ sub _canon : Tests {
     my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
     my $resolved_url = Web::URL::Parser->resolve_url
         ($test->{data}->[0], $resolved_base_url);
-    Web::URL::Parser->canonicalize_url ($resolved_url);
+    Web::URL::Parser->canonicalize_url ($resolved_url, $charset);
     my $url = Web::URL::Parser->serialize_url ($resolved_url);
     $resolved_url->{canon} = $url;
     eq_or_diff $resolved_url, $result,
