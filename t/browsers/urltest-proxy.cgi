@@ -14,17 +14,21 @@ sub htescape ($) {
 
 my $q = $ENV{QUERY_STRING} || '';
 
-if ($q =~ /^u=([^&]+)&b=([^&]+)$/) {
-  my $url = $1;
-  my $base = $2;
+if ($q =~ /^c=([^&]+)&u=([^&]+)&b=([^&]+)$/) {
+  my $charset = {
+    'euc-jp' => 'euc-jp',
+    'utf-16' => 'utf-16',
+  }->{$1} || 'utf-8';
+  my $url = $2;
+  my $base = $3;
   for ($url, $base) {
     s/%([0-9A-Fa-f]{2})/pack 'C', hex $1/ge;
     $_ = decode 'utf-8', $_;
   }
   my $s = sprintf q{<!DOCTYPE HTML><base href="%s"><a href="%s">xx</a>},
       htescape $base, htescape $url;
-  print "Content-Type: text/html; charset=euc-jp\n\n";
-  print scalar encode 'euc-jp', $s;
+  print "Content-Type: text/html; charset=$charset\n\n";
+  print scalar encode $charset, $s;
 } else {
   print "Status: 404 Not found\n\n";
 }

@@ -1,5 +1,7 @@
 AddCharset utf-8 .html
 AddCharset euc-jp .euc
+AddCharset utf-16 .u16
+AddCharset iso-2022-jp .jis
 
 Options +ExecCGI
 AddHandler cgi-script .cgi

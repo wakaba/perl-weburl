@@ -1,21 +1,21 @@
 #data escaped
 http://foo/bar?\u4E00\u4E01
-#charset euc-jp
+#charset iso-2022-jp
 #canon escaped
-http://foo/bar?%B0%EC%C3%FA
+http://foo/bar?%E4%B8%80%E4%B8%81
 #scheme http
 #host foo
 #path /bar
 #query escaped
-%B0%EC%C3%FA
+%E4%B8%80%E4%B8%81
 
 #data escaped
 http://foo/bar?\u1000
-#charset euc-jp
+#charset iso-2022-jp
 #canon escaped
-http://foo/bar??
+http://foo/bar?%E1%80%80
 #scheme http
 #host foo
 #path /bar
 #query escaped
-?
+%E1%80%80
