@@ -518,10 +518,10 @@ http://www/foo%2Ehtml
 
 #data
 http:\\\\www.google.com\\foo
-#canon http://www.google.com/foo
+#canon http://www.google.com//foo
 #scheme http
 #host www.google.com
-#path /foo
+#path //foo
 
 #data
 http://\\www.google.com\foo/

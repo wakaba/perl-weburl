@@ -1243,6 +1243,14 @@ http://foo/bar/baz\../abc
 #path /bar/abc
 
 #data
+\bar/baz\../abc
+#base http://foo/bar
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
 bar/baz\..\abc
 #base http://foo/bax
 #canon http://foo/bar/abc

@@ -195,7 +195,7 @@ sub _resolve_relative_url ($$$) {
     return $url;
   }
 
-  if ($$specref =~ m{\A//}) {
+  if ($$specref =~ m{\A[/\\][/\\]}) {
     ## Resolve as a scheme-relative URL
 
     ## XXX It's still unclear how this resolution steps interact with
@@ -229,7 +229,7 @@ sub _resolve_relative_url ($$$) {
     $url .= '#' . $r_fragment if defined $r_fragment;
 
     return $class->parse_absolute_url ($url);
-  } elsif ($$specref =~ m{\A/}) {
+  } elsif ($$specref =~ m{\A[/\\]}) {
     ## Resolve as an authority-relative URL
 
 
