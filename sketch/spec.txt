@@ -111,7 +111,31 @@ character.
 
   XXX scheme
 
-  XXX authority
+  XXX authority - user, password, host
+
+  If there is the |port| component in /u/:
+
+    If the |port| component is the empty string, remove the |port|
+    component (and preceding U+003A COLON character (:)).
+
+    Otherwise, if the |port| component consist of one or more sequence
+    of characters in the range U+0030 to U+0039, inclusive:
+
+      Interpret the |port| component as a decimal number and let /p/
+      be that number.
+
+      If /p/ is equal to the default port of the scheme of /u/, if
+      any, remove the |port| component (and preceding U+003A COLON
+      character (:)).
+
+      Otherwise, if /p/ is less than or equal to 65535, replace the
+      |port| component by the shortest representation of /p/ in
+      decimal, using characters in the range U+0030 to U+0039,
+      inclusive.
+
+      Otherwise, /u/ is invalid.  Abort the entire steps.
+
+    Otherwise, /u/ is invalid.  Abort the entire steps.
 
   Percent-decode percent-encoded representations of unreserved
   characters in the |path| component of /u/.

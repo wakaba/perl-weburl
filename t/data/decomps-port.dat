@@ -94,3 +94,11 @@ http://foo.bar:%38%30/
 #data
 http://foo.bar:%30/
 #invalid 1
+
+#data escaped
+http://foo.bar:\uFF18\uFF10/
+#invalid 1
+
+#data escaped
+http://foo.bar:\uFF18\uFF11/
+#invalid 1
