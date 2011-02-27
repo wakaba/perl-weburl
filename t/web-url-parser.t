@@ -17,7 +17,7 @@ my @decomps_data_f = (map { $data_d->file ($_) } qw(
   decomps-file.dat decomps-javascript.dat decomps-mailto.dat
   decomps-path.dat decomps-relative.dat decomps-scheme.dat
   decomps-query.dat decomps-fragment.dat
-  decomps-eucjp.dat decomps-utf16.dat decomps-iso2022jp.dat
+  decomps-charsets.dat
 ));
 
 sub _parse : Tests {
@@ -129,7 +129,7 @@ sub _canon : Tests {
     my $url = Web::URL::Parser->serialize_url ($resolved_url);
     $resolved_url->{canon} = $url;
     eq_or_diff $resolved_url, $result,
-        $test->{data}->[0] . ' - ' . $base_url;
+        $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '');
   } for @decomps_data_f;
 }
 

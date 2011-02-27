@@ -1,8 +1,15 @@
+This document describes what the Web::URL::Parser module implements.
+It is built on the top of following specs:
 
-- [url-spec]
-- WA1 decomposition attributes
+- url-spec
+- WA1 URL
+- RFC 3986
 
-- Remove /control characters/ from beginning and end of relative URL
+* /encoding/
+
+If the character encoding specified as /encoding/ is not an
+ASCII-compatible character encoding [WA1], /encoding/ MUST be set to
+UTF-8 instead.
 
 * Unreserved characters
 
@@ -84,25 +91,23 @@ character.
 
   Apply RFC 3986 algorithm.
 
-* Percent-encode a character string /s/
+* Percent-encode a character string /s/ using encoding /encoding/
 
-  Replace each character in the following range in /s/ by a U+FFFD
+  XXX Replace each character in the following range in /s/ by a U+FFFD
   REPLACEMENT CHARACTER:
 
     - U+0000
 
-  Encode /s/ in UTF-8
+  Replace each character in /s/ which cannot be represented in
+  /encoding/ by a U+003F QUESTION MARK character (?).
 
-    Note.  Since a URL is a sequence of Unicode characters, in
-    environments where non-Unicode characters could be used in a
-    string, any non-Unicode character in /s/ would be encoded as
-    U+FFFD REPLACEMENT CHARACTER.
+  Encode /s/ in encoding /encoding/.
 
   Percent-encode non-unreserved octets in /s/.
 
-* Canonicalize a URL /u/ (where /u/ is a character string)
+* Canonicalize a string /u/ by encoding /encoding/
 
-  Remove characters U+0009, U+000A, and U+000D from /u/.
+  XXX Remove characters U+0009, U+000A, and U+000D from /u/.
 
   XXX scheme
 
@@ -111,24 +116,23 @@ character.
   Percent-decode percent-encoded representations of unreserved
   characters in the |path| component of /u/.
 
-  Percent-encode characters in the |path| component of /u/ EXCEPT for:
-  unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%), U+0026
-  (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B (+),
-  U+002D (,), U+002E (.), U+002F (/), U+003A (:), U+003B (;), U+003D
-  (=), U+0040 (@), U+005B ([), U+005D (]).
+  Percent-encode characters EXCEPT for unreserved characters, U+0021
+  (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
+  U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002E (.), U+002F
+  (/), U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([),
+  U+005D (]), in the |path| component of /u/, using encoding |UTF-8|.
 
-  Percent-encode characters in the |query| component of /u/ EXCEPT
-  for: unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%),
-  U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B
-  (+), U+002D (,), U+002E (.), U+002F (/), U+003A (:), U+003B (;),
-  U+003D (=), U+0040 (@), U+005B ([), U+005D (]), U+005C (\), U+005E
-  (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}).
+  Percent-encode characters EXCEPT for unreserved characters, U+0021
+  (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
+  U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002E (.), U+002F
+  (/), U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([),
+  U+005D (]), U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C
+  (|), U+007D (}), in the |query| component of /u/, using encoding
+  /encoding/ [WA1].
 
-    XXX Using document encoding.
-
-  Percent-encode following characters in the |fragment| component of
-  /u/: U+0000 ... U+0020, U+0022 ("), U+003C (<), U+003E (>), U+007F
-  ... U+009F.
+  Percent-encode characters U+0000 ... U+0020, U+0022 ("), U+003C (<),
+  U+003E (>), U+007F ... U+009F, in the |fragment| component of /u/,
+  using encoding |UTF-8|.
 
   Replace characters in range U+D800 ... U+DFFF, U+FDD0 ... U+FDEF,
   U+FFFE, U+FFFF, U+1FFFE, U+1FFFF, U+2FFFE, U+2FFFF, U+3FFFE,

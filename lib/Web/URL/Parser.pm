@@ -377,6 +377,20 @@ sub canonicalize_url ($$;$) {
 
   if (defined $parsed_url->{query}) {
     my $charset = $charset || 'utf-8';
+    if ($charset =~ /^
+      utf-8|
+      iso-8859-[0-9]+|
+      us-ascii|
+      shift_jis|
+      euc-jp|
+      windows-[0-9]+|
+      iso-2022-[0-9a-zA-Z-]+|
+      hz-gb-2312
+    $/xi) { # XXX Web Encodings
+      #
+    } else {
+      $charset = 'utf-8';
+    }
     my $s = Encode::encode ($charset, $parsed_url->{query});
     $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x7E])}{
       sprintf '%%%02X', ord $1;
