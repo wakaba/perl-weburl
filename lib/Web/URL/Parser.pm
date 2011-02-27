@@ -231,16 +231,38 @@ sub _resolve_relative_url ($$$) {
     return $class->parse_absolute_url ($url);
   } elsif ($$specref =~ m{\A/}) {
     ## Resolve as an authority-relative URL
-    my $authority = $parsed_base_url->{host};
-    $authority .= ':' . $parsed_base_url->{port}
+
+
+    ## XXX It's still unclear how this resolution steps interact with
+    ## |file| URL's resolution (which might have special processing
+    ## rules in the parsing steps).
+
+    my $r_path = $$specref;
+    my $r_query;
+    my $r_fragment;
+    if ($r_path =~ s{\#(.*)\z}{}s) {
+      $r_fragment = $1;
+    }
+    if ($r_path =~ s{\?(.*)\z}{}s) {
+      $r_query = $1;
+    }
+    $r_path = $class->_remove_dot_segments ($r_path);
+
+    my $r_authority = $parsed_base_url->{host};
+    $r_authority .= ':' . $parsed_base_url->{port}
         if defined $parsed_base_url->{port};
-    $authority = $parsed_base_url->{user} .
+    $r_authority = $parsed_base_url->{user} .
         (defined $parsed_base_url->{password}
            ? ':' . $parsed_base_url->{password}
            : '') .
-        '@' . $authority if defined $parsed_base_url->{user};
-    return $class->parse_absolute_url
-        ($parsed_base_url->{scheme} . '://' . $authority . $$specref);
+        '@' . $r_authority if defined $parsed_base_url->{user};
+
+    my $url = $parsed_base_url->{scheme} . ':' . $r_authority;
+    $url .= $r_path if defined $r_path;
+    $url .= '?' . $r_query if defined $r_query;
+    $url .= '#' . $r_fragment if defined $r_fragment;
+
+    return $class->parse_absolute_url ($url);
   } elsif ($$specref =~ /\A\?/) {
     ## Resolve as a query-relative URL
     my $authority = $parsed_base_url->{host};
@@ -291,7 +313,7 @@ sub _resolve_relative_url ($$$) {
       if ($b_path eq '') {
         $r_path = '/'.$r_path;
       } else {
-        $b_path =~ s{[^/]*\z}{};
+        $b_path =~ s{[^/\\]*\z}{};
         $r_path = $b_path . $r_path;
       }
     }
@@ -314,6 +336,7 @@ sub _resolve_relative_url ($$$) {
 sub _remove_dot_segments ($$) {
   ## Removing dot-segments (RFC 3986)
   local $_ = $_[1];
+  s{\\}{/}g;
   my $buf = '';
   L: while (length $_) {
     next L if s/^\.\.?\///;

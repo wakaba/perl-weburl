@@ -351,14 +351,14 @@ g:h
 #base http://a/b/c/d;p?q
 #scheme http
 #host a
-#path /./g
+#path /g
 
 #data
 /../g
 #base http://a/b/c/d;p?q
 #scheme http
 #host a
-#path /../g
+#path /g
 
 #data
 http:#abc

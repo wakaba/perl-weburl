@@ -1169,3 +1169,99 @@ http://foo/bar/foo/../baz/abc/.
 #scheme http
 #host foo
 #path /bar/baz/abc/
+
+#data
+http://foo/bar/baz\..\abc
+#base http://foo/bar
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
+http://foo/bar/baz\.\abc
+#base http://foo/bar
+#canon http://foo/bar/baz/abc
+#scheme http
+#host foo
+#path /bar/baz/abc
+
+#data
+http://foo/bar/baz\../abc
+#base http://foo/bar
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
+//foo/bar/baz\..\abc
+#base http://foo/bar
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
+//foo/bar/baz\.\abc
+#base http://foo/bar
+#canon http://foo/bar/baz/abc
+#scheme http
+#host foo
+#path /bar/baz/abc
+
+#data
+//foo/bar/baz\../abc
+#base http://foo/bar
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
+/bar/baz\..\abc
+#base http://foo/bar
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
+/bar/baz\.\abc
+#base http://foo/bar
+#canon http://foo/bar/baz/abc
+#scheme http
+#host foo
+#path /bar/baz/abc
+
+#data
+/bar/baz\../abc
+#base http://foo/bar
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
+bar/baz\..\abc
+#base http://foo/bax
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc
+
+#data
+bar/baz\.\abc
+#base http://foo/bax
+#canon http://foo/bar/baz/abc
+#scheme http
+#host foo
+#path /bar/baz/abc
+
+#data
+bar/baz\../abc
+#base http://foo/bax
+#canon http://foo/bar/abc
+#scheme http
+#host foo
+#path /bar/abc

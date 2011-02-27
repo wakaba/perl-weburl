@@ -40,6 +40,18 @@ character.
 
   Apply url-spec's steps.
 
+* Merge path
+
+  Apply RFC 3986's steps, but use "slash character" definition instead
+  of "/" character for comparison.
+
+* Remove dot-segments from a string /s/
+
+  Replace any U+005C REVERSE SOLIDUS (\) character in /s/ by a U+002F
+  SOLIDUS (/) character.
+
+  Apply RFC 3986's steps.
+
 * Resolution
 
   If parsing the base URL results in "invalid", the resolved URL
@@ -58,7 +70,13 @@ character.
 
 ** Resolve as a scheme-relative URL
 
-  Removing dot-segments [RFC 3986] from the |path| component.
+  Remove dot-segments from the |path| component.
+
+  Apply url-spec's steps.
+
+** Resolve as a authority-relative URL
+
+  Remove dot-segments from the |path| component.
 
   Apply url-spec's steps.
 
