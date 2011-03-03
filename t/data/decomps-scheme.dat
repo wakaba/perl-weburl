@@ -289,10 +289,10 @@ a\u007Bb://foo/bar
 #data escaped
 a\u007Cb://foo/bar
 #base http://x/y/
-#canon file:///A:/b://foo/bar
-#scheme file
-#host 
-#path /A:/b://foo/bar
+#canon http://x/y/a%7Cb://foo/bar
+#scheme http
+#host x
+#path /y/a%7Cb://foo/bar
 
 #data escaped
 a\u007Db://foo/bar
@@ -381,6 +381,78 @@ a\U01000000b://foo/bar
 #scheme http
 #host x
 #path /y/a%EF%BF%BDb://foo/bar
+
+#data
+0120://foo/bar
+#base http://x/y/
+#canon 0120://foo/bar
+#scheme 0120
+#host foo
+#path /bar
+
+#data
+x120://foo/bar
+#base http://x/y/
+#canon x120://foo/bar
+#scheme x120
+#host foo
+#path /bar
+
+#data
+-120://foo/bar
+#base http://x/y/
+#canon -120://foo/bar
+#scheme -120
+#host foo
+#path /bar
+
+#data
+.120://foo/bar
+#base http://x/y/
+#canon .120://foo/bar
+#scheme .120
+#host foo
+#path /bar
+
+#data
++120://foo/bar
+#base http://x/y/
+#canon +120://foo/bar
+#scheme +120
+#host foo
+#path /bar
+
+#data
+a0://foo/bar
+#base http://x/y/
+#canon a0://foo/bar
+#scheme a0
+#host foo
+#path /bar
+
+#data
+a-://foo/bar
+#base http://x/y/
+#canon a-://foo/bar
+#scheme a-
+#host foo
+#path /bar
+
+#data
+a+://foo/bar
+#base http://x/y/
+#canon a+://foo/bar
+#scheme a+
+#host foo
+#path /bar
+
+#data
+a.://foo/bar
+#base http://x/y/
+#canon a.://foo/bar
+#scheme a.
+#host foo
+#path /bar
 
 #data
 %68ttp://suika.fam.cx/
