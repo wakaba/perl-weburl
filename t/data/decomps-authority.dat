@@ -643,27 +643,15 @@ http://\uFF10\uFF38\uFF43\uFF10\uFF0E\uFF10\uFF12\uFF15\uFF10\uFF0E\uFF10\uFF11/
 
 #data
 http://www.example.com:as df/
-#canon http://www.example.com:as%20df/
-#scheme http
-#host www.example.com
-#port as%20df
-#path /
+#invalid 1
 
 #data
 http://www.example.com:as%20df/
-#canon http://www.example.com:as%20df/
-#scheme http
-#host www.example.com
-#port as%20df
-#path /
+#invalid 1
 
 #data
 http://www.example.com:-2/
-#canon http://www.example.com:-2/
-#scheme http
-#host www.example.com
-#port -2
-#path /
+#invalid 1
 
 #data
 ftp://cnn.example.com&story=breaking_news@10.0.0.1/top_story.htm
@@ -948,7 +936,6 @@ http://foo:
 #canon http://foo/
 #scheme http
 #host foo
-#port
 #path /
 
 #data
@@ -1692,6 +1679,7 @@ http://x:a\u4E00b@foo/
 #path /
 
 #data
+http://suika.fam.cx/
 #canon http://suika.fam.cx/
 #scheme http
 #host suika.fam.cx
@@ -1741,24 +1729,15 @@ http://suika.fam.cx:80/
 
 #data
 http://suika.fam.cx:%380/
-#canon http://suika.fam.cx/
-#scheme http
-#host suika.fam.cx
-#path /
+#invalid 1
 
 #data
 http://suika.fam.cx:8%30/
-#canon http://suika.fam.cx/
-#scheme http
-#host suika.fam.cx
-#path /
+#invalid 1
 
 #data
 http://suika.fam.cx:%38%30/
-#canon http://suika.fam.cx/
-#scheme http
-#host suika.fam.cx
-#path /
+#invalid 1
 
 #data
 http://foo./

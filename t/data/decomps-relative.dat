@@ -221,13 +221,13 @@ aa/%2E%2E/
 
 #data
 | #hoge
-#base http://foo:bar@baz:a/b?c#d
-#canon http://foo:bar@baz:a/b?c#hoge
+#base http://foo:bar@baz:12/b?c#d
+#canon http://foo:bar@baz:12/b?c#hoge
 #scheme http
 #user foo
 #password bar
 #host baz
-#port a
+#port 12
 #path /b
 #query c
 #fragment hoge
@@ -303,13 +303,13 @@ aa/%2E%2E/
 
 #data
 | ?hoge
-#base http://foo:bar@baz:a/b?c#d
-#canon http://foo:bar@baz:a/b?hoge
+#base http://foo:bar@baz:60/b?c#d
+#canon http://foo:bar@baz:60/b?hoge
 #scheme http
 #user foo
 #password bar
 #host baz
-#port a
+#port 60
 #path /b
 #query hoge
 
@@ -362,15 +362,7 @@ aa/%2E%2E/
 #data
 //x:y@z:l/m?n#o
 #base http://a:b@c:d/e?f#g
-#canon http://x:y@z:l/m?n#o
-#scheme http
-#user x
-#password y
-#host z
-#port l
-#path /m
-#query n
-#fragment o
+#invalid 1
 
 #data
 //x:y@z:300/m?n#o
@@ -421,13 +413,7 @@ aa/%2E%2E/
 #data
 /foo/bar
 #base http://a:b@c:d/e/f?g#h
-#canon http://a:b@c:d/foo/bar
-#scheme http
-#user a
-#password b
-#host c
-#port d
-#path /foo/bar
+#invalid 1
 
 #data
 /foo/bar

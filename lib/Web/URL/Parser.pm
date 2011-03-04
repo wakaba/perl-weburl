@@ -11,6 +11,11 @@ our $IsHierarchicalScheme = {
   ldap => 1,
 };
 
+our $DefaultPort = {
+  http => 80,
+  https => 443,
+};
+
 sub _preprocess_input ($$) {
   if (utf8::is_utf8 ($_[1])) {
     ## Replace surrogate code points, noncharacters, and non-Unicode
@@ -357,6 +362,24 @@ sub canonicalize_url ($$;$) {
   return $parsed_url if $parsed_url->{invalid};
 
   $parsed_url->{scheme} = $parsed_url->{scheme_normalized};
+
+  if (defined $parsed_url->{port}) {
+    if (not length $parsed_url->{port}) {
+      delete $parsed_url->{port};
+    } elsif (not $parsed_url->{port} =~ /\A[0-9]+\z/) {
+      %$parsed_url = (invalid => 1);
+      return $parsed_url;
+    } elsif ($parsed_url->{port} > 65535) {
+      %$parsed_url = (invalid => 1);
+      return $parsed_url;
+    } else {
+      $parsed_url->{port} += 0;
+      my $default = $DefaultPort->{$parsed_url->{scheme_normalized}};
+      if (defined $default and $default == $parsed_url->{port}) {
+        delete $parsed_url->{port};
+      }
+    }
+  }
 
   if ($IsHierarchicalScheme->{$parsed_url->{scheme}}) {
     $parsed_url->{path} = '/'

@@ -122,13 +122,14 @@ sub _canon : Tests {
              : defined $test->{base}->[1]->[0]
                  ? $test->{base}->[1]->[0] : '';
     $base_url = $test->{data}->[0] unless length $base_url;
-    $result->{canon} = $test->{data}->[0] unless defined $result->{canon};
+    $result->{canon} = $test->{data}->[0]
+        if not defined $result->{canon} and not $result->{invalid};
     my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
     my $resolved_url = Web::URL::Parser->resolve_url
         ($test->{data}->[0], $resolved_base_url);
     Web::URL::Parser->canonicalize_url ($resolved_url, $charset);
     my $url = Web::URL::Parser->serialize_url ($resolved_url);
-    $resolved_url->{canon} = $url;
+    $resolved_url->{canon} = $url if defined $url;
     eq_or_diff $resolved_url, $result,
         $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '');
   } for @decomps_data_f;
