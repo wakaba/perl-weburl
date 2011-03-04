@@ -163,9 +163,8 @@ sub resolve_url ($$$) {
 
   my $parsed_spec = $class->parse_absolute_url ($spec);
   if ($parsed_spec->{invalid} or
-
-      ## XXX Valid schme characters
-      $parsed_spec->{scheme} =~ /[^A-Za-z0-9_+-]/) {
+      ## Valid scheme characters
+      $parsed_spec->{scheme} =~ /[^A-Za-z0-9_.+-]/) {
     return $class->_resolve_relative_url (\$spec, $parsed_base_url);
   }
 
