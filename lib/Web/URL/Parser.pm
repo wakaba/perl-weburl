@@ -363,6 +363,30 @@ sub canonicalize_url ($$;$) {
 
   $parsed_url->{scheme} = $parsed_url->{scheme_normalized};
 
+  if (defined $parsed_url->{password}) {
+    if (not length $parsed_url->{password}) {
+      delete $parsed_url->{password};
+    } else {
+      my $s = Encode::encode ('utf-8', $parsed_url->{password});
+      $s =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5F\x61-\x7A\x7E])}{
+        sprintf '%%%02X', ord $1;
+      }ge;
+      $parsed_url->{password} = $s;
+    }
+  }
+
+  if (defined $parsed_url->{user}) {
+    if (not length $parsed_url->{user}) {
+      delete $parsed_url->{user} unless defined $parsed_url->{password};
+    } else {
+      my $s = Encode::encode ('utf-8', $parsed_url->{user});
+      $s =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5F\x61-\x7A\x7E])}{
+        sprintf '%%%02X', ord $1;
+      }ge;
+      $parsed_url->{user} = $s;
+    }
+  }
+
   if (defined $parsed_url->{port}) {
     if (not length $parsed_url->{port}) {
       delete $parsed_url->{port};

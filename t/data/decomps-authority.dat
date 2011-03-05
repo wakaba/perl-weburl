@@ -823,7 +823,6 @@ http://a@b@c:d@e
 http://@/
 #canon http:///
 #scheme http
-#user
 #host
 #path /
 
@@ -839,8 +838,6 @@ http://@@@@@@@@
 http://:@
 #canon http:///
 #scheme http
-#user
-#password
 #host
 #path /
 
@@ -998,19 +995,16 @@ http://[foo;bar=a]:80
 
 #data
 http://:@bar
-#canon http://:@bar/
+#canon http://bar/
 #scheme http
-#user
-#password
 #host bar
 #path /
 
 #data
 http://abc:@
-#canon http://abc:@/
+#canon http://abc@/
 #scheme http
 #user abc
-#password
 #host
 #path /
 
