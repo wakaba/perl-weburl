@@ -1022,3 +1022,21 @@ http://x:a\u4E00b@foo/
 #password a%E4%B8%80b
 #host foo
 #path /
+
+#data escaped
+http://foo\uFF1A80/
+#invalid 1
+
+#data
+http://foo%3A80/
+#canon http://foo%3A80/
+#scheme http
+#host foo%3A80
+#path /
+
+#data escaped
+http://foo\uFF053A80/
+#canon http://foo%3A80/
+#scheme http
+#host foo%3A80
+#path /
