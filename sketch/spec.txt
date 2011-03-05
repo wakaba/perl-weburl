@@ -1,5 +1,6 @@
 This document describes what the Web::URL::Parser module implements.
-It is built on the top of following specs:
+This is just a description; it does not use strict language
+appropriate for specs.  It is built on the top of following specs:
 
 - url-spec
 - WA1 URL
@@ -64,6 +65,73 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
   SOLIDUS (/) character.
 
   Apply RFC 3986's steps.
+
+* IPv4 address
+
+  A string /s/ is an IPv4 address if:
+
+    Percent-decode /s/ XXX
+
+    Canonicalize using IDNA XXX
+
+    Split /s/ by "." and let /host/ be the array of the result
+    components, where |host[i]| represents the /i/-th component.  The
+    first component is |host[0]|.
+
+    addr[0] = 0; addr[1] = 0; addr[2] = 0; addr[3] = 0;
+    j = 0;
+    for (i = 0; i < host.length; i++) {
+      n = number (host[i]);
+      if (n == null || n > 0xFFFFFFFF) {
+        abort ();
+      } else if (n > 0xFFFFFF) {
+        if (j > 0) abort ();
+        addr[j + 0] = (n >> 24) & 0xFF;
+        addr[j + 1] = (n >> 16) & 0xFF;
+        addr[j + 2] = (n >>  8) & 0xFF;
+        addr[j + 3] = (n >>  0) & 0xFF;
+      } else if (n > 0xFFFF) {
+        if (j > 1) abort ();
+        addr[j + 0] = (n >> 16) & 0xFF;
+        addr[j + 1] = (n >>  8) & 0xFF;
+        addr[j + 2] = (n >>  0) & 0xFF;
+      } else if (n > 0xFF) {
+        if (j > 2) abort ();
+        addr[j + 0] = (n >>  8) & 0xFF;
+        addr[j + 1] = (n >>  0) & 0xFF;
+      } else {
+        if (j > 3) abort ();
+        addr[j + 0] = (n >>  0) & 0xFF;
+      }
+    }
+
+    Then, /addr/ represents the IPv4 address.
+
+  number (n) is:
+
+    If /n/ is /\A0[Xx][0-9]*\z/, interpret as a hexadecimal number.
+
+    If /n/ is /\A0[0-9]+\z/,
+
+      If /n/ contains "8" or "9", return null.
+
+      Otherwise, interpret as an octal number.
+
+    If /n/ is /\A[0-9]+\z/, interpret as a decimal number.
+
+    Otherwise, return null.
+
+    Return the number.
+
+  Canonical form of an IPv4 address /addr/ is:
+
+    addr[0]'s shortest decimal representation using [0-9]
+    "."
+    addr[1]'s shortest decimal representation using [0-9]
+    "."
+    addr[2]'s shortest decimal representation using [0-9]
+    "."
+    addr[3]'s shortest decimal representation using [0-9]
 
 * Resolution
 
@@ -137,6 +205,9 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
     U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |password|
     component of /u/, using encoding |UTF-8|, if any.
+
+  If |host| is an IPv4 address, replace the |host| component by the
+  canonical representation of the IPv4 address.
 
   XXX host
 

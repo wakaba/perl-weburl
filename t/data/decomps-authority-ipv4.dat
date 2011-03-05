@@ -405,6 +405,13 @@ http://192.168.0.0800/
 #path /
 
 #data
+http://192.168.0.080/
+#canon http://192.168.0.080/
+#scheme http
+#host 192.168.0.080
+#path /
+
+#data
 http://192.168.0.0777/
 #canon http://192.168.0.0777/
 #scheme http
