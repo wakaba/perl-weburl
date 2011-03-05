@@ -1,0 +1,293 @@
+#data
+http://0.0.0.0xFF/
+#canon http://0.0.0.255/
+#scheme http
+#host 0.0.0.255
+#path /
+
+#data
+http://0.0.0xFF.0/
+#canon http://0.0.255.0/
+#scheme http
+#host 0.0.255.0
+#path /
+
+#data
+http://0.0.0xFFFF/
+#canon http://0.0.255.255/
+#scheme http
+#host 0.0.255.255
+#path /
+
+#data
+http://0.0.0xffff/
+#canon http://0.0.255.255/
+#scheme http
+#host 0.0.255.255
+#path /
+
+#data
+http://0.00.0x.0x0/
+#canon http://0.0.0.0/
+#scheme http
+#host 0.0.0.0
+#path /
+
+#data
+http://0.0xFF.0.0/
+#canon http://0.255.0.0/
+#scheme http
+#host 0.255.0.0
+#path /
+
+#data
+http://0.255.255.255/
+#canon http://0.255.255.255/
+#scheme http
+#host 0.255.255.255
+#path /
+
+#data
+http://0.0xFFFFFF/
+#canon http://0.255.255.255/
+#scheme http
+#host 0.255.255.255
+#path /
+
+#data
+http://00000000000000000001/
+#canon http://0.0.0.1/
+#scheme http
+#host 00000000000000000001
+#path /
+
+#data
+http://0000000000000300.0x00000000000000fF.00000000000000001/
+#canon http://192.255.0.1/
+#scheme http
+#host 192.255.0.1
+#path /
+
+#data
+http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
+#canon http://0000000000000300.0xffffffffffffffff.3022415481470977/
+#scheme http
+#host 0000000000000300.0xffffffffffffffff.3022415481470977
+#path /
+
+#data
+http://000030052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0300.0250.00.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://030052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0X12C0a80001/
+#canon http://0x12c0a80001/
+#scheme http
+#host 0x12c0a80001
+#path /
+
+#data
+http://0xC0.0Xa8.0x0.0x1/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xC0a80001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xCG.0xA8.0x0.0x1/
+#canon http://0xcg.0xa8.0x0.0x1/
+#scheme http
+#host 0xcg.0xa8.0x0.0x1
+#path /
+
+#data
+http://0xFF.0.0.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFF.0.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFF.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFFFFFFFF/
+#canon http://255.255.255.255/
+#scheme http
+#host 255.255.255.255
+#path /
+
+#data
+http://0xc0.052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.0x00A80001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168.0.1. hello/
+#canon http://192.168.0.1.%20hello/
+#scheme http
+#host 192.168.0.1.%20hello
+#path /
+
+#data
+http://192.168.0.1./
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168.1/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168/
+#canon http://192.0.0.168/
+#scheme http
+#host 192.0.0.168
+#path /
+
+#data
+http://192/
+#canon http://0.0.0.192/
+#scheme http
+#host 0.0.0.192
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01%2e/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01./
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%3g%78%63%30%2e%30%32%35%30%2E.01/
+#canon http://%253gxc0.0250..01/
+#scheme http
+#host %253gxc0.0250..01
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01%2e/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01./
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%3g%78%63%30%2e%30%32%35%30%2E.01/
+#canon http://%253gxc0.0250..01/
+#scheme http
+#host %253gxc0.0250..01
+#path /
+
+#data
+http://192.168.0.1 hello/
+#canon http://192.168.0.1%20hello/
+#scheme http
+#host 192.168.0.1%20hello
+#path /
+
+#data
+http://192.168.0.1%20hello/
+#canon http://192.168.0.1%20hello/
+#scheme http
+#host 192.168.0.1%20hello
+#path /
+
+#data escaped
+http://\uFF10\uFF38\uFF43\uFF10\uFF0E\uFF10\uFF12\uFF15\uFF10\uFF0E\uFF10\uFF11/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /

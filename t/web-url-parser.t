@@ -14,7 +14,8 @@ my $parse_data_f = $data_d->file ('parsing.dat');
 my $resolve_data_f = $data_d->file ('resolving.dat');
 my @decomps_data_f = (map { $data_d->file ($_) } qw(
   decomps.dat
-  decomps-authority.dat decomps-port.dat
+  decomps-authority.dat decomps-authority-domain.dat decomps-authority-ipv4.dat
+  decomps-authority-ipv6.dat decomps-port.dat
   decomps-data.dat decomps-file.dat decomps-javascript.dat decomps-mailto.dat
   decomps-path.dat decomps-relative.dat decomps-scheme.dat
   decomps-query.dat decomps-fragment.dat

@@ -102,3 +102,22 @@ http://foo.bar:\uFF18\uFF10/
 #data escaped
 http://foo.bar:\uFF18\uFF11/
 #invalid 1
+
+#data
+http://suika.fam.cx:80/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://suika.fam.cx:%380/
+#invalid 1
+
+#data
+http://suika.fam.cx:8%30/
+#invalid 1
+
+#data
+http://suika.fam.cx:%38%30/
+#invalid 1
