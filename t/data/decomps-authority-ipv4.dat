@@ -237,10 +237,17 @@ http://192.168.0.1. hello/
 #path /
 
 #data
-http://192.168.0.1./
-#canon http://192.168.0.1/
+http://192.168.0./
+#canon http://192.168.0./
 #scheme http
-#host 192.168.0.1
+#host 192.168.0.
+#path /
+
+#data
+http://192.168.0.1./
+#canon http://192.168.0.1./
+#scheme http
+#host 192.168.0.1.
 #path /
 
 #data
@@ -280,9 +287,9 @@ http://%30%78%63%30%2e%30%32%35%30.01/
 
 #data
 http://0xc0.0250.01./
-#canon http://192.168.0.1/
+#canon http://0xc0.0250.01./
 #scheme http
-#host 192.168.0.1
+#host 0xc0.0250.01.
 #path /
 
 #data
