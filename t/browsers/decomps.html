@@ -141,6 +141,13 @@
   var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
   var isIE = compatMode && document.all;
   var isOpera = compatMode && window.opera;
+  var illegalURLs = 0;
+  if (isOpera) {
+    var a = document.createElement ('a');
+    a.href = 'http://\uFFFF/';
+    illegalURLs = parseInt (a.href.replace (/^opera:illegal-url-/, ''));
+    illegalURLs++;
+  }
 
   if (isWebKit || isGecko) {
     delete isHierarchicalScheme.ldap;
@@ -239,6 +246,20 @@
         query: '',
         fragment: ''
       };
+
+      if (isWebKit) {
+        expected.url = test.getFieldValue ('invalid-canon');
+        expected.scheme = ':';
+        expected.port = '0';
+      }
+      if (isOpera) {
+        expected.url = 'opera:illegal-url-' + ++illegalURLs;
+        expected.scheme = 'opera:';
+        expected.host = undefined;
+        expected.port = '0';
+        expected.path = 'illegal-url-' + illegalURLs;
+        ++illegalURLs;
+      }
     }
 
     var name = originalURL + ' + ' + baseURL;
