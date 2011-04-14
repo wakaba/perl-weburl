@@ -636,3 +636,122 @@ file:///?/c:/windows/
 #scheme file
 #host 
 #path /C:/windows
+
+#data
+\\?\host\windows
+#base http://a/b/c
+#canon file://host/windows
+#scheme file
+#host host
+#path /windows
+
+#data
+//?/host/windows
+#base http://a/b/c
+#canon file://host/windows
+#scheme file
+#host host
+#path /windows
+
+#data
+\\%3F\c:\windows
+#base http://a/b/c
+#canon file:///C:/windows
+#scheme file
+#host 
+#path /C:/windows
+
+#data
+//%3F/c:/windows
+#base http://a/b/c
+#canon file:///C:/windows
+#scheme file
+#host 
+#path /C:/windows
+
+#data
+\\%3F\host\windows
+#base http://a/b/c
+#canon file://host/windows
+#scheme file
+#host host
+#path /windows
+
+#data
+//%3F/host/windows
+#base http://a/b/c
+#canon file://host/windows
+#scheme file
+#host host
+#path /windows
+
+#data
+\\.\c:\windows
+#base http://a/b/c
+#canon file://./C:/windows
+#scheme file
+#host .
+#path /C:/windows
+
+#data
+//./c:/windows
+#base http://a/b/c
+#canon file://./C:/windows
+#scheme file
+#host .
+#path /C:/windows
+
+#data
+\\.\com1
+#base file://a/b/c
+#canon file://./com1
+#scheme file
+#host .
+#path /com1
+
+#data
+//./com1
+#base file://a/b/c
+#canon file://./com1
+#scheme file
+#host .
+#path /com1
+
+#data
+file:///C:windows/foo.txt
+#base file:///C:/home/abc
+#canon file:///C:/windows/foo.txt
+#scheme file
+#host 
+#path /C:/windows/foo.txt
+
+#data
+file:///C:../foo.txt
+#base file:///C:/home/abc
+#canon file:///C:/foo.txt
+#scheme file
+#host 
+#path /C:/foo.txt
+
+#data
+file:///foo:/bar
+#canon file:///foo:/bar
+#scheme file
+#host
+#path /foo:/bar
+
+#data
+file:///C:/bar/foo.txt...
+#base file:///C:/home/abc
+#canon file:///C:/bar/foo.txt...
+#scheme file
+#host 
+#path /C:/bar/foo.txt...
+
+#data
+file:///C:/bar/foo.txt:abc
+#base file:///C:/home/abc
+#canon file:///C:/bar/foo.txt:abc
+#scheme file
+#host 
+#path /C:/bar/foo.txt:abc
