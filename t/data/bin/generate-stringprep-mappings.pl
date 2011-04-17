@@ -1,0 +1,317 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Path::Class;
+use lib file (__FILE__)->dir->parent->subdir ('lib')->stringify;
+use Unicode::Stringprep;
+use Unicode::Normalize;
+use URI::Escape;
+
+my $data_d = file (__FILE__)->dir->parent;
+my $generated_d = $data_d->subdir ('generated');
+
+use Char::Prop::Unicode::5_1_0::BidiClass;
+sub is_rtl ($) {
+  my $bidi = unicode_5_1_0_bidi_class_c $_[0];
+  return {
+    AL => 1,
+    R => 1,
+    AN => 1,
+  }->{$bidi};
+} # is_rtl
+
+sub pe ($) {
+  return URI::Escape::uri_escape_utf8 shift;
+} # pe
+
+sub uescape ($) {
+  my $s = shift;
+  $s =~ s{([^A-Za-z0-9_.%-])}{
+    my $c = ord $1;
+    if ($c > 0xFFFF) {
+      sprintf '\U%08X', $c;
+    } else {
+      sprintf '\u%04X', $c;
+    }
+  }ges;
+  return $s;
+} # uescape
+
+use Net::LibIDN;
+sub to_punycode_with_prefix ($) {
+  my $s = shift;
+  return 'xn--' . Net::LibIDN::idn_punycode_encode $s, 'utf-8';
+} # to_punycode_with_prefix
+
+sub generate_from_map ($$;%) {
+  my $map = shift;
+  my $file_name = shift;
+  my %args = @_;
+
+  my $f = $generated_d->file ($file_name . '.dat');
+  print $f->relative, "...\n";
+  my $file = $f->openw;
+  my @map = @$map;
+  while (@map) {
+    my $orig = chr shift @map;
+    shift @map;
+    my $new = $args{remove} ? '' : NFC lc uc NFKD $orig;
+    
+    my $punycoded = to_punycode_with_prefix 'a' . $new . 'b';
+    $punycoded = 'a' . $new . 'b' if $punycoded =~ /-$/;
+    $punycoded =~ s/ /%20/g;
+    printf $file q{#data escaped
+http://a%sb/
+#canon escaped
+http://%s/
+#scheme http
+#host escaped
+%s
+#path /
+
+},
+        ($args{pe_input} ? pe $orig : uescape $orig),
+        uescape $punycoded,
+        uescape $punycoded;
+  }
+  close $file;
+} # generate_from_map
+
+sub generate_from_list ($$;%) {
+  my $map = shift;
+  my $file_name = shift;
+  my %args = @_;
+
+  my $file_index = 1;
+  my $n = 0;
+  my $f = $generated_d->file ($file_name . '-' . $file_index . '.dat');
+  print $f->relative, "...\n";
+  my $file = $f->openw;
+  my @map = @$map;
+  while (@map) {
+    my $from = shift @map;
+    my $to = shift @map || $from;
+    for my $v ($from..$to) {
+      next if 0xD840 < $v and $v < 0xDBC0;
+      next if 0xDC40 < $v and $v < 0xDFC0;
+      next if 0xE040 < $v and $v < 0xEFC0;
+      next if 0xF040 < $v and $v < 0xF8C0;
+      next if 0x30000 < $v and $v < 0xDFFFF and ($v & 0xFFFF) < 0xFFF0;
+      next if 0xE00C0 < $v and $v < 0xEFFF0;
+      next if 0xF0010 < $v and $v < 0xFFFF0;
+      next if 0x100010 < $v and $v < 0x10FFF0;
+      my $orig = $args{unsafe} ? "\x{FFFD}" : chr $v;
+      my $new = NFC lc uc NFKD $orig;
+      my $newc = {
+          "\x00" => "\x{FFFD}",
+          "\x09" => '',
+          "\x0A" => '',
+          "\x0B" => '',
+          "\x0C" => '',
+          "\x0D" => '',
+          "\x{200B}" => '', # ZERO WIDTH SPACE
+          "\x{200C}" => '',
+          "\x{200D}" => '',
+          "\x{2028}" => $args{invalid} && $args{invalid} == 0.5 ? '' : undef,
+          "\x{2029}" => $args{invalid} && $args{invalid} == 0.5 ? '' : undef,
+          "\x{2060}" => '',
+          "\x{FEFF}" => '',
+      }->{$new};
+      $new = $newc if defined $newc;
+
+      # Firefox: U+03F9 (Unicode 4.0+) -> U+03C3 (NFKD > uc > lc > NFC)
+
+      $n++;
+      if ($n >= 1000) {
+        $file_index++;
+        $f = $generated_d->file ($file_name . '-' . $file_index . '.dat');
+        print $f->relative, "...\n";
+        $file = $f->openw;
+        $n = 0;
+      }
+      
+      my $BEFORE = 'a';
+      my $AFTER = 'b';
+      ($BEFORE, $AFTER) = ("\x{0640}", "\x{0641}") if is_rtl $orig;
+      
+      my $punycoded = pe ($BEFORE . $new . $AFTER);
+      if (not ($punycoded =~ /\A(?:[\x20-\x24\x26-\x7E]|%[0-7][0-9A-F])+\z/) and
+          ($args{unsafe} or $new ne "\x{FFFD}" or $v == 0xFFFD) and
+          $v != 0x0340 and $v != 0x0341 and not $args{unassigned} and
+          $args{invalid} and
+          not ($args{invalid} == 0.5 and $new =~ /[\x80-\x9F]/)) {
+        printf $file q{#data escaped
+http://%s%s%s/
+#invalid 1
+#invalid-canon escaped
+http://%s/
+
+},
+            uescape $BEFORE,
+            $args{pe_input} ? pe chr $v : $args{unsafe} ? sprintf '\U%08X', $v : uescape $orig,
+            uescape $AFTER,
+            uescape $punycoded;
+      } else {
+        my $host = $BEFORE . (defined $newc ? $newc : chr $v) . $AFTER;
+        if ($v == 0x0340 or $v == 0x0341) {
+          $punycoded = to_punycode_with_prefix NFKC $host;
+        } elsif ($args{unassigned}) {
+          $punycoded = to_punycode_with_prefix $host;
+          $host = $punycoded;
+        }
+        printf $file q{#data escaped
+http://%s%s%s/
+#canon escaped
+http://%s/
+#canon-unescaped escaped
+http://%s/
+#scheme http
+#host escaped
+%s
+#host-unescaped escaped
+%s
+#path /
+
+},
+            uescape $BEFORE,
+            $args{pe_input} ? pe chr $v : $args{unsafe} ? sprintf '\U%08X', $v : uescape $orig,
+            uescape $AFTER,
+            uescape $punycoded,
+            uescape ($args{pe_input} ? $punycoded : $host),
+            uescape $punycoded,
+            uescape ($args{pe_input} ? $punycoded : $host);
+      }
+    } # $v
+  }
+  close $file;
+} # generate_from_list
+
+generate_from_map
+    \@Unicode::Stringprep::Mapping::B1
+    => 'decomps-authority-stringprep-b1',
+    remove => 1;
+generate_from_map
+    \@Unicode::Stringprep::Mapping::B1
+    => 'decomps-authority-stringprep-b1-pe',
+    remove => 1,
+    pe_input => 1;
+generate_from_map
+    \@Unicode::Stringprep::Mapping::B2
+    => 'decomps-authority-stringprep-b2';
+generate_from_map
+    \@Unicode::Stringprep::Mapping::B2
+    => 'decomps-authority-stringprep-b2-pe',
+    pe_input => 1;
+#generate_from_map
+#    \@Unicode::Stringprep::Mapping::B3
+#    => 'decomps-authority-stringprep-b3';
+
+#generate_from_list
+#    \@Unicode::Stringprep::Prohibited::C11
+#    => 'decomps-authority-stringprep-c11';
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C12
+    => 'decomps-authority-stringprep-c12';
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C12
+    => 'decomps-authority-stringprep-c12-pe',
+    pe_input => 1;
+#generate_from_list
+#    \@Unicode::Stringprep::Prohibited::C21
+#    => 'decomps-authority-stringprep-c21';
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C22
+    => 'decomps-authority-stringprep-c22',
+    invalid => 1; # chrome/ie -> 1, gecko -> 0, opera -> 0.5
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C22
+    => 'decomps-authority-stringprep-c22-pe',
+    pe_input => 1,
+    invalid => 1; # chrome/ie -> 1, gecko -> 0, opera -> 0.5
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C3
+    => 'decomps-authority-stringprep-c3',
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C3
+    => 'decomps-authority-stringprep-c3-pe',
+    pe_input => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C4
+    => 'decomps-authority-stringprep-c4',
+    unsafe => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C4
+    => 'decomps-authority-stringprep-c4-pe',
+    pe_input => 1,
+    unsafe => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C5
+    => 'decomps-authority-stringprep-c5',
+    unsafe => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C5
+    => 'decomps-authority-stringprep-c5-pe',
+    pe_input => 1,
+    unsafe => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C6
+    => 'decomps-authority-stringprep-c6',
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C6
+    => 'decomps-authority-stringprep-c6-pe',
+    pe_input => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C7
+    => 'decomps-authority-stringprep-c7',
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C7
+    => 'decomps-authority-stringprep-c7-pe',
+    pe_input => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C8
+    => 'decomps-authority-stringprep-c8',
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C8
+    => 'decomps-authority-stringprep-c8-pe',
+    pe_input => 1,
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C9
+    => 'decomps-authority-stringprep-c9',
+    invalid => 1;
+generate_from_list
+    \@Unicode::Stringprep::Prohibited::C9
+    => 'decomps-authority-stringprep-c9-pe',
+    pe_input => 1,
+    invalid => 1;
+
+generate_from_list
+    \@Unicode::Stringprep::Unassigned::A1,
+    => 'decomps-authority-stringprep-a1',
+    unassigned => 1;
+
+__END__
+
+=head1 AUTHOR
+
+Wakaba <w@suika.fam.cx>.
+
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
