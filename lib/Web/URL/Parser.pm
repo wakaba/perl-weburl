@@ -356,6 +356,42 @@ sub _remove_dot_segments ($$) {
   return $buf;
 } # _remove_dot_segments
 
+use Net::IDN::Nameprep;
+use Net::LibIDN;
+
+sub encode_punycode ($) {
+  # XXX
+  return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_encode $_[0], 'utf-8' };
+} # decode_punycode
+
+sub to_ascii ($$) {
+  my ($class, $s) = @_;
+
+  $s = Encode::encode ('utf-8', $s);
+  $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
+  $s = Encode::decode ('utf-8', $s); # XXX
+
+  # XXX
+  $s = eval { Net::IDN::Nameprep::nameprep ($s, AllowUnassigned => 1) };
+
+  # XXX IPv4address / IPv6address
+  
+  my @label;
+  for my $label (split /\./, $s, -1) {
+    if ($label =~ /[^\x00-\x7F]/) {
+      push @label, 'xn--' . eval { encode_punycode $label }; # XXX
+    } else {
+      push @label, $label;
+    }
+
+    # XXX percent-encoding
+  } # $label
+
+  $s = join '.', @label;
+
+  return $s;
+} # to_ascii
+
 sub canonicalize_url ($$;$) {
   my ($class, $parsed_url, $charset) = @_;
 
@@ -385,6 +421,10 @@ sub canonicalize_url ($$;$) {
       }ge;
       $parsed_url->{user} = $s;
     }
+  }
+
+  if (defined $parsed_url->{host}) {
+    $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
   }
 
   if (defined $parsed_url->{port}) {
