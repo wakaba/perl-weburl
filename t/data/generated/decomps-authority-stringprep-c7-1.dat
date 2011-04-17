@@ -1,0 +1,72 @@
+#data escaped
+http://a\u2FF0b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B0b/
+
+#data escaped
+http://a\u2FF1b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B1b/
+
+#data escaped
+http://a\u2FF2b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B2b/
+
+#data escaped
+http://a\u2FF3b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B3b/
+
+#data escaped
+http://a\u2FF4b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B4b/
+
+#data escaped
+http://a\u2FF5b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B5b/
+
+#data escaped
+http://a\u2FF6b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B6b/
+
+#data escaped
+http://a\u2FF7b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B7b/
+
+#data escaped
+http://a\u2FF8b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B8b/
+
+#data escaped
+http://a\u2FF9b/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%B9b/
+
+#data escaped
+http://a\u2FFAb/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%BAb/
+
+#data escaped
+http://a\u2FFBb/
+#invalid 1
+#invalid-canon escaped
+http://a%E2%BF%BBb/
+

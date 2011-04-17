@@ -1,0 +1,396 @@
+#data escaped
+http://a\U0000FDD0b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD1b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD2b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD3b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD4b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD5b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD6b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD7b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD8b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDD9b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDDAb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDDBb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDDCb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDDDb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDDEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDDFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE0b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE1b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE2b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE3b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE4b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE5b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE6b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE7b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE8b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDE9b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDEAb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDEBb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDECb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDEDb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDEEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FDEFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0000FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0001FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0001FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0002FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0002FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0003FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0003FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0004FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0004FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0005FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0005FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0006FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0006FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0007FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0007FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0008FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0008FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0009FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0009FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000AFFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000AFFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000BFFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000BFFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000CFFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000CFFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000DFFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000DFFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000EFFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000EFFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000FFFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U000FFFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0010FFFEb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
+#data escaped
+http://a\U0010FFFFb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+

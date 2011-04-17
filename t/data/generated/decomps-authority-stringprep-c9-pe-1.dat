@@ -1,0 +1,582 @@
+#data escaped
+http://a%F3%A0%80%81b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%81b/
+
+#data escaped
+http://a%F3%A0%80%A0b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A0b/
+
+#data escaped
+http://a%F3%A0%80%A1b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A1b/
+
+#data escaped
+http://a%F3%A0%80%A2b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A2b/
+
+#data escaped
+http://a%F3%A0%80%A3b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A3b/
+
+#data escaped
+http://a%F3%A0%80%A4b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A4b/
+
+#data escaped
+http://a%F3%A0%80%A5b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A5b/
+
+#data escaped
+http://a%F3%A0%80%A6b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A6b/
+
+#data escaped
+http://a%F3%A0%80%A7b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A7b/
+
+#data escaped
+http://a%F3%A0%80%A8b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A8b/
+
+#data escaped
+http://a%F3%A0%80%A9b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%A9b/
+
+#data escaped
+http://a%F3%A0%80%AAb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%AAb/
+
+#data escaped
+http://a%F3%A0%80%ABb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%ABb/
+
+#data escaped
+http://a%F3%A0%80%ACb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%ACb/
+
+#data escaped
+http://a%F3%A0%80%ADb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%ADb/
+
+#data escaped
+http://a%F3%A0%80%AEb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%AEb/
+
+#data escaped
+http://a%F3%A0%80%AFb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%AFb/
+
+#data escaped
+http://a%F3%A0%80%B0b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B0b/
+
+#data escaped
+http://a%F3%A0%80%B1b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B1b/
+
+#data escaped
+http://a%F3%A0%80%B2b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B2b/
+
+#data escaped
+http://a%F3%A0%80%B3b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B3b/
+
+#data escaped
+http://a%F3%A0%80%B4b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B4b/
+
+#data escaped
+http://a%F3%A0%80%B5b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B5b/
+
+#data escaped
+http://a%F3%A0%80%B6b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B6b/
+
+#data escaped
+http://a%F3%A0%80%B7b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B7b/
+
+#data escaped
+http://a%F3%A0%80%B8b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B8b/
+
+#data escaped
+http://a%F3%A0%80%B9b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%B9b/
+
+#data escaped
+http://a%F3%A0%80%BAb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%BAb/
+
+#data escaped
+http://a%F3%A0%80%BBb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%BBb/
+
+#data escaped
+http://a%F3%A0%80%BCb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%BCb/
+
+#data escaped
+http://a%F3%A0%80%BDb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%BDb/
+
+#data escaped
+http://a%F3%A0%80%BEb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%BEb/
+
+#data escaped
+http://a%F3%A0%80%BFb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%80%BFb/
+
+#data escaped
+http://a%F3%A0%81%80b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%80b/
+
+#data escaped
+http://a%F3%A0%81%81b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%81b/
+
+#data escaped
+http://a%F3%A0%81%82b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%82b/
+
+#data escaped
+http://a%F3%A0%81%83b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%83b/
+
+#data escaped
+http://a%F3%A0%81%84b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%84b/
+
+#data escaped
+http://a%F3%A0%81%85b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%85b/
+
+#data escaped
+http://a%F3%A0%81%86b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%86b/
+
+#data escaped
+http://a%F3%A0%81%87b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%87b/
+
+#data escaped
+http://a%F3%A0%81%88b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%88b/
+
+#data escaped
+http://a%F3%A0%81%89b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%89b/
+
+#data escaped
+http://a%F3%A0%81%8Ab/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%8Ab/
+
+#data escaped
+http://a%F3%A0%81%8Bb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%8Bb/
+
+#data escaped
+http://a%F3%A0%81%8Cb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%8Cb/
+
+#data escaped
+http://a%F3%A0%81%8Db/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%8Db/
+
+#data escaped
+http://a%F3%A0%81%8Eb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%8Eb/
+
+#data escaped
+http://a%F3%A0%81%8Fb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%8Fb/
+
+#data escaped
+http://a%F3%A0%81%90b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%90b/
+
+#data escaped
+http://a%F3%A0%81%91b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%91b/
+
+#data escaped
+http://a%F3%A0%81%92b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%92b/
+
+#data escaped
+http://a%F3%A0%81%93b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%93b/
+
+#data escaped
+http://a%F3%A0%81%94b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%94b/
+
+#data escaped
+http://a%F3%A0%81%95b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%95b/
+
+#data escaped
+http://a%F3%A0%81%96b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%96b/
+
+#data escaped
+http://a%F3%A0%81%97b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%97b/
+
+#data escaped
+http://a%F3%A0%81%98b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%98b/
+
+#data escaped
+http://a%F3%A0%81%99b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%99b/
+
+#data escaped
+http://a%F3%A0%81%9Ab/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%9Ab/
+
+#data escaped
+http://a%F3%A0%81%9Bb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%9Bb/
+
+#data escaped
+http://a%F3%A0%81%9Cb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%9Cb/
+
+#data escaped
+http://a%F3%A0%81%9Db/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%9Db/
+
+#data escaped
+http://a%F3%A0%81%9Eb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%9Eb/
+
+#data escaped
+http://a%F3%A0%81%9Fb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%9Fb/
+
+#data escaped
+http://a%F3%A0%81%A0b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A0b/
+
+#data escaped
+http://a%F3%A0%81%A1b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A1b/
+
+#data escaped
+http://a%F3%A0%81%A2b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A2b/
+
+#data escaped
+http://a%F3%A0%81%A3b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A3b/
+
+#data escaped
+http://a%F3%A0%81%A4b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A4b/
+
+#data escaped
+http://a%F3%A0%81%A5b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A5b/
+
+#data escaped
+http://a%F3%A0%81%A6b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A6b/
+
+#data escaped
+http://a%F3%A0%81%A7b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A7b/
+
+#data escaped
+http://a%F3%A0%81%A8b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A8b/
+
+#data escaped
+http://a%F3%A0%81%A9b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%A9b/
+
+#data escaped
+http://a%F3%A0%81%AAb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%AAb/
+
+#data escaped
+http://a%F3%A0%81%ABb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%ABb/
+
+#data escaped
+http://a%F3%A0%81%ACb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%ACb/
+
+#data escaped
+http://a%F3%A0%81%ADb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%ADb/
+
+#data escaped
+http://a%F3%A0%81%AEb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%AEb/
+
+#data escaped
+http://a%F3%A0%81%AFb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%AFb/
+
+#data escaped
+http://a%F3%A0%81%B0b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B0b/
+
+#data escaped
+http://a%F3%A0%81%B1b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B1b/
+
+#data escaped
+http://a%F3%A0%81%B2b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B2b/
+
+#data escaped
+http://a%F3%A0%81%B3b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B3b/
+
+#data escaped
+http://a%F3%A0%81%B4b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B4b/
+
+#data escaped
+http://a%F3%A0%81%B5b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B5b/
+
+#data escaped
+http://a%F3%A0%81%B6b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B6b/
+
+#data escaped
+http://a%F3%A0%81%B7b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B7b/
+
+#data escaped
+http://a%F3%A0%81%B8b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B8b/
+
+#data escaped
+http://a%F3%A0%81%B9b/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%B9b/
+
+#data escaped
+http://a%F3%A0%81%BAb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%BAb/
+
+#data escaped
+http://a%F3%A0%81%BBb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%BBb/
+
+#data escaped
+http://a%F3%A0%81%BCb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%BCb/
+
+#data escaped
+http://a%F3%A0%81%BDb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%BDb/
+
+#data escaped
+http://a%F3%A0%81%BEb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%BEb/
+
+#data escaped
+http://a%F3%A0%81%BFb/
+#invalid 1
+#invalid-canon escaped
+http://a%F3%A0%81%BFb/
+

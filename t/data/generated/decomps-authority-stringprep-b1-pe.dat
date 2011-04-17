@@ -1,0 +1,243 @@
+#data escaped
+http://a%C2%ADb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%CD%8Fb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E1%A0%86b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E1%A0%8Bb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E1%A0%8Cb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E1%A0%8Db/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E2%80%8Bb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E2%80%8Cb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E2%80%8Db/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%E2%81%A0b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%80b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%81b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%82b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%83b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%84b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%85b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%86b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%87b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%88b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%89b/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%8Ab/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%8Bb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%8Cb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%8Db/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%8Eb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%B8%8Fb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+
+#data escaped
+http://a%EF%BB%BFb/
+#canon escaped
+http://ab/
+#scheme http
+#host escaped
+ab
+#path /
+

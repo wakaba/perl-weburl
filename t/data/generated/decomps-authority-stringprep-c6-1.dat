@@ -1,0 +1,30 @@
+#data escaped
+http://a\uFFF9b/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%B9b/
+
+#data escaped
+http://a\uFFFAb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BAb/
+
+#data escaped
+http://a\uFFFBb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BBb/
+
+#data escaped
+http://a\uFFFCb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BCb/
+
+#data escaped
+http://a\uFFFDb/
+#invalid 1
+#invalid-canon escaped
+http://a%EF%BF%BDb/
+
