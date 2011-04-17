@@ -485,7 +485,7 @@ http://192.168.0777.0/
 http://192.000.0.0/
 #canon http://192.0.0.0/
 #scheme http
-#host 192.168.0.0
+#host 192.0.0.0
 #path /
 
 #data

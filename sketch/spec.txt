@@ -70,13 +70,14 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   A string /s/ is an IPv4 address if:
 
-    Percent-decode /s/ XXX
-
-    Canonicalize using IDNA XXX
-
     Split /s/ by "." and let /host/ be the array of the result
     components, where |host[i]| represents the /i/-th component.  The
     first component is |host[0]|.
+
+    Abort if /host/ contains no item.
+
+    XXX The following algorithm is wrong for e.g. "192.168.1" or
+    "192.168.0.266".
 
     addr[0] = 0; addr[1] = 0; addr[2] = 0; addr[3] = 0;
     j = 0;
@@ -104,6 +105,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
         addr[j + 0] = (n >>  0) & 0xFF;
       }
     }
+
+    Abort if more components in /host/.
 
     Then, /addr/ represents the IPv4 address.
 
@@ -185,6 +188,13 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   Apply Nameprep.  XXX This is wrong.
 
+  If the first character of /s/ is "[" and the last character of /s/
+  is "]", XXX canonicalize as an IPv6 address, return the result, and
+  abort these steps.
+
+  If /s/ is an IPv4 address, return the canonical representation of
+  the IPv4 address and abort these steps.
+
   Split by U+002E FULL STOP character (.).  Let /labels/ be the result
   (zero or more strings of zero or more characters.
 
@@ -225,9 +235,6 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
     U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |password|
     component of /u/, using encoding |UTF-8|, if any.
-
-  If |host| is an IPv4 address, replace the |host| component by the
-  canonical representation of the IPv4 address.
 
   XXX host
 

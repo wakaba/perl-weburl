@@ -364,6 +364,21 @@ sub encode_punycode ($) {
   return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_encode $_[0], 'utf-8' };
 } # decode_punycode
 
+my $to_number = sub {
+  my $n = shift;
+  if ($n =~ /\A0[Xx]([0-9]*)\z/) {
+    return hex $1;
+  } elsif ($n =~ /\A0+([0-9]+)\z/) {
+    my $v = $1;
+    return undef if $v =~ /[89]/;
+    return oct $v;
+  } elsif ($n =~ /\A[0-9]+\z/) {
+    return 0+$n;
+  } else {
+    return undef;
+  }
+}; # $to_number
+
 sub to_ascii ($$) {
   my ($class, $s) = @_;
 
@@ -373,9 +388,48 @@ sub to_ascii ($$) {
 
   # XXX
   $s = eval { Net::IDN::Nameprep::nameprep ($s, AllowUnassigned => 1) };
+  $s = '' unless defined $s;
 
-  # XXX IPv4address / IPv6address
-  
+  if ($s =~ /\A\[/ and $s =~ /\]\z/) {
+    # XXX canonicalize as an IPv6 address
+    return $s;
+  }
+
+  # IPv4address
+  IPv4: {
+    my @label = split /\./, $s, -1;
+    last IPv4 unless @label;
+    my @addr = (0, 0, 0, 0);
+    my $j = 0;
+    while (@label) {
+      my $n = $to_number->(shift @label);
+      if (not defined $n or $n > 0xFFFFFFFF) {
+        last IPv4;
+      } elsif ($n > 0xFFFFFF) {
+        last IPv4 if $j > 0;
+        $addr[$j + 0] = ($n >> 24) & 0xFF;
+        $addr[$j + 1] = ($n >> 16) & 0xFF;
+        $addr[$j + 2] = ($n >>  8) & 0xFF;
+        $addr[$j + 3] = ($n >>  0) & 0xFF;
+      } elsif ($n > 0xFFFF) {
+        last IPv4 if $j > 1;
+        $addr[$j + 0] = ($n >> 16) & 0xFF;
+        $addr[$j + 1] = ($n >>  8) & 0xFF;
+        $addr[$j + 2] = ($n >>  0) & 0xFF;
+      } elsif ($n > 0xFF) {
+        last IPv4 if $j > 2;
+        $addr[$j + 0] = ($n >>  8) & 0xFF;
+        $addr[$j + 1] = ($n >>  0) & 0xFF;
+      } else {
+        last IPv4 if $j > 3;
+        $addr[$j + 0] = ($n >>  0) & 0xFF;
+      }
+      $j++;
+    } # $i
+    last IPv4 if @label;
+    return join '.', @addr;
+  } # IPv4
+
   my @label;
   for my $label (split /\./, $s, -1) {
     if ($label =~ /[^\x00-\x7F]/) {
