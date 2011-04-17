@@ -4773,16 +4773,7 @@ not ok 2133 - http://[1::%25eth0]/ - http://[1::%25eth0]/
 # +----+-------------------------------------------+-----------------------------------------------+
 ok 2134 - http://[1::%eth0]/ - http://[1::%eth0]/
 ok 2135 - http://[v1.2001:0DB8::0:1+02]/ - http://[v1.2001:0DB8::0:1+02]/
-not ok 2136 - http://[:/ - http://[:/
-#   Failed test 'http://[:/ - http://[:/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://%5B/,%5B,/,http,http               |http://[/,[,/,http,http                   *
-# +----+------------------------------------------+------------------------------------------+
+ok 2136 - http://[:/ - http://[:/
 ok 2137 - http://[::%:]/ - http://[::%:]/
 not ok 2138 - http://[::%25:]/ - http://[::%25:]/
 #   Failed test 'http://[::%25:]/ - http://[::%25:]/'
@@ -5107,12 +5098,12 @@ not ok 2190 - http://[2001:0DB8:0:CD30::/60]/ - http://[2001:0DB8:0:CD30::/60]/
 #   Failed test 'http://[2001:0DB8:0:CD30::/60]/ - http://[2001:0DB8:0:CD30::/60]/'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-# | Elt|Got                                                                                    |Expected                                                             |
-# +----+---------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                                               |canon,host,path,scheme,scheme_normalized                             |
-# *   1|http://%5B2001%3A0db8%3A0%3Acd30%3A/60]/,%5B2001%3A0db8%3A0%3Acd30%3A,/60]/,http,http  |http://[2001:0DB8:0:CD30::/60]/,[2001:0DB8:0:CD30::/60],/,http,http  *
-# +----+---------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+# +----+-----------------------------------------------------------------------------------+---------------------------------------------------------------------+
+# | Elt|Got                                                                                |Expected                                                             |
+# +----+-----------------------------------------------------------------------------------+---------------------------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized                                           |canon,host,path,scheme,scheme_normalized                             |
+# *   1|http://[2001%3A0db8%3A0%3Acd30%3A/60]/,[2001%3A0db8%3A0%3Acd30%3A,/60]/,http,http  |http://[2001:0DB8:0:CD30::/60]/,[2001:0DB8:0:CD30::/60],/,http,http  *
+# +----+-----------------------------------------------------------------------------------+---------------------------------------------------------------------+
 not ok 2191 - http://[2001:0DB8::CD30/60]/ - http://[2001:0DB8::CD30/60]/
 #   Failed test 'http://[2001:0DB8::CD30/60]/ - http://[2001:0DB8::CD30/60]/'
 #   at _canon line 1.
@@ -5743,26 +5734,8 @@ ok 2309 - http://www.example.com:-2/ - http://www.example.com:-2/
 ok 2310 - ftp://cnn.example.com&story=breaking_news@10.0.0.1/top_story.htm - ftp://cnn.example.com&story=breaking_news@10.0.0.1/top_story.htm
 ok 2311 - http://%D9%82%D9%87%D9%88%D8%A9@example/ - http://%D9%82%D9%87%D9%88%D8%A9@example/
 ok 2312 - http://%D9%82%D9%87%D9%88%D8%a9@example/ - http://%D9%82%D9%87%D9%88%D8%a9@example/
-not ok 2313 - http://[c@d]/ - http://[c@d]/
-#   Failed test 'http://[c@d]/ - http://[c@d]/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                            |Expected                                       |
-# +----+-----------------------------------------------+-----------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized,user  |canon,host,path,scheme,scheme_normalized,user  |
-# *   1|http://%5Bc@d%5D/,d%5D,/,http,http,%5Bc        |http://%5Bc@d]/,d],/,http,http,%5Bc            *
-# +----+-----------------------------------------------+-----------------------------------------------+
-not ok 2314 - http://user@[c@d]/ - http://user@[c@d]/
-#   Failed test 'http://user@[c@d]/ - http://user@[c@d]/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------+---------------------------------------------------+
-# | Elt|Got                                                    |Expected                                           |
-# +----+-------------------------------------------------------+---------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized,user          |canon,host,path,scheme,scheme_normalized,user      |
-# *   1|http://user%40%5Bc@d%5D/,d%5D,/,http,http,user%40%5Bc  |http://user%40%5Bc@d]/,d],/,http,http,user%40%5Bc  *
-# +----+-------------------------------------------------------+---------------------------------------------------+
+ok 2313 - http://[c@d]/ - http://[c@d]/
+ok 2314 - http://user@[c@d]/ - http://user@[c@d]/
 ok 2315 - http://foo\# - http://foo\#
 ok 2316 - http://foo? - http://foo?
 ok 2317 - http://foo/\# - http://foo/\#
@@ -5783,46 +5756,10 @@ ok 2331 - http://@@@@@@@@ - http://@@@@@@@@
 ok 2332 - http://:@ - http://:@
 ok 2333 - http://[] - http://[]
 ok 2334 - http://[]/ - http://[]/
-not ok 2335 - http://[?] - http://[?]
-#   Failed test 'http://[?] - http://[?]'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------+------------------------------------------------+
-# | Elt|Got                                             |Expected                                        |
-# +----+------------------------------------------------+------------------------------------------------+
-# |   0|canon,host,path,query,scheme,scheme_normalized  |canon,host,path,query,scheme,scheme_normalized  |
-# *   1|http://%5B/?],%5B,/,],http,http                 |http://[/?],[,/,],http,http                     *
-# +----+------------------------------------------------+------------------------------------------------+
-not ok 2336 - http://[\#] - http://[\#]
-#   Failed test 'http://[\#] - http://[\#]'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+---------------------------------------------------+
-# | Elt|Got                                                |Expected                                           |
-# +----+---------------------------------------------------+---------------------------------------------------+
-# |   0|canon,fragment,host,path,scheme,scheme_normalized  |canon,fragment,host,path,scheme,scheme_normalized  |
-# *   1|http://%5B/#],],%5B,/,http,http                    |http://[/#],],[,/,http,http                        *
-# +----+---------------------------------------------------+---------------------------------------------------+
-not ok 2337 - http://[/] - http://[/]
-#   Failed test 'http://[/] - http://[/]'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://%5B/],%5B,/],http,http             |http://[/],[,/],http,http                 *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2338 - http://[\] - http://[\]
-#   Failed test 'http://[\] - http://[\]'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://%5B/],%5B,/],http,http             |http://[/],[,/],http,http                 *
-# +----+------------------------------------------+------------------------------------------+
+ok 2335 - http://[?] - http://[?]
+ok 2336 - http://[\#] - http://[\#]
+ok 2337 - http://[/] - http://[/]
+ok 2338 - http://[\] - http://[\]
 ok 2339 - http://[:] - http://[:]
 ok 2340 - http://[:80] - http://[:80]
 ok 2341 - http://foo:80 - http://foo:80
@@ -5832,48 +5769,21 @@ ok 2344 - http://foo:80:98 - http://foo:80:98
 ok 2345 - http://foo: - http://foo:
 ok 2346 - http://foo:: - http://foo::
 ok 2347 - http://foo:/ - http://foo:/
-not ok 2348 - http://[foo:80 - http://[foo:80
-#   Failed test 'http://[foo:80 - http://[foo:80'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://%5Bfoo/,%5Bfoo,/,http,http         |http://[foo/,[foo,/,http,http             *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2349 - http://[1:2:4 - http://[1:2:4
-#   Failed test 'http://[1:2:4 - http://[1:2:4'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                            |Expected                                       |
-# +----+-----------------------------------------------+-----------------------------------------------+
-# |   0|canon,host,path,port,scheme,scheme_normalized  |canon,host,path,port,scheme,scheme_normalized  |
-# *   1|http://%5B1%3A2:4/,%5B1%3A2,/,4,http,http      |http://[1%3A2:4/,[1%3A2,/,4,http,http          *
-# +----+-----------------------------------------------+-----------------------------------------------+
-not ok 2350 - http://[1:2:3/4:5] - http://[1:2:3/4:5]
-#   Failed test 'http://[1:2:3/4:5] - http://[1:2:3/4:5]'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                                |Expected                                       |
-# +----+---------------------------------------------------+-----------------------------------------------+
-# |   0|canon,host,path,port,scheme,scheme_normalized      |canon,host,path,port,scheme,scheme_normalized  |
-# *   1|http://%5B1%3A2:3/4:5],%5B1%3A2,/4:5],3,http,http  |http://[1%3A2:3/4:5],[1%3A2,/4:5],3,http,http  *
-# +----+---------------------------------------------------+-----------------------------------------------+
+ok 2348 - http://[foo:80 - http://[foo:80
+ok 2349 - http://[1:2:4 - http://[1:2:4
+ok 2350 - http://[1:2:3/4:5] - http://[1:2:3/4:5]
 ok 2351 - http://:080 - http://:080
 ok 2352 - http://foo:080/ - http://foo:080/
 not ok 2353 - http://[foo;bar=a]:80 - http://[foo;bar=a]:80
 #   Failed test 'http://[foo;bar=a]:80 - http://[foo;bar=a]:80'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                  |Expected                                             |
-# +----+-----------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized             |
-# *   1|http://%5Bfoo;bar=a]:80,%5Bfoo,;bar=a]:80,http,http  |http://[foo/;bar=a]:80,[foo,/;bar=a%5D:80,http,http  *
-# +----+-----------------------------------------------------+-----------------------------------------------------+
+# +----+-------------------------------------------------+-----------------------------------------------------+
+# | Elt|Got                                              |Expected                                             |
+# +----+-------------------------------------------------+-----------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized             |
+# *   1|http://[foo;bar=a]:80,[foo,;bar=a]:80,http,http  |http://[foo/;bar=a]:80,[foo,/;bar=a%5D:80,http,http  *
+# +----+-------------------------------------------------+-----------------------------------------------------+
 ok 2354 - http://:@bar - http://:@bar
 ok 2355 - http://abc:@ - http://abc:@
 ok 2356 - http://ab:c:de@ - http://ab:c:de@
@@ -6105,26 +6015,8 @@ ok 2473 - http://foo?bar?baz - http://foo?bar?baz
 ok 2474 - http://foo\#bar\#baz - http://foo\#bar\#baz
 ok 2475 - about://user@ - about://user@
 ok 2476 - about://@ - about://@
-not ok 2477 - http://@[c@d]/ - http://@[c@d]/
-#   Failed test 'http://@[c@d]/ - http://@[c@d]/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                            |Expected                                       |
-# +----+-----------------------------------------------+-----------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized,user  |canon,host,path,scheme,scheme_normalized,user  |
-# *   1|http://%40%5Bc@d%5D/,d%5D,/,http,http,%40%5Bc  |http://%40%5Bc@d]/,d],/,http,http,%40%5Bc      *
-# +----+-----------------------------------------------+-----------------------------------------------+
-not ok 2478 - http://a:b@[c@d:4]:3/ - http://a:b@[c@d:4]:3/
-#   Failed test 'http://a:b@[c@d:4]:3/ - http://a:b@[c@d:4]:3/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------+-------------------------------------------------------------+
-# | Elt|Got                                                              |Expected                                                     |
-# +----+-----------------------------------------------------------------+-------------------------------------------------------------+
-# |   0|canon,host,password,path,port,scheme,scheme_normalized,user      |canon,host,password,path,port,scheme,scheme_normalized,user  |
-# *   1|http://a:b%40%5Bc@d%3A4%5D:3/,d%3A4%5D,b%40%5Bc,/,3,http,http,a  |http://a:b%40%5Bc@d%3A4]:3/,d%3A4],b%40%5Bc,/,3,http,http,a  *
-# +----+-----------------------------------------------------------------+-------------------------------------------------------------+
+ok 2477 - http://@[c@d]/ - http://@[c@d]/
+ok 2478 - http://a:b@[c@d:4]:3/ - http://a:b@[c@d:4]:3/
 ok 2479 - http://a:b@:3/ - http://a:b@:3/
 ok 2480 - http://User@example:/ - http://User@example:/
 ok 2481 - about:\#a?b - about:\#a?b
@@ -7378,4 +7270,4 @@ ok 3428 - http://suika.fam.cx:%380/ - http://suika.fam.cx:%380/
 ok 3429 - http://suika.fam.cx:8%30/ - http://suika.fam.cx:8%30/
 ok 3430 - http://suika.fam.cx:%38%30/ - http://suika.fam.cx:%38%30/
 1..3430
-# Looks like you failed 394 tests of 3430.
+# Looks like you failed 382 tests of 3430.

@@ -438,7 +438,7 @@ sub to_ascii ($$) {
 
     # XXX
     $label = Encode::encode ('utf-8', $label);
-    $label =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5F\x61-\x7A\x7E])}{
+    $label =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5B\x5D\x5F\x61-\x7A\x7E])}{
       sprintf '%%%02X', ord $1;
     }ge;
 
