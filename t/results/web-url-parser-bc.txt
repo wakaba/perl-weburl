@@ -300,16 +300,7 @@ ok 270 - http://a%C8%AEb/ - http://a%C8%AEb/
 ok 271 - http://a%C8%B0b/ - http://a%C8%B0b/
 ok 272 - http://a%C8%B2b/ - http://a%C8%B2b/
 ok 273 - http://a%CD%85b/ - http://a%CD%85b/
-not ok 274 - http://a%CD%BAb/ - http://a%CD%BAb/
-#   Failed test 'http://a%CD%BAb/ - http://a%CD%BAb/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+---------------------------------------------+-------------------------------------------------+
-# | Elt|Got                                          |Expected                                         |
-# +----+---------------------------------------------+-------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized         |
-# *   1|http://xn--a b-myc/,xn--a b-myc,/,http,http  |http://xn--a%20b-myc/,xn--a%20b-myc,/,http,http  *
-# +----+---------------------------------------------+-------------------------------------------------+
+ok 274 - http://a%CD%BAb/ - http://a%CD%BAb/
 ok 275 - http://a%CE%86b/ - http://a%CE%86b/
 ok 276 - http://a%CE%88b/ - http://a%CE%88b/
 ok 277 - http://a%CE%89b/ - http://a%CE%89b/
@@ -1843,17 +1834,7 @@ ok 1643 - http://aȲb/ - http://aȲb/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1644 - http://aͅb/ - http://aͅb/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 1645 - http://aͺb/ - http://aͺb/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://aͺb/ - http://aͺb/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+---------------------------------------------+-------------------------------------------------+
-# | Elt|Got                                          |Expected                                         |
-# +----+---------------------------------------------+-------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized         |
-# *   1|http://xn--a b-myc/,xn--a b-myc,/,http,http  |http://xn--a%20b-myc/,xn--a%20b-myc,/,http,http  *
-# +----+---------------------------------------------+-------------------------------------------------+
+ok 1645 - http://aͺb/ - http://aͺb/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1646 - http://aΆb/ - http://aΆb/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -4157,16 +4138,7 @@ ok 2795 - http://a𝞨b/ - http://a𝞨b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2796 - http://a𝞻b/ - http://a𝞻b/
 # data/generated/decomps-authority-stringprep-c12-1.dat
-not ok 2797 - http://a�b/ - http://a�b/
-#   Failed test 'http://a�b/ - http://a�b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2797 - http://a�b/ - http://a�b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 not ok 2798 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -4180,186 +4152,37 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 # *   1|http:///,,/,http,http                     |http://a%E1%9A%80b/,a%E1%9A%80b,/,http,http  *
 # +----+------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2799 - http://a b/ - http://a b/
+ok 2799 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2800 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2800 - http://a b/ - http://a b/
+ok 2801 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2802 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2801 - http://a b/ - http://a b/
+ok 2803 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2804 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2802 - http://a b/ - http://a b/
+ok 2805 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2806 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2803 - http://a b/ - http://a b/
+ok 2807 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2808 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2804 - http://a b/ - http://a b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2805 - http://a b/ - http://a b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2806 - http://a b/ - http://a b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2807 - http://a b/ - http://a b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2808 - http://a b/ - http://a b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2809 - http://a b/ - http://a b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2809 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2810 - http://a​b/ - http://a​b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2811 - http://a b/ - http://a b/
+ok 2811 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2812 - http://a b/ - http://a b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2812 - http://a b/ - http://a b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a b/ - http://a b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2813 - http://a　b/ - http://a　b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a　b/ - http://a　b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2813 - http://a　b/ - http://a　b/
 # data/generated/decomps-authority-stringprep-c12-pe-1.dat
-not ok 2814 - http://a%C2%A0b/ - http://a%C2%A0b/
-#   Failed test 'http://a%C2%A0b/ - http://a%C2%A0b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2814 - http://a%C2%A0b/ - http://a%C2%A0b/
 not ok 2815 - http://a%E1%9A%80b/ - http://a%E1%9A%80b/
 #   Failed test 'http://a%E1%9A%80b/ - http://a%E1%9A%80b/'
 #   at _canon line 1.
@@ -4370,147 +4193,21 @@ not ok 2815 - http://a%E1%9A%80b/ - http://a%E1%9A%80b/
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized     |
 # *   1|http:///,,/,http,http                     |http://a%E1%9A%80b/,a%E1%9A%80b,/,http,http  *
 # +----+------------------------------------------+---------------------------------------------+
-not ok 2816 - http://a%E2%80%80b/ - http://a%E2%80%80b/
-#   Failed test 'http://a%E2%80%80b/ - http://a%E2%80%80b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2817 - http://a%E2%80%81b/ - http://a%E2%80%81b/
-#   Failed test 'http://a%E2%80%81b/ - http://a%E2%80%81b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2818 - http://a%E2%80%82b/ - http://a%E2%80%82b/
-#   Failed test 'http://a%E2%80%82b/ - http://a%E2%80%82b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2819 - http://a%E2%80%83b/ - http://a%E2%80%83b/
-#   Failed test 'http://a%E2%80%83b/ - http://a%E2%80%83b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2820 - http://a%E2%80%84b/ - http://a%E2%80%84b/
-#   Failed test 'http://a%E2%80%84b/ - http://a%E2%80%84b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2821 - http://a%E2%80%85b/ - http://a%E2%80%85b/
-#   Failed test 'http://a%E2%80%85b/ - http://a%E2%80%85b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2822 - http://a%E2%80%86b/ - http://a%E2%80%86b/
-#   Failed test 'http://a%E2%80%86b/ - http://a%E2%80%86b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2823 - http://a%E2%80%87b/ - http://a%E2%80%87b/
-#   Failed test 'http://a%E2%80%87b/ - http://a%E2%80%87b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2824 - http://a%E2%80%88b/ - http://a%E2%80%88b/
-#   Failed test 'http://a%E2%80%88b/ - http://a%E2%80%88b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2825 - http://a%E2%80%89b/ - http://a%E2%80%89b/
-#   Failed test 'http://a%E2%80%89b/ - http://a%E2%80%89b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2826 - http://a%E2%80%8Ab/ - http://a%E2%80%8Ab/
-#   Failed test 'http://a%E2%80%8Ab/ - http://a%E2%80%8Ab/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2816 - http://a%E2%80%80b/ - http://a%E2%80%80b/
+ok 2817 - http://a%E2%80%81b/ - http://a%E2%80%81b/
+ok 2818 - http://a%E2%80%82b/ - http://a%E2%80%82b/
+ok 2819 - http://a%E2%80%83b/ - http://a%E2%80%83b/
+ok 2820 - http://a%E2%80%84b/ - http://a%E2%80%84b/
+ok 2821 - http://a%E2%80%85b/ - http://a%E2%80%85b/
+ok 2822 - http://a%E2%80%86b/ - http://a%E2%80%86b/
+ok 2823 - http://a%E2%80%87b/ - http://a%E2%80%87b/
+ok 2824 - http://a%E2%80%88b/ - http://a%E2%80%88b/
+ok 2825 - http://a%E2%80%89b/ - http://a%E2%80%89b/
+ok 2826 - http://a%E2%80%8Ab/ - http://a%E2%80%8Ab/
 ok 2827 - http://a%E2%80%8Bb/ - http://a%E2%80%8Bb/
-not ok 2828 - http://a%E2%80%AFb/ - http://a%E2%80%AFb/
-#   Failed test 'http://a%E2%80%AFb/ - http://a%E2%80%AFb/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2829 - http://a%E2%81%9Fb/ - http://a%E2%81%9Fb/
-#   Failed test 'http://a%E2%81%9Fb/ - http://a%E2%81%9Fb/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
-not ok 2830 - http://a%E3%80%80b/ - http://a%E3%80%80b/
-#   Failed test 'http://a%E3%80%80b/ - http://a%E3%80%80b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a b/,a b,/,http,http               |http://a%20b/,a%20b,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 2828 - http://a%E2%80%AFb/ - http://a%E2%80%AFb/
+ok 2829 - http://a%E2%81%9Fb/ - http://a%E2%81%9Fb/
+ok 2830 - http://a%E3%80%80b/ - http://a%E3%80%80b/
 # data/generated/decomps-authority-stringprep-c22-1.dat
 not ok 2831 - http://a�b/ - http://a�b/
 #   Failed test 'http://a�b/ - http://a�b/'
@@ -22724,4 +22421,4 @@ not ok 4500 - http://a%F3%A0%81%BFb/ - http://a%F3%A0%81%BFb/
 # *   1|http:///,,/,http,http                     |1         *
 # +----+------------------------------------------+----------+
 1..4500
-# Looks like you failed 1692 tests of 4500.
+# Looks like you failed 1660 tests of 4500.

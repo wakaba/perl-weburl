@@ -433,12 +433,16 @@ sub to_ascii ($$) {
   my @label;
   for my $label (split /\./, $s, -1) {
     if ($label =~ /[^\x00-\x7F]/) {
-      push @label, 'xn--' . eval { encode_punycode $label }; # XXX
-    } else {
-      push @label, $label;
+      $label = 'xn--' . eval { encode_punycode $label }; # XXX
     }
 
-    # XXX percent-encoding
+    # XXX
+    $label = Encode::encode ('utf-8', $label);
+    $label =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5F\x61-\x7A\x7E])}{
+      sprintf '%%%02X', ord $1;
+    }ge;
+
+    push @label, $label;
   } # $label
 
   $s = join '.', @label;

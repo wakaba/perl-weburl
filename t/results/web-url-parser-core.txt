@@ -58,16 +58,7 @@ not ok 28 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 # *   1|http:///,,/,http,http                     |http://%EF%BF%BDzyx.com/,%EF%BF%BDzyx.com,/,http,http  *
 # +----+------------------------------------------+-------------------------------------------------------+
 ok 29 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
-not ok 30 - http://%00.com/ - http://%00.com/
-#   Failed test 'http://%00.com/ - http://%00.com/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://\x00.com/,\x00.com,/,http,http     |http://%00.com/,%00.com,/,http,http       *
-# +----+------------------------------------------+------------------------------------------+
+ok 30 - http://%00.com/ - http://%00.com/
 not ok 31 - http://%ef%bc%85%ef%bc%94%ef%bc%91.com/ - http://%ef%bc%85%ef%bc%94%ef%bc%91.com/
 #   Failed test 'http://%ef%bc%85%ef%bc%94%ef%bc%91.com/ - http://%ef%bc%85%ef%bc%94%ef%bc%91.com/'
 #   at _canon line 1.
@@ -99,79 +90,15 @@ not ok 33 - http://%25zzf%25a/ - http://%25zzf%25a/
 # *   1|http://%zzf%a/,%zzf%a,/,http,http         |http://%25zzf%25a/,%25zzf%25a,/,http,http  *
 # +----+------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 34 - http://GOO ã€€goo.com/ - http://GOO ã€€goo.com/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://GOO ã€€goo.com/ - http://GOO ã€€goo.com/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-------------------------------------------------------+
-# | Elt|Got                                            |Expected                                               |
-# +----+-----------------------------------------------+-------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized       |canon,host,path,scheme,scheme_normalized               |
-# *   1|http://goo  goo.com/,goo  goo.com,/,http,http  |http://goo%20%20goo.com/,goo%20%20goo.com,/,http,http  *
-# +----+-----------------------------------------------+-------------------------------------------------------+
-not ok 35 - http://goo%20%20goo.com/ - http://goo%20%20goo.com/
-#   Failed test 'http://goo%20%20goo.com/ - http://goo%20%20goo.com/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-------------------------------------------------------+
-# | Elt|Got                                            |Expected                                               |
-# +----+-----------------------------------------------+-------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized       |canon,host,path,scheme,scheme_normalized               |
-# *   1|http://goo  goo.com/,goo  goo.com,/,http,http  |http://goo%20%20goo.com/,goo%20%20goo.com,/,http,http  *
-# +----+-----------------------------------------------+-------------------------------------------------------+
+ok 34 - http://GOO ã€€goo.com/ - http://GOO ã€€goo.com/
+ok 35 - http://goo%20%20goo.com/ - http://goo%20%20goo.com/
 ok 36 - http://GoOgLe.CoM/ - http://GoOgLe.CoM/
-not ok 37 - http://Goo%20 goo%7C|.com/ - http://Goo%20 goo%7C|.com/
-#   Failed test 'http://Goo%20 goo%7C|.com/ - http://Goo%20 goo%7C|.com/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-# | Elt|Got                                                |Expected                                                           |
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized                           |
-# *   1|http://goo  goo||.com/,goo  goo||.com,/,http,http  |http://goo%20%20goo%7C%7C.com/,goo%20%20goo%7C%7C.com,/,http,http  *
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-not ok 38 - http://goo%20%20goo%7C%7C.com/ - http://goo%20%20goo%7C%7C.com/
-#   Failed test 'http://goo%20%20goo%7C%7C.com/ - http://goo%20%20goo%7C%7C.com/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-# | Elt|Got                                                |Expected                                                           |
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized                           |
-# *   1|http://goo  goo||.com/,goo  goo||.com,/,http,http  |http://goo%20%20goo%7C%7C.com/,goo%20%20goo%7C%7C.com,/,http,http  *
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-not ok 39 - http://goo%20%20goo%7c%7c.com/ - http://goo%20%20goo%7c%7c.com/
-#   Failed test 'http://goo%20%20goo%7c%7c.com/ - http://goo%20%20goo%7c%7c.com/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-# | Elt|Got                                                |Expected                                                           |
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized                           |
-# *   1|http://goo  goo||.com/,goo  goo||.com,/,http,http  |http://goo%20%20goo%7C%7C.com/,goo%20%20goo%7C%7C.com,/,http,http  *
-# +----+---------------------------------------------------+-------------------------------------------------------------------+
-not ok 40 - http://goo%20%20goo%7c%7c.com%41/ - http://goo%20%20goo%7c%7c.com%41/
-#   Failed test 'http://goo%20%20goo%7c%7c.com%41/ - http://goo%20%20goo%7c%7c.com%41/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------+---------------------------------------------------------------------+
-# | Elt|Got                                                  |Expected                                                             |
-# +----+-----------------------------------------------------+---------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized                             |
-# *   1|http://goo  goo||.coma/,goo  goo||.coma,/,http,http  |http://goo%20%20goo%7C%7C.coma/,goo%20%20goo%7C%7C.coma,/,http,http  *
-# +----+-----------------------------------------------------+---------------------------------------------------------------------+
+ok 37 - http://Goo%20 goo%7C|.com/ - http://Goo%20 goo%7C|.com/
+ok 38 - http://goo%20%20goo%7C%7C.com/ - http://goo%20%20goo%7C%7C.com/
+ok 39 - http://goo%20%20goo%7c%7c.com/ - http://goo%20%20goo%7c%7c.com/
+ok 40 - http://goo%20%20goo%7c%7c.com%41/ - http://goo%20%20goo%7c%7c.com%41/
 ok 41 - http://[google.com]/ - http://[google.com]/
-not ok 42 - http://hello%00/ - http://hello%00/
-#   Failed test 'http://hello%00/ - http://hello%00/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://hello\x00/,hello\x00,/,http,http   |http://hello%00/,hello%00,/,http,http     *
-# +----+------------------------------------------+------------------------------------------+
+ok 42 - http://hello%00/ - http://hello%00/
 ok 43 - http://%41.com/ - http://%41.com/
 not ok 44 - http://%2541.com/ - http://%2541.com/
 #   Failed test 'http://%2541.com/ - http://%2541.com/'
@@ -852,30 +779,11 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 # | Elt|Got                                       |Expected           |
 # +----+------------------------------------------+-------------------+
 # *   0|canon,host,path,scheme,scheme_normalized  |canon,invalid      *
-# *   1|http://c/u/,c/u,/,http,http               |http://\x{2106}/,  *
+# *   1|http://c%2Fu/,c%2Fu,/,http,http           |http://\x{2106}/,  *
 # +----+------------------------------------------+-------------------+
-not ok 197 - http://a%3Ab/ - http://a%3Ab/
-#   Failed test 'http://a%3Ab/ - http://a%3Ab/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a:b/,a:b,/,http,http               |http://a%3Ab/,a%3Ab,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 197 - http://a%3Ab/ - http://a%3Ab/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 198 - http://aï¹•b/ - http://aï¹•b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://aï¹•b/ - http://aï¹•b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://a:b/,a:b,/,http,http               |http://a%3Ab/,a%3Ab,/,http,http           *
-# +----+------------------------------------------+------------------------------------------+
+ok 198 - http://aï¹•b/ - http://aï¹•b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 199 - http://Ì€ab/ - http://Ì€ab/
 ok 200 - http://xn--ab-4tb/ - http://xn--ab-4tb/
@@ -889,17 +797,7 @@ ok 204 - http://xn--u-ccb.com/ - http://xn--u-ccb.com/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 205 - http://aâ™¥b/ - http://aâ™¥b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 206 - http://aË˜b/ - http://aË˜b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://aË˜b/ - http://aË˜b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------+-------------------------------------------------+
-# | Elt|Got                                          |Expected                                         |
-# +----+---------------------------------------------+-------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized         |
-# *   1|http://xn--a b-5dc/,xn--a b-5dc,/,http,http  |http://xn--a%20b-5dc/,xn--a%20b-5dc,/,http,http  *
-# +----+---------------------------------------------+-------------------------------------------------+
+ok 206 - http://aË˜b/ - http://aË˜b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 207 - http://aê™”b/ - http://aê™”b/
 ok 208 - http://a·b/ - http://a·b/
@@ -1503,16 +1401,7 @@ not ok 281 - /C|\foo\bar - file:///b/c
 # *   0|canon,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized   *
 # *   1|file:/C%7C/foo/bar,/C%7C/foo/bar,file,file  |file:///C:/foo/bar,,/C:/foo/bar,file,file  *
 # +----+--------------------------------------------+-------------------------------------------+
-not ok 282 - //C|/foo/bar - http://a/b/c
-#   Failed test '//C|/foo/bar - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+---------------------------------------------+
-# | Elt|Got                                       |Expected                                     |
-# +----+------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized     |
-# *   1|http://c|/foo/bar,c|,/foo/bar,http,http   |http://c%7C/foo/bar,c%7C,/foo/bar,http,http  *
-# +----+------------------------------------------+---------------------------------------------+
+ok 282 - //C|/foo/bar - http://a/b/c
 not ok 283 - //C|/foo/bar - file://a/b/c
 #   Failed test '//C|/foo/bar - file://a/b/c'
 #   at _canon line 1.
@@ -2091,42 +1980,42 @@ not ok 342 - \\%3F\c:\windows - http://a/b/c
 #   Failed test '\\%3F\c:\windows - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------+-------------------------------------------+
-# | Elt|Got                                          |Expected                                   |
-# +----+---------------------------------------------+-------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized   |
-# *   1|http://?/c:/windows,?,/c:/windows,http,http  |file:///C:/windows,,/C:/windows,file,file  *
-# +----+---------------------------------------------+-------------------------------------------+
+# +----+-------------------------------------------------+-------------------------------------------+
+# | Elt|Got                                              |Expected                                   |
+# +----+-------------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://%3F/c:/windows,%3F,/c:/windows,http,http  |file:///C:/windows,,/C:/windows,file,file  *
+# +----+-------------------------------------------------+-------------------------------------------+
 not ok 343 - //%3F/c:/windows - http://a/b/c
 #   Failed test '//%3F/c:/windows - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------+-------------------------------------------+
-# | Elt|Got                                          |Expected                                   |
-# +----+---------------------------------------------+-------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized   |
-# *   1|http://?/c:/windows,?,/c:/windows,http,http  |file:///C:/windows,,/C:/windows,file,file  *
-# +----+---------------------------------------------+-------------------------------------------+
+# +----+-------------------------------------------------+-------------------------------------------+
+# | Elt|Got                                              |Expected                                   |
+# +----+-------------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://%3F/c:/windows,%3F,/c:/windows,http,http  |file:///C:/windows,,/C:/windows,file,file  *
+# +----+-------------------------------------------------+-------------------------------------------+
 not ok 344 - \\%3F\host\windows - http://a/b/c
 #   Failed test '\\%3F\host\windows - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------+---------------------------------------------+
-# | Elt|Got                                              |Expected                                     |
-# +----+-------------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized     |
-# *   1|http://?/host/windows,?,/host/windows,http,http  |file://host/windows,host,/windows,file,file  *
-# +----+-------------------------------------------------+---------------------------------------------+
+# +----+-----------------------------------------------------+---------------------------------------------+
+# | Elt|Got                                                  |Expected                                     |
+# +----+-----------------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://%3F/host/windows,%3F,/host/windows,http,http  |file://host/windows,host,/windows,file,file  *
+# +----+-----------------------------------------------------+---------------------------------------------+
 not ok 345 - //%3F/host/windows - http://a/b/c
 #   Failed test '//%3F/host/windows - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------+---------------------------------------------+
-# | Elt|Got                                              |Expected                                     |
-# +----+-------------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized     |
-# *   1|http://?/host/windows,?,/host/windows,http,http  |file://host/windows,host,/windows,file,file  *
-# +----+-------------------------------------------------+---------------------------------------------+
+# +----+-----------------------------------------------------+---------------------------------------------+
+# | Elt|Got                                                  |Expected                                     |
+# +----+-----------------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://%3F/host/windows,%3F,/host/windows,http,http  |file://host/windows,host,/windows,file,file  *
+# +----+-----------------------------------------------------+---------------------------------------------+
 not ok 346 - \\.\c:\windows - http://a/b/c
 #   Failed test '\\.\c:\windows - http://a/b/c'
 #   at _canon line 1.
@@ -3217,16 +3106,7 @@ not ok 1140 - http://192.0x00A80001/ - http://192.0x00A80001/
 # |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized     |
 # *   1|http://192.0x00a80001/,192.0x00a80001,/,http,http  |http://192.168.0.1/,192.168.0.1,/,http,http  *
 # +----+---------------------------------------------------+---------------------------------------------+
-not ok 1141 - http://192.168.0.1. hello/ - http://192.168.0.1. hello/
-#   Failed test 'http://192.168.0.1. hello/ - http://192.168.0.1. hello/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------+---------------------------------------------------------------+
-# | Elt|Got                                                        |Expected                                                       |
-# +----+-----------------------------------------------------------+---------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                   |canon,host,path,scheme,scheme_normalized                       |
-# *   1|http://192.168.0.1. hello/,192.168.0.1. hello,/,http,http  |http://192.168.0.1.%20hello/,192.168.0.1.%20hello,/,http,http  *
-# +----+-----------------------------------------------------------+---------------------------------------------------------------+
+ok 1141 - http://192.168.0.1. hello/ - http://192.168.0.1. hello/
 ok 1142 - http://192.168.0./ - http://192.168.0./
 ok 1143 - http://192.168.0.1./ - http://192.168.0.1./
 not ok 1144 - http://192.168.1/ - http://192.168.1/
@@ -3350,26 +3230,8 @@ not ok 1156 - http://%3g%78%63%30%2e%30%32%35%30%2E.01/ - http://%3g%78%63%30%2e
 # |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized                 |
 # *   1|http://%3gxc0.0250..01/,%3gxc0.0250..01,/,http,http  |http://%253gxc0.0250..01/,%253gxc0.0250..01,/,http,http  *
 # +----+-----------------------------------------------------+---------------------------------------------------------+
-not ok 1157 - http://192.168.0.1 hello/ - http://192.168.0.1 hello/
-#   Failed test 'http://192.168.0.1 hello/ - http://192.168.0.1 hello/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------+-------------------------------------------------------------+
-# | Elt|Got                                                      |Expected                                                     |
-# +----+---------------------------------------------------------+-------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                 |canon,host,path,scheme,scheme_normalized                     |
-# *   1|http://192.168.0.1 hello/,192.168.0.1 hello,/,http,http  |http://192.168.0.1%20hello/,192.168.0.1%20hello,/,http,http  *
-# +----+---------------------------------------------------------+-------------------------------------------------------------+
-not ok 1158 - http://192.168.0.1%20hello/ - http://192.168.0.1%20hello/
-#   Failed test 'http://192.168.0.1%20hello/ - http://192.168.0.1%20hello/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------+-------------------------------------------------------------+
-# | Elt|Got                                                      |Expected                                                     |
-# +----+---------------------------------------------------------+-------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                 |canon,host,path,scheme,scheme_normalized                     |
-# *   1|http://192.168.0.1 hello/,192.168.0.1 hello,/,http,http  |http://192.168.0.1%20hello/,192.168.0.1%20hello,/,http,http  *
-# +----+---------------------------------------------------------+-------------------------------------------------------------+
+ok 1157 - http://192.168.0.1 hello/ - http://192.168.0.1 hello/
+ok 1158 - http://192.168.0.1%20hello/ - http://192.168.0.1%20hello/
 ok 1159 - http://192.168.0.0/ - http://192.168.0.0/
 ok 1160 - http://192.168.0.000/ - http://192.168.0.000/
 ok 1161 - http://192.168.0.255/ - http://192.168.0.255/
@@ -3477,17 +3339,7 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 # *   1|http://0xc0.0250.01/,0xc0.0250.01,/,http,http  |http://192.168.0.1/,192.168.0.1,/,http,http  *
 # +----+-----------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 1199 - http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘ï¼šï¼˜ï¼/ - http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘ï¼šï¼˜ï¼/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘ï¼šï¼˜ï¼/ - http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘ï¼šï¼˜ï¼/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-------------------------------------------------------+
-# | Elt|Got                                                |Expected                                               |
-# +----+---------------------------------------------------+-------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized               |
-# *   1|http://192.168.0.1:80/,192.168.0.1:80,/,http,http  |http://192.168.0.1%3A80/,192.168.0.1%3A80,/,http,http  *
-# +----+---------------------------------------------------+-------------------------------------------------------+
+ok 1199 - http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘ï¼šï¼˜ï¼/ - http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘ï¼šï¼˜ï¼/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1200 - http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘:ï¼˜ï¼/ - http://ï¼‘ï¼™ï¼’ï¼Žï¼‘ï¼–ï¼˜ï¼Žï¼ï¼Žï¼‘:ï¼˜ï¼/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -3514,13 +3366,13 @@ not ok 1210 - http://www.example.com/\#hello, world - http://www.example.com/\#h
 # *   1|http://www.example.com/#hello,%20world,hello,%20world,www.example.com,/,http,http  |http://www.example.com/#hello, world,hello, world,www.example.com,/,http,http  *
 # +----+-----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 ok 1211 - http://www.example.com/\#hello,%20world. - http://www.example.com/\#hello,%20world.
-Malformed UTF-8 character (unexpected continuation byte 0x82, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x82, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1212 - http://www.example.com/\#Â© - http://www.example.com/\#Â©
 ok 1213 - http://www.example.com/\#%C2%A9 - http://www.example.com/\#%C2%A9
 ok 1214 - http://www.example.com/\#%C3%82%C2%A9 - http://www.example.com/\#%C3%82%C2%A9
-Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
-Malformed UTF-8 character (unexpected continuation byte 0x8c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
+Malformed UTF-8 character (unexpected continuation byte 0x8c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1215 - http://www.example.com/\#ðŒ€ss - http://www.example.com/\#ðŒ€ss
 ok 1216 - http://www.example.com/\#%F0%90%8C%80ss - http://www.example.com/\#%F0%90%8C%80ss
@@ -3765,69 +3617,69 @@ ok 1405 - http://example.com/\#a¼b - http://example.com/\#a¼b
 ok 1406 - http://example.com/\#a½b - http://example.com/\#a½b
 ok 1407 - http://example.com/\#a¾b - http://example.com/\#a¾b
 ok 1408 - http://example.com/\#a¿b - http://example.com/\#a¿b
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1409 - http://example.com/\#aÀb - http://example.com/\#aÀb
-Malformed UTF-8 character (unexpected continuation byte 0x81, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x81, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1410 - http://example.com/\#aÁb - http://example.com/\#aÁb
-Malformed UTF-8 character (unexpected continuation byte 0x82, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x82, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1411 - http://example.com/\#aÂb - http://example.com/\#aÂb
-Malformed UTF-8 character (unexpected continuation byte 0x83, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x83, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1412 - http://example.com/\#aÃb - http://example.com/\#aÃb
-Malformed UTF-8 character (unexpected continuation byte 0x84, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x84, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1413 - http://example.com/\#aÄb - http://example.com/\#aÄb
-Malformed UTF-8 character (unexpected continuation byte 0x85, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x85, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1414 - http://example.com/\#aÅb - http://example.com/\#aÅb
-Malformed UTF-8 character (unexpected continuation byte 0x86, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x86, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1415 - http://example.com/\#aÆb - http://example.com/\#aÆb
-Malformed UTF-8 character (unexpected continuation byte 0x87, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x87, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1416 - http://example.com/\#aÇb - http://example.com/\#aÇb
-Malformed UTF-8 character (unexpected continuation byte 0x88, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x88, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1417 - http://example.com/\#aÈb - http://example.com/\#aÈb
-Malformed UTF-8 character (unexpected continuation byte 0x89, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x89, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1418 - http://example.com/\#aÉb - http://example.com/\#aÉb
-Malformed UTF-8 character (unexpected continuation byte 0x8a, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x8a, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1419 - http://example.com/\#aÊb - http://example.com/\#aÊb
-Malformed UTF-8 character (unexpected continuation byte 0x8b, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x8b, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1420 - http://example.com/\#aËb - http://example.com/\#aËb
-Malformed UTF-8 character (unexpected continuation byte 0x8c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x8c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1421 - http://example.com/\#aÌb - http://example.com/\#aÌb
-Malformed UTF-8 character (unexpected continuation byte 0x8d, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x8d, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1422 - http://example.com/\#aÍb - http://example.com/\#aÍb
-Malformed UTF-8 character (unexpected continuation byte 0x8e, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x8e, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1423 - http://example.com/\#aÎb - http://example.com/\#aÎb
-Malformed UTF-8 character (unexpected continuation byte 0x8f, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x8f, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1424 - http://example.com/\#aÏb - http://example.com/\#aÏb
-Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1425 - http://example.com/\#aÐb - http://example.com/\#aÐb
-Malformed UTF-8 character (unexpected continuation byte 0x91, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x91, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1426 - http://example.com/\#aÑb - http://example.com/\#aÑb
-Malformed UTF-8 character (unexpected continuation byte 0x92, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x92, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1427 - http://example.com/\#aÒb - http://example.com/\#aÒb
-Malformed UTF-8 character (unexpected continuation byte 0x93, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x93, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1428 - http://example.com/\#aÓb - http://example.com/\#aÓb
-Malformed UTF-8 character (unexpected continuation byte 0x94, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x94, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1429 - http://example.com/\#aÔb - http://example.com/\#aÔb
-Malformed UTF-8 character (unexpected continuation byte 0x95, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x95, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1430 - http://example.com/\#aÕb - http://example.com/\#aÕb
-Malformed UTF-8 character (unexpected continuation byte 0x96, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x96, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1431 - http://example.com/\#aÖb - http://example.com/\#aÖb
-Malformed UTF-8 character (unexpected continuation byte 0x97, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x97, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1432 - http://example.com/\#a×b - http://example.com/\#a×b
-Malformed UTF-8 character (unexpected continuation byte 0x98, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x98, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1433 - http://example.com/\#aØb - http://example.com/\#aØb
-Malformed UTF-8 character (unexpected continuation byte 0x99, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x99, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1434 - http://example.com/\#aÙb - http://example.com/\#aÙb
-Malformed UTF-8 character (unexpected continuation byte 0x9a, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x9a, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1435 - http://example.com/\#aÚb - http://example.com/\#aÚb
-Malformed UTF-8 character (unexpected continuation byte 0x9b, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x9b, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1436 - http://example.com/\#aÛb - http://example.com/\#aÛb
-Malformed UTF-8 character (unexpected continuation byte 0x9c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x9c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1437 - http://example.com/\#aÜb - http://example.com/\#aÜb
-Malformed UTF-8 character (unexpected continuation byte 0x9d, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x9d, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1438 - http://example.com/\#aÝb - http://example.com/\#aÝb
-Malformed UTF-8 character (unexpected continuation byte 0x9e, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x9e, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1439 - http://example.com/\#aÞb - http://example.com/\#aÞb
-Malformed UTF-8 character (unexpected continuation byte 0x9f, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x9f, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 ok 1440 - http://example.com/\#aßb - http://example.com/\#aßb
 ok 1441 - http://example.com/\#aàb - http://example.com/\#aàb
 ok 1442 - http://example.com/\#aáb - http://example.com/\#aáb
@@ -3861,7 +3713,7 @@ ok 1469 - http://example.com/\#aüb - http://example.com/\#aüb
 ok 1470 - http://example.com/\#aýb - http://example.com/\#aýb
 ok 1471 - http://example.com/\#aþb - http://example.com/\#aþb
 ok 1472 - http://example.com/\#aÿb - http://example.com/\#aÿb
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 not ok 1473 - http://example.com/\#aÄ€b - http://example.com/\#aÄ€b
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -3888,20 +3740,20 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 # |   0|canon,fragment,host,path,scheme,scheme_normalized                                  |canon,fragment,host,path,scheme,scheme_normalized                |
 # *   1|http://example.com/#a\x{fffd}\x{fffd}b,a\x{fffd}\x{fffd}b,example.com,/,http,http  |http://example.com/#a\x{fffd}\x{fffd}b,,example.com,/,http,http  *
 # +----+-----------------------------------------------------------------------------------+-----------------------------------------------------------------+
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1476 - http://example.com/\#aï€€b - http://example.com/\#aï€€b
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1477 - http://example.com/\#aï €b - http://example.com/\#aï €b
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1478 - http://example.com/\#aï¿¾b - http://example.com/\#aï¿¾b
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1479 - http://example.com/\#aï¿¿b - http://foo/bar
-Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 545.
+Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
+Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 549.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1480 - http://example.com/\#að€€b - http://foo/bar
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -4921,7 +4773,16 @@ not ok 2133 - http://[1::%25eth0]/ - http://[1::%25eth0]/
 # +----+-------------------------------------------+-----------------------------------------------+
 ok 2134 - http://[1::%eth0]/ - http://[1::%eth0]/
 ok 2135 - http://[v1.2001:0DB8::0:1+02]/ - http://[v1.2001:0DB8::0:1+02]/
-ok 2136 - http://[:/ - http://[:/
+not ok 2136 - http://[:/ - http://[:/
+#   Failed test 'http://[:/ - http://[:/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+------------------------------------------+------------------------------------------+
+# | Elt|Got                                       |Expected                                  |
+# +----+------------------------------------------+------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
+# *   1|http://%5B/,%5B,/,http,http               |http://[/,[,/,http,http                   *
+# +----+------------------------------------------+------------------------------------------+
 ok 2137 - http://[::%:]/ - http://[::%:]/
 not ok 2138 - http://[::%25:]/ - http://[::%25:]/
 #   Failed test 'http://[::%25:]/ - http://[::%25:]/'
@@ -5246,12 +5107,12 @@ not ok 2190 - http://[2001:0DB8:0:CD30::/60]/ - http://[2001:0DB8:0:CD30::/60]/
 #   Failed test 'http://[2001:0DB8:0:CD30::/60]/ - http://[2001:0DB8:0:CD30::/60]/'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------------+---------------------------------------------------------------------+
-# | Elt|Got                                                                |Expected                                                             |
-# +----+-------------------------------------------------------------------+---------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized                             |
-# *   1|http://[2001:0db8:0:cd30:/60]/,[2001:0db8:0:cd30:,/60]/,http,http  |http://[2001:0DB8:0:CD30::/60]/,[2001:0DB8:0:CD30::/60],/,http,http  *
-# +----+-------------------------------------------------------------------+---------------------------------------------------------------------+
+# +----+---------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+# | Elt|Got                                                                                    |Expected                                                             |
+# +----+---------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized                                               |canon,host,path,scheme,scheme_normalized                             |
+# *   1|http://%5B2001%3A0db8%3A0%3Acd30%3A/60]/,%5B2001%3A0db8%3A0%3Acd30%3A,/60]/,http,http  |http://[2001:0DB8:0:CD30::/60]/,[2001:0DB8:0:CD30::/60],/,http,http  *
+# +----+---------------------------------------------------------------------------------------+---------------------------------------------------------------------+
 not ok 2191 - http://[2001:0DB8::CD30/60]/ - http://[2001:0DB8::CD30/60]/
 #   Failed test 'http://[2001:0DB8::CD30/60]/ - http://[2001:0DB8::CD30/60]/'
 #   at _canon line 1.
@@ -5882,8 +5743,26 @@ ok 2309 - http://www.example.com:-2/ - http://www.example.com:-2/
 ok 2310 - ftp://cnn.example.com&story=breaking_news@10.0.0.1/top_story.htm - ftp://cnn.example.com&story=breaking_news@10.0.0.1/top_story.htm
 ok 2311 - http://%D9%82%D9%87%D9%88%D8%A9@example/ - http://%D9%82%D9%87%D9%88%D8%A9@example/
 ok 2312 - http://%D9%82%D9%87%D9%88%D8%a9@example/ - http://%D9%82%D9%87%D9%88%D8%a9@example/
-ok 2313 - http://[c@d]/ - http://[c@d]/
-ok 2314 - http://user@[c@d]/ - http://user@[c@d]/
+not ok 2313 - http://[c@d]/ - http://[c@d]/
+#   Failed test 'http://[c@d]/ - http://[c@d]/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+-----------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                            |Expected                                       |
+# +----+-----------------------------------------------+-----------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized,user  |canon,host,path,scheme,scheme_normalized,user  |
+# *   1|http://%5Bc@d%5D/,d%5D,/,http,http,%5Bc        |http://%5Bc@d]/,d],/,http,http,%5Bc            *
+# +----+-----------------------------------------------+-----------------------------------------------+
+not ok 2314 - http://user@[c@d]/ - http://user@[c@d]/
+#   Failed test 'http://user@[c@d]/ - http://user@[c@d]/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+-------------------------------------------------------+---------------------------------------------------+
+# | Elt|Got                                                    |Expected                                           |
+# +----+-------------------------------------------------------+---------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized,user          |canon,host,path,scheme,scheme_normalized,user      |
+# *   1|http://user%40%5Bc@d%5D/,d%5D,/,http,http,user%40%5Bc  |http://user%40%5Bc@d]/,d],/,http,http,user%40%5Bc  *
+# +----+-------------------------------------------------------+---------------------------------------------------+
 ok 2315 - http://foo\# - http://foo\#
 ok 2316 - http://foo? - http://foo?
 ok 2317 - http://foo/\# - http://foo/\#
@@ -5904,38 +5783,65 @@ ok 2331 - http://@@@@@@@@ - http://@@@@@@@@
 ok 2332 - http://:@ - http://:@
 ok 2333 - http://[] - http://[]
 ok 2334 - http://[]/ - http://[]/
-ok 2335 - http://[?] - http://[?]
-ok 2336 - http://[\#] - http://[\#]
-ok 2337 - http://[/] - http://[/]
-ok 2338 - http://[\] - http://[\]
-ok 2339 - http://[:] - http://[:]
-ok 2340 - http://[:80] - http://[:80]
-ok 2341 - http://foo:80 - http://foo:80
-ok 2342 - http://foo:080 - http://foo:080
-ok 2343 - http://foo:0 - http://foo:0
-not ok 2344 - http://foo:80:98 - http://foo:80:98
-#   Failed test 'http://foo:80:98 - http://foo:80:98'
+not ok 2335 - http://[?] - http://[?]
+#   Failed test 'http://[?] - http://[?]'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                            |Expected                                       |
-# +----+-----------------------------------------------+-----------------------------------------------+
-# |   0|canon,host,path,port,scheme,scheme_normalized  |canon,host,path,port,scheme,scheme_normalized  |
-# *   1|http://foo:80:98/,foo:80,/,98,http,http        |http://foo%3A80:98/,foo%3A80,/,98,http,http    *
-# +----+-----------------------------------------------+-----------------------------------------------+
-ok 2345 - http://foo: - http://foo:
-not ok 2346 - http://foo:: - http://foo::
-#   Failed test 'http://foo:: - http://foo::'
+# +----+------------------------------------------------+------------------------------------------------+
+# | Elt|Got                                             |Expected                                        |
+# +----+------------------------------------------------+------------------------------------------------+
+# |   0|canon,host,path,query,scheme,scheme_normalized  |canon,host,path,query,scheme,scheme_normalized  |
+# *   1|http://%5B/?],%5B,/,],http,http                 |http://[/?],[,/,],http,http                     *
+# +----+------------------------------------------------+------------------------------------------------+
+not ok 2336 - http://[\#] - http://[\#]
+#   Failed test 'http://[\#] - http://[\#]'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+---------------------------------------------------+---------------------------------------------------+
+# | Elt|Got                                                |Expected                                           |
+# +----+---------------------------------------------------+---------------------------------------------------+
+# |   0|canon,fragment,host,path,scheme,scheme_normalized  |canon,fragment,host,path,scheme,scheme_normalized  |
+# *   1|http://%5B/#],],%5B,/,http,http                    |http://[/#],],[,/,http,http                        *
+# +----+---------------------------------------------------+---------------------------------------------------+
+not ok 2337 - http://[/] - http://[/]
+#   Failed test 'http://[/] - http://[/]'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
 # +----+------------------------------------------+------------------------------------------+
 # | Elt|Got                                       |Expected                                  |
 # +----+------------------------------------------+------------------------------------------+
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://foo:/,foo:,/,http,http             |http://foo%3A/,foo%3A,/,http,http         *
+# *   1|http://%5B/],%5B,/],http,http             |http://[/],[,/],http,http                 *
 # +----+------------------------------------------+------------------------------------------+
+not ok 2338 - http://[\] - http://[\]
+#   Failed test 'http://[\] - http://[\]'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+------------------------------------------+------------------------------------------+
+# | Elt|Got                                       |Expected                                  |
+# +----+------------------------------------------+------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
+# *   1|http://%5B/],%5B,/],http,http             |http://[/],[,/],http,http                 *
+# +----+------------------------------------------+------------------------------------------+
+ok 2339 - http://[:] - http://[:]
+ok 2340 - http://[:80] - http://[:80]
+ok 2341 - http://foo:80 - http://foo:80
+ok 2342 - http://foo:080 - http://foo:080
+ok 2343 - http://foo:0 - http://foo:0
+ok 2344 - http://foo:80:98 - http://foo:80:98
+ok 2345 - http://foo: - http://foo:
+ok 2346 - http://foo:: - http://foo::
 ok 2347 - http://foo:/ - http://foo:/
-ok 2348 - http://[foo:80 - http://[foo:80
+not ok 2348 - http://[foo:80 - http://[foo:80
+#   Failed test 'http://[foo:80 - http://[foo:80'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+------------------------------------------+------------------------------------------+
+# | Elt|Got                                       |Expected                                  |
+# +----+------------------------------------------+------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
+# *   1|http://%5Bfoo/,%5Bfoo,/,http,http         |http://[foo/,[foo,/,http,http             *
+# +----+------------------------------------------+------------------------------------------+
 not ok 2349 - http://[1:2:4 - http://[1:2:4
 #   Failed test 'http://[1:2:4 - http://[1:2:4'
 #   at _canon line 1.
@@ -5944,30 +5850,30 @@ not ok 2349 - http://[1:2:4 - http://[1:2:4
 # | Elt|Got                                            |Expected                                       |
 # +----+-----------------------------------------------+-----------------------------------------------+
 # |   0|canon,host,path,port,scheme,scheme_normalized  |canon,host,path,port,scheme,scheme_normalized  |
-# *   1|http://[1:2:4/,[1:2,/,4,http,http              |http://[1%3A2:4/,[1%3A2,/,4,http,http          *
+# *   1|http://%5B1%3A2:4/,%5B1%3A2,/,4,http,http      |http://[1%3A2:4/,[1%3A2,/,4,http,http          *
 # +----+-----------------------------------------------+-----------------------------------------------+
 not ok 2350 - http://[1:2:3/4:5] - http://[1:2:3/4:5]
 #   Failed test 'http://[1:2:3/4:5] - http://[1:2:3/4:5]'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                            |Expected                                       |
-# +----+-----------------------------------------------+-----------------------------------------------+
-# |   0|canon,host,path,port,scheme,scheme_normalized  |canon,host,path,port,scheme,scheme_normalized  |
-# *   1|http://[1:2:3/4:5],[1:2,/4:5],3,http,http      |http://[1%3A2:3/4:5],[1%3A2,/4:5],3,http,http  *
-# +----+-----------------------------------------------+-----------------------------------------------+
+# +----+---------------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                                |Expected                                       |
+# +----+---------------------------------------------------+-----------------------------------------------+
+# |   0|canon,host,path,port,scheme,scheme_normalized      |canon,host,path,port,scheme,scheme_normalized  |
+# *   1|http://%5B1%3A2:3/4:5],%5B1%3A2,/4:5],3,http,http  |http://[1%3A2:3/4:5],[1%3A2,/4:5],3,http,http  *
+# +----+---------------------------------------------------+-----------------------------------------------+
 ok 2351 - http://:080 - http://:080
 ok 2352 - http://foo:080/ - http://foo:080/
 not ok 2353 - http://[foo;bar=a]:80 - http://[foo;bar=a]:80
 #   Failed test 'http://[foo;bar=a]:80 - http://[foo;bar=a]:80'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                              |Expected                                             |
-# +----+-------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized             |
-# *   1|http://[foo;bar=a]:80,[foo,;bar=a]:80,http,http  |http://[foo/;bar=a]:80,[foo,/;bar=a%5D:80,http,http  *
-# +----+-------------------------------------------------+-----------------------------------------------------+
+# +----+-----------------------------------------------------+-----------------------------------------------------+
+# | Elt|Got                                                  |Expected                                             |
+# +----+-----------------------------------------------------+-----------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized             |
+# *   1|http://%5Bfoo;bar=a]:80,%5Bfoo,;bar=a]:80,http,http  |http://[foo/;bar=a]:80,[foo,/;bar=a%5D:80,http,http  *
+# +----+-----------------------------------------------------+-----------------------------------------------------+
 ok 2354 - http://:@bar - http://:@bar
 ok 2355 - http://abc:@ - http://abc:@
 ok 2356 - http://ab:c:de@ - http://ab:c:de@
@@ -6114,18 +6020,9 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 # | Elt|Got                                       |Expected  |
 # +----+------------------------------------------+----------+
 # *   0|canon,host,path,scheme,scheme_normalized  |invalid   *
-# *   1|http://foo:80/,foo:80,/,http,http         |1         *
+# *   1|http://foo%3A80/,foo%3A80,/,http,http     |1         *
 # +----+------------------------------------------+----------+
-not ok 2435 - http://foo%3A80/ - http://foo%3A80/
-#   Failed test 'http://foo%3A80/ - http://foo%3A80/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://foo:80/,foo:80,/,http,http         |http://foo%3A80/,foo%3A80,/,http,http     *
-# +----+------------------------------------------+------------------------------------------+
+ok 2435 - http://foo%3A80/ - http://foo%3A80/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 not ok 2436 - http://fooï¼…3A80/ - http://fooï¼…3A80/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -6208,17 +6105,26 @@ ok 2473 - http://foo?bar?baz - http://foo?bar?baz
 ok 2474 - http://foo\#bar\#baz - http://foo\#bar\#baz
 ok 2475 - about://user@ - about://user@
 ok 2476 - about://@ - about://@
-ok 2477 - http://@[c@d]/ - http://@[c@d]/
+not ok 2477 - http://@[c@d]/ - http://@[c@d]/
+#   Failed test 'http://@[c@d]/ - http://@[c@d]/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+-----------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                            |Expected                                       |
+# +----+-----------------------------------------------+-----------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized,user  |canon,host,path,scheme,scheme_normalized,user  |
+# *   1|http://%40%5Bc@d%5D/,d%5D,/,http,http,%40%5Bc  |http://%40%5Bc@d]/,d],/,http,http,%40%5Bc      *
+# +----+-----------------------------------------------+-----------------------------------------------+
 not ok 2478 - http://a:b@[c@d:4]:3/ - http://a:b@[c@d:4]:3/
 #   Failed test 'http://a:b@[c@d:4]:3/ - http://a:b@[c@d:4]:3/'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------+-------------------------------------------------------------+
-# | Elt|Got                                                          |Expected                                                     |
-# +----+-------------------------------------------------------------+-------------------------------------------------------------+
-# |   0|canon,host,password,path,port,scheme,scheme_normalized,user  |canon,host,password,path,port,scheme,scheme_normalized,user  |
-# *   1|http://a:b%40%5Bc@d:4]:3/,d:4],b%40%5Bc,/,3,http,http,a      |http://a:b%40%5Bc@d%3A4]:3/,d%3A4],b%40%5Bc,/,3,http,http,a  *
-# +----+-------------------------------------------------------------+-------------------------------------------------------------+
+# +----+-----------------------------------------------------------------+-------------------------------------------------------------+
+# | Elt|Got                                                              |Expected                                                     |
+# +----+-----------------------------------------------------------------+-------------------------------------------------------------+
+# |   0|canon,host,password,path,port,scheme,scheme_normalized,user      |canon,host,password,path,port,scheme,scheme_normalized,user  |
+# *   1|http://a:b%40%5Bc@d%3A4%5D:3/,d%3A4%5D,b%40%5Bc,/,3,http,http,a  |http://a:b%40%5Bc@d%3A4]:3/,d%3A4],b%40%5Bc,/,3,http,http,a  *
+# +----+-----------------------------------------------------------------+-------------------------------------------------------------+
 ok 2479 - http://a:b@:3/ - http://a:b@:3/
 ok 2480 - http://User@example:/ - http://User@example:/
 ok 2481 - about:\#a?b - about:\#a?b
@@ -7472,4 +7378,4 @@ ok 3428 - http://suika.fam.cx:%380/ - http://suika.fam.cx:%380/
 ok 3429 - http://suika.fam.cx:8%30/ - http://suika.fam.cx:8%30/
 ok 3430 - http://suika.fam.cx:%38%30/ - http://suika.fam.cx:%38%30/
 1..3430
-# Looks like you failed 404 tests of 3430.
+# Looks like you failed 394 tests of 3430.
