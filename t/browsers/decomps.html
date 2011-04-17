@@ -142,6 +142,7 @@
   var isIE = compatMode && document.all;
   var isOpera = compatMode && window.opera;
   var illegalURLs = 0;
+  var canonCompatMode = location.search.match (/canoncompat/);
   if (isOpera) {
     var a = document.createElement ('a');
     a.href = 'http://\uFFFF/';
@@ -153,6 +154,9 @@
     delete isHierarchicalScheme.ldap;
   }
 
+  var noiframe = location.search.match (/noiframe/);
+  var starttime = (new Date).valueOf ();
+
   var names = [];
   var labels = [];
   var classes = [];
@@ -162,9 +166,18 @@
   }, function (test) {
     var originalURL = test.getField ('data');
     var baseURL = test.getFieldValue ('base');
-    if (baseURL == null) baseURL = originalURL;
 
-    var u = getURL (originalURL, baseURL);
+    var u;
+    if (baseURL == null) {
+      if (noiframe) {
+        u = canonURL (originalURL);
+      } else {
+        baseURL = originalURL;
+        u = getURL (originalURL, baseURL);
+      }
+    } else {
+      u = getURL (originalURL, baseURL);
+    }
 
     var actual;
     try {
@@ -199,6 +212,10 @@
       query: test.getFieldValue ('query'),
       fragment: test.getFieldValue ('fragment')
     };
+    if (isGecko || isOpera) {
+      if (canonCompatMode) expected.url = test.getFieldValue ('canon-unescaped') || expected.url;
+      expected.host = test.getFieldValue ('host-unescaped') || expected.host;
+    }
     if (expected.url == null) expected.url = originalURL;
     var schemeNormalized = (expected.scheme || '').toLowerCase ();
     if (isHierarchicalScheme[schemeNormalized]) {
@@ -220,6 +237,13 @@
     }
     expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
     expected.fragment = expected.fragment == null ? '' : '#' + expected.fragment;
+
+    if (isIE) {
+      if (canonCompatMode) expected.url = expected.url.replace (/^([^:]+):\/\/([^/]+)\//, function (_, a, b) {
+        return a + '://' + b.toLowerCase () + '/';
+      });
+      if (expected.host) expected.host = expected.host.toLowerCase ();
+    }
 
     if (isWebKit) {
       if (expected.port == '') expected.port = "0";
@@ -248,12 +272,13 @@
       };
 
       if (isWebKit) {
-        expected.url = test.getFieldValue ('invalid-canon');
+        if (canonCompatMode) expected.url = test.getFieldValue ('invalid-canon') || encodeURI (originalURL);
         expected.scheme = ':';
         expected.port = '0';
       }
       if (isOpera) {
-        expected.url = 'opera:illegal-url-' + ++illegalURLs;
+        ++illegalURLs;
+        if (canonCompatMode) expected.url = 'opera:illegal-url-' + illegalURLs;
         expected.scheme = 'opera:';
         expected.host = undefined;
         expected.port = '0';
@@ -278,6 +303,8 @@
     results.push (actual.url);
   }, function () {
     tm.done ();
+    var endtime = (new Date).valueOf ();
+    tm.out.say ('# ' + (endtime - starttime) + 'ms');
 
     var data = 'env-name=' + encodeURIComponent (navigator.userAgent);
     for (var i = 0; i < names.length; i++) {
@@ -306,6 +333,12 @@
     
     return doc.getElementsByTagName ('a')[0];
   } // getURL
+
+  function canonURL (url) {
+    var a = document.createElement ('a');
+    a.setAttribute ('href', url);
+    return a;
+  } // canonURL
 
   function percentEncode (s) {
     try {
