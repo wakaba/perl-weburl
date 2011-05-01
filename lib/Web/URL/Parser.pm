@@ -414,6 +414,10 @@ sub to_ascii ($$) {
   $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
   $s = Encode::decode ('utf-8', $s); # XXX error-handling
 
+  if ($s =~ /%/) {
+    return undef;
+  }
+
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
   my @label;
@@ -438,11 +442,14 @@ sub to_ascii ($$) {
 
   $s = join '.', @label;
 
+  $s = Encode::encode ('utf-8', $s);
+  $s =~ s{%([0-9A-Fa-f]{2})}{lc pack 'C', hex $1}ge; # XXX
+                                                     # error-handling?
+
   if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
     return undef;
   }
 
-  $s = Encode::encode ('utf-8', $s);
   $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
     sprintf '%%%02X', ord $1;
   }ge;
