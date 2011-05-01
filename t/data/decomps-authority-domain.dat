@@ -1815,6 +1815,48 @@ http://\u00C3\u00A1.com/
 #path /
 
 #data escaped
+http://\uFE6A25.com/
+#canon escaped
+http://%25.com/
+#scheme http
+#host escaped
+%25.com
+#path /
+#chrome-invalid 1
+#chrome-canon http://%25.com/
+
+#data escaped
+http://\uFE6A28.com/
+#canon escaped
+http://%28.com/
+#scheme http
+#host escaped
+%28.com
+#path /
+
+#data escaped
+http://\uFE6A00.com/
+#canon escaped
+http://%00.com/
+#scheme http
+#host escaped
+%00.com
+#path /
+#chrome-invalid 1
+#chrome-canon http://%00.com/
+
+#data escaped
+http://\uFE6A0A.com/
+#canon escaped
+http://%0A.com/
+#scheme http
+#host escaped
+%0A.com
+#path /
+#chrome-invalid 1
+#chrome-canon http://%0A.com/
+
+#data escaped
 http://%C3%AF%C2%B9%C2%AA41.com/
 #canon http://xn--1a41-4pa.com/
 #scheme http
