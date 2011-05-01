@@ -402,6 +402,12 @@ use Unicode::Stringprep;
       \@Unicode::Stringprep::Prohibited::C8,
       \@Unicode::Stringprep::Prohibited::C9],
      0, 0);
+*nameprepbidirule = Unicode::Stringprep->new
+    (3.2,
+     [],
+     '',
+     [],
+     1, 0);
 
 sub to_ascii ($$) {
   my ($class, $s) = @_;
@@ -433,6 +439,10 @@ sub to_ascii ($$) {
     $label = NFKC $label;
 
     if (not defined eval { nameprepprohibited ($label); 1 }) {
+      return undef;
+    }
+
+    if (not defined eval { nameprepbidirule ($label); 1 }) {
       return undef;
     }
 
