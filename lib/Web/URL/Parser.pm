@@ -428,6 +428,8 @@ sub to_ascii ($$) {
     }ge;
 
     $label = nameprepmapping ($label);
+    $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
+        {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
     $label = NFKC $label;
 
     if (not defined eval { nameprepprohibited ($label); 1 }) {
