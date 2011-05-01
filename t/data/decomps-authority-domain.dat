@@ -1857,6 +1857,22 @@ http://%0A.com/
 #chrome-canon http://%0A.com/
 
 #data escaped
+http://a\uFE6A2Eb.com/
+#canon http://a.b.com/
+#scheme http
+#host a.b.com
+#path /
+
+#data escaped
+http://a\u4E00\uFE6A2Eb.com/
+#canon http://xn--a-0n6a.b.com/
+#scheme http
+#host xn--a-0n6a.b.com
+#path /
+#chrome-canon http://xn--a.b-gg1h.com/
+#chrome-host xn--a.b-gg1h.com
+
+#data escaped
 http://%C3%AF%C2%B9%C2%AA41.com/
 #canon http://xn--1a41-4pa.com/
 #scheme http
