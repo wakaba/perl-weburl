@@ -123,6 +123,8 @@ sub _resolve : Tests {
   }
 } # _resolve
 
+our $BROWSER = $ENV{TEST_BROWSER} || '';
+
 sub __canon {
   for_each_test $_->stringify, {
     data => {is_prefixed => 1},
@@ -131,6 +133,7 @@ sub __canon {
     my $result = {};
     for (qw(
       scheme user password host port path query fragment invalid canon charset
+      chrome-invalid chrome-canon chrome-host
     )) {
       next unless $test->{$_};
 
@@ -151,6 +154,17 @@ sub __canon {
           $result->{$_} = '' unless defined $result->{$_};
         }
       }
+    }
+    if ($BROWSER eq 'chrome') {
+      for my $key (qw(invalid canon host)) {
+        if (defined $result->{'chrome-' . $key}) {
+          $result->{$key} = $result->{'chrome-' . $key};
+        }
+      }
+    }
+    delete $result->{$_} for qw(chrome-invalid chrome-canon chrome-host);
+    if ($result->{invalid}) {
+      delete $result->{$_} for qw(canon scheme host path query fragment);
     }
     my $charset = delete $result->{charset};
     if (defined $result->{scheme}) {

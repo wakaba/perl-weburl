@@ -61,6 +61,1100 @@ http://ab-.test/
 #host ab-.test
 #path /
 
+#data escaped
+http://a\u0000b.test/
+#canon http://a%00b.test/
+#scheme http
+#host a%00b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%00b.test/
+#canon http://a%00b.test/
+#scheme http
+#host a%00b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0001b.test/
+#canon http://a%01b.test/
+#scheme http
+#host a%01b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%01b.test/
+#canon http://a%01b.test/
+#scheme http
+#host a%01b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0002b.test/
+#canon http://a%02b.test/
+#scheme http
+#host a%02b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%02b.test/
+#canon http://a%02b.test/
+#scheme http
+#host a%02b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0003b.test/
+#canon http://a%03b.test/
+#scheme http
+#host a%03b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%03b.test/
+#canon http://a%03b.test/
+#scheme http
+#host a%03b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0004b.test/
+#canon http://a%04b.test/
+#scheme http
+#host a%04b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%04b.test/
+#canon http://a%04b.test/
+#scheme http
+#host a%04b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0005b.test/
+#canon http://a%05b.test/
+#scheme http
+#host a%05b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%05b.test/
+#canon http://a%05b.test/
+#scheme http
+#host a%05b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0006b.test/
+#canon http://a%06b.test/
+#scheme http
+#host a%06b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%06b.test/
+#canon http://a%06b.test/
+#scheme http
+#host a%06b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0007b.test/
+#canon http://a%07b.test/
+#scheme http
+#host a%07b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%07b.test/
+#canon http://a%07b.test/
+#scheme http
+#host a%07b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0008b.test/
+#canon http://a%08b.test/
+#scheme http
+#host a%08b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%08b.test/
+#canon http://a%08b.test/
+#scheme http
+#host a%08b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0009b.test/
+#canon http://ab.test/
+#scheme http
+#host ab.test
+#path /
+
+#data escaped
+http://a%09b.test/
+#canon http://a%09b.test/
+#scheme http
+#host a%09b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u000Ab.test/
+#canon http://ab.test/
+#scheme http
+#host ab.test
+#path /
+
+#data escaped
+http://a%0Ab.test/
+#canon http://a%0Ab.test/
+#scheme http
+#host a%0Ab.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u000Bb.test/
+#canon http://ab.test/
+#scheme http
+#host ab.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%0Bb.test/
+#canon http://a%0Bb.test/
+#scheme http
+#host a%0Bb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u000Cb.test/
+#canon http://a%0Cb.test/
+#scheme http
+#host a%0Cb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%0Cb.test/
+#canon http://a%0Cb.test/
+#scheme http
+#host a%0Cb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u000Db.test/
+#canon http://ab.test/
+#scheme http
+#host ab.test
+#path /
+
+#data escaped
+http://a%0Db.test/
+#canon http://a%0Db.test/
+#scheme http
+#host a%0Db.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u000Eb.test/
+#canon http://a%0Eb.test/
+#scheme http
+#host a%0Eb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%0Eb.test/
+#canon http://a%0Eb.test/
+#scheme http
+#host a%0Eb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u000Fb.test/
+#canon http://a%0Fb.test/
+#scheme http
+#host a%0Fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%0Fb.test/
+#canon http://a%0Fb.test/
+#scheme http
+#host a%0Fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0010b.test/
+#canon http://a%10b.test/
+#scheme http
+#host a%10b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%10b.test/
+#canon http://a%10b.test/
+#scheme http
+#host a%10b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0011b.test/
+#canon http://a%11b.test/
+#scheme http
+#host a%11b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%11b.test/
+#canon http://a%11b.test/
+#scheme http
+#host a%11b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0012b.test/
+#canon http://a%12b.test/
+#scheme http
+#host a%12b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%12b.test/
+#canon http://a%12b.test/
+#scheme http
+#host a%12b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0013b.test/
+#canon http://a%13b.test/
+#scheme http
+#host a%13b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%13b.test/
+#canon http://a%13b.test/
+#scheme http
+#host a%13b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0014b.test/
+#canon http://a%14b.test/
+#scheme http
+#host a%14b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%14b.test/
+#canon http://a%14b.test/
+#scheme http
+#host a%14b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0015b.test/
+#canon http://a%15b.test/
+#scheme http
+#host a%15b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%15b.test/
+#canon http://a%15b.test/
+#scheme http
+#host a%15b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0016b.test/
+#canon http://a%16b.test/
+#scheme http
+#host a%16b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%16b.test/
+#canon http://a%16b.test/
+#scheme http
+#host a%16b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0017b.test/
+#canon http://a%17b.test/
+#scheme http
+#host a%17b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%17b.test/
+#canon http://a%17b.test/
+#scheme http
+#host a%17b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0018b.test/
+#canon http://a%18b.test/
+#scheme http
+#host a%18b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%18b.test/
+#canon http://a%18b.test/
+#scheme http
+#host a%18b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0019b.test/
+#canon http://a%19b.test/
+#scheme http
+#host a%19b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%19b.test/
+#canon http://a%19b.test/
+#scheme http
+#host a%19b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u001Ab.test/
+#canon http://a%1Ab.test/
+#scheme http
+#host a%1Ab.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%1Ab.test/
+#canon http://a%1Ab.test/
+#scheme http
+#host a%1Ab.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u001Bb.test/
+#canon http://a%1Bb.test/
+#scheme http
+#host a%1Bb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%1Bb.test/
+#canon http://a%1Bb.test/
+#scheme http
+#host a%1Bb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u001Cb.test/
+#canon http://a%1Cb.test/
+#scheme http
+#host a%1Cb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%1Cb.test/
+#canon http://a%1Cb.test/
+#scheme http
+#host a%1Cb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u001Db.test/
+#canon http://a%1Db.test/
+#scheme http
+#host a%1Db.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%1Db.test/
+#canon http://a%1Db.test/
+#scheme http
+#host a%1Db.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u001Eb.test/
+#canon http://a%1Eb.test/
+#scheme http
+#host a%1Eb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%1Eb.test/
+#canon http://a%1Eb.test/
+#scheme http
+#host a%1Eb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u001Fb.test/
+#canon http://a%1Fb.test/
+#scheme http
+#host a%1Fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%1Fb.test/
+#canon http://a%1Fb.test/
+#scheme http
+#host a%1Fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0020b.test/
+#canon http://a%20b.test/
+#scheme http
+#host a%20b.test
+#path /
+
+#data escaped
+http://a%20b.test/
+#canon http://a%20b.test/
+#scheme http
+#host a%20b.test
+#path /
+
+#data escaped
+http://a\u0021b.test/
+#canon http://a%21b.test/
+#scheme http
+#host a%21b.test
+#path /
+
+#data escaped
+http://a%21b.test/
+#canon http://a%21b.test/
+#scheme http
+#host a%21b.test
+#path /
+
+#data escaped
+http://a\u0022b.test/
+#canon http://a%22b.test/
+#scheme http
+#host a%22b.test
+#path /
+
+#data escaped
+http://a%22b.test/
+#canon http://a%22b.test/
+#scheme http
+#host a%22b.test
+#path /
+
+#data escaped
+http://a%23b.test/
+#canon http://a%23b.test/
+#scheme http
+#host a%23b.test
+#path /
+
+#data escaped
+http://a\u0024b.test/
+#canon http://a%24b.test/
+#scheme http
+#host a%24b.test
+#path /
+
+#data escaped
+http://a%24b.test/
+#canon http://a%24b.test/
+#scheme http
+#host a%24b.test
+#path /
+
+#data escaped
+http://a\u0025x.test/
+#canon http://a%25x.test/
+#scheme http
+#host a%25x.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%25x.test/
+
+#data escaped
+http://a%25b.test/
+#canon http://a%25b.test/
+#scheme http
+#host a%25b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0026b.test/
+#canon http://a%26b.test/
+#scheme http
+#host a%26b.test
+#path /
+
+#data escaped
+http://a%26b.test/
+#canon http://a%26b.test/
+#scheme http
+#host a%26b.test
+#path /
+
+#data escaped
+http://a\u0027b.test/
+#canon http://a%27b.test/
+#scheme http
+#host a%27b.test
+#path /
+
+#data escaped
+http://a%27b.test/
+#canon http://a%27b.test/
+#scheme http
+#host a%27b.test
+#path /
+
+#data escaped
+http://a\u0028b.test/
+#canon http://a%28b.test/
+#scheme http
+#host a%28b.test
+#path /
+
+#data escaped
+http://a%28b.test/
+#canon http://a%28b.test/
+#scheme http
+#host a%28b.test
+#path /
+
+#data escaped
+http://a\u0029b.test/
+#canon http://a%29b.test/
+#scheme http
+#host a%29b.test
+#path /
+
+#data escaped
+http://a%29b.test/
+#canon http://a%29b.test/
+#scheme http
+#host a%29b.test
+#path /
+
+#data escaped
+http://a\u002Ab.test/
+#canon http://a%2Ab.test/
+#scheme http
+#host a%2Ab.test
+#path /
+
+#data escaped
+http://a%2Ab.test/
+#canon http://a%2Ab.test/
+#scheme http
+#host a%2Ab.test
+#path /
+
+#data escaped
+http://a\u002Bb.test/
+#canon http://a+b.test/
+#scheme http
+#host a+b.test
+#path /
+
+#data escaped
+http://a%2Bb.test/
+#canon http://a+b.test/
+#scheme http
+#host a+b.test
+#path /
+
+#data escaped
+http://a\u002Cb.test/
+#canon http://a%2Cb.test/
+#scheme http
+#host a%2Cb.test
+#path /
+
+#data escaped
+http://a%2Cb.test/
+#canon http://a%2Cb.test/
+#scheme http
+#host a%2Cb.test
+#path /
+
+#data escaped
+http://a%2db.test/
+#canon http://a-b.test/
+#scheme http
+#host a-b.test
+#path /
+
+#data escaped
+http://a%2fb.test/
+#canon http://a%2fb.test/
+#scheme http
+#host a%2fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%3Ab.test/
+#canon http://a%3Ab.test/
+#scheme http
+#host a%3Ab.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a:b.test/
+
+#data escaped
+http://a\u003bb.test/
+#canon http://a%3Bb.test/
+#scheme http
+#host a%3Bb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%3Bb.test/
+
+#data escaped
+http://a%3bb.test/
+#canon http://a%3bb.test/
+#scheme http
+#host a%3bb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u003Cb.test/
+#canon http://a%3Cb.test/
+#scheme http
+#host a%3Cb.test
+#path /
+
+#data escaped
+http://a%3cb.test/
+#canon http://a%3cb.test/
+#scheme http
+#host a%3cb.test
+#path /
+#chrome-canon http://a%3Cb.test/
+#chrome-host a%3Cb.test
+
+#data escaped
+http://a\u003Db.test/
+#canon http://a%3Db.test/
+#scheme http
+#host a%3Db.test
+#path /
+
+#data escaped
+http://a%3db.test/
+#canon http://a%3db.test/
+#scheme http
+#host a%3db.test
+#path /
+#chrome-canon http://a%3Db.test/
+#chrome-host a%3Db.test
+
+#data escaped
+http://a\u003Eb.test/
+#canon http://a%3Eb.test/
+#scheme http
+#host a%3Eb.test
+#path /
+
+#data escaped
+http://a%3eb.test/
+#canon http://a%3eb.test/
+#scheme http
+#host a%3eb.test
+#path /
+#chrome-canon http://a%3Eb.test/
+#chrome-host a%3Eb.test
+
+#data escaped
+http://a%3fb.test/
+#canon http://a%3fb.test/
+#scheme http
+#host a%3fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%40b.test/
+#canon http://a%40b.test/
+#scheme http
+#host a%40b.test
+#path /
+
+#data escaped
+http://a\u005Bb.test/
+#canon http://a%5Bb.test/
+#scheme http
+#host a%5Bb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a[b.test/
+
+#data escaped
+http://a%5bb.test/
+#canon http://a%5bb.test/
+#scheme http
+#host a%5bb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a[b.test/
+
+#data escaped
+http://a%5cb.test/
+#canon http://a%5cb.test/
+#scheme http
+#host a%5cb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u005Db.test/
+#canon http://a%5Db.test/
+#scheme http
+#host a%5Db.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a]b.test/
+
+#data escaped
+http://a%5db.test/
+#canon http://a%5db.test/
+#scheme http
+#host a%5db.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a]b.test/
+
+#data escaped
+http://a\u005Eb.test/
+#canon http://a%5Eb.test/
+#scheme http
+#host a%5Eb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%5Eb.test/
+
+#data escaped
+http://a%5eb.test/
+#canon http://a%5eb.test/
+#scheme http
+#host a%5eb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%5Eb.test/
+
+#data escaped
+http://a\u005Fb.test/
+#canon http://a_b.test/
+#scheme http
+#host a_b.test
+#path /
+
+#data escaped
+http://a%5fb.test/
+#canon http://a_b.test/
+#scheme http
+#host a_b.test
+#path /
+
+#data escaped
+http://a\u0060b.test/
+#canon http://a%60b.test/
+#scheme http
+#host a%60b.test
+#path /
+
+#data escaped
+http://a%60b.test/
+#canon http://a%60b.test/
+#scheme http
+#host a%60b.test
+#path /
+
+#data escaped
+http://a\u007Ab.test/
+#canon http://azb.test/
+#scheme http
+#host azb.test
+#path /
+
+#data escaped
+http://a%7ab.test/
+#canon http://azb.test/
+#scheme http
+#host azb.test
+#path /
+
+#data escaped
+http://a\u007Bb.test/
+#canon http://a%7Bb.test/
+#scheme http
+#host a%7Bb.test
+#path /
+
+#data escaped
+http://a%7bb.test/
+#canon http://a%7bb.test/
+#scheme http
+#host a%7bb.test
+#path /
+#chrome-canon http://a%7Bb.test/
+#chrome-host a%7Bb.test
+
+#data escaped
+http://a\u007Cb.test/
+#canon http://a%7Cb.test/
+#scheme http
+#host a%7Cb.test
+#path /
+
+#data escaped
+http://a%7Cb.test/
+#canon http://a%7Cb.test/
+#scheme http
+#host a%7Cb.test
+#path /
+
+#data escaped
+http://a\u007Db.test/
+#canon http://a%7Db.test/
+#scheme http
+#host a%7Db.test
+#path /
+
+#data escaped
+http://a%7Db.test/
+#canon http://a%7Db.test/
+#scheme http
+#host a%7Db.test
+#path /
+
+#data escaped
+http://a\u007Eb.test/
+#canon http://a~b.test/
+#scheme http
+#host a~b.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%7Eb.test/
+
+#data escaped
+http://a%7eb.test/
+#canon http://a~b.test/
+#scheme http
+#host a~b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u007Fb.test/
+#canon http://a%7Fb.test/
+#scheme http
+#host a%7Fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%7fb.test/
+#canon http://a%7fb.test/
+#scheme http
+#host a%7fb.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a\u0080b.test/
+#canon http://a%C2%80b.test/
+#scheme http
+#host a%C2%80b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%C2%80b.test/
+#canon http://a%C2%80b.test/
+#scheme http
+#host a%C2%80b.test
+#path /
+#invalid 1
+
+#data escaped
+http://a%80b.test/
+#canon http://a%80b.test/
+#scheme http
+#host a%80b.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
+#data escaped
+http://a\u0081b.test/
+#canon http://a%C2%81b.test/
+#scheme http
+#host a%C2%81b.test
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://a%C2%81b.test/
+#canon http://a%C2%81b.test/
+#scheme http
+#host a%C2%81b.test
+#path /
+#invalid 1
+
+#data escaped
+http://a%a0b.test/
+#canon http://a%a0b.test/
+#scheme http
+#host a%a0b.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
+#data escaped
+http://a%bfb.test/
+#canon http://a%bfb.test/
+#scheme http
+#host a%bfb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
+#data escaped
+http://a%c0b.test/
+#canon http://a%c0b.test/
+#scheme http
+#host a%c0b.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
+#data escaped
+http://a%ffb.test/
+#canon http://a%ffb.test/
+#scheme http
+#host a%ffb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
+#data escaped
+http://a%fe%BF%BF%BDb.test/
+#canon http://a%fe%BF%BF%BDb.test/
+#scheme http
+#host a%fe%BF%BF%BDb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BDb.test/
+
+#data escaped
+http://a%f0%80%80%a0b.test/
+#canon http://a%f0%80%80%a0b.test/
+#scheme http
+#host a%f0%80%80%a0b.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
+#data escaped
+http://a%ED%A0%80b.test/
+#canon http://a%ED%A0%80b.test/
+#scheme http
+#host a%ED%A0%80b.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
+#data escaped
+http://a%ED%A0%80%ED%BF%BFb.test/
+#canon http://a%ED%A0%80%ED%BF%BFb.test/
+#scheme http
+#host a%ED%A0%80%ED%BF%BFb.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BD%EF%BF%BDb.test/
+
+#data escaped
+http://a%c1%80b.test/
+#canon http://a%c1%80b.test/
+#scheme http
+#host a%c1%80b.test
+#path /
+#chrome-invalid 1
+#chrome-canon http://a%EF%BF%BDb.test/
+
 #data
 http://1.0.168.192.in-addr.arpa/
 #canon http://1.0.168.192.in-addr.arpa/
@@ -152,9 +1246,178 @@ http://xn--192-.168.0.1/
 #host xn--192-.168.0.1
 #path /
 
+#data escaped
+http://19\u200C2.168.0.001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data escaped
+http://192.168.0.001\u200D/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data escaped
+http://192.168.%E2%80%8D0.001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data escaped
+http://[\u200C::0]/
+#canon http://[::]/
+#scheme http
+#host [::]
+#path /
+
+#data escaped
+http://[:%E2%80%8D:0]/
+#canon http://[::]/
+#scheme http
+#host [::]
+#path /
+
 #data
 http://xn--[::]-/
 #invalid 1
+
+#data
+http://xn--(a)-s18d/
+#canon http://xn--%28a%29-s18d/
+#scheme http
+#host xn--%28a%29-s18d
+#path /
+
+#data
+http://xn--{a}-s18d/
+#canon http://xn--%7Ba%7D-s18d/
+#scheme http
+#host xn--%7Ba%7D-s18d
+#path /
+
+#data
+http://xn--<a>-s18d/
+#canon http://xn--%3Ca%3E-s18d/
+#scheme http
+#host xn--%3Ca%3E-s18d
+#path /
+
+#data
+http://xn--"a"-s18d/
+#canon http://xn--%22a%22-s18d/
+#scheme http
+#host xn--%22a%22-s18d
+#path /
+
+#data
+http://xn--%40a-s18d/
+#canon http://xn--%40a-s18d/
+#scheme http
+#host xn--%40a-s18d
+#path /
+
+#data
+http://xn--&-s18d/
+#canon http://xn--%26-s18d/
+#scheme http
+#host xn--%26-s18d
+#path /
+
+#data
+http://xn--!-s18d/
+#canon http://xn--%21-s18d/
+#scheme http
+#host xn--%21-s18d
+#path /
+
+#data
+http://xn--$-s18d/
+#canon http://xn--%24-s18d/
+#scheme http
+#host xn--%24-s18d
+#path /
+
+#data
+http://xn--%-s18d/
+#canon http://xn--%25-s18d/
+#scheme http
+#host xn--%25-s18d
+#path /
+#chrome-invalid 1
+#chrome-canon http://xn--%25-s18d/
+
+#data
+http://xn--'-s18d/
+#canon http://xn--%27-s18d/
+#scheme http
+#host xn--%27-s18d
+#path /
+
+#data
+http://xn--+-s18d/
+#canon http://xn--+-s18d/
+#scheme http
+#host xn--+-s18d
+#path /
+
+#data
+http://xn--=-s18d/
+#canon http://xn--%3D-s18d/
+#scheme http
+#host xn--%3D-s18d
+#path /
+
+#data
+http://xn--~-s18d/
+#canon http://xn--%7E-s18d/
+#scheme http
+#host xn--%7E-s18d
+#path /
+#chrome-invalid 1
+#chrome-canon http://xn--%7E-s18d/
+
+#data
+http://xn--,-s18d/
+#canon http://xn--%2C-s18d/
+#scheme http
+#host xn--%2C-s18d
+#path /
+
+#data
+http://xn--%2C-s18d/
+#canon http://xn--%2C-s18d/
+#scheme http
+#host xn--%2C-s18d
+#path /
+
+#data
+http://xn--%2E-s18d/
+#canon http://xn--.-s18d/
+#scheme http
+#host xn--.-s18d
+#path /
+
+#data
+http://xn--;-s18d/
+#invalid 1
+#chrome-canon http://xn--%3B-s18d/
+
+#data
+http://xn--%3B-s18d/
+#invalid 1
+
+#data
+http://xn--%3A-s18d/
+#canon http://xn--%3A-s18d/
+#scheme http
+#host xn--%3A-s18d
+#path /
+#chrome-invalid 1
+#chrome-canon http://xn--:-s18d/
 
 #data
 http://XN--U-CCB.com/
@@ -171,39 +1434,192 @@ http://%E4%BD%A0%E5%A5%BD\u4F60\u597D/
 #path /
 
 #data
-http://xn--%e4%bd%a0%e5%a5%bd-5g72ap39l/
-#canon http://xn--%E4%BD%A0%E5%A5%BD-5g72ap39l/
+http://xn--a_b.com/
+#canon http://xn--a_b.com/
 #scheme http
-#host xn--%E4%BD%A0%E5%A5%BD-5g72ap39l
+#host xn--a_b.com
+#path /
+
+#data
+http://ab--.com/
+#canon http://ab--.com/
+#scheme http
+#host ab--.com
+#path /
+
+#data
+http://ab--123.com/
+#canon http://ab--123.com/
+#scheme http
+#host ab--123.com
+#path /
+
+#data
+http://xn--.com/
+#canon http://xn--.com/
+#scheme http
+#host xn--.com
+#path /
+
+#data
+http://xn--0.com/
+#canon http://xn--0.com/
+#scheme http
+#host xn--0.com
+#path /
+
+#data
+http://xn--%e4%bd%a0%e5%a5%bd-5g72ap39l/
+#invalid 1
+#chrome-canon http://xn--%E4%BD%A0%E5%A5%BD-5g72ap39l/
+
+#data
+http://xn--%e4%bd%a0%e5%a5%bd-5g72ap39l.COM/
+#invalid 1
+#chrome-canon http://xn--%E4%BD%A0%E5%A5%BD-5g72ap39l.com/
+
+#data
+http://xn--abawgaew-%e4%bd%a0%e5%a5%bd.%C3%A4%C2%B8%C2%80.net/
+#invalid 1
+#chrome-canon
+http://xn--abawgaew-%E4%BD%A0%E5%A5%BD.%C3%A4%C2%B8%C2%80.net/
+
+#data
+http://xn--%E4%BD%A0%E5%A5%BD-5g72ap39l.%C3%A4%C2%B8%C2%80.net/
+#invalid 1
+
+#data escaped
+http://xn--\u4E00.com/
+#invalid 1
+
+#data escaped
+http://xn--%E4%B8%80.com/
+#invalid 1
+
+#data escaped
+http://xn--%C3%A4%C2%B8%C2%80.com/
+#invalid 1
+
+#data escaped
+http://xn--\u0391.com/
+#invalid 1
+
+#data escaped
+http://xn--%CE%91.com/
+#invalid 1
+
+#data escaped
+http://xn--%C3%8E%C2%91.com/
+#invalid 1
+
+#data escaped
+http://xn--%c3%8e%C2%91.com/
+#invalid 1
+
+#data escaped
+http://XN--%C3%8E%C2%91.COM/
+#invalid 1
+#chrome-canon http://xn--%C3%8E%C2%91.com/
+
+#data escaped
+http://XN--%C3%8E%C2%91.xn--\u0391.\u0392.COM/
+#invalid 1
+#chrome-canon
+http://xn--%C3%8E%C2%91.xn--%CE%91.%CE%92.com/
+
+#data escaped
+http://xn--xn---376a.net/
+#canon http://xn--xn---376a.net/
+#scheme http
+#host xn--xn---376a.net
+#path /
+
+#data
+http://xn--a_b-fn0a.org/
+#canon http://xn--a_b-fn0a.org/
+#scheme http
+#host xn--a_b-fn0a.org
+#path /
+
+#data
+http://%58n--4kq.net/
+#canon http://xn--4kq.net/
+#scheme http
+#host xn--4kq.net
+#path /
+
+#data
+http://%78%6E--4kq.net/
+#canon http://xn--4kq.net/
+#scheme http
+#host xn--4kq.net
+#path /
+
+#data
+http://xn%2D%2D4kq.net/
+#canon http://xn--4kq.net/
+#scheme http
+#host xn--4kq.net
+#path /
+
+#data
+http://xn--%34kq.net/
+#canon http://xn--4kq.net/
+#scheme http
+#host xn--4kq.net
+#path /
+
+#data
+http://xn--4kq%2Enet/
+#canon http://xn--4kq.net/
+#scheme http
+#host xn--4kq.net
+#path /
+
+#data escaped
+http://\uFF58\uFF4E--4kq.net/
+#canon http://xn--4kq.net/
+#scheme http
+#host xn--4kq.net
+#path /
+
+#data escaped
+http://%EF%BD%98%EF%BD%8E--4kq.net/
+#canon http://xn--4kq.net/
+#scheme http
+#host xn--4kq.net
+#path /
+
+#data
+http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
+#invalid 1
+
+#data escaped
+http://%E4%B8%80%E4%BA%8C--4kq.net/
+#canon http://xn----4kq-fg1hu6a.net/
+#scheme http
+#host xn----4kq-fg1hu6a.net
 #path /
 
 #data
 http://%ef%b7%90zyx.com/
-#canon http://%EF%BF%BDzyx.com/
-#scheme http
-#host %EF%BF%BDzyx.com
-#path /
+#invalid 1
+#chrome-canon http://%EF%BF%BDzyx.com/
 
 #data
 http://%EF%B7%90zyx.com/
-#canon http://%EF%BF%BDzyx.com/
-#scheme http
-#host %EF%BF%BDzyx.com
-#path /
+#invalid 1
+#chrome-invalid 1
+#chrome-canon http://%EF%BF%BDzyx.com/
 
 #data
 http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
-#canon http://%00.com/
-#scheme http
-#host %00.com
-#path /
+#invalid 1
+#chrome-canon http://%00.com/
 
 #data
 http://%00.com/
-#canon http://%00.com/
-#scheme http
-#host %00.com
-#path /
+#invalid 1
 
 #data
 http://%ef%bc%85%ef%bc%94%ef%bc%91.com/
@@ -213,17 +1629,56 @@ http://%ef%bc%85%ef%bc%94%ef%bc%91.com/
 #path /
 
 #data
+http://%25%ef%bc%94%ef%bc%91.com/
+#invalid 1
+#chrome-canon escaped
+http://%25\u00EF\u00BC\u0094\u00EF\u00BC\u0091.com/
+
+#data
+http://%EF%BC%85%EF%BC%A5%EF%BC%94%EF%BC%85%EF%BC%A2%EF%BC%98%EF%BC%85%EF%BC%98%EF%BC%90.com/
+#canon escaped
+http://\u00E4\u00B8\u0080.com/
+#scheme http
+#host escaped
+\u00E4\u00B8\u0080.com
+#path /
+
+#data
 http://%zz%66%a/
 #canon http://%25zzf%25a/
 #scheme http
 #host %25zzf%25a
 #path /
+#chrome-invalid 1
+#chrome-canon http://%25zzf%25a/
 
 #data
 http://%25zzf%25a/
 #canon http://%25zzf%25a/
 #scheme http
 #host %25zzf%25a
+#path /
+#chrome-invalid 1
+
+#data escaped
+http://\uFF05EF\uFF05BD\uFF0581%EF%BD%8\uFF12.com/
+#invalid 1
+#chrome-canon escaped
+http://\u00EF\u00BC\u0085ef\u00EF\u00BC\u0085bd\u00EF\u00BC\u008581\u00EF\u00BD%258\u00EF\u00BC\u0092.com/
+
+#data
+http://%EF%BC%85EF%EF%BC%85BD%EF%BC%8581%25EF%25BD%258%EF%BC%92.com/
+#invalid 1
+#chrome-canon escaped
+http://\u00EF\u00BC\u0085ef\u00EF\u00BC\u0085bd\u00EF\u00BC\u008581%25ef%25bd%258\u00EF\u00BC\u0092.com/
+
+#data
+http://%EF%BC%85EF%EF%BC%85BD%EF%BC%8581%EF%BC%85EF%EF%BC%85BD%EF%BC%858%EF%BC%92.com/
+#canon escaped
+http://\u00EF\u00BD\u0081\u00EF\u00BD\u0082.com/
+#scheme http
+#host escaped
+\u00EF\u00BD\u0081\u00EF\u00BD\u0082.com
 #path /
 
 #data
@@ -277,10 +1732,7 @@ http://goo%20%20goo%7c%7c.com%41/
 
 #data
 http://[google.com]/
-#canon http://[google.com]/
-#scheme http
-#host [google.com]
-#path /
+#invalid 1
 
 #data
 http://hello%00/
@@ -288,6 +1740,7 @@ http://hello%00/
 #scheme http
 #host hello%00
 #path /
+#chrome-invalid 1
 
 #data
 http://%41.com/
@@ -298,32 +1751,32 @@ http://%41.com/
 
 #data
 http://%2541.com/
-#canon http://%2541.com/
-#scheme http
-#host %2541.com
-#path /
-
-#data escaped
-http://\uFE6A41.com/
 #invalid 1
 
 #data escaped
-http://%C3%AF%C2%B9%C2%AA41.com/
-#canon http://%C3%AF%C2%B9%C2%AA41.com/
+http://\uFE6A41.com/
+#canon http://a.com/
 #scheme http
-#host %C3%AF%C2%B9%C2%AA41.com
+#host a.com
+#path /
+
+#data escaped
+http://%C3%AF%C2%B9%C2%AA41.com/
+#canon http://xn--1a41-4pa.com/
+#scheme http
+#host xn--1a41-4pa.com
 #path /
 
 #data escaped
 http://\uFF0541.com/
-#invalid 1
+#canon http://a.com/
+#scheme http
+#host a.com
+#path /
 
 #data escaped
 http://%C3%AF%C2%BC%C2%8541.com/
-#canon http://%C3%AF%C2%BC%C2%8541.com/
-#scheme http
-#host %C3%AF%C2%BC%C2%8541.com
-#path /
+#invalid 1
 
 #data escaped
 http://\u0442(/
@@ -348,38 +1801,26 @@ http://\u4F60\u597D\u4F60\u597D/
 
 #data escaped
 http://\uFDD0zyx.com/
-#canon http://%EF%BF%BDzyx.com/
-#scheme http
-#host %EF%BF%BDzyx.com
-#path /
+#invalid 1
+#chrome-canon http://%EF%BF%BDzyx.com/
 
 #data escaped
 http://\uFFFDzyx.com/
-#canon http://%EF%BF%BDzyx.com/
-#scheme http
-#host %EF%BF%BDzyx.com
-#path /
+#invalid 1
 
 #data escaped
 http://%EF%BF%BDzyx.com/
-#canon http://%EF%BF%BDzyx.com/
-#scheme http
-#host %EF%BF%BDzyx.com
-#path /
+#invalid 1
 
 #data escaped
 http://\uFF05\uFF05\uFF05/
-#canon http://%25%25%25/
-#scheme http
-#host %25%25%25
-#path /
+#invalid 1
+#chrome-canon http://%25%25%25/
 
 #data escaped
 http://\uFF05\uFF10\uFF10/
-#canon http://%00/
-#scheme http
-#host %00
-#path /
+#invalid 1
+#chrome-canon http://%00/
 
 #data escaped
 http://\uFF05\uFF14\uFF11.com/
@@ -475,12 +1916,22 @@ http://1234567890123456.com/
 #path /
 
 #data
+http://1234567890123456.abc/
+#canon
+http://1234567890123456.abc/
+#scheme http
+#host 1234567890123456.abc
+#path /
+#chrome-invalid 1
+
+#data
 http://12345678901234567890123456789012.abc/
 #canon
 http://12345678901234567890123456789012.abc/
 #scheme http
 #host 12345678901234567890123456789012.abc
 #path /
+#chrome-invalid 1
 
 #data
 http://123456789012345678901234567890123456789012345678901234567890123.abc/
@@ -489,6 +1940,7 @@ http://123456789012345678901234567890123456789012345678901234567890123.abc/
 #scheme http
 #host 123456789012345678901234567890123456789012345678901234567890123.abc
 #path /
+#chrome-invalid 1
 
 #data
 http://123456789012345678901234567890123456789012345678901234567890123.com/
@@ -505,6 +1957,7 @@ http://1234567890123456789012345678901234567890123456789012345678901234.abc/
 #scheme http
 #host 1234567890123456789012345678901234567890123456789012345678901234.abc
 #path /
+#chrome-invalid 1
 
 #data
 http://1234567890123456789012345678901234567890123456789012345678901234.com/
@@ -873,6 +2326,8 @@ http://\U0002F868/
 #scheme http
 #host xn--snl
 #path /
+#chrome-canon http://xn--j74i/
+#chrome-host xn--j74i
 
 #data escaped
 http://xn--g22n/
@@ -901,6 +2356,8 @@ http://\U0002F874/
 #scheme http
 #host xn--u2t
 #path /
+#chrome-canon http://xn--x1t/
+#chrome-host xn--x1t
 
 #data escaped
 http://\U00005F33/
@@ -922,6 +2379,8 @@ http://\U0002F91F/
 #scheme http
 #host xn--hb5j
 #path /
+#chrome-canon http://xn--kbo/
+#chrome-host xn--kbo
 
 #data escaped
 http://\U000043AB/
@@ -936,6 +2395,8 @@ http://\U000243AB/
 #scheme http
 #host xn--hb5j
 #path /
+#chrome-canon http://xn--hb5j/
+#chrome-host xn--hb5j
 
 #data escaped
 http://\U0002F95F/
@@ -943,6 +2404,8 @@ http://\U0002F95F/
 #scheme http
 #host xn--ruz
 #path /
+#chrome-canon http://xn--xsz/
+#chrome-host xn--xsz
 
 #data escaped
 http://\U00007AAE/
@@ -964,6 +2427,8 @@ http://\U0002F9BF/
 #scheme http
 #host xn--gro
 #path /
+#chrome-canon http://xn--bcq/
+#chrome-host xn--bcq
 
 #data escaped
 http://\U00004D57/
@@ -1072,9 +2537,9 @@ xn--10cl1a0b.com
 #data escaped
 http://\u0DC1\u0DCA\u200D\u0DBB\u0DD3.com/
 #canon escaped
-http://www.xn--10cl1a0b.com/
+http://xn--10cl1a0b.com/
 #scheme http
-#host www.xn--10cl1a0b.com
+#host xn--10cl1a0b.com
 #path /
 
 #data escaped
@@ -1147,18 +2612,22 @@ http://A\u0308\u200D\u0308\u0628b/
 #invalid 1
 
 #data escaped
-http://\u002C/
+http://\u200C/
 #canon http:///
 #scheme http
 #host
 #path /
+#chrome-invalid 1
+#chrome-canon http://%E2%80%8C/
 
 #data escaped
-http://\u002D/
+http://\u200D/
 #canon http:///
 #scheme http
 #host
 #path /
+#chrome-invalid 1
+#chrome-canon http://%E2%80%8D/
 
 #data escaped
 http://a\u04C0b/
@@ -1231,6 +2700,8 @@ http://xn--1-rfa.b/
 #scheme http
 #host xn--1-rfa.b
 #path /
+#chrome-canon http://xn--1.b-8ka/
+#chrome-host xn--1.b-8ka
 
 #data escaped
 http://a\u2024b/
@@ -1271,6 +2742,8 @@ http://xn--0ca...b/
 #scheme http
 #host xn--0ca...b
 #path /
+#chrome-canon http://xn--...b-zna/
+#chrome-host xn--...b-zna
 
 #data escaped
 http://xn--ab-y82n/
@@ -1295,6 +2768,8 @@ http://a...b/
 #scheme http
 #host a...b
 #path /
+#chrome-canon http://xn--ab-y82n/
+#chrome-host xn--ab-y82n
 
 #data escaped
 http://a\uFE30b/
@@ -1311,6 +2786,8 @@ http://a.b/
 #scheme http
 #host a.b
 #path /
+#chrome-canon http://xn--ab-d82n/
+#chrome-host xn--ab-d82n
 
 #data escaped
 http://a\uFE52b/
@@ -1343,6 +2820,8 @@ http://a0.b/
 #scheme http
 #host a0.b
 #path /
+#chrome-canon http://xn--ab-xj52a/
+#chrome-host xn--ab-xj52a
 
 #data escaped
 http://a\u3002b/
@@ -1426,7 +2905,8 @@ http://xn--ab-5cb/
 
 #data escaped
 http://\u2106/
-#invalid
+#invalid 1
+#chrome-canon http://c%2Fu/
 
 #data escaped
 http://a%3Ab/
@@ -1435,6 +2915,8 @@ http://a%3Ab/
 #scheme http
 #host a%3Ab
 #path /
+#chrome-invalid 1
+#chrome-canon http://a:b/
 
 #data escaped
 http://a\uFE55b/
@@ -1443,6 +2925,8 @@ http://a%3Ab/
 #scheme http
 #host a%3Ab
 #path /
+#chrome-invalid 1
+#chrome-canon http://a:b/
 
 #data escaped
 http://\u0300ab/
@@ -1790,6 +3274,8 @@ http://a.b..xn---q----jra.e/
 #scheme http
 #host a.b..xn---q----jra.e
 #path /
+#chrome-invalid 1
+#chrome-canon http://a.b..-q--%C3%A4-.e/
 
 #data escaped
 http://a.b.-q--\u00E4-.e/
@@ -1828,3 +3314,5 @@ http://\U0001E946\u0315Ss\u200C\u24FD-\U0001EF9E/
 #scheme http
 #host xn--ss--tfc6154b0d19b7jja
 #path /
+#chrome-invalid 1
+#chrome-canon http://%F0%9E%A5%86%CC%95Ss%E2%80%8C%E2%93%BD-%F0%9E%BE%9E/

@@ -7,7 +7,7 @@ all: \
 results/web-url-parser-core.txt: web-url-parser.t \
   ../lib/Web/URL/Parser.pm \
   data/*.dat
-	-TEST_METHOD=_canon_core perl $< &> $@
+	-TEST_BROWSER=$(TEST_BROWSER) TEST_METHOD=_canon_core perl $< &> $@
 
 results/web-url-parser-bc.txt: web-url-parser.t \
   ../lib/Web/URL/Parser.pm \

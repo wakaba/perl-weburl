@@ -109,7 +109,7 @@
       <td>
         <a href="decomps.html?decomps-scheme.dat;compat">Compat mode</a>
   </table>
-  <a href="http://suika.fam.cx/gate/test-results/list/test1/all">Results</a>
+  <a href="http://suika.fam.cx/gate/test-results/list/test2/all">Results</a>
 </nav>
 
 <script>
@@ -138,6 +138,8 @@
 
   var compatMode = location.search.match (/compat/);
   var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
+  var isChrome = isWebKit && navigator.userAgent.match (/Chrome/);
+  var isSafari = isWebKit && !isChrome && navigator.userAgent.match (/Safari/);
   var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
   var isIE = compatMode && document.all;
   var isOpera = compatMode && window.opera;
@@ -246,6 +248,11 @@
     }
 
     if (isWebKit) {
+      if (isChrome) {
+        expected.url = test.getFieldValue ('chrome-canon') || expected.url;
+        expected.host = test.getFieldValue ('chrome-host') || expected.host;
+        expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+      }
       if (expected.port == '') expected.port = "0";
       if (expected.scheme == '') expected.scheme = ':';
     }
@@ -259,7 +266,8 @@
       expected.path = expected.path.replace (/^\//, '');
     }
     
-    if (test.getFieldValue ('invalid')) {
+    if (test.getFieldValue ('invalid') ||
+        (isChrome && test.getFieldValue ('chrome-invalid'))) {
       expected = {
         url: '',
         scheme: '',
@@ -272,7 +280,20 @@
       };
 
       if (isWebKit) {
-        if (canonCompatMode) expected.url = test.getFieldValue ('invalid-canon') || encodeURI (originalURL);
+        if (canonCompatMode) {
+          expected.url = test.getFieldValue ('invalid-canon')
+              || (isChrome ? test.getFieldValue ('chrome-canon') :
+                  isSafari ? test.getFieldValue ('safari-canon') : null)
+              || originalURL.replace (/[^\u0021-\u007E]+/g, function (_) {
+                   try {
+                     return encodeURI (_);
+                   } catch (e) {
+                     return _;
+                   }
+                 }).replace (/%([0-9A-Fa-f]{2})/g, function (_) {
+                   return _.toUpperCase ();
+                 });
+        }
         expected.scheme = ':';
         expected.port = '0';
       }
@@ -324,11 +345,16 @@
   });
 
   function getURL (url, baseURL) {
+    /* Some characters are processed by HTML parser, so this 
+       code cannot test URLs containing them. */
     var doc = iframe.contentWindow.document;
     doc.open ();
     doc.write ('<!DOCTYPE HTML>');
     doc.write ('<base href="' + SAMI.String.htescape (baseURL) + '">');
-    doc.write ('<a href="' + SAMI.String.htescape (url) + '">xx</a>');
+    doc.write ('<a href="' + SAMI.String.htescape (url)
+        .replace (/\u000A/g, '&#xa;')
+        .replace (/\u000D/g, '&#xd;')
+        .replace (/\u0000/g, '&#x0;') + '">xx</a>');
     doc.close ();
     
     return doc.getElementsByTagName ('a')[0];
@@ -351,7 +377,7 @@
     }
   }
 
-  var testsetName = 'test1';
+  var testsetName = 'test2';
   button.onclick = function () {
     if (!button.value) return;
     var url = 'http://suika.fam.cx/gate/test-results/list/' + testsetName;

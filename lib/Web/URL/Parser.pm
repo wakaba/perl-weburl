@@ -379,17 +379,52 @@ my $to_number = sub {
   }
 }; # $to_number
 
+use Unicode::Normalize;
+use Unicode::Stringprep;
+*nameprepmapping = Unicode::Stringprep->new
+    (3.2,
+     [\@Unicode::Stringprep::Mapping::B1,
+      \@Unicode::Stringprep::Mapping::B2],
+     '',
+     [],
+     0, 0);
+*nameprepprohibited = Unicode::Stringprep->new
+    (3.2,
+     [],
+     '',
+     [\@Unicode::Stringprep::Prohibited::C12,
+      \@Unicode::Stringprep::Prohibited::C22,
+      \@Unicode::Stringprep::Prohibited::C3,
+      \@Unicode::Stringprep::Prohibited::C4,
+      \@Unicode::Stringprep::Prohibited::C5,
+      \@Unicode::Stringprep::Prohibited::C6,
+      \@Unicode::Stringprep::Prohibited::C7,
+      \@Unicode::Stringprep::Prohibited::C8,
+      \@Unicode::Stringprep::Prohibited::C9],
+     0, 0);
+
 sub to_ascii ($$) {
   my ($class, $s) = @_;
 
+  ## If chrome:
+
+  $s =~ tr/\x09\x0D\x0D//d;
+
   $s = Encode::encode ('utf-8', $s);
   $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
-  $s = Encode::decode ('utf-8', $s); # XXX
+  $s = Encode::decode ('utf-8', $s); # XXX error-handling
 
-  # XXX
-  $s = eval { Net::IDN::Nameprep::nameprep ($s, AllowUnassigned => 1) };
-  $s = '' unless defined $s;
+  $s = nameprepmapping ($s);
+  $s = NFKC $s;
 
+  $s =~ tr/\x{3002}/./;
+
+  if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x7E\x7F]/) {
+    return undef;
+  } elsif (not defined eval { nameprepprohibited ($s); 1 }) {
+    return undef;
+  }
+  
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
     # XXX canonicalize as an IPv6 address
     return $s;
@@ -432,21 +467,24 @@ sub to_ascii ($$) {
 
   my @label;
   for my $label (split /\./, $s, -1) {
+    if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
+      return undef;
+    }
+
     if ($label =~ /[^\x00-\x7F]/) {
       $label = 'xn--' . eval { encode_punycode $label }; # XXX
     }
-
-    # XXX
-    $label = Encode::encode ('utf-8', $label);
-    $label =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5B\x5D\x5F\x61-\x7A\x7E])}{
-      sprintf '%%%02X', ord $1;
-    }ge;
-
+    
     push @label, $label;
   } # $label
 
   $s = join '.', @label;
 
+  $s = Encode::encode ('utf-8', $s);
+  $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+    sprintf '%%%02X', ord $1;
+  }ge;
+  
   return $s;
 } # to_ascii
 
@@ -483,6 +521,10 @@ sub canonicalize_url ($$;$) {
 
   if (defined $parsed_url->{host}) {
     $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
+    if (not defined $parsed_url->{host}) {
+      %$parsed_url = (invalid => 1);
+      return $parsed_url;
+    }
   }
 
   if (defined $parsed_url->{port}) {
