@@ -421,6 +421,7 @@ sub to_ascii ($$) {
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
   my @label;
+  my $need_punycode;
   for my $label (split /\./, $s, -1) {
     $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
       sprintf '%%%02X', ord $1;
@@ -438,11 +439,25 @@ sub to_ascii ($$) {
     }
 
     if ($label =~ /[^\x00-\x7F]/) {
-      $label = 'xn--' . eval { encode_punycode $label }; # XXX
+      $need_punycode = 1;
     }
     
     push @label, $label;
   } # $label
+
+  if ($need_punycode) {
+    @label = map {
+      if (/[^\x00-\x7F]/) {
+        my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
+        
+        return undef if length $label > 63;
+        $label;
+      } else {
+        return undef if length $_ > 63;
+        $_;
+      }
+    } @label;
+  }
 
   $s = join '.', @label;
 
