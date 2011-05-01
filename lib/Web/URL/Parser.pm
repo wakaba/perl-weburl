@@ -414,16 +414,38 @@ sub to_ascii ($$) {
   $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
   $s = Encode::decode ('utf-8', $s); # XXX error-handling
 
-  $s = nameprepmapping ($s);
-  $s = NFKC $s;
+  $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
-  $s =~ tr/\x{3002}/./;
+  my @label;
+  for my $label (split /\./, $s, -1) {
+    $label = nameprepmapping ($label);
+    $label = NFKC $label;
+
+    if (not defined eval { nameprepprohibited ($label); 1 }) {
+      return undef;
+    }
+
+    if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
+      return undef;
+    }
+
+    if ($label =~ /[^\x00-\x7F]/) {
+      $label = 'xn--' . eval { encode_punycode $label }; # XXX
+    }
+    
+    push @label, $label;
+  } # $label
+
+  $s = join '.', @label;
 
   if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x7E\x7F]/) {
     return undef;
-  } elsif (not defined eval { nameprepprohibited ($s); 1 }) {
-    return undef;
   }
+
+  $s = Encode::encode ('utf-8', $s);
+  $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+    sprintf '%%%02X', ord $1;
+  }ge;
   
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
     # XXX canonicalize as an IPv6 address
@@ -464,26 +486,6 @@ sub to_ascii ($$) {
     last IPv4 if @label;
     return join '.', @addr;
   } # IPv4
-
-  my @label;
-  for my $label (split /\./, $s, -1) {
-    if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
-      return undef;
-    }
-
-    if ($label =~ /[^\x00-\x7F]/) {
-      $label = 'xn--' . eval { encode_punycode $label }; # XXX
-    }
-    
-    push @label, $label;
-  } # $label
-
-  $s = join '.', @label;
-
-  $s = Encode::encode ('utf-8', $s);
-  $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
-    sprintf '%%%02X', ord $1;
-  }ge;
   
   return $s;
 } # to_ascii

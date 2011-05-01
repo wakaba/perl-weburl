@@ -196,25 +196,21 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     Percent-decode /s/ and decode as UTF-8, with error handling.
 
-    Apply the Nameprep Mapping step.
-
-    Apply NFKC.
-
-    Replace any U+3002 IDEOGRAPHIC FULL STOP character in /s/ by a
-    U+002E FULL STOP character (.).
-
-    If /s/ contains at least one of the following characters, abort
-    the ToASCII algorithm: U+0000, ..., U+001F, U+0025 (%), U+002F
-    (/), U+003A (:), U+003B (;), U+003F (?), U+005C (\), U+007E (~),
-    U+007F, characters prohibitted by Nameprep.
-
-    If /s/ is an IPv6 address, return the canonical representation of
-    the IPv6 address and abort these steps.
-
-    If /s/ is an IPv4 address, return the canonical representation of
-    the IPv4 address and abort these steps.
+    Replace any U+3002 IDEOGRAPHIC FULL STOP character, U+FF0E
+    FULLWIDTH FULL STOP character, and U+FF61 HALFWIDTH IDEOGRAPHIC
+    FULL STOP character, in /s/, by a U+002E FULL STOP character (.).
 
     Split by "." and for each component /label/:
+
+      Apply the Nameprep Mapping step.
+
+      Apply NFKC.
+
+
+      If /s/ contains at least one of the following characters, abort
+      the ToASCII algorithm: U+0000, ..., U+001F, U+0025 (%), U+002F
+      (/), U+003A (:), U+003B (;), U+003F (?), U+005C (\), U+007E (~),
+      U+007F, characters prohibitted by Nameprep.
 
       If /label/ begins with "xn--" and contains non-ASCII character,
       abort.
@@ -230,6 +226,12 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     ($), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*),
     U+002C (,), U+003C (<), U+003D (=), U+003E (>), U+0040 (@), U+005E
     (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}) in /s/.
+
+    If /s/ is an IPv6 address, return the canonical representation of
+    the IPv6 address and abort these steps.
+
+    If /s/ is an IPv4 address, return the canonical representation of
+    the IPv4 address and abort these steps.
 
     Return /s/.
 

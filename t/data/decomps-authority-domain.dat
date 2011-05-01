@@ -2704,6 +2704,66 @@ http://xn--1-rfa.b/
 #chrome-host xn--1.b-8ka
 
 #data escaped
+http://\u00E0\u2488b.c/
+#canon escaped
+http://xn--1-rfa.b.c/
+#scheme http
+#host xn--1-rfa.b.c
+#path /
+#chrome-canon http://xn--1.b-8ka.c/
+#chrome-host xn--1.b-8ka.c
+
+#data escaped
+http://\u00E0\u2488b%2Ec/
+#canon escaped
+http://xn--1-rfa.b.c/
+#scheme http
+#host xn--1-rfa.b.c
+#path /
+#chrome-canon http://xn--1.b-8ka.c/
+#chrome-host xn--1.b-8ka.c
+
+#data escaped
+http://\u00E0\u2488b\uFF0Ec/
+#canon escaped
+http://xn--1-rfa.b.c/
+#scheme http
+#host xn--1-rfa.b.c
+#path /
+#chrome-canon http://xn--1.b-8ka.c/
+#chrome-host xn--1.b-8ka.c
+
+#data escaped
+http://\u00E0\u2488b\u3002c/
+#canon escaped
+http://xn--1-rfa.b.c/
+#scheme http
+#host xn--1-rfa.b.c
+#path /
+#chrome-canon http://xn--1.b-8ka.c/
+#chrome-host xn--1.b-8ka.c
+
+#data escaped
+http://\u00E0\u2488b\uFF61c/
+#canon escaped
+http://xn--1-rfa.b.c/
+#scheme http
+#host xn--1-rfa.b.c
+#path /
+#chrome-canon http://xn--1.b-8ka.c/
+#chrome-host xn--1.b-8ka.c
+
+#data escaped
+http://\u00E0\u2488b%EF%BD%A1c/
+#canon escaped
+http://xn--1-rfa.b.c/
+#scheme http
+#host xn--1-rfa.b.c
+#path /
+#chrome-canon http://xn--1.b-8ka.c/
+#chrome-host xn--1.b-8ka.c
+
+#data escaped
 http://a\u2024b/
 #canon escaped
 http://a.b/
