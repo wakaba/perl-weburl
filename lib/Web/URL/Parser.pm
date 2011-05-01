@@ -385,7 +385,7 @@ use Unicode::Stringprep;
     (3.2,
      [\@Unicode::Stringprep::Mapping::B1,
       \@Unicode::Stringprep::Mapping::B2],
-     'NFKC',
+     '',
      [],
      0, 0);
 *nameprepprohibited = Unicode::Stringprep->new
@@ -435,9 +435,8 @@ sub to_ascii ($$) {
 
     $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
         {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
-    $label = eval { nameprepmapping ($label) };
-    $label = '' unless defined $label;
-#    $label = NFKC $label;
+    $label = nameprepmapping ($label);
+    $label = Unicode::Stringprep::_NFKC_3_2 ($label);
 
     if (not defined eval { nameprepprohibited ($label); 1 }) {
       return undef;
