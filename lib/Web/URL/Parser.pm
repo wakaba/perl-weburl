@@ -408,7 +408,7 @@ sub to_ascii ($$) {
 
   ## If chrome:
 
-  $s =~ tr/\x09\x0D\x0D//d;
+  $s =~ tr/\x09\x0A\x0D//d;
 
   $s = Encode::encode ('utf-8', $s);
   $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
@@ -438,7 +438,7 @@ sub to_ascii ($$) {
 
   $s = join '.', @label;
 
-  if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x7E\x7F]/) {
+  if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
     return undef;
   }
 
@@ -450,6 +450,10 @@ sub to_ascii ($$) {
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
     # XXX canonicalize as an IPv6 address
     return $s;
+  }
+
+  if ($s =~ /\[/ or $s =~ /\]/) {
+    return undef;
   }
 
   # IPv4address
