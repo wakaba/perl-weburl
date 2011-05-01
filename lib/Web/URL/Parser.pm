@@ -422,6 +422,10 @@ sub to_ascii ($$) {
 
   my @label;
   for my $label (split /\./, $s, -1) {
+    $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+      sprintf '%%%02X', ord $1;
+    }ge;
+
     $label = nameprepmapping ($label);
     $label = NFKC $label;
 
@@ -449,11 +453,11 @@ sub to_ascii ($$) {
   if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
     return undef;
   }
-
+  
   $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
     sprintf '%%%02X', ord $1;
   }ge;
-  
+
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
     # XXX canonicalize as an IPv6 address
     return $s;

@@ -3149,6 +3149,62 @@ http://xn--a%20b-5dc/
 #path /
 
 #data escaped
+http://a \u0306b/
+#canon escaped
+http://xn--a%20b-4fd/
+#scheme http
+#host xn--a%20b-4fd
+#path /
+
+#data escaped
+http://a%20\u0306b/
+#canon escaped
+http://xn--a%20b-4fd/
+#scheme http
+#host xn--a%20b-4fd
+#path /
+
+#data escaped
+http://a\u00A0\u0306b/
+#canon escaped
+http://xn--a%20b-5dc/
+#scheme http
+#host xn--a%20b-5dc
+#path /
+
+#data escaped
+http://a\u3000\u0306b/
+#canon escaped
+http://xn--a%20b-5dc/
+#scheme http
+#host xn--a%20b-5dc
+#path /
+
+#data escaped
+http://a(\u0306b/
+#canon escaped
+http://xn--a%28b-4fd/
+#scheme http
+#host xn--a%28b-4fd
+#path /
+
+#data escaped
+http://a\uFF08\u0306b/
+#canon escaped
+http://xn--a%28b-5dc/
+#scheme http
+#host xn--a%28b-5dc
+#path /
+
+#data escaped
+http://a%EF%BC%88\u0306b/
+#canon escaped
+http://xn--a%28b-5dc/
+#scheme http
+#host xn--a%28b-5dc
+#path /
+
+#data escaped
 http://a\uA654b/
 #canon escaped
 http://xn--ab-177h/
