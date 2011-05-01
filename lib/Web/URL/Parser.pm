@@ -442,9 +442,9 @@ sub to_ascii ($$) {
 
   $s = join '.', @label;
 
-  $s = Encode::encode ('utf-8', $s);
-  $s =~ s{%([0-9A-Fa-f]{2})}{lc pack 'C', hex $1}ge; # XXX
-                                                     # error-handling?
+  $s = encode 'utf-8', $s;
+  $s =~ s{%([0-9A-Fa-f]{2})}{encode 'iso-8859-1', chr hex $1}ge;
+  $s =~ tr/A-Z/a-z/;
 
   if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
     return undef;

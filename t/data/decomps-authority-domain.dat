@@ -1761,6 +1761,60 @@ http://\uFE6A41.com/
 #path /
 
 #data escaped
+http://\uFE6AC1.com/
+#canon escaped
+http://\u00C1.com/
+#scheme http
+#host escaped
+\u00C1.com
+#path /
+
+#data escaped
+http://\uFE6AC3\uFE6A81.com/
+#canon escaped
+http://\u00C3\u0081.com/
+#scheme http
+#host escaped
+\u00C3\u0081.com
+#path /
+
+#data escaped
+http://\uFE6AC3\uFE6AAC.com/
+#canon escaped
+http://\u00C3\u00AC.com/
+#scheme http
+#host escaped
+\u00C3\u00AC.com
+#path /
+
+#data escaped
+http://\uFE6AC3\uFE6AAD.com/
+#canon escaped
+http://\u00C3\u00AD.com/
+#scheme http
+#host escaped
+\u00C3\u00AD.com
+#path /
+
+#data escaped
+http://\uFE6AE1.com/
+#canon escaped
+http://\u00E1.com/
+#scheme http
+#host escaped
+\u00E1.com
+#path /
+
+#data escaped
+http://\uFE6AC3\uFE6AA1.com/
+#canon escaped
+http://\u00C3\u00A1.com/
+#scheme http
+#host escaped
+\u00C3\u00A1.com
+#path /
+
+#data escaped
 http://%C3%AF%C2%B9%C2%AA41.com/
 #canon http://xn--1a41-4pa.com/
 #scheme http
