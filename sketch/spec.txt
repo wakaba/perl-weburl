@@ -30,10 +30,11 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Preprocessing of a string /s/
 
-  Remove leading or trailing control characters [url-spec].
+  Remove leading or trailing control characters [url-spec]. XXX need
+  to study what browsers do once again.
 
   Replace any character in the following range by a U+FFFD REPLACEMENT
-  CHARACTER:
+  CHARACTER: XXX This might be wrong.
 
     - U+D800 ... U+DFFF
     - U+FDD0 ... U+FDEF
@@ -46,7 +47,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   XXX maybe white space characters should be removed here.
 
-  XXX and U+0000 -> U+FFFD.
+  XXX and U+0000 -> U+FFFD. (?)
 
 * Parsing an absolute URL /s/
 
@@ -176,8 +177,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Percent-encode a character string /s/ using encoding /encoding/
 
-  XXX Replace each character in the following range in /s/ by a U+FFFD
-  REPLACEMENT CHARACTER:
+  XXX This might be wrong: Replace each character in the following
+  range in /s/ by a U+FFFD REPLACEMENT CHARACTER:
 
     - U+0000
 
