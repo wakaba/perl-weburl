@@ -408,6 +408,7 @@ use Unicode::Stringprep;
      '',
      [],
      1, 0);
+use Char::Prop::Unicode::BidiClass;
 
 sub to_ascii ($$) {
   my ($class, $s) = @_;
@@ -446,8 +447,27 @@ sub to_ascii ($$) {
       return undef;
     }
 
-    if (not defined eval { nameprepbidirule ($label); 1 }) {
-      return undef;
+    my @char = split //, $label;
+    if (@char) {
+      my $has_randalcat;
+      my $has_l;
+      my $first;
+      my $last;
+      for (split //, $label) {
+        my $class = unicode_bidi_class_c $_;
+        if ($class eq 'R' or $class eq 'AL') {
+          $has_randalcat = 1;
+        } elsif ($class eq 'L') {
+          $has_l = 1;
+        }
+        $first ||= $class;
+        $last = $class;
+      }
+      if ($has_randalcat) {
+        return undef if $has_l;
+        return undef if $first ne 'R' and $first ne 'AL';
+        return undef if $last ne 'R' and $last ne 'AL';
+      }
     }
 
     if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {

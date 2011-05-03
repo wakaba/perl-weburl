@@ -3395,7 +3395,57 @@ http://\u0640x/
 #invalid 1
 
 #data escaped
+http://\u0590x/
+#invalid 1
+
+#data escaped
+http://\u05C6x/
+#invalid 1
+
+#data escaped
+http://\uFB3Fx/
+#invalid 1
+
+#data escaped
 http://\u07FAx/
+#invalid 1
+
+#data escaped
+http://\U0001093Fx/
+#invalid 1
+
+#data escaped
+http://\U0001091Cx/
+#invalid 1
+
+#data escaped
+http://\u085Ex/
+#invalid 1
+
+#data escaped
+http://\u07B1x/
+#invalid 1
+
+#data escaped
+http://\u07B1.x/
+#canon http://xn--vrb.x/
+#scheme http
+#host xn--vrb.x
+#path /
+
+#data escaped
+http://\u07B1\u0590.x/
+#canon http://xn--bcb30i.x/
+#scheme http
+#host xn--bcb30i.x
+#path /
+
+#data escaped
+http://\u07B1\u0301.x/
+#invalid 1
+
+#data escaped
+http://\u07B1x\u07B1.x/
 #invalid 1
 
 #data escaped

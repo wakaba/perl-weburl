@@ -4,6 +4,7 @@ use warnings;
 use Path::Class;
 use lib file (__FILE__)->dir->parent->subdir ('lib')->stringify;
 use lib file (__FILE__)->dir->parent->subdir ('modules', 'testdataparser', 'lib')->stringify;
+use lib file (__FILE__)->dir->parent->subdir ('modules', 'charclass', 'lib')->stringify;
 use base qw(Test::Class);
 use Test::Differences;
 use Test::HTCT::Parser;
