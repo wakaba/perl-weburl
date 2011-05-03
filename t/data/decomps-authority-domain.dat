@@ -2797,6 +2797,15 @@ http://\u200C/
 #chrome-canon http://%E2%80%8C/
 
 #data escaped
+http://\u200C\u200C/
+#canon http:///
+#scheme http
+#host
+#path /
+#chrome-invalid 1
+#chrome-canon http://%E2%80%8C%E2%80%8C/
+
+#data escaped
 http://\u200D/
 #canon http:///
 #scheme http
@@ -2804,6 +2813,47 @@ http://\u200D/
 #path /
 #chrome-invalid 1
 #chrome-canon http://%E2%80%8D/
+
+#data escaped
+http://\u200D\u200D/
+#canon http:///
+#scheme http
+#host
+#path /
+#chrome-invalid 1
+#chrome-canon http://%E2%80%8D%E2%80%8D/
+
+#data escaped
+http://\u00AD/
+#canon http:///
+#scheme http
+#host
+#path /
+#chrome-invalid 1
+#chrome-canon http://%C2%AD/
+
+#data escaped
+http://\u034F/
+#canon http:///
+#scheme http
+#host
+#path /
+#chrome-invalid 1
+#chrome-canon http://%CD%8F/
+
+#data escaped
+http://\u1806/
+#canon http:///
+#scheme http
+#host
+#path /
+#chrome-invalid 1
+#chrome-canon http://%E1%A0%86/
+
+#data escaped
+http://\u180B.com/
+#invalid 1
+#chrome-canon http://%E1%A0%8B.com/
 
 #data escaped
 http://a\u04C0b/
@@ -3557,6 +3607,21 @@ http://\u02E3\u034F\u2115\u200B\uFE63\u00AD\uFF0D\u180C\u212C\uFE00\u017F\U0001D
 http://xn--bssffl.com/
 #scheme http
 #host xn--bssffl.com
+#path /
+
+#data escaped
+http://a\u200Db..com/
+#canon http://ab..com/
+#scheme http
+#host ab..com
+#path /
+#chrome-invalid 1
+
+#data
+http://.b.com/
+#canon http://.b.com/
+#scheme http
+#host .b.com
 #path /
 
 #data

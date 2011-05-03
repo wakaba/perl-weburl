@@ -433,6 +433,10 @@ sub to_ascii ($$) {
       sprintf '%%%02X', ord $1;
     }ge;
 
+    if ($label =~ /[^\x00-\x7F]/) {
+      $need_punycode = 1;
+    }
+
     $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
         {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
     $label = nameprepmapping ($label);
@@ -448,10 +452,6 @@ sub to_ascii ($$) {
 
     if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
       return undef;
-    }
-
-    if ($label =~ /[^\x00-\x7F]/) {
-      $need_punycode = 1;
     }
     
     push @label, $label;
@@ -474,7 +474,7 @@ sub to_ascii ($$) {
       }
     } @label;
     if ($empty > 1 or 
-        ($empty == 1 and not $label[-1] eq '')) {
+        ($empty == 1 and (@label == 1 or not $label[-1] eq ''))) {
       return undef;
     }
   }
