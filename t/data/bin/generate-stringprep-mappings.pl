@@ -129,6 +129,8 @@ sub generate_from_list ($$;%) {
         $file = $f->openw;
         $n = 0;
       }
+
+      local $args{invalid} = 1 if $args{invalid_1680} && $v == 0x1680;
       
       my $BEFORE = 'a';
       my $AFTER = 'b';
@@ -211,11 +213,13 @@ generate_from_map
 #    => 'decomps-authority-stringprep-c11';
 generate_from_list
     \@Unicode::Stringprep::Prohibited::C12
-    => 'decomps-authority-stringprep-c12';
+    => 'decomps-authority-stringprep-c12',
+    invalid_1680 => 1; # chrome -> 1
 generate_from_list
     \@Unicode::Stringprep::Prohibited::C12
     => 'decomps-authority-stringprep-c12-pe',
-    pe_input => 1;
+    pe_input => 1,
+    invalid_1680 => 1; # chrome -> 1
 #generate_from_list
 #    \@Unicode::Stringprep::Prohibited::C21
 #    => 'decomps-authority-stringprep-c21';

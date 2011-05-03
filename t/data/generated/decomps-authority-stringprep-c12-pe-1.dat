@@ -13,16 +13,9 @@ a%20b
 
 #data escaped
 http://a%E1%9A%80b/
-#canon escaped
+#invalid 1
+#invalid-canon escaped
 http://a%E1%9A%80b/
-#canon-unescaped escaped
-http://a%E1%9A%80b/
-#scheme http
-#host escaped
-a%E1%9A%80b
-#host-unescaped escaped
-a%E1%9A%80b
-#path /
 
 #data escaped
 http://a%E2%80%80b/
