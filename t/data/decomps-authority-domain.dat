@@ -3559,6 +3559,35 @@ http://xn--bssffl.com/
 #host xn--bssffl.com
 #path /
 
+#data
+http://a..b.com/
+#canon http://a..b.com/
+#scheme http
+#host a..b.com
+#path /
+
+#data escaped
+http://a.\u4E00.com./
+#canon http://a.xn--4gq.com./
+#scheme http
+#host a.xn--4gq.com.
+#path /
+
+#data escaped
+http://a.\u4E00.com../
+#invalid 1
+#chrome-canon http://a.%E4%B8%80.com../
+
+#data escaped
+http://a..\u4E00.com./
+#invalid 1
+#chrome-canon http://a..%E4%B8%80.com./
+
+#data escaped
+http://a..\u4E00.com/
+#invalid 1
+#chrome-canon http://a..%E4%B8%80.com/
+
 #data escaped
 http://a.b..-q--\u00E4-.e/
 #canon
@@ -3568,6 +3597,22 @@ http://a.b..xn---q----jra.e/
 #path /
 #chrome-invalid 1
 #chrome-canon http://a.b..-q--%C3%A4-.e/
+
+#data escaped
+http://a.b.-q--\u00E4-.e/
+#canon
+http://a.b.xn---q----jra.e/
+#scheme http
+#host a.b.xn---q----jra.e
+#path /
+
+#data escaped
+http://a.b.-qa--\u00E4-.e/
+#canon
+http://a.b.xn---qa----fua.e/
+#scheme http
+#host a.b.xn---qa----fua.e
+#path /
 
 #data escaped
 http://a.b.-q--\u00E4-.e/

@@ -458,17 +458,25 @@ sub to_ascii ($$) {
   } # $label
 
   if ($need_punycode) {
+    my $empty = 0;
     @label = map {
       if (/[^\x00-\x7F]/) {
         my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
         
         return undef if length $label > 63;
         $label;
+      } elsif ($_ eq '') {
+        $empty++;
+        $_;
       } else {
         return undef if length $_ > 63;
         $_;
       }
     } @label;
+    if ($empty > 1 or 
+        ($empty == 1 and not $label[-1] eq '')) {
+      return undef;
+    }
   }
 
   $s = join '.', @label;

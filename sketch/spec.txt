@@ -237,6 +237,10 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
         If /label/ contains more than 63 characters, abort the ToASCII
         algorithm.
 
+      If there are more than one empty /label/, or if there is an
+      empty /label/ that is not the last /label/, abort the ToASCII
+      algorithm.
+
     Join /label/s by ".".
 
     Percent-decode and interpret as U+0000 - U+00FF.  Normalize to
