@@ -11,6 +11,25 @@ my $data_d = file (__FILE__)->dir->parent;
 my $generated_d = $data_d->subdir ('generated');
 
 use Char::Prop::Unicode::5_1_0::BidiClass;
+use Char::Prop::Unicode::Age;
+
+sub string_unicode_version ($) {
+  my $s = shift;
+  my $version = '1.1';
+  for (split //, $s) {
+    my $ver = unicode_age_c $_;
+    undef $ver if $ver eq 'unassigned';
+    if (defined $ver) {
+      if (defined $version and $version < $ver) {
+        $version = $ver;
+      }
+    } else {
+      $version = undef;
+    }
+  }
+  return $version;
+} # string_unicode_version
+
 sub is_rtl ($) {
   my $bidi = unicode_5_1_0_bidi_class_c $_[0];
   return {
@@ -210,11 +229,24 @@ http://%s/
             uescape ($args{pe_input} ? $BEFORE . (lc pe (chr $v)) . $AFTER : $BEFORE . ($args{unsafe} && $args{unsafe} ne 'noncharacters' || $v == 0xFFFE || $v == 0xFFFF ? "\x{FFFD}" : chr $v) . $AFTER);
       } else {
         my $host = $BEFORE . (defined $newc ? $newc : chr $v) . $AFTER;
+        my $gecko_host;
         if ($v == 0x0340 or $v == 0x0341) {
           $punycoded = to_punycode_with_prefix NFKC $host;
+          $gecko_host = $host;
         } elsif ($args{unassigned}) {
           $punycoded = to_punycode_with_prefix $host;
           $host = $punycoded;
+          my $v_mod = NFKC chr $v;
+          $v_mod = lc $v_mod if $v_mod ne chr $v;
+          $gecko_host = $BEFORE . ($v_mod) . $AFTER;
+          my $ver = string_unicode_version (chr $v);
+          $gecko_host = $BEFORE . (chr $v) . $AFTER 
+              if not defined $ver or $ver > '5.0';
+          $gecko_host = to_punycode_with_prefix $gecko_host
+              if $gecko_host =~ /[^\x00-\x7F]/;
+          $gecko_host =~ tr/A-Z/a-z/;
+        } else {
+          $gecko_host = $host;
         }
         printf $file q{#data escaped
 http://%s%s%s/
@@ -241,8 +273,8 @@ http://%s/
             uescape ($args{pe_input} ? $punycoded : $host),
             uescape $punycoded,
             uescape ($args{pe_input} ? $punycoded : $host),
-            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $host),
-            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $host);
+            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
+            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host);
       }
     } # $v
   }
