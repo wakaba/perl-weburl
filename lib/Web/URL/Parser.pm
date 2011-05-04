@@ -511,13 +511,11 @@ sub to_ascii ($$) {
     $s = encode 'utf-8', $s;
     $s =~ s{%([0-9A-Fa-f]{2})}{encode 'iso-8859-1', chr hex $1}ge;
     $s =~ tr/A-Z/a-z/;
-  }
-
-  if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
-    return undef;
-  }
-
-  if (not 'gecko') {
+    
+    if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
+      return undef;
+    }
+    
     $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
       sprintf '%%%02X', ord $1;
     }ge;
