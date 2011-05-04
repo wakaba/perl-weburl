@@ -500,8 +500,12 @@ sub to_ascii ($$) {
         $empty++;
         $_;
       } else {
-        return undef if length $_ > 63;
-        $_;
+        if (length $_ > 62 and 'gecko') {
+          substr $_, 0, 62;
+        } else {
+          return undef if length $_ > 63;
+          $_;
+        }
       }
     } @label;
     if ($empty > 1 or 
