@@ -237,6 +237,7 @@ http://%s/
           $punycoded = to_punycode_with_prefix $host;
           $host = $punycoded;
           my $v_mod = NFKC chr $v;
+          $v_mod =~ tr/\x{3002}/./;
           $v_mod = lc $v_mod if $v_mod ne chr $v;
           $gecko_host = $BEFORE . ($v_mod) . $AFTER;
           my $ver = string_unicode_version (chr $v);
