@@ -416,13 +416,15 @@ sub to_ascii ($$) {
   ## If chrome:
 
   $s =~ tr/\x09\x0A\x0D//d;
-  
-  $s = Encode::encode ('utf-8', $s);
-  $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
-  $s = Encode::decode ('utf-8', $s); # XXX error-handling
 
-  if ($s =~ /%/) {
-    return undef;
+  if (not 'gecko') {
+    $s = Encode::encode ('utf-8', $s);
+    $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
+    $s = Encode::decode ('utf-8', $s); # XXX error-handling
+    
+    if ($s =~ /%/) {
+      return undef;
+    }
   }
 
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
@@ -430,9 +432,11 @@ sub to_ascii ($$) {
   my @label;
   my $need_punycode;
   for my $label (split /\./, $s, -1) {
-    $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
-      sprintf '%%%02X', ord $1;
-    }ge;
+    if (not 'gecko') {
+      $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+        sprintf '%%%02X', ord $1;
+      }ge;
+    }
 
     if ($label =~ /[^\x00-\x7F]/) {
       $need_punycode = 1;
@@ -501,17 +505,21 @@ sub to_ascii ($$) {
 
   $s = join '.', @label;
 
-  $s = encode 'utf-8', $s;
-  $s =~ s{%([0-9A-Fa-f]{2})}{encode 'iso-8859-1', chr hex $1}ge;
-  $s =~ tr/A-Z/a-z/;
+  if (not 'gecko') {
+    $s = encode 'utf-8', $s;
+    $s =~ s{%([0-9A-Fa-f]{2})}{encode 'iso-8859-1', chr hex $1}ge;
+    $s =~ tr/A-Z/a-z/;
+  }
 
   if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
     return undef;
   }
-  
-  $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
-    sprintf '%%%02X', ord $1;
-  }ge;
+
+  if (not 'gecko') {
+    $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+      sprintf '%%%02X', ord $1;
+    }ge;
+  }
 
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
     # XXX canonicalize as an IPv6 address
