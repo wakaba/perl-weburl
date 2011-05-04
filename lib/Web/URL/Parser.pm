@@ -603,7 +603,7 @@ sub canonicalize_url ($$;$) {
     my $orig_host = $parsed_url->{host};
     $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
     if (not defined $parsed_url->{host}) {
-      if ('gecko') {
+      if ('gecko' and $orig_host !~ /[\x00\x20]/) {
         $parsed_url->{host} = lc $orig_host;
       } else {
         %$parsed_url = (invalid => 1);
