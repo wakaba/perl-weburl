@@ -136,7 +136,9 @@
       ((location.search || '').replace (/^\?/, '').replace (/;.*/, ''));
   if (!/\.dat$/.test(fileName)) fileName = 'decomps.dat';
 
+  // XXX compat mode is too complex now...
   var compatMode = location.search.match (/compat/);
+
   var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
   var isChrome = isWebKit && navigator.userAgent.match (/Chrome/);
   var isSafari = isWebKit && !isChrome && navigator.userAgent.match (/Safari/);
@@ -257,6 +259,14 @@
       if (expected.scheme == '') expected.scheme = ':';
     }
     if (isGecko || isWebKit || isIE) {
+      if (isGecko) {
+        expected.url = test.getFieldValue ('gecko-canon') || expected.url;
+        expected.host = test.getFieldValue ('gecko-host') || expected.host;
+        expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+        if (/^\[[\s\S]*\]$/.test (expected.host)) {
+          expected.host = expected.host.replace (/^\[/, '').replace (/\]$/, '');
+        }
+      }
       if (expected.query == '?') expected.query = '';
       if (expected.fragment == '#') expected.fragment = '';
     }
@@ -267,7 +277,8 @@
     }
     
     if (test.getFieldValue ('invalid') ||
-        (isChrome && test.getFieldValue ('chrome-invalid'))) {
+        (isChrome && test.getFieldValue ('chrome-invalid')) ||
+        (isGecko && test.getFieldValue ('gecko-invalid'))) {
       expected = {
         url: '',
         scheme: '',
@@ -296,6 +307,14 @@
         }
         expected.scheme = ':';
         expected.port = '0';
+      }
+      if (isGecko) {
+        if (canonCompatMode) {
+          expected.url = test.getFieldValue ('invalid-canon')
+              || test.getFieldValue ('gecko-canon')
+              || originalURL;
+        }
+        if (/^http:/i.test (originalURL)) expected.scheme = 'http:';
       }
       if (isOpera) {
         ++illegalURLs;
