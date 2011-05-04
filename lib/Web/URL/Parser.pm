@@ -474,10 +474,12 @@ sub to_ascii ($$) {
       }
     }
 
-    if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
-      return undef;
+    if (not 'gecko') {
+      if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
+        return undef;
+      }
     }
-    
+
     push @label, $label;
   } # $label
 
