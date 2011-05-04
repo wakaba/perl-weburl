@@ -242,7 +242,7 @@ http://%s/
           $gecko_host = $BEFORE . ($v_mod) . $AFTER;
           my $ver = string_unicode_version (chr $v);
           $gecko_host = $BEFORE . (chr $v) . $AFTER 
-              if not defined $ver or $ver > '5.0';
+              if not defined $ver or $ver > '4.1';
           $gecko_host = to_punycode_with_prefix $gecko_host
               if $gecko_host =~ /[^\x00-\x7F]/;
           $gecko_host =~ tr/A-Z/a-z/;
