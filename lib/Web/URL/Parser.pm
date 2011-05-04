@@ -416,7 +416,7 @@ sub to_ascii ($$) {
   ## If chrome:
 
   $s =~ tr/\x09\x0A\x0D//d;
-
+  
   $s = Encode::encode ('utf-8', $s);
   $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
   $s = Encode::decode ('utf-8', $s); # XXX error-handling
@@ -592,10 +592,15 @@ sub canonicalize_url ($$;$) {
   }
 
   if (defined $parsed_url->{host}) {
+    my $orig_host = $parsed_url->{host};
     $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
     if (not defined $parsed_url->{host}) {
-      %$parsed_url = (invalid => 1);
-      return $parsed_url;
+      if ('gecko') {
+        $parsed_url->{host} = lc $orig_host;
+      } else {
+        %$parsed_url = (invalid => 1);
+        return $parsed_url;
+      }
     }
   }
 
