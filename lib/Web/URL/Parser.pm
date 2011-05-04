@@ -609,6 +609,9 @@ sub canonicalize_url ($$;$) {
         %$parsed_url = (invalid => 1);
         return $parsed_url;
       }
+    } elsif ('gecko' and $orig_host =~ /[\x00\x20]/) {
+      %$parsed_url = (invalid => 1);
+      return $parsed_url;
     }
   }
 

@@ -302,8 +302,10 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 
   XXX Gecko only: If the ToASCII algorithm aborts, it must return the
-  original input string's ASCII lowercase variant instead, UNLESS the
-  original input string contains U+0020 or U+0000.
+  original input string's ASCII lowercase variant instead.
+
+  XXX Gecko only: If the result contains U+0020 or U+0000, it must
+  abort, ignoring the previous requirement.
 
 * Canonicalize a string /u/ by encoding /encoding/
 
