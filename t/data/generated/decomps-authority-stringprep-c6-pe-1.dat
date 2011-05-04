@@ -1,30 +1,60 @@
 #data escaped
 http://a%EF%BF%B9b/
-#invalid 1
-#invalid-canon escaped
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
 http://a%EF%BF%B9b/
+#gecko-canon escaped
+http://a%ef%bf%b9b/
+#gecko-host escaped
+a%ef%bf%b9b
 
 #data escaped
 http://a%EF%BF%BAb/
-#invalid 1
-#invalid-canon escaped
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
 http://a%EF%BF%BAb/
+#gecko-canon escaped
+http://a%ef%bf%bab/
+#gecko-host escaped
+a%ef%bf%bab
 
 #data escaped
 http://a%EF%BF%BBb/
-#invalid 1
-#invalid-canon escaped
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
 http://a%EF%BF%BBb/
+#gecko-canon escaped
+http://a%ef%bf%bbb/
+#gecko-host escaped
+a%ef%bf%bbb
 
 #data escaped
 http://a%EF%BF%BCb/
-#invalid 1
-#invalid-canon escaped
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
 http://a%EF%BF%BCb/
+#gecko-canon escaped
+http://a%ef%bf%bcb/
+#gecko-host escaped
+a%ef%bf%bcb
 
 #data escaped
 http://a%EF%BF%BDb/
-#invalid 1
-#invalid-canon escaped
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
 http://a%EF%BF%BDb/
+#gecko-canon escaped
+http://a%ef%bf%bdb/
+#gecko-host escaped
+a%ef%bf%bdb
 

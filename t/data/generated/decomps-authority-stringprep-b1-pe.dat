@@ -6,6 +6,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%c2%adb/
+#gecko-host escaped
+a%c2%adb
 
 #data escaped
 http://a%CD%8Fb/
@@ -15,6 +19,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%cd%8fb/
+#gecko-host escaped
+a%cd%8fb
 
 #data escaped
 http://a%E1%A0%86b/
@@ -24,6 +32,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e1%a0%86b/
+#gecko-host escaped
+a%e1%a0%86b
 
 #data escaped
 http://a%E1%A0%8Bb/
@@ -33,6 +45,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e1%a0%8bb/
+#gecko-host escaped
+a%e1%a0%8bb
 
 #data escaped
 http://a%E1%A0%8Cb/
@@ -42,6 +58,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e1%a0%8cb/
+#gecko-host escaped
+a%e1%a0%8cb
 
 #data escaped
 http://a%E1%A0%8Db/
@@ -51,6 +71,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e1%a0%8db/
+#gecko-host escaped
+a%e1%a0%8db
 
 #data escaped
 http://a%E2%80%8Bb/
@@ -60,6 +84,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e2%80%8bb/
+#gecko-host escaped
+a%e2%80%8bb
 
 #data escaped
 http://a%E2%80%8Cb/
@@ -69,6 +97,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e2%80%8cb/
+#gecko-host escaped
+a%e2%80%8cb
 
 #data escaped
 http://a%E2%80%8Db/
@@ -78,6 +110,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e2%80%8db/
+#gecko-host escaped
+a%e2%80%8db
 
 #data escaped
 http://a%E2%81%A0b/
@@ -87,6 +123,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%e2%81%a0b/
+#gecko-host escaped
+a%e2%81%a0b
 
 #data escaped
 http://a%EF%B8%80b/
@@ -96,6 +136,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%80b/
+#gecko-host escaped
+a%ef%b8%80b
 
 #data escaped
 http://a%EF%B8%81b/
@@ -105,6 +149,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%81b/
+#gecko-host escaped
+a%ef%b8%81b
 
 #data escaped
 http://a%EF%B8%82b/
@@ -114,6 +162,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%82b/
+#gecko-host escaped
+a%ef%b8%82b
 
 #data escaped
 http://a%EF%B8%83b/
@@ -123,6 +175,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%83b/
+#gecko-host escaped
+a%ef%b8%83b
 
 #data escaped
 http://a%EF%B8%84b/
@@ -132,6 +188,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%84b/
+#gecko-host escaped
+a%ef%b8%84b
 
 #data escaped
 http://a%EF%B8%85b/
@@ -141,6 +201,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%85b/
+#gecko-host escaped
+a%ef%b8%85b
 
 #data escaped
 http://a%EF%B8%86b/
@@ -150,6 +214,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%86b/
+#gecko-host escaped
+a%ef%b8%86b
 
 #data escaped
 http://a%EF%B8%87b/
@@ -159,6 +227,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%87b/
+#gecko-host escaped
+a%ef%b8%87b
 
 #data escaped
 http://a%EF%B8%88b/
@@ -168,6 +240,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%88b/
+#gecko-host escaped
+a%ef%b8%88b
 
 #data escaped
 http://a%EF%B8%89b/
@@ -177,6 +253,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%89b/
+#gecko-host escaped
+a%ef%b8%89b
 
 #data escaped
 http://a%EF%B8%8Ab/
@@ -186,6 +266,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%8ab/
+#gecko-host escaped
+a%ef%b8%8ab
 
 #data escaped
 http://a%EF%B8%8Bb/
@@ -195,6 +279,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%8bb/
+#gecko-host escaped
+a%ef%b8%8bb
 
 #data escaped
 http://a%EF%B8%8Cb/
@@ -204,6 +292,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%8cb/
+#gecko-host escaped
+a%ef%b8%8cb
 
 #data escaped
 http://a%EF%B8%8Db/
@@ -213,6 +305,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%8db/
+#gecko-host escaped
+a%ef%b8%8db
 
 #data escaped
 http://a%EF%B8%8Eb/
@@ -222,6 +318,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%8eb/
+#gecko-host escaped
+a%ef%b8%8eb
 
 #data escaped
 http://a%EF%B8%8Fb/
@@ -231,6 +331,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%b8%8fb/
+#gecko-host escaped
+a%ef%b8%8fb
 
 #data escaped
 http://a%EF%BB%BFb/
@@ -240,4 +344,8 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://a%ef%bb%bfb/
+#gecko-host escaped
+a%ef%bb%bfb
 

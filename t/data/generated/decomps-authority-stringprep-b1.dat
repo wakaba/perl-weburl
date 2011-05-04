@@ -6,6 +6,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u034Fb/
@@ -15,6 +19,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u1806b/
@@ -24,6 +32,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u180Bb/
@@ -33,6 +45,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u180Cb/
@@ -42,6 +58,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u180Db/
@@ -51,6 +71,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u200Bb/
@@ -60,6 +84,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u200Cb/
@@ -69,6 +97,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u200Db/
@@ -78,6 +110,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\u2060b/
@@ -87,6 +123,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE00b/
@@ -96,6 +136,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE01b/
@@ -105,6 +149,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE02b/
@@ -114,6 +162,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE03b/
@@ -123,6 +175,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE04b/
@@ -132,6 +188,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE05b/
@@ -141,6 +201,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE06b/
@@ -150,6 +214,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE07b/
@@ -159,6 +227,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE08b/
@@ -168,6 +240,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE09b/
@@ -177,6 +253,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE0Ab/
@@ -186,6 +266,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE0Bb/
@@ -195,6 +279,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE0Cb/
@@ -204,6 +292,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE0Db/
@@ -213,6 +305,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE0Eb/
@@ -222,6 +318,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFE0Fb/
@@ -231,6 +331,10 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
 #data escaped
 http://a\uFEFFb/
@@ -240,4 +344,8 @@ http://ab/
 #host escaped
 ab
 #path /
+#gecko-canon escaped
+http://ab/
+#gecko-host escaped
+ab
 
