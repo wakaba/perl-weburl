@@ -442,8 +442,13 @@ sub to_ascii ($$) {
       $need_punycode = 1;
     }
 
-    $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
-        {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
+    if ('gecko') { # correct (new)
+      $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
+          {\x{36FC}\x{5F53}\x{243AB}\x{7AEE}\x{45D7}};
+    } elsif ('chrome') { # wrong (old)
+      $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
+          {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
+    }
     $label = nameprepmapping ($label);
     $label = Unicode::Stringprep::_NFKC_3_2 ($label);
 
