@@ -620,17 +620,21 @@ sub canonicalize_url ($$;$) {
   if (defined $parsed_url->{host}) {
     my $orig_host = $parsed_url->{host};
     $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
+    if ('gecko' and
+        $parsed_url->{host} and
+        $parsed_url->{host} =~ /[\x00\x20]/ and
+        $orig_host =~ /[\x00\x20]/) {
+      %$parsed_url = (invalid => 1);
+      return $parsed_url;
+    }
     if (not defined $parsed_url->{host}) {
-      if ('gecko' and $orig_host !~ /[\x00\x20]/) {
+      if ('gecko') {
         $parsed_url->{host} = $orig_host;
         $parsed_url->{host} =~ tr/A-Z/a-z/;
       } else {
         %$parsed_url = (invalid => 1);
         return $parsed_url;
       }
-    } elsif ('gecko' and $orig_host =~ /[\x00\x20]/) {
-      %$parsed_url = (invalid => 1);
-      return $parsed_url;
     }
   }
 
