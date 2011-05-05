@@ -266,6 +266,10 @@
         if (/^\[[\s\S]*\]$/.test (expected.host)) {
           expected.host = expected.host.replace (/^\[/, '').replace (/\]$/, '');
         }
+      } else if (isIE) {
+        expected.url = test.getFieldValue ('ie-canon') || expected.url;
+        expected.host = test.getFieldValue ('ie-host') || expected.host;
+        expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
       }
       if (expected.query == '?') expected.query = '';
       if (expected.fragment == '#') expected.fragment = '';
@@ -278,7 +282,8 @@
     
     if (test.getFieldValue ('invalid') ||
         (isChrome && test.getFieldValue ('chrome-invalid')) ||
-        (isGecko && test.getFieldValue ('gecko-invalid'))) {
+        (isGecko && test.getFieldValue ('gecko-invalid')) ||
+        (isIE && test.getFieldValue ('ie-invalid'))) {
       expected = {
         url: '',
         scheme: '',
