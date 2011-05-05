@@ -428,7 +428,9 @@ sub nameprep ($) {
   $label = nameprepmapping ($label);
 
   if ('gecko') {
+    ## BUG: Unicode 4.0 according to the spec.
     $label = NFKC ($label);
+    $label = nameprepmapping ($label);
   } else {
     $label = Unicode::Stringprep::_NFKC_3_2 ($label);
   }
