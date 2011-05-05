@@ -467,10 +467,11 @@ sub nameprep_bidi ($) {
 
 sub to_ascii ($$) {
   my ($class, $s) = @_;
-  my $fallback = 'gecko' ? $s : undef;
-  $fallback =~ tr/A-Z/a-z/ if defined $fallback;
 
   $s =~ tr/\x09\x0A\x0D//d;
+
+  my $fallback = 'gecko' ? $s : undef;
+  $fallback =~ tr/A-Z/a-z/ if defined $fallback;
 
   if (not 'gecko') {
     $s = Encode::encode ('utf-8', $s);

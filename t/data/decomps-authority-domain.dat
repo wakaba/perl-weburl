@@ -4230,6 +4230,86 @@ http://\u0640x/
 \u0640x
 
 #data escaped
+http://\u0640x\u000A/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x/
+#gecko-host escaped
+\u0640x
+
+#data escaped
+http://\u0640x\uFE02/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x\uFE02/
+#gecko-host escaped
+\u0640x\uFE02
+
+#data escaped
+http://\u0640x\uFF21/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x\uFF21/
+#gecko-host escaped
+\u0640x\uFF21
+
+#data escaped
+http://\u0640x\u00A0/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x\u00A0/
+#gecko-host escaped
+\u0640x\u00A0
+
+#data escaped
+http://\u0640x\u00AD/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x\u00AD/
+#gecko-host escaped
+\u0640x\u00AD
+
+#data escaped
+http://\u0640x\u00E1/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x\u00E1/
+#gecko-host escaped
+\u0640x\u00E1
+
+#data escaped
+http://\u0640x\u3002a/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x\u3002a/
+#gecko-host escaped
+\u0640x\u3002a
+
+#data escaped
+http://\u0640x\uFF61a/
+#scheme http
+#path /
+#chrome-invalid 1
+#gecko-canon escaped
+http://\u0640x\uFF61a/
+#gecko-host escaped
+\u0640x\uFF61a
+
+#data escaped
 http://\u0590x/
 #scheme http
 #path /
