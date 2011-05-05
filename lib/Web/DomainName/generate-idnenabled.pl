@@ -12,7 +12,7 @@ while (<>) {
   }
 }
 
-print q{package Web::DomainName::IDNSafe;
+print q{package Web::DomainName::IDNEnabled;
 $VERSION = '1.0.}.time.q{';
 $TIMESTAMP = }.time.q{;
 
@@ -27,24 +27,24 @@ print q{
 
 =head1 NAME
 
-Web::DomainName::IDNSafe - List of IDN-safe TLDs
+Web::DomainName::IDNEnabled - List of IDN-enabled TLDs
 
 =head1 SYNOPSIS
 
-  use Web::DomainName::IDNSafe;
-  ok $Web::DomainName::IDNSafe::TLDs->{jp};
-  ng $Web::DomainName::IDNSafe::TLDs->{fr};
+  use Web::DomainName::IDNEnabled;
+  ok $Web::DomainName::IDNEnabled::TLDs->{jp};
+  ng $Web::DomainName::IDNEnabled::TLDs->{fr};
 
 =head1 DESCRIPTION
 
-The C<Web::DomainName::IDNSafe> module provides a list of IDN-safe
+The C<Web::DomainName::IDNEnabled> module provides a list of IDN-enabled
 TLDs.  It contains TLDs listed in the I<IDN-enabled TLDs> (as of
 }.(sprintf '%04d-%02d-%02d', [gmtime]->[5] + 1900, [gmtime]->[4] + 1,
 [gmtime]->[3]).q{) maintained by the Mozilla project.
 
 =head1 VARIABLE
 
-The module defines a variable: C<$Web::DomainName::IDNSafe::TLDs>.  It
+The module defines a variable: C<$Web::DomainName::IDNEnabled::TLDs>.  It
 is a hash reference.  Keys of the hash are IDN-enabled TLDs in
 lowercase and is encoded in Punycode if necessary.  Values for
 existing keys are always true.
@@ -61,7 +61,7 @@ IDN-enabled TLDs
 
 Wakaba <w@suika.fam.cx>.
 
-The C<Web::DomainName::IDNSafe> module contains data extracted from
+The C<Web::DomainName::IDNEnabled> module contains data extracted from
 files maintained by the Mozilla project.
 
 =head1 LICENSE
