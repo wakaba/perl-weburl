@@ -266,15 +266,39 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     If the /need-punycode/ flag is /true/,
 
+      GECKO: 
+
+        Let /tld/ be the last non-empty /label/, if any, or the empty
+        string.
+
+        Let /tld/ be "xn--" followed by Punycode encoded
+        representation of /tld/ if /tld/ contains non-ASCII
+        characters.
+
+        Let /idn-enabled/ be whether /tld/ is in the list of
+        IDN-enabled TLDs [MOZILLA] or not.
+
+        Let /idn-enabled/ be false if a /label/ contains a character
+        included in the list of IDN blacklist characters [MOZILLA].
+
       For each /label/,
 
-        If /label/ contains a non-ASCII character, encode /label/ by
-        Punycode and prepend "xn--". XXX if failed
+        If /label/ contains a non-ASCII character,
 
-        If /label/ contains more than 63 [GECKO: 62] characters, abort
-        the ToASCII algorithm.  GECKO: Except when original /label/
-        has no non-ASCII character, in which case replace /label/ by
-        its first 62 characters.
+          If /idn-enabled/ is false,
+
+            Encode /label/ by Punycode and prepend "xn--". XXX if
+            failed
+
+            If /label/ contains more than 63 [GECKO: 62] characters,
+            abort the ToASCII algorithm.  GECKO: Except when original
+            /label/ has no non-ASCII character, in which case replace
+            /label/ by its first 62 characters.
+
+        Otherwise, if /label/ contains more than 63 [GECKO: 62]
+        characters, abort the ToASCII algorithm.  GECKO: Except when
+        original /label/ has no non-ASCII character, in which case
+        replace /label/ by its first 62 characters.
 
       CHROME: If there are more than one empty /label/, if there is
       only a /label/ and the /label/ is the empty string, or if there

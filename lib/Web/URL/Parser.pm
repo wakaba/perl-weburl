@@ -465,6 +465,9 @@ sub nameprep_bidi ($) {
   return $label;
 } # nameprep_bidi
 
+use Web::DomainName::IDNEnabled;
+use Char::Class::IDNBlacklist qw(InIDNBlacklistChars);
+
 sub to_ascii ($$) {
   my ($class, $s) = @_;
 
@@ -529,13 +532,32 @@ sub to_ascii ($$) {
   } # $label
 
   if ($need_punycode) {
+    my $idn_enabled;
+    if ('gecko') {
+      my $tld = [grep { length $_ } reverse @label]->[0] || '';
+      if ($tld =~ /[^\x00-\x7F]/) {
+        $tld = 'xn--' . eval { encode_punycode $tld } || '';
+      }
+      if ($Web::DomainName::IDNEnabled::TLDs->{$tld}) {
+        if ((join '', @label) =~ /\p{InIDNBlacklistChars}/) {
+          #
+        } else {
+          $idn_enabled = 1;
+        }
+      }
+    }
+
     my $empty = 0;
     @label = map {
       if (/[^\x00-\x7F]/) {
-        my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
-        
-        return $fallback if length $label > 63;
-        $label;
+        if ($idn_enabled) {
+          $_;
+        } else {
+          my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
+          
+          return $fallback if length $label > 63;
+          $label;
+        }
       } elsif ($_ eq '') {
         $empty++;
         $_;
