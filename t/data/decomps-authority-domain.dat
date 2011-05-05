@@ -2525,6 +2525,246 @@ http://r\u00E9sum\u00E9.example.org/
 #gecko-host escaped
 r\u00E9sum\u00E9.example.org
 
+#data escaped
+http://\u00E9.example.org
+#canon http://xn--9ca.example.org/
+#scheme http
+#host xn--9ca.example.org
+#path /
+#gecko-canon escaped
+http://\u00E9.example.org/
+#gecko-host escaped
+\u00E9.example.org
+
+#data escaped
+http://\u00A8.example.org
+#canon
+http://xn--%20-ccb.example.org/
+#scheme http
+#host
+xn--%20-ccb.example.org
+#path /
+#gecko-canon escaped
+http://xn-- -ccb.example.org/
+#gecko-host escaped
+xn-- -ccb.example.org
+
+#data escaped
+http://\u00A7.example.org
+#canon http://xn--eba.example.org/
+#scheme http
+#host xn--eba.example.org
+#path /
+#gecko-canon escaped
+http://\u00A7.example.org/
+#gecko-host escaped
+\u00A7.example.org
+
+#data escaped
+http://\u00B6.example.org
+#canon http://xn--tba.example.org/
+#scheme http
+#host xn--tba.example.org
+#path /
+#gecko-canon escaped
+http://\u00B6.example.org/
+#gecko-host escaped
+\u00B6.example.org
+
+#data escaped
+http://\u00C3.example.org
+#canon http://xn--3ca.example.org/
+#scheme http
+#host xn--3ca.example.org
+#path /
+#gecko-canon escaped
+http://\u00E3.example.org/
+#gecko-host escaped
+\u00E3.example.org
+
+#data escaped
+http://\u0100.example.org
+#canon http://xn--yda.example.org/
+#scheme http
+#host xn--yda.example.org
+#path /
+#gecko-canon escaped
+http://\u0101.example.org/
+#gecko-host escaped
+\u0101.example.org
+
+#data escaped
+http://\u0100.abc.org
+#canon http://xn--yda.abc.org/
+#scheme http
+#host xn--yda.abc.org
+#path /
+#gecko-canon escaped
+http://\u0101.abc.org/
+#gecko-host escaped
+\u0101.abc.org
+
+#data escaped
+http://\u0100.\u0101.org
+#canon http://xn--yda.xn--yda.org/
+#scheme http
+#host xn--yda.xn--yda.org
+#path /
+#gecko-canon escaped
+http://\u0101.\u0101.org/
+#gecko-host escaped
+\u0101.\u0101.org
+
+#data escaped
+http://\u0100%C3%A9.abc.org
+#canon http://xn--9ca1c.abc.org/
+#scheme http
+#host xn--9ca1c.abc.org
+#path /
+#gecko-canon escaped
+http://\u0101%c3%a9.abc.org/
+#gecko-host escaped
+\u0101%c3%a9.abc.org
+
+#data escaped
+http://\u0100.org
+#canon http://xn--yda.org/
+#scheme http
+#host xn--yda.org
+#path /
+#gecko-canon escaped
+http://\u0101.org/
+#gecko-host escaped
+\u0101.org
+
+#data escaped
+http://\u0100.com
+#canon http://xn--yda.com/
+#scheme http
+#host xn--yda.com
+#path /
+
+#data escaped
+http://\u0100.net
+#canon http://xn--yda.net/
+#scheme http
+#host xn--yda.net
+#path /
+
+#data escaped
+http://\u0100.info
+#canon http://xn--yda.info/
+#scheme http
+#host xn--yda.info
+#path /
+#gecko-canon escaped
+http://\u0101.info/
+#gecko-host escaped
+\u0101.info
+
+#data escaped
+http://\u0100.info.
+#canon http://xn--yda.info./
+#scheme http
+#host xn--yda.info.
+#path /
+#gecko-canon escaped
+http://\u0101.info./
+#gecko-host escaped
+\u0101.info.
+
+#data escaped
+http://\u0100.museum
+#canon http://xn--yda.museum/
+#scheme http
+#host xn--yda.museum
+#path /
+#gecko-canon escaped
+http://\u0101.museum/
+#gecko-host escaped
+\u0101.museum
+
+#data escaped
+http://\u0100\u02D0.museum
+#canon
+http://xn--yda04g.museum/
+#scheme http
+#host
+xn--yda04g.museum
+#path /
+
+#data escaped
+http://\u0100.xn--mgbayh7gpa
+#canon http://xn--yda.xn--mgbayh7gpa/
+#scheme http
+#host xn--yda.xn--mgbayh7gpa
+#path /
+#gecko-canon escaped
+http://\u0101.xn--mgbayh7gpa/
+#gecko-host escaped
+\u0101.xn--mgbayh7gpa
+
+#data escaped
+http://\u0100.\u0627\u0644\u0627\u0631\u062F\u0646
+#canon http://xn--yda.xn--mgbayh7gpa/
+#scheme http
+#host xn--yda.xn--mgbayh7gpa
+#path /
+#gecko-canon escaped
+http://\u0101.\u0627\u0644\u0627\u0631\u062F\u0646/
+#gecko-host escaped
+\u0101.\u0627\u0644\u0627\u0631\u062F\u0646
+
+#data escaped
+http://\u0100.int
+#canon http://xn--yda.int/
+#scheme http
+#host xn--yda.int
+#path /
+
+#data escaped
+http://\u0100.ab
+#canon http://xn--yda.ab/
+#scheme http
+#host xn--yda.ab
+#path /
+
+#data escaped
+http://a.\u0100.net
+#canon http://a.xn--yda.net/
+#scheme http
+#host a.xn--yda.net
+#path /
+
+#data escaped
+http://\u0100.jp
+#canon http://xn--yda.jp/
+#scheme http
+#host xn--yda.jp
+#path /
+#gecko-canon escaped
+http://\u0101.jp/
+#gecko-host escaped
+\u0101.jp
+
+#data escaped
+http://\u0100.co.jp
+#canon http://xn--yda.co.jp/
+#scheme http
+#host xn--yda.co.jp
+#path /
+#gecko-canon escaped
+http://\u0101.co.jp/
+#gecko-host escaped
+\u0101.co.jp
+
+#data escaped
+http://\u0100/
+#canon http://xn--yda/
+#scheme http
+#host xn--yda
+#path /
+
 #data
 http://suika.fam.cx/
 #canon http://suika.fam.cx/
@@ -4234,6 +4474,8 @@ http://\u0640x\u000A/
 #scheme http
 #path /
 #chrome-invalid 1
+#chrome-canon escaped
+http://%D9%80x/
 #gecko-canon escaped
 http://\u0640x/
 #gecko-host escaped
