@@ -515,9 +515,11 @@ sub to_ascii ($$) {
         }
       }
     } @label;
-    if ($empty > 1 or 
-        ($empty == 1 and (@label == 1 or not $label[-1] eq ''))) {
-      return undef;
+    if (not 'gecko') {
+      if ($empty > 1 or 
+          ($empty == 1 and (@label == 1 or not $label[-1] eq ''))) {
+        return undef;
+      }
     }
   }
 
