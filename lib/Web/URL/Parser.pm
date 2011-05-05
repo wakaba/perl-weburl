@@ -646,10 +646,13 @@ sub canonicalize_url ($$;$) {
     $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
     if ('gecko' and
         $parsed_url->{host} and
-        $parsed_url->{host} =~ /[\x00\x20]/ and
-        $orig_host =~ /[\x00\x20]/) {
-      %$parsed_url = (invalid => 1);
-      return $parsed_url;
+        $parsed_url->{host} =~ /[\x00\x20]/) {
+      if ($orig_host =~ /[\x00\x20]/) {
+        %$parsed_url = (invalid => 1);
+        return $parsed_url;
+      } elsif (not defined eval { nameprepprohibited ($orig_host); 1 }) {
+        undef $parsed_url->{host};
+      }
     }
     if (not defined $parsed_url->{host}) {
       if ('gecko') {
