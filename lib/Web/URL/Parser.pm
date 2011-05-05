@@ -426,7 +426,12 @@ sub nameprep ($) {
         {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
   }
   $label = nameprepmapping ($label);
-  $label = Unicode::Stringprep::_NFKC_3_2 ($label);
+
+  if ('gecko') {
+    $label = NFKC ($label);
+  } else {
+    $label = Unicode::Stringprep::_NFKC_3_2 ($label);
+  }
   
   if (not defined eval { nameprepprohibited ($label); 1 }) {
     return undef;
