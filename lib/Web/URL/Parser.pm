@@ -410,6 +410,56 @@ use Unicode::Stringprep;
      1, 0);
 use Char::Prop::Unicode::BidiClass;
 
+sub nameprep ($) {
+  my $label = shift;
+  
+  if ('gecko') { # correct (new)
+    $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
+        {\x{36FC}\x{5F53}\x{243AB}\x{7AEE}\x{45D7}};
+    $label = cor5_reordering ($label);
+  } elsif ('chrome') { # wrong (old)
+    $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
+        {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
+  }
+  $label = nameprepmapping ($label);
+  $label = Unicode::Stringprep::_NFKC_3_2 ($label);
+  
+  if (not defined eval { nameprepprohibited ($label); 1 }) {
+    return undef;
+  }
+  
+  if ('gecko') {
+    if (not defined eval { nameprepbidirule ($label); 1 }) {
+      return undef;
+    }
+  } else {
+    my @char = split //, $label;
+    if (@char) {
+      my $has_randalcat;
+      my $has_l;
+      my $first;
+      my $last;
+      for (split //, $label) {
+        my $class = unicode_bidi_class_c $_;
+        if ($class eq 'R' or $class eq 'AL') {
+          $has_randalcat = 1;
+        } elsif ($class eq 'L') {
+          $has_l = 1;
+          }
+        $first ||= $class;
+        $last = $class;
+      }
+      if ($has_randalcat) {
+        return undef if $has_l;
+        return undef if $first ne 'R' and $first ne 'AL';
+        return undef if $last ne 'R' and $last ne 'AL';
+      }
+    }
+  }
+
+  return $label;
+} # nameprep
+
 sub to_ascii ($$) {
   my ($class, $s) = @_;
 
@@ -442,49 +492,8 @@ sub to_ascii ($$) {
       $need_punycode = 1;
     }
 
-    if ('gecko') { # correct (new)
-      $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
-          {\x{36FC}\x{5F53}\x{243AB}\x{7AEE}\x{45D7}};
-      $label = cor5_reordering ($label);
-    } elsif ('chrome') { # wrong (old)
-      $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
-          {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
-    }
-    $label = nameprepmapping ($label);
-    $label = Unicode::Stringprep::_NFKC_3_2 ($label);
-
-    if (not defined eval { nameprepprohibited ($label); 1 }) {
-      return undef;
-    }
-
-    if ('gecko') {
-      if (not defined eval { nameprepbidirule ($label); 1 }) {
-        return undef;
-      }
-    } else {
-      my @char = split //, $label;
-      if (@char) {
-        my $has_randalcat;
-        my $has_l;
-        my $first;
-        my $last;
-        for (split //, $label) {
-          my $class = unicode_bidi_class_c $_;
-          if ($class eq 'R' or $class eq 'AL') {
-            $has_randalcat = 1;
-          } elsif ($class eq 'L') {
-            $has_l = 1;
-          }
-          $first ||= $class;
-          $last = $class;
-        }
-        if ($has_randalcat) {
-          return undef if $has_l;
-          return undef if $first ne 'R' and $first ne 'AL';
-          return undef if $last ne 'R' and $last ne 'AL';
-        }
-      }
-    }
+    $label = nameprep $label;
+    return undef unless defined $label;
 
     if (not 'gecko') {
       if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
