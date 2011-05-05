@@ -467,8 +467,8 @@ sub nameprep_bidi ($) {
 
 sub to_ascii ($$) {
   my ($class, $s) = @_;
-
-  ## If chrome:
+  my $fallback = 'gecko' ? $s : undef;
+  $fallback =~ tr/A-Z/a-z/ if defined $fallback;
 
   $s =~ tr/\x09\x0A\x0D//d;
 
@@ -484,7 +484,15 @@ sub to_ascii ($$) {
 
   if ('gecko') {
     $s = nameprep $s;
-    return undef unless defined $s;
+    return $fallback unless defined $s;
+    
+    if ($s =~ /[\x00\x20]/) {
+      if ($fallback =~ /[\x00\x20]/) {
+        return undef;
+      } elsif (not defined eval { nameprepprohibited ($fallback); 1 }) {
+        return $fallback;
+      }
+    }
   }
 
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
@@ -508,7 +516,7 @@ sub to_ascii ($$) {
     }
 
     $label = nameprep_bidi $label;
-    return undef unless defined $label;
+    return $fallback unless defined $label;
 
     if (not 'gecko') {
       if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
@@ -525,7 +533,7 @@ sub to_ascii ($$) {
       if (/[^\x00-\x7F]/) {
         my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
         
-        return undef if length $label > 63;
+        return $fallback if length $label > 63;
         $label;
       } elsif ($_ eq '') {
         $empty++;
@@ -569,7 +577,7 @@ sub to_ascii ($$) {
   }
 
   if ($s =~ /\[/ or $s =~ /\]/) {
-    return undef;
+    return $fallback;
   }
 
   # IPv4address
@@ -644,24 +652,9 @@ sub canonicalize_url ($$;$) {
   if (defined $parsed_url->{host}) {
     my $orig_host = $parsed_url->{host};
     $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
-    if ('gecko' and
-        $parsed_url->{host} and
-        $parsed_url->{host} =~ /[\x00\x20]/) {
-      if ($orig_host =~ /[\x00\x20]/) {
-        %$parsed_url = (invalid => 1);
-        return $parsed_url;
-      } elsif (not defined eval { nameprepprohibited ($orig_host); 1 }) {
-        undef $parsed_url->{host};
-      }
-    }
     if (not defined $parsed_url->{host}) {
-      if ('gecko') {
-        $parsed_url->{host} = $orig_host;
-        $parsed_url->{host} =~ tr/A-Z/a-z/;
-      } else {
-        %$parsed_url = (invalid => 1);
-        return $parsed_url;
-      }
+      %$parsed_url = (invalid => 1);
+      return $parsed_url;
     }
   }
 
