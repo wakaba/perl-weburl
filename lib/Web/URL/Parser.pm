@@ -427,7 +427,12 @@ sub nameprep ($) {
   if (not defined eval { nameprepprohibited ($label); 1 }) {
     return undef;
   }
-  
+  return $label;
+} # nameprep
+
+sub nameprep_bidi ($) {
+  my $label = shift;
+
   if ('gecko') {
     if (not defined eval { nameprepbidirule ($label); 1 }) {
       return undef;
@@ -458,7 +463,7 @@ sub nameprep ($) {
   }
 
   return $label;
-} # nameprep
+} # nameprep_bidi
 
 sub to_ascii ($$) {
   my ($class, $s) = @_;
@@ -477,6 +482,11 @@ sub to_ascii ($$) {
     }
   }
 
+  if ('gecko') {
+    $s = nameprep $s;
+    return undef unless defined $s;
+  }
+
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
   my @label;
@@ -492,7 +502,12 @@ sub to_ascii ($$) {
       $need_punycode = 1;
     }
 
-    $label = nameprep $label;
+    if (not 'gecko') {
+      $label = nameprep $label;
+      return undef unless defined $label;
+    }
+
+    $label = nameprep_bidi $label;
     return undef unless defined $label;
 
     if (not 'gecko') {
