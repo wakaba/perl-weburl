@@ -203,6 +203,70 @@ a\u1680b
 
 };
         }
+      } elsif ($v == 0x0340) {
+        if ($args{pe_input}) {
+          print $file q{#data escaped
+http://a%CD%80b/
+#canon escaped
+http://xn--b-rfa/
+#scheme http
+#host escaped
+xn--b-rfa
+#path /
+#gecko-canon escaped
+http://a%cd%80b/
+#gecko-host escaped
+a%cd%80b
+
+};
+        } else {
+          print $file q{#data escaped
+http://a\u0340b/
+#canon escaped
+http://xn--b-rfa/
+#scheme http
+#host escaped
+xn--b-rfa
+#path /
+#gecko-canon escaped
+http://a\u0340b/
+#gecko-host escaped
+a\u0340b
+
+};
+        }
+      } elsif ($v == 0x0341) {
+        if ($args{pe_input}) {
+          print $file q{#data escaped
+http://a%CD%81b/
+#canon escaped
+http://xn--b-tfa/
+#scheme http
+#host escaped
+xn--b-tfa
+#path /
+#gecko-canon escaped
+http://a%cd%81b/
+#gecko-host escaped
+a%cd%81b
+
+};
+        } else {
+          print $file q{#data escaped
+http://a\u0341b/
+#canon escaped
+http://xn--b-tfa/
+#scheme http
+#host escaped
+xn--b-tfa
+#path /
+#gecko-canon escaped
+http://a\u0341b/
+#gecko-host escaped
+a\u0341b
+
+};
+        }
       } elsif (not ($punycoded =~ /\A(?:[\x20-\x24\x26-\x7E]|%[0-7][0-9A-F])+\z/) and
           ($args{unsafe} or $new ne "\x{FFFD}" or $v == 0xFFFD) and
           $v != 0x0340 and $v != 0x0341 and not $args{unassigned} and

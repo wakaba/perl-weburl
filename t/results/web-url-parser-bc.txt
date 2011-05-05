@@ -1,3 +1,5 @@
+Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($) at ../lib/Web/URL/Parser.pm line 435.
+Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 413.
 # data/generated/decomps-authority-stringprep-b1-pe.dat
 ok 1 - http://a%C2%ADb/ - http://a%C2%ADb/
 ok 2 - http://a%CD%8Fb/ - http://a%CD%8Fb/
@@ -5310,137 +5312,777 @@ ok 3593 - http://a%F4%8F%BF%BCb/ - http://a%F4%8F%BF%BCb/
 ok 3594 - http://a%F4%8F%BF%BDb/ - http://a%F4%8F%BF%BDb/
 # data/generated/decomps-authority-stringprep-c4-1.dat
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3595 - http://a﷐b/ - http://a﷐b/
+not ok 3595 - http://a﷐b/ - http://a﷐b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3596 - http://a﷑b/ - http://a﷑b/
+#   Failed test 'http://a﷐b/ - http://a﷐b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd0}b/,a\x{fdd0}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3597 - http://a﷒b/ - http://a﷒b/
+not ok 3596 - http://a﷑b/ - http://a﷑b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3598 - http://a﷓b/ - http://a﷓b/
+#   Failed test 'http://a﷑b/ - http://a﷑b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd1}b/,a\x{fdd1}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3599 - http://a﷔b/ - http://a﷔b/
+not ok 3597 - http://a﷒b/ - http://a﷒b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3600 - http://a﷕b/ - http://a﷕b/
+#   Failed test 'http://a﷒b/ - http://a﷒b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd2}b/,a\x{fdd2}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3601 - http://a﷖b/ - http://a﷖b/
+not ok 3598 - http://a﷓b/ - http://a﷓b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3602 - http://a﷗b/ - http://a﷗b/
+#   Failed test 'http://a﷓b/ - http://a﷓b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd3}b/,a\x{fdd3}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3603 - http://a﷘b/ - http://a﷘b/
+not ok 3599 - http://a﷔b/ - http://a﷔b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3604 - http://a﷙b/ - http://a﷙b/
+#   Failed test 'http://a﷔b/ - http://a﷔b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd4}b/,a\x{fdd4}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3605 - http://a﷚b/ - http://a﷚b/
+not ok 3600 - http://a﷕b/ - http://a﷕b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3606 - http://a﷛b/ - http://a﷛b/
+#   Failed test 'http://a﷕b/ - http://a﷕b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd5}b/,a\x{fdd5}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3607 - http://a﷜b/ - http://a﷜b/
+not ok 3601 - http://a﷖b/ - http://a﷖b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3608 - http://a﷝b/ - http://a﷝b/
+#   Failed test 'http://a﷖b/ - http://a﷖b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd6}b/,a\x{fdd6}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3609 - http://a﷞b/ - http://a﷞b/
+not ok 3602 - http://a﷗b/ - http://a﷗b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3610 - http://a﷟b/ - http://a﷟b/
+#   Failed test 'http://a﷗b/ - http://a﷗b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd7}b/,a\x{fdd7}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3611 - http://a﷠b/ - http://a﷠b/
+not ok 3603 - http://a﷘b/ - http://a﷘b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3612 - http://a﷡b/ - http://a﷡b/
+#   Failed test 'http://a﷘b/ - http://a﷘b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd8}b/,a\x{fdd8}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3613 - http://a﷢b/ - http://a﷢b/
+not ok 3604 - http://a﷙b/ - http://a﷙b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3614 - http://a﷣b/ - http://a﷣b/
+#   Failed test 'http://a﷙b/ - http://a﷙b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdd9}b/,a\x{fdd9}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3615 - http://a﷤b/ - http://a﷤b/
+not ok 3605 - http://a﷚b/ - http://a﷚b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3616 - http://a﷥b/ - http://a﷥b/
+#   Failed test 'http://a﷚b/ - http://a﷚b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdda}b/,a\x{fdda}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3617 - http://a﷦b/ - http://a﷦b/
+not ok 3606 - http://a﷛b/ - http://a﷛b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3618 - http://a﷧b/ - http://a﷧b/
+#   Failed test 'http://a﷛b/ - http://a﷛b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fddb}b/,a\x{fddb}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3619 - http://a﷨b/ - http://a﷨b/
+not ok 3607 - http://a﷜b/ - http://a﷜b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3620 - http://a﷩b/ - http://a﷩b/
+#   Failed test 'http://a﷜b/ - http://a﷜b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fddc}b/,a\x{fddc}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3621 - http://a﷪b/ - http://a﷪b/
+not ok 3608 - http://a﷝b/ - http://a﷝b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3622 - http://a﷫b/ - http://a﷫b/
+#   Failed test 'http://a﷝b/ - http://a﷝b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fddd}b/,a\x{fddd}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3623 - http://a﷬b/ - http://a﷬b/
+not ok 3609 - http://a﷞b/ - http://a﷞b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3624 - http://a﷭b/ - http://a﷭b/
+#   Failed test 'http://a﷞b/ - http://a﷞b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdde}b/,a\x{fdde}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3625 - http://a﷮b/ - http://a﷮b/
+not ok 3610 - http://a﷟b/ - http://a﷟b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3626 - http://a﷯b/ - http://a﷯b/
+#   Failed test 'http://a﷟b/ - http://a﷟b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fddf}b/,a\x{fddf}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3611 - http://a﷠b/ - http://a﷠b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷠b/ - http://a﷠b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde0}b/,a\x{fde0}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3612 - http://a﷡b/ - http://a﷡b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷡b/ - http://a﷡b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde1}b/,a\x{fde1}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3613 - http://a﷢b/ - http://a﷢b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷢b/ - http://a﷢b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde2}b/,a\x{fde2}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3614 - http://a﷣b/ - http://a﷣b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷣b/ - http://a﷣b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde3}b/,a\x{fde3}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3615 - http://a﷤b/ - http://a﷤b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷤b/ - http://a﷤b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde4}b/,a\x{fde4}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3616 - http://a﷥b/ - http://a﷥b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷥b/ - http://a﷥b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde5}b/,a\x{fde5}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3617 - http://a﷦b/ - http://a﷦b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷦b/ - http://a﷦b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde6}b/,a\x{fde6}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3618 - http://a﷧b/ - http://a﷧b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷧b/ - http://a﷧b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde7}b/,a\x{fde7}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3619 - http://a﷨b/ - http://a﷨b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷨b/ - http://a﷨b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde8}b/,a\x{fde8}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3620 - http://a﷩b/ - http://a﷩b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷩b/ - http://a﷩b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fde9}b/,a\x{fde9}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3621 - http://a﷪b/ - http://a﷪b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷪b/ - http://a﷪b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdea}b/,a\x{fdea}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3622 - http://a﷫b/ - http://a﷫b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷫b/ - http://a﷫b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdeb}b/,a\x{fdeb}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3623 - http://a﷬b/ - http://a﷬b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷬b/ - http://a﷬b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdec}b/,a\x{fdec}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3624 - http://a﷭b/ - http://a﷭b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷭b/ - http://a﷭b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fded}b/,a\x{fded}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3625 - http://a﷮b/ - http://a﷮b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷮b/ - http://a﷮b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdee}b/,a\x{fdee}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3626 - http://a﷯b/ - http://a﷯b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a﷯b/ - http://a﷯b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-------------------------------------------+
+# | Elt|Got                                        |Expected                                   |
+# +----+-------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized   |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fdef}b/,a\x{fdef}b,/,http,http  *
+# +----+-------------------------------------------+-------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 3627 - http://a￾b/ - http://a￾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 3628 - http://a￿b/ - http://a￿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3629 - http://a🿾b/ - http://a🿾b/
+not ok 3629 - http://a🿾b/ - http://a🿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3630 - http://a🿿b/ - http://a🿿b/
+#   Failed test 'http://a🿾b/ - http://a🿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{1fffe}b/,a\x{1fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3631 - http://a𯿾b/ - http://a𯿾b/
+not ok 3630 - http://a🿿b/ - http://a🿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3632 - http://a𯿿b/ - http://a𯿿b/
+#   Failed test 'http://a🿿b/ - http://a🿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{1ffff}b/,a\x{1ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3633 - http://a𿿾b/ - http://a𿿾b/
+not ok 3631 - http://a𯿾b/ - http://a𯿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3634 - http://a𿿿b/ - http://a𿿿b/
+#   Failed test 'http://a𯿾b/ - http://a𯿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{2fffe}b/,a\x{2fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3635 - http://a񏿾b/ - http://a񏿾b/
+not ok 3632 - http://a𯿿b/ - http://a𯿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3636 - http://a񏿿b/ - http://a񏿿b/
+#   Failed test 'http://a𯿿b/ - http://a𯿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{2ffff}b/,a\x{2ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3637 - http://a񟿾b/ - http://a񟿾b/
+not ok 3633 - http://a𿿾b/ - http://a𿿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3638 - http://a񟿿b/ - http://a񟿿b/
+#   Failed test 'http://a𿿾b/ - http://a𿿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{3fffe}b/,a\x{3fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3639 - http://a񯿾b/ - http://a񯿾b/
+not ok 3634 - http://a𿿿b/ - http://a𿿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3640 - http://a񯿿b/ - http://a񯿿b/
+#   Failed test 'http://a𿿿b/ - http://a𿿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{3ffff}b/,a\x{3ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3641 - http://a񿿾b/ - http://a񿿾b/
+not ok 3635 - http://a񏿾b/ - http://a񏿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3642 - http://a񿿿b/ - http://a񿿿b/
+#   Failed test 'http://a񏿾b/ - http://a񏿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{4fffe}b/,a\x{4fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3643 - http://a򏿾b/ - http://a򏿾b/
+not ok 3636 - http://a񏿿b/ - http://a񏿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3644 - http://a򏿿b/ - http://a򏿿b/
+#   Failed test 'http://a񏿿b/ - http://a񏿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{4ffff}b/,a\x{4ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3645 - http://a򟿾b/ - http://a򟿾b/
+not ok 3637 - http://a񟿾b/ - http://a񟿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3646 - http://a򟿿b/ - http://a򟿿b/
+#   Failed test 'http://a񟿾b/ - http://a񟿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{5fffe}b/,a\x{5fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3647 - http://a򯿾b/ - http://a򯿾b/
+not ok 3638 - http://a񟿿b/ - http://a񟿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3648 - http://a򯿿b/ - http://a򯿿b/
+#   Failed test 'http://a񟿿b/ - http://a񟿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{5ffff}b/,a\x{5ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3649 - http://a򿿾b/ - http://a򿿾b/
+not ok 3639 - http://a񯿾b/ - http://a񯿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3650 - http://a򿿿b/ - http://a򿿿b/
+#   Failed test 'http://a񯿾b/ - http://a񯿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{6fffe}b/,a\x{6fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3651 - http://a󏿾b/ - http://a󏿾b/
+not ok 3640 - http://a񯿿b/ - http://a񯿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3652 - http://a󏿿b/ - http://a󏿿b/
+#   Failed test 'http://a񯿿b/ - http://a񯿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{6ffff}b/,a\x{6ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3653 - http://a󟿾b/ - http://a󟿾b/
+not ok 3641 - http://a񿿾b/ - http://a񿿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3654 - http://a󟿿b/ - http://a󟿿b/
+#   Failed test 'http://a񿿾b/ - http://a񿿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{7fffe}b/,a\x{7fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3655 - http://a󯿾b/ - http://a󯿾b/
+not ok 3642 - http://a񿿿b/ - http://a񿿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3656 - http://a󯿿b/ - http://a󯿿b/
+#   Failed test 'http://a񿿿b/ - http://a񿿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{7ffff}b/,a\x{7ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3657 - http://a󿿾b/ - http://a󿿾b/
+not ok 3643 - http://a򏿾b/ - http://a򏿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3658 - http://a󿿿b/ - http://a󿿿b/
+#   Failed test 'http://a򏿾b/ - http://a򏿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{8fffe}b/,a\x{8fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3659 - http://a􏿾b/ - http://a􏿾b/
+not ok 3644 - http://a򏿿b/ - http://a򏿿b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 3660 - http://a􏿿b/ - http://a􏿿b/
+#   Failed test 'http://a򏿿b/ - http://a򏿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{8ffff}b/,a\x{8ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3645 - http://a򟿾b/ - http://a򟿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a򟿾b/ - http://a򟿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{9fffe}b/,a\x{9fffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3646 - http://a򟿿b/ - http://a򟿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a򟿿b/ - http://a򟿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{9ffff}b/,a\x{9ffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3647 - http://a򯿾b/ - http://a򯿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a򯿾b/ - http://a򯿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{afffe}b/,a\x{afffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3648 - http://a򯿿b/ - http://a򯿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a򯿿b/ - http://a򯿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{affff}b/,a\x{affff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3649 - http://a򿿾b/ - http://a򿿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a򿿾b/ - http://a򿿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{bfffe}b/,a\x{bfffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3650 - http://a򿿿b/ - http://a򿿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a򿿿b/ - http://a򿿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{bffff}b/,a\x{bffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3651 - http://a󏿾b/ - http://a󏿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󏿾b/ - http://a󏿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{cfffe}b/,a\x{cfffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3652 - http://a󏿿b/ - http://a󏿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󏿿b/ - http://a󏿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{cffff}b/,a\x{cffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3653 - http://a󟿾b/ - http://a󟿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󟿾b/ - http://a󟿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{dfffe}b/,a\x{dfffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3654 - http://a󟿿b/ - http://a󟿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󟿿b/ - http://a󟿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{dffff}b/,a\x{dffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3655 - http://a󯿾b/ - http://a󯿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󯿾b/ - http://a󯿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{efffe}b/,a\x{efffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3656 - http://a󯿿b/ - http://a󯿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󯿿b/ - http://a󯿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{effff}b/,a\x{effff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3657 - http://a󿿾b/ - http://a󿿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󿿾b/ - http://a󿿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{ffffe}b/,a\x{ffffe}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3658 - http://a󿿿b/ - http://a󿿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a󿿿b/ - http://a󿿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+---------------------------------------------+
+# | Elt|Got                                        |Expected                                     |
+# +----+-------------------------------------------+---------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{fffff}b/,a\x{fffff}b,/,http,http  *
+# +----+-------------------------------------------+---------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3659 - http://a􏿾b/ - http://a􏿾b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a􏿾b/ - http://a􏿾b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                        |Expected                                       |
+# +----+-------------------------------------------+-----------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized       |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{10fffe}b/,a\x{10fffe}b,/,http,http  *
+# +----+-------------------------------------------+-----------------------------------------------+
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+not ok 3660 - http://a􏿿b/ - http://a􏿿b/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+#   Failed test 'http://a􏿿b/ - http://a􏿿b/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_bc)
+# +----+-------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                        |Expected                                       |
+# +----+-------------------------------------------+-----------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized       |
+# *   1|http://a\x{fffd}b/,a\x{fffd}b,/,http,http  |http://a\x{10ffff}b/,a\x{10ffff}b,/,http,http  *
+# +----+-------------------------------------------+-----------------------------------------------+
 # data/generated/decomps-authority-stringprep-c4-pe-1.dat
 ok 3661 - http://a%EF%B7%90b/ - http://a%EF%B7%90b/
 ok 3662 - http://a%EF%B7%91b/ - http://a%EF%B7%91b/
@@ -6681,3 +7323,4 @@ ok 4498 - http://a%F3%A0%81%BDb/ - http://a%F3%A0%81%BDb/
 ok 4499 - http://a%F3%A0%81%BEb/ - http://a%F3%A0%81%BEb/
 ok 4500 - http://a%F3%A0%81%BFb/ - http://a%F3%A0%81%BFb/
 1..4500
+# Looks like you failed 64 tests of 4500.

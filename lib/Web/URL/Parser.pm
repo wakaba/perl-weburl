@@ -414,6 +414,10 @@ sub nameprep ($) {
   my $label = shift;
   
   if ('gecko') { # correct (new)
+    if ($label =~ /[\x{0340}\x{0341}]/) {
+      return undef;
+    }
+
     $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
         {\x{36FC}\x{5F53}\x{243AB}\x{7AEE}\x{45D7}};
     $label = cor5_reordering ($label);

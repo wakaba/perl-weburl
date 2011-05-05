@@ -2,13 +2,9 @@
 http://a\u0340b/
 #canon escaped
 http://xn--b-rfa/
-#canon-unescaped escaped
-http://a\u0340b/
 #scheme http
 #host escaped
 xn--b-rfa
-#host-unescaped escaped
-a\u0340b
 #path /
 #gecko-canon escaped
 http://a\u0340b/
@@ -19,13 +15,9 @@ a\u0340b
 http://a\u0341b/
 #canon escaped
 http://xn--b-tfa/
-#canon-unescaped escaped
-http://a\u0341b/
 #scheme http
 #host escaped
 xn--b-tfa
-#host-unescaped escaped
-a\u0341b
 #path /
 #gecko-canon escaped
 http://a\u0341b/

@@ -2679,6 +2679,8 @@ http://\u0100.info..
 #scheme http
 #host xn--yda.info..
 #path /
+#chrome-invalid 1
+#chrome-canon http://%C4%80.info../
 #gecko-canon escaped
 http://\u0101.info../
 #gecko-host escaped
@@ -5147,3 +5149,129 @@ http://\U0001E946\u0315Ss\u200C\u24FD-\U0001EF9E/
 #path /
 #chrome-invalid 1
 #chrome-canon http://%F0%9E%A5%86%CC%95Ss%E2%80%8C%E2%93%BD-%F0%9E%BE%9E/
+
+#data escaped
+http://x%CD%80b/
+#canon escaped
+http://xn--xb-5tb/
+#scheme http
+#host escaped
+xn--xb-5tb
+#path /
+#gecko-canon escaped
+http://x%cd%80b/
+#gecko-host escaped
+x%cd%80b
+
+#data escaped
+http://x\u0340b/
+#canon escaped
+http://xn--xb-5tb/
+#scheme http
+#host escaped
+xn--xb-5tb
+#path /
+#gecko-canon escaped
+http://x\u0340b/
+#gecko-host escaped
+x\u0340b
+
+#data escaped
+http://x%CD%81b/
+#canon escaped
+http://xn--xb-8tb/
+#scheme http
+#host escaped
+xn--xb-8tb
+#path /
+#gecko-canon escaped
+http://x%cd%81b/
+#gecko-host escaped
+x%cd%81b
+
+#data escaped
+http://\u0341/
+#canon escaped
+http://xn--lsa/
+#scheme http
+#host escaped
+xn--lsa
+#path /
+#gecko-canon escaped
+http://\u0341/
+#gecko-host escaped
+\u0341
+
+#data escaped
+http://x\u0341b/
+#canon escaped
+http://xn--xb-8tb/
+#scheme http
+#host escaped
+xn--xb-8tb
+#path /
+#gecko-canon escaped
+http://x\u0341b/
+#gecko-host escaped
+x\u0341b
+
+#data escaped
+http://x\u0341b.jp/
+#canon escaped
+http://xn--xb-8tb.jp/
+#scheme http
+#host escaped
+xn--xb-8tb.jp
+#path /
+#gecko-canon escaped
+http://x\u0341b.jp/
+#gecko-host escaped
+x\u0341b.jp
+
+#data escaped
+http://a\u0341b.com/
+#canon escaped
+http://xn--b-tfa.com/
+#scheme http
+#host escaped
+xn--b-tfa.com
+#path /
+#gecko-canon escaped
+http://a\u0341b.com/
+#gecko-host escaped
+a\u0341b.com
+
+#data escaped
+http://a\u0341b.jp/
+#canon escaped
+http://xn--b-tfa.jp/
+#scheme http
+#host escaped
+xn--b-tfa.jp
+#path /
+#gecko-canon escaped
+http://a\u0341b.jp/
+#gecko-host escaped
+a\u0341b.jp
+
+#data escaped
+http://\u4e00\u0341b/
+#canon escaped
+http://xn--b-wbb0178c/
+#scheme http
+#host escaped
+xn--b-wbb0178c
+#path /
+#gecko-canon escaped
+http://\u4e00\u0341b/
+#gecko-host escaped
+\u4e00\u0341b
+
+#data escaped
+http://x\u0301b/
+#canon escaped
+http://xn--xb-8tb/
+#scheme http
+#host escaped
+xn--xb-8tb
+#path /
