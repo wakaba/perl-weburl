@@ -410,10 +410,14 @@ use Unicode::Stringprep;
      1, 0);
 use Char::Prop::Unicode::BidiClass;
 
+sub CHROME () { 0 }
+sub GECKO () { 0 }
+sub IE () { 1 }
+
 sub nameprep ($) {
   my $label = shift;
   
-  if ('gecko') { # correct (new)
+  if (GECKO or IE) { # correct (new)
     if ($label =~ /[\x{0340}\x{0341}]/) {
       return undef;
     }
@@ -421,13 +425,13 @@ sub nameprep ($) {
     $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
         {\x{36FC}\x{5F53}\x{243AB}\x{7AEE}\x{45D7}};
     $label = cor5_reordering ($label);
-  } elsif ('chrome') { # wrong (old)
+  } elsif (CHROME) { # wrong (old)
     $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
         {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
   }
   $label = nameprepmapping ($label);
 
-  if ('gecko') {
+  if (GECKO || IE) {
     ## BUG: Unicode 4.0 according to the spec.
     $label = NFKC ($label);
     $label = nameprepmapping ($label);
@@ -444,7 +448,7 @@ sub nameprep ($) {
 sub nameprep_bidi ($) {
   my $label = shift;
 
-  if ('gecko') {
+  if (GECKO || IE) {
     if (not defined eval { nameprepbidirule ($label); 1 }) {
       return undef;
     }
@@ -479,19 +483,15 @@ sub nameprep_bidi ($) {
 use Web::DomainName::IDNEnabled;
 use Char::Class::IDNBlacklist qw(InIDNBlacklistChars);
 
-sub CHROME () { 0 }
-sub GECKO () { 1 }
-sub IE () { 0 }
-
 sub to_ascii ($$) {
   my ($class, $s) = @_;
 
   $s =~ tr/\x09\x0A\x0D//d;
 
-  my $fallback = GECKO ? $s : undef;
+  my $fallback = GECKO || IE ? $s : undef;
   $fallback =~ tr/A-Z/a-z/ if defined $fallback;
 
-  if (not GECKO) {
+  if (CHROME) {
     $s = Encode::encode ('utf-8', $s);
     $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
     $s = Encode::decode ('utf-8', $s); # XXX error-handling
@@ -501,7 +501,7 @@ sub to_ascii ($$) {
     }
   }
 
-  if (GECKO) {
+  if (GECKO || IE) {
     $s = nameprep $s;
     return $fallback unless defined $s;
     
@@ -519,7 +519,7 @@ sub to_ascii ($$) {
   my @label;
   my $need_punycode;
   for my $label (split /\./, $s, -1) {
-    if (not GECKO) {
+    if (CHROME) {
       $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
         sprintf '%%%02X', ord $1;
       }ge;
@@ -529,7 +529,7 @@ sub to_ascii ($$) {
       $need_punycode = 1;
     }
 
-    if (not GECKO) {
+    if (CHROME) {
       $label = nameprep $label;
       return undef unless defined $label;
     }
@@ -537,7 +537,7 @@ sub to_ascii ($$) {
     $label = nameprep_bidi $label;
     return $fallback unless defined $label;
 
-    if (not GECKO) {
+    if (CHROME) {
       if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
         return undef;
       }
@@ -548,7 +548,7 @@ sub to_ascii ($$) {
 
   if ($need_punycode) {
     my $idn_enabled;
-    if (GECKO) {
+    if (GECKO || IE) {
       my $tld = [grep { length $_ } reverse @label]->[0] || '';
       if ($tld =~ /[^\x00-\x7F]/) {
         $tld = 'xn--' . eval { encode_punycode $tld } || '';
@@ -577,7 +577,7 @@ sub to_ascii ($$) {
         $empty++;
         $_;
       } else {
-        if (length $_ > 62 and GECKO) {
+        if (length $_ > 62 and (GECKO or IE)) {
           substr $_, 0, 62;
         } else {
           return undef if length $_ > 63;
@@ -585,7 +585,7 @@ sub to_ascii ($$) {
         }
       }
     } @label;
-    if (not GECKO) {
+    if (CHROME) {
       if ($empty > 1 or 
           ($empty == 1 and (@label == 1 or not $label[-1] eq ''))) {
         return undef;
@@ -595,7 +595,7 @@ sub to_ascii ($$) {
 
   $s = join '.', @label;
 
-  if (not GECKO) {
+  if (CHROME) {
     $s = encode 'utf-8', $s;
     $s =~ s{%([0-9A-Fa-f]{2})}{encode 'iso-8859-1', chr hex $1}ge;
     $s =~ tr/A-Z/a-z/;
