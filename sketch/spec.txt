@@ -370,7 +370,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     (*), U+002C (,), U+003C (<), U+003D (=), U+003E (>), U+0040 (@),
     U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}) in /s/.
 
-    IE: Percent-encode U+0000 - U+001F, U+007F in /s/.
+    IE: Percent-encode U+0000 - U+001F,
+    \x20\x22\x3C\x3E\x5C\x5E\x60\x7B-\x7D, U+007F in /s/.
 
     If /s/ is an IPv6 address, return the canonical representation of
     the IPv6 address and abort these steps.
