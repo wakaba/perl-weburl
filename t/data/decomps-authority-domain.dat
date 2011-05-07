@@ -20,6 +20,43 @@ http://LocalHost/
 #path /
 
 #data
+http://LocalHost%40/
+#canon http://localhost%40/
+#scheme http
+#host localhost%40
+#path /
+
+#data
+http://LocalHost%2a/
+#canon http://localhost%2a/
+#scheme http
+#host localhost%2a
+#path /
+
+#data
+http://LocalHost%2A/
+#canon http://localhost%2a/
+#scheme http
+#host localhost%2a
+#path /
+
+#data escaped
+http://LocalHost\uFF0A/
+#canon http://localhost%2A/
+#scheme http
+#host localhost%2A
+#path /
+#ie-invalid 1
+
+#data escaped
+http://LocalHost\uFF0B/
+#canon http://localhost%2B/
+#scheme http
+#host localhost%2B
+#path /
+#ie-invalid 1
+
+#data
 http://a_b.test/
 #canon http://a_b.test/
 #scheme http

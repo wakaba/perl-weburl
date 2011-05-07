@@ -362,6 +362,11 @@ use Net::LibIDN;
 sub encode_punycode ($) {
   # XXX
   return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_encode $_[0], 'utf-8' };
+} # encode_punycode
+
+sub decode_punycode ($) {
+  # XXX
+  return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_decode $_[0], 'utf-8' };
 } # decode_punycode
 
 my $to_number = sub {
@@ -534,7 +539,6 @@ sub to_ascii ($$) {
       }
     } else {
       $s =~ tr/A-Z/a-z/;
-      #$s =~ s/(%[0-9A-Fa-f]{2})/uc $1/ge;
     }
   }
 
@@ -565,6 +569,10 @@ sub to_ascii ($$) {
       if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
         return undef;
       }
+    }
+
+    if (IE and $label =~ /^xn--/) {
+      $need_punycode = 1;
     }
 
     push @label, $label;
@@ -603,7 +611,15 @@ sub to_ascii ($$) {
         $empty++;
         $_;
       } else {
-        if (length $_ > 62 and (GECKO or IE)) {
+        if (IE and /^xn--/) {
+          if (/[^0-9A-Za-z-]/ or /-$/ or $_ eq 'xn--') {
+            return undef;
+          } else {
+            my $label = eval { decode_punycode substr $_, 4 };
+            return undef unless defined $label;
+            $label;
+          }
+        } elsif (length $_ > 62 and (GECKO or IE)) {
           substr $_, 0, 62;
         } else {
           return undef if length $_ > 63;
