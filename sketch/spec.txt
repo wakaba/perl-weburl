@@ -219,7 +219,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     Remove U+0009, U+000A, U+000D from /s/.
 
-    GECKO / IE: Let /fallback/ be /s/.  CHROME: Let /fallback/ be
+    GECKO: Let /fallback/ be /s/.  CHROME / IE: Let /fallback/ be
     "fails".
 
     Let /fallback/ be ASCII lowercase variant of /fallback/.

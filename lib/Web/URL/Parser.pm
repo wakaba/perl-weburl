@@ -488,7 +488,7 @@ sub to_ascii ($$) {
 
   $s =~ tr/\x09\x0A\x0D//d;
 
-  my $fallback = GECKO || IE ? $s : undef;
+  my $fallback = GECKO ? $s : undef;
   $fallback =~ tr/A-Z/a-z/ if defined $fallback;
 
   if (CHROME) {
