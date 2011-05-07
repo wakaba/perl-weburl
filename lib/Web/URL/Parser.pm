@@ -538,7 +538,7 @@ sub to_ascii ($$) {
         return undef;
       }
     } else {
-      $s =~ tr/A-Z/a-z/;
+      $s =~ s/(%[01][0-9A-Fa-f])|([A-Z]+)/$1 ? $1 : lc $2/ge;
     }
   }
 
