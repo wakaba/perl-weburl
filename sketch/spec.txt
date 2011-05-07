@@ -228,7 +228,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     CHROME: If /s/ contains "%", abort.
 
-    IE: Percent-decode %5F and %5f.
+    IE: Percent-decode percent-encoded 0-9, A-Z, a-z, ., -, _.
 
     GECKO: Apply the Nameprep algorithm with /s/ and let /s/ be the
     result.  If the algorithm fails, return /fallback/ and abort these

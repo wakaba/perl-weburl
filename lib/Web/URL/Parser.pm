@@ -507,7 +507,7 @@ sub to_ascii ($$) {
   }
 
   if (IE) {
-    $s =~ s{%([5][Ff])}{pack 'C', hex $1}ge;
+    $s =~ s{%(2[DdEe]|3[0-9]|[46][1-9A-Fa-f]|[57][0-9Aa]|5[Ff])}{pack 'C', hex $1}ge;
   }
 
   if (GECKO) {
