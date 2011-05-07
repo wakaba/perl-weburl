@@ -422,7 +422,7 @@ sub IE () { 1 }
 sub nameprep ($) {
   my $label = shift;
   
-  if (GECKO or IE) { # correct (new)
+  if (GECKO) { # correct (new)
     if ($label =~ /[\x{0340}\x{0341}]/) {
       return undef;
     }
@@ -433,13 +433,18 @@ sub nameprep ($) {
   } elsif (CHROME) { # wrong (old)
     $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
         {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
+  } elsif (IE) {
+    $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
+        {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
   }
   $label = nameprepmapping ($label);
 
-  if (GECKO || IE) {
+  if (GECKO) {
     ## BUG: Unicode 4.0 according to the spec.
     $label = NFKC ($label);
     $label = nameprepmapping ($label);
+  } elsif (IE) {
+    $label = NFKC ($label);
   } else {
     $label = Unicode::Stringprep::_NFKC_3_2 ($label);
   }

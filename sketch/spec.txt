@@ -191,22 +191,25 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Nameprep a string /s/
 
-  GECKO / IE: If /s/ contains U+0340 or U+0341, fail.
+  GECKO: If /s/ contains U+0340 or U+0341, fail.
 
   Apply the Nameprep Mapping step to /s/.
 
   CHROME: Apply NFKC of Unicode 3.2 + Corrigendum #3 (- Corrigendum
   #4) + Corrigendum #5 to /s/.
 
-  GECKO / IE: If there are Corrigendum 5 Sequences
+  GECKO: If there are Corrigendum 5 Sequences
   <http://www.unicode.org/reports/tr15/#Corrigendum_5_Sequences> in
   /s/, change the order of the second last and the last characters in
   the sequences.
 
-  GECKO / IE: Apply NFKC of Unicode 4.0 (+ Corrigendum #3 + Corrigendum #4)
+  GECKO: Apply NFKC of Unicode 4.0 (+ Corrigendum #3 + Corrigendum #4)
   + Corrigendum #5 to /s/.
 
-  GECKO / IE: Apply the Nameprep Mapping step to /s/, again.
+  GECKO: Apply the Nameprep Mapping step to /s/, again.
+
+  IE: Apply NFKC of latest version of Unicode (+ Corrigendum #3) -
+  Corrigendum #4 + Corrigendum #5 to /s/.
 
   Apply the Nameprep prohibit step [RFC 3491] to /s/.  This step might
   fail.
