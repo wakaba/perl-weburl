@@ -182,6 +182,8 @@ sub __canon {
     delete $result->{$_} for qw(ie-invalid ie-canon ie-host);
     if ($result->{invalid}) {
       delete $result->{$_} for qw(canon scheme host path query fragment);
+    } else {
+      delete $result->{invalid};
     }
     my $charset = delete $result->{charset};
     if (defined $result->{scheme}) {
