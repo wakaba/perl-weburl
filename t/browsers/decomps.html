@@ -243,10 +243,12 @@
     expected.fragment = expected.fragment == null ? '' : '#' + expected.fragment;
 
     if (isIE) {
-      if (canonCompatMode) expected.url = expected.url.replace (/^([^:]+):\/\/([^/]+)\//, function (_, a, b) {
-        return a + '://' + b.toLowerCase () + '/';
-      });
-      if (expected.host) expected.host = expected.host.toLowerCase ();
+      if (canonCompatMode) {
+        expected.url = expected.url.replace (/^([^:]+):\/\/([^/]+)\//, function (_, a, b) {
+          return a + '://' + b.toLowerCase () + '/';
+        });
+        if (expected.host) expected.host = expected.host.toLowerCase ();
+      }
     }
 
     if (isWebKit) {

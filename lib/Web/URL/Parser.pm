@@ -538,7 +538,7 @@ sub to_ascii ($$) {
         return undef;
       }
     } else {
-      $s =~ s/(%[01][0-9A-Fa-f])|([A-Z]+)/$1 ? $1 : lc $2/ge;
+      $s =~ tr/A-Z/a-z/;
     }
   }
 
@@ -664,7 +664,7 @@ sub to_ascii ($$) {
     }
 
     $s =~ s{([\x00-\x1F\x20\x22\x3C\x3E\x5C\x5E\x60\x7B-\x7D\x7F])}{
-      sprintf '%%%02X', ord $1;
+      sprintf '%%%02x', ord $1;
     }ge;
   }
 

@@ -40,6 +40,20 @@ http://LocalHost%2A/
 #host localhost%2a
 #path /
 
+#data
+http://hoge%2A/
+#canon http://hoge%2a/
+#scheme http
+#host hoge%2a
+#path /
+
+#data
+http://hoge%2A.fuga/
+#canon http://hoge%2a.fuga/
+#scheme http
+#host hoge%2a.fuga
+#path /
+
 #data escaped
 http://LocalHost\uFF0A/
 #canon http://localhost%2A/
@@ -737,6 +751,8 @@ http://a%0Ab.test/
 #chrome-invalid 1
 #gecko-canon http://a%0ab.test/
 #gecko-host a%0ab.test
+#ie-canon http://a%0ab.test/
+#ie-host a%0ab.test
 
 #data escaped
 http://a\u000Bb.test/
@@ -761,6 +777,8 @@ http://a%0Bb.test/
 #chrome-invalid 1
 #gecko-canon http://a%0bb.test/
 #gecko-host a%0bb.test
+#ie-canon http://a%0bb.test/
+#ie-host a%0bb.test
 
 #data escaped
 http://a\u000Cb.test/
@@ -773,6 +791,8 @@ http://a\u000Cb.test/
 http://a\u000Cb.test/
 #gecko-host escaped
 a\u000Cb.test
+#ie-canon http://a%0cb.test/
+#ie-host a%0cb.test
 
 #data escaped
 http://a%0Cb.test/
@@ -783,6 +803,8 @@ http://a%0Cb.test/
 #chrome-invalid 1
 #gecko-canon http://a%0cb.test/
 #gecko-host a%0cb.test
+#ie-canon http://a%0cb.test/
+#ie-host a%0cb.test
 
 #data escaped
 http://a\u000Db.test/
@@ -800,6 +822,8 @@ http://a%0Db.test/
 #chrome-invalid 1
 #gecko-canon http://a%0db.test/
 #gecko-host a%0db.test
+#ie-canon http://a%0db.test/
+#ie-host a%0db.test
 
 #data escaped
 http://a\u000Eb.test/
@@ -812,6 +836,8 @@ http://a\u000Eb.test/
 http://a\u000Eb.test/
 #gecko-host escaped
 a\u000Eb.test
+#ie-canon http://a%0eb.test/
+#ie-host a%0eb.test
 
 #data escaped
 http://a%0Eb.test/
@@ -822,6 +848,8 @@ http://a%0Eb.test/
 #chrome-invalid 1
 #gecko-canon http://a%0eb.test/
 #gecko-host a%0eb.test
+#ie-canon http://a%0eb.test/
+#ie-host a%0eb.test
 
 #data escaped
 http://a\u000Fb.test/
@@ -834,6 +862,8 @@ http://a\u000Fb.test/
 http://a\u000Fb.test/
 #gecko-host escaped
 a\u000Fb.test
+#ie-canon http://a%0fb.test/
+#ie-host a%0fb.test
 
 #data escaped
 http://a%0Fb.test/
@@ -844,6 +874,8 @@ http://a%0Fb.test/
 #chrome-invalid 1
 #gecko-canon http://a%0fb.test/
 #gecko-host a%0fb.test
+#ie-canon http://a%0fb.test/
+#ie-host a%0fb.test
 
 #data escaped
 http://a\u0010b.test/
@@ -1056,6 +1088,8 @@ http://a\u001Ab.test/
 http://a\u001Ab.test/
 #gecko-host escaped
 a\u001Ab.test
+#ie-canon http://a%1ab.test/
+#ie-host a%1ab.test
 
 #data escaped
 http://a%1Ab.test/
@@ -1066,6 +1100,8 @@ http://a%1Ab.test/
 #chrome-invalid 1
 #gecko-canon http://a%1ab.test/
 #gecko-host a%1ab.test
+#ie-canon http://a%1ab.test/
+#ie-host a%1ab.test
 
 #data escaped
 http://a\u001Bb.test/
@@ -1078,6 +1114,8 @@ http://a\u001Bb.test/
 http://a\u001Bb.test/
 #gecko-host escaped
 a\u001Bb.test
+#ie-canon http://a%1bb.test/
+#ie-host a%1bb.test
 
 #data escaped
 http://a%1Bb.test/
@@ -1088,6 +1126,8 @@ http://a%1Bb.test/
 #chrome-invalid 1
 #gecko-canon http://a%1bb.test/
 #gecko-host a%1bb.test
+#ie-canon http://a%1bb.test/
+#ie-host a%1bb.test
 
 #data escaped
 http://a\u001Cb.test/
@@ -1100,6 +1140,8 @@ http://a\u001Cb.test/
 http://a\u001Cb.test/
 #gecko-host escaped
 a\u001Cb.test
+#ie-canon http://a%1cb.test/
+#ie-host a%1cb.test
 
 #data escaped
 http://a%1Cb.test/
@@ -1110,6 +1152,8 @@ http://a%1Cb.test/
 #chrome-invalid 1
 #gecko-canon http://a%1cb.test/
 #gecko-host a%1cb.test
+#ie-canon http://a%1cb.test/
+#ie-host a%1cb.test
 
 #data escaped
 http://a\u001Db.test/
@@ -1122,6 +1166,8 @@ http://a\u001Db.test/
 http://a\u001Db.test/
 #gecko-host escaped
 a\u001Db.test
+#ie-canon http://a%1db.test/
+#ie-host a%1db.test
 
 #data escaped
 http://a%1Db.test/
@@ -1132,6 +1178,8 @@ http://a%1Db.test/
 #chrome-invalid 1
 #gecko-canon http://a%1db.test/
 #gecko-host a%1db.test
+#ie-canon http://a%1db.test/
+#ie-host a%1db.test
 
 #data escaped
 http://a\u001Eb.test/
@@ -1144,6 +1192,8 @@ http://a\u001Eb.test/
 http://a\u001Eb.test/
 #gecko-host escaped
 a\u001Eb.test
+#ie-canon http://a%1eb.test/
+#ie-host a%1eb.test
 
 #data escaped
 http://a%1Eb.test/
@@ -1154,6 +1204,8 @@ http://a%1Eb.test/
 #chrome-invalid 1
 #gecko-canon http://a%1eb.test/
 #gecko-host a%1eb.test
+#ie-canon http://a%1eb.test/
+#ie-host a%1eb.test
 
 #data escaped
 http://a\u001Fb.test/
@@ -1166,6 +1218,8 @@ http://a\u001Fb.test/
 http://a\u001Fb.test/
 #gecko-host escaped
 a\u001Fb.test
+#ie-canon http://a%1fb.test/
+#ie-host a%1fb.test
 
 #data escaped
 http://a%1Fb.test/
@@ -1176,6 +1230,8 @@ http://a%1Fb.test/
 #chrome-invalid 1
 #gecko-canon http://a%1fb.test/
 #gecko-host a%1fb.test
+#ie-canon http://a%1fb.test/
+#ie-host a%1fb.test
 
 #data escaped
 http://a\u0020b.test/
@@ -1396,6 +1452,8 @@ http://a%2Ab.test/
 #path /
 #gecko-canon http://a%2ab.test/
 #gecko-host a%2ab.test
+#ie-canon http://a%2ab.test/
+#ie-host a%2ab.test
 
 #data escaped
 http://a\u002Bb.test/
@@ -1442,6 +1500,8 @@ http://a%2Cb.test/
 #path /
 #gecko-canon http://a%2cb.test/
 #gecko-host a%2cb.test
+#ie-canon http://a%2cb.test/
+#ie-host a%2cb.test
 
 #data escaped
 http://a%2db.test/
@@ -1471,6 +1531,8 @@ http://a%3Ab.test/
 #chrome-canon http://a:b.test/
 #gecko-canon http://a%3ab.test/
 #gecko-host a%3ab.test
+#ie-canon http://a%3ab.test/
+#ie-host a%3ab.test
 
 #data escaped
 http://a\u003bb.test/
@@ -1503,6 +1565,8 @@ http://a\u003Cb.test/
 http://a\u003Cb.test/
 #gecko-host escaped
 a\u003Cb.test
+#ie-canon http://a%3cb.test/
+#ie-host a%3cb.test
 
 #data escaped
 http://a%3cb.test/
@@ -1512,6 +1576,8 @@ http://a%3cb.test/
 #path /
 #chrome-canon http://a%3Cb.test/
 #chrome-host a%3Cb.test
+#ie-canon http://a%3cb.test/
+#ie-host a%3cb.test
 
 #data escaped
 http://a\u003Db.test/
@@ -1547,6 +1613,8 @@ http://a\u003Eb.test/
 http://a\u003Eb.test/
 #gecko-host escaped
 a\u003Eb.test
+#ie-canon http://a%3eb.test/
+#ie-host a%3eb.test
 
 #data escaped
 http://a%3eb.test/
@@ -1646,6 +1714,8 @@ http://a\u005Eb.test/
 http://a\u005Eb.test/
 #gecko-host escaped
 a\u005Eb.test
+#ie-canon http://a%5eb.test/
+#ie-host a%5eb.test
 
 #data escaped
 http://a%5eb.test/
@@ -1720,6 +1790,8 @@ http://a\u007Bb.test/
 http://a\u007Bb.test/
 #gecko-host escaped
 a\u007Bb.test
+#ie-canon http://a%7bb.test/
+#ie-host a%7bb.test
 
 #data escaped
 http://a%7bb.test/
@@ -1729,6 +1801,8 @@ http://a%7bb.test/
 #path /
 #chrome-canon http://a%7Bb.test/
 #chrome-host a%7Bb.test
+#ie-canon http://a%7bb.test/
+#ie-host a%7bb.test
 
 #data escaped
 http://a\u007Cb.test/
@@ -1740,6 +1814,8 @@ http://a\u007Cb.test/
 http://a\u007Cb.test/
 #gecko-host escaped
 a\u007Cb.test
+#ie-canon http://a%7cb.test/
+#ie-host a%7cb.test
 
 #data escaped
 http://a%7Cb.test/
@@ -1749,6 +1825,8 @@ http://a%7Cb.test/
 #path /
 #gecko-canon http://a%7cb.test/
 #gecko-host a%7cb.test
+#ie-canon http://a%7cb.test/
+#ie-host a%7cb.test
 
 #data escaped
 http://a\u007Db.test/
@@ -1760,6 +1838,8 @@ http://a\u007Db.test/
 http://a\u007Db.test/
 #gecko-host escaped
 a\u007Db.test
+#ie-canon http://a%7db.test/
+#ie-host a%7db.test
 
 #data escaped
 http://a%7Db.test/
@@ -1769,6 +1849,8 @@ http://a%7Db.test/
 #path /
 #gecko-canon http://a%7db.test/
 #gecko-host a%7db.test
+#ie-canon http://a%7db.test/
+#ie-host a%7db.test
 
 #data escaped
 http://a\u007Eb.test/
@@ -1802,6 +1884,8 @@ http://a\u007Fb.test/
 http://a\u007Fb.test/
 #gecko-host escaped
 a\u007Fb.test
+#ie-canon http://a%7fb.test/
+#ie-host a%7fb.test
 
 #data escaped
 http://a%7fb.test/
@@ -1833,6 +1917,8 @@ http://a%C2%80b.test/
 #chrome-invalid 1
 #gecko-canon http://a%c2%80b.test/
 #gecko-host a%c2%80b.test
+#ie-canon http://a%c2%80b.test/
+#ie-host a%c2%80b.test
 
 #data escaped
 http://a%80b.test/
@@ -1865,6 +1951,8 @@ http://a%C2%81b.test/
 #chrome-invalid 1
 #gecko-canon http://a%c2%81b.test/
 #gecko-host a%c2%81b.test
+#ie-canon http://a%c2%81b.test/
+#ie-host a%c2%81b.test
 
 #data escaped
 http://a\u0085b.test/
@@ -1888,6 +1976,8 @@ http://a%C2%85b.test/
 #chrome-invalid 1
 #gecko-canon http://a%c2%85b.test/
 #gecko-host a%c2%85b.test
+#ie-canon http://a%c2%85b.test/
+#ie-host a%c2%85b.test
 
 #data escaped
 http://a\u009Fb.test/
@@ -1911,6 +2001,8 @@ http://a%C2%9fb.test/
 #chrome-invalid 1
 #gecko-canon http://a%c2%9fb.test/
 #gecko-host a%c2%9fb.test
+#ie-canon http://a%c2%9fb.test/
+#ie-host a%c2%9fb.test
 
 #data escaped
 http://a%a0b.test/
@@ -1958,6 +2050,8 @@ http://a%fe%BF%BF%BDb.test/
 #chrome-canon http://a%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BDb.test/
 #gecko-canon http://a%fe%bf%bf%bdb.test/
 #gecko-host a%fe%bf%bf%bdb.test
+#ie-canon http://a%fe%bf%bf%bdb.test/
+#ie-host a%fe%bf%bf%bdb.test
 
 #data escaped
 http://a%f0%80%80%a0b.test/
@@ -1978,6 +2072,8 @@ http://a%ED%A0%80b.test/
 #chrome-canon http://a%EF%BF%BDb.test/
 #gecko-canon http://a%ed%a0%80b.test/
 #gecko-host a%ed%a0%80b.test
+#ie-canon http://a%ed%a0%80b.test/
+#ie-host a%ed%a0%80b.test
 
 #data escaped
 http://a%ED%A0%80%ED%BF%BFb.test/
@@ -1989,6 +2085,8 @@ http://a%ED%A0%80%ED%BF%BFb.test/
 #chrome-canon http://a%EF%BF%BD%EF%BF%BDb.test/
 #gecko-canon http://a%ed%a0%80%ed%bf%bfb.test/
 #gecko-host a%ed%a0%80%ed%bf%bfb.test
+#ie-canon http://a%ed%a0%80%ed%bf%bfb.test/
+#ie-host a%ed%a0%80%ed%bf%bfb.test
 
 #data escaped
 http://a%c1%80b.test/
@@ -2851,6 +2949,8 @@ http://Goo%20 goo%7C|.com/
 #gecko-invalid 1
 #gecko-canon
 http://Goo%20 goo%7C|.com/
+#ie-canon http://goo%20%20goo%7c%7c.com/
+#ie-host goo%20%20goo%7c%7c.com
 
 #data
 http://goo%20%20goo%7C%7C.com/
@@ -2862,6 +2962,10 @@ http://goo%20%20goo%7C%7C.com/
 http://goo%20%20goo%7c%7c.com/
 #gecko-host
 goo%20%20goo%7c%7c.com
+#ie-canon 
+http://goo%20%20goo%7c%7c.com/
+#ie-host
+goo%20%20goo%7c%7c.com
 
 #data
 http://goo%20%20goo%7c%7c.com/
@@ -2872,6 +2976,10 @@ http://goo%20%20goo%7c%7c.com/
 #gecko-canon 
 http://goo%20%20goo%7c%7c.com/
 #gecko-host
+goo%20%20goo%7c%7c.com
+#ie-canon 
+http://goo%20%20goo%7c%7c.com/
+#ie-host
 goo%20%20goo%7c%7c.com
 
 #data
@@ -2884,6 +2992,10 @@ http://goo%20%20goo%7c%7c.com%41/
 http://goo%20%20goo%7c%7c.com%41/
 #gecko-host
 goo%20%20goo%7c%7c.com%41
+#ie-canon 
+http://goo%20%20goo%7c%7c.coma/
+#ie-host
+goo%20%20goo%7c%7c.coma
 
 #data
 http://[google.com]/
@@ -5351,6 +5463,8 @@ http://a%3Ab/
 #chrome-canon http://a:b/
 #gecko-canon http://a%3ab/
 #gecko-host a%3ab
+#ie-canon http://a%3ab/
+#ie-host a%3ab
 
 #data escaped
 http://a\uFE55b/
