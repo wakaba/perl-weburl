@@ -539,8 +539,8 @@ sub label_to_ascii ($;%) {
     $s = 'xn--' . $s;
   }
 
-  return undef if length $s == 0;
-  return undef if length $s > 63;
+  return undef if (length $s) == 0;
+  return undef if (length $s) > 63;
 
   return $s;
 } # label_to_ascii
@@ -632,30 +632,21 @@ sub to_ascii ($$) {
   my @label;
   my $need_punycode;
   for my $label (split /\./, $s, -1) {
-    if (IE) {
-      if ($label =~ /^[Xx][Nn]--/ or $label =~ /[^\x00-\x7F]/) {
-        my $a_label = label_to_ascii $label,
-            use_std3_ascii_rules => 1,
-            allow_unassigned => 0;
-        $label = label_to_unicode_ defined $a_label ? $a_label : $label,
-            use_std3_ascii_rules => 1,
-            allow_unassigned => 0,
-            process_non_xn_label => 1;
-        return undef unless defined $label;
-      }
-      $label =~ tr/A-Z/a-z/;
-      push @label, $label;
-      next;
-    }
-
     if (CHROME) {
       $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
         sprintf '%%%02X', ord $1;
       }ge;
     }
 
-    if ($label =~ /[^\x00-\x7F]/) {
-      $need_punycode = 1;
+    if (IE) {
+      if ($label =~ /^[Xx][Nn]--/ or $label =~ /[^\x00-\x7F]/) {
+        $need_punycode = 1;
+      }
+      $label =~ tr/A-Z/a-z/;
+    } else {
+      if ($label =~ /[^\x00-\x7F]/) {
+        $need_punycode = 1;
+      }
     }
 
     if (CHROME) {
@@ -663,8 +654,10 @@ sub to_ascii ($$) {
       return undef unless defined $label;
     }
 
-    $label = nameprep_bidi $label;
-    return $fallback unless defined $label;
+    unless (IE) {
+      $label = nameprep_bidi $label;
+      return $fallback unless defined $label;
+    }
 
     if (CHROME) {
       if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
@@ -691,33 +684,51 @@ sub to_ascii ($$) {
       }
     }
 
-    my $empty = 0;
-    @label = map {
-      if (/[^\x00-\x7F]/) {
-        if ($idn_enabled) {
+    if (IE) {
+      my $has_root_dot = @label && $label[-1] eq '';
+      pop @label if $has_root_dot;
+      @label = map {
+        my $label = $_;
+        my $a_label = label_to_ascii $label,
+            use_std3_ascii_rules => 1,
+            allow_unassigned => 0;
+        $label = label_to_unicode_ defined $a_label ? $a_label : $label,
+            use_std3_ascii_rules => 1,
+            allow_unassigned => 0,
+            process_non_xn_label => 1;
+        return undef unless defined $label;
+        $label;
+      } @label;
+      push @label, '' if $has_root_dot;
+    } else {
+      my $empty = 0;
+      @label = map {
+        if (/[^\x00-\x7F]/) {
+          if ($idn_enabled) {
+            $_;
+          } else {
+            my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
+            
+            return $fallback if length $label > 63;
+            $label;
+          }
+        } elsif ($_ eq '') {
+          $empty++;
           $_;
         } else {
-          my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
-          
-          return $fallback if length $label > 63;
-          $label;
+          if (length $_ > 62 and GECKO) {
+            substr $_, 0, 62;
+          } else {
+            return undef if length $_ > 63;
+            $_;
+          }
         }
-      } elsif ($_ eq '') {
-        $empty++;
-        $_;
-      } else {
-        if (length $_ > 62 and GECKO) {
-          substr $_, 0, 62;
-        } else {
-          return undef if length $_ > 63;
-          $_;
+      } @label;
+      if (CHROME) {
+        if ($empty > 1 or 
+            ($empty == 1 and (@label == 1 or not $label[-1] eq ''))) {
+          return undef;
         }
-      }
-    } @label;
-    if (CHROME) {
-      if ($empty > 1 or 
-          ($empty == 1 and (@label == 1 or not $label[-1] eq ''))) {
-        return undef;
       }
     }
   }
