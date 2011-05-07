@@ -228,6 +228,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     CHROME: If /s/ contains "%", abort.
 
+    IE: Percent-decode %5F and %5f.
+
     GECKO / IE: Apply the Nameprep algorithm with /s/ and let /s/ be
     the result.  If the algorithm fails, return /fallback/ and abort
     these steps.
@@ -317,15 +319,21 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     CHROME: Percent-decode and interpret as U+0000 - U+00FF.
     Normalize to ASCII lower-case.
 
-    CHROME: If /s/ contains at least one of the following characters,
-    abort the ToASCII algorithm: U+0000, ..., U+001F, U+0025 (%),
-    U+002F (/), U+003A (:), U+003B (;), U+003F (?), U+005C (\), U+005E
-    (^), U+007E (~), U+007F, characters prohibitted by Nameprep.
+    CHROME: If /s/ contains one of the following characters, abort the
+    ToASCII algorithm: U+0000, ..., U+001F, U+0025 (%), U+002F (/),
+    U+003A (:), U+003B (;), U+003F (?), U+005C (\), U+005E (^), U+007E
+    (~), or U+007F.
+
+    IE: If /s/ contains one of the following sequences, abort the
+    ToASCII algorithm: U+0000, "%00", or "%" not followed by two
+    hexadecimal digits.
 
     CHROME: Percent-encode U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
     U+0024 ($), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A
     (*), U+002C (,), U+003C (<), U+003D (=), U+003E (>), U+0040 (@),
     U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}) in /s/.
+
+    IE: Percent-encode U+0000 - U+001F, U+007F in /s/.
 
     If /s/ is an IPv6 address, return the canonical representation of
     the IPv6 address and abort these steps.

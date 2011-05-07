@@ -501,6 +501,10 @@ sub to_ascii ($$) {
     }
   }
 
+  if (IE) {
+    $s =~ s{%([5][Ff])}{pack 'C', hex $1}ge;
+  }
+
   if (GECKO || IE) {
     $s = nameprep $s;
     return $fallback unless defined $s;
@@ -607,6 +611,16 @@ sub to_ascii ($$) {
     }
     
     $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+      sprintf '%%%02X', ord $1;
+    }ge;
+  }
+
+  if (IE) {
+    if ($s =~ /\x00|%00|%(?![0-9A-Fa-f]{2})/) {
+      return undef;
+    }
+
+    $s =~ s{([\x00-\x1F\x7F])}{
       sprintf '%%%02X', ord $1;
     }ge;
   }
