@@ -10,6 +10,11 @@ ab
 http://a%c2%adb/
 #gecko-host escaped
 a%c2%adb
+#ie-canon escaped
+http://a%c2%adb/
+#ie-host escaped
+a%c2%adb
+#ie-invalid 
 
 #data escaped
 http://a%CD%8Fb/
@@ -23,6 +28,11 @@ ab
 http://a%cd%8fb/
 #gecko-host escaped
 a%cd%8fb
+#ie-canon escaped
+http://a%cd%8fb/
+#ie-host escaped
+a%cd%8fb
+#ie-invalid 
 
 #data escaped
 http://a%E1%A0%86b/
@@ -36,6 +46,11 @@ ab
 http://a%e1%a0%86b/
 #gecko-host escaped
 a%e1%a0%86b
+#ie-canon escaped
+http://a%e1%a0%86b/
+#ie-host escaped
+a%e1%a0%86b
+#ie-invalid 
 
 #data escaped
 http://a%E1%A0%8Bb/
@@ -49,6 +64,11 @@ ab
 http://a%e1%a0%8bb/
 #gecko-host escaped
 a%e1%a0%8bb
+#ie-canon escaped
+http://a%e1%a0%8bb/
+#ie-host escaped
+a%e1%a0%8bb
+#ie-invalid 
 
 #data escaped
 http://a%E1%A0%8Cb/
@@ -62,6 +82,11 @@ ab
 http://a%e1%a0%8cb/
 #gecko-host escaped
 a%e1%a0%8cb
+#ie-canon escaped
+http://a%e1%a0%8cb/
+#ie-host escaped
+a%e1%a0%8cb
+#ie-invalid 
 
 #data escaped
 http://a%E1%A0%8Db/
@@ -75,6 +100,11 @@ ab
 http://a%e1%a0%8db/
 #gecko-host escaped
 a%e1%a0%8db
+#ie-canon escaped
+http://a%e1%a0%8db/
+#ie-host escaped
+a%e1%a0%8db
+#ie-invalid 
 
 #data escaped
 http://a%E2%80%8Bb/
@@ -88,6 +118,11 @@ ab
 http://a%e2%80%8bb/
 #gecko-host escaped
 a%e2%80%8bb
+#ie-canon escaped
+http://a%e2%80%8bb/
+#ie-host escaped
+a%e2%80%8bb
+#ie-invalid 
 
 #data escaped
 http://a%E2%80%8Cb/
@@ -101,6 +136,11 @@ ab
 http://a%e2%80%8cb/
 #gecko-host escaped
 a%e2%80%8cb
+#ie-canon escaped
+http://a%e2%80%8cb/
+#ie-host escaped
+a%e2%80%8cb
+#ie-invalid 
 
 #data escaped
 http://a%E2%80%8Db/
@@ -114,6 +154,11 @@ ab
 http://a%e2%80%8db/
 #gecko-host escaped
 a%e2%80%8db
+#ie-canon escaped
+http://a%e2%80%8db/
+#ie-host escaped
+a%e2%80%8db
+#ie-invalid 
 
 #data escaped
 http://a%E2%81%A0b/
@@ -127,6 +172,11 @@ ab
 http://a%e2%81%a0b/
 #gecko-host escaped
 a%e2%81%a0b
+#ie-canon escaped
+http://a%e2%81%a0b/
+#ie-host escaped
+a%e2%81%a0b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%80b/
@@ -140,6 +190,11 @@ ab
 http://a%ef%b8%80b/
 #gecko-host escaped
 a%ef%b8%80b
+#ie-canon escaped
+http://a%ef%b8%80b/
+#ie-host escaped
+a%ef%b8%80b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%81b/
@@ -153,6 +208,11 @@ ab
 http://a%ef%b8%81b/
 #gecko-host escaped
 a%ef%b8%81b
+#ie-canon escaped
+http://a%ef%b8%81b/
+#ie-host escaped
+a%ef%b8%81b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%82b/
@@ -166,6 +226,11 @@ ab
 http://a%ef%b8%82b/
 #gecko-host escaped
 a%ef%b8%82b
+#ie-canon escaped
+http://a%ef%b8%82b/
+#ie-host escaped
+a%ef%b8%82b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%83b/
@@ -179,6 +244,11 @@ ab
 http://a%ef%b8%83b/
 #gecko-host escaped
 a%ef%b8%83b
+#ie-canon escaped
+http://a%ef%b8%83b/
+#ie-host escaped
+a%ef%b8%83b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%84b/
@@ -192,6 +262,11 @@ ab
 http://a%ef%b8%84b/
 #gecko-host escaped
 a%ef%b8%84b
+#ie-canon escaped
+http://a%ef%b8%84b/
+#ie-host escaped
+a%ef%b8%84b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%85b/
@@ -205,6 +280,11 @@ ab
 http://a%ef%b8%85b/
 #gecko-host escaped
 a%ef%b8%85b
+#ie-canon escaped
+http://a%ef%b8%85b/
+#ie-host escaped
+a%ef%b8%85b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%86b/
@@ -218,6 +298,11 @@ ab
 http://a%ef%b8%86b/
 #gecko-host escaped
 a%ef%b8%86b
+#ie-canon escaped
+http://a%ef%b8%86b/
+#ie-host escaped
+a%ef%b8%86b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%87b/
@@ -231,6 +316,11 @@ ab
 http://a%ef%b8%87b/
 #gecko-host escaped
 a%ef%b8%87b
+#ie-canon escaped
+http://a%ef%b8%87b/
+#ie-host escaped
+a%ef%b8%87b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%88b/
@@ -244,6 +334,11 @@ ab
 http://a%ef%b8%88b/
 #gecko-host escaped
 a%ef%b8%88b
+#ie-canon escaped
+http://a%ef%b8%88b/
+#ie-host escaped
+a%ef%b8%88b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%89b/
@@ -257,6 +352,11 @@ ab
 http://a%ef%b8%89b/
 #gecko-host escaped
 a%ef%b8%89b
+#ie-canon escaped
+http://a%ef%b8%89b/
+#ie-host escaped
+a%ef%b8%89b
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%8Ab/
@@ -270,6 +370,11 @@ ab
 http://a%ef%b8%8ab/
 #gecko-host escaped
 a%ef%b8%8ab
+#ie-canon escaped
+http://a%ef%b8%8ab/
+#ie-host escaped
+a%ef%b8%8ab
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%8Bb/
@@ -283,6 +388,11 @@ ab
 http://a%ef%b8%8bb/
 #gecko-host escaped
 a%ef%b8%8bb
+#ie-canon escaped
+http://a%ef%b8%8bb/
+#ie-host escaped
+a%ef%b8%8bb
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%8Cb/
@@ -296,6 +406,11 @@ ab
 http://a%ef%b8%8cb/
 #gecko-host escaped
 a%ef%b8%8cb
+#ie-canon escaped
+http://a%ef%b8%8cb/
+#ie-host escaped
+a%ef%b8%8cb
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%8Db/
@@ -309,6 +424,11 @@ ab
 http://a%ef%b8%8db/
 #gecko-host escaped
 a%ef%b8%8db
+#ie-canon escaped
+http://a%ef%b8%8db/
+#ie-host escaped
+a%ef%b8%8db
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%8Eb/
@@ -322,6 +442,11 @@ ab
 http://a%ef%b8%8eb/
 #gecko-host escaped
 a%ef%b8%8eb
+#ie-canon escaped
+http://a%ef%b8%8eb/
+#ie-host escaped
+a%ef%b8%8eb
+#ie-invalid 
 
 #data escaped
 http://a%EF%B8%8Fb/
@@ -335,6 +460,11 @@ ab
 http://a%ef%b8%8fb/
 #gecko-host escaped
 a%ef%b8%8fb
+#ie-canon escaped
+http://a%ef%b8%8fb/
+#ie-host escaped
+a%ef%b8%8fb
+#ie-invalid 
 
 #data escaped
 http://a%EF%BB%BFb/
@@ -348,4 +478,9 @@ ab
 http://a%ef%bb%bfb/
 #gecko-host escaped
 a%ef%bb%bfb
+#ie-canon escaped
+http://a%ef%bb%bfb/
+#ie-host escaped
+a%ef%bb%bfb
+#ie-invalid 
 

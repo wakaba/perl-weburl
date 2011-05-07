@@ -92,6 +92,10 @@ sub generate_from_map ($$;%) {
     $punycoded =~ s/ /%20/g;
     $gecko_host = 'a' . (pe $orig) . 'b' if $args{pe_input};
     $gecko_host =~ tr/A-Z/a-z/;
+    my $ie_host = 'a' . $new . 'b';
+    $ie_host = 'a' . (pe $orig) . 'b' if $args{pe_input};
+    $ie_host =~ tr/A-Z/a-z/;
+    my $ie_invalid = $ie_host =~ /\x20/;
     printf $file q{#data escaped
 http://a%sb/
 #canon escaped
@@ -104,13 +108,21 @@ http://%s/
 http://%s/
 #gecko-host escaped
 %s
+#ie-canon escaped
+http://%s/
+#ie-host escaped
+%s
+#ie-invalid %s
 
 },
         ($args{pe_input} ? pe $orig : uescape $orig),
         uescape $punycoded,
         uescape $punycoded,
         uescape $gecko_host,
-        uescape $gecko_host;
+        uescape $gecko_host,
+        uescape $ie_host,
+        uescape $ie_host,
+        $ie_invalid;
   }
   close $file;
 } # generate_from_map
