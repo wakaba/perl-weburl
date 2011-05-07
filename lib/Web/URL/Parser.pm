@@ -507,7 +507,7 @@ sub to_ascii ($$) {
   }
 
   if (IE) {
-    $s =~ s{%(2[DdEeFf]|3[0-9Ff]|[46][1-9A-Fa-f]|[57][0-9Aa]|5[Ff])}{pack 'C', hex $1}ge;
+    $s =~ s{%([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f])}{pack 'C', hex $1}ge;
   }
 
   if (GECKO) {
@@ -659,7 +659,7 @@ sub to_ascii ($$) {
   }
 
   if (IE) {
-    if ($s =~ /\x00|%00|%(?![0-9A-Fa-f]{2})|\/|\?/) {
+    if ($s =~ /[\x00\x2F\x3F\x5C]|%00|%(?![0-9A-Fa-f]{2})/) {
       return undef;
     }
 
