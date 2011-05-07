@@ -548,7 +548,7 @@ sub to_ascii ($$) {
 
   if ($need_punycode) {
     my $idn_enabled;
-    if (GECKO || IE) {
+    if (GECKO) {
       my $tld = [grep { length $_ } reverse @label]->[0] || '';
       if ($tld =~ /[^\x00-\x7F]/) {
         $tld = 'xn--' . eval { encode_punycode $tld } || '';
@@ -560,6 +560,8 @@ sub to_ascii ($$) {
           $idn_enabled = 1;
         }
       }
+    } elsif (IE) {
+      $idn_enabled = 1;
     }
 
     my $empty = 0;
