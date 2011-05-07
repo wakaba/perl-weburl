@@ -186,6 +186,10 @@ http://a%E1%9A%80b/
 http://a%e1%9a%80b/
 #gecko-host
 a%e1%9a%80b
+#ie-canon
+http://a%e1%9a%80b/
+#ie-host
+a%e1%9a%80b
 
 };
         } else {
@@ -200,6 +204,7 @@ http://a%E1%9A%80b/
 http://a\u1680b/
 #gecko-host escaped
 a\u1680b
+#ie-invalid 1
 
 };
         }
@@ -217,6 +222,10 @@ xn--b-rfa
 http://a%cd%80b/
 #gecko-host escaped
 a%cd%80b
+#ie-canon escaped
+http://a%cd%80b/
+#ie-host escaped
+a%cd%80b
 
 };
         } else {
@@ -232,6 +241,10 @@ xn--b-rfa
 http://a\u0340b/
 #gecko-host escaped
 a\u0340b
+#ie-canon escaped
+http://\u00E0b/
+#ie-host escaped
+\u00E0b
 
 };
         }
@@ -249,6 +262,10 @@ xn--b-tfa
 http://a%cd%81b/
 #gecko-host escaped
 a%cd%81b
+#ie-canon escaped
+http://a%cd%81b/
+#ie-host escaped
+a%cd%81b
 
 };
         } else {
@@ -264,6 +281,10 @@ xn--b-tfa
 http://a\u0341b/
 #gecko-host escaped
 a\u0341b
+#ie-canon escaped
+http://\u00E1b/
+#ie-host escaped
+\u00E1b
 
 };
         }
@@ -272,6 +293,11 @@ a\u0341b
           $v != 0x0340 and $v != 0x0341 and not $args{unassigned} and
           $args{invalid} and
           not ($args{invalid} == 0.5 and $new =~ /[\x80-\x9F]/)) {
+        my $ie_host = uescape ($args{pe_input} ? $BEFORE . (lc pe (chr $v)) . $AFTER : $BEFORE . ($args{unsafe} && $args{unsafe} ne 'noncharacters' ? "\x{FFFD}" : chr $v) . $AFTER);
+        my $ie_invalid = $args{pe_input} && $BEFORE eq 'a' ? '' : '1';
+        if ($ie_host =~ s/\\uFD..|\\uFFF[EF]//g) {
+          $ie_invalid = '';
+        }
         printf $file q{#data escaped
 http://%s%s%s/
 #scheme http
@@ -283,6 +309,11 @@ http://%s/
 http://%s/
 #gecko-host escaped
 %s
+#ie-canon escaped
+http://%s/
+#ie-host escaped
+%s
+#ie-invalid %s
 
 },
             uescape $BEFORE,
@@ -290,7 +321,10 @@ http://%s/
             uescape $AFTER,
             uescape $punycoded,
             uescape ($args{pe_input} ? $BEFORE . (lc pe (chr $v)) . $AFTER : $BEFORE . ($args{unsafe} && $args{unsafe} ne 'noncharacters' || $v == 0xFFFE || $v == 0xFFFF ? "\x{FFFD}" : chr $v) . $AFTER),
-            uescape ($args{pe_input} ? $BEFORE . (lc pe (chr $v)) . $AFTER : $BEFORE . ($args{unsafe} && $args{unsafe} ne 'noncharacters' || $v == 0xFFFE || $v == 0xFFFF ? "\x{FFFD}" : chr $v) . $AFTER);
+            uescape ($args{pe_input} ? $BEFORE . (lc pe (chr $v)) . $AFTER : $BEFORE . ($args{unsafe} && $args{unsafe} ne 'noncharacters' || $v == 0xFFFE || $v == 0xFFFF ? "\x{FFFD}" : chr $v) . $AFTER),
+            $ie_host,
+            $ie_host,
+            $ie_invalid;
       } else {
         my $host = $BEFORE . (defined $newc ? $newc : chr $v) . $AFTER;
         my $gecko_host;
@@ -329,6 +363,11 @@ http://%s/
 http://%s/
 #gecko-host escaped
 %s
+#ie-canon escaped
+http://%s/
+#ie-host escaped
+%s
+#ie-invalid %s
 
 },
             uescape $BEFORE,
@@ -339,7 +378,10 @@ http://%s/
             uescape $punycoded,
             uescape ($args{pe_input} ? $punycoded : $host),
             uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
-            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host);
+            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
+            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
+            uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
+            $args{ie_invalid} && $v != 0x200B && !$args{pe_input} && $BEFORE eq 'a' ? '1' : '';
       }
     } # $v
   }
@@ -371,7 +413,8 @@ generate_from_map
 #    => 'decomps-authority-stringprep-c11';
 generate_from_list
     \@Unicode::Stringprep::Prohibited::C12
-    => 'decomps-authority-stringprep-c12';
+    => 'decomps-authority-stringprep-c12',
+    ie_invalid => 1;
 generate_from_list
     \@Unicode::Stringprep::Prohibited::C12
     => 'decomps-authority-stringprep-c12-pe',

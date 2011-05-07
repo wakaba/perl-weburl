@@ -9,6 +9,11 @@ http://a%C2%80b/
 http://a\u0080b/
 #gecko-host escaped
 a\u0080b
+#ie-canon escaped
+http://a\u0080b/
+#ie-host escaped
+a\u0080b
+#ie-invalid 1
 
 #data escaped
 http://a\u0081b/
@@ -21,6 +26,11 @@ http://a%C2%81b/
 http://a\u0081b/
 #gecko-host escaped
 a\u0081b
+#ie-canon escaped
+http://a\u0081b/
+#ie-host escaped
+a\u0081b
+#ie-invalid 1
 
 #data escaped
 http://a\u0082b/
@@ -33,6 +43,11 @@ http://a%C2%82b/
 http://a\u0082b/
 #gecko-host escaped
 a\u0082b
+#ie-canon escaped
+http://a\u0082b/
+#ie-host escaped
+a\u0082b
+#ie-invalid 1
 
 #data escaped
 http://a\u0083b/
@@ -45,6 +60,11 @@ http://a%C2%83b/
 http://a\u0083b/
 #gecko-host escaped
 a\u0083b
+#ie-canon escaped
+http://a\u0083b/
+#ie-host escaped
+a\u0083b
+#ie-invalid 1
 
 #data escaped
 http://a\u0084b/
@@ -57,6 +77,11 @@ http://a%C2%84b/
 http://a\u0084b/
 #gecko-host escaped
 a\u0084b
+#ie-canon escaped
+http://a\u0084b/
+#ie-host escaped
+a\u0084b
+#ie-invalid 1
 
 #data escaped
 http://a\u0085b/
@@ -69,6 +94,11 @@ http://a%C2%85b/
 http://a\u0085b/
 #gecko-host escaped
 a\u0085b
+#ie-canon escaped
+http://a\u0085b/
+#ie-host escaped
+a\u0085b
+#ie-invalid 1
 
 #data escaped
 http://a\u0086b/
@@ -81,6 +111,11 @@ http://a%C2%86b/
 http://a\u0086b/
 #gecko-host escaped
 a\u0086b
+#ie-canon escaped
+http://a\u0086b/
+#ie-host escaped
+a\u0086b
+#ie-invalid 1
 
 #data escaped
 http://a\u0087b/
@@ -93,6 +128,11 @@ http://a%C2%87b/
 http://a\u0087b/
 #gecko-host escaped
 a\u0087b
+#ie-canon escaped
+http://a\u0087b/
+#ie-host escaped
+a\u0087b
+#ie-invalid 1
 
 #data escaped
 http://a\u0088b/
@@ -105,6 +145,11 @@ http://a%C2%88b/
 http://a\u0088b/
 #gecko-host escaped
 a\u0088b
+#ie-canon escaped
+http://a\u0088b/
+#ie-host escaped
+a\u0088b
+#ie-invalid 1
 
 #data escaped
 http://a\u0089b/
@@ -117,6 +162,11 @@ http://a%C2%89b/
 http://a\u0089b/
 #gecko-host escaped
 a\u0089b
+#ie-canon escaped
+http://a\u0089b/
+#ie-host escaped
+a\u0089b
+#ie-invalid 1
 
 #data escaped
 http://a\u008Ab/
@@ -129,6 +179,11 @@ http://a%C2%8Ab/
 http://a\u008Ab/
 #gecko-host escaped
 a\u008Ab
+#ie-canon escaped
+http://a\u008Ab/
+#ie-host escaped
+a\u008Ab
+#ie-invalid 1
 
 #data escaped
 http://a\u008Bb/
@@ -141,6 +196,11 @@ http://a%C2%8Bb/
 http://a\u008Bb/
 #gecko-host escaped
 a\u008Bb
+#ie-canon escaped
+http://a\u008Bb/
+#ie-host escaped
+a\u008Bb
+#ie-invalid 1
 
 #data escaped
 http://a\u008Cb/
@@ -153,6 +213,11 @@ http://a%C2%8Cb/
 http://a\u008Cb/
 #gecko-host escaped
 a\u008Cb
+#ie-canon escaped
+http://a\u008Cb/
+#ie-host escaped
+a\u008Cb
+#ie-invalid 1
 
 #data escaped
 http://a\u008Db/
@@ -165,6 +230,11 @@ http://a%C2%8Db/
 http://a\u008Db/
 #gecko-host escaped
 a\u008Db
+#ie-canon escaped
+http://a\u008Db/
+#ie-host escaped
+a\u008Db
+#ie-invalid 1
 
 #data escaped
 http://a\u008Eb/
@@ -177,6 +247,11 @@ http://a%C2%8Eb/
 http://a\u008Eb/
 #gecko-host escaped
 a\u008Eb
+#ie-canon escaped
+http://a\u008Eb/
+#ie-host escaped
+a\u008Eb
+#ie-invalid 1
 
 #data escaped
 http://a\u008Fb/
@@ -189,6 +264,11 @@ http://a%C2%8Fb/
 http://a\u008Fb/
 #gecko-host escaped
 a\u008Fb
+#ie-canon escaped
+http://a\u008Fb/
+#ie-host escaped
+a\u008Fb
+#ie-invalid 1
 
 #data escaped
 http://a\u0090b/
@@ -201,6 +281,11 @@ http://a%C2%90b/
 http://a\u0090b/
 #gecko-host escaped
 a\u0090b
+#ie-canon escaped
+http://a\u0090b/
+#ie-host escaped
+a\u0090b
+#ie-invalid 1
 
 #data escaped
 http://a\u0091b/
@@ -213,6 +298,11 @@ http://a%C2%91b/
 http://a\u0091b/
 #gecko-host escaped
 a\u0091b
+#ie-canon escaped
+http://a\u0091b/
+#ie-host escaped
+a\u0091b
+#ie-invalid 1
 
 #data escaped
 http://a\u0092b/
@@ -225,6 +315,11 @@ http://a%C2%92b/
 http://a\u0092b/
 #gecko-host escaped
 a\u0092b
+#ie-canon escaped
+http://a\u0092b/
+#ie-host escaped
+a\u0092b
+#ie-invalid 1
 
 #data escaped
 http://a\u0093b/
@@ -237,6 +332,11 @@ http://a%C2%93b/
 http://a\u0093b/
 #gecko-host escaped
 a\u0093b
+#ie-canon escaped
+http://a\u0093b/
+#ie-host escaped
+a\u0093b
+#ie-invalid 1
 
 #data escaped
 http://a\u0094b/
@@ -249,6 +349,11 @@ http://a%C2%94b/
 http://a\u0094b/
 #gecko-host escaped
 a\u0094b
+#ie-canon escaped
+http://a\u0094b/
+#ie-host escaped
+a\u0094b
+#ie-invalid 1
 
 #data escaped
 http://a\u0095b/
@@ -261,6 +366,11 @@ http://a%C2%95b/
 http://a\u0095b/
 #gecko-host escaped
 a\u0095b
+#ie-canon escaped
+http://a\u0095b/
+#ie-host escaped
+a\u0095b
+#ie-invalid 1
 
 #data escaped
 http://a\u0096b/
@@ -273,6 +383,11 @@ http://a%C2%96b/
 http://a\u0096b/
 #gecko-host escaped
 a\u0096b
+#ie-canon escaped
+http://a\u0096b/
+#ie-host escaped
+a\u0096b
+#ie-invalid 1
 
 #data escaped
 http://a\u0097b/
@@ -285,6 +400,11 @@ http://a%C2%97b/
 http://a\u0097b/
 #gecko-host escaped
 a\u0097b
+#ie-canon escaped
+http://a\u0097b/
+#ie-host escaped
+a\u0097b
+#ie-invalid 1
 
 #data escaped
 http://a\u0098b/
@@ -297,6 +417,11 @@ http://a%C2%98b/
 http://a\u0098b/
 #gecko-host escaped
 a\u0098b
+#ie-canon escaped
+http://a\u0098b/
+#ie-host escaped
+a\u0098b
+#ie-invalid 1
 
 #data escaped
 http://a\u0099b/
@@ -309,6 +434,11 @@ http://a%C2%99b/
 http://a\u0099b/
 #gecko-host escaped
 a\u0099b
+#ie-canon escaped
+http://a\u0099b/
+#ie-host escaped
+a\u0099b
+#ie-invalid 1
 
 #data escaped
 http://a\u009Ab/
@@ -321,6 +451,11 @@ http://a%C2%9Ab/
 http://a\u009Ab/
 #gecko-host escaped
 a\u009Ab
+#ie-canon escaped
+http://a\u009Ab/
+#ie-host escaped
+a\u009Ab
+#ie-invalid 1
 
 #data escaped
 http://a\u009Bb/
@@ -333,6 +468,11 @@ http://a%C2%9Bb/
 http://a\u009Bb/
 #gecko-host escaped
 a\u009Bb
+#ie-canon escaped
+http://a\u009Bb/
+#ie-host escaped
+a\u009Bb
+#ie-invalid 1
 
 #data escaped
 http://a\u009Cb/
@@ -345,6 +485,11 @@ http://a%C2%9Cb/
 http://a\u009Cb/
 #gecko-host escaped
 a\u009Cb
+#ie-canon escaped
+http://a\u009Cb/
+#ie-host escaped
+a\u009Cb
+#ie-invalid 1
 
 #data escaped
 http://a\u009Db/
@@ -357,6 +502,11 @@ http://a%C2%9Db/
 http://a\u009Db/
 #gecko-host escaped
 a\u009Db
+#ie-canon escaped
+http://a\u009Db/
+#ie-host escaped
+a\u009Db
+#ie-invalid 1
 
 #data escaped
 http://a\u009Eb/
@@ -369,6 +519,11 @@ http://a%C2%9Eb/
 http://a\u009Eb/
 #gecko-host escaped
 a\u009Eb
+#ie-canon escaped
+http://a\u009Eb/
+#ie-host escaped
+a\u009Eb
+#ie-invalid 1
 
 #data escaped
 http://a\u009Fb/
@@ -381,6 +536,11 @@ http://a%C2%9Fb/
 http://a\u009Fb/
 #gecko-host escaped
 a\u009Fb
+#ie-canon escaped
+http://a\u009Fb/
+#ie-host escaped
+a\u009Fb
+#ie-invalid 1
 
 #data escaped
 http://\u0640\u06DD\u0641/
@@ -393,6 +553,11 @@ http://%D9%80%DB%9D%D9%81/
 http://\u0640\u06DD\u0641/
 #gecko-host escaped
 \u0640\u06DD\u0641
+#ie-canon escaped
+http://\u0640\u06DD\u0641/
+#ie-host escaped
+\u0640\u06DD\u0641
+#ie-invalid 1
 
 #data escaped
 http://a\u070Fb/
@@ -405,6 +570,11 @@ http://a%DC%8Fb/
 http://a\u070Fb/
 #gecko-host escaped
 a\u070Fb
+#ie-canon escaped
+http://a\u070Fb/
+#ie-host escaped
+a\u070Fb
+#ie-invalid 1
 
 #data escaped
 http://a\u180Eb/
@@ -417,6 +587,11 @@ http://a%E1%A0%8Eb/
 http://a\u180Eb/
 #gecko-host escaped
 a\u180Eb
+#ie-canon escaped
+http://a\u180Eb/
+#ie-host escaped
+a\u180Eb
+#ie-invalid 1
 
 #data escaped
 http://a\u200Cb/
@@ -434,6 +609,11 @@ ab
 http://ab/
 #gecko-host escaped
 ab
+#ie-canon escaped
+http://ab/
+#ie-host escaped
+ab
+#ie-invalid 
 
 #data escaped
 http://a\u200Db/
@@ -451,6 +631,11 @@ ab
 http://ab/
 #gecko-host escaped
 ab
+#ie-canon escaped
+http://ab/
+#ie-host escaped
+ab
+#ie-invalid 
 
 #data escaped
 http://a\u2028b/
@@ -463,6 +648,11 @@ http://a%E2%80%A8b/
 http://a\u2028b/
 #gecko-host escaped
 a\u2028b
+#ie-canon escaped
+http://a\u2028b/
+#ie-host escaped
+a\u2028b
+#ie-invalid 1
 
 #data escaped
 http://a\u2029b/
@@ -475,6 +665,11 @@ http://a%E2%80%A9b/
 http://a\u2029b/
 #gecko-host escaped
 a\u2029b
+#ie-canon escaped
+http://a\u2029b/
+#ie-host escaped
+a\u2029b
+#ie-invalid 1
 
 #data escaped
 http://a\u2060b/
@@ -492,6 +687,11 @@ ab
 http://ab/
 #gecko-host escaped
 ab
+#ie-canon escaped
+http://ab/
+#ie-host escaped
+ab
+#ie-invalid 
 
 #data escaped
 http://a\u2061b/
@@ -504,6 +704,11 @@ http://a%E2%81%A1b/
 http://a\u2061b/
 #gecko-host escaped
 a\u2061b
+#ie-canon escaped
+http://a\u2061b/
+#ie-host escaped
+a\u2061b
+#ie-invalid 1
 
 #data escaped
 http://a\u2062b/
@@ -516,6 +721,11 @@ http://a%E2%81%A2b/
 http://a\u2062b/
 #gecko-host escaped
 a\u2062b
+#ie-canon escaped
+http://a\u2062b/
+#ie-host escaped
+a\u2062b
+#ie-invalid 1
 
 #data escaped
 http://a\u2063b/
@@ -528,6 +738,11 @@ http://a%E2%81%A3b/
 http://a\u2063b/
 #gecko-host escaped
 a\u2063b
+#ie-canon escaped
+http://a\u2063b/
+#ie-host escaped
+a\u2063b
+#ie-invalid 1
 
 #data escaped
 http://a\u206Ab/
@@ -540,6 +755,11 @@ http://a%E2%81%AAb/
 http://a\u206Ab/
 #gecko-host escaped
 a\u206Ab
+#ie-canon escaped
+http://a\u206Ab/
+#ie-host escaped
+a\u206Ab
+#ie-invalid 1
 
 #data escaped
 http://a\u206Bb/
@@ -552,6 +772,11 @@ http://a%E2%81%ABb/
 http://a\u206Bb/
 #gecko-host escaped
 a\u206Bb
+#ie-canon escaped
+http://a\u206Bb/
+#ie-host escaped
+a\u206Bb
+#ie-invalid 1
 
 #data escaped
 http://a\u206Cb/
@@ -564,6 +789,11 @@ http://a%E2%81%ACb/
 http://a\u206Cb/
 #gecko-host escaped
 a\u206Cb
+#ie-canon escaped
+http://a\u206Cb/
+#ie-host escaped
+a\u206Cb
+#ie-invalid 1
 
 #data escaped
 http://a\u206Db/
@@ -576,6 +806,11 @@ http://a%E2%81%ADb/
 http://a\u206Db/
 #gecko-host escaped
 a\u206Db
+#ie-canon escaped
+http://a\u206Db/
+#ie-host escaped
+a\u206Db
+#ie-invalid 1
 
 #data escaped
 http://a\u206Eb/
@@ -588,6 +823,11 @@ http://a%E2%81%AEb/
 http://a\u206Eb/
 #gecko-host escaped
 a\u206Eb
+#ie-canon escaped
+http://a\u206Eb/
+#ie-host escaped
+a\u206Eb
+#ie-invalid 1
 
 #data escaped
 http://a\u206Fb/
@@ -600,6 +840,11 @@ http://a%E2%81%AFb/
 http://a\u206Fb/
 #gecko-host escaped
 a\u206Fb
+#ie-canon escaped
+http://a\u206Fb/
+#ie-host escaped
+a\u206Fb
+#ie-invalid 1
 
 #data escaped
 http://a\uFEFFb/
@@ -617,6 +862,11 @@ ab
 http://ab/
 #gecko-host escaped
 ab
+#ie-canon escaped
+http://ab/
+#ie-host escaped
+ab
+#ie-invalid 
 
 #data escaped
 http://a\uFFF9b/
@@ -629,6 +879,11 @@ http://a%EF%BF%B9b/
 http://a\uFFF9b/
 #gecko-host escaped
 a\uFFF9b
+#ie-canon escaped
+http://a\uFFF9b/
+#ie-host escaped
+a\uFFF9b
+#ie-invalid 1
 
 #data escaped
 http://a\uFFFAb/
@@ -641,6 +896,11 @@ http://a%EF%BF%BAb/
 http://a\uFFFAb/
 #gecko-host escaped
 a\uFFFAb
+#ie-canon escaped
+http://a\uFFFAb/
+#ie-host escaped
+a\uFFFAb
+#ie-invalid 1
 
 #data escaped
 http://a\uFFFBb/
@@ -653,6 +913,11 @@ http://a%EF%BF%BBb/
 http://a\uFFFBb/
 #gecko-host escaped
 a\uFFFBb
+#ie-canon escaped
+http://a\uFFFBb/
+#ie-host escaped
+a\uFFFBb
+#ie-invalid 1
 
 #data escaped
 http://a\uFFFCb/
@@ -665,6 +930,11 @@ http://a%EF%BF%BCb/
 http://a\uFFFCb/
 #gecko-host escaped
 a\uFFFCb
+#ie-canon escaped
+http://a\uFFFCb/
+#ie-host escaped
+a\uFFFCb
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D173b/
@@ -677,6 +947,11 @@ http://a%F0%9D%85%B3b/
 http://a\U0001D173b/
 #gecko-host escaped
 a\U0001D173b
+#ie-canon escaped
+http://a\U0001D173b/
+#ie-host escaped
+a\U0001D173b
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D174b/
@@ -689,6 +964,11 @@ http://a%F0%9D%85%B4b/
 http://a\U0001D174b/
 #gecko-host escaped
 a\U0001D174b
+#ie-canon escaped
+http://a\U0001D174b/
+#ie-host escaped
+a\U0001D174b
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D175b/
@@ -701,6 +981,11 @@ http://a%F0%9D%85%B5b/
 http://a\U0001D175b/
 #gecko-host escaped
 a\U0001D175b
+#ie-canon escaped
+http://a\U0001D175b/
+#ie-host escaped
+a\U0001D175b
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D176b/
@@ -713,6 +998,11 @@ http://a%F0%9D%85%B6b/
 http://a\U0001D176b/
 #gecko-host escaped
 a\U0001D176b
+#ie-canon escaped
+http://a\U0001D176b/
+#ie-host escaped
+a\U0001D176b
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D177b/
@@ -725,6 +1015,11 @@ http://a%F0%9D%85%B7b/
 http://a\U0001D177b/
 #gecko-host escaped
 a\U0001D177b
+#ie-canon escaped
+http://a\U0001D177b/
+#ie-host escaped
+a\U0001D177b
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D178b/
@@ -737,6 +1032,11 @@ http://a%F0%9D%85%B8b/
 http://a\U0001D178b/
 #gecko-host escaped
 a\U0001D178b
+#ie-canon escaped
+http://a\U0001D178b/
+#ie-host escaped
+a\U0001D178b
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D179b/
@@ -749,6 +1049,11 @@ http://a%F0%9D%85%B9b/
 http://a\U0001D179b/
 #gecko-host escaped
 a\U0001D179b
+#ie-canon escaped
+http://a\U0001D179b/
+#ie-host escaped
+a\U0001D179b
+#ie-invalid 1
 
 #data escaped
 http://a\U0001D17Ab/
@@ -761,4 +1066,9 @@ http://a%F0%9D%85%BAb/
 http://a\U0001D17Ab/
 #gecko-host escaped
 a\U0001D17Ab
+#ie-canon escaped
+http://a\U0001D17Ab/
+#ie-host escaped
+a\U0001D17Ab
+#ie-invalid 1
 

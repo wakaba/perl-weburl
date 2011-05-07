@@ -9,6 +9,11 @@ http://a%EF%BF%B9b/
 http://a\uFFF9b/
 #gecko-host escaped
 a\uFFF9b
+#ie-canon escaped
+http://a\uFFF9b/
+#ie-host escaped
+a\uFFF9b
+#ie-invalid 1
 
 #data escaped
 http://a\uFFFAb/
@@ -21,6 +26,11 @@ http://a%EF%BF%BAb/
 http://a\uFFFAb/
 #gecko-host escaped
 a\uFFFAb
+#ie-canon escaped
+http://a\uFFFAb/
+#ie-host escaped
+a\uFFFAb
+#ie-invalid 1
 
 #data escaped
 http://a\uFFFBb/
@@ -33,6 +43,11 @@ http://a%EF%BF%BBb/
 http://a\uFFFBb/
 #gecko-host escaped
 a\uFFFBb
+#ie-canon escaped
+http://a\uFFFBb/
+#ie-host escaped
+a\uFFFBb
+#ie-invalid 1
 
 #data escaped
 http://a\uFFFCb/
@@ -45,6 +60,11 @@ http://a%EF%BF%BCb/
 http://a\uFFFCb/
 #gecko-host escaped
 a\uFFFCb
+#ie-canon escaped
+http://a\uFFFCb/
+#ie-host escaped
+a\uFFFCb
+#ie-invalid 1
 
 #data escaped
 http://a\uFFFDb/
@@ -57,4 +77,9 @@ http://a%EF%BF%BDb/
 http://a\uFFFDb/
 #gecko-host escaped
 a\uFFFDb
+#ie-canon escaped
+http://a\uFFFDb/
+#ie-host escaped
+a\uFFFDb
+#ie-invalid 1
 
