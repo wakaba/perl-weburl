@@ -136,6 +136,7 @@ sub __canon {
       scheme user password host port path query fragment invalid canon charset
       chrome-invalid chrome-canon chrome-host
       gecko-invalid gecko-canon gecko-host
+      ie-invalid ie-canon ie-host
     )) {
       next unless $test->{$_};
 
@@ -169,9 +170,16 @@ sub __canon {
           $result->{$key} = $result->{'gecko-' . $key};
         }
       }
+    } elsif ($BROWSER eq 'ie') {
+      for my $key (qw(invalid canon host)) {
+        if (defined $result->{'ie-' . $key}) {
+          $result->{$key} = $result->{'ie-' . $key};
+        }
+      }
     }
     delete $result->{$_} for qw(chrome-invalid chrome-canon chrome-host);
     delete $result->{$_} for qw(gecko-invalid gecko-canon gecko-host);
+    delete $result->{$_} for qw(ie-invalid ie-canon ie-host);
     if ($result->{invalid}) {
       delete $result->{$_} for qw(canon scheme host path query fragment);
     }
