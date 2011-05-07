@@ -505,7 +505,7 @@ sub to_ascii ($$) {
     $s =~ s{%([5][Ff])}{pack 'C', hex $1}ge;
   }
 
-  if (GECKO || IE) {
+  if (GECKO) {
     $s = nameprep $s;
     return $fallback unless defined $s;
     
@@ -515,6 +515,26 @@ sub to_ascii ($$) {
       } elsif (not defined eval { nameprepprohibited ($fallback); 1 }) {
         return $fallback;
       }
+    }
+  } elsif (IE) {
+    if ($s =~ /[^\x00-\x7F]/) {
+      $s = nameprep $s;
+      return $fallback unless defined $s;
+      
+      if ($s =~ /[\x00\x20]/) {
+        if ($fallback =~ /[\x00\x20]/) {
+          return undef;
+        } elsif (not defined eval { nameprepprohibited ($fallback); 1 }) {
+          return $fallback;
+        }
+      }
+
+      if ($s =~ /[\x20-\x2C\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]/) {
+        return undef;
+      }
+    } else {
+      $s =~ tr/A-Z/a-z/;
+      #$s =~ s/(%[0-9A-Fa-f]{2})/uc $1/ge;
     }
   }
 
