@@ -287,6 +287,22 @@ http://a\uFF0Db.test/
 #path /
 
 #data escaped
+http://ab\uFF0D.test/
+#canon http://ab-.test/
+#scheme http
+#host ab-.test
+#path /
+#ie-invalid 1
+
+#data escaped
+http://\uFF0Dab.test/
+#canon http://-ab.test/
+#scheme http
+#host -ab.test
+#path /
+#ie-invalid 1
+
+#data escaped
 http://a\uFF0Eb.test/
 #canon http://a.b.test/
 #scheme http

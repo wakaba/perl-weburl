@@ -551,15 +551,20 @@ sub label_to_unicode_ ($;%) {
 
   if ($s =~ /[^\x00-\x7F]/) {
     $s = label_nameprep $s, allow_unassigned => $args{allow_unassigned};
+    return undef unless defined $s;
   }
 
-  return undef unless $s =~ /^[Xx][Nn]--/;
   my $t = $s;
-  
-  $s =~ s/^[Xx][Nn]--//;
-
-  $s = decode_punycode $s;
-  return undef unless defined $s;
+  if ($s =~ /^[Xx][Nn]--/) {
+    $s =~ s/^[Xx][Nn]--//;
+    
+    $s = decode_punycode $s;
+    return undef unless defined $s;
+  } else {
+    unless ($args{process_non_xn_label}) {
+      return undef;
+    }
+  }
   my $u = $s;
 
   $s = label_to_ascii $s,
@@ -634,7 +639,8 @@ sub to_ascii ($$) {
             allow_unassigned => 0;
         $label = label_to_unicode_ defined $a_label ? $a_label : $label,
             use_std3_ascii_rules => 1,
-            allow_unassigned => 0;
+            allow_unassigned => 0,
+            process_non_xn_label => 1;
         return undef unless defined $label;
       }
       $label =~ tr/A-Z/a-z/;

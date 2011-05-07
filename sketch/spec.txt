@@ -259,14 +259,18 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
           In the following steps, NFKC is: Unicode 3.2 + Corrigendum
           #3 (- Corrigendum #4) + Corrigendum #5.
 
+          In the following steps, ToUnicode is modified as follows: If
+          the ProcessNonXNLabel flag is set, in step 3, when the
+          sequence does not begin with the ACE prefix, jump to step 6.
+
           Let /label_a/ be /label/ as processed by the IDNA2003
           ToASCII operation with the flag UseSTD3ASCIIRules set (no
           AllowUnassigned).
 
           Let /label/ be /label_a/, if its value is not "failed", or
           /label/ otherwise, as processed by the IDNA2003 ToUnicode
-          operation with the flag UseSTD3ASCIIRules set (no
-          AllowUnassigned).
+          operation with flags UseSTD3ASCIIRules and ProcessNonXNLabel
+          set (no AllowUnassigned).
 
           If the previous step failed, the result of the entire
           algorithm is "failed" and abort the algorithm.
