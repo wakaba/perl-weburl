@@ -191,22 +191,22 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Nameprep a string /s/
 
-  GECKO: If /s/ contains U+0340 or U+0341, fail.
+  GECKO / IE: If /s/ contains U+0340 or U+0341, fail.
 
   Apply the Nameprep Mapping step to /s/.
 
   CHROME: Apply NFKC of Unicode 3.2 + Corrigendum #3 (- Corrigendum
   #4) + Corrigendum #5 to /s/.
 
-  GECKO: If there are Corrigendum 5 Sequences
+  GECKO / IE: If there are Corrigendum 5 Sequences
   <http://www.unicode.org/reports/tr15/#Corrigendum_5_Sequences> in
   /s/, change the order of the second last and the last characters in
   the sequences.
 
-  GECKO: Apply NFKC of Unicode 4.0 (+ Corrigendum #3 + Corrigendum #4)
+  GECKO / IE: Apply NFKC of Unicode 4.0 (+ Corrigendum #3 + Corrigendum #4)
   + Corrigendum #5 to /s/.
 
-  GECKO: Apply the Nameprep Mapping step to /s/, again.
+  GECKO / IE: Apply the Nameprep Mapping step to /s/, again.
 
   Apply the Nameprep prohibit step [RFC 3491] to /s/.  This step might
   fail.
@@ -215,11 +215,12 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * ToASCII a string /s/
 
-  If the browser is Chrome or Gecko:
+  ...
 
     Remove U+0009, U+000A, U+000D from /s/.
 
-    GECKO: Let /fallback/ be /s/.  CHROME: Let /fallback/ be "fails".
+    GECKO / IE: Let /fallback/ be /s/.  CHROME: Let /fallback/ be
+    "fails".
 
     Let /fallback/ be ASCII lowercase variant of /fallback/.
 
@@ -227,16 +228,16 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     CHROME: If /s/ contains "%", abort.
 
-    GECKO: Apply the Nameprep algorithm with /s/ and let /s/ be the
-    result.  If the algorithm fails, return /fallback/ and abort these
-    steps.
+    GECKO / IE: Apply the Nameprep algorithm with /s/ and let /s/ be
+    the result.  If the algorithm fails, return /fallback/ and abort
+    these steps.
 
-    GECKO: If /s/ contains U+0000 or U+0020:
+    GECKO / IE: If /s/ contains U+0000 or U+0020:
 
-      GECKO: If /fallback/ contains U+0000 or U+0020, then abort the
+      GECKO / IE: If /fallback/ contains U+0000 or U+0020, then abort the
       algorithm.
 
-      GECKO: Otherwise, if /fallback/ contains any character
+      GECKO / IE: Otherwise, if /fallback/ contains any character
       prohibited by Nameprep, return /fallback/.
 
     Replace any U+3002 IDEOGRAPHIC FULL STOP character, U+FF0E
@@ -260,7 +261,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
       /label/ be the result.  If the algorithm fails, the ToASCII
       algorithm fails.  Abort the ToASCII algorithm.
 
-      Apply the Nameprep bidi check step [RFC 3491] to /s/, GECKO:
+      Apply the Nameprep bidi check step [RFC 3491] to /s/, GECKO / IE:
       using Unicode 3.2 or CHROME: using latest version of Unicode
       (Version 6.0.0 at the moment).  If it fails, return /fallback/
       and abort the ToASCII algorithm.
@@ -270,7 +271,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     If the /need-punycode/ flag is /true/,
 
-      GECKO: 
+      GECKO / IE: 
 
         Let /tld/ be the last non-empty /label/, if any, or the empty
         string.
@@ -294,13 +295,13 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
             Encode /label/ by Punycode and prepend "xn--". XXX if
             failed
 
-            If /label/ contains more than 63 [GECKO: 62] characters,
-            abort the ToASCII algorithm.  GECKO: Except when original
+            If /label/ contains more than 63 [GECKO / IE: 62] characters,
+            abort the ToASCII algorithm.  GECKO / IE: Except when original
             /label/ has no non-ASCII character, in which case replace
             /label/ by its first 62 characters.
 
-        Otherwise, if /label/ contains more than 63 [GECKO: 62]
-        characters, abort the ToASCII algorithm.  GECKO: Except when
+        Otherwise, if /label/ contains more than 63 [GECKO / IE: 62]
+        characters, abort the ToASCII algorithm.  GECKO / IE: Except when
         original /label/ has no non-ASCII character, in which case
         replace /label/ by its first 62 characters.
 
