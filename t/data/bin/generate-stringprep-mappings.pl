@@ -340,6 +340,7 @@ http://%s/
       } else {
         my $host = $BEFORE . (defined $newc ? $newc : chr $v) . $AFTER;
         my $gecko_host;
+        my $ie_invalid = $args{ie_invalid} && $v != 0x200B && !$args{pe_input} && $BEFORE eq 'a' ? '1' : '';
         if ($v == 0x0340 or $v == 0x0341) {
           $punycoded = to_punycode_with_prefix NFKC $host;
           $gecko_host = $host;
@@ -356,6 +357,7 @@ http://%s/
           $gecko_host = to_punycode_with_prefix $gecko_host
               if $gecko_host =~ /[^\x00-\x7F]/;
           $gecko_host =~ tr/A-Z/a-z/;
+          $ie_invalid = 1;
         } else {
           $gecko_host = $host;
         }
@@ -393,7 +395,7 @@ http://%s/
             uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
             uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
             uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
-            $args{ie_invalid} && $v != 0x200B && !$args{pe_input} && $BEFORE eq 'a' ? '1' : '';
+            $ie_invalid;
       }
     } # $v
   }
