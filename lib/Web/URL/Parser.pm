@@ -612,11 +612,18 @@ sub to_ascii ($$) {
         $_;
       } else {
         if (IE and /^xn--/) {
-          if (/[^0-9A-Za-z-]/ or /-$/ or $_ eq 'xn--') {
+          if (/[^0-9A-Za-z-]/ or /-$/) {
             return undef;
           } else {
             my $label = eval { decode_punycode substr $_, 4 };
             return undef unless defined $label;
+
+            if ($label =~ /^xn--/ and
+                ($label =~ /[^0-9A-Za-z-]/ or
+                 $label =~ /-$/)) {
+              return undef;
+            }
+
             $label;
           }
         } elsif (length $_ > 62 and (GECKO or IE)) {
