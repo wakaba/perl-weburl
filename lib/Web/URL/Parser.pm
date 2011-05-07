@@ -413,14 +413,21 @@ use Unicode::Stringprep;
      '',
      [],
      1, 0);
+*nameprepunassigned = Unicode::Stringprep->new
+    (3.2,
+     [],
+     '',
+     [],
+     0, 1);
 use Char::Prop::Unicode::BidiClass;
 
 sub CHROME () { 0 }
 sub GECKO () { 0 }
 sub IE () { 1 }
 
-sub nameprep ($) {
+sub nameprep ($;%) {
   my $label = shift;
+  my %args = @_;
   
   if (GECKO) { # correct (new)
     if ($label =~ /[\x{0340}\x{0341}]/) {
@@ -490,6 +497,93 @@ sub nameprep_bidi ($) {
   return $label;
 } # nameprep_bidi
 
+sub label_nameprep ($;%) {
+  my $s = shift;
+  my %args = @_;
+
+  $s = nameprep $s;
+  return undef unless defined $s;
+
+  $s = nameprep_bidi $s;
+  return undef unless defined $s;
+
+  unless ($args{allow_unassinged}) {
+    $s = eval { nameprepunassigned ($s) };
+    return undef unless defined $s;
+  }
+  
+  return $s;
+} # label_nameprep
+
+sub label_to_ascii ($;%) {
+  my $s = shift;
+  my %args = @_;
+  
+  if ($s =~ /[^\x00-\x7F]/) {
+    $s = label_nameprep $s, allow_unassinged => $args{allow_unassigned};
+    return undef unless defined $s;
+  }
+
+  if ($args{use_std3_ascii_rules}) {
+    return undef if $s =~ /[\x00-\x2C\x2E\x2F\x3A-\x40\x5B-\x60\x7B-\x7F]/;
+  }
+
+  return undef if $s =~ /\A-/ or $s =~ /-\z/;
+
+  if ($s =~ /[^\x00-\x7F]/) {
+    return undef if $s =~ /^[Xx][Nn]--/;
+
+    $s = encode_punycode $s;
+    return undef unless defined $s;
+
+    $s = 'xn--' . $s;
+  }
+
+  return undef if length $s == 0;
+  return undef if length $s > 63;
+
+  return $s;
+} # label_to_ascii
+
+sub label_to_unicode_ ($;%) {
+  my $s = shift;
+  my %args = @_;
+
+  if ($s =~ /[^\x00-\x7F]/) {
+    $s = label_nameprep $s, allow_unassigned => $args{allow_unassigned};
+  }
+
+  return undef unless $s =~ /^[Xx][Nn]--/;
+  my $t = $s;
+  
+  $s =~ s/^[Xx][Nn]--//;
+
+  $s = decode_punycode $s;
+  return undef unless defined $s;
+  my $u = $s;
+
+  $s = label_to_ascii $s,
+      allow_unassinged => $args{allow_unassigned},
+      use_std3_ascii_rules => $args{use_std3_ascii_rules};
+  return undef unless defined $s;
+
+  $s =~ tr/A-Z/a-z/;
+  $t =~ tr/A-Z/a-z/;
+  return undef unless $s eq $t;
+
+  return $u;
+} # label_to_unicode_
+
+sub label_to_unicode ($;%) {
+  my $s = shift;
+  my %args = @_;
+  
+  my $t = label_to_unicode_ $s, %args;
+  return $t if defined $t;
+
+  return $s;
+} # label_to_unicode
+
 use Web::DomainName::IDNEnabled;
 use Char::Class::IDNBlacklist qw(InIDNBlacklistChars);
 
@@ -526,25 +620,6 @@ sub to_ascii ($$) {
         return $fallback;
       }
     }
-  } elsif (IE) {
-    if ($s =~ /[^\x00-\x7F]/) {
-      $s = nameprep $s;
-      return $fallback unless defined $s;
-      
-      if ($s =~ /[\x00\x20]/) {
-        if ($fallback =~ /[\x00\x20]/) {
-          return undef;
-        } elsif (not defined eval { nameprepprohibited ($fallback); 1 }) {
-          return $fallback;
-        }
-      }
-
-      if ($s =~ /[\x20-\x2C\x2F\x3A-\x40\x5B-\x60\x7B-\x7E]/) {
-        return undef;
-      }
-    } else {
-      $s =~ tr/A-Z/a-z/;
-    }
   }
 
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
@@ -552,6 +627,21 @@ sub to_ascii ($$) {
   my @label;
   my $need_punycode;
   for my $label (split /\./, $s, -1) {
+    if (IE) {
+      if ($label =~ /^[Xx][Nn]--/ or $label =~ /[^\x00-\x7F]/) {
+        my $a_label = label_to_ascii $label,
+            use_std3_ascii_rules => 1,
+            allow_unassigned => 0;
+        $label = label_to_unicode_ defined $a_label ? $a_label : $label,
+            use_std3_ascii_rules => 1,
+            allow_unassigned => 0;
+        return undef unless defined $label;
+      }
+      $label =~ tr/A-Z/a-z/;
+      push @label, $label;
+      next;
+    }
+
     if (CHROME) {
       $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
         sprintf '%%%02X', ord $1;
@@ -576,10 +666,6 @@ sub to_ascii ($$) {
       }
     }
 
-    if (IE and $label =~ /^xn--/) {
-      $need_punycode = 1;
-    }
-
     push @label, $label;
   } # $label
 
@@ -597,8 +683,6 @@ sub to_ascii ($$) {
           $idn_enabled = 1;
         }
       }
-    } elsif (IE) {
-      $idn_enabled = 1;
     }
 
     my $empty = 0;
@@ -616,22 +700,7 @@ sub to_ascii ($$) {
         $empty++;
         $_;
       } else {
-        if (IE and /^xn--/) {
-          if (/[^0-9A-Za-z-]/ or /-$/) {
-            return undef;
-          } else {
-            my $label = eval { decode_punycode substr $_, 4 };
-            return undef unless defined $label;
-
-            if ($label =~ /^xn--/ and
-                ($label =~ /[^0-9A-Za-z-]/ or
-                 $label =~ /-$/)) {
-              return undef;
-            }
-
-            $label;
-          }
-        } elsif (length $_ > 62 and GECKO) {
+        if (length $_ > 62 and GECKO) {
           substr $_, 0, 62;
         } else {
           return undef if length $_ > 63;
