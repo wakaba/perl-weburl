@@ -626,7 +626,7 @@ sub to_ascii ($$) {
 
             $label;
           }
-        } elsif (length $_ > 62 and (GECKO or IE)) {
+        } elsif (length $_ > 62 and GECKO) {
           substr $_, 0, 62;
         } else {
           return undef if length $_ > 63;
