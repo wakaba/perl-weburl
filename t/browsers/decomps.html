@@ -282,10 +282,17 @@
       expected.path = expected.path.replace (/^\//, '');
     }
     
-    if (test.getFieldValue ('invalid') ||
+    var invalid = test.getFieldValue ('invalid') ||
         (isChrome && test.getFieldValue ('chrome-invalid')) ||
         (isGecko && test.getFieldValue ('gecko-invalid')) ||
-        (isIE && test.getFieldValue ('ie-invalid'))) {
+        (isIE && test.getFieldValue ('ie-invalid'));
+    if (invalid && isChrome && test.getFieldValue ('chrome-not-invalid'))
+        invalid = false;
+    if (invalid && isGecko && test.getFieldValue ('gecko-not-invalid'))
+        invalid = false;
+    if (invalid && isIE && test.getFieldValue ('ie-not-invalid'))
+        invalid = false;
+    if (invalid) {
       expected = {
         url: '',
         scheme: '',

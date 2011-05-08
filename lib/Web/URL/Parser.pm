@@ -665,7 +665,9 @@ sub to_ascii ($$) {
 
         if ($label =~ /[^\x00-\x7F]/) {
           unless ($idn_enabled) {
-            return undef if CHROME and $label =~ /^xn--/;
+            if (THIS or CHROME) {
+              return undef if $label =~ /^xn--/;
+            }
             $label = eval { encode_punycode $label };
             return $fallback unless defined $label;
             $label = 'xn--' . $label;
@@ -690,20 +692,24 @@ sub to_ascii ($$) {
     $s = encode 'utf-8', $s;
     $s =~ s{%([0-9A-Fa-f]{2})}{encode 'iso-8859-1', chr hex $1}ge;
     $s =~ tr/A-Z/a-z/;
-    
+  }
+
+  if (THIS) {
+    if ($s =~ /[\x00\x25\x2F\x3F\x5C]/) {
+      return undef;
+    }
+  } elsif (CHROME) {
     if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
       return undef;
     }
-  }
-
-  if (IE) {
+  } elsif (IE) {
     if ($s =~ /[\x00\x2F\x3F\x5C]|%00|%(?![0-9A-Fa-f]{2})/) {
       return undef;
     }
   }
   
   if (THIS) {
-    $s =~ s{([\x00-\x2C\x2F\x3A-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
+    $s =~ s{([\x00-\x2A\x2C\x2F\x3A-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
       sprintf '%%%02X', ord $1;
     }ge;
   } elsif (IE) {
