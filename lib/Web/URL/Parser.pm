@@ -610,20 +610,15 @@ sub to_ascii ($$) {
     $s = Encode::encode ('utf-8', $s);
     $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
     $s = Encode::decode ('utf-8', $s); # XXX error-handling
-    
-    if ($s =~ /%/) {
-      return undef;
-    }
-  }
-
-  my $need_punycode;
-  my $has_root_dot;
+  }    
+  
   if (IE) {
     $s =~ s{%([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f])}{pack 'C', hex $1}ge;
   }
 
-  $need_punycode = 1 if $s =~ /[^\x00-\x7F]/;
+  my $need_punycode = $s =~ /[^\x00-\x7F]/;
 
+  my $has_root_dot;
   if (IE or CHROME) {
     $has_root_dot = 1 if $s =~ s/[.\x{3002}\x{FF0E}\x{FF61}]\z//;
   }
@@ -643,21 +638,18 @@ sub to_ascii ($$) {
     }
   }
 
+  return undef if CHROME and $s =~ /%/;
+
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
+
+  $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+    sprintf '%%%02X', ord $1;
+  }ge if CHROME;
+
+  $need_punycode = 1 if IE and $s =~ /(?:^|\.)[Xx][Nn]--/;
 
   my @label = split /\./, $s, -1;
   @label = ('') unless @label;
-
-  @label = map {
-    s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
-      sprintf '%%%02X', ord $1;
-    }ge;
-    $_;
-  } @label if CHROME;
-
-  for (@label) {
-    $need_punycode = 1 if IE and /^[Xx][Nn]--/;
-  }
 
   if ($need_punycode) {
     my $idn_enabled;
