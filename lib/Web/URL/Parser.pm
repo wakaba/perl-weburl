@@ -502,8 +502,10 @@ sub label_nameprep ($;%) {
   $s = nameprep $s;
   return undef unless defined $s;
 
-  $s = nameprep_bidi $s;
-  return undef unless defined $s;
+  unless ($args{no_bidi}) {
+    $s = nameprep_bidi $s;
+    return undef unless defined $s;
+  }
 
   unless ($args{allow_unassinged}) {
     $s = eval { nameprepunassigned ($s) };
@@ -518,7 +520,9 @@ sub label_to_ascii ($;%) {
   my %args = @_;
   
   if ($s =~ /[^\x00-\x7F]/) {
-    $s = label_nameprep $s, allow_unassinged => $args{allow_unassigned};
+    $s = label_nameprep $s,
+        allow_unassinged => $args{allow_unassigned},
+        no_bidi => $args{no_bidi};
     return undef unless defined $s;
   }
 
@@ -548,7 +552,9 @@ sub label_to_unicode_ ($;%) {
   my %args = @_;
 
   if ($s =~ /[^\x00-\x7F]/) {
-    $s = label_nameprep $s, allow_unassigned => $args{allow_unassigned};
+    $s = label_nameprep $s,
+        allow_unassigned => $args{allow_unassigned},
+        no_bidi => $args{no_bidi};
     return undef unless defined $s;
   }
 
@@ -567,7 +573,8 @@ sub label_to_unicode_ ($;%) {
 
   $s = label_to_ascii $s,
       allow_unassinged => $args{allow_unassigned},
-      use_std3_ascii_rules => $args{use_std3_ascii_rules};
+      use_std3_ascii_rules => $args{use_std3_ascii_rules},
+      no_bidi => $args{no_bidi};
   return undef unless defined $s;
 
   $s =~ tr/A-Z/a-z/;
@@ -608,8 +615,17 @@ sub to_ascii ($$) {
     }
   }
 
+  my $need_punycode;
   if (IE) {
     $s =~ s{%([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f])}{pack 'C', hex $1}ge;
+
+    if ($s =~ /[^\x00-\x7F]/) {
+      $need_punycode = 1;
+      $s = label_nameprep $s,
+          allow_unassinged => 0,
+          no_bidi => 1;
+      return undef if not defined $s;
+    }
   }
 
   if (GECKO) {
@@ -628,7 +644,6 @@ sub to_ascii ($$) {
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
   my @label;
-  my $need_punycode;
   for my $label (split /\./, $s, -1) {
     if (CHROME) {
       $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
@@ -687,14 +702,17 @@ sub to_ascii ($$) {
       pop @label if $has_root_dot;
       @label = map {
         my $label = $_;
-        my $a_label = label_to_ascii $label,
-            use_std3_ascii_rules => 1,
-            allow_unassigned => 0;
-        $label = label_to_unicode_ defined $a_label ? $a_label : $label,
+        if ($label =~ /[^\x00-\x7F]/) {
+          $label = 'xn--' . eval { encode_punycode $_ };
+          return undef unless defined $label;
+        }
+        $label = label_to_unicode_ $label,
             use_std3_ascii_rules => 1,
             allow_unassigned => 0,
-            process_non_xn_label => 1;
+            process_non_xn_label => 1,
+            no_bidi => 0;
         return undef unless defined $label;
+
         $label;
       } @label;
       push @label, '' if $has_root_dot;
