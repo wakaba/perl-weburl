@@ -622,11 +622,11 @@ sub to_ascii ($$) {
     $s =~ s{%([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f])}{pack 'C', hex $1}ge;
   }
 
+  $need_punycode = 1 if $s =~ /[^\x00-\x7F]/;
+
   if (IE or CHROME) {
     $has_root_dot = 1 if $s =~ s/[.\x{3002}\x{FF0E}\x{FF61}]\z//;
   }
-
-  $need_punycode = 1 if $s =~ /[^\x00-\x7F]/;
 
   if (IE or GECKO) {
     $s = nameprep $s;
