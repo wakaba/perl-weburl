@@ -674,12 +674,22 @@ sub to_ascii ($$) {
           $label = 'xn--' . eval { encode_punycode $_ };
           return undef unless defined $label;
         }
-        $label = label_to_unicode_ $label,
-            use_std3_ascii_rules => 1,
-            allow_unassigned => 0,
-            process_non_xn_label => 1,
-            no_bidi => 0;
-        return undef unless defined $label;
+        {
+          my $p_label = $label;
+          if ($label =~ /^xn--/) {
+            $label =~ s/^xn--//;
+            
+            $label = decode_punycode $label;
+            return undef unless defined $label;
+          }
+          
+          my $a_label = label_to_ascii $label,
+              allow_unassinged => 0,
+              use_std3_ascii_rules => 1,
+              no_bidi => 0;
+          return undef unless defined $a_label;
+          return undef unless $a_label eq $p_label;
+        }
         return undef if $label =~ /\x{3002}/;
 
         $label;

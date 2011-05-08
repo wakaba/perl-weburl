@@ -304,17 +304,27 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
         IE: 
 
-          In the following steps, ToUnicode is modified as follows: If
-          the ProcessNonXNLabel flag is set, in step 3, when the
-          sequence does not begin with the ACE prefix, jump to step 6.
-
           If /label/ contains a non-ASCII character, encode /label/ by
-          Punycode, prepended by "xn--".
+          Punycode, prepended by "xn--".  If it fails, abort the
+          entire algorithm.
+          
+          Let /p_label/ be /label/.
 
-          Process /label/ by the IDNA2003 ToUnicode operation with
-          flags UseSTD3ASCIIRules and ProcessNonXNLabel set (no
+          If /label/ begins by "xn--",
+
+            Remove "xn--" prefix from /label/.
+
+            Decode /label/ by Punycode decode algorithm.  If it fails,
+            abort the entire algorithm.
+
+          Let /a_label/ be result of applying IDNA2003 ToASCII
+          operation to /label/ with the flag UseSTD3ASCIIRules set (no
           AllowUnassigned).  Use the Namespace-bidi algorithm instead
-          of bidi checking step.
+          of bidi checking step.  If it fails, abort the entire
+          algorithm.
+
+          If /a_label/ is different from /p_label/, abort the entire
+          algorithm.
 
           Fail if /label/ contains a U+3002 IDEOGRAPHIC FULL STOP
           character.
