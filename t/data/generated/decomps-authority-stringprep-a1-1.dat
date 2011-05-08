@@ -4817,25 +4817,25 @@ xn--ab-1xd
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u065F\u0641/
+http://a\u065Fb/
 #canon escaped
-http://xn--chbc3g/
+http://xn--ab-4xd/
 #canon-unescaped escaped
-http://xn--chbc3g/
+http://xn--ab-4xd/
 #scheme http
 #host escaped
-xn--chbc3g
+xn--ab-4xd
 #host-unescaped escaped
-xn--chbc3g
+xn--ab-4xd
 #path /
 #gecko-canon escaped
-http://xn--chbc3g/
+http://xn--ab-4xd/
 #gecko-host escaped
-xn--chbc3g
+xn--ab-4xd
 #ie-canon escaped
-http://xn--chbc3g/
+http://xn--ab-4xd/
 #ie-host escaped
-xn--chbc3g
+xn--ab-4xd
 #ie-invalid 1
 
 #data escaped
@@ -8359,91 +8359,91 @@ xn--chbc71l
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0816\u0641/
+http://a\u0816b/
 #canon escaped
-http://xn--chbc02l/
+http://xn--ab-r0e/
 #canon-unescaped escaped
-http://xn--chbc02l/
+http://xn--ab-r0e/
 #scheme http
 #host escaped
-xn--chbc02l
+xn--ab-r0e
 #host-unescaped escaped
-xn--chbc02l
+xn--ab-r0e
 #path /
 #gecko-canon escaped
-http://xn--chbc02l/
+http://xn--ab-r0e/
 #gecko-host escaped
-xn--chbc02l
+xn--ab-r0e
 #ie-canon escaped
-http://xn--chbc02l/
+http://xn--ab-r0e/
 #ie-host escaped
-xn--chbc02l
+xn--ab-r0e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0817\u0641/
+http://a\u0817b/
 #canon escaped
-http://xn--chbc32l/
+http://xn--ab-u0e/
 #canon-unescaped escaped
-http://xn--chbc32l/
+http://xn--ab-u0e/
 #scheme http
 #host escaped
-xn--chbc32l
+xn--ab-u0e
 #host-unescaped escaped
-xn--chbc32l
+xn--ab-u0e
 #path /
 #gecko-canon escaped
-http://xn--chbc32l/
+http://xn--ab-u0e/
 #gecko-host escaped
-xn--chbc32l
+xn--ab-u0e
 #ie-canon escaped
-http://xn--chbc32l/
+http://xn--ab-u0e/
 #ie-host escaped
-xn--chbc32l
+xn--ab-u0e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0818\u0641/
+http://a\u0818b/
 #canon escaped
-http://xn--chbc62l/
+http://xn--ab-x0e/
 #canon-unescaped escaped
-http://xn--chbc62l/
+http://xn--ab-x0e/
 #scheme http
 #host escaped
-xn--chbc62l
+xn--ab-x0e
 #host-unescaped escaped
-xn--chbc62l
+xn--ab-x0e
 #path /
 #gecko-canon escaped
-http://xn--chbc62l/
+http://xn--ab-x0e/
 #gecko-host escaped
-xn--chbc62l
+xn--ab-x0e
 #ie-canon escaped
-http://xn--chbc62l/
+http://xn--ab-x0e/
 #ie-host escaped
-xn--chbc62l
+xn--ab-x0e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0819\u0641/
+http://a\u0819b/
 #canon escaped
-http://xn--chbc92l/
+http://xn--ab-00e/
 #canon-unescaped escaped
-http://xn--chbc92l/
+http://xn--ab-00e/
 #scheme http
 #host escaped
-xn--chbc92l
+xn--ab-00e
 #host-unescaped escaped
-xn--chbc92l
+xn--ab-00e
 #path /
 #gecko-canon escaped
-http://xn--chbc92l/
+http://xn--ab-00e/
 #gecko-host escaped
-xn--chbc92l
+xn--ab-00e
 #ie-canon escaped
-http://xn--chbc92l/
+http://xn--ab-00e/
 #ie-host escaped
-xn--chbc92l
+xn--ab-00e
 #ie-invalid 1
 
 #data escaped
@@ -8469,201 +8469,201 @@ xn--chbc23l
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u081B\u0641/
+http://a\u081Bb/
 #canon escaped
-http://xn--chbc53l/
+http://xn--ab-60e/
 #canon-unescaped escaped
-http://xn--chbc53l/
+http://xn--ab-60e/
 #scheme http
 #host escaped
-xn--chbc53l
+xn--ab-60e
 #host-unescaped escaped
-xn--chbc53l
+xn--ab-60e
 #path /
 #gecko-canon escaped
-http://xn--chbc53l/
+http://xn--ab-60e/
 #gecko-host escaped
-xn--chbc53l
+xn--ab-60e
 #ie-canon escaped
-http://xn--chbc53l/
+http://xn--ab-60e/
 #ie-host escaped
-xn--chbc53l
+xn--ab-60e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u081C\u0641/
+http://a\u081Cb/
 #canon escaped
-http://xn--chbc83l/
+http://xn--ab-90e/
 #canon-unescaped escaped
-http://xn--chbc83l/
+http://xn--ab-90e/
 #scheme http
 #host escaped
-xn--chbc83l
+xn--ab-90e
 #host-unescaped escaped
-xn--chbc83l
+xn--ab-90e
 #path /
 #gecko-canon escaped
-http://xn--chbc83l/
+http://xn--ab-90e/
 #gecko-host escaped
-xn--chbc83l
+xn--ab-90e
 #ie-canon escaped
-http://xn--chbc83l/
+http://xn--ab-90e/
 #ie-host escaped
-xn--chbc83l
+xn--ab-90e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u081D\u0641/
+http://a\u081Db/
 #canon escaped
-http://xn--chbc14l/
+http://xn--ab-d1e/
 #canon-unescaped escaped
-http://xn--chbc14l/
+http://xn--ab-d1e/
 #scheme http
 #host escaped
-xn--chbc14l
+xn--ab-d1e
 #host-unescaped escaped
-xn--chbc14l
+xn--ab-d1e
 #path /
 #gecko-canon escaped
-http://xn--chbc14l/
+http://xn--ab-d1e/
 #gecko-host escaped
-xn--chbc14l
+xn--ab-d1e
 #ie-canon escaped
-http://xn--chbc14l/
+http://xn--ab-d1e/
 #ie-host escaped
-xn--chbc14l
+xn--ab-d1e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u081E\u0641/
+http://a\u081Eb/
 #canon escaped
-http://xn--chbc44l/
+http://xn--ab-g1e/
 #canon-unescaped escaped
-http://xn--chbc44l/
+http://xn--ab-g1e/
 #scheme http
 #host escaped
-xn--chbc44l
+xn--ab-g1e
 #host-unescaped escaped
-xn--chbc44l
+xn--ab-g1e
 #path /
 #gecko-canon escaped
-http://xn--chbc44l/
+http://xn--ab-g1e/
 #gecko-host escaped
-xn--chbc44l
+xn--ab-g1e
 #ie-canon escaped
-http://xn--chbc44l/
+http://xn--ab-g1e/
 #ie-host escaped
-xn--chbc44l
+xn--ab-g1e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u081F\u0641/
+http://a\u081Fb/
 #canon escaped
-http://xn--chbc74l/
+http://xn--ab-j1e/
 #canon-unescaped escaped
-http://xn--chbc74l/
+http://xn--ab-j1e/
 #scheme http
 #host escaped
-xn--chbc74l
+xn--ab-j1e
 #host-unescaped escaped
-xn--chbc74l
+xn--ab-j1e
 #path /
 #gecko-canon escaped
-http://xn--chbc74l/
+http://xn--ab-j1e/
 #gecko-host escaped
-xn--chbc74l
+xn--ab-j1e
 #ie-canon escaped
-http://xn--chbc74l/
+http://xn--ab-j1e/
 #ie-host escaped
-xn--chbc74l
+xn--ab-j1e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0820\u0641/
+http://a\u0820b/
 #canon escaped
-http://xn--chbc05l/
+http://xn--ab-m1e/
 #canon-unescaped escaped
-http://xn--chbc05l/
+http://xn--ab-m1e/
 #scheme http
 #host escaped
-xn--chbc05l
+xn--ab-m1e
 #host-unescaped escaped
-xn--chbc05l
+xn--ab-m1e
 #path /
 #gecko-canon escaped
-http://xn--chbc05l/
+http://xn--ab-m1e/
 #gecko-host escaped
-xn--chbc05l
+xn--ab-m1e
 #ie-canon escaped
-http://xn--chbc05l/
+http://xn--ab-m1e/
 #ie-host escaped
-xn--chbc05l
+xn--ab-m1e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0821\u0641/
+http://a\u0821b/
 #canon escaped
-http://xn--chbc35l/
+http://xn--ab-p1e/
 #canon-unescaped escaped
-http://xn--chbc35l/
+http://xn--ab-p1e/
 #scheme http
 #host escaped
-xn--chbc35l
+xn--ab-p1e
 #host-unescaped escaped
-xn--chbc35l
+xn--ab-p1e
 #path /
 #gecko-canon escaped
-http://xn--chbc35l/
+http://xn--ab-p1e/
 #gecko-host escaped
-xn--chbc35l
+xn--ab-p1e
 #ie-canon escaped
-http://xn--chbc35l/
+http://xn--ab-p1e/
 #ie-host escaped
-xn--chbc35l
+xn--ab-p1e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0822\u0641/
+http://a\u0822b/
 #canon escaped
-http://xn--chbc65l/
+http://xn--ab-s1e/
 #canon-unescaped escaped
-http://xn--chbc65l/
+http://xn--ab-s1e/
 #scheme http
 #host escaped
-xn--chbc65l
+xn--ab-s1e
 #host-unescaped escaped
-xn--chbc65l
+xn--ab-s1e
 #path /
 #gecko-canon escaped
-http://xn--chbc65l/
+http://xn--ab-s1e/
 #gecko-host escaped
-xn--chbc65l
+xn--ab-s1e
 #ie-canon escaped
-http://xn--chbc65l/
+http://xn--ab-s1e/
 #ie-host escaped
-xn--chbc65l
+xn--ab-s1e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0823\u0641/
+http://a\u0823b/
 #canon escaped
-http://xn--chbc95l/
+http://xn--ab-v1e/
 #canon-unescaped escaped
-http://xn--chbc95l/
+http://xn--ab-v1e/
 #scheme http
 #host escaped
-xn--chbc95l
+xn--ab-v1e
 #host-unescaped escaped
-xn--chbc95l
+xn--ab-v1e
 #path /
 #gecko-canon escaped
-http://xn--chbc95l/
+http://xn--ab-v1e/
 #gecko-host escaped
-xn--chbc95l
+xn--ab-v1e
 #ie-canon escaped
-http://xn--chbc95l/
+http://xn--ab-v1e/
 #ie-host escaped
-xn--chbc95l
+xn--ab-v1e
 #ie-invalid 1
 
 #data escaped
@@ -8689,69 +8689,69 @@ xn--chbc26l
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0825\u0641/
+http://a\u0825b/
 #canon escaped
-http://xn--chbc56l/
+http://xn--ab-11e/
 #canon-unescaped escaped
-http://xn--chbc56l/
+http://xn--ab-11e/
 #scheme http
 #host escaped
-xn--chbc56l
+xn--ab-11e
 #host-unescaped escaped
-xn--chbc56l
+xn--ab-11e
 #path /
 #gecko-canon escaped
-http://xn--chbc56l/
+http://xn--ab-11e/
 #gecko-host escaped
-xn--chbc56l
+xn--ab-11e
 #ie-canon escaped
-http://xn--chbc56l/
+http://xn--ab-11e/
 #ie-host escaped
-xn--chbc56l
+xn--ab-11e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0826\u0641/
+http://a\u0826b/
 #canon escaped
-http://xn--chbc86l/
+http://xn--ab-41e/
 #canon-unescaped escaped
-http://xn--chbc86l/
+http://xn--ab-41e/
 #scheme http
 #host escaped
-xn--chbc86l
+xn--ab-41e
 #host-unescaped escaped
-xn--chbc86l
+xn--ab-41e
 #path /
 #gecko-canon escaped
-http://xn--chbc86l/
+http://xn--ab-41e/
 #gecko-host escaped
-xn--chbc86l
+xn--ab-41e
 #ie-canon escaped
-http://xn--chbc86l/
+http://xn--ab-41e/
 #ie-host escaped
-xn--chbc86l
+xn--ab-41e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0827\u0641/
+http://a\u0827b/
 #canon escaped
-http://xn--chbc17l/
+http://xn--ab-71e/
 #canon-unescaped escaped
-http://xn--chbc17l/
+http://xn--ab-71e/
 #scheme http
 #host escaped
-xn--chbc17l
+xn--ab-71e
 #host-unescaped escaped
-xn--chbc17l
+xn--ab-71e
 #path /
 #gecko-canon escaped
-http://xn--chbc17l/
+http://xn--ab-71e/
 #gecko-host escaped
-xn--chbc17l
+xn--ab-71e
 #ie-canon escaped
-http://xn--chbc17l/
+http://xn--ab-71e/
 #ie-host escaped
-xn--chbc17l
+xn--ab-71e
 #ie-invalid 1
 
 #data escaped
@@ -8777,113 +8777,113 @@ xn--chbc47l
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0829\u0641/
+http://a\u0829b/
 #canon escaped
-http://xn--chbc77l/
+http://xn--ab-e2e/
 #canon-unescaped escaped
-http://xn--chbc77l/
+http://xn--ab-e2e/
 #scheme http
 #host escaped
-xn--chbc77l
+xn--ab-e2e
 #host-unescaped escaped
-xn--chbc77l
+xn--ab-e2e
 #path /
 #gecko-canon escaped
-http://xn--chbc77l/
+http://xn--ab-e2e/
 #gecko-host escaped
-xn--chbc77l
+xn--ab-e2e
 #ie-canon escaped
-http://xn--chbc77l/
+http://xn--ab-e2e/
 #ie-host escaped
-xn--chbc77l
+xn--ab-e2e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u082A\u0641/
+http://a\u082Ab/
 #canon escaped
-http://xn--chbc08l/
+http://xn--ab-h2e/
 #canon-unescaped escaped
-http://xn--chbc08l/
+http://xn--ab-h2e/
 #scheme http
 #host escaped
-xn--chbc08l
+xn--ab-h2e
 #host-unescaped escaped
-xn--chbc08l
+xn--ab-h2e
 #path /
 #gecko-canon escaped
-http://xn--chbc08l/
+http://xn--ab-h2e/
 #gecko-host escaped
-xn--chbc08l
+xn--ab-h2e
 #ie-canon escaped
-http://xn--chbc08l/
+http://xn--ab-h2e/
 #ie-host escaped
-xn--chbc08l
+xn--ab-h2e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u082B\u0641/
+http://a\u082Bb/
 #canon escaped
-http://xn--chbc38l/
+http://xn--ab-k2e/
 #canon-unescaped escaped
-http://xn--chbc38l/
+http://xn--ab-k2e/
 #scheme http
 #host escaped
-xn--chbc38l
+xn--ab-k2e
 #host-unescaped escaped
-xn--chbc38l
+xn--ab-k2e
 #path /
 #gecko-canon escaped
-http://xn--chbc38l/
+http://xn--ab-k2e/
 #gecko-host escaped
-xn--chbc38l
+xn--ab-k2e
 #ie-canon escaped
-http://xn--chbc38l/
+http://xn--ab-k2e/
 #ie-host escaped
-xn--chbc38l
+xn--ab-k2e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u082C\u0641/
+http://a\u082Cb/
 #canon escaped
-http://xn--chbc68l/
+http://xn--ab-n2e/
 #canon-unescaped escaped
-http://xn--chbc68l/
+http://xn--ab-n2e/
 #scheme http
 #host escaped
-xn--chbc68l
+xn--ab-n2e
 #host-unescaped escaped
-xn--chbc68l
+xn--ab-n2e
 #path /
 #gecko-canon escaped
-http://xn--chbc68l/
+http://xn--ab-n2e/
 #gecko-host escaped
-xn--chbc68l
+xn--ab-n2e
 #ie-canon escaped
-http://xn--chbc68l/
+http://xn--ab-n2e/
 #ie-host escaped
-xn--chbc68l
+xn--ab-n2e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u082D\u0641/
+http://a\u082Db/
 #canon escaped
-http://xn--chbc98l/
+http://xn--ab-q2e/
 #canon-unescaped escaped
-http://xn--chbc98l/
+http://xn--ab-q2e/
 #scheme http
 #host escaped
-xn--chbc98l
+xn--ab-q2e
 #host-unescaped escaped
-xn--chbc98l
+xn--ab-q2e
 #path /
 #gecko-canon escaped
-http://xn--chbc98l/
+http://xn--ab-q2e/
 #gecko-host escaped
-xn--chbc98l
+xn--ab-q2e
 #ie-canon escaped
-http://xn--chbc98l/
+http://xn--ab-q2e/
 #ie-host escaped
-xn--chbc98l
+xn--ab-q2e
 #ie-invalid 1
 
 #data escaped
@@ -9833,69 +9833,69 @@ xn--chbc81n
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u0859\u0641/
+http://a\u0859b/
 #canon escaped
-http://xn--chbc12n/
+http://xn--ab-i6e/
 #canon-unescaped escaped
-http://xn--chbc12n/
+http://xn--ab-i6e/
 #scheme http
 #host escaped
-xn--chbc12n
+xn--ab-i6e
 #host-unescaped escaped
-xn--chbc12n
+xn--ab-i6e
 #path /
 #gecko-canon escaped
-http://xn--chbc12n/
+http://xn--ab-i6e/
 #gecko-host escaped
-xn--chbc12n
+xn--ab-i6e
 #ie-canon escaped
-http://xn--chbc12n/
+http://xn--ab-i6e/
 #ie-host escaped
-xn--chbc12n
+xn--ab-i6e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u085A\u0641/
+http://a\u085Ab/
 #canon escaped
-http://xn--chbc42n/
+http://xn--ab-l6e/
 #canon-unescaped escaped
-http://xn--chbc42n/
+http://xn--ab-l6e/
 #scheme http
 #host escaped
-xn--chbc42n
+xn--ab-l6e
 #host-unescaped escaped
-xn--chbc42n
+xn--ab-l6e
 #path /
 #gecko-canon escaped
-http://xn--chbc42n/
+http://xn--ab-l6e/
 #gecko-host escaped
-xn--chbc42n
+xn--ab-l6e
 #ie-canon escaped
-http://xn--chbc42n/
+http://xn--ab-l6e/
 #ie-host escaped
-xn--chbc42n
+xn--ab-l6e
 #ie-invalid 1
 
 #data escaped
-http://\u0640\u085B\u0641/
+http://a\u085Bb/
 #canon escaped
-http://xn--chbc72n/
+http://xn--ab-o6e/
 #canon-unescaped escaped
-http://xn--chbc72n/
+http://xn--ab-o6e/
 #scheme http
 #host escaped
-xn--chbc72n
+xn--ab-o6e
 #host-unescaped escaped
-xn--chbc72n
+xn--ab-o6e
 #path /
 #gecko-canon escaped
-http://xn--chbc72n/
+http://xn--ab-o6e/
 #gecko-host escaped
-xn--chbc72n
+xn--ab-o6e
 #ie-canon escaped
-http://xn--chbc72n/
+http://xn--ab-o6e/
 #ie-host escaped
-xn--chbc72n
+xn--ab-o6e
 #ie-invalid 1
 
 #data escaped

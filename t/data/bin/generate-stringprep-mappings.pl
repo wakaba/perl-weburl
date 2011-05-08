@@ -11,6 +11,7 @@ my $data_d = file (__FILE__)->dir->parent;
 my $generated_d = $data_d->subdir ('generated');
 
 use Char::Prop::Unicode::5_1_0::BidiClass;
+use Char::Prop::Unicode::BidiClass;
 use Char::Prop::Unicode::Age;
 
 sub string_unicode_version ($) {
@@ -31,7 +32,7 @@ sub string_unicode_version ($) {
 } # string_unicode_version
 
 sub is_rtl ($) {
-  my $bidi = unicode_5_1_0_bidi_class_c $_[0];
+  my $bidi = unicode_bidi_class_c $_[0];
   return {
     AL => 1,
     R => 1,

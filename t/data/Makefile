@@ -7,6 +7,7 @@ idna2003-based-data: charprop-subset bin/generate-stringprep-mappings.pl
 
 charprop-subset: \
   lib/Char/Prop/Unicode/Age.pm \
+  lib/Char/Prop/Unicode/BidiClass.pm \
   lib/Char/Prop/Unicode/5_1_0/BidiClass.pm
 
 lib/Char/Prop/Unicode/%.pm: lib/Char/Prop/Unicode
