@@ -12,7 +12,7 @@ results/corebc: web-url-parser.t ../lib/Web/URL/Parser.pm data/*.dat
 	-TEST_BROWSER=gecko TEST_METHOD=_canon_bc perl $< &> results/web-url-parser-bc-gecko.txt
 	-TEST_BROWSER=ie TEST_METHOD=_canon_bc perl $< &> results/web-url-parser-bc-ie.txt
 
-results/corea: web-url-parser.t ../lib/Web/URL/Parser.pm data/*.dat
+results/a: web-url-parser.t ../lib/Web/URL/Parser.pm data/*.dat
 	-TEST_BROWSER=chrome TEST_METHOD=_canon_a perl $< &> results/web-url-parser-a-chrome.txt
 	-TEST_BROWSER=gecko TEST_METHOD=_canon_a perl $< &> results/web-url-parser-a-gecko.txt
 	-TEST_BROWSER=ie TEST_METHOD=_canon_a perl $< &> results/web-url-parser-a-ie.txt
@@ -20,7 +20,7 @@ results/corea: web-url-parser.t ../lib/Web/URL/Parser.pm data/*.dat
 results/web-url-parser-core.txt: web-url-parser.t \
   ../lib/Web/URL/Parser.pm \
   data/*.dat
-	-TEST_BROWSER=$(TEST_BROWSER) TEST_METHOD=_canon_core perl $< &> $@
+	-TEST_BROWSER=this TEST_METHOD=_canon_core perl $< &> $@
 
 results/web-url-parser-bc.txt: web-url-parser.t \
   ../lib/Web/URL/Parser.pm \

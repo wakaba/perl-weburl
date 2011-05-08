@@ -189,203 +189,330 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   Percent-encode non-unreserved octets in /s/.
 
-* Nameprep a string /s/
+* Domain name canonicalization
 
-  GECKO: If /s/ contains U+0340 or U+0341, fail.
+Domain name canonicalization is apparently a disaster zone - five
+major browsers do completely different canonicalization and there is
+no interoperatibility at all on their IDN handling.
 
-  Apply the Nameprep Mapping step to /s/.
+Therefore it is difficult to define the behavior we should follow
+here.  Following steps are approximations of what browsers do.  It
+should contain some mistakes, as their behavior are too complex to
+understand perfectly.  Needless to say, no formal spec has succeeded
+to document this situation.
 
-  CHROME: Apply NFKC of Unicode 3.2 + Corrigendum #3 (- Corrigendum
-  #4) + Corrigendum #5 to /s/.
+Markers "CHROME", "GECKO", and "IE" are used in following steps.
 
-  IE: Apply NFKC of Unicode 3.2 + Corrigendum #3 (- Corrigendum #4) +
-  Corrigendum #5 to /s/.
+The marker "THIS" denotes the steps chosen by THIS specification.
+They are determined such that the algorithm (hopefully) conforms to
+the following criteria:
 
-  GECKO: If there are Corrigendum 5 Sequences
+  - The algorithm should be as simple and sane as possbile.
+
+  - The output should only contain ASCII characters allowed in URLs.
+
+  - Percent-encoded and decoded sequences should be equivalent as long
+    as they represents an unreserved character or an character that
+    cannot be used in URLs.
+
+  - Percent-encoded sequences should be interpreted either as UTF-8
+    string or as invalid sequence.
+
+  - The algorithm should be idempotent.
+
+  - The algorithm should not disallow use of characters added after
+    Unicode 3.2.
+
+  - It should allow use of non-conforming ASCII domain names in the
+    wild.
+
+Steps without any marker apply to all browsers and "THIS"
+specification.  Steps with marker apply to the specified ones only.
+
+** The Nameprep algorithm
+
+This is a modified version of the Nameprep algorithm [RFC 3491].  It
+returns either a string or the "fail" state.
+
+  1. Let /s/ be the given string.
+
+  2. GECKO: If /s/ contains U+0340 COMBINING GRAVE TONE MARK character
+  or U+0341 COMBINING ACUTE TONE MARK character, return "fail" and
+  abort the Nameprep algorithm.
+
+  3. Apply /s/ the Map step [RFC 3491, RFC 3454].
+
+  4. GECKO: If there are Corrigendum 5 Sequences
   <http://www.unicode.org/reports/tr15/#Corrigendum_5_Sequences> in
-  /s/, change the order of the second last and the last characters in
-  the sequences.
+  /s/, swap the second last and the last characters in the sequences.
 
-  GECKO: Apply NFKC of Unicode 4.0 (+ Corrigendum #3 + Corrigendum #4)
-  + Corrigendum #5 to /s/.
+      NOTE: This step emulates Gecko's behavior that does not support
+      Corrigendum 5.
 
-  GECKO: Apply the Nameprep Mapping step to /s/, again.
+  5. Apply /s/ the following variant of NFKC [Unicode]:
 
-  If the algorithm is invoked with bidi checking: Apply Nameprep bidi
-  checking according to RFC 3491 and RFC 3454, IE/GECKO: using Unicode
-  3.2 or CHROME: using latest version of Unicode (Version 6.0.0 at the
-  time of writing).
+    THIS: Latest version of Unicode (including Corrigendum #3,
+    Corrigendum #4, and Corrigendum #5).
 
-    Note: In IE, nameprep bidi checking step is somewhat more complex
-    than IDNA2003.
+    GECKO: Unicode 4.0 (including Corrigendum #3 and Corrigendum #4)
+    with Corrigendum #5.
 
-  Apply the Nameprep prohibit step [RFC 3491] to /s/.  This step might
-  fail.
+    CHROME: Unicode 3.2 with Corrigendum #3 and Corrigendum #5
+    (without Corrigendum #4).
 
-  Returns /s/.
+    IE: Unicode 3.2 with Corrigendum #3 and Corrigendum #5 (without
+    Corrigendum #4).
 
-* HostToASCII a string /s/
+  6. GECKO: Apply /s/ the Map step [RFC 3491, RFC 3454], again.
 
-  Remove U+0009, U+000A, U+000D from /s/.
+  7. Apply /s/ the Prohibit step [RFC 3491, RFC 3454].  If it fails,
+     return "fail" and abort the Nameprep algorithm.
 
-  GECKO: Let /fallback/ be /s/.  CHROME / IE: Let /fallback/ be
-  "fails".
+  8. If the algorithm is invoked with bidi checking: Apply Check bidi
+     step [RFC 3491, RFC 3454], using:
 
-    Let /fallback/ be ASCII lowercase variant of /fallback/.
+    THIS: Latest version of Unicode.
 
-    Let /has-root-dot/ be false.
+    CHROME: Latest version of Unicode (Version 6.0.0 at the time of
+    writing).
 
-    CHROME: Percent-decode /s/ and decode as UTF-8, with error handling.
+    IE/GECKO: Unicode 3.2.
 
-    IE: Percent-decode percent-encoded
-    %([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f]).
-    (ASCII non-URL characters + digit + alpha + - + _ + .)
+        NOTE: In IE, Nameprep check bidi step is somewhat more complex
+        than IDNA2003.
 
-    CHROME/IE: Let /has-root-dot/ true if /s/ ends with a
-    label-separator.  Strip the character from /s/.
+  9. Return /s/.
 
-    Let /need-punycode/ be true if /s/ contains a non-ASCII character,
-    or false otherwise.
+** The CanonicalizeHost algorithm
+
+This algorithm returns either a string or the "fail" state.
+
+  1. Let /s/ be the given string.
+
+  2. Remove U+0009 CHARACTER TABULATION character, U+000A LINE FEED
+     character, and U+000D CARRIAGE RETURN character from /s/.
+
+  3. Let /fallback/ be "fail".
+
+  4. GECKO: Let /fallback/ be /s/, converted to ASCII lowercase [WA1].
+
+  5. THIS/CHROME: For any percent-encoded substring /ss/ in /s/,
+
+    1. Percent-decode /ss/.
+
+    2. Decode /ss/ as UTF-8, with error handling [WA1].
+
+  6. IE: Replace following percent-encoded sequences (ASCII
+     case-insensitive) by its percent-decoded representation:
+
+    %00 .. %1F, %20, %22, %2D .. %2F, %30 .. %39, %3C, %3E, %3F, %41
+    .. %5A, %5C, %5E .. %7F
+    
+        NOTE: These percent-encoded sequences represents ASCII
+        characters that are not allowed in URLs, ASCII digits, ASCII
+        latin characters, "-", "_", and ".".
+
+  7. Let /has-root-dot/ be false.
+
+  8. Let /need-punycode/ be true if /s/ contains a non-ASCII
+     character, or false otherwise.
+
+  9. THIS/CHROME/IE: If the last character of /s/, if any, is a label
+     separator [RFC 3490], let /has-root-dot/ be true and remove the
+     character.
  
-    GECKO/IE: Apply the Nameprep algorithm without bidi checking to
-    /s/.  If the algorithm fails, return /fallback/ and abort these
-    steps.
+  10. THIS/GECKO/IE: Invoke the Nameprep algorithm without bidi
+      checking with /s/.  If the algorithm returns a string, let /s/
+      be the string.  Otherwise, return /fallback/ and abort the
+      CanonicalizeHost algorithm.
 
-    CHROME: If /s/ contains "%", abort.
+  11. CHROME: If /s/ contains a U+0025 PERCENT SIGN character (%),
+      return /fallback/ and abort the CanonicalizeHost algorithm.
 
-    GECKO: If /s/ contains U+0000 or U+0020:
+  12. GECKO: If /s/ contains a U+0000 NULL character or a U+0020 SPACE
+      character:
 
-      GECKO: If /fallback/ contains U+0000 or U+0020, then abort the
-      algorithm.
+    1. If /fallback/ contains a U+0000 NULL character or a U+0020
+       SPACE character, return "fail" and abort the CanonicalizeHost
+       algorithm.
 
-      GECKO: Otherwise, if /fallback/ contains any character
-      prohibited by Nameprep, return /fallback/.
+    2. Otherwise, if /fallback/ contains any character disallowed by
+       the "Prohibit" step of Nameprep [RFC 3491, RFC 3454], return
+       /fallback/ and abort the CanonicalizeHost algorithm.
 
-    CHROME: Percent-encode U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
-    U+0024 ($), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A
-    (*), U+002C (,), U+003C (<), U+003D (=), U+003E (>), U+0040 (@),
-    U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}) in /s/.
+  13. CHROME: Percent-encode following characters in /s/: U+0020,
+      U+0021 (!), U+0022 ("), U+0023 (#), U+0024 ($), U+0026 (&),
+      U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002C (,),
+      U+003C (<), U+003D (=), U+003E (>), U+0040 (@), U+005E (^),
+      U+0060 (`), U+007B ({), U+007C (|), and U+007D (}).
 
-    Replace any U+3002 IDEOGRAPHIC FULL STOP character, U+FF0E
-    FULLWIDTH FULL STOP character, and U+FF61 HALFWIDTH IDEOGRAPHIC
-    FULL STOP character, in /s/, by a U+002E FULL STOP character (.).
+  14. Replace any label separator [RFC 3490] in /s/ by a U+002E FULL
+      STOP character (.).
 
-    Split /s/ by "." and let /labels/ be the result list.
+  15. Split /s/ by U+002E FULL STOP character (.) and let /labels/ be
+      the result.  /labels/ is a list of one or more strings, where
+      some of strings could be empty.
 
-    IE: Let /need-punycode/ be true if any item in /labels/ begins
-    with "xn--".
+  16. IE: If any string in /labels/ begins with "xn--", let
+      /need-punycode/ be true.
 
-    If the /need-punycode/ flag is /true/,
+  17. Let /idn-enabled/ be false.
 
-      GECKO: 
+  18. If the /need-punycode/ flag is true,
 
-        Let /tld/ be the last non-empty /label/, if any, or the empty
-        string.
+    1. GECKO: Check the TLD by following the steps below:
 
-        Let /tld/ be "xn--" followed by Punycode encoded
-        representation of /tld/ if /tld/ contains non-ASCII
-        characters.
+      1. Let /tld/ be the last non-empty string in /labels/, if any,
+         or the empty string.
 
-        Let /idn-enabled/ be whether /tld/ is in the list of
-        IDN-enabled TLDs [MOZILLA] or not.
+      2. If /tld/ contains a non-ASCII character,
 
-        Let /idn-enabled/ be false if a /label/ contains a character
-        included in the list of IDN blacklist characters [MOZILLA].
+        2.1. Encode /tld/ by Punycode [RFC 3492].  If the algorithm
+             fails, let /tld/ be the empty string.
 
-      For each item /label/ in /labels/,
+        2.2. Prepend "xn--" to /tld/ unless it is the empty string.
 
-        IE: 
+      3. Let /idn-enabled/ be whether /tld/ is in the list of
+         IDN-enabled TLDs or not [WHITELIST].
 
-          If /label/ contains a non-ASCII character, encode /label/ by
-          Punycode, prepended by "xn--".  If it fails, abort the
-          entire algorithm.
-          
-          Let /p_label/ be /label/.
+      4. Let /idn-enabled/ be false if /s/ contains a character
+         included in the list of IDN blacklist characters [BLACKLIST].
 
-          If /label/ begins by "xn--",
+    2. For each item /label/ in /labels/,
 
-            Remove "xn--" prefix from /label/.
+      1. THIS/GECKO/CHROME:
 
-            Decode /label/ by Punycode decode algorithm.  If it fails,
-            abort the entire algorithm.
+        1. Invoke the Nameprep algorithm (including bidi checking)
+           with /label/.  If the algorithm returns a string, let
+           /label/ be the string.  Otherwise, return /fallback/ and
+           abort the CanonicalizeHost algorithm.
 
-          Let /a_label/ be result of applying IDNA2003 ToASCII
-          operation to /label/ with the flag UseSTD3ASCIIRules set (no
-          AllowUnassigned).  Use the Namespace-bidi algorithm instead
-          of bidi checking step.  If it fails, abort the entire
-          algorithm.
+            NOTE: For "THIS" and "GECKO", only the Check bidi step
+            need to be applied here, as the Nameprep algorithm without
+            bidi checking is invoked in an earlier step.
 
-          If /a_label/ is different from /p_label/, abort the entire
-          algorithm.
+        2. If /label/ contains a non-ASCII character,
 
-          Fail if /label/ contains a U+3002 IDEOGRAPHIC FULL STOP
-          character.
+          1. If /idn-enabled/ is false,
 
-          If the previous steps failed, the result of the entire
-          algorithm is "failed" and abort the algorithm.
+            1. CHROME: If /label/ begins with "xn--" and contains
+               non-ASCII character, return /fallback/ and abort the
+               CanonicalizeHost algorithm.
 
-        GECKO/CHROME:
+            2. Encode /label/ by Punycode [RFC 3492].  If it fails,
+               return /fallback/ and abort the CanonicalizeHost
+               algorithm.
 
-          Follow the Nameprep algorithm (including bidi checking) with
-          /label/.  If the algorithm fails, return /fallback/ and
-          abort the HostToASCII algorithm.
+            3. Prepend "xn--" to /label/.
 
-          If /label/ contains a non-ASCII character,
+            4. If /label/ contains more than 63 characters, return
+               /fallback/ and abort the CanonicalizeHost algorithm.
 
-            If /idn-enabled/ is false,
+        3. Otherwise, if /label/ contains no non-ASCII character,
 
-              CHROME: If /label/ begins with "xn--" and contains
-              non-ASCII character, abort.
+          1. GECKO: Let /label/ be first 62 characters of it if it
+             contains more than 62 characters.
 
-              Encode /label/ by Punycode and prepend "xn--".  If
-              fails, abort.
+          2. THIS/CHROME: If /label/ is the empty string, return
+             /fallback/ and abort the CanonicalizeHost algorithm.
 
-              If /label/ contains more than 63 characters, abort the
-              HostToASCII algorithm.
+          3. If /label/ contains more than 63 characters, return
+             /fallback/ and abort the CanonicalizeHost algorithm.
 
-          Otherwise, 
+      2. IE: Apply the modified ToUnicode operation [RFC 3490] as
+         follows:
 
-            GECKO: Let /label/ be first 62 characters if it's length
-            is more than 62.
+        1. If /label/ contains a non-ASCII character,
 
-            CHROME: Abort if /label/ is the empty string.
+          1. Encode /label/ by Punycode [RFC 3492].  If it fails,
+             return /fallback/ and abort the CanonicalizeHost
+             algorithm.
 
-            Abort if /label/ contains more than 63 characters.
+          2. Prepend "xn--" to /label/.
+        
+        2. Let /p_label/ be /label/.
 
-    Let /s/ be /label/s joined by ".".
+        3. If /label/ begins with "xn--",
 
-    If /has-root-dot/ is true, append "." to /s/.
+          1. Remove "xn--" prefix from /label/.
 
-    CHROME: Percent-decode and interpret as U+0000 - U+00FF.
-    Normalize to ASCII lower-case.
+          2. Decode /label/ by Punycode decode algorithm.  If it
+             fails, return /fallback/ and abort the CanonicalizeHost
+             algorithm.
 
-    CHROME: If /s/ contains one of the following characters, abort the
-    HostToASCII algorithm: U+0000, ..., U+001F, U+0025 (%), U+002F
-    (/), U+003A (:), U+003B (;), U+003F (?), U+005C (\), U+005E (^),
-    U+007E (~), or U+007F.
+        4. Apply ToASCII operation [RFC 3490] to /label/, with the
+           UseSTD3ASCIIRules flag set (and without AllowUnassigned
+           flag), and let /a_label/ be the output.  Note that the
+           Nameprep algorithm defined by this specification is invoked
+           within the ToASCII operation.  If the ToASCII operation
+           fails, return /fallback/ and abort the CanonicalizeHost
+           algorithm.
 
-    IE: If /s/ contains one of the following sequences, abort the
-    HostToASCII algorithm: U+0000, "%00", "%" not followed by two
-    hexadecimal digits, "/", "\", or "?".
+        5. If /a_label/ is different from /p_label/, return /fallback/
+           and abort the CanonicalizeHost algorithm.
 
-    CHROME: Percent-encode U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
-    U+0024 ($), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A
-    (*), U+002C (,), U+003C (<), U+003D (=), U+003E (>), U+0040 (@),
-    U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}) in /s/.
+        6. If /label/ contains a U+3002 IDEOGRAPHIC FULL STOP
+           character, return /fallback/ and abort the CanonicalizeHost
+           algorithm.
 
-    IE: Percent-encode U+0000 - U+001F,
-    \x20\x22\x3C\x3E\x5C\x5E\x60\x7B-\x7D, U+007F in /s/, using
-    lowercase digits.
+  19. Let /s/ be the concatenation of the strings in /labels/ by
+      U+002E FULL STOP character (.).
 
-    If /s/ is an IPv6 address, return the canonical representation of
-    the IPv6 address and abort these steps.
+  20. If /has-root-dot/ is true, append a U+002E FULL STOP character
+      (.) to /s/.
 
-    If /s/ contains "[" or "]", abort the HostToASCII algorithm.
+  21. CHROME: Replace any percent-encoded octets in /s/ by a character
+      in the range U+0000-U+00FF.
 
-    If /s/ is an IPv4 address, return the canonical representation of
-    the IPv4 address and abort these steps.
+  22. CHROME: Convert /s/ to ASCII lowercase [WA1].
 
-    Return /s/.
+  23. If /s/ contains one of the following characters, return
+      /fallback/ and abort the CanonicalizeHost algorithm:
+
+      THIS/GECKO: None.
+
+      CHROME: U+0000, ..., U+001F, U+0025 (%), U+002F (/), U+003A (:),
+      U+003B (;), U+003F (?), U+005C (\), U+005E (^), U+007E (~), or
+      U+007F.
+
+      IE: U+0000, U+002F (/), U+003F (?), or U+005C (\).
+
+  24. IE: If /s/ contains one of the following sequences, return
+      /fallback/ and abort the CanonicalizeHost algorithm: "%00" or
+      "%" not followed by two hexadecimal digits.
+
+  25: THIS: Percent-encode following characters in /s/: U+0000-U+001F,
+      U+0020, U+0022 ("), U+0023 (#), U+0025 (%), U+002F (/), U+003A
+      (:), U+003B (;), U+003C (<), U+003E (>), U+003F (?), U+0040 (@),
+      U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|),
+      U+007D (}), U+007F.
+
+      NOTE: ASCII characters not allowed in URLs, delimiter characters
+      used before or after the |host| component, ";", and "%" are
+      percent-encoded here.
+
+  26: IE: Percent-encode following characters in /s/, using lowercase
+      digits: U+0000-U+001F, U+0020, U+0022 ("), U+003C (<), U+003E
+      (>), U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|),
+      U+007D (}), U+007F.
+
+  27. CHROME: Percent-encode following characters in /s/: U+0020,
+      U+0021 (!), U+0022 ("), U+0023 (#), U+0024 ($), U+0026 (&),
+      U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002C (,),
+      U+003C (<), U+003D (=), U+003E (>), U+0040 (@), U+005E (^),
+      U+0060 (`), U+007B ({), U+007C (|), and U+007D (}).
+
+  28: If /s/ is an IPv6 address, return the canonical representation
+      of the IPv6 address and abort these steps.
+
+  29: If /s/ contains a U+005B LEFT SQUARE BRACKET character ([) or a
+      U+005D RIGHT SQUARE BRACKET (]) character, return /fallback/ and
+      abort the CanonicalizeHost algorithm.
+
+  39: If /s/ is an IPv4 address, return the canonical representation
+      of the IPv4 address and abort the CanonicalizeHost algorithm.
+
+  40: Return /s/.
 
 * Canonicalize a string /u/ by encoding /encoding/
 
@@ -414,8 +541,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |password|
     component of /u/, using encoding |UTF-8|, if any.
 
-  If there is the |host| component, invoke the HostToASCII algorithm
-  with the |host| and then:
+  If there is the |host| component, invoke the CanonicalizeHost
+  algorithm with the |host| and then:
 
     If the algorithm returns a string, then let the |host| component
     be the string.  The string can be the empty string.

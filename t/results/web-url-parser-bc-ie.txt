@@ -1,5 +1,5 @@
-Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 462.
-Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 429.
+Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 468.
+Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 430.
 # data/generated/decomps-authority-stringprep-b1-pe.dat
 ok 1 - http://a%C2%ADb/ - http://a%C2%ADb/
 ok 2 - http://a%CD%8Fb/ - http://a%CD%8Fb/

@@ -421,10 +421,11 @@ use Unicode::Stringprep;
      0, 1);
 use Char::Prop::Unicode::BidiClass;
 
-my $browser = $ENV{TEST_BROWSER} || 'chrome';
+my $browser = $ENV{TEST_BROWSER} || 'this';
 sub CHROME () { $browser eq 'chrome' }
 sub GECKO () { $browser eq 'gecko' }
 sub IE () { $browser eq 'ie' }
+sub THIS () { $browser eq 'this' }
 
 sub nameprep ($;%) {
   my $label = shift;
@@ -444,10 +445,15 @@ sub nameprep ($;%) {
   } elsif (IE) {
     $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
         {\x{2136A}\x{5F33}\x{43AB}\x{7AAE}\x{4D57}};
+  } elsif (THIS) {
+    $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
+        {\x{36FC}\x{5F53}\x{243AB}\x{7AEE}\x{45D7}};
   }
   $label = nameprepmapping ($label);
 
-  if (GECKO) {
+  if (THIS) {
+    $label = NFKC ($label);
+  } elsif (GECKO) {
     ## BUG: Unicode 4.0 according to the spec.
     $label = NFKC ($label);
     $label = nameprepmapping ($label);
@@ -464,7 +470,7 @@ sub nameprep ($;%) {
 sub nameprep_bidi ($) {
   my $label = shift;
 
-  if (GECKO || IE) {
+  if (GECKO or IE) {
     if (not defined eval { nameprepbidirule ($label); 1 }) {
       return undef;
     }
@@ -548,53 +554,6 @@ sub label_to_ascii ($;%) {
   return $s;
 } # label_to_ascii
 
-sub label_to_unicode_ ($;%) {
-  my $s = shift;
-  my %args = @_;
-
-  if ($s =~ /[^\x00-\x7F]/) {
-    $s = label_nameprep $s,
-        allow_unassigned => $args{allow_unassigned},
-        no_bidi => $args{no_bidi};
-    return undef unless defined $s;
-  }
-
-  my $t = $s;
-  if ($s =~ /^[Xx][Nn]--/) {
-    $s =~ s/^[Xx][Nn]--//;
-    
-    $s = decode_punycode $s;
-    return undef unless defined $s;
-  } else {
-    unless ($args{process_non_xn_label}) {
-      return undef;
-    }
-  }
-  my $u = $s;
-
-  $s = label_to_ascii $s,
-      allow_unassinged => $args{allow_unassigned},
-      use_std3_ascii_rules => $args{use_std3_ascii_rules},
-      no_bidi => $args{no_bidi};
-  return undef unless defined $s;
-
-  $s =~ tr/A-Z/a-z/;
-  $t =~ tr/A-Z/a-z/;
-  return undef unless $s eq $t;
-
-  return $u;
-} # label_to_unicode_
-
-sub label_to_unicode ($;%) {
-  my $s = shift;
-  my %args = @_;
-  
-  my $t = label_to_unicode_ $s, %args;
-  return $t if defined $t;
-
-  return $s;
-} # label_to_unicode
-
 use Web::DomainName::IDNEnabled;
 use Char::Class::IDNBlacklist qw(InIDNBlacklistChars);
 
@@ -606,7 +565,7 @@ sub to_ascii ($$) {
   my $fallback = GECKO ? $s : undef;
   $fallback =~ tr/A-Z/a-z/ if defined $fallback;
 
-  if (CHROME) {
+  if (THIS or CHROME) {
     $s = Encode::encode ('utf-8', $s);
     $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
     $s = Encode::decode ('utf-8', $s); # XXX error-handling
@@ -619,11 +578,11 @@ sub to_ascii ($$) {
   my $need_punycode = $s =~ /[^\x00-\x7F]/;
 
   my $has_root_dot;
-  if (IE or CHROME) {
+  if (THIS or IE or CHROME) {
     $has_root_dot = 1 if $s =~ s/[.\x{3002}\x{FF0E}\x{FF61}]\z//;
   }
-
-  if (IE or GECKO) {
+  
+  if (THIS or IE or GECKO) {
     $s = nameprep $s;
     return $fallback unless defined $s;
   }
@@ -696,8 +655,10 @@ sub to_ascii ($$) {
       } else {
         my $label = $_;
 
-        $label = nameprep $label;
-        return $fallback unless defined $label;
+        if (CHROME) {
+          $label = nameprep $label;
+          return $fallback unless defined $label;
+        }
 
         $label = nameprep_bidi $label;
         return $fallback unless defined $label;
@@ -712,7 +673,9 @@ sub to_ascii ($$) {
           }
         } else {
           $label = substr $label, 0, 62 if GECKO;
-          return undef if CHROME and $label eq '';
+          if (THIS or CHROME) {
+            return undef if $label eq '';
+          }
           return undef if length $label > 63;
         }
         $label;
@@ -731,19 +694,25 @@ sub to_ascii ($$) {
     if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
       return undef;
     }
-    
-    $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
-      sprintf '%%%02X', ord $1;
-    }ge;
   }
 
   if (IE) {
     if ($s =~ /[\x00\x2F\x3F\x5C]|%00|%(?![0-9A-Fa-f]{2})/) {
       return undef;
     }
-
-    $s =~ s{([\x00-\x1F\x20\x22\x3C\x3E\x5C\x5E\x60\x7B-\x7D\x7F])}{
+  }
+  
+  if (THIS) {
+    $s =~ s{([\x00-\x20\x22\x23\x25\x2F\x3A-\x3C\x3E\x3F\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
+      sprintf '%%%02X', ord $1;
+    }ge;
+  } elsif (IE) {
+    $s =~ s{([\x00-\x20\x22\x3C\x3E\x5C\x5E\x60\x7B-\x7D\x7F])}{
       sprintf '%%%02x', ord $1;
+    }ge;
+  } elsif (CHROME) {
+    $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+      sprintf '%%%02X', ord $1;
     }ge;
   }
 
