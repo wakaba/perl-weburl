@@ -5094,6 +5094,15 @@ http://a\u2183b/
 a\u2183b
 
 #data escaped
+http://a\u2488/
+#canon escaped
+http://a1./
+#scheme http
+#host a1.
+#path /
+#ie-invalid 1
+
+#data escaped
 http://a\u2488b/
 #canon escaped
 http://a1.b/
@@ -5252,6 +5261,15 @@ http://xn--1-rfa.b.c/
 http://xn--1-rfa.b%ef%bd%a1c/
 #gecko-host
 xn--1-rfa.b%ef%bd%a1c
+#ie-invalid 1
+
+#data escaped
+http://a\u2024/
+#canon escaped
+http://a./
+#scheme http
+#host a.
+#path /
 #ie-invalid 1
 
 #data escaped
