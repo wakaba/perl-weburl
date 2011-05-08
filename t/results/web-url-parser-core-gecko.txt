@@ -3331,13 +3331,9 @@ not ok 1585 - http://www.example.com/\#hello, world - http://www.example.com/\#h
 # *   1|http://www.example.com/#hello,%20world,hello,%20world,www.example.com,/,http,http  |http://www.example.com/#hello, world,hello, world,www.example.com,/,http,http  *
 # +----+-----------------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 ok 1586 - http://www.example.com/\#hello,%20world. - http://www.example.com/\#hello,%20world.
-Malformed UTF-8 character (unexpected continuation byte 0x82, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1587 - http://www.example.com/\#¬© - http://www.example.com/\#¬©
 ok 1588 - http://www.example.com/\#%C2%A9 - http://www.example.com/\#%C2%A9
 ok 1589 - http://www.example.com/\#%C3%82%C2%A9 - http://www.example.com/\#%C3%82%C2%A9
-Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
-Malformed UTF-8 character (unexpected continuation byte 0x8c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1590 - http://www.example.com/\#êåÄss - http://www.example.com/\#êåÄss
 ok 1591 - http://www.example.com/\#%F0%90%8C%80ss - http://www.example.com/\#%F0%90%8C%80ss
@@ -3582,69 +3578,37 @@ ok 1780 - http://example.com/\#aºb - http://example.com/\#aºb
 ok 1781 - http://example.com/\#aΩb - http://example.com/\#aΩb
 ok 1782 - http://example.com/\#aæb - http://example.com/\#aæb
 ok 1783 - http://example.com/\#aøb - http://example.com/\#aøb
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1784 - http://example.com/\#a¿b - http://example.com/\#a¿b
-Malformed UTF-8 character (unexpected continuation byte 0x81, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1785 - http://example.com/\#a¡b - http://example.com/\#a¡b
-Malformed UTF-8 character (unexpected continuation byte 0x82, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1786 - http://example.com/\#a¬b - http://example.com/\#a¬b
-Malformed UTF-8 character (unexpected continuation byte 0x83, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1787 - http://example.com/\#a√b - http://example.com/\#a√b
-Malformed UTF-8 character (unexpected continuation byte 0x84, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1788 - http://example.com/\#aƒb - http://example.com/\#aƒb
-Malformed UTF-8 character (unexpected continuation byte 0x85, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1789 - http://example.com/\#a≈b - http://example.com/\#a≈b
-Malformed UTF-8 character (unexpected continuation byte 0x86, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1790 - http://example.com/\#a∆b - http://example.com/\#a∆b
-Malformed UTF-8 character (unexpected continuation byte 0x87, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1791 - http://example.com/\#a«b - http://example.com/\#a«b
-Malformed UTF-8 character (unexpected continuation byte 0x88, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1792 - http://example.com/\#a»b - http://example.com/\#a»b
-Malformed UTF-8 character (unexpected continuation byte 0x89, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1793 - http://example.com/\#a…b - http://example.com/\#a…b
-Malformed UTF-8 character (unexpected continuation byte 0x8a, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1794 - http://example.com/\#a b - http://example.com/\#a b
-Malformed UTF-8 character (unexpected continuation byte 0x8b, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1795 - http://example.com/\#aÀb - http://example.com/\#aÀb
-Malformed UTF-8 character (unexpected continuation byte 0x8c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1796 - http://example.com/\#aÃb - http://example.com/\#aÃb
-Malformed UTF-8 character (unexpected continuation byte 0x8d, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1797 - http://example.com/\#aÕb - http://example.com/\#aÕb
-Malformed UTF-8 character (unexpected continuation byte 0x8e, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1798 - http://example.com/\#aŒb - http://example.com/\#aŒb
-Malformed UTF-8 character (unexpected continuation byte 0x8f, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1799 - http://example.com/\#aœb - http://example.com/\#aœb
-Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1800 - http://example.com/\#a–b - http://example.com/\#a–b
-Malformed UTF-8 character (unexpected continuation byte 0x91, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1801 - http://example.com/\#a—b - http://example.com/\#a—b
-Malformed UTF-8 character (unexpected continuation byte 0x92, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1802 - http://example.com/\#a“b - http://example.com/\#a“b
-Malformed UTF-8 character (unexpected continuation byte 0x93, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1803 - http://example.com/\#a”b - http://example.com/\#a”b
-Malformed UTF-8 character (unexpected continuation byte 0x94, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1804 - http://example.com/\#a‘b - http://example.com/\#a‘b
-Malformed UTF-8 character (unexpected continuation byte 0x95, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1805 - http://example.com/\#a’b - http://example.com/\#a’b
-Malformed UTF-8 character (unexpected continuation byte 0x96, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1806 - http://example.com/\#a÷b - http://example.com/\#a÷b
-Malformed UTF-8 character (unexpected continuation byte 0x97, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1807 - http://example.com/\#a◊b - http://example.com/\#a◊b
-Malformed UTF-8 character (unexpected continuation byte 0x98, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1808 - http://example.com/\#aÿb - http://example.com/\#aÿb
-Malformed UTF-8 character (unexpected continuation byte 0x99, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1809 - http://example.com/\#aŸb - http://example.com/\#aŸb
-Malformed UTF-8 character (unexpected continuation byte 0x9a, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1810 - http://example.com/\#a⁄b - http://example.com/\#a⁄b
-Malformed UTF-8 character (unexpected continuation byte 0x9b, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1811 - http://example.com/\#a€b - http://example.com/\#a€b
-Malformed UTF-8 character (unexpected continuation byte 0x9c, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1812 - http://example.com/\#a‹b - http://example.com/\#a‹b
-Malformed UTF-8 character (unexpected continuation byte 0x9d, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1813 - http://example.com/\#a›b - http://example.com/\#a›b
-Malformed UTF-8 character (unexpected continuation byte 0x9e, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1814 - http://example.com/\#aﬁb - http://example.com/\#aﬁb
-Malformed UTF-8 character (unexpected continuation byte 0x9f, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 ok 1815 - http://example.com/\#aﬂb - http://example.com/\#aﬂb
 ok 1816 - http://example.com/\#a‡b - http://example.com/\#a‡b
 ok 1817 - http://example.com/\#a·b - http://example.com/\#a·b
@@ -3678,7 +3642,6 @@ ok 1844 - http://example.com/\#a¸b - http://example.com/\#a¸b
 ok 1845 - http://example.com/\#a˝b - http://example.com/\#a˝b
 ok 1846 - http://example.com/\#a˛b - http://example.com/\#a˛b
 ok 1847 - http://example.com/\#aˇb - http://example.com/\#aˇb
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 not ok 1848 - http://example.com/\#aƒÄb - http://example.com/\#aƒÄb
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -3705,20 +3668,14 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 # |   0|canon,fragment,host,path,scheme,scheme_normalized                                  |canon,fragment,host,path,scheme,scheme_normalized                |
 # *   1|http://example.com/#a\x{fffd}\x{fffd}b,a\x{fffd}\x{fffd}b,example.com,/,http,http  |http://example.com/#a\x{fffd}\x{fffd}b,,example.com,/,http,http  *
 # +----+-----------------------------------------------------------------------------------+-----------------------------------------------------------------+
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1851 - http://example.com/\#aÔÄÄb - http://example.com/\#aÔÄÄb
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1852 - http://example.com/\#aÔ†Äb - http://example.com/\#aÔ†Äb
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1853 - http://example.com/\#aÔøæb - http://example.com/\#aÔøæb
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1854 - http://example.com/\#aÔøøb - http://foo/bar
-Malformed UTF-8 character (unexpected continuation byte 0x90, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
-Malformed UTF-8 character (unexpected continuation byte 0x80, with no preceding start byte) in substitution (s///) at ../lib/Web/URL/Parser.pm line 929.
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 1855 - http://example.com/\#aêÄÄb - http://foo/bar
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.

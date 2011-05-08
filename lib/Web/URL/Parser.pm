@@ -620,9 +620,13 @@ sub to_ascii ($$) {
   my $has_root_dot;
   if (IE) {
     $s =~ s{%([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f])}{pack 'C', hex $1}ge;
+  }
 
+  if (IE or CHROME) {
     $has_root_dot = 1 if $s =~ s/[.\x{3002}\x{FF0E}\x{FF61}]\z//;
+  }
 
+  if (IE) {
     if ($s =~ /[^\x00-\x7F]/) {
       $need_punycode = 1;
       $s = nameprep $s;
@@ -719,7 +723,6 @@ sub to_ascii ($$) {
         $label;
       } @label;
     } else {
-      my $empty = 0;
       @label = map {
         if (/[^\x00-\x7F]/) {
           if ($idn_enabled) {
@@ -730,9 +733,8 @@ sub to_ascii ($$) {
             return $fallback if length $label > 63;
             $label;
           }
-        } elsif ($_ eq '') {
-          $empty++;
-          $_;
+        } elsif ($_ eq '' and CHROME) {
+          return undef;
         } else {
           if (length $_ > 62 and GECKO) {
             substr $_, 0, 62;
@@ -742,12 +744,6 @@ sub to_ascii ($$) {
           }
         }
       } @label;
-      if (CHROME) {
-        if ($empty > 1 or 
-            ($empty == 1 and (@label == 1 or not $label[-1] eq ''))) {
-          return undef;
-        }
-      }
     }
   }
 
@@ -923,6 +919,7 @@ sub canonicalize_url ($$;$) {
   }
 
   if (defined $parsed_url->{fragment}) {
+    no warnings 'utf8';
     $parsed_url->{fragment} =~ s{(\x00|\x01|\x02|\x03|\x04|\x05|\x06|\x07|\x08|\x09|\x0A|\x0B|\x0C|\x0D|\x0E|\x0F|\x10|\x11|\x12|\x13|\x14|\x15|\x16|\x17|\x18|\x19|\x1A|\x1B|x1C|\x1D|\x1E|\x1F|\x20|\x22|\x3C|\x3E|\x7F)}{
       sprintf '%%%02X', ord $1;
     }ge;
