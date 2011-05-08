@@ -421,9 +421,10 @@ use Unicode::Stringprep;
      0, 1);
 use Char::Prop::Unicode::BidiClass;
 
-sub CHROME () { 0 }
-sub GECKO () { 0 }
-sub IE () { 1 }
+my $browser = $ENV{TEST_BROWSER} || 'chrome';
+sub CHROME () { $browser eq 'chrome' }
+sub GECKO () { $browser eq 'gecko' }
+sub IE () { $browser eq 'ie' }
 
 sub nameprep ($;%) {
   my $label = shift;
