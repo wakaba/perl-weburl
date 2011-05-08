@@ -646,7 +646,7 @@ sub to_ascii ($$) {
     sprintf '%%%02X', ord $1;
   }ge if CHROME;
 
-  $need_punycode = 1 if IE and $s =~ /(?:^|\.)[Xx][Nn]--/;
+  $need_punycode = 1 if IE and $s =~ /(?:^|\.)xn--/;
 
   my @label = split /\./, $s, -1;
   @label = ('') unless @label;
@@ -696,10 +696,8 @@ sub to_ascii ($$) {
       } else {
         my $label = $_;
 
-        if (CHROME) {
-          $label = nameprep $label;
-          return undef unless defined $label;
-        }
+        $label = nameprep $label;
+        return $fallback unless defined $label;
 
         $label = nameprep_bidi $label;
         return $fallback unless defined $label;

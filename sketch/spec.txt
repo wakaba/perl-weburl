@@ -191,14 +191,6 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Nameprep a string /s/
 
-  Apply the Nameprep-nobidi algorithm to /s/.
-
-  Apply the Nameprep-bidi algorithm to /s/.
-
-  Return /s/.
-
-* Nameprep-nobidi a string /s/
-
   GECKO: If /s/ contains U+0340 or U+0341, fail.
 
   Apply the Nameprep Mapping step to /s/.
@@ -219,21 +211,20 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   GECKO: Apply the Nameprep Mapping step to /s/, again.
 
+  If the algorithm is invoked with bidi checking: Apply Nameprep bidi
+  checking according to RFC 3491 and RFC 3454, IE/GECKO: using Unicode
+  3.2 or CHROME: using latest version of Unicode (Version 6.0.0 at the
+  time of writing).
+
+    Note: In IE, nameprep bidi checking step is somewhat more complex
+    than IDNA2003.
+
   Apply the Nameprep prohibit step [RFC 3491] to /s/.  This step might
   fail.
 
   Returns /s/.
 
-* Nameprep-bidi a string /s/
-
-  Nameprep bidi checking according to RFC 3491 and RFC 3454, IE/GECKO:
-  using Unicode 3.2 or CHROME: using latest version of Unicode
-  (Version 6.0.0 at the time of writing).
-
-    Note: In IE, nameprep bidi checking step is somewhat more complex
-    than IDNA2003.
-
-* ToASCII a string /s/
+* HostToASCII a string /s/
 
   Remove U+0009, U+000A, U+000D from /s/.
 
@@ -256,8 +247,9 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     Let /need-punycode/ be true if /s/ contains a non-ASCII character,
     or false otherwise.
  
-    GECKO/IE: Apply the Nameprep-nobidi algorithm with /s/.  If the
-    algorithm fails, return /fallback/ and abort these steps.
+    GECKO/IE: Apply the Nameprep algorithm without bidi checking to
+    /s/.  If the algorithm fails, return /fallback/ and abort these
+    steps.
 
     CHROME: If /s/ contains "%", abort.
 
@@ -334,13 +326,9 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
         GECKO/CHROME:
 
-          CHROME: Follow the Nameprep-nobidi algorithm with /label/.
-          If the algorithm fails, the ToASCII algorithm fails.  Abort
-          the ToASCII algorithm.
-
-          CHROME/GECKO: Follow the Nameprep-bidi algorithm with
-          /label/.  If it fails, return /fallback/ and abort the
-          ToASCII algorithm.
+          Follow the Nameprep algorithm (including bidi checking) with
+          /label/.  If the algorithm fails, return /fallback/ and
+          abort the HostToASCII algorithm.
 
           If /label/ contains a non-ASCII character,
 
@@ -353,7 +341,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
               fails, abort.
 
               If /label/ contains more than 63 characters, abort the
-              ToASCII algorithm.
+              HostToASCII algorithm.
 
           Otherwise, 
 
@@ -372,12 +360,12 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     Normalize to ASCII lower-case.
 
     CHROME: If /s/ contains one of the following characters, abort the
-    ToASCII algorithm: U+0000, ..., U+001F, U+0025 (%), U+002F (/),
-    U+003A (:), U+003B (;), U+003F (?), U+005C (\), U+005E (^), U+007E
-    (~), or U+007F.
+    HostToASCII algorithm: U+0000, ..., U+001F, U+0025 (%), U+002F
+    (/), U+003A (:), U+003B (;), U+003F (?), U+005C (\), U+005E (^),
+    U+007E (~), or U+007F.
 
     IE: If /s/ contains one of the following sequences, abort the
-    ToASCII algorithm: U+0000, "%00", "%" not followed by two
+    HostToASCII algorithm: U+0000, "%00", "%" not followed by two
     hexadecimal digits, "/", "\", or "?".
 
     CHROME: Percent-encode U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
@@ -392,7 +380,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     If /s/ is an IPv6 address, return the canonical representation of
     the IPv6 address and abort these steps.
 
-    If /s/ contains "[" or "]", abort the ToASCII algorithm.
+    If /s/ contains "[" or "]", abort the HostToASCII algorithm.
 
     If /s/ is an IPv4 address, return the canonical representation of
     the IPv4 address and abort these steps.
@@ -426,8 +414,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |password|
     component of /u/, using encoding |UTF-8|, if any.
 
-  If there is the |host| component, invoke the ToASCII algorithm with
-  the |host| and then:
+  If there is the |host| component, invoke the HostToASCII algorithm
+  with the |host| and then:
 
     If the algorithm returns a string, then let the |host| component
     be the string.  The string can be the empty string.
