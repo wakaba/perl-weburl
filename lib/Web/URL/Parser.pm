@@ -624,11 +624,10 @@ sub to_ascii ($$) {
 
     if ($s =~ /[^\x00-\x7F]/) {
       $need_punycode = 1;
-      $s = label_nameprep $s,
-          allow_unassinged => 0,
-          no_bidi => 1;
+      $s = nameprep $s;
       return undef if not defined $s;
     }
+    $s =~ tr/A-Z/a-z/;
   }
 
   if (GECKO) {
@@ -640,7 +639,7 @@ sub to_ascii ($$) {
         return undef;
       } elsif (not defined eval { nameprepprohibited ($fallback); 1 }) {
         return $fallback;
-      }
+      } 
     }
   }
 
@@ -660,7 +659,6 @@ sub to_ascii ($$) {
       if ($label =~ /^[Xx][Nn]--/ or $label =~ /[^\x00-\x7F]/) {
         $need_punycode = 1;
       }
-      $label =~ tr/A-Z/a-z/;
     } else {
       if ($label =~ /[^\x00-\x7F]/) {
         $need_punycode = 1;

@@ -191,12 +191,23 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Nameprep a string /s/
 
+  Apply the Nameprep-nobidi algorithm to /s/.
+
+  Apply the Nameprep-bidi algorithm to /s/.
+
+  Return /s/.
+
+* Nameprep-nobidi a string /s/
+
   GECKO: If /s/ contains U+0340 or U+0341, fail.
 
   Apply the Nameprep Mapping step to /s/.
 
   CHROME: Apply NFKC of Unicode 3.2 + Corrigendum #3 (- Corrigendum
   #4) + Corrigendum #5 to /s/.
+
+  IE: Apply NFKC of Unicode 3.2 + Corrigendum #3 (- Corrigendum #4) +
+  Corrigendum #5 to /s/.
 
   GECKO: If there are Corrigendum 5 Sequences
   <http://www.unicode.org/reports/tr15/#Corrigendum_5_Sequences> in
@@ -213,20 +224,19 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   Returns /s/.
 
+* Nameprep-bidi a string /s/
+
+  Nameprep bidi checking according to RFC 3491 and RFC 3454.
+
+    Note: In IE, nameprep bidi checking step is somewhat more complex
+    than IDNA2003.
+
 * ToASCII a string /s/
 
-  IE: In the following steps, NFKC is: Unicode 3.2 + Corrigendum #3 (-
-  Corrigendum #4) + Corrigendum #5.
+  Remove U+0009, U+000A, U+000D from /s/.
 
-  IE: Nameprep bidi checking step is somewhat more complex than
-  IDNA2003.
-
-  ...
-
-    Remove U+0009, U+000A, U+000D from /s/.
-
-    GECKO: Let /fallback/ be /s/.  CHROME / IE: Let /fallback/ be
-    "fails".
+  GECKO: Let /fallback/ be /s/.  CHROME / IE: Let /fallback/ be
+  "fails".
 
     Let /fallback/ be ASCII lowercase variant of /fallback/.
 
@@ -236,12 +246,6 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
     CHROME: Percent-decode /s/ and decode as UTF-8, with error handling.
 
-    CHROME: If /s/ contains "%", abort.
-
-    GECKO: Apply the Nameprep algorithm with /s/ and let /s/ be the
-    result.  If the algorithm fails, return /fallback/ and abort these
-    steps.
-
     IE: Percent-decode percent-encoded
     %([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f]).
     (ASCII non-URL characters + digit + alpha + - + _ + .)
@@ -249,8 +253,16 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     IE: Let /has-root-dot/ true if /s/ ends with a label-separator.
     Strip the character from /s/.
 
-    IE: If there is a non-ASCII character, apply Nameprep to /s/,
-    without bidi check and let /need-punycode/ be true.
+    GECKO: Apply the Nameprep-nobidi algorithm with /s/ and let /s/ be
+    the result.  If the algorithm fails, return /fallback/ and abort
+    these steps.
+
+    IE: If there is a non-ASCII character, apply the Nameprep-nobidi
+    algorithm with /s/ and let /need-punycode/ be true.
+
+    IE: Let /label/ be ASCII lowercased variant of /label/.
+
+    CHROME: If /s/ contains "%", abort.
 
     GECKO: If /s/ contains U+0000 or U+0020:
 
@@ -278,9 +290,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
       IE: If /label/ starts by "xn--" or contains a non-ASCII
       character, set /true/ to the /need-punycode/ flag.
 
-      IE: Let /label/ be ASCII lowercased variant of /label/.
-
-      CHROME: Apply the Nameprep algorithm with /label/ and let
+      CHROME: Apply the Nameprep-nobidi algorithm with /label/ and let
       /label/ be the result.  If the algorithm fails, the ToASCII
       algorithm fails.  Abort the ToASCII algorithm.
 
@@ -389,39 +399,6 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     the IPv4 address and abort these steps.
 
     Return /s/.
-
-  XXX
-
-  Percent-decode /s/ and decode as UTF-8.  XXX If it fails, ...
-
-  Apply Nameprep.  XXX This is wrong.
-
-  If the first character of /s/ is "[" and the last character of /s/
-  is "]", XXX canonicalize as an IPv6 address, return the result, and
-  abort these steps.
-
-  If /s/ is an IPv4 address, return the canonical representation of
-  the IPv4 address and abort these steps.
-
-  Split by U+002E FULL STOP character (.).  Let /labels/ be the result
-  (zero or more strings of zero or more characters.
-
-  For each string /label/ in /labels/, apply the following steps:
-
-    Apply Punycode encoding algorithm.  XXX If it fails, ...
-
-    Prepend "xn--" to /label/.
-
-    XXX Percent-encode /label/.
-
-  Let /s/ be concatenation of /labels/ where each component is
-  separated by a U+002E FULL STOP character (.).
-
-  Return /s/.
-
-  XXX
-
-
 
 * Canonicalize a string /u/ by encoding /encoding/
 
