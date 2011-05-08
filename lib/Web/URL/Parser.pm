@@ -703,7 +703,7 @@ sub to_ascii ($$) {
   }
   
   if (THIS) {
-    $s =~ s{([\x00-\x20\x22\x23\x25\x2F\x3A-\x3C\x3E\x3F\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
+    $s =~ s{([\x00-\x2C\x2F\x3A-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
       sprintf '%%%02X', ord $1;
     }ge;
   } elsif (IE) {
