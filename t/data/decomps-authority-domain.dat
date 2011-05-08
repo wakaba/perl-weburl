@@ -28,31 +28,47 @@ http://LocalHost%40/
 
 #data
 http://LocalHost%2a/
-#canon http://localhost%2a/
+#canon http://localhost%2A/
 #scheme http
-#host localhost%2a
+#host localhost%2A
 #path /
+#gecko-canon http://localhost%2a/
+#gecko-host localhost%2a
+#ie-canon http://localhost%2a/
+#ie-host localhost%2a
 
 #data
 http://LocalHost%2A/
-#canon http://localhost%2a/
+#canon http://localhost%2A/
 #scheme http
-#host localhost%2a
+#host localhost%2A
 #path /
+#gecko-canon http://localhost%2a/
+#gecko-host localhost%2a
+#ie-canon http://localhost%2a/
+#ie-host localhost%2a
 
 #data
 http://hoge%2A/
-#canon http://hoge%2a/
+#canon http://hoge%2A/
 #scheme http
-#host hoge%2a
+#host hoge%2A
 #path /
+#gecko-canon http://hoge%2a/
+#gecko-host hoge%2a
+#ie-canon http://hoge%2a/
+#ie-host hoge%2a
 
 #data
 http://hoge%2A.fuga/
-#canon http://hoge%2a.fuga/
+#canon http://hoge%2A.fuga/
 #scheme http
-#host hoge%2a.fuga
+#host hoge%2A.fuga
 #path /
+#gecko-canon http://hoge%2a.fuga/
+#gecko-host hoge%2a.fuga
+#ie-canon http://hoge%2a.fuga/
+#ie-host hoge%2a.fuga
 
 #data escaped
 http://LocalHost\uFF0A/
@@ -61,12 +77,14 @@ http://LocalHost\uFF0A/
 #host localhost%2A
 #path /
 #ie-invalid 1
+#gecko-canon http://localhost*/
+#gecko-host localhost*
 
 #data escaped
 http://LocalHost\uFF0B/
-#canon http://localhost%2B/
+#canon http://localhost+/
 #scheme http
-#host localhost%2B
+#host localhost+
 #path /
 #ie-invalid 1
 
@@ -5084,6 +5102,19 @@ http://a1.b/
 #path /
 
 #data escaped
+http://\u0641\u2488\u0642/
+#scheme http
+#path /
+#chrome-canon escaped
+http://xn--1.-jvdg/
+#chrome-host xn--1.-jvdg
+#gecko-canon escaped
+http://\u0641\u2488\u0642/
+#gecko-host escaped
+\u0641\u2488\u0642
+#ie-invalid 1
+
+#data escaped
 http://1\u24882\u2489\u248A6/
 #canon escaped
 http://11.22.3.6/
@@ -5230,6 +5261,36 @@ http://a.b/
 #scheme http
 #host a.b
 #path /
+
+#data escaped
+http://\u0641\u2024\u0642/
+#canon
+http://xn--dhb.xn--ehb/
+#scheme http
+#host
+xn--dhb.xn--ehb
+#path /
+#chrome-canon escaped
+http://xn--.-goce/
+#chrome-host
+xn--.-goce
+#ie-canon escaped
+http://\u0641.\u0642/
+#ie-host escaped
+\u0641.\u0642
+
+#data escaped
+http://\u06411\u2024\u0642/
+#scheme http
+#path /
+#gecko-canon escaped
+http://\u06411\u2024\u0642/
+#gecko-host escaped
+\u06411\u2024\u0642
+#chrome-canon escaped
+http://xn--1.-jvdg/
+#chrome-host xn--1.-jvdg
+#ie-invalid 1
 
 #data escaped
 http://a\u2025b/
