@@ -626,19 +626,14 @@ sub to_ascii ($$) {
     $has_root_dot = 1 if $s =~ s/[.\x{3002}\x{FF0E}\x{FF61}]\z//;
   }
 
-  if (IE) {
-    if ($s =~ /[^\x00-\x7F]/) {
-      $need_punycode = 1;
-      $s = nameprep $s;
-      return undef if not defined $s;
-    }
-    $s =~ tr/A-Z/a-z/;
+  $need_punycode = 1 if $s =~ /[^\x00-\x7F]/;
+
+  if (IE or GECKO) {
+    $s = nameprep $s;
+    return $fallback unless defined $s;
   }
 
   if (GECKO) {
-    $s = nameprep $s;
-    return $fallback unless defined $s;
-    
     if ($s =~ /[\x00\x20]/) {
       if ($fallback =~ /[\x00\x20]/) {
         return undef;
@@ -650,44 +645,19 @@ sub to_ascii ($$) {
 
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
-  my @label;
-  my @label_orig = split /\./, $s, -1;
-  @label_orig = ('') unless @label_orig;
-  for my $label (@label_orig) {
-    if (CHROME) {
-      $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
-        sprintf '%%%02X', ord $1;
-      }ge;
-    }
+  my @label = split /\./, $s, -1;
+  @label = ('') unless @label;
 
-    if (IE) {
-      if ($label =~ /^[Xx][Nn]--/ or $label =~ /[^\x00-\x7F]/) {
-        $need_punycode = 1;
-      }
-    } else {
-      if ($label =~ /[^\x00-\x7F]/) {
-        $need_punycode = 1;
-      }
-    }
+  @label = map {
+    s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
+      sprintf '%%%02X', ord $1;
+    }ge;
+    $_;
+  } @label if CHROME;
 
-    if (CHROME) {
-      $label = nameprep $label;
-      return undef unless defined $label;
-    }
-
-    unless (IE) {
-      $label = nameprep_bidi $label;
-      return $fallback unless defined $label;
-    }
-
-    if (CHROME) {
-      if ($label =~ /^xn--/ and $label =~ /[^\x00-\x7F]/) {
-        return undef;
-      }
-    }
-
-    push @label, $label;
-  } # $label
+  for (@label) {
+    $need_punycode = 1 if IE and /^[Xx][Nn]--/;
+  }
 
   if ($need_punycode) {
     my $idn_enabled;
@@ -705,8 +675,8 @@ sub to_ascii ($$) {
       }
     }
 
-    if (IE) {
-      @label = map {
+    @label = map {
+      if (IE) {
         my $label = $_;
         if ($label =~ /[^\x00-\x7F]/) {
           $label = 'xn--' . eval { encode_punycode $_ };
@@ -721,30 +691,36 @@ sub to_ascii ($$) {
         return undef if $label =~ /\x{3002}/;
 
         $label;
-      } @label;
-    } else {
-      @label = map {
-        if (/[^\x00-\x7F]/) {
+      } else {
+        my $label = $_;
+
+        if (CHROME) {
+          $label = nameprep $label;
+          return undef unless defined $label;
+        }
+
+        $label = nameprep_bidi $label;
+        return $fallback unless defined $label;
+
+        if ($label =~ /[^\x00-\x7F]/) {
           if ($idn_enabled) {
-            $_;
+            $label;
           } else {
-            my $label = 'xn--' . eval { encode_punycode $_ }; # XXX
-            
+            return undef if CHROME and $label =~ /^xn--/;
+            $label = eval { encode_punycode $label };
+            return undef unless defined $label;
+            $label = 'xn--' . $label;
             return $fallback if length $label > 63;
             $label;
           }
-        } elsif ($_ eq '' and CHROME) {
-          return undef;
         } else {
-          if (length $_ > 62 and GECKO) {
-            substr $_, 0, 62;
-          } else {
-            return undef if length $_ > 63;
-            $_;
-          }
+          $label = substr $label, 0, 62 if GECKO;
+          return undef if CHROME and $label eq '';
+          return undef if length $label > 63;
+          $label;
         }
-      } @label;
-    }
+      }
+    } @label;
   }
 
   push @label, '' if $has_root_dot;
