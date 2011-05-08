@@ -4487,7 +4487,7 @@ ok 2862 - http://a�b/ - http://a�b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2863 - http://ـ۝ف/ - http://ـ۝ف/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-ok 2864 - http://a܏b/ - http://a܏b/
+ok 2864 - http://ـ܏ف/ - http://ـ܏ف/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2865 - http://a᠎b/ - http://a᠎b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -4579,7 +4579,8 @@ ok 2923 - http://a%C2%9Eb/ - http://a%C2%9Eb/
 ok 2924 - http://a%C2%9Fb/ - http://a%C2%9Fb/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2925 - http://ـ%DB%9Dف/ - http://ـ%DB%9Dف/
-ok 2926 - http://a%DC%8Fb/ - http://a%DC%8Fb/
+Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
+ok 2926 - http://ـ%DC%8Fف/ - http://ـ%DC%8Fف/
 ok 2927 - http://a%E1%A0%8Eb/ - http://a%E1%A0%8Eb/
 ok 2928 - http://a%E2%80%8Cb/ - http://a%E2%80%8Cb/
 ok 2929 - http://a%E2%80%8Db/ - http://a%E2%80%8Db/
