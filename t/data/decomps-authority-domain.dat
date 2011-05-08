@@ -5281,6 +5281,19 @@ http://a.b/
 #path /
 
 #data escaped
+http://xn--4gq\u2024xn--4gq.jp/
+#canon escaped
+http://xn--4gq.xn--4gq.jp/
+#scheme http
+#host
+xn--4gq.xn--4gq.jp
+#path /
+#ie-canon escaped
+http://\u4E00.\u4E00.jp/
+#ie-host escaped
+\u4E00.\u4E00.jp
+
+#data escaped
 http://\u0641\u2024\u0642/
 #canon
 http://xn--dhb.xn--ehb/
