@@ -472,7 +472,8 @@ This algorithm returns either a string or the "fail" state.
   24. If /s/ contains one of the following characters, return
       /fallback/ and abort the CanonicalizeHost algorithm:
 
-      THIS: U+0000, U+002F (/), U+0025 (%), U+003F (?), or U+005C (\).
+      THIS: U+0000, U+002F (/), U+0025 (%), U+003A (:), U+003B (;),
+      U+003F (?), or U+005C (\).
 
       CHROME: U+0000, ..., U+001F, U+0025 (%), U+002F (/), U+003A (:),
       U+003B (;), U+003F (?), U+005B ([), U+005C (\), U+005D (]),
