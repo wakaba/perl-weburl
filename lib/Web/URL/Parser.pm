@@ -687,6 +687,31 @@ sub to_ascii ($$) {
               allow_unassinged => 0,
               use_std3_ascii_rules => 1,
               no_bidi => 0;
+          if (0) {
+            $a_label = $label;
+            if ($a_label =~ /[^\x00-\x7F]/) {
+              $a_label = label_nameprep $a_label,
+                  allow_unassinged => 0,
+                  no_bidi => 0;
+              return undef unless defined $a_label;
+            }
+            
+            return undef if $a_label =~ /[\x00-\x2C\x2E\x2F\x3A-\x40\x5B-\x60\x7B-\x7F]/;
+            
+            return undef if $a_label =~ /\A-/ or $a_label =~ /-\z/;
+            
+            if ($a_label =~ /[^\x00-\x7F]/) {
+              return undef if $a_label =~ /^[Xx][Nn]--/;
+              
+              $a_label = encode_punycode $a_label;
+              return undef unless defined $a_label;
+              
+              $a_label = 'xn--' . $a_label;
+            }
+            
+            return undef if (length $a_label) == 0;
+            return undef if (length $a_label) > 63;
+          }
           return undef unless defined $a_label;
           return undef unless $a_label eq $p_label;
         }
@@ -705,22 +730,19 @@ sub to_ascii ($$) {
         return $fallback unless defined $label;
 
         if ($label =~ /[^\x00-\x7F]/) {
-          if ($idn_enabled) {
-            $label;
-          } else {
+          unless ($idn_enabled) {
             return undef if CHROME and $label =~ /^xn--/;
             $label = eval { encode_punycode $label };
-            return undef unless defined $label;
+            return $fallback unless defined $label;
             $label = 'xn--' . $label;
             return $fallback if length $label > 63;
-            $label;
           }
         } else {
           $label = substr $label, 0, 62 if GECKO;
           return undef if CHROME and $label eq '';
           return undef if length $label > 63;
-          $label;
         }
+        $label;
       }
     } @label;
   }
