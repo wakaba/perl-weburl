@@ -447,8 +447,9 @@ http://a\uFF21b.test/
 
 #data escaped
 http://a\uFF3Bb.test/
-#invalid 1
+#canon http://a%5Bb.test/
 #scheme http
+#host a%5Bb.test
 #path /
 #gecko-not-invalid 1
 #gecko-canon escaped
@@ -475,8 +476,9 @@ a\u005Cb.test
 
 #data escaped
 http://a\uFF3Db.test/
-#invalid 1
+#canon http://a%5Db.test/
 #scheme http
+#host a%5Db.test
 #path /
 #gecko-not-invalid 1
 #gecko-canon escaped
@@ -1699,8 +1701,9 @@ http://a%40b.test/
 
 #data escaped
 http://a\u005Bb.test/
-#invalid 1
+#canon http://a%5Bb.test/
 #scheme http
+#host a%5Bb.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a[b.test/
@@ -1717,8 +1720,9 @@ a\u005Bb.test
 
 #data escaped
 http://a%5bb.test/
-#invalid 1
+#canon http://a%5Bb.test/
 #scheme http
+#host a%5Bb.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a[b.test/
@@ -1742,8 +1746,9 @@ http://a%5cb.test/
 
 #data escaped
 http://a\u005Db.test/
-#invalid 1
+#canon http://a%5Db.test/
 #scheme http
+#host a%5Db.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a]b.test/
@@ -1760,8 +1765,9 @@ a\u005Db.test
 
 #data escaped
 http://a%5db.test/
-#invalid 1
+#canon http://a%5Db.test/
 #scheme http
+#host a%5Db.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a]b.test/

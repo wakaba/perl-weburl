@@ -694,12 +694,17 @@ sub to_ascii ($$) {
     $s =~ tr/A-Z/a-z/;
   }
 
+  if ($s =~ /\A\[/ and $s =~ /\]\z/) {
+    # XXX canonicalize as an IPv6 address
+    return $s;
+  }
+  
   if (THIS) {
     if ($s =~ /[\x00\x25\x2F\x3F\x5C]/) {
       return undef;
     }
   } elsif (CHROME) {
-    if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5C\x5E\x7E\x7F]/) {
+    if ($s =~ /[\x00-\x1F\x25\x2F\x3A\x3B\x3F\x5B-\x5E\x7E\x7F]/) {
       return undef;
     }
   } elsif (IE) {
@@ -707,9 +712,9 @@ sub to_ascii ($$) {
       return undef;
     }
   }
-  
+
   if (THIS) {
-    $s =~ s{([\x00-\x2A\x2C\x2F\x3A-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
+    $s =~ s{([\x00-\x2A\x2C\x2F\x3A-\x40\x5B-\x5E\x60\x7B-\x7D\x7F])}{
       sprintf '%%%02X', ord $1;
     }ge;
   } elsif (IE) {
@@ -720,15 +725,6 @@ sub to_ascii ($$) {
     $s =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
       sprintf '%%%02X', ord $1;
     }ge;
-  }
-
-  if ($s =~ /\A\[/ and $s =~ /\]\z/) {
-    # XXX canonicalize as an IPv6 address
-    return $s;
-  }
-
-  if ($s =~ /\[/ or $s =~ /\]/) {
-    return $fallback;
   }
 
   # IPv4address
