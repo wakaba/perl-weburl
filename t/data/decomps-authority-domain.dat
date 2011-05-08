@@ -3360,11 +3360,13 @@ http://\uFE6A28.com/
 #chrome-not-invalid 1
 #chrome-canon escaped
 http://%28.com/
-#chrome-host escaped %28.com
+#chrome-host escaped
+%28.com
 #gecko-not-invalid 1
 #gecko-canon escaped
 http://%28.com/
-#gecko-host escaped %28.com
+#gecko-host escaped
+%28.com
 
 #data escaped
 http://\uFE6A00.com/
@@ -3375,8 +3377,8 @@ http://\uFE6A00.com/
 #chrome-canon http://%00.com/
 #ie-invalid 1
 #gecko-not-invalid 1
-#gecko-canon escaped http://%00.com/
-#gecko-host escaped %00.com
+#gecko-canon http://%00.com/
+#gecko-host %00.com
 
 #data escaped
 http://\uFE6A0A.com/
