@@ -124,7 +124,7 @@ sub _resolve : Tests {
   }
 } # _resolve
 
-our $BROWSER = $ENV{TEST_BROWSER} || '';
+our $BROWSER = $ENV{TEST_BROWSER} || 'this';
 
 sub __canon {
   for_each_test $_->stringify, {
@@ -212,6 +212,16 @@ sub __canon {
 #line 1 "_canon"
     eq_or_diff $resolved_url, $result,
         $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '');
+
+    if ($BROWSER eq 'this' and defined $url) {
+      my $resolved_url2 = Web::URL::Parser->resolve_url
+          ($url, $resolved_base_url);
+      Web::URL::Parser->canonicalize_url ($resolved_url2, $charset);
+      my $url2 = Web::URL::Parser->serialize_url ($resolved_url2);
+#line 1 "_canon_idempotent"
+      eq_or_diff $url2, $url,
+          $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '') . ' idempotency';
+    }
   } for @_;
 }
 

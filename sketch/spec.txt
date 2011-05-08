@@ -209,22 +209,29 @@ the following criteria:
 
   - The algorithm should be as simple and sane as possbile.
 
+  - The algorithm should result in same output as browsers if Chrome,
+    Gecko, and IE generate the same result.
+
   - The output should only contain ASCII characters allowed in URLs.
 
   - Percent-encoded and decoded sequences should be equivalent as long
     as they represents an unreserved character or an character that
     cannot be used in URLs.
 
-  - Percent-encoded sequences should be interpreted either as UTF-8
-    string or as invalid sequence.
+  - Percent-encoded sequences should be interpreted either as a UTF-8
+    string or as an invalid sequence.
 
   - The algorithm should be idempotent.
 
-  - The algorithm should not disallow use of characters added after
-    Unicode 3.2.
+  - The algorithm should not disallow use of code points where
+    characters are assgined after Unicode 3.2.
 
   - It should allow use of non-conforming ASCII domain names in the
     wild.
+
+  - It should allow use of IDNs valid in both IDNA2003 and IDNA2008,
+    independent of whether they are percent-encoded or not, and
+    Punycode-encoded or not.
 
 Steps without any marker apply to all browsers and "THIS"
 specification.  Steps with marker apply to the specified ones only.
