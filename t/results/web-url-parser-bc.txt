@@ -3070,17 +3070,7 @@ ok 2260 - http://a㏃b/ - http://a㏃b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2261 - http://a㏆b/ - http://a㏆b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2262 - http://a㏇b/ - http://a㏇b/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://a㏇b/ - http://a㏇b/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_bc)
-# +----+---------+------------------------------------------+
-# | Elt|Got      |Expected                                  |
-# +----+---------+------------------------------------------+
-# *   0|invalid  |canon,host,path,scheme,scheme_normalized  *
-# *   1|1        |http://aco.b/,aco.b,/,http,http           *
-# +----+---------+------------------------------------------+
+ok 2262 - http://a㏇b/ - http://a㏇b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2263 - http://a㏈b/ - http://a㏈b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -7033,4 +7023,4 @@ ok 4498 - http://a%F3%A0%81%BDb/ - http://a%F3%A0%81%BDb/
 ok 4499 - http://a%F3%A0%81%BEb/ - http://a%F3%A0%81%BEb/
 ok 4500 - http://a%F3%A0%81%BFb/ - http://a%F3%A0%81%BFb/
 1..4500
-# Looks like you failed 35 tests of 4500.
+# Looks like you failed 34 tests of 4500.
