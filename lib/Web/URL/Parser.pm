@@ -616,8 +616,11 @@ sub to_ascii ($$) {
   }
 
   my $need_punycode;
+  my $has_root_dot;
   if (IE) {
     $s =~ s{%([01][0-9A-Fa-f]|2[02DdEeFf]|3[0-9CcEeFf]|4[1-9A-Fa-f]|5[0-9AaCcEeFf]|6[0-9A-Fa-f]|7[0-9A-Fa-f])}{pack 'C', hex $1}ge;
+
+    $has_root_dot = 1 if $s =~ s/[.\x{3002}\x{FF0E}\x{FF61}]\z//;
 
     if ($s =~ /[^\x00-\x7F]/) {
       $need_punycode = 1;
@@ -644,7 +647,9 @@ sub to_ascii ($$) {
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
   my @label;
-  for my $label (split /\./, $s, -1) {
+  my @label_orig = split /\./, $s, -1;
+  @label_orig = ('') unless @label_orig;
+  for my $label (@label_orig) {
     if (CHROME) {
       $label =~ s{([\x20-\x24\x26-\x2A\x2C\x3C-\x3E\x40\x5E\x60\x7B\x7C\x7D])}{
         sprintf '%%%02X', ord $1;
@@ -698,8 +703,6 @@ sub to_ascii ($$) {
     }
 
     if (IE) {
-      my $has_root_dot = @label && $label[-1] eq '';
-      pop @label if $has_root_dot;
       @label = map {
         my $label = $_;
         if ($label =~ /[^\x00-\x7F]/) {
@@ -712,10 +715,10 @@ sub to_ascii ($$) {
             process_non_xn_label => 1,
             no_bidi => 0;
         return undef unless defined $label;
+        return undef if $label =~ /\x{3002}/;
 
         $label;
       } @label;
-      push @label, '' if $has_root_dot;
     } else {
       my $empty = 0;
       @label = map {
@@ -749,6 +752,7 @@ sub to_ascii ($$) {
     }
   }
 
+  push @label, '' if $has_root_dot;
   $s = join '.', @label;
 
   if (CHROME) {

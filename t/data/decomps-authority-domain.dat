@@ -3592,6 +3592,21 @@ http://\u0101.info./
 \u0101.info.
 
 #data escaped
+http://\u0100.info%2E
+#canon http://xn--yda.info./
+#scheme http
+#host xn--yda.info.
+#path /
+#gecko-canon escaped
+http://\u0101.info./
+#gecko-host escaped
+\u0101.info.
+#ie-canon escaped
+http://\u0101.info./
+#ie-host escaped
+\u0101.info.
+
+#data escaped
 http://\u0100.info..
 #canon http://xn--yda.info../
 #scheme http
@@ -4129,6 +4144,27 @@ http://foo./
 
 #data
 http://foo.bar./
+#canon http://foo.bar./
+#scheme http
+#host foo.bar.
+#path /
+
+#data
+http://foo.bar%2E/
+#canon http://foo.bar./
+#scheme http
+#host foo.bar.
+#path /
+
+#data escaped
+http://foo.bar\u3002/
+#canon http://foo.bar./
+#scheme http
+#host foo.bar.
+#path /
+
+#data escaped
+http://foo.bar\uFF61/
 #canon http://foo.bar./
 #scheme http
 #host foo.bar.
