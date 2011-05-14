@@ -1,10 +1,12 @@
 #data escaped
 http://a\uFFF9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%BF%B9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a\uFFF9b/
 #gecko-host escaped
@@ -17,11 +19,13 @@ a\uFFF9b
 
 #data escaped
 http://a\uFFFAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%BF%BAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a\uFFFAb/
 #gecko-host escaped
@@ -34,11 +38,13 @@ a\uFFFAb
 
 #data escaped
 http://a\uFFFBb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%BF%BBb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a\uFFFBb/
 #gecko-host escaped
@@ -51,11 +57,13 @@ a\uFFFBb
 
 #data escaped
 http://a\uFFFCb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%BF%BCb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a\uFFFCb/
 #gecko-host escaped
@@ -68,11 +76,13 @@ a\uFFFCb
 
 #data escaped
 http://a\uFFFDb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%BF%BDb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a\uFFFDb/
 #gecko-host escaped

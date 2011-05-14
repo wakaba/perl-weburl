@@ -190,11 +190,13 @@ sub generate_from_list ($$;%) {
         if ($args{pe_input}) {
           print $file q{#data escaped
 http://a%E1%9A%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%E1%9A%80b/
+#gecko-not-invalid 1
 #gecko-canon
 http://a%e1%9a%80b/
 #gecko-host
@@ -208,11 +210,13 @@ a%e1%9a%80b
         } else {
           print $file q{#data escaped
 http://a\u1680b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%E1%9A%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a\u1680b/
 #gecko-host escaped
@@ -313,11 +317,13 @@ http://\u00E1b/
         }
         printf $file q{#data escaped
 http://%s%s%s/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://%s/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://%s/
 #gecko-host escaped

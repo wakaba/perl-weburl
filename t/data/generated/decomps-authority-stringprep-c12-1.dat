@@ -22,11 +22,13 @@ a\u00A0b
 
 #data escaped
 http://a\u1680b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%E1%9A%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a\u1680b/
 #gecko-host escaped

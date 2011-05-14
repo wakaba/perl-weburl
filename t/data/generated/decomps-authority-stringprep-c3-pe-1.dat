@@ -1,10 +1,12 @@
 #data escaped
 http://a%EE%80%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%80b/
 #gecko-host escaped
@@ -17,11 +19,13 @@ a%ee%80%80b
 
 #data escaped
 http://a%EE%80%81b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%81b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%81b/
 #gecko-host escaped
@@ -34,11 +38,13 @@ a%ee%80%81b
 
 #data escaped
 http://a%EE%80%82b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%82b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%82b/
 #gecko-host escaped
@@ -51,11 +57,13 @@ a%ee%80%82b
 
 #data escaped
 http://a%EE%80%83b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%83b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%83b/
 #gecko-host escaped
@@ -68,11 +76,13 @@ a%ee%80%83b
 
 #data escaped
 http://a%EE%80%84b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%84b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%84b/
 #gecko-host escaped
@@ -85,11 +95,13 @@ a%ee%80%84b
 
 #data escaped
 http://a%EE%80%85b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%85b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%85b/
 #gecko-host escaped
@@ -102,11 +114,13 @@ a%ee%80%85b
 
 #data escaped
 http://a%EE%80%86b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%86b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%86b/
 #gecko-host escaped
@@ -119,11 +133,13 @@ a%ee%80%86b
 
 #data escaped
 http://a%EE%80%87b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%87b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%87b/
 #gecko-host escaped
@@ -136,11 +152,13 @@ a%ee%80%87b
 
 #data escaped
 http://a%EE%80%88b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%88b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%88b/
 #gecko-host escaped
@@ -153,11 +171,13 @@ a%ee%80%88b
 
 #data escaped
 http://a%EE%80%89b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%89b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%89b/
 #gecko-host escaped
@@ -170,11 +190,13 @@ a%ee%80%89b
 
 #data escaped
 http://a%EE%80%8Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%8Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%8ab/
 #gecko-host escaped
@@ -187,11 +209,13 @@ a%ee%80%8ab
 
 #data escaped
 http://a%EE%80%8Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%8Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%8bb/
 #gecko-host escaped
@@ -204,11 +228,13 @@ a%ee%80%8bb
 
 #data escaped
 http://a%EE%80%8Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%8Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%8cb/
 #gecko-host escaped
@@ -221,11 +247,13 @@ a%ee%80%8cb
 
 #data escaped
 http://a%EE%80%8Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%8Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%8db/
 #gecko-host escaped
@@ -238,11 +266,13 @@ a%ee%80%8db
 
 #data escaped
 http://a%EE%80%8Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%8Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%8eb/
 #gecko-host escaped
@@ -255,11 +285,13 @@ a%ee%80%8eb
 
 #data escaped
 http://a%EE%80%8Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%8Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%8fb/
 #gecko-host escaped
@@ -272,11 +304,13 @@ a%ee%80%8fb
 
 #data escaped
 http://a%EE%80%90b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%90b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%90b/
 #gecko-host escaped
@@ -289,11 +323,13 @@ a%ee%80%90b
 
 #data escaped
 http://a%EE%80%91b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%91b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%91b/
 #gecko-host escaped
@@ -306,11 +342,13 @@ a%ee%80%91b
 
 #data escaped
 http://a%EE%80%92b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%92b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%92b/
 #gecko-host escaped
@@ -323,11 +361,13 @@ a%ee%80%92b
 
 #data escaped
 http://a%EE%80%93b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%93b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%93b/
 #gecko-host escaped
@@ -340,11 +380,13 @@ a%ee%80%93b
 
 #data escaped
 http://a%EE%80%94b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%94b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%94b/
 #gecko-host escaped
@@ -357,11 +399,13 @@ a%ee%80%94b
 
 #data escaped
 http://a%EE%80%95b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%95b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%95b/
 #gecko-host escaped
@@ -374,11 +418,13 @@ a%ee%80%95b
 
 #data escaped
 http://a%EE%80%96b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%96b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%96b/
 #gecko-host escaped
@@ -391,11 +437,13 @@ a%ee%80%96b
 
 #data escaped
 http://a%EE%80%97b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%97b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%97b/
 #gecko-host escaped
@@ -408,11 +456,13 @@ a%ee%80%97b
 
 #data escaped
 http://a%EE%80%98b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%98b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%98b/
 #gecko-host escaped
@@ -425,11 +475,13 @@ a%ee%80%98b
 
 #data escaped
 http://a%EE%80%99b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%99b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%99b/
 #gecko-host escaped
@@ -442,11 +494,13 @@ a%ee%80%99b
 
 #data escaped
 http://a%EE%80%9Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%9Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%9ab/
 #gecko-host escaped
@@ -459,11 +513,13 @@ a%ee%80%9ab
 
 #data escaped
 http://a%EE%80%9Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%9Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%9bb/
 #gecko-host escaped
@@ -476,11 +532,13 @@ a%ee%80%9bb
 
 #data escaped
 http://a%EE%80%9Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%9Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%9cb/
 #gecko-host escaped
@@ -493,11 +551,13 @@ a%ee%80%9cb
 
 #data escaped
 http://a%EE%80%9Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%9Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%9db/
 #gecko-host escaped
@@ -510,11 +570,13 @@ a%ee%80%9db
 
 #data escaped
 http://a%EE%80%9Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%9Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%9eb/
 #gecko-host escaped
@@ -527,11 +589,13 @@ a%ee%80%9eb
 
 #data escaped
 http://a%EE%80%9Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%9Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%9fb/
 #gecko-host escaped
@@ -544,11 +608,13 @@ a%ee%80%9fb
 
 #data escaped
 http://a%EE%80%A0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a0b/
 #gecko-host escaped
@@ -561,11 +627,13 @@ a%ee%80%a0b
 
 #data escaped
 http://a%EE%80%A1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a1b/
 #gecko-host escaped
@@ -578,11 +646,13 @@ a%ee%80%a1b
 
 #data escaped
 http://a%EE%80%A2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a2b/
 #gecko-host escaped
@@ -595,11 +665,13 @@ a%ee%80%a2b
 
 #data escaped
 http://a%EE%80%A3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a3b/
 #gecko-host escaped
@@ -612,11 +684,13 @@ a%ee%80%a3b
 
 #data escaped
 http://a%EE%80%A4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a4b/
 #gecko-host escaped
@@ -629,11 +703,13 @@ a%ee%80%a4b
 
 #data escaped
 http://a%EE%80%A5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a5b/
 #gecko-host escaped
@@ -646,11 +722,13 @@ a%ee%80%a5b
 
 #data escaped
 http://a%EE%80%A6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a6b/
 #gecko-host escaped
@@ -663,11 +741,13 @@ a%ee%80%a6b
 
 #data escaped
 http://a%EE%80%A7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a7b/
 #gecko-host escaped
@@ -680,11 +760,13 @@ a%ee%80%a7b
 
 #data escaped
 http://a%EE%80%A8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a8b/
 #gecko-host escaped
@@ -697,11 +779,13 @@ a%ee%80%a8b
 
 #data escaped
 http://a%EE%80%A9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%A9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%a9b/
 #gecko-host escaped
@@ -714,11 +798,13 @@ a%ee%80%a9b
 
 #data escaped
 http://a%EE%80%AAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%AAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%aab/
 #gecko-host escaped
@@ -731,11 +817,13 @@ a%ee%80%aab
 
 #data escaped
 http://a%EE%80%ABb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%ABb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%abb/
 #gecko-host escaped
@@ -748,11 +836,13 @@ a%ee%80%abb
 
 #data escaped
 http://a%EE%80%ACb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%ACb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%acb/
 #gecko-host escaped
@@ -765,11 +855,13 @@ a%ee%80%acb
 
 #data escaped
 http://a%EE%80%ADb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%ADb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%adb/
 #gecko-host escaped
@@ -782,11 +874,13 @@ a%ee%80%adb
 
 #data escaped
 http://a%EE%80%AEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%AEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%aeb/
 #gecko-host escaped
@@ -799,11 +893,13 @@ a%ee%80%aeb
 
 #data escaped
 http://a%EE%80%AFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%AFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%afb/
 #gecko-host escaped
@@ -816,11 +912,13 @@ a%ee%80%afb
 
 #data escaped
 http://a%EE%80%B0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b0b/
 #gecko-host escaped
@@ -833,11 +931,13 @@ a%ee%80%b0b
 
 #data escaped
 http://a%EE%80%B1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b1b/
 #gecko-host escaped
@@ -850,11 +950,13 @@ a%ee%80%b1b
 
 #data escaped
 http://a%EE%80%B2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b2b/
 #gecko-host escaped
@@ -867,11 +969,13 @@ a%ee%80%b2b
 
 #data escaped
 http://a%EE%80%B3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b3b/
 #gecko-host escaped
@@ -884,11 +988,13 @@ a%ee%80%b3b
 
 #data escaped
 http://a%EE%80%B4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b4b/
 #gecko-host escaped
@@ -901,11 +1007,13 @@ a%ee%80%b4b
 
 #data escaped
 http://a%EE%80%B5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b5b/
 #gecko-host escaped
@@ -918,11 +1026,13 @@ a%ee%80%b5b
 
 #data escaped
 http://a%EE%80%B6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b6b/
 #gecko-host escaped
@@ -935,11 +1045,13 @@ a%ee%80%b6b
 
 #data escaped
 http://a%EE%80%B7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b7b/
 #gecko-host escaped
@@ -952,11 +1064,13 @@ a%ee%80%b7b
 
 #data escaped
 http://a%EE%80%B8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b8b/
 #gecko-host escaped
@@ -969,11 +1083,13 @@ a%ee%80%b8b
 
 #data escaped
 http://a%EE%80%B9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%B9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%b9b/
 #gecko-host escaped
@@ -986,11 +1102,13 @@ a%ee%80%b9b
 
 #data escaped
 http://a%EE%80%BAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%BAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%bab/
 #gecko-host escaped
@@ -1003,11 +1121,13 @@ a%ee%80%bab
 
 #data escaped
 http://a%EE%80%BBb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%BBb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%bbb/
 #gecko-host escaped
@@ -1020,11 +1140,13 @@ a%ee%80%bbb
 
 #data escaped
 http://a%EE%80%BCb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%BCb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%bcb/
 #gecko-host escaped
@@ -1037,11 +1159,13 @@ a%ee%80%bcb
 
 #data escaped
 http://a%EE%80%BDb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%BDb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%bdb/
 #gecko-host escaped
@@ -1054,11 +1178,13 @@ a%ee%80%bdb
 
 #data escaped
 http://a%EE%80%BEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%BEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%beb/
 #gecko-host escaped
@@ -1071,11 +1197,13 @@ a%ee%80%beb
 
 #data escaped
 http://a%EE%80%BFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%80%BFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%80%bfb/
 #gecko-host escaped
@@ -1088,11 +1216,13 @@ a%ee%80%bfb
 
 #data escaped
 http://a%EE%81%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%81%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%81%80b/
 #gecko-host escaped
@@ -1105,11 +1235,13 @@ a%ee%81%80b
 
 #data escaped
 http://a%EE%BF%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%80b/
 #gecko-host escaped
@@ -1122,11 +1254,13 @@ a%ee%bf%80b
 
 #data escaped
 http://a%EE%BF%81b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%81b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%81b/
 #gecko-host escaped
@@ -1139,11 +1273,13 @@ a%ee%bf%81b
 
 #data escaped
 http://a%EE%BF%82b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%82b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%82b/
 #gecko-host escaped
@@ -1156,11 +1292,13 @@ a%ee%bf%82b
 
 #data escaped
 http://a%EE%BF%83b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%83b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%83b/
 #gecko-host escaped
@@ -1173,11 +1311,13 @@ a%ee%bf%83b
 
 #data escaped
 http://a%EE%BF%84b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%84b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%84b/
 #gecko-host escaped
@@ -1190,11 +1330,13 @@ a%ee%bf%84b
 
 #data escaped
 http://a%EE%BF%85b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%85b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%85b/
 #gecko-host escaped
@@ -1207,11 +1349,13 @@ a%ee%bf%85b
 
 #data escaped
 http://a%EE%BF%86b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%86b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%86b/
 #gecko-host escaped
@@ -1224,11 +1368,13 @@ a%ee%bf%86b
 
 #data escaped
 http://a%EE%BF%87b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%87b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%87b/
 #gecko-host escaped
@@ -1241,11 +1387,13 @@ a%ee%bf%87b
 
 #data escaped
 http://a%EE%BF%88b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%88b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%88b/
 #gecko-host escaped
@@ -1258,11 +1406,13 @@ a%ee%bf%88b
 
 #data escaped
 http://a%EE%BF%89b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%89b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%89b/
 #gecko-host escaped
@@ -1275,11 +1425,13 @@ a%ee%bf%89b
 
 #data escaped
 http://a%EE%BF%8Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%8Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%8ab/
 #gecko-host escaped
@@ -1292,11 +1444,13 @@ a%ee%bf%8ab
 
 #data escaped
 http://a%EE%BF%8Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%8Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%8bb/
 #gecko-host escaped
@@ -1309,11 +1463,13 @@ a%ee%bf%8bb
 
 #data escaped
 http://a%EE%BF%8Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%8Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%8cb/
 #gecko-host escaped
@@ -1326,11 +1482,13 @@ a%ee%bf%8cb
 
 #data escaped
 http://a%EE%BF%8Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%8Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%8db/
 #gecko-host escaped
@@ -1343,11 +1501,13 @@ a%ee%bf%8db
 
 #data escaped
 http://a%EE%BF%8Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%8Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%8eb/
 #gecko-host escaped
@@ -1360,11 +1520,13 @@ a%ee%bf%8eb
 
 #data escaped
 http://a%EE%BF%8Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%8Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%8fb/
 #gecko-host escaped
@@ -1377,11 +1539,13 @@ a%ee%bf%8fb
 
 #data escaped
 http://a%EE%BF%90b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%90b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%90b/
 #gecko-host escaped
@@ -1394,11 +1558,13 @@ a%ee%bf%90b
 
 #data escaped
 http://a%EE%BF%91b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%91b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%91b/
 #gecko-host escaped
@@ -1411,11 +1577,13 @@ a%ee%bf%91b
 
 #data escaped
 http://a%EE%BF%92b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%92b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%92b/
 #gecko-host escaped
@@ -1428,11 +1596,13 @@ a%ee%bf%92b
 
 #data escaped
 http://a%EE%BF%93b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%93b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%93b/
 #gecko-host escaped
@@ -1445,11 +1615,13 @@ a%ee%bf%93b
 
 #data escaped
 http://a%EE%BF%94b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%94b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%94b/
 #gecko-host escaped
@@ -1462,11 +1634,13 @@ a%ee%bf%94b
 
 #data escaped
 http://a%EE%BF%95b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%95b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%95b/
 #gecko-host escaped
@@ -1479,11 +1653,13 @@ a%ee%bf%95b
 
 #data escaped
 http://a%EE%BF%96b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%96b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%96b/
 #gecko-host escaped
@@ -1496,11 +1672,13 @@ a%ee%bf%96b
 
 #data escaped
 http://a%EE%BF%97b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%97b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%97b/
 #gecko-host escaped
@@ -1513,11 +1691,13 @@ a%ee%bf%97b
 
 #data escaped
 http://a%EE%BF%98b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%98b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%98b/
 #gecko-host escaped
@@ -1530,11 +1710,13 @@ a%ee%bf%98b
 
 #data escaped
 http://a%EE%BF%99b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%99b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%99b/
 #gecko-host escaped
@@ -1547,11 +1729,13 @@ a%ee%bf%99b
 
 #data escaped
 http://a%EE%BF%9Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%9Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%9ab/
 #gecko-host escaped
@@ -1564,11 +1748,13 @@ a%ee%bf%9ab
 
 #data escaped
 http://a%EE%BF%9Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%9Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%9bb/
 #gecko-host escaped
@@ -1581,11 +1767,13 @@ a%ee%bf%9bb
 
 #data escaped
 http://a%EE%BF%9Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%9Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%9cb/
 #gecko-host escaped
@@ -1598,11 +1786,13 @@ a%ee%bf%9cb
 
 #data escaped
 http://a%EE%BF%9Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%9Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%9db/
 #gecko-host escaped
@@ -1615,11 +1805,13 @@ a%ee%bf%9db
 
 #data escaped
 http://a%EE%BF%9Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%9Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%9eb/
 #gecko-host escaped
@@ -1632,11 +1824,13 @@ a%ee%bf%9eb
 
 #data escaped
 http://a%EE%BF%9Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%9Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%9fb/
 #gecko-host escaped
@@ -1649,11 +1843,13 @@ a%ee%bf%9fb
 
 #data escaped
 http://a%EE%BF%A0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a0b/
 #gecko-host escaped
@@ -1666,11 +1862,13 @@ a%ee%bf%a0b
 
 #data escaped
 http://a%EE%BF%A1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a1b/
 #gecko-host escaped
@@ -1683,11 +1881,13 @@ a%ee%bf%a1b
 
 #data escaped
 http://a%EE%BF%A2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a2b/
 #gecko-host escaped
@@ -1700,11 +1900,13 @@ a%ee%bf%a2b
 
 #data escaped
 http://a%EE%BF%A3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a3b/
 #gecko-host escaped
@@ -1717,11 +1919,13 @@ a%ee%bf%a3b
 
 #data escaped
 http://a%EE%BF%A4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a4b/
 #gecko-host escaped
@@ -1734,11 +1938,13 @@ a%ee%bf%a4b
 
 #data escaped
 http://a%EE%BF%A5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a5b/
 #gecko-host escaped
@@ -1751,11 +1957,13 @@ a%ee%bf%a5b
 
 #data escaped
 http://a%EE%BF%A6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a6b/
 #gecko-host escaped
@@ -1768,11 +1976,13 @@ a%ee%bf%a6b
 
 #data escaped
 http://a%EE%BF%A7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a7b/
 #gecko-host escaped
@@ -1785,11 +1995,13 @@ a%ee%bf%a7b
 
 #data escaped
 http://a%EE%BF%A8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a8b/
 #gecko-host escaped
@@ -1802,11 +2014,13 @@ a%ee%bf%a8b
 
 #data escaped
 http://a%EE%BF%A9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%A9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%a9b/
 #gecko-host escaped
@@ -1819,11 +2033,13 @@ a%ee%bf%a9b
 
 #data escaped
 http://a%EE%BF%AAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%AAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%aab/
 #gecko-host escaped
@@ -1836,11 +2052,13 @@ a%ee%bf%aab
 
 #data escaped
 http://a%EE%BF%ABb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%ABb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%abb/
 #gecko-host escaped
@@ -1853,11 +2071,13 @@ a%ee%bf%abb
 
 #data escaped
 http://a%EE%BF%ACb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%ACb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%acb/
 #gecko-host escaped
@@ -1870,11 +2090,13 @@ a%ee%bf%acb
 
 #data escaped
 http://a%EE%BF%ADb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%ADb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%adb/
 #gecko-host escaped
@@ -1887,11 +2109,13 @@ a%ee%bf%adb
 
 #data escaped
 http://a%EE%BF%AEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%AEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%aeb/
 #gecko-host escaped
@@ -1904,11 +2128,13 @@ a%ee%bf%aeb
 
 #data escaped
 http://a%EE%BF%AFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%AFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%afb/
 #gecko-host escaped
@@ -1921,11 +2147,13 @@ a%ee%bf%afb
 
 #data escaped
 http://a%EE%BF%B0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b0b/
 #gecko-host escaped
@@ -1938,11 +2166,13 @@ a%ee%bf%b0b
 
 #data escaped
 http://a%EE%BF%B1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b1b/
 #gecko-host escaped
@@ -1955,11 +2185,13 @@ a%ee%bf%b1b
 
 #data escaped
 http://a%EE%BF%B2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b2b/
 #gecko-host escaped
@@ -1972,11 +2204,13 @@ a%ee%bf%b2b
 
 #data escaped
 http://a%EE%BF%B3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b3b/
 #gecko-host escaped
@@ -1989,11 +2223,13 @@ a%ee%bf%b3b
 
 #data escaped
 http://a%EE%BF%B4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b4b/
 #gecko-host escaped
@@ -2006,11 +2242,13 @@ a%ee%bf%b4b
 
 #data escaped
 http://a%EE%BF%B5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b5b/
 #gecko-host escaped
@@ -2023,11 +2261,13 @@ a%ee%bf%b5b
 
 #data escaped
 http://a%EE%BF%B6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b6b/
 #gecko-host escaped
@@ -2040,11 +2280,13 @@ a%ee%bf%b6b
 
 #data escaped
 http://a%EE%BF%B7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b7b/
 #gecko-host escaped
@@ -2057,11 +2299,13 @@ a%ee%bf%b7b
 
 #data escaped
 http://a%EE%BF%B8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b8b/
 #gecko-host escaped
@@ -2074,11 +2318,13 @@ a%ee%bf%b8b
 
 #data escaped
 http://a%EE%BF%B9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%B9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%b9b/
 #gecko-host escaped
@@ -2091,11 +2337,13 @@ a%ee%bf%b9b
 
 #data escaped
 http://a%EE%BF%BAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%BAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%bab/
 #gecko-host escaped
@@ -2108,11 +2356,13 @@ a%ee%bf%bab
 
 #data escaped
 http://a%EE%BF%BBb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%BBb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%bbb/
 #gecko-host escaped
@@ -2125,11 +2375,13 @@ a%ee%bf%bbb
 
 #data escaped
 http://a%EE%BF%BCb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%BCb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%bcb/
 #gecko-host escaped
@@ -2142,11 +2394,13 @@ a%ee%bf%bcb
 
 #data escaped
 http://a%EE%BF%BDb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%BDb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%bdb/
 #gecko-host escaped
@@ -2159,11 +2413,13 @@ a%ee%bf%bdb
 
 #data escaped
 http://a%EE%BF%BEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%BEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%beb/
 #gecko-host escaped
@@ -2176,11 +2432,13 @@ a%ee%bf%beb
 
 #data escaped
 http://a%EE%BF%BFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EE%BF%BFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ee%bf%bfb/
 #gecko-host escaped
@@ -2193,11 +2451,13 @@ a%ee%bf%bfb
 
 #data escaped
 http://a%EF%80%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%80b/
 #gecko-host escaped
@@ -2210,11 +2470,13 @@ a%ef%80%80b
 
 #data escaped
 http://a%EF%80%81b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%81b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%81b/
 #gecko-host escaped
@@ -2227,11 +2489,13 @@ a%ef%80%81b
 
 #data escaped
 http://a%EF%80%82b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%82b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%82b/
 #gecko-host escaped
@@ -2244,11 +2508,13 @@ a%ef%80%82b
 
 #data escaped
 http://a%EF%80%83b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%83b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%83b/
 #gecko-host escaped
@@ -2261,11 +2527,13 @@ a%ef%80%83b
 
 #data escaped
 http://a%EF%80%84b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%84b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%84b/
 #gecko-host escaped
@@ -2278,11 +2546,13 @@ a%ef%80%84b
 
 #data escaped
 http://a%EF%80%85b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%85b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%85b/
 #gecko-host escaped
@@ -2295,11 +2565,13 @@ a%ef%80%85b
 
 #data escaped
 http://a%EF%80%86b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%86b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%86b/
 #gecko-host escaped
@@ -2312,11 +2584,13 @@ a%ef%80%86b
 
 #data escaped
 http://a%EF%80%87b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%87b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%87b/
 #gecko-host escaped
@@ -2329,11 +2603,13 @@ a%ef%80%87b
 
 #data escaped
 http://a%EF%80%88b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%88b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%88b/
 #gecko-host escaped
@@ -2346,11 +2622,13 @@ a%ef%80%88b
 
 #data escaped
 http://a%EF%80%89b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%89b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%89b/
 #gecko-host escaped
@@ -2363,11 +2641,13 @@ a%ef%80%89b
 
 #data escaped
 http://a%EF%80%8Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%8Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%8ab/
 #gecko-host escaped
@@ -2380,11 +2660,13 @@ a%ef%80%8ab
 
 #data escaped
 http://a%EF%80%8Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%8Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%8bb/
 #gecko-host escaped
@@ -2397,11 +2679,13 @@ a%ef%80%8bb
 
 #data escaped
 http://a%EF%80%8Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%8Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%8cb/
 #gecko-host escaped
@@ -2414,11 +2698,13 @@ a%ef%80%8cb
 
 #data escaped
 http://a%EF%80%8Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%8Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%8db/
 #gecko-host escaped
@@ -2431,11 +2717,13 @@ a%ef%80%8db
 
 #data escaped
 http://a%EF%80%8Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%8Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%8eb/
 #gecko-host escaped
@@ -2448,11 +2736,13 @@ a%ef%80%8eb
 
 #data escaped
 http://a%EF%80%8Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%8Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%8fb/
 #gecko-host escaped
@@ -2465,11 +2755,13 @@ a%ef%80%8fb
 
 #data escaped
 http://a%EF%80%90b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%90b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%90b/
 #gecko-host escaped
@@ -2482,11 +2774,13 @@ a%ef%80%90b
 
 #data escaped
 http://a%EF%80%91b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%91b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%91b/
 #gecko-host escaped
@@ -2499,11 +2793,13 @@ a%ef%80%91b
 
 #data escaped
 http://a%EF%80%92b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%92b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%92b/
 #gecko-host escaped
@@ -2516,11 +2812,13 @@ a%ef%80%92b
 
 #data escaped
 http://a%EF%80%93b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%93b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%93b/
 #gecko-host escaped
@@ -2533,11 +2831,13 @@ a%ef%80%93b
 
 #data escaped
 http://a%EF%80%94b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%94b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%94b/
 #gecko-host escaped
@@ -2550,11 +2850,13 @@ a%ef%80%94b
 
 #data escaped
 http://a%EF%80%95b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%95b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%95b/
 #gecko-host escaped
@@ -2567,11 +2869,13 @@ a%ef%80%95b
 
 #data escaped
 http://a%EF%80%96b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%96b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%96b/
 #gecko-host escaped
@@ -2584,11 +2888,13 @@ a%ef%80%96b
 
 #data escaped
 http://a%EF%80%97b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%97b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%97b/
 #gecko-host escaped
@@ -2601,11 +2907,13 @@ a%ef%80%97b
 
 #data escaped
 http://a%EF%80%98b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%98b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%98b/
 #gecko-host escaped
@@ -2618,11 +2926,13 @@ a%ef%80%98b
 
 #data escaped
 http://a%EF%80%99b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%99b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%99b/
 #gecko-host escaped
@@ -2635,11 +2945,13 @@ a%ef%80%99b
 
 #data escaped
 http://a%EF%80%9Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%9Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%9ab/
 #gecko-host escaped
@@ -2652,11 +2964,13 @@ a%ef%80%9ab
 
 #data escaped
 http://a%EF%80%9Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%9Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%9bb/
 #gecko-host escaped
@@ -2669,11 +2983,13 @@ a%ef%80%9bb
 
 #data escaped
 http://a%EF%80%9Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%9Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%9cb/
 #gecko-host escaped
@@ -2686,11 +3002,13 @@ a%ef%80%9cb
 
 #data escaped
 http://a%EF%80%9Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%9Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%9db/
 #gecko-host escaped
@@ -2703,11 +3021,13 @@ a%ef%80%9db
 
 #data escaped
 http://a%EF%80%9Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%9Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%9eb/
 #gecko-host escaped
@@ -2720,11 +3040,13 @@ a%ef%80%9eb
 
 #data escaped
 http://a%EF%80%9Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%9Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%9fb/
 #gecko-host escaped
@@ -2737,11 +3059,13 @@ a%ef%80%9fb
 
 #data escaped
 http://a%EF%80%A0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a0b/
 #gecko-host escaped
@@ -2754,11 +3078,13 @@ a%ef%80%a0b
 
 #data escaped
 http://a%EF%80%A1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a1b/
 #gecko-host escaped
@@ -2771,11 +3097,13 @@ a%ef%80%a1b
 
 #data escaped
 http://a%EF%80%A2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a2b/
 #gecko-host escaped
@@ -2788,11 +3116,13 @@ a%ef%80%a2b
 
 #data escaped
 http://a%EF%80%A3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a3b/
 #gecko-host escaped
@@ -2805,11 +3135,13 @@ a%ef%80%a3b
 
 #data escaped
 http://a%EF%80%A4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a4b/
 #gecko-host escaped
@@ -2822,11 +3154,13 @@ a%ef%80%a4b
 
 #data escaped
 http://a%EF%80%A5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a5b/
 #gecko-host escaped
@@ -2839,11 +3173,13 @@ a%ef%80%a5b
 
 #data escaped
 http://a%EF%80%A6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a6b/
 #gecko-host escaped
@@ -2856,11 +3192,13 @@ a%ef%80%a6b
 
 #data escaped
 http://a%EF%80%A7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a7b/
 #gecko-host escaped
@@ -2873,11 +3211,13 @@ a%ef%80%a7b
 
 #data escaped
 http://a%EF%80%A8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a8b/
 #gecko-host escaped
@@ -2890,11 +3230,13 @@ a%ef%80%a8b
 
 #data escaped
 http://a%EF%80%A9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%A9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%a9b/
 #gecko-host escaped
@@ -2907,11 +3249,13 @@ a%ef%80%a9b
 
 #data escaped
 http://a%EF%80%AAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%AAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%aab/
 #gecko-host escaped
@@ -2924,11 +3268,13 @@ a%ef%80%aab
 
 #data escaped
 http://a%EF%80%ABb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%ABb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%abb/
 #gecko-host escaped
@@ -2941,11 +3287,13 @@ a%ef%80%abb
 
 #data escaped
 http://a%EF%80%ACb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%ACb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%acb/
 #gecko-host escaped
@@ -2958,11 +3306,13 @@ a%ef%80%acb
 
 #data escaped
 http://a%EF%80%ADb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%ADb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%adb/
 #gecko-host escaped
@@ -2975,11 +3325,13 @@ a%ef%80%adb
 
 #data escaped
 http://a%EF%80%AEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%AEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%aeb/
 #gecko-host escaped
@@ -2992,11 +3344,13 @@ a%ef%80%aeb
 
 #data escaped
 http://a%EF%80%AFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%AFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%afb/
 #gecko-host escaped
@@ -3009,11 +3363,13 @@ a%ef%80%afb
 
 #data escaped
 http://a%EF%80%B0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b0b/
 #gecko-host escaped
@@ -3026,11 +3382,13 @@ a%ef%80%b0b
 
 #data escaped
 http://a%EF%80%B1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b1b/
 #gecko-host escaped
@@ -3043,11 +3401,13 @@ a%ef%80%b1b
 
 #data escaped
 http://a%EF%80%B2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b2b/
 #gecko-host escaped
@@ -3060,11 +3420,13 @@ a%ef%80%b2b
 
 #data escaped
 http://a%EF%80%B3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b3b/
 #gecko-host escaped
@@ -3077,11 +3439,13 @@ a%ef%80%b3b
 
 #data escaped
 http://a%EF%80%B4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b4b/
 #gecko-host escaped
@@ -3094,11 +3458,13 @@ a%ef%80%b4b
 
 #data escaped
 http://a%EF%80%B5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b5b/
 #gecko-host escaped
@@ -3111,11 +3477,13 @@ a%ef%80%b5b
 
 #data escaped
 http://a%EF%80%B6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b6b/
 #gecko-host escaped
@@ -3128,11 +3496,13 @@ a%ef%80%b6b
 
 #data escaped
 http://a%EF%80%B7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b7b/
 #gecko-host escaped
@@ -3145,11 +3515,13 @@ a%ef%80%b7b
 
 #data escaped
 http://a%EF%80%B8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b8b/
 #gecko-host escaped
@@ -3162,11 +3534,13 @@ a%ef%80%b8b
 
 #data escaped
 http://a%EF%80%B9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%B9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%b9b/
 #gecko-host escaped
@@ -3179,11 +3553,13 @@ a%ef%80%b9b
 
 #data escaped
 http://a%EF%80%BAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%BAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%bab/
 #gecko-host escaped
@@ -3196,11 +3572,13 @@ a%ef%80%bab
 
 #data escaped
 http://a%EF%80%BBb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%BBb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%bbb/
 #gecko-host escaped
@@ -3213,11 +3591,13 @@ a%ef%80%bbb
 
 #data escaped
 http://a%EF%80%BCb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%BCb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%bcb/
 #gecko-host escaped
@@ -3230,11 +3610,13 @@ a%ef%80%bcb
 
 #data escaped
 http://a%EF%80%BDb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%BDb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%bdb/
 #gecko-host escaped
@@ -3247,11 +3629,13 @@ a%ef%80%bdb
 
 #data escaped
 http://a%EF%80%BEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%BEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%beb/
 #gecko-host escaped
@@ -3264,11 +3648,13 @@ a%ef%80%beb
 
 #data escaped
 http://a%EF%80%BFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%80%BFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%80%bfb/
 #gecko-host escaped
@@ -3281,11 +3667,13 @@ a%ef%80%bfb
 
 #data escaped
 http://a%EF%81%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%81%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%81%80b/
 #gecko-host escaped
@@ -3298,11 +3686,13 @@ a%ef%81%80b
 
 #data escaped
 http://a%EF%A3%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%80b/
 #gecko-host escaped
@@ -3315,11 +3705,13 @@ a%ef%a3%80b
 
 #data escaped
 http://a%EF%A3%81b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%81b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%81b/
 #gecko-host escaped
@@ -3332,11 +3724,13 @@ a%ef%a3%81b
 
 #data escaped
 http://a%EF%A3%82b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%82b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%82b/
 #gecko-host escaped
@@ -3349,11 +3743,13 @@ a%ef%a3%82b
 
 #data escaped
 http://a%EF%A3%83b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%83b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%83b/
 #gecko-host escaped
@@ -3366,11 +3762,13 @@ a%ef%a3%83b
 
 #data escaped
 http://a%EF%A3%84b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%84b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%84b/
 #gecko-host escaped
@@ -3383,11 +3781,13 @@ a%ef%a3%84b
 
 #data escaped
 http://a%EF%A3%85b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%85b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%85b/
 #gecko-host escaped
@@ -3400,11 +3800,13 @@ a%ef%a3%85b
 
 #data escaped
 http://a%EF%A3%86b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%86b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%86b/
 #gecko-host escaped
@@ -3417,11 +3819,13 @@ a%ef%a3%86b
 
 #data escaped
 http://a%EF%A3%87b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%87b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%87b/
 #gecko-host escaped
@@ -3434,11 +3838,13 @@ a%ef%a3%87b
 
 #data escaped
 http://a%EF%A3%88b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%88b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%88b/
 #gecko-host escaped
@@ -3451,11 +3857,13 @@ a%ef%a3%88b
 
 #data escaped
 http://a%EF%A3%89b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%89b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%89b/
 #gecko-host escaped
@@ -3468,11 +3876,13 @@ a%ef%a3%89b
 
 #data escaped
 http://a%EF%A3%8Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%8Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%8ab/
 #gecko-host escaped
@@ -3485,11 +3895,13 @@ a%ef%a3%8ab
 
 #data escaped
 http://a%EF%A3%8Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%8Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%8bb/
 #gecko-host escaped
@@ -3502,11 +3914,13 @@ a%ef%a3%8bb
 
 #data escaped
 http://a%EF%A3%8Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%8Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%8cb/
 #gecko-host escaped
@@ -3519,11 +3933,13 @@ a%ef%a3%8cb
 
 #data escaped
 http://a%EF%A3%8Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%8Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%8db/
 #gecko-host escaped
@@ -3536,11 +3952,13 @@ a%ef%a3%8db
 
 #data escaped
 http://a%EF%A3%8Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%8Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%8eb/
 #gecko-host escaped
@@ -3553,11 +3971,13 @@ a%ef%a3%8eb
 
 #data escaped
 http://a%EF%A3%8Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%8Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%8fb/
 #gecko-host escaped
@@ -3570,11 +3990,13 @@ a%ef%a3%8fb
 
 #data escaped
 http://a%EF%A3%90b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%90b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%90b/
 #gecko-host escaped
@@ -3587,11 +4009,13 @@ a%ef%a3%90b
 
 #data escaped
 http://a%EF%A3%91b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%91b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%91b/
 #gecko-host escaped
@@ -3604,11 +4028,13 @@ a%ef%a3%91b
 
 #data escaped
 http://a%EF%A3%92b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%92b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%92b/
 #gecko-host escaped
@@ -3621,11 +4047,13 @@ a%ef%a3%92b
 
 #data escaped
 http://a%EF%A3%93b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%93b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%93b/
 #gecko-host escaped
@@ -3638,11 +4066,13 @@ a%ef%a3%93b
 
 #data escaped
 http://a%EF%A3%94b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%94b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%94b/
 #gecko-host escaped
@@ -3655,11 +4085,13 @@ a%ef%a3%94b
 
 #data escaped
 http://a%EF%A3%95b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%95b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%95b/
 #gecko-host escaped
@@ -3672,11 +4104,13 @@ a%ef%a3%95b
 
 #data escaped
 http://a%EF%A3%96b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%96b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%96b/
 #gecko-host escaped
@@ -3689,11 +4123,13 @@ a%ef%a3%96b
 
 #data escaped
 http://a%EF%A3%97b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%97b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%97b/
 #gecko-host escaped
@@ -3706,11 +4142,13 @@ a%ef%a3%97b
 
 #data escaped
 http://a%EF%A3%98b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%98b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%98b/
 #gecko-host escaped
@@ -3723,11 +4161,13 @@ a%ef%a3%98b
 
 #data escaped
 http://a%EF%A3%99b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%99b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%99b/
 #gecko-host escaped
@@ -3740,11 +4180,13 @@ a%ef%a3%99b
 
 #data escaped
 http://a%EF%A3%9Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%9Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%9ab/
 #gecko-host escaped
@@ -3757,11 +4199,13 @@ a%ef%a3%9ab
 
 #data escaped
 http://a%EF%A3%9Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%9Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%9bb/
 #gecko-host escaped
@@ -3774,11 +4218,13 @@ a%ef%a3%9bb
 
 #data escaped
 http://a%EF%A3%9Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%9Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%9cb/
 #gecko-host escaped
@@ -3791,11 +4237,13 @@ a%ef%a3%9cb
 
 #data escaped
 http://a%EF%A3%9Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%9Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%9db/
 #gecko-host escaped
@@ -3808,11 +4256,13 @@ a%ef%a3%9db
 
 #data escaped
 http://a%EF%A3%9Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%9Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%9eb/
 #gecko-host escaped
@@ -3825,11 +4275,13 @@ a%ef%a3%9eb
 
 #data escaped
 http://a%EF%A3%9Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%9Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%9fb/
 #gecko-host escaped
@@ -3842,11 +4294,13 @@ a%ef%a3%9fb
 
 #data escaped
 http://a%EF%A3%A0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a0b/
 #gecko-host escaped
@@ -3859,11 +4313,13 @@ a%ef%a3%a0b
 
 #data escaped
 http://a%EF%A3%A1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a1b/
 #gecko-host escaped
@@ -3876,11 +4332,13 @@ a%ef%a3%a1b
 
 #data escaped
 http://a%EF%A3%A2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a2b/
 #gecko-host escaped
@@ -3893,11 +4351,13 @@ a%ef%a3%a2b
 
 #data escaped
 http://a%EF%A3%A3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a3b/
 #gecko-host escaped
@@ -3910,11 +4370,13 @@ a%ef%a3%a3b
 
 #data escaped
 http://a%EF%A3%A4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a4b/
 #gecko-host escaped
@@ -3927,11 +4389,13 @@ a%ef%a3%a4b
 
 #data escaped
 http://a%EF%A3%A5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a5b/
 #gecko-host escaped
@@ -3944,11 +4408,13 @@ a%ef%a3%a5b
 
 #data escaped
 http://a%EF%A3%A6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a6b/
 #gecko-host escaped
@@ -3961,11 +4427,13 @@ a%ef%a3%a6b
 
 #data escaped
 http://a%EF%A3%A7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a7b/
 #gecko-host escaped
@@ -3978,11 +4446,13 @@ a%ef%a3%a7b
 
 #data escaped
 http://a%EF%A3%A8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a8b/
 #gecko-host escaped
@@ -3995,11 +4465,13 @@ a%ef%a3%a8b
 
 #data escaped
 http://a%EF%A3%A9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%A9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%a9b/
 #gecko-host escaped
@@ -4012,11 +4484,13 @@ a%ef%a3%a9b
 
 #data escaped
 http://a%EF%A3%AAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%AAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%aab/
 #gecko-host escaped
@@ -4029,11 +4503,13 @@ a%ef%a3%aab
 
 #data escaped
 http://a%EF%A3%ABb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%ABb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%abb/
 #gecko-host escaped
@@ -4046,11 +4522,13 @@ a%ef%a3%abb
 
 #data escaped
 http://a%EF%A3%ACb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%ACb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%acb/
 #gecko-host escaped
@@ -4063,11 +4541,13 @@ a%ef%a3%acb
 
 #data escaped
 http://a%EF%A3%ADb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%ADb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%adb/
 #gecko-host escaped
@@ -4080,11 +4560,13 @@ a%ef%a3%adb
 
 #data escaped
 http://a%EF%A3%AEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%AEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%aeb/
 #gecko-host escaped
@@ -4097,11 +4579,13 @@ a%ef%a3%aeb
 
 #data escaped
 http://a%EF%A3%AFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%AFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%afb/
 #gecko-host escaped
@@ -4114,11 +4598,13 @@ a%ef%a3%afb
 
 #data escaped
 http://a%EF%A3%B0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b0b/
 #gecko-host escaped
@@ -4131,11 +4617,13 @@ a%ef%a3%b0b
 
 #data escaped
 http://a%EF%A3%B1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b1b/
 #gecko-host escaped
@@ -4148,11 +4636,13 @@ a%ef%a3%b1b
 
 #data escaped
 http://a%EF%A3%B2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b2b/
 #gecko-host escaped
@@ -4165,11 +4655,13 @@ a%ef%a3%b2b
 
 #data escaped
 http://a%EF%A3%B3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b3b/
 #gecko-host escaped
@@ -4182,11 +4674,13 @@ a%ef%a3%b3b
 
 #data escaped
 http://a%EF%A3%B4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b4b/
 #gecko-host escaped
@@ -4199,11 +4693,13 @@ a%ef%a3%b4b
 
 #data escaped
 http://a%EF%A3%B5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b5b/
 #gecko-host escaped
@@ -4216,11 +4712,13 @@ a%ef%a3%b5b
 
 #data escaped
 http://a%EF%A3%B6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b6b/
 #gecko-host escaped
@@ -4233,11 +4731,13 @@ a%ef%a3%b6b
 
 #data escaped
 http://a%EF%A3%B7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b7b/
 #gecko-host escaped
@@ -4250,11 +4750,13 @@ a%ef%a3%b7b
 
 #data escaped
 http://a%EF%A3%B8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b8b/
 #gecko-host escaped
@@ -4267,11 +4769,13 @@ a%ef%a3%b8b
 
 #data escaped
 http://a%EF%A3%B9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%B9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%b9b/
 #gecko-host escaped
@@ -4284,11 +4788,13 @@ a%ef%a3%b9b
 
 #data escaped
 http://a%EF%A3%BAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%BAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%bab/
 #gecko-host escaped
@@ -4301,11 +4807,13 @@ a%ef%a3%bab
 
 #data escaped
 http://a%EF%A3%BBb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%BBb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%bbb/
 #gecko-host escaped
@@ -4318,11 +4826,13 @@ a%ef%a3%bbb
 
 #data escaped
 http://a%EF%A3%BCb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%BCb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%bcb/
 #gecko-host escaped
@@ -4335,11 +4845,13 @@ a%ef%a3%bcb
 
 #data escaped
 http://a%EF%A3%BDb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%BDb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%bdb/
 #gecko-host escaped
@@ -4352,11 +4864,13 @@ a%ef%a3%bdb
 
 #data escaped
 http://a%EF%A3%BEb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%BEb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%beb/
 #gecko-host escaped
@@ -4369,11 +4883,13 @@ a%ef%a3%beb
 
 #data escaped
 http://a%EF%A3%BFb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%EF%A3%BFb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%ef%a3%bfb/
 #gecko-host escaped
@@ -4386,11 +4902,13 @@ a%ef%a3%bfb
 
 #data escaped
 http://a%F3%B0%80%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%80b/
 #gecko-host escaped
@@ -4403,11 +4921,13 @@ a%f3%b0%80%80b
 
 #data escaped
 http://a%F3%B0%80%81b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%81b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%81b/
 #gecko-host escaped
@@ -4420,11 +4940,13 @@ a%f3%b0%80%81b
 
 #data escaped
 http://a%F3%B0%80%82b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%82b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%82b/
 #gecko-host escaped
@@ -4437,11 +4959,13 @@ a%f3%b0%80%82b
 
 #data escaped
 http://a%F3%B0%80%83b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%83b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%83b/
 #gecko-host escaped
@@ -4454,11 +4978,13 @@ a%f3%b0%80%83b
 
 #data escaped
 http://a%F3%B0%80%84b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%84b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%84b/
 #gecko-host escaped
@@ -4471,11 +4997,13 @@ a%f3%b0%80%84b
 
 #data escaped
 http://a%F3%B0%80%85b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%85b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%85b/
 #gecko-host escaped
@@ -4488,11 +5016,13 @@ a%f3%b0%80%85b
 
 #data escaped
 http://a%F3%B0%80%86b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%86b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%86b/
 #gecko-host escaped
@@ -4505,11 +5035,13 @@ a%f3%b0%80%86b
 
 #data escaped
 http://a%F3%B0%80%87b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%87b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%87b/
 #gecko-host escaped
@@ -4522,11 +5054,13 @@ a%f3%b0%80%87b
 
 #data escaped
 http://a%F3%B0%80%88b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%88b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%88b/
 #gecko-host escaped
@@ -4539,11 +5073,13 @@ a%f3%b0%80%88b
 
 #data escaped
 http://a%F3%B0%80%89b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%89b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%89b/
 #gecko-host escaped
@@ -4556,11 +5092,13 @@ a%f3%b0%80%89b
 
 #data escaped
 http://a%F3%B0%80%8Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%8Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%8ab/
 #gecko-host escaped
@@ -4573,11 +5111,13 @@ a%f3%b0%80%8ab
 
 #data escaped
 http://a%F3%B0%80%8Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%8Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%8bb/
 #gecko-host escaped
@@ -4590,11 +5130,13 @@ a%f3%b0%80%8bb
 
 #data escaped
 http://a%F3%B0%80%8Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%8Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%8cb/
 #gecko-host escaped
@@ -4607,11 +5149,13 @@ a%f3%b0%80%8cb
 
 #data escaped
 http://a%F3%B0%80%8Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%8Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%8db/
 #gecko-host escaped
@@ -4624,11 +5168,13 @@ a%f3%b0%80%8db
 
 #data escaped
 http://a%F3%B0%80%8Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%8Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%8eb/
 #gecko-host escaped
@@ -4641,11 +5187,13 @@ a%f3%b0%80%8eb
 
 #data escaped
 http://a%F3%B0%80%8Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%8Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%8fb/
 #gecko-host escaped
@@ -4658,11 +5206,13 @@ a%f3%b0%80%8fb
 
 #data escaped
 http://a%F3%B0%80%90b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%B0%80%90b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%b0%80%90b/
 #gecko-host escaped
@@ -4675,11 +5225,13 @@ a%f3%b0%80%90b
 
 #data escaped
 http://a%F3%BF%BF%B0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b0b/
 #gecko-host escaped
@@ -4692,11 +5244,13 @@ a%f3%bf%bf%b0b
 
 #data escaped
 http://a%F3%BF%BF%B1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b1b/
 #gecko-host escaped
@@ -4709,11 +5263,13 @@ a%f3%bf%bf%b1b
 
 #data escaped
 http://a%F3%BF%BF%B2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b2b/
 #gecko-host escaped
@@ -4726,11 +5282,13 @@ a%f3%bf%bf%b2b
 
 #data escaped
 http://a%F3%BF%BF%B3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b3b/
 #gecko-host escaped
@@ -4743,11 +5301,13 @@ a%f3%bf%bf%b3b
 
 #data escaped
 http://a%F3%BF%BF%B4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b4b/
 #gecko-host escaped
@@ -4760,11 +5320,13 @@ a%f3%bf%bf%b4b
 
 #data escaped
 http://a%F3%BF%BF%B5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b5b/
 #gecko-host escaped
@@ -4777,11 +5339,13 @@ a%f3%bf%bf%b5b
 
 #data escaped
 http://a%F3%BF%BF%B6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b6b/
 #gecko-host escaped
@@ -4794,11 +5358,13 @@ a%f3%bf%bf%b6b
 
 #data escaped
 http://a%F3%BF%BF%B7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b7b/
 #gecko-host escaped
@@ -4811,11 +5377,13 @@ a%f3%bf%bf%b7b
 
 #data escaped
 http://a%F3%BF%BF%B8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b8b/
 #gecko-host escaped
@@ -4828,11 +5396,13 @@ a%f3%bf%bf%b8b
 
 #data escaped
 http://a%F3%BF%BF%B9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%B9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%b9b/
 #gecko-host escaped
@@ -4845,11 +5415,13 @@ a%f3%bf%bf%b9b
 
 #data escaped
 http://a%F3%BF%BF%BAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%BAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%bab/
 #gecko-host escaped
@@ -4862,11 +5434,13 @@ a%f3%bf%bf%bab
 
 #data escaped
 http://a%F3%BF%BF%BBb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%BBb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%bbb/
 #gecko-host escaped
@@ -4879,11 +5453,13 @@ a%f3%bf%bf%bbb
 
 #data escaped
 http://a%F3%BF%BF%BCb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%BCb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%bcb/
 #gecko-host escaped
@@ -4896,11 +5472,13 @@ a%f3%bf%bf%bcb
 
 #data escaped
 http://a%F3%BF%BF%BDb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F3%BF%BF%BDb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f3%bf%bf%bdb/
 #gecko-host escaped
@@ -4913,11 +5491,13 @@ a%f3%bf%bf%bdb
 
 #data escaped
 http://a%F4%80%80%80b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%80b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%80b/
 #gecko-host escaped
@@ -4930,11 +5510,13 @@ a%f4%80%80%80b
 
 #data escaped
 http://a%F4%80%80%81b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%81b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%81b/
 #gecko-host escaped
@@ -4947,11 +5529,13 @@ a%f4%80%80%81b
 
 #data escaped
 http://a%F4%80%80%82b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%82b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%82b/
 #gecko-host escaped
@@ -4964,11 +5548,13 @@ a%f4%80%80%82b
 
 #data escaped
 http://a%F4%80%80%83b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%83b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%83b/
 #gecko-host escaped
@@ -4981,11 +5567,13 @@ a%f4%80%80%83b
 
 #data escaped
 http://a%F4%80%80%84b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%84b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%84b/
 #gecko-host escaped
@@ -4998,11 +5586,13 @@ a%f4%80%80%84b
 
 #data escaped
 http://a%F4%80%80%85b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%85b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%85b/
 #gecko-host escaped
@@ -5015,11 +5605,13 @@ a%f4%80%80%85b
 
 #data escaped
 http://a%F4%80%80%86b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%86b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%86b/
 #gecko-host escaped
@@ -5032,11 +5624,13 @@ a%f4%80%80%86b
 
 #data escaped
 http://a%F4%80%80%87b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%87b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%87b/
 #gecko-host escaped
@@ -5049,11 +5643,13 @@ a%f4%80%80%87b
 
 #data escaped
 http://a%F4%80%80%88b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%88b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%88b/
 #gecko-host escaped
@@ -5066,11 +5662,13 @@ a%f4%80%80%88b
 
 #data escaped
 http://a%F4%80%80%89b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%89b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%89b/
 #gecko-host escaped
@@ -5083,11 +5681,13 @@ a%f4%80%80%89b
 
 #data escaped
 http://a%F4%80%80%8Ab/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%8Ab/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%8ab/
 #gecko-host escaped
@@ -5100,11 +5700,13 @@ a%f4%80%80%8ab
 
 #data escaped
 http://a%F4%80%80%8Bb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%8Bb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%8bb/
 #gecko-host escaped
@@ -5117,11 +5719,13 @@ a%f4%80%80%8bb
 
 #data escaped
 http://a%F4%80%80%8Cb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%8Cb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%8cb/
 #gecko-host escaped
@@ -5134,11 +5738,13 @@ a%f4%80%80%8cb
 
 #data escaped
 http://a%F4%80%80%8Db/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%8Db/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%8db/
 #gecko-host escaped
@@ -5151,11 +5757,13 @@ a%f4%80%80%8db
 
 #data escaped
 http://a%F4%80%80%8Eb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%8Eb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%8eb/
 #gecko-host escaped
@@ -5168,11 +5776,13 @@ a%f4%80%80%8eb
 
 #data escaped
 http://a%F4%80%80%8Fb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%8Fb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%8fb/
 #gecko-host escaped
@@ -5185,11 +5795,13 @@ a%f4%80%80%8fb
 
 #data escaped
 http://a%F4%80%80%90b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%80%80%90b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%80%80%90b/
 #gecko-host escaped
@@ -5202,11 +5814,13 @@ a%f4%80%80%90b
 
 #data escaped
 http://a%F4%8F%BF%B0b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B0b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b0b/
 #gecko-host escaped
@@ -5219,11 +5833,13 @@ a%f4%8f%bf%b0b
 
 #data escaped
 http://a%F4%8F%BF%B1b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B1b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b1b/
 #gecko-host escaped
@@ -5236,11 +5852,13 @@ a%f4%8f%bf%b1b
 
 #data escaped
 http://a%F4%8F%BF%B2b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B2b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b2b/
 #gecko-host escaped
@@ -5253,11 +5871,13 @@ a%f4%8f%bf%b2b
 
 #data escaped
 http://a%F4%8F%BF%B3b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B3b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b3b/
 #gecko-host escaped
@@ -5270,11 +5890,13 @@ a%f4%8f%bf%b3b
 
 #data escaped
 http://a%F4%8F%BF%B4b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B4b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b4b/
 #gecko-host escaped
@@ -5287,11 +5909,13 @@ a%f4%8f%bf%b4b
 
 #data escaped
 http://a%F4%8F%BF%B5b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B5b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b5b/
 #gecko-host escaped
@@ -5304,11 +5928,13 @@ a%f4%8f%bf%b5b
 
 #data escaped
 http://a%F4%8F%BF%B6b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B6b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b6b/
 #gecko-host escaped
@@ -5321,11 +5947,13 @@ a%f4%8f%bf%b6b
 
 #data escaped
 http://a%F4%8F%BF%B7b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B7b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b7b/
 #gecko-host escaped
@@ -5338,11 +5966,13 @@ a%f4%8f%bf%b7b
 
 #data escaped
 http://a%F4%8F%BF%B8b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B8b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b8b/
 #gecko-host escaped
@@ -5355,11 +5985,13 @@ a%f4%8f%bf%b8b
 
 #data escaped
 http://a%F4%8F%BF%B9b/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%B9b/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%b9b/
 #gecko-host escaped
@@ -5372,11 +6004,13 @@ a%f4%8f%bf%b9b
 
 #data escaped
 http://a%F4%8F%BF%BAb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%BAb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%bab/
 #gecko-host escaped
@@ -5389,11 +6023,13 @@ a%f4%8f%bf%bab
 
 #data escaped
 http://a%F4%8F%BF%BBb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%BBb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%bbb/
 #gecko-host escaped
@@ -5406,11 +6042,13 @@ a%f4%8f%bf%bbb
 
 #data escaped
 http://a%F4%8F%BF%BCb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%BCb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%bcb/
 #gecko-host escaped
@@ -5423,11 +6061,13 @@ a%f4%8f%bf%bcb
 
 #data escaped
 http://a%F4%8F%BF%BDb/
+#invalid 1
 #scheme http
 #path /
 #chrome-invalid 1
 #chrome-canon escaped
 http://a%F4%8F%BF%BDb/
+#gecko-not-invalid 1
 #gecko-canon escaped
 http://a%f4%8f%bf%bdb/
 #gecko-host escaped
