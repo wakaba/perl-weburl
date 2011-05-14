@@ -578,7 +578,7 @@ sub to_ascii ($$) {
   my $need_punycode = $s =~ /[^\x00-\x7F]/;
 
   my $has_root_dot;
-  if (THIS or IE or CHROME) {
+  if (IE or CHROME) {
     $has_root_dot = 1 if $s =~ s/[.\x{3002}\x{FF0E}\x{FF61}]\z//;
   }
   
@@ -606,6 +606,10 @@ sub to_ascii ($$) {
   }ge if CHROME;
 
   $need_punycode = 1 if IE and $s =~ /(?:^|\.)xn--/;
+
+  if (THIS) {
+    $has_root_dot = 1 if $s =~ s/[.]\z//;
+  }
 
   my @label = split /\./, $s, -1;
   @label = ('') unless @label;
