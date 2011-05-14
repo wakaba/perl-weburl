@@ -154,7 +154,7 @@ sub generate_from_list ($$;%) {
       my $orig = $args{unsafe} ? "\x{FFFD}" : chr $v;
       my $new = NFC lc uc NFKD $orig;
       my $newc = {
-          "\x00" => "\x{FFFD}",
+          "\x00" => "\x{FFFD}", # This is wrong.
           "\x09" => '',
           "\x0A" => '',
           "\x0B" => '',
@@ -305,6 +305,97 @@ http://\u00E1b/
 
 };
         }
+      } elsif ($v == 0xFE13 and not $args{pe_input}) {
+        print $file q{#data escaped
+http://a\uFE13b/
+#invalid 1
+#scheme http
+#path /
+#chrome-not-invalid 1
+#chrome-canon escaped
+http://xn--ab-g82n/
+#chrome-host escaped
+xn--ab-g82n
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a\u003Ab/
+#gecko-host escaped
+a\u003Ab
+#ie-canon escaped
+http://a\u003Ab/
+#ie-host escaped
+a\u003Ab
+#ie-invalid 1
+
+};
+      } elsif ($v == 0xFE14 and not $args{pe_input}) {
+        print $file q{#data escaped
+http://a\uFE14b/
+#invalid 1
+#scheme http
+#path /
+#chrome-not-invalid 1
+#chrome-canon escaped
+http://xn--ab-j82n/
+#chrome-host escaped
+xn--ab-j82n
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a\u003Bb/
+#gecko-host escaped
+a\u003Bb
+#ie-canon escaped
+http://a\u003Bb/
+#ie-host escaped
+a\u003Bb
+#ie-invalid 1
+
+};
+      } elsif ($v == 0xFE16 and not $args{pe_input}) {
+        print $file q{#data escaped
+http://a\uFE16b/
+#invalid 1
+#scheme http
+#path /
+#chrome-not-invalid 1
+#chrome-canon escaped
+http://xn--ab-p82n/
+#chrome-host escaped
+xn--ab-p82n
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a\u003Fb/
+#gecko-host escaped
+a\u003Fb
+#ie-canon escaped
+http://a\u003Fb/
+#ie-host escaped
+a\u003Fb
+#ie-invalid 1
+
+};
+      } elsif ($v == 0xFE19 and not $args{pe_input}) {
+        print $file q{#data escaped
+http://a\uFE19b/
+#invalid 1
+#scheme http
+#path /
+#chrome-not-invalid 1
+#chrome-canon escaped
+http://xn--ab-y82n/
+#chrome-host escaped
+xn--ab-y82n
+#gecko-canon escaped
+http://a...b/
+#gecko-host escaped
+a...b
+#ie-canon escaped
+http://a...b/
+#ie-host escaped
+a...b
+#ie-invalid 1
+
+};
       } elsif (not ($punycoded =~ /\A(?:[\x20-\x24\x26-\x7E]|%[0-7][0-9A-F])+\z/) and
           ($args{unsafe} or $new ne "\x{FFFD}" or $v == 0xFFFD) and
           $v != 0x0340 and $v != 0x0341 and not $args{unassigned} and
@@ -353,31 +444,44 @@ http://%s/
           $gecko_host = $host;
         } elsif ($args{unassigned}) {
           $punycoded = to_punycode_with_prefix $host;
-          $host = $punycoded;
           my $v_mod = NFKC chr $v;
           $v_mod =~ tr/\x{3002}/./;
           $v_mod = lc $v_mod if $v_mod ne chr $v;
-          $gecko_host = $BEFORE . ($v_mod) . $AFTER;
-          my $ver = string_unicode_version (chr $v);
-          $gecko_host = $BEFORE . (chr $v) . $AFTER 
-              if not defined $ver or $ver > '4.1';
-          $gecko_host = to_punycode_with_prefix $gecko_host
-              if $gecko_host =~ /[^\x00-\x7F]/;
-          $gecko_host =~ tr/A-Z/a-z/;
+          {
+            $gecko_host = $BEFORE . ($v_mod) . $AFTER;
+            my $ver = string_unicode_version (chr $v);
+            $gecko_host = $BEFORE . (chr $v) . $AFTER 
+                if not defined $ver or $ver > '4.1';
+            $gecko_host = to_punycode_with_prefix $gecko_host
+                if $gecko_host =~ /[^\x00-\x7F]/;
+            $gecko_host =~ tr/A-Z/a-z/;
+          }
+          {
+            $host = $BEFORE . ($v_mod) . $AFTER;
+            $host = to_punycode_with_prefix $host
+                if $host =~ /[^\x00-\x7F]/;
+            $host =~ tr/A-Z/a-z/;
+
+            $host =~ s{([\x00-\x2A\x2C\x2F\x3A-\x40\x5B-\x5E\x60\x7B-\x7D\x7F])}{
+              sprintf '%%%02X', ord $1;
+            }ge;
+          }
           $ie_invalid = 1;
         } else {
           $gecko_host = $host;
+          ## Ad hoc fix...
+          $host = $punycoded if $punycoded =~ /%20/ or $v == 0x200C or $v == 0x200D;
         }
         printf $file q{#data escaped
 http://%s%s%s/
 #canon escaped
 http://%s/
-#canon-unescaped escaped
-http://%s/
-#scheme http
 #host escaped
 %s
-#host-unescaped escaped
+#chrome-canon escaped
+http://%s/
+#scheme http
+#chrome-host escaped
 %s
 #path /
 #gecko-canon escaped
@@ -394,10 +498,10 @@ http://%s/
             uescape $BEFORE,
             $args{pe_input} ? pe chr $v : $args{unsafe} ? sprintf '\U%08X', $v : uescape $orig,
             uescape $AFTER,
+            uescape $host,
+            uescape $host,
             uescape $punycoded,
-            uescape ($args{pe_input} ? $punycoded : $host),
             uescape $punycoded,
-            uescape ($args{pe_input} ? $punycoded : $host),
             uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
             uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),
             uescape ($args{pe_input} ? (lc pe ($BEFORE . (chr $v) . $AFTER)) : $gecko_host),

@@ -1,4 +1,4 @@
-Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 468.
+Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 469.
 Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 430.
 # data/generated/decomps-authority-stringprep-b1-pe.dat
 ok 1 - http://a%C2%ADb/ - http://a%C2%ADb/
@@ -9639,266 +9639,266 @@ ok 6495 - http://a􏿾b/ - http://a􏿾b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 6496 - http://a􏿿b/ - http://a􏿿b/
 # data/generated/decomps-authority-stringprep-c4-pe-1.dat
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6497 - http://a%EF%B7%90b/ - http://a%EF%B7%90b/
-Unicode character 0xfdd1 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd1 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd1 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd1 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd1 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd1 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6498 - http://a%EF%B7%91b/ - http://a%EF%B7%91b/
-Unicode character 0xfdd2 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd2 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd2 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd2 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd2 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd2 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6499 - http://a%EF%B7%92b/ - http://a%EF%B7%92b/
-Unicode character 0xfdd3 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd3 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd3 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd3 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd3 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd3 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6500 - http://a%EF%B7%93b/ - http://a%EF%B7%93b/
-Unicode character 0xfdd4 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd4 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd4 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd4 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd4 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd4 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6501 - http://a%EF%B7%94b/ - http://a%EF%B7%94b/
-Unicode character 0xfdd5 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd5 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd5 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd5 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd5 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd5 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6502 - http://a%EF%B7%95b/ - http://a%EF%B7%95b/
-Unicode character 0xfdd6 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd6 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd6 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd6 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd6 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd6 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6503 - http://a%EF%B7%96b/ - http://a%EF%B7%96b/
-Unicode character 0xfdd7 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd7 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd7 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd7 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd7 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd7 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6504 - http://a%EF%B7%97b/ - http://a%EF%B7%97b/
-Unicode character 0xfdd8 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd8 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd8 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd8 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd8 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd8 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6505 - http://a%EF%B7%98b/ - http://a%EF%B7%98b/
-Unicode character 0xfdd9 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd9 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd9 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd9 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd9 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd9 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6506 - http://a%EF%B7%99b/ - http://a%EF%B7%99b/
-Unicode character 0xfdda is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdda is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdda is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdda is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdda is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdda is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6507 - http://a%EF%B7%9Ab/ - http://a%EF%B7%9Ab/
-Unicode character 0xfddb is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddb is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddb is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfddb is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddb is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddb is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6508 - http://a%EF%B7%9Bb/ - http://a%EF%B7%9Bb/
-Unicode character 0xfddc is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddc is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddc is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfddc is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddc is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddc is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6509 - http://a%EF%B7%9Cb/ - http://a%EF%B7%9Cb/
-Unicode character 0xfddd is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddd is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddd is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfddd is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddd is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddd is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6510 - http://a%EF%B7%9Db/ - http://a%EF%B7%9Db/
-Unicode character 0xfdde is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdde is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdde is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdde is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdde is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdde is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6511 - http://a%EF%B7%9Eb/ - http://a%EF%B7%9Eb/
-Unicode character 0xfddf is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddf is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfddf is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfddf is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddf is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfddf is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6512 - http://a%EF%B7%9Fb/ - http://a%EF%B7%9Fb/
-Unicode character 0xfde0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde0 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde0 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6513 - http://a%EF%B7%A0b/ - http://a%EF%B7%A0b/
-Unicode character 0xfde1 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde1 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde1 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde1 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde1 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde1 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6514 - http://a%EF%B7%A1b/ - http://a%EF%B7%A1b/
-Unicode character 0xfde2 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde2 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde2 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde2 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde2 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde2 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6515 - http://a%EF%B7%A2b/ - http://a%EF%B7%A2b/
-Unicode character 0xfde3 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde3 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde3 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde3 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde3 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde3 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6516 - http://a%EF%B7%A3b/ - http://a%EF%B7%A3b/
-Unicode character 0xfde4 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde4 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde4 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde4 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde4 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde4 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6517 - http://a%EF%B7%A4b/ - http://a%EF%B7%A4b/
-Unicode character 0xfde5 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde5 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde5 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde5 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde5 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde5 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6518 - http://a%EF%B7%A5b/ - http://a%EF%B7%A5b/
-Unicode character 0xfde6 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde6 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde6 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde6 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde6 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde6 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6519 - http://a%EF%B7%A6b/ - http://a%EF%B7%A6b/
-Unicode character 0xfde7 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde7 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde7 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde7 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde7 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde7 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6520 - http://a%EF%B7%A7b/ - http://a%EF%B7%A7b/
-Unicode character 0xfde8 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde8 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde8 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde8 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde8 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde8 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6521 - http://a%EF%B7%A8b/ - http://a%EF%B7%A8b/
-Unicode character 0xfde9 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde9 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfde9 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfde9 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde9 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfde9 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6522 - http://a%EF%B7%A9b/ - http://a%EF%B7%A9b/
-Unicode character 0xfdea is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdea is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdea is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdea is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdea is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdea is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6523 - http://a%EF%B7%AAb/ - http://a%EF%B7%AAb/
-Unicode character 0xfdeb is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdeb is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdeb is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdeb is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdeb is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdeb is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6524 - http://a%EF%B7%ABb/ - http://a%EF%B7%ABb/
-Unicode character 0xfdec is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdec is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdec is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdec is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdec is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdec is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6525 - http://a%EF%B7%ACb/ - http://a%EF%B7%ACb/
-Unicode character 0xfded is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfded is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfded is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfded is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfded is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfded is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6526 - http://a%EF%B7%ADb/ - http://a%EF%B7%ADb/
-Unicode character 0xfdee is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdee is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdee is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdee is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdee is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdee is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6527 - http://a%EF%B7%AEb/ - http://a%EF%B7%AEb/
-Unicode character 0xfdef is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdef is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdef is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdef is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdef is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdef is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6528 - http://a%EF%B7%AFb/ - http://a%EF%B7%AFb/
-Unicode character 0xfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6529 - http://a%EF%BF%BEb/ - http://a%EF%BF%BEb/
 ok 6530 - http://a%EF%BF%BFb/ - http://a%EF%BF%BFb/
-Unicode character 0x1fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x1fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x1fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x1fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x1fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x1fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6531 - http://a%F0%9F%BF%BEb/ - http://a%F0%9F%BF%BEb/
-Unicode character 0x1ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x1ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x1ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x1ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x1ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x1ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6532 - http://a%F0%9F%BF%BFb/ - http://a%F0%9F%BF%BFb/
-Unicode character 0x2fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x2fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x2fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x2fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x2fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x2fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6533 - http://a%F0%AF%BF%BEb/ - http://a%F0%AF%BF%BEb/
-Unicode character 0x2ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x2ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x2ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x2ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x2ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x2ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6534 - http://a%F0%AF%BF%BFb/ - http://a%F0%AF%BF%BFb/
-Unicode character 0x3fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x3fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x3fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x3fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x3fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x3fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6535 - http://a%F0%BF%BF%BEb/ - http://a%F0%BF%BF%BEb/
-Unicode character 0x3ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x3ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x3ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x3ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x3ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x3ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6536 - http://a%F0%BF%BF%BFb/ - http://a%F0%BF%BF%BFb/
-Unicode character 0x4fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x4fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x4fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x4fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x4fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x4fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6537 - http://a%F1%8F%BF%BEb/ - http://a%F1%8F%BF%BEb/
-Unicode character 0x4ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x4ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x4ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x4ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x4ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x4ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6538 - http://a%F1%8F%BF%BFb/ - http://a%F1%8F%BF%BFb/
-Unicode character 0x5fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x5fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x5fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x5fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x5fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x5fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6539 - http://a%F1%9F%BF%BEb/ - http://a%F1%9F%BF%BEb/
-Unicode character 0x5ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x5ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x5ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x5ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x5ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x5ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6540 - http://a%F1%9F%BF%BFb/ - http://a%F1%9F%BF%BFb/
-Unicode character 0x6fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x6fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x6fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x6fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x6fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x6fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6541 - http://a%F1%AF%BF%BEb/ - http://a%F1%AF%BF%BEb/
-Unicode character 0x6ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x6ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x6ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x6ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x6ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x6ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6542 - http://a%F1%AF%BF%BFb/ - http://a%F1%AF%BF%BFb/
-Unicode character 0x7fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x7fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x7fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x7fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x7fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x7fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6543 - http://a%F1%BF%BF%BEb/ - http://a%F1%BF%BF%BEb/
-Unicode character 0x7ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x7ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x7ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x7ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x7ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x7ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6544 - http://a%F1%BF%BF%BFb/ - http://a%F1%BF%BF%BFb/
-Unicode character 0x8fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x8fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x8fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x8fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x8fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x8fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6545 - http://a%F2%8F%BF%BEb/ - http://a%F2%8F%BF%BEb/
-Unicode character 0x8ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x8ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x8ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x8ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x8ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x8ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6546 - http://a%F2%8F%BF%BFb/ - http://a%F2%8F%BF%BFb/
-Unicode character 0x9fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x9fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x9fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x9fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x9fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x9fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6547 - http://a%F2%9F%BF%BEb/ - http://a%F2%9F%BF%BEb/
-Unicode character 0x9ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x9ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x9ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x9ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x9ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x9ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6548 - http://a%F2%9F%BF%BFb/ - http://a%F2%9F%BF%BFb/
-Unicode character 0xafffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xafffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xafffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xafffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xafffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xafffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6549 - http://a%F2%AF%BF%BEb/ - http://a%F2%AF%BF%BEb/
-Unicode character 0xaffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xaffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xaffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xaffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xaffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xaffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6550 - http://a%F2%AF%BF%BFb/ - http://a%F2%AF%BF%BFb/
-Unicode character 0xbfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xbfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xbfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xbfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xbfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xbfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6551 - http://a%F2%BF%BF%BEb/ - http://a%F2%BF%BF%BEb/
-Unicode character 0xbffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xbffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xbffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xbffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xbffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xbffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6552 - http://a%F2%BF%BF%BFb/ - http://a%F2%BF%BF%BFb/
-Unicode character 0xcfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xcfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xcfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xcfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xcfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xcfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6553 - http://a%F3%8F%BF%BEb/ - http://a%F3%8F%BF%BEb/
-Unicode character 0xcffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xcffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xcffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xcffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xcffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xcffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6554 - http://a%F3%8F%BF%BFb/ - http://a%F3%8F%BF%BFb/
-Unicode character 0xdfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xdfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xdfffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xdfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xdfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xdfffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6555 - http://a%F3%9F%BF%BEb/ - http://a%F3%9F%BF%BEb/
-Unicode character 0xdffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xdffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xdffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xdffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xdffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xdffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6556 - http://a%F3%9F%BF%BFb/ - http://a%F3%9F%BF%BFb/
-Unicode character 0xefffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xefffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xefffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xefffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xefffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xefffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6557 - http://a%F3%AF%BF%BEb/ - http://a%F3%AF%BF%BEb/
-Unicode character 0xeffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xeffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xeffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xeffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xeffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xeffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6558 - http://a%F3%AF%BF%BFb/ - http://a%F3%AF%BF%BFb/
-Unicode character 0xffffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xffffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xffffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xffffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xffffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xffffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6559 - http://a%F3%BF%BF%BEb/ - http://a%F3%BF%BF%BEb/
-Unicode character 0xfffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6560 - http://a%F3%BF%BF%BFb/ - http://a%F3%BF%BF%BFb/
-Unicode character 0x10fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x10fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x10fffe is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x10fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x10fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x10fffe is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6561 - http://a%F4%8F%BF%BEb/ - http://a%F4%8F%BF%BEb/
-Unicode character 0x10ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x10ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0x10ffff is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0x10ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x10ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0x10ffff is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 6562 - http://a%F4%8F%BF%BFb/ - http://a%F4%8F%BF%BFb/
 # data/generated/decomps-authority-stringprep-c5-1.dat
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.

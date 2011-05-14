@@ -667,12 +667,12 @@ a%e1%a0%8eb
 http://a%E2%80%8Cb/
 #canon escaped
 http://ab/
-#canon-unescaped escaped
-http://ab/
-#scheme http
 #host escaped
 ab
-#host-unescaped escaped
+#chrome-canon escaped
+http://ab/
+#scheme http
+#chrome-host escaped
 ab
 #path /
 #gecko-canon escaped
@@ -689,12 +689,12 @@ a%e2%80%8cb
 http://a%E2%80%8Db/
 #canon escaped
 http://ab/
-#canon-unescaped escaped
-http://ab/
-#scheme http
 #host escaped
 ab
-#host-unescaped escaped
+#chrome-canon escaped
+http://ab/
+#scheme http
+#chrome-host escaped
 ab
 #path /
 #gecko-canon escaped
@@ -749,12 +749,12 @@ a%e2%80%a9b
 http://a%E2%81%A0b/
 #canon escaped
 http://ab/
-#canon-unescaped escaped
-http://ab/
-#scheme http
 #host escaped
 ab
-#host-unescaped escaped
+#chrome-canon escaped
+http://ab/
+#scheme http
+#chrome-host escaped
 ab
 #path /
 #gecko-canon escaped
@@ -942,12 +942,12 @@ a%e2%81%afb
 http://a%EF%BB%BFb/
 #canon escaped
 http://ab/
-#canon-unescaped escaped
-http://ab/
-#scheme http
 #host escaped
 ab
-#host-unescaped escaped
+#chrome-canon escaped
+http://ab/
+#scheme http
+#chrome-host escaped
 ab
 #path /
 #gecko-canon escaped

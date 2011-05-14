@@ -2,13 +2,13 @@
 http://a\u00A0b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u00A0b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u00A0b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u00A0b/
@@ -39,13 +39,13 @@ a\u1680b
 http://a\u2000b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2000b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2000b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2000b/
@@ -61,13 +61,13 @@ a\u2000b
 http://a\u2001b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2001b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2001b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2001b/
@@ -83,13 +83,13 @@ a\u2001b
 http://a\u2002b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2002b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2002b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2002b/
@@ -105,13 +105,13 @@ a\u2002b
 http://a\u2003b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2003b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2003b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2003b/
@@ -127,13 +127,13 @@ a\u2003b
 http://a\u2004b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2004b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2004b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2004b/
@@ -149,13 +149,13 @@ a\u2004b
 http://a\u2005b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2005b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2005b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2005b/
@@ -171,13 +171,13 @@ a\u2005b
 http://a\u2006b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2006b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2006b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2006b/
@@ -193,13 +193,13 @@ a\u2006b
 http://a\u2007b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2007b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2007b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2007b/
@@ -215,13 +215,13 @@ a\u2007b
 http://a\u2008b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2008b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2008b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2008b/
@@ -237,13 +237,13 @@ a\u2008b
 http://a\u2009b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u2009b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u2009b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u2009b/
@@ -259,13 +259,13 @@ a\u2009b
 http://a\u200Ab/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u200Ab/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u200Ab
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u200Ab/
@@ -281,12 +281,12 @@ a\u200Ab
 http://a\u200Bb/
 #canon escaped
 http://ab/
-#canon-unescaped escaped
-http://ab/
-#scheme http
 #host escaped
 ab
-#host-unescaped escaped
+#chrome-canon escaped
+http://ab/
+#scheme http
+#chrome-host escaped
 ab
 #path /
 #gecko-canon escaped
@@ -303,13 +303,13 @@ ab
 http://a\u202Fb/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u202Fb/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u202Fb
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u202Fb/
@@ -325,13 +325,13 @@ a\u202Fb
 http://a\u205Fb/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u205Fb/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u205Fb
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u205Fb/
@@ -347,13 +347,13 @@ a\u205Fb
 http://a\u3000b/
 #canon escaped
 http://a%20b/
-#canon-unescaped escaped
-http://a\u3000b/
-#scheme http
 #host escaped
 a%20b
-#host-unescaped escaped
-a\u3000b
+#chrome-canon escaped
+http://a%20b/
+#scheme http
+#chrome-host escaped
+a%20b
 #path /
 #gecko-canon escaped
 http://a\u3000b/

@@ -1,4 +1,4 @@
-Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 468.
+Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 469.
 Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 430.
 # data/decomps-authority-domain.dat
 ok 1 - http://localhost/ - http://localhost/
@@ -610,13 +610,13 @@ ok 478 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 479 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 480 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 481 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 482 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 455.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
 ok 483 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 484 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 485 - http://%00.com/ - http://%00.com/

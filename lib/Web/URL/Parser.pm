@@ -451,12 +451,13 @@ sub nameprep ($;%) {
   }
   $label = nameprepmapping ($label);
 
-  if (THIS) {
+  if (THIS or GECKO) {
+    my $has_unassigned = not defined eval { nameprepunassigned ($label); 1 };
     $label = NFKC ($label);
-  } elsif (GECKO) {
-    ## BUG: Unicode 4.0 according to the spec.
-    $label = NFKC ($label);
-    $label = nameprepmapping ($label);
+    if ($has_unassigned) {
+      $label = nameprepmapping ($label);
+      $label = NFKC $label;
+    }
   } else {
     $label = Unicode::Stringprep::_NFKC_3_2 ($label);
   }
