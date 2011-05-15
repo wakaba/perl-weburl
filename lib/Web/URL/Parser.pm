@@ -369,6 +369,71 @@ sub decode_punycode ($) {
   return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_decode $_[0], 'utf-8' };
 } # decode_punycode
 
+## From AnyEvent::Socket
+sub format_ipv6($) {
+  if ($_[0] =~ /^\x00\x00\x00\x00\x00\x00\x00\x00/) {
+    if (v0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 eq $_[0]) {
+         return "::";
+       } elsif (v0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1 eq $_[0]) {
+         return "::1";
+       } elsif (v0.0.0.0.0.0.0.0.0.0.0.0 eq substr $_[0], 0, 12) {
+         # v4compatible
+         return "::" . join ".", unpack "C4", substr $_[0], 12;
+       } elsif (v0.0.0.0.0.0.0.0.0.0.255.255 eq substr $_[0], 0, 12) {
+         # v4mapped
+         return "::ffff:" . join ".", unpack "C4", substr $_[0], 12;
+       } elsif (v0.0.0.0.0.0.0.0.255.255.0.0 eq substr $_[0], 0, 12) {
+         # v4translated
+         return "::ffff:0:" . join ".", unpack "C4", substr $_[0], 12;
+       }
+                       }
+
+   my $ip = sprintf "%x:%x:%x:%x:%x:%x:%x:%x", unpack "n8", $_[0];
+
+   # this is admittedly rather sucky
+  $ip =~ s/(?:^|:) 0:0:0:0:0:0:0 (?:$|:)/::/x
+      or $ip =~ s/(?:^|:)   0:0:0:0:0:0 (?:$|:)/::/x
+          or $ip =~ s/(?:^|:)     0:0:0:0:0 (?:$|:)/::/x
+              or $ip =~ s/(?:^|:)       0:0:0:0 (?:$|:)/::/x
+                  or $ip =~ s/(?:^|:)         0:0:0 (?:$|:)/::/x
+                      or $ip =~ s/(?:^|:)           0:0 (?:$|:)/::/x;
+  
+  return $ip
+} # format_ipv6
+
+sub canonicalize_ipv6_addr ($) {
+  my $s = shift;
+
+  my @v4;
+  if ($s =~ s{(?<=:)([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)\z}{}) {
+    push @v4, pack 'n', ($1 << 8) + $2;
+    push @v4, pack 'n', ($3 << 8) + $4;
+  }
+
+  my ($h, $l) = split /::/, $s, 2;
+  ($h, $l) = (undef, $h) if not defined $l;
+  
+  my @h = defined $h ? (split /:/, $h, -1) : ();
+  my @l = split /:/, $l, -1;
+
+  return undef if grep { not /\A[0-9A-Fa-f]{1,4}\z/ } @h, @l;
+
+  @h = map { pack 'n', hex $_ } @h;
+  @l = map { pack 'n', hex $_ } @l;
+
+  my $length = 8 - @h - @l - @v4;
+  return undef if $length < 0;
+  return undef if $length and not defined $h;
+
+  push @h, ("\x00\x00" x $length);
+
+  my $addr = join '', @h, @l, @v4;
+
+  $s = format_ipv6 $addr;
+
+  return $s;
+} # canonicalize_ipv6_addr
+
 # XXX large number
 my $to_number = sub {
   my $n = shift;
@@ -701,8 +766,8 @@ sub to_ascii ($$) {
   }
 
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
-    # XXX canonicalize as an IPv6 address
-    return $s;
+    my $t = canonicalize_ipv6_addr substr $s, 1, -2 + length $s;
+    return '[' . $t . ']' if defined $t;
   }
   
   if (THIS) {
