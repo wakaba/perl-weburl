@@ -58,7 +58,7 @@ http://0.0xFFFFFF/
 http://00000000000000000001/
 #canon http://0.0.0.1/
 #scheme http
-#host 00000000000000000001
+#host 0.0.0.1
 #path /
 
 #data
@@ -196,9 +196,9 @@ http://0x0FFFFFFFF/
 
 #data
 http://0xFFFFFFFFF/
-#canon http://0xfffffff/
+#canon http://0xfffffffff/
 #scheme http
-#host 0xfffffff
+#host 0xfffffffff
 #path /
 
 #data
@@ -273,9 +273,9 @@ http://192/
 
 #data
 http://%30%78%63%30%2e%30%32%35%30.01%2e/
-#canon http://192.168.0.1/
+#canon http://0xc0.0250.01./
 #scheme http
-#host 192.168.0.1
+#host 0xc0.0250.01.
 #path /
 
 #data
@@ -301,16 +301,13 @@ http://0xc0.0250.01/
 
 #data
 http://%3g%78%63%30%2e%30%32%35%30%2E.01/
-#canon http://%253gxc0.0250..01/
-#scheme http
-#host %253gxc0.0250..01
-#path /
+#invalid 1
 
 #data
 http://%30%78%63%30%2e%30%32%35%30.01%2e/
-#canon http://192.168.0.1/
+#canon http://0xc0.0250.01./
 #scheme http
-#host 192.168.0.1
+#host 0xc0.0250.01.
 #path /
 
 #data
@@ -322,9 +319,9 @@ http://%30%78%63%30%2e%30%32%35%30.01/
 
 #data
 http://0xc0.0250.01./
-#canon http://192.168.0.1/
+#canon http://0xc0.0250.01./
 #scheme http
-#host 192.168.0.1
+#host 0xc0.0250.01.
 #path /
 
 #data
@@ -336,10 +333,7 @@ http://0xc0.0250.01/
 
 #data
 http://%3g%78%63%30%2e%30%32%35%30%2E.01/
-#canon http://%253gxc0.0250..01/
-#scheme http
-#host %253gxc0.0250..01
-#path /
+#invalid 1
 
 #data
 http://192.168.0.1 hello/
@@ -637,10 +631,7 @@ http://\uFF10\uFF38\uFF43\uFF10\uFF0E\uFF10\uFF12\uFF15\uFF10\uFF0E\uFF10\uFF11/
 
 #data escaped
 http://\uFF11\uFF19\uFF12\uFF0E\uFF11\uFF16\uFF18\uFF0E\uFF10\uFF0E\uFF11\uFF1A\uFF18\uFF10/
-#canon http://192.168.0.1%3A80/
-#scheme http
-#host 192.168.0.1%3A80
-#path /
+#invalid 1
 
 #data escaped
 http://\uFF11\uFF19\uFF12\uFF0E\uFF11\uFF16\uFF18\uFF0E\uFF10\uFF0E\uFF11:\uFF18\uFF10/

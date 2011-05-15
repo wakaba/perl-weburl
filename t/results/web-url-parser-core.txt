@@ -1,5 +1,5 @@
-Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 469.
-Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 430.
+Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 470.
+Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 431.
 # data/decomps-authority-domain.dat
 ok 1 - http://localhost/ - http://localhost/
 ok 2 - http://localhost/ - http://localhost/ idempotency
@@ -610,13 +610,13 @@ ok 478 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 479 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 480 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 481 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 457.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 457.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 457.
 ok 482 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 456.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 457.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 457.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 457.
 ok 483 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 484 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 485 - http://%00.com/ - http://%00.com/
@@ -4315,22 +4315,13 @@ ok 2801 - http://0.255.255.255/ - http://0.255.255.255/
 ok 2802 - http://0.255.255.255/ - http://0.255.255.255/ idempotency
 ok 2803 - http://0.0xFFFFFF/ - http://0.0xFFFFFF/
 ok 2804 - http://0.0xFFFFFF/ - http://0.0xFFFFFF/ idempotency
-not ok 2805 - http://00000000000000000001/ - http://00000000000000000001/
-#   Failed test 'http://00000000000000000001/ - http://00000000000000000001/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+--------------------------------------------------+
-# | Elt|Got                                       |Expected                                          |
-# +----+------------------------------------------+--------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized          |
-# *   1|http://0.0.0.1/,0.0.0.1,/,http,http       |http://0.0.0.1/,00000000000000000001,/,http,http  *
-# +----+------------------------------------------+--------------------------------------------------+
+ok 2805 - http://00000000000000000001/ - http://00000000000000000001/
 ok 2806 - http://00000000000000000001/ - http://00000000000000000001/ idempotency
 ok 2807 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/
 ok 2808 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 375.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 376.
 ok 2809 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 375.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 376.
 ok 2810 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ idempotency
 ok 2811 - http://000030052000001/ - http://000030052000001/
 ok 2812 - http://000030052000001/ - http://000030052000001/ idempotency
@@ -4340,9 +4331,9 @@ ok 2815 - http://0300.0250.00.01/ - http://0300.0250.00.01/
 ok 2816 - http://0300.0250.00.01/ - http://0300.0250.00.01/ idempotency
 ok 2817 - http://030052000001/ - http://030052000001/
 ok 2818 - http://030052000001/ - http://030052000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 375.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 376.
 ok 2819 - http://0X12C0a80001/ - http://0X12C0a80001/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 375.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 376.
 ok 2820 - http://0X12C0a80001/ - http://0X12C0a80001/ idempotency
 ok 2821 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/
 ok 2822 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/ idempotency
@@ -4368,18 +4359,9 @@ ok 2841 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/
 ok 2842 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/ idempotency
 ok 2843 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/
 ok 2844 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 375.
-not ok 2845 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/
-#   Failed test 'http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------+------------------------------------------+
-# | Elt|Got                                          |Expected                                  |
-# +----+---------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://0xfffffffff/,0xfffffffff,/,http,http  |http://0xfffffff/,0xfffffff,/,http,http   *
-# +----+---------------------------------------------+------------------------------------------+
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 375.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 376.
+ok 2845 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 376.
 ok 2846 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/ idempotency
 ok 2847 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/
 ok 2848 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/ idempotency
@@ -4401,16 +4383,7 @@ ok 2863 - http://192.168/ - http://192.168/
 ok 2864 - http://192.168/ - http://192.168/ idempotency
 ok 2865 - http://192/ - http://192/
 ok 2866 - http://192/ - http://192/ idempotency
-not ok 2867 - http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/
-#   Failed test 'http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------+---------------------------------------------+
-# | Elt|Got                                              |Expected                                     |
-# +----+-------------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized     |
-# *   1|http://0xc0.0250.01./,0xc0.0250.01.,/,http,http  |http://192.168.0.1/,192.168.0.1,/,http,http  *
-# +----+-------------------------------------------------+---------------------------------------------+
+ok 2867 - http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/
 ok 2868 - http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/ idempotency
 ok 2869 - http://%30%78%63%30%2e%30%32%35%30.01/ - http://%30%78%63%30%2e%30%32%35%30.01/
 ok 2870 - http://%30%78%63%30%2e%30%32%35%30.01/ - http://%30%78%63%30%2e%30%32%35%30.01/ idempotency
@@ -4418,52 +4391,16 @@ ok 2871 - http://0xc0.0250.01./ - http://0xc0.0250.01./
 ok 2872 - http://0xc0.0250.01./ - http://0xc0.0250.01./ idempotency
 ok 2873 - http://0xc0.0250.01/ - http://0xc0.0250.01/
 ok 2874 - http://0xc0.0250.01/ - http://0xc0.0250.01/ idempotency
-not ok 2875 - http://%3g%78%63%30%2e%30%32%35%30%2E.01/ - http://%3g%78%63%30%2e%30%32%35%30%2E.01/
-#   Failed test 'http://%3g%78%63%30%2e%30%32%35%30%2E.01/ - http://%3g%78%63%30%2e%30%32%35%30%2E.01/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------+---------------------------------------------------------+
-# | Elt|Got      |Expected                                                 |
-# +----+---------+---------------------------------------------------------+
-# *   0|invalid  |canon,host,path,scheme,scheme_normalized                 *
-# *   1|1        |http://%253gxc0.0250..01/,%253gxc0.0250..01,/,http,http  *
-# +----+---------+---------------------------------------------------------+
-not ok 2876 - http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/
-#   Failed test 'http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------+---------------------------------------------+
-# | Elt|Got                                              |Expected                                     |
-# +----+-------------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized     |
-# *   1|http://0xc0.0250.01./,0xc0.0250.01.,/,http,http  |http://192.168.0.1/,192.168.0.1,/,http,http  *
-# +----+-------------------------------------------------+---------------------------------------------+
+ok 2875 - http://%3g%78%63%30%2e%30%32%35%30%2E.01/ - http://%3g%78%63%30%2e%30%32%35%30%2E.01/
+ok 2876 - http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/
 ok 2877 - http://%30%78%63%30%2e%30%32%35%30.01%2e/ - http://%30%78%63%30%2e%30%32%35%30.01%2e/ idempotency
 ok 2878 - http://%30%78%63%30%2e%30%32%35%30.01/ - http://%30%78%63%30%2e%30%32%35%30.01/
 ok 2879 - http://%30%78%63%30%2e%30%32%35%30.01/ - http://%30%78%63%30%2e%30%32%35%30.01/ idempotency
-not ok 2880 - http://0xc0.0250.01./ - http://0xc0.0250.01./
-#   Failed test 'http://0xc0.0250.01./ - http://0xc0.0250.01./'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------+---------------------------------------------+
-# | Elt|Got                                              |Expected                                     |
-# +----+-------------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized     |
-# *   1|http://0xc0.0250.01./,0xc0.0250.01.,/,http,http  |http://192.168.0.1/,192.168.0.1,/,http,http  *
-# +----+-------------------------------------------------+---------------------------------------------+
+ok 2880 - http://0xc0.0250.01./ - http://0xc0.0250.01./
 ok 2881 - http://0xc0.0250.01./ - http://0xc0.0250.01./ idempotency
 ok 2882 - http://0xc0.0250.01/ - http://0xc0.0250.01/
 ok 2883 - http://0xc0.0250.01/ - http://0xc0.0250.01/ idempotency
-not ok 2884 - http://%3g%78%63%30%2e%30%32%35%30%2E.01/ - http://%3g%78%63%30%2e%30%32%35%30%2E.01/
-#   Failed test 'http://%3g%78%63%30%2e%30%32%35%30%2E.01/ - http://%3g%78%63%30%2e%30%32%35%30%2E.01/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------+---------------------------------------------------------+
-# | Elt|Got      |Expected                                                 |
-# +----+---------+---------------------------------------------------------+
-# *   0|invalid  |canon,host,path,scheme,scheme_normalized                 *
-# *   1|1        |http://%253gxc0.0250..01/,%253gxc0.0250..01,/,http,http  *
-# +----+---------+---------------------------------------------------------+
+ok 2884 - http://%3g%78%63%30%2e%30%32%35%30%2E.01/ - http://%3g%78%63%30%2e%30%32%35%30%2E.01/
 ok 2885 - http://192.168.0.1 hello/ - http://192.168.0.1 hello/
 ok 2886 - http://192.168.0.1 hello/ - http://192.168.0.1 hello/ idempotency
 ok 2887 - http://192.168.0.1%20hello/ - http://192.168.0.1%20hello/
@@ -4553,17 +4490,7 @@ ok 2967 - http://０Ｘｃ０．０２５０．０１/ - http://０Ｘｃ０．�
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2968 - http://０Ｘｃ０．０２５０．０１/ - http://０Ｘｃ０．０２５０．０１/ idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-not ok 2969 - http://１９２．１６８．０．１：８０/ - http://１９２．１６８．０．１：８０/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
-#   Failed test 'http://１９２．１６８．０．１：８０/ - http://１９２．１６８．０．１：８０/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------+-------------------------------------------------------+
-# | Elt|Got      |Expected                                               |
-# +----+---------+-------------------------------------------------------+
-# *   0|invalid  |canon,host,path,scheme,scheme_normalized               *
-# *   1|1        |http://192.168.0.1%3A80/,192.168.0.1%3A80,/,http,http  *
-# +----+---------+-------------------------------------------------------+
+ok 2969 - http://１９２．１６８．０．１：８０/ - http://１９２．１６８．０．１：８０/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
 ok 2970 - http://１９２．１６８．０．１:８０/ - http://１９２．１６８．０．１:８０/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1472.
@@ -10983,4 +10910,4 @@ ok 7395 - http://suika.fam.cx:%380/ - http://suika.fam.cx:%380/
 ok 7396 - http://suika.fam.cx:8%30/ - http://suika.fam.cx:8%30/
 ok 7397 - http://suika.fam.cx:%38%30/ - http://suika.fam.cx:%38%30/
 1..7397
-# Looks like you failed 315 tests of 7397.
+# Looks like you failed 307 tests of 7397.
