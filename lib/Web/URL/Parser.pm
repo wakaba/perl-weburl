@@ -372,18 +372,19 @@ sub decode_punycode ($) {
 sub canonicalize_ipv6_addr ($) {
   my $s = shift;
 
-  my @v4;
-  if ($s =~ s{:([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)\z}{}) {
-    return undef if $1 > 255 or $2 > 255 or $3 > 255 or $4 > 255;
-    push @v4, pack 'n', ($1 << 8) + $2;
-    push @v4, pack 'n', ($3 << 8) + $4;
-  }
-
   my ($h, $l) = split /::/, $s, 2;
   ($h, $l) = (undef, $h) if not defined $l;
   
   my @h = defined $h ? (split /:/, $h, -1) : ();
   my @l = split /:/, $l, -1;
+
+  my @v4;
+  if (@l and $l[-1] =~ /\A([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)\z/) {
+    return undef if $1 > 255 or $2 > 255 or $3 > 255 or $4 > 255;
+    push @v4, pack 'n', ($1 << 8) + $2;
+    push @v4, pack 'n', ($3 << 8) + $4;
+    pop @l;
+  }
 
   return undef if grep { not /\A[0-9A-Fa-f]{1,4}\z/ } @h, @l;
 
@@ -742,10 +743,12 @@ sub to_ascii ($$) {
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
     my $t = canonicalize_ipv6_addr substr $s, 1, -2 + length $s;
     return '[' . $t . ']' if defined $t;
+  } elsif (THIS) {
+    return undef if $s =~ /:/;
   }
   
   if (THIS) {
-    if ($s =~ /[\x00\x25\x2F\x3A\x3B\x3F\x5C]/) {
+    if ($s =~ /[\x00\x25\x2F\x3B\x3F\x5C]/) {
       return undef;
     }
   } elsif (CHROME) {
@@ -759,7 +762,7 @@ sub to_ascii ($$) {
   }
 
   if (THIS) {
-    $s =~ s{([\x00-\x2A\x2C\x2F\x3A-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
+    $s =~ s{([\x00-\x2A\x2C\x2F\x3B-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
       sprintf '%%%02X', ord $1;
     }ge;
   } elsif (IE) {
