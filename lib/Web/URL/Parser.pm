@@ -394,6 +394,7 @@ sub canonicalize_ipv6_addr ($) {
   my $length = 8 - @h - @l - @v4;
   return undef if $length < 0;
   return undef if $length and not defined $h;
+  return undef if defined $h and $length == 0;
 
   push @h, ("\x00\x00" x $length);
 
