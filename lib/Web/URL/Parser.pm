@@ -369,9 +369,10 @@ sub decode_punycode ($) {
   return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_decode $_[0], 'utf-8' };
 } # decode_punycode
 
+# XXX large number
 my $to_number = sub {
   my $n = shift;
-  if ($n =~ /\A0[Xx]([0-9]*)\z/) {
+  if ($n =~ /\A0[Xx]([0-9A-Fa-f]*)\z/) {
     return hex $1;
   } elsif ($n =~ /\A0+([0-9]+)\z/) {
     my $v = $1;
@@ -735,36 +736,57 @@ sub to_ascii ($$) {
   # IPv4address
   IPv4: {
     my @label = split /\./, $s, -1;
-    last IPv4 unless @label;
-    my @addr = (0, 0, 0, 0);
-    my $j = 0;
-    while (@label) {
-      my $n = $to_number->(shift @label);
-      if (not defined $n or $n > 0xFFFFFFFF) {
-        last IPv4;
-      } elsif ($n > 0xFFFFFF) {
-        last IPv4 if $j > 0;
-        $addr[$j + 0] = ($n >> 24) & 0xFF;
-        $addr[$j + 1] = ($n >> 16) & 0xFF;
-        $addr[$j + 2] = ($n >>  8) & 0xFF;
-        $addr[$j + 3] = ($n >>  0) & 0xFF;
-      } elsif ($n > 0xFFFF) {
-        last IPv4 if $j > 1;
-        $addr[$j + 0] = ($n >> 16) & 0xFF;
-        $addr[$j + 1] = ($n >>  8) & 0xFF;
-        $addr[$j + 2] = ($n >>  0) & 0xFF;
-      } elsif ($n > 0xFF) {
-        last IPv4 if $j > 2;
-        $addr[$j + 0] = ($n >>  8) & 0xFF;
-        $addr[$j + 1] = ($n >>  0) & 0xFF;
+    @label = map { $to_number->($_) } @label;
+    if (@label == 4) {
+      if (defined $label[0] and
+          defined $label[1] and
+          defined $label[2] and
+          defined $label[3] and
+          $label[0] <= 0xFF and
+          $label[1] <= 0xFF and
+          $label[2] <= 0xFF and
+          $label[3] <= 0xFF) {
+        #
       } else {
-        last IPv4 if $j > 3;
-        $addr[$j + 0] = ($n >>  0) & 0xFF;
+        last IPv4;
       }
-      $j++;
-    } # $i
-    last IPv4 if @label;
-    return join '.', @addr;
+    } elsif (@label == 3) {
+      if (defined $label[0] and
+          defined $label[1] and
+          defined $label[2] and
+          $label[0] <= 0xFF and
+          $label[1] <= 0xFF and
+          $label[2] <= 0xFFFF) {
+        $label[3] = $label[2] & 0xFF;
+        $label[2] = $label[2] >> 8;
+      } else {
+        last IPv4;
+      }
+    } elsif (@label == 2) {
+      if (defined $label[0] and
+          defined $label[1] and
+          $label[0] <= 0xFF and
+          $label[1] <= 0xFFFFFF) {
+        $label[3] = $label[1] & 0xFF;
+        $label[2] = ($label[1] >> 8) & 0xFF;
+        $label[1] = $label[1] >> 16;
+      } else {
+        last IPv4;
+      }
+    } elsif (@label == 1) {
+      if (defined $label[0] and
+          $label[0] <= 0xFFFFFFFF) {
+        $label[3] = $label[0] & 0xFF;
+        $label[2] = ($label[0] >> 8) & 0xFF;
+        $label[1] = ($label[0] >> 16) & 0xFF;
+        $label[0] = $label[0] >> 24;
+      } else {
+        last IPv4;
+      }
+    } else {
+      last IPv4;
+    }
+    return join '.', @label;
   } # IPv4
   
   return $s;

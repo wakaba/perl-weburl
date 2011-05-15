@@ -2,9 +2,11 @@ This document describes what the Web::URL::Parser module implements.
 This is just a description; it does not use strict language
 appropriate for specs.  It is built on the top of following specs:
 
-- url-spec
+- url-spec <http://tools.ietf.org/html/draft-abarth-url-00>
 - WA1 URL
 - RFC 3986
+
+  XXX <http://tools.ietf.org/html/draft-abarth-url-01>
 
 * /encoding/
 
@@ -67,75 +69,110 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   Apply RFC 3986's steps.
 
-* IPv4 address
+* IPv4 addresses
 
-  A string /s/ is an IPv4 address if:
+  A string /s/ is an IPv4 address if one of the following conditions
+  is met:
 
-    Split /s/ by "." and let /host/ be the array of the result
-    components, where |host[i]| represents the /i/-th component.  The
-    first component is |host[0]|.
+    - Four numbers concatenated by a U+002E FULL STOP character (.),
+      where all numbers are greater than or equal to zero (0) and less
+      than or eqaul to 255 (0xFF).
 
-    Abort if /host/ contains no item.
+    - Three numbers concatenated by a U+002E FULL STOP character (.),
+      where first two numbers are greater than or equal to zero (0)
+      and less than or eqaul to 255 (0xFF) and the last number is
+      greater than or equal to zero (0) and less than or equal to
+      65535 (0xFFFF).
 
-    XXX The following algorithm is wrong for e.g. "192.168.1" or
-    "192.168.0.266".
+    - Two numbers concatenated by a U+002E FULL STOP character (.),
+      where the first number is greater than or equal to zero (0) and
+      less than or eqaul to 255 (0xFF) and the last number is greater
+      than or equal to zero (0) and less than or equal to 16777215
+      (0xFFFFFF).
 
-    addr[0] = 0; addr[1] = 0; addr[2] = 0; addr[3] = 0;
-    j = 0;
-    for (i = 0; i < host.length; i++) {
-      n = number (host[i]);
-      if (n == null || n > 0xFFFFFFFF) {
-        abort ();
-      } else if (n > 0xFFFFFF) {
-        if (j > 0) abort ();
-        addr[j + 0] = (n >> 24) & 0xFF;
-        addr[j + 1] = (n >> 16) & 0xFF;
-        addr[j + 2] = (n >>  8) & 0xFF;
-        addr[j + 3] = (n >>  0) & 0xFF;
-      } else if (n > 0xFFFF) {
-        if (j > 1) abort ();
-        addr[j + 0] = (n >> 16) & 0xFF;
-        addr[j + 1] = (n >>  8) & 0xFF;
-        addr[j + 2] = (n >>  0) & 0xFF;
-      } else if (n > 0xFF) {
-        if (j > 2) abort ();
-        addr[j + 0] = (n >>  8) & 0xFF;
-        addr[j + 1] = (n >>  0) & 0xFF;
-      } else {
-        if (j > 3) abort ();
-        addr[j + 0] = (n >>  0) & 0xFF;
-      }
-    }
+    - A number which is greater than or equal to zero (0) and less
+      than or equal to 4294967295 (0xFFFFFFFF).
 
-    Abort if more components in /host/.
+  In this definition, numbers are represented in the form of one of
+  the following character sequences:
 
-    Then, /addr/ represents the IPv4 address.
+    - A U+0030 DIGIT ZERO character (0), followed by U+0058 LATIN
+      CAPITAL LETTER X character (X) or U+0078 LATIN SMALL LETTER X
+      character (x), followed by zero or more hexadecimal digits,
+      i.e. characters in the range U+0030 ... U+0039, U+0041
+      ... U+0046, and U+0061 ... U+0066.  The value of this number is
+      represented by the hexadecimal digits in the sequence.  If no
+      hexadecimal digit is contained, the value of the number is zero
+      (0).
 
-  number (n) is:
+    - A U+0030 DIGIT ZERO character (0), followed by zero or more
+      octal digits, i.e. characters in the range U+0030 ... U+0037.
+      The value of this number is represented by the octal digits in
+      the sequence.
 
-    If /n/ is /\A0[Xx][0-9]*\z/, interpret as a hexadecimal number.
+    - Characters in the range U+0031 ... U+0039, followed by zero or
+      more characters in the range U+0030 ... U+0039.  The value of
+      this number is represented by the characters in the sequence,
+      interpreted as decimal number.
 
-    If /n/ is /\A0[0-9]+\z/,
+  The rules for canonicalizing an IPv4 address are given in the
+  following algorithm, which return an IPv4 address in its canonical
+  form, or the "fail" state:
 
-      If /n/ contains "8" or "9", return null.
+    1. Let /s/ be the given string.
 
-      Otherwise, interpret as an octal number.
+    2. Let /addr/ be a 32-bit unsigned number.  In the following
+       steps, the notation /addr[i]/ represents the /i/-th bit of
+       /addr/, where /addr[0]/ is the least significant bit and
+       /addr[31]/ is the most significant bit of the number.  In this
+       context, a bit sequence /addr[i + j - 1]/ ... /addr[i]/ can be
+       interpreted as a /j/-bit unsigned number, where /addr[i + j -
+       1]/ is the most significant bit.
 
-    If /n/ is /\A[0-9]+\z/, interpret as a decimal number.
+    3. If /s/ is an IPv4 address with four numbers, let /addr[31]/
+       ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[16]/ be the second number, let /addr[15]/
+       ... /addr[8]/ be the third number, and let /addr[7]/
+       ... /addr[0]/ be the last number.
 
-    Otherwise, return null.
+    4. Otherwise, if /s/ is an IPv4 address with three numbers, let
+       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[16]/ be the second number, and let /addr[15]/
+       ... /addr[0]/ be the last number.
 
-    Return the number.
+    5. Otherwise, if /s/ is an IPv4 address with two numbers, let
+       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[0]/ be the last number.
 
-  Canonical form of an IPv4 address /addr/ is:
+    6. Otherwise, if /s/ is an IPv4 address with a number, let /addr/
+       be the number.
 
-    addr[0]'s shortest decimal representation using [0-9]
-    "."
-    addr[1]'s shortest decimal representation using [0-9]
-    "."
-    addr[2]'s shortest decimal representation using [0-9]
-    "."
-    addr[3]'s shortest decimal representation using [0-9]
+    7. Otherwise, return "fail" and abort these steps.
+
+    8. Return a string consist of the following substrings, in this
+       order:
+
+         1. The number /addr[31]/ ... /addr[24]/
+
+         2. A U+002E FULL STOP character (.)
+
+         3. The number /addr[23]/ ... /addr[16]/
+
+         4. A U+002E FULL STOP character (.)
+
+         5. The number /addr[15]/ ... /addr[8]/
+
+         6. A U+002E FULL STOP character (.)
+
+         7. The number /addr[7]/ ... /addr[0]/
+
+       Numbers are represented by decimal digits, i.e. characters in
+       the range U+0030 ... U+0039, in the shortest form.
+
+      NOTE: This definition of IPv4 addresses originally come from the
+      UNIX |inet_addr()| function
+      <http://pubs.opengroup.org/onlinepubs/9699919799/functions/inet_addr.html>
+      [POSIX].
 
 * IPv6 address
 
@@ -494,7 +531,11 @@ This algorithm returns either a string or the "fail" state.
   24. If /s/ is an IPv6 address, return the canonical representation
       of the IPv6 address and abort these steps.
 
-  25. If /s/ contains one of the following characters, return
+  25. Invoke the rrules for canonicalizing an IPv4 address with /s/.
+      If it results in a string, return the string and abort the
+      CanonicalizeHost algorithm.
+
+  26. If /s/ contains one of the following characters, return
       /fallback/ and abort the CanonicalizeHost algorithm:
 
       THIS: U+0000, U+002F (/), U+0025 (%), U+003A (:), U+003B (;),
@@ -508,11 +549,11 @@ This algorithm returns either a string or the "fail" state.
 
       GECKO: None.
 
-  26. IE: If /s/ contains one of the following sequences, return
+  27. IE: If /s/ contains one of the following sequences, return
       /fallback/ and abort the CanonicalizeHost algorithm: "%00" or
       "%" not followed by two hexadecimal digits.
 
-  27. Percent-encode following characters in /s/:
+  28. Percent-encode following characters in /s/:
 
     THIS: U+0000-U+001F, U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
     U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029
@@ -537,9 +578,6 @@ This algorithm returns either a string or the "fail" state.
     U+0060 (`), U+007B ({), U+007C (|), and U+007D (}).
 
     GECKO: None.
-
-  28. If /s/ is an IPv4 address, return the canonical representation
-      of the IPv4 address and abort the CanonicalizeHost algorithm.
 
   29. Return /s/.
 
