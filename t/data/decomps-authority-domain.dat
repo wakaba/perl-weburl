@@ -447,9 +447,9 @@ http://a\uFF21b.test/
 
 #data escaped
 http://a\uFF3Bb.test/
-#canon http://a%5Bb.test/
+#canon http://a[b.test/
 #scheme http
-#host a%5Bb.test
+#host a[b.test
 #path /
 #gecko-not-invalid 1
 #gecko-canon escaped
@@ -476,9 +476,9 @@ a\u005Cb.test
 
 #data escaped
 http://a\uFF3Db.test/
-#canon http://a%5Db.test/
+#canon http://a]b.test/
 #scheme http
-#host a%5Db.test
+#host a]b.test
 #path /
 #gecko-not-invalid 1
 #gecko-canon escaped
@@ -1703,9 +1703,9 @@ http://a%40b.test/
 
 #data escaped
 http://a\u005Bb.test/
-#canon http://a%5Bb.test/
+#canon http://a[b.test/
 #scheme http
-#host a%5Bb.test
+#host a[b.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a[b.test/
@@ -1722,9 +1722,9 @@ a\u005Bb.test
 
 #data escaped
 http://a%5bb.test/
-#canon http://a%5Bb.test/
+#canon http://a[b.test/
 #scheme http
-#host a%5Bb.test
+#host a[b.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a[b.test/
@@ -1748,9 +1748,9 @@ http://a%5cb.test/
 
 #data escaped
 http://a\u005Db.test/
-#canon http://a%5Db.test/
+#canon http://a]b.test/
 #scheme http
-#host a%5Db.test
+#host a]b.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a]b.test/
@@ -1767,9 +1767,9 @@ a\u005Db.test
 
 #data escaped
 http://a%5db.test/
-#canon http://a%5Db.test/
+#canon http://a]b.test/
 #scheme http
-#host a%5Db.test
+#host a]b.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a]b.test/
@@ -3194,7 +3194,11 @@ goo%20%20goo%7c%7c.coma
 
 #data
 http://[google.com]/
+#canon
+http://[google.com]/
 #scheme http
+#host
+[google.com]
 #path /
 #chrome-invalid 1
 #gecko-canon http://[google.com]/

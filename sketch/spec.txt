@@ -558,9 +558,9 @@ This algorithm returns either a string or the "fail" state.
     THIS: U+0000-U+001F, U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
     U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029
     ()), U+002A (*), U+002C (,), U+002F (/), U+003A (:), U+003B (;),
-    U+003C (<), U+003D (=), U+003E (>), U+003F (?), U+0040 (@), U+005B
-    ([), U+005C (\), U+005D (]), U+005E (^), U+0060 (`), U+007B ({),
-    U+007C (|), U+007D (}), U+007F.
+    U+003C (<), U+003D (=), U+003E (>), U+003F (?), U+0040 (@), U+005C
+    (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}),
+    U+007F.
 
         NOTE: ASCII characters not allowed in URLs, delimiter
         characters used before or after the |host| component,
