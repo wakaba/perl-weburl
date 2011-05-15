@@ -67,6 +67,51 @@ http://[:::001]/
 #path /
 
 #data
+http://[::001]/
+#canon
+http://[::1]/
+#scheme http
+#host
+[::1]
+#path /
+
+#data
+http://[::7F]/
+#canon
+http://[::7f]/
+#scheme http
+#host
+[::7f]
+#path /
+
+#data
+http://[::ff]/
+#canon
+http://[::ff]/
+#scheme http
+#host
+[::ff]
+#path /
+
+#data
+http://[::fffF]/
+#canon
+http://[::ffff]/
+#scheme http
+#host
+[::ffff]
+#path /
+
+#data
+http://[::01:ffff]/
+#canon
+http://[::1:ffff]/
+#scheme http
+#host
+[::1:ffff]
+#path /
+
+#data
 http://[000:01:02:003:004:5:6:007]/
 #canon http://[0:1:2:3:4:5:6:7]/
 #scheme http
@@ -179,23 +224,23 @@ http://[::1%20hello]/
 
 #data
 http://[::192.168.0.1]/
-#canon http://[::192.168.0.1]/
+#canon http://[::c0a8:1]/
 #scheme http
-#host [::192.168.0.1]
+#host [::c0a8:1]
 #path /
 
 #data
 http://[::c0a8:1]/
-#canon http://[::192.168.0.1]/
+#canon http://[::c0a8:1]/
 #scheme http
-#host [::192.168.0.1]
+#host [::c0a8:1]
 #path /
 
 #data
 http://[::ffff:0xC0.0Xa8.0x0.0x1]/
-#canon http://[::ffff:0xC0.0Xa8.0x0.0x1]/
+#canon http://[::ffff:0xc0.0xa8.0x0.0x1]/
 #schene http
-#host [::ffff:0xC0.0Xa8.0x0.0x1]
+#host [::ffff:0xc0.0xa8.0x0.0x1]
 #path /
 
 #data
@@ -228,23 +273,23 @@ http://[::ffff:1920.1.1.2]/
 
 #data
 http://[::ffff:192.1.2.010]/
-#canon http://[::ffff:192.1.2.10]/
+#canon http://[::ffff:c001:20a]/
 #scheme http
-#host [::ffff:192.1.2.10]
+#host [::ffff:c001:20a]
 #path /
 
 #data
 http://[::ffff:192.1.2.000010]/
-#canon http://[::ffff:192.1.2.10]/
+#canon http://[::ffff:c001:20a]/
 #scheme http
-#host [::ffff:192.1.2.10]
+#host [::ffff:c001:20a]
 #path /
 
 #data
 http://[::ffff:192.168.0.1]/
-#canon http://[::ffff:192.168.0.1]/
+#canon http://[::ffff:c0a8:1]/
 #scheme http
-#host [::ffff:192.168.0.1]
+#host [::ffff:c0a8:1]
 #path /
 
 #data
@@ -347,37 +392,37 @@ http://[2001:db8:0:1:1:1:1:1]/
 #data
 http://[::129.144.52.38]/
 #canon
-http://[::129.144.52.38]/
+http://[::8190:3426]/
 #scheme http
 #host
-[::129.144.52.38]
+[::8190:3426]
 #path /
 
 #data
 http://[0:0:0:0:0:FFFF:129.144.52.38]/
 #canon
-http://[::ffff:129.144.52.38]/
+http://[::ffff:8190:3426]/
 #scheme http
 #host
-[::ffff:129.144.52.38]
+[::ffff:8190:3426]
 #path /
 
 #data
 http://[::FFFF:129.144.52.38]/
 #canon
-http://[::ffff:129.144.52.38]/
+http://[::ffff:8190:3426]/
 #scheme http
 #host
-[::ffff:129.144.52.38]
+[::ffff:8190:3426]
 #path /
 
 #data
 http://[::FFFF:000:129.144.52.38]/
 #canon
-http://[::ffff:0:129.144.52.38]/
+http://[::ffff:0:8190:3426]/
 #scheme http
 #host
-[::ffff:0:129.144.52.38]
+[::ffff:0:8190:3426]
 #path /
 
 #data
@@ -410,34 +455,34 @@ http://[::fffe:8190:3426]/
 #data
 http://[::8190:3426]/
 #canon
-http://[::129.144.52.38]/
+http://[::8190:3426]/
 #scheme http
 #host
-[::129.144.52.38]
+[::8190:3426]
 #path /
 
 #data
 http://[::FFFF:8190:3426]/
 #canon
-http://[::ffff:129.144.52.38]/
+http://[::ffff:8190:3426]/
 #scheme http
 #host
-[::ffff:129.144.52.38]
+[::ffff:8190:3426]
 #path /
 
 #data
 http://[::FFFF:0:8190:3426]/
 #canon
-http://[::ffff:0:129.144.52.38]/
+http://[::ffff:0:8190:3426]/
 #scheme http
 #host
-[::ffff:0:129.144.52.38]
+[::ffff:0:8190:3426]
 #path /
 
 #data
 http://[::FFFF:0:1:8190:3426]/
 #canon
-http://[::ffff:0:1:129.144.52.38]/
+http://[::ffff:0:1:8190:3426]/
 #scheme http
 #host
 [::ffff:0:1:8190:3426]
@@ -481,11 +526,15 @@ http://[::ffff:129.144.52.38:00]/
 
 #data
 http://[2002:c000:022a::]/
+#canon
+http://[2002:c000:022a::]/
 #scheme http
 #host [2002:c000:22a::]
 #path /
 
 #data
+http://[2002:c000:022a:]/
+#canon
 http://[2002:c000:022a:]/
 #scheme http
 #host [2002:c000:022a:]
@@ -493,11 +542,15 @@ http://[2002:c000:022a:]/
 
 #data
 http://[:2002:c000:022a]/
+#canon
+http://[:2002:c000:022a]/
 #scheme http
 #host [:2002:c000:022a]
 #path /
 
 #data
+http://[:2002:c000:022a::]/
+#canon
 http://[:2002:c000:022a::]/
 #scheme http
 #host [:2002:c000:022a::]
@@ -505,11 +558,15 @@ http://[:2002:c000:022a::]/
 
 #data
 http://[::2002:c000:022a:]/
+#canon
+http://[::2002:c000:022a:]/
 #scheme http
 #host [::2002:c000:022a:]
 #path /
 
 #data
+http://[::2002:c000:022a::]/
+#canon
 http://[::2002:c000:022a::]/
 #scheme http
 #host [::2002:c000:022a::]
@@ -517,23 +574,33 @@ http://[::2002:c000:022a::]/
 
 #data
 http://[64:ff9b::192.0.2.33]/
+#canon
+http://[64:ff9b::c000:221]/
 #scheme http
-#host [64:ff9b::192.0.2.33]
+#host [64:ff9b::c000:221]
 #path /
 
 #data
 http://[64:ff9b::192.00.2.33]/
+#canon
+http://[64:ff9b::c000:221]/
 #scheme http
-#host [64:ff9b::192.0.2.33]
+#host
+[64:ff9b::c000:221]
 #path /
 
 #data
 http://[64:ff9b::192.00.2.33:]/
+#canon
+http://[64:ff9b::192.00.2.33:]/
 #scheme http
-#host [64:ff9b::192.00.2.33:]
+#host
+[64:ff9b::192.00.2.33:]
 #path /
 
 #data
+http://[64:ff9b::192.00.2.33::]/
+#canon
 http://[64:ff9b::192.00.2.33::]/
 #scheme http
 #host [64:ff9b::192.00.2.33::]
@@ -542,9 +609,10 @@ http://[64:ff9b::192.00.2.33::]/
 #data
 http://[64:ff9b::c000:221]/
 #canon
-http://[64:ff9b::192.0.2.33]/
+http://[64:ff9b::c000:221]/
 #scheme http
-#host 64:ff9b::192.0.2.33
+#host
+[64:ff9b::c000:221]
 #path /
 
 #data
@@ -583,9 +651,10 @@ http://[::37]/
 #data
 http://[::1:37]/
 #canon
-http://[::0.1.0.55]/
+http://[::1:37]/
 #scheme http
-#host [::0.1.0.55]
+#host
+[::1:37]
 #path /
 
 #data
@@ -761,9 +830,36 @@ http://[ipv6:ff01::43]/
 #data
 http://[::01.02.03.04]/
 #canon
-http://[::1.2.3.4]/
+http://[::102:304]/
 #scheme http
-#host [::1.2.3.4]
+#host [::102:304]
+#path /
+
+#data
+http://[::192.168.000.001.1]/
+#canon
+http://[::192.168.000.001.1]/
+#scheme http
+#host
+[::192.168.000.001.1]
+#path /
+
+#data
+http://[::192.168.000.1000]/
+#canon
+http://[::192.168.000.1000]/
+#scheme http
+#host
+[::192.168.000.1000]
+#path /
+
+#data
+http://[::192.168.0.0333]/
+#canon
+http://[::192.168.0.0333]/
+#scheme http
+#host
+[::192.168.0.0333]
 #path /
 
 #data

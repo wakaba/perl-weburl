@@ -174,11 +174,29 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
       <http://pubs.opengroup.org/onlinepubs/9699919799/functions/inet_addr.html>
       [POSIX].
 
-* IPv6 address
+* IPv6 addresses
 
-  A string /s/ is an IPv6 address if: XXX.
+  The rules for canonicalizing an IPv6 address are given in the
+  following algorithm, which return an IPv6 address in its canonical
+  form, or the "fail" state:
 
-  Canonical form of an IPv6 address /addr/ is: XXX.
+    1. Let /s/ be the given string.
+
+    2. If /s/ matches to the |IPv6address| production rule [RFC 3986]
+       using the modified |IPv4address| production rule:
+
+      IPv4address = octet "." octet "." octet "." octet
+      octet = *("0") dec-octet
+
+       ... then, /s/ can be interpreted as an IPv6 address.  Return
+       the canonical representation of the IPv6 address and abort
+       these steps.
+
+    3. Otherwise, return "fail" and abort these steps.
+
+  The canonical representation of an IPv6 address is the textual
+  representation of the IPv6 address conforming to the recommendation
+  for the IPv6 text representation as described in RFC 5952 Section 4.
 
 * Resolution
 
@@ -528,10 +546,22 @@ This algorithm returns either a string or the "fail" state.
 
   23. CHROME: Convert /s/ to ASCII lowercase [WA1].
 
-  24. If /s/ is an IPv6 address, return the canonical representation
-      of the IPv6 address and abort these steps.
+  24. If /s/ begins with a U+005B LEFT SQUARE BRACKET character ([)
+      and ends by a U+005D RIGHT SQUARE BRACKET character (]):
 
-  25. Invoke the rrules for canonicalizing an IPv4 address with /s/.
+    1. Let /t/ be /s/.
+
+    2. Remove the first character from /t/.
+
+    3. Remove the last character from /t/.
+
+    4. Invoke the rules for canonicalizing an IPv6 address with /t/.
+       If it results in a string, return a U+005B LEFT SQUARE BRACKET
+       character ([) followed by the string followed by a U+005D RIGHT
+       SQUARE BRACKET character (]), and abort the CanonicalizeHost
+       algorithm.
+
+  25. Invoke the rules for canonicalizing an IPv4 address with /s/.
       If it results in a string, return the string and abort the
       CanonicalizeHost algorithm.
 
@@ -562,10 +592,10 @@ This algorithm returns either a string or the "fail" state.
     (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}),
     U+007F.
 
-        NOTE: ASCII characters not allowed in URLs, delimiter
-        characters used before or after the |host| component,
-        characters percent-encoded in Chrome (See Step 27), ";", and
-        "%" are percent-encoded here.
+        NOTE: These are ASCII characters not allowed in URLs,
+        delimiter characters used before or after the |host|
+        component, characters percent-encoded in Chrome (See Step 27),
+        ";", and "%" are percent-encoded here.
 
     IE: U+0000-U+001F, U+0020, U+0022 ("), U+003C (<), U+003E (>),
     U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D

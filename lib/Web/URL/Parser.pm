@@ -369,43 +369,12 @@ sub decode_punycode ($) {
   return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_decode $_[0], 'utf-8' };
 } # decode_punycode
 
-## From AnyEvent::Socket
-sub format_ipv6($) {
-  if ($_[0] =~ /^\x00\x00\x00\x00\x00\x00\x00\x00/) {
-    if (v0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 eq $_[0]) {
-         return "::";
-       } elsif (v0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1 eq $_[0]) {
-         return "::1";
-       } elsif (v0.0.0.0.0.0.0.0.0.0.0.0 eq substr $_[0], 0, 12) {
-         # v4compatible
-         return "::" . join ".", unpack "C4", substr $_[0], 12;
-       } elsif (v0.0.0.0.0.0.0.0.0.0.255.255 eq substr $_[0], 0, 12) {
-         # v4mapped
-         return "::ffff:" . join ".", unpack "C4", substr $_[0], 12;
-       } elsif (v0.0.0.0.0.0.0.0.255.255.0.0 eq substr $_[0], 0, 12) {
-         # v4translated
-         return "::ffff:0:" . join ".", unpack "C4", substr $_[0], 12;
-       }
-                       }
-
-   my $ip = sprintf "%x:%x:%x:%x:%x:%x:%x:%x", unpack "n8", $_[0];
-
-   # this is admittedly rather sucky
-  $ip =~ s/(?:^|:) 0:0:0:0:0:0:0 (?:$|:)/::/x
-      or $ip =~ s/(?:^|:)   0:0:0:0:0:0 (?:$|:)/::/x
-          or $ip =~ s/(?:^|:)     0:0:0:0:0 (?:$|:)/::/x
-              or $ip =~ s/(?:^|:)       0:0:0:0 (?:$|:)/::/x
-                  or $ip =~ s/(?:^|:)         0:0:0 (?:$|:)/::/x
-                      or $ip =~ s/(?:^|:)           0:0 (?:$|:)/::/x;
-  
-  return $ip
-} # format_ipv6
-
 sub canonicalize_ipv6_addr ($) {
   my $s = shift;
 
   my @v4;
-  if ($s =~ s{(?<=:)([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)\z}{}) {
+  if ($s =~ s{:([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)\z}{}) {
+    return undef if $1 > 255 or $2 > 255 or $3 > 255 or $4 > 255;
     push @v4, pack 'n', ($1 << 8) + $2;
     push @v4, pack 'n', ($3 << 8) + $4;
   }
@@ -427,11 +396,16 @@ sub canonicalize_ipv6_addr ($) {
 
   push @h, ("\x00\x00" x $length);
 
-  my $addr = join '', @h, @l, @v4;
-
-  $s = format_ipv6 $addr;
-
-  return $s;
+  my $ip = sprintf "%x:%x:%x:%x:%x:%x:%x:%x",
+      unpack "n8", join '', @h, @l, @v4;
+  $ip =~ s/   ^  0:0:0:0:0:0:0:0    $   /::/x or
+  $ip =~ s/(?:^|:) 0:0:0:0:0:0:0 (?:$|:)/::/x or
+  $ip =~ s/(?:^|:)   0:0:0:0:0:0 (?:$|:)/::/x or
+  $ip =~ s/(?:^|:)     0:0:0:0:0 (?:$|:)/::/x or
+  $ip =~ s/(?:^|:)       0:0:0:0 (?:$|:)/::/x or
+  $ip =~ s/(?:^|:)         0:0:0 (?:$|:)/::/x or
+  $ip =~ s/(?:^|:)           0:0 (?:$|:)/::/x;
+  return $ip
 } # canonicalize_ipv6_addr
 
 # XXX large number
