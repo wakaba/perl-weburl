@@ -186,7 +186,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
        using the modified |IPv4address| production rule:
 
       IPv4address = octet "." octet "." octet "." octet
-      octet = *("0") dec-octet
+      octet = dec-octet / "00" DIGIT / "0" DIGIT DIGIT
 
        ... then, /s/ can be interpreted as an IPv6 address.  Return
        the canonical representation of the IPv6 address and abort
