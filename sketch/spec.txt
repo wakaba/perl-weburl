@@ -372,13 +372,16 @@ This algorithm returns either a string or the "fail" state.
 
   4. GECKO: Let /fallback/ be /s/, converted to ASCII lowercase [WA1].
 
-  5. THIS/CHROME: For any percent-encoded substring /ss/ in /s/,
+  5. THIS: If /s/ begins by "%5B" or "%5b", return /fallback/ and
+     abort the CanonicalizeHost algorithm.
+
+  6. THIS/CHROME: For any percent-encoded substring /ss/ in /s/,
 
     1. Percent-decode /ss/.
 
     2. Decode /ss/ as UTF-8, with error handling [WA1].
 
-  6. IE: Replace following percent-encoded sequences (ASCII
+  7. IE: Replace following percent-encoded sequences (ASCII
      case-insensitive) by its percent-decoded representation:
 
     %00 .. %1F, %20, %22, %2D .. %2F, %30 .. %39, %3C, %3E, %3F, %41
@@ -388,24 +391,24 @@ This algorithm returns either a string or the "fail" state.
         characters that are not allowed in URLs, ASCII digits, ASCII
         latin characters, "-", "_", and ".".
 
-  7. Let /has-root-dot/ be false.
+  8. Let /has-root-dot/ be false.
 
-  8. Let /need-punycode/ be true if /s/ contains a non-ASCII
+  9. Let /need-punycode/ be true if /s/ contains a non-ASCII
      character, or false otherwise.
 
-  9. CHROME/IE: If the last character of /s/, if any, is a label
-     separator [RFC 3490], let /has-root-dot/ be true and remove the
-     character.
+  10. CHROME/IE: If the last character of /s/, if any, is a label
+      separator [RFC 3490], let /has-root-dot/ be true and remove the
+      character.
  
-  10. THIS/GECKO/IE: Invoke the Nameprep algorithm without bidi
+  11. THIS/GECKO/IE: Invoke the Nameprep algorithm without bidi
       checking with /s/.  If the algorithm returns a string, let /s/
       be the string.  Otherwise, return /fallback/ and abort the
       CanonicalizeHost algorithm.
 
-  11. CHROME: If /s/ contains a U+0025 PERCENT SIGN character (%),
+  12. CHROME: If /s/ contains a U+0025 PERCENT SIGN character (%),
       return /fallback/ and abort the CanonicalizeHost algorithm.
 
-  12. GECKO: If /s/ contains a U+0000 NULL character or a U+0020 SPACE
+  13. GECKO: If /s/ contains a U+0000 NULL character or a U+0020 SPACE
       character:
 
     1. If /fallback/ contains a U+0000 NULL character or a U+0020
@@ -416,29 +419,29 @@ This algorithm returns either a string or the "fail" state.
        the "Prohibit" step of Nameprep [RFC 3491, RFC 3454], return
        /fallback/ and abort the CanonicalizeHost algorithm.
 
-  13. CHROME: Percent-encode following characters in /s/: U+0020,
+  14. CHROME: Percent-encode following characters in /s/: U+0020,
       U+0021 (!), U+0022 ("), U+0023 (#), U+0024 ($), U+0026 (&),
       U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002C (,),
       U+003C (<), U+003D (=), U+003E (>), U+0040 (@), U+005E (^),
       U+0060 (`), U+007B ({), U+007C (|), and U+007D (}).
 
-  14. Replace any label separator [RFC 3490] in /s/ by a U+002E FULL
+  15. Replace any label separator [RFC 3490] in /s/ by a U+002E FULL
       STOP character (.).
 
-  15. THIS: If the last character of /s/, if any, is U+002E FULL STOP
+  16. THIS: If the last character of /s/, if any, is U+002E FULL STOP
       character (.), let /has-root-dot/ be true and remove the
       character.
 
-  16. Split /s/ by U+002E FULL STOP character (.) and let /labels/ be
+  17. Split /s/ by U+002E FULL STOP character (.) and let /labels/ be
       the result.  /labels/ is a list of one or more strings, where
       some of strings could be empty.
 
-  17. IE: If any string in /labels/ begins with "xn--", let
+  18. IE: If any string in /labels/ begins with "xn--", let
       /need-punycode/ be true.
 
-  18. Let /idn-enabled/ be false.
+  19. Let /idn-enabled/ be false.
 
-  19. If the /need-punycode/ flag is true,
+  20. If the /need-punycode/ flag is true,
 
     1. GECKO: Check the TLD by following the steps below:
 
@@ -535,18 +538,18 @@ This algorithm returns either a string or the "fail" state.
            character, return /fallback/ and abort the CanonicalizeHost
            algorithm.
 
-  20. Let /s/ be the concatenation of the strings in /labels/ by
+  21. Let /s/ be the concatenation of the strings in /labels/ by
       U+002E FULL STOP character (.).
 
-  21. If /has-root-dot/ is true, append a U+002E FULL STOP character
+  22. If /has-root-dot/ is true, append a U+002E FULL STOP character
       (.) to /s/.
 
-  22. CHROME: Replace any percent-encoded octets in /s/ by a character
+  23. CHROME: Replace any percent-encoded octets in /s/ by a character
       in the range U+0000-U+00FF.
 
-  23. CHROME: Convert /s/ to ASCII lowercase [WA1].
+  24. CHROME: Convert /s/ to ASCII lowercase [WA1].
 
-  24. If /s/ begins with a U+005B LEFT SQUARE BRACKET character ([)
+  25. If /s/ begins with a U+005B LEFT SQUARE BRACKET character ([)
       and ends by a U+005D RIGHT SQUARE BRACKET character (]):
 
     1. Let /t/ be /s/.
@@ -561,14 +564,19 @@ This algorithm returns either a string or the "fail" state.
        SQUARE BRACKET character (]), and abort the CanonicalizeHost
        algorithm.
 
-  25. THIS: Otherwise, if /s/ contains a U+0030 COLON character (:),
+    NOTE: How broken host components contianing "[" and/or "]"
+    characters are handled not always compatible with browsers, as
+    browsers canonicalize them differently and none of them could be
+    considered as sane and idempotent.
+
+  26. THIS: Otherwise, if /s/ contains a U+0030 COLON character (:),
       return /fallback/ and abort the CanonicalizeHost algorithm.
 
-  26. Invoke the rules for canonicalizing an IPv4 address with /s/.
+  27. Invoke the rules for canonicalizing an IPv4 address with /s/.
       If it results in a string, return the string and abort the
       CanonicalizeHost algorithm.
 
-  27. If /s/ contains one of the following characters, return
+  28. If /s/ contains one of the following characters, return
       /fallback/ and abort the CanonicalizeHost algorithm:
 
       THIS: U+0000, U+002F (/), U+0025 (%), U+003B (;), U+003F (?), or
@@ -582,11 +590,11 @@ This algorithm returns either a string or the "fail" state.
 
       GECKO: None.
 
-  28. IE: If /s/ contains one of the following sequences, return
+  29. IE: If /s/ contains one of the following sequences, return
       /fallback/ and abort the CanonicalizeHost algorithm: "%00" or
       "%" not followed by two hexadecimal digits.
 
-  29. Percent-encode following characters in /s/:
+  30. Percent-encode following characters in /s/:
 
     THIS: U+0000-U+001F, U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
     U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029
@@ -612,7 +620,7 @@ This algorithm returns either a string or the "fail" state.
 
     GECKO: None.
 
-  30. Return /s/.
+  31. Return /s/.
 
 * Canonicalize a string /u/ by encoding /encoding/
 

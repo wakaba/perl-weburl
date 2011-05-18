@@ -608,6 +608,10 @@ sub to_ascii ($$) {
   my $fallback = GECKO ? $s : undef;
   $fallback =~ tr/A-Z/a-z/ if defined $fallback;
 
+  if (THIS) {
+    return undef if $s =~ m{^%5[Bb]};
+  }
+
   if (THIS or CHROME) {
     $s = Encode::encode ('utf-8', $s);
     $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
