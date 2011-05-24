@@ -112,7 +112,7 @@ sub _find_authority_path_query_fragment ($$$) {
   $$inputref =~ s{\A[/\\]+}{};
 
   ## Authority terminating characters (including slash characters)
-  if ($$inputref =~ s{\A([^/\\?\#;]*)(?=[/\\?\#;])}{}) {
+  if ($$inputref =~ s{\A([^/\\?\#]*)(?=[/\\?\#])}{}) {
     $result->{authority} = $1;
   } else {
     $result->{authority} = $$inputref; 
