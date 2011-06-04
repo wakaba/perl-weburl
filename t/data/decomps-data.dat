@@ -77,9 +77,11 @@ data:,a,b
 
 #data
 data:,foo bar
-#canon data:,foo%20bar
+#canon 
+data:,foo bar
 #scheme data
-#path ,foo%20bar
+#path 
+,foo bar
 
 #data
 data:,abc#def
@@ -94,15 +96,18 @@ data:,abc#def#ghi
 #data
 data:text / plain,abc
 #canon
-data:text%20/%20plain,abc
+data:text / plain,abc
 #scheme data
-#path text%20/%20plain,abc
+#path 
+text / plain,abc
 
 #data
 data: text/plain ,abc
-#canon data:%20text/plain%20,abc
+#canon 
+data: text/plain ,abc
 #scheme data
-#path %20text/plain%20,abc
+#path
+ text/plain ,abc
 
 #data
 data:TEXT/PLAIN,ABC
@@ -150,9 +155,10 @@ data:text/plain;charset,abc
 #data
 data:text/plain; charset=us-ascii,abc
 #canon
-data:text/plain;%20charset=us-ascii,abc
+data:text/plain; charset=us-ascii,abc
 #scheme data
-#path text/plain;%20charset=us-ascii,abc
+#path
+text/plain; charset=us-ascii,abc
 
 #data
 data:text/plain;charset=US-ASCII,test
@@ -197,22 +203,24 @@ data:text/plain;CHARSET=us-ascii,abc
 
 #data
 data:text/plain;charset=us-ascii ,abc
-#canon data:text/plain;charset=us-ascii%20,abc
+#canon 
+data:text/plain;charset=us-ascii ,abc
 #scheme data
-#path text/plain;charset=us-ascii%20,abc
+#path 
+text/plain;charset=us-ascii ,abc
 
 #data
 data:text/plain;charset="us-ascii",abc
-#canon data:text/plain;charset=%22us-ascii%22,abc
+#canon data:text/plain;charset="us-ascii",abc
 #scheme data
-#path text/plain;charset=%22us-ascii%22,abc
+#path text/plain;charset="us-ascii",abc
 
 #data
 data:text/plain;charset="euc-jp",%A1%A2
 #canon
-data:text/plain;charset=%22euc-jp%22,%A1%A2
+data:text/plain;charset="euc-jp",%A1%A2
 #scheme data
-#path text/plain;charset=%22euc-jp%22,%A1%A2
+#path text/plain;charset="euc-jp",%A1%A2
 
 #data
 data:text/plain;charset='euc-jp',%A1%A2
@@ -236,27 +244,27 @@ data:text/plain;charset=%22euc-jp%22,%A1%A2
 
 #data
 data:text/plain;charset="\euc-jp",%A1%A2
-#canon data:text/plain;charset=%22%5Ceuc-jp%22,%A1%A2
+#canon data:text/plain;charset="\euc-jp",%A1%A2
 #scheme data
-#path text/plain;charset=%22%5Ceuc-jp%22,%A1%A2
+#path text/plain;charset="\euc-jp",%A1%A2
 
 #data
 data:text/plain;x-data="#",abc
-#canon data:text/plain;x-data=%22#%22,abc
+#canon data:text/plain;x-data="#",abc
 #scheme data
-#path text/plain;x-data=%22#%22,abc
+#path text/plain;x-data="#",abc
 
 #data
 data:text/plain;x-title="Hello,%20FAIL";,PASS
-#canon data:text/plain;x-title=%22Hello,%20FAIL%22;,PASS
+#canon data:text/plain;x-title="Hello,%20FAIL";,PASS
 #scheme data
-#path text/plain;x-title=%22Hello,%20FAIL%22;,PASS
+#path text/plain;x-title="Hello,%20FAIL";,PASS
 
 #data
 data:t%65xt/plain;charset=euc-jp,%A1%A2
-#canon data:text/plain;charset=euc-jp,%A1%A2
+#canon data:t%65xt/plain;charset=euc-jp,%A1%A2
 #scheme data
-#path text/plain;charset=euc-jp,%A1%A2
+#path t%65xt/plain;charset=euc-jp,%A1%A2
 
 #data
 data:text%2Fplain;charset=euc-jp,%A1%A2
@@ -266,9 +274,9 @@ data:text%2Fplain;charset=euc-jp,%A1%A2
 #data
 data:text/pl%61in;charset=euc-jp,%A1%A2
 #canon
-data:text/plain;charset=euc-jp,%A1%A2
+data:text/pl%61in;charset=euc-jp,%A1%A2
 #scheme data
-#path text/plain;charset=euc-jp,%A1%A2
+#path text/pl%61in;charset=euc-jp,%A1%A2
 
 #data
 data:text/plain%3Bcharset=euc-jp,%A1%A2
@@ -278,9 +286,9 @@ data:text/plain%3Bcharset=euc-jp,%A1%A2
 #data
 data:text/plain;%63harset=euc-jp,%A1%A2
 #canon
-data:text/plain;charset=euc-jp,%A1%A2
+data:text/plain;%63harset=euc-jp,%A1%A2
 #scheme data
-#path text/plain;charset=euc-jp,%A1%A2
+#path text/plain;%63harset=euc-jp,%A1%A2
 
 #data
 data:text/plain;charset%3Deuc-jp,%A1%A2
@@ -289,9 +297,9 @@ data:text/plain;charset%3Deuc-jp,%A1%A2
 
 #data
 data:text/plain;charset=eu%63-jp,%A1%A2
-#canon data:text/plain;charset=euc-jp,%A1%A2
+#canon data:text/plain;charset=eu%63-jp,%A1%A2
 #scheme data
-#path text/plain;charset=euc-jp,%A1%A2
+#path text/plain;charset=eu%63-jp,%A1%A2
 
 #data
 data:text/plain;charset=us-ascii%2Cabc
@@ -401,9 +409,9 @@ data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK#fragment
 #data
 data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
 #canon
-data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl%3Ec3QK
+data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
 #scheme data
-#path text/plain;base64,VG!h$pcy]BpcyBh[IHRl%3Ec3QK
+#path text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
 
 #data
 data:text/plain,a
@@ -441,9 +449,7 @@ data:,%E4%B8%80
 data:,foo?bar=baz
 #scheme data
 #path
-,foo
-#query
-bar=baz
+,foo?bar=baz
 
 #data escaped
 data:,foo?bar=baz\u4e00
@@ -451,9 +457,7 @@ data:,foo?bar=baz\u4e00
 data:,foo?bar=baz%E4%B8%80
 #scheme data
 #path
-,foo
-#query
-bar=baz%E4%B8%80
+,foo?bar=baz%E4%B8%80
 
 #data escaped
 data:,fo\u0000o
@@ -562,10 +566,10 @@ data:,fo%1Fo
 #data escaped
 data:,fo\u0020o
 #canon
-data:,fo%20o
+data:,fo o
 #scheme data
 #path
-,fo%20o
+,fo o
 
 #data escaped
 data:,fo\u0021o
@@ -578,10 +582,10 @@ data:,fo!o
 #data escaped
 data:,fo\u0022o
 #canon
-data:,fo%22o
+data:,fo"o
 #scheme data
 #path
-,fo%22o
+,fo"o
 
 #data escaped
 data:,fo\u0024o
@@ -1018,10 +1022,10 @@ data:,fo%41o
 #data escaped
 data:,fo%50o
 #canon
-data:,foPo
+data:,fo%50o
 #scheme data
 #path
-,foPo
+,fo%50o
 
 #data escaped
 data:,fo%5ao
@@ -1066,10 +1070,10 @@ data:,fo%5Eo
 #data escaped
 data:,fo%5Fo
 #canon
-data:,fo_o
+data:,fo%5Fo
 #scheme data
 #path
-,fo_o
+,fo%5Fo
 
 #data escaped
 data:,fo%60o
@@ -1082,18 +1086,18 @@ data:,fo%60o
 #data escaped
 data:,fo%61o
 #canon
-data:,foao
+data:,fo%61o
 #scheme data
 #path
-,foao
+,fo%61o
 
 #data escaped
 data:,fo%62o
 #canon
-data:,fobo
+data:,fo%62o
 #scheme data
 #path
-,fobo
+,fo%62o
 
 #data escaped
 data:,fo%7Ao
@@ -1130,10 +1134,10 @@ data:,fo%7do
 #data escaped
 data:,fo%7Eo
 #canon
-data:,fo~o
+data:,fo%7Eo
 #scheme data
 #path
-,fo~o
+,fo%7Eo
 
 #data escaped
 data:,fo%7Fo
@@ -1181,9 +1185,7 @@ data:,?\u0022a
 data:,?\u0022a
 #scheme data
 #path 
-,
-#query escaped
-\u0022a
+,?"a
 
 #data
 data://foo

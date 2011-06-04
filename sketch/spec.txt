@@ -679,15 +679,15 @@ This algorithm returns either a string or the "fail" state.
     |password| component, remove the |user| component (and following
     U+0040 COMMERCIAL AT character (@)).
 
-    Percent-encode characters EXCEPT for unreserved characters, U+0021
+    Percent-encode characters in the |user| component of /u/, using
+    the UTF-8 characters, EXCEPT for unreserved characters, U+0021
     (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
-    U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |user|
-    component of /u/, using encoding |UTF-8|.
+    U+0029 ()), U+002A (*), U+002B (+), and U+002D (,).
 
-    Percent-encode characters EXCEPT for unreserved characters, U+0021
-    (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
-    U+0029 ()), U+002A (*), U+002B (+), U+002D (,), in the |password|
-    component of /u/, using encoding |UTF-8|, if any.
+    Percent-encode characters, in the |password| component of /u/, if
+    any, using the UTF-8 encoding, EXCEPT for unreserved characters,
+    U+0021 (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028
+    ((), U+0029 ()), U+002A (*), U+002B (+), and U+002D (,).
 
   If there is the |host| component, invoke the CanonicalizeHost
   algorithm with the |host| and then:
@@ -726,22 +726,33 @@ This algorithm returns either a string or the "fail" state.
   |path| component or the |path| component is the empty string, let
   the |path| component be a U+002F SOLIDUS character (/).
 
-  Percent-decode percent-encoded representations of unreserved
-  characters in the |path| component of /u/.
+  If the scheme of /u/ is hierarchical, or if the |scheme| component
+  of /u/ is ASCII case-insensitively equal to |mailto|:
 
-  Percent-encode characters in the |path| component of /u/, EXCEPT for
-  unreserved characters, U+0021 (!), U+0023 (#), U+0024 ($), U+0025
-  (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*),
-  U+002B (+), U+002D (,), U+002F (/), U+003A (:), U+003B (;), U+003D
-  (=), U+0040 (@), U+005B ([), and U+005D (]), using encoding |UTF-8|.
+    Percent-decode percent-encoded representations of unreserved
+    characters in the |path| component of /u/.
 
-  Percent-encode characters in the |query| component of /u/, EXCEPT
-  for unreserved characters, U+0021 (!), U+0023 (#), U+0024 ($),
-  U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A
-  (*), U+002B (+), U+002D (,), U+002F (/), U+003A (:), U+003B (;),
-  U+003D (=), U+0040 (@), U+005B ([), U+005D (]), U+005C (\), U+005E
-  (^), U+0060 (`), U+007B ({), U+007C (|), and U+007D (}), using
-  encoding /encoding/.
+    Percent-encode characters in the |path| component of /u/, using
+    the UTF-8 encoding, EXCEPT for unreserved characters, U+0021 (!),
+    U+0023 (#), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028
+    ((), U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002F (/),
+    U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([), and
+    U+005D (]).
+
+  Otherwise, percent-encode characters in the |path| component of /u/,
+  using the UTF-8 encoding, EXCEPT for characters in the range U+0020
+  ... U+007E (inclusive).
+
+      NOTE: ASCII characters not allowed in URLs are not
+      percent-encoded here.
+
+  Percent-encode characters in the |query| component of /u/, using
+  encoding /encoding/, EXCEPT for unreserved characters, U+0021 (!),
+  U+0023 (#), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028
+  ((), U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002F (/),
+  U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([), U+005D
+  (]), U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|), and
+  U+007D (}).
 
   Percent-encode the following characters in the |fragment| component
   of /u/, using the UTF-8 encoding: U+0000 ... U+0020, U+0022 ("),

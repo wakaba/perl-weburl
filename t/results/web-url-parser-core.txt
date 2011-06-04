@@ -1700,7 +1700,7 @@ not ok 1099 - file:///c|/ - file:///c|/
 # | Elt|Got                                  |Expected                                  |
 # +----+-------------------------------------+------------------------------------------+
 # *   0|canon,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  *
-# *   1|file:///c%7C/,///c%7C/,file,file     |file:///C:/,,/C:/,file,file               *
+# *   1|file:///c|/,///c|/,file,file         |file:///C:/,,/C:/,file,file               *
 # +----+-------------------------------------+------------------------------------------+
 ok 1100 - file:///c|/ - file:///c|/ idempotency
 not ok 1101 - file:///c%7C/ - file:///c%7C/
@@ -1773,23 +1773,23 @@ not ok 1113 - file:c:\foo\bar.html - http://a/b/c
 #   Failed test 'file:c:\foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                     |Expected                                             |
-# +----+--------------------------------------------------------+-----------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                     |canon,host,path,scheme,scheme_normalized             *
-# *   1|file:c:%5Cfoo%5Cbar.html,c:%5Cfoo%5Cbar.html,file,file  |file:///C:/foo/bar.html,,/C:/foo/bar.html,file,file  *
-# +----+--------------------------------------------------------+-----------------------------------------------------+
+# +----+------------------------------------------------+-----------------------------------------------------+
+# | Elt|Got                                             |Expected                                             |
+# +----+------------------------------------------------+-----------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized             *
+# *   1|file:c:\foo\bar.html,c:\foo\bar.html,file,file  |file:///C:/foo/bar.html,,/C:/foo/bar.html,file,file  *
+# +----+------------------------------------------------+-----------------------------------------------------+
 ok 1114 - file:c:\foo\bar.html - http://a/b/c idempotency
 not ok 1115 - file:c:\\foo\\bar.html - http://a/b/c
 #   Failed test 'file:c:\\foo\\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------+---------------------------------------------------------+
-# | Elt|Got                                                                 |Expected                                                 |
-# +----+--------------------------------------------------------------------+---------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                 |canon,host,path,scheme,scheme_normalized                 *
-# *   1|file:c:%5C%5Cfoo%5C%5Cbar.html,c:%5C%5Cfoo%5C%5Cbar.html,file,file  |file:///C://foo//bar.html,,/C://foo//bar.html,file,file  *
-# +----+--------------------------------------------------------------------+---------------------------------------------------------+
+# +----+----------------------------------------------------+---------------------------------------------------------+
+# | Elt|Got                                                 |Expected                                                 |
+# +----+----------------------------------------------------+---------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                 |canon,host,path,scheme,scheme_normalized                 *
+# *   1|file:c:\\foo\\bar.html,c:\\foo\\bar.html,file,file  |file:///C://foo//bar.html,,/C://foo//bar.html,file,file  *
+# +----+----------------------------------------------------+---------------------------------------------------------+
 ok 1116 - file:c:\\foo\\bar.html - http://a/b/c idempotency
 not ok 1117 - file:///c:%5Cwindows%5Cexplorer.exe - file:///c:%5Cwindows%5Cexplorer.exe
 #   Failed test 'file:///c:%5Cwindows%5Cexplorer.exe - file:///c:%5Cwindows%5Cexplorer.exe'
@@ -1817,23 +1817,23 @@ not ok 1121 - file:///c:/windows\system32%5Cdrivers/etc/hosts - file:///c:/windo
 #   Failed test 'file:///c:/windows\system32%5Cdrivers/etc/hosts - file:///c:/windows\system32%5Cdrivers/etc/hosts'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                       |Expected                                                                                         |
-# +----+----------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                       |canon,host,path,scheme,scheme_normalized                                                         *
-# *   1|file:///c:/windows%5Csystem32%5Cdrivers/etc/hosts,///c:/windows%5Csystem32%5Cdrivers/etc/hosts,file,file  |file:///C:/windows/system32/drivers/etc/hosts,,/C:/windows/system32/drivers/etc/hosts,file,file  *
-# +----+----------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+# +----+------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+# | Elt|Got                                                                                                   |Expected                                                                                         |
+# +----+------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                                                                   |canon,host,path,scheme,scheme_normalized                                                         *
+# *   1|file:///c:/windows\system32%5Cdrivers/etc/hosts,///c:/windows\system32%5Cdrivers/etc/hosts,file,file  |file:///C:/windows/system32/drivers/etc/hosts,,/C:/windows/system32/drivers/etc/hosts,file,file  *
+# +----+------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
 ok 1122 - file:///c:/windows\system32%5Cdrivers/etc/hosts - file:///c:/windows\system32%5Cdrivers/etc/hosts idempotency
 not ok 1123 -   File:c|////foo\bar.html - http://a/b/c
 #   Failed test '  File:c|////foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                           |Expected                                                   |
-# +----+--------------------------------------------------------------+-----------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized                   *
-# *   1|file:c%7C////foo%5Cbar.html,c%7C////foo%5Cbar.html,file,file  |file:///C:////foo/bar.html,,/C:////foo/bar.html,file,file  *
-# +----+--------------------------------------------------------------+-----------------------------------------------------------+
+# +----+------------------------------------------------------+-----------------------------------------------------------+
+# | Elt|Got                                                   |Expected                                                   |
+# +----+------------------------------------------------------+-----------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                   |canon,host,path,scheme,scheme_normalized                   *
+# *   1|file:c|////foo\bar.html,c|////foo\bar.html,file,file  |file:///C:////foo/bar.html,,/C:////foo/bar.html,file,file  *
+# +----+------------------------------------------------------+-----------------------------------------------------------+
 ok 1124 -   File:c|////foo\bar.html - http://a/b/c idempotency
 not ok 1125 - file://///somehost/someshare/afile.txt - file://///somehost/someshare/afile.txt
 #   Failed test 'file://///somehost/someshare/afile.txt - file://///somehost/someshare/afile.txt'
@@ -1865,7 +1865,7 @@ not ok 1129 - file:///C:\  - file:///C:\
 # | Elt|Got                                  |Expected                                  |
 # +----+-------------------------------------+------------------------------------------+
 # *   0|canon,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  *
-# *   1|file:///C:%5C,///C:%5C,file,file     |file:///C:/,,/C:/,file,file               *
+# *   1|file:///C:\,///C:\,file,file         |file:///C:/,,/C:/,file,file               *
 # +----+-------------------------------------+------------------------------------------+
 ok 1130 - file:///C:\  - file:///C:\  idempotency
 not ok 1131 - c:\foo\bar - http://a/b/c
@@ -1876,7 +1876,7 @@ not ok 1131 - c:\foo\bar - http://a/b/c
 # | Elt|Got                                  |Expected                                   |
 # +----+-------------------------------------+-------------------------------------------+
 # *   0|canon,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized   *
-# *   1|c:%5Cfoo%5Cbar,%5Cfoo%5Cbar,c,c      |file:///C:/foo/bar,,/C:/foo/bar,file,file  *
+# *   1|c:\foo\bar,\foo\bar,c,c              |file:///C:/foo/bar,,/C:/foo/bar,file,file  *
 # +----+-------------------------------------+-------------------------------------------+
 ok 1132 - c:\foo\bar - http://a/b/c idempotency
 not ok 1133 - C|/foo/bar - http://a/b/c
@@ -1974,12 +1974,12 @@ not ok 1152 - file:/\/\C:\\//foo\bar.html - http://a/b/c
 #   Failed test 'file:/\/\C:\\//foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                                               |Expected                                                   |
-# +----+----------------------------------------------------------------------------------+-----------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                               |canon,host,path,scheme,scheme_normalized                   *
-# *   1|file:/%5C/%5CC:%5C%5C//foo%5Cbar.html,/%5C/%5CC:%5C%5C//foo%5Cbar.html,file,file  |file:///C:////foo/bar.html,,/C:////foo/bar.html,file,file  *
-# +----+----------------------------------------------------------------------------------+-----------------------------------------------------------+
+# +----+--------------------------------------------------------------+-----------------------------------------------------------+
+# | Elt|Got                                                           |Expected                                                   |
+# +----+--------------------------------------------------------------+-----------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized                   *
+# *   1|file:/\/\C:\\//foo\bar.html,/\/\C:\\//foo\bar.html,file,file  |file:///C:////foo/bar.html,,/C:////foo/bar.html,file,file  *
+# +----+--------------------------------------------------------------+-----------------------------------------------------------+
 ok 1153 - file:/\/\C:\\//foo\bar.html - http://a/b/c idempotency
 not ok 1154 - file:///foo/bar.txt - http://a/b/c
 #   Failed test 'file:///foo/bar.txt - http://a/b/c'
@@ -1996,23 +1996,23 @@ not ok 1156 - FILE:/\/\7:\\//foo\bar.html - http://a/b/c
 #   Failed test 'FILE:/\/\7:\\//foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------+---------------------------------------------------------+
-# | Elt|Got                                                                               |Expected                                                 |
-# +----+----------------------------------------------------------------------------------+---------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                               |canon,host,path,scheme,scheme_normalized                 *
-# *   1|file:/%5C/%5C7:%5C%5C//foo%5Cbar.html,/%5C/%5C7:%5C%5C//foo%5Cbar.html,file,file  |file://7:////foo/bar.html,7:,////foo/bar.html,file,file  *
-# +----+----------------------------------------------------------------------------------+---------------------------------------------------------+
+# +----+--------------------------------------------------------------+---------------------------------------------------------+
+# | Elt|Got                                                           |Expected                                                 |
+# +----+--------------------------------------------------------------+---------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized                 *
+# *   1|file:/\/\7:\\//foo\bar.html,/\/\7:\\//foo\bar.html,file,file  |file://7:////foo/bar.html,7:,////foo/bar.html,file,file  *
+# +----+--------------------------------------------------------------+---------------------------------------------------------+
 ok 1157 - FILE:/\/\7:\\//foo\bar.html - http://a/b/c idempotency
 not ok 1158 - file://\\host\sharename\dir\file - file://\\host\sharename\dir\file
 #   Failed test 'file://\\host\sharename\dir\file - file://\\host\sharename\dir\file'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-# | Elt|Got                                                                                         |Expected                                                           |
-# +----+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                         |canon,host,path,scheme,scheme_normalized                           *
-# *   1|file://%5C%5Chost%5Csharename%5Cdir%5Cfile,//%5C%5Chost%5Csharename%5Cdir%5Cfile,file,file  |file://host/sharename/dir/file,host,/sharename/dir/file,file,file  *
-# +----+--------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+# +----+------------------------------------------------------------------------+-------------------------------------------------------------------+
+# | Elt|Got                                                                     |Expected                                                           |
+# +----+------------------------------------------------------------------------+-------------------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                                     |canon,host,path,scheme,scheme_normalized                           *
+# *   1|file://\\host\sharename\dir\file,//\\host\sharename\dir\file,file,file  |file://host/sharename/dir/file,host,/sharename/dir/file,file,file  *
+# +----+------------------------------------------------------------------------+-------------------------------------------------------------------+
 ok 1159 - file://\\host\sharename\dir\file - file://\\host\sharename\dir\file idempotency
 not ok 1160 - file://./backofficestorage/domain/MBX/username/Calendar - file://./backofficestorage/domain/MBX/username/Calendar
 #   Failed test 'file://./backofficestorage/domain/MBX/username/Calendar - file://./backofficestorage/domain/MBX/username/Calendar'
@@ -2029,23 +2029,23 @@ not ok 1162 - file://\windows\default-home.htm - file://\windows\default-home.ht
 #   Failed test 'file://\windows\default-home.htm - file://\windows\default-home.htm'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-# | Elt|Got                                                                             |Expected                                                               |
-# +----+--------------------------------------------------------------------------------+-----------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                             |canon,host,path,scheme,scheme_normalized                               *
-# *   1|file://%5Cwindows%5Cdefault-home.htm,//%5Cwindows%5Cdefault-home.htm,file,file  |file:///windows/default-home.htm,,/windows/default-home.htm,file,file  *
-# +----+--------------------------------------------------------------------------------+-----------------------------------------------------------------------+
+# +----+------------------------------------------------------------------------+-----------------------------------------------------------------------+
+# | Elt|Got                                                                     |Expected                                                               |
+# +----+------------------------------------------------------------------------+-----------------------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                                     |canon,host,path,scheme,scheme_normalized                               *
+# *   1|file://\windows\default-home.htm,//\windows\default-home.htm,file,file  |file:///windows/default-home.htm,,/windows/default-home.htm,file,file  *
+# +----+------------------------------------------------------------------------+-----------------------------------------------------------------------+
 ok 1163 - file://\windows\default-home.htm - file://\windows\default-home.htm idempotency
 not ok 1164 - file:filer/home\me - http://a/b/c
 #   Failed test 'file:filer/home\me - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                             |Expected                                       |
-# +----+------------------------------------------------+-----------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized       *
-# *   1|file:filer/home%5Cme,filer/home%5Cme,file,file  |file://filer/home/me,filer,/home/me,file,file  *
-# +----+------------------------------------------------+-----------------------------------------------+
+# +----+--------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                         |Expected                                       |
+# +----+--------------------------------------------+-----------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized       *
+# *   1|file:filer/home\me,filer/home\me,file,file  |file://filer/home/me,filer,/home/me,file,file  *
+# +----+--------------------------------------------+-----------------------------------------------+
 ok 1165 - file:filer/home\me - http://a/b/c idempotency
 not ok 1166 - ../D|/foo/ - file:///C|/
 #   Failed test '../D|/foo/ - file:///C|/'
@@ -2130,23 +2130,23 @@ not ok 1179 - file:c:\foo\bar.html - http://a/b/c
 #   Failed test 'file:c:\foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                     |Expected                                             |
-# +----+--------------------------------------------------------+-----------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                     |canon,host,path,scheme,scheme_normalized             *
-# *   1|file:c:%5Cfoo%5Cbar.html,c:%5Cfoo%5Cbar.html,file,file  |file:///C:/foo/bar.html,,/C:/foo/bar.html,file,file  *
-# +----+--------------------------------------------------------+-----------------------------------------------------+
+# +----+------------------------------------------------+-----------------------------------------------------+
+# | Elt|Got                                             |Expected                                             |
+# +----+------------------------------------------------+-----------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized             *
+# *   1|file:c:\foo\bar.html,c:\foo\bar.html,file,file  |file:///C:/foo/bar.html,,/C:/foo/bar.html,file,file  *
+# +----+------------------------------------------------+-----------------------------------------------------+
 ok 1180 - file:c:\foo\bar.html - http://a/b/c idempotency
 not ok 1181 - file:c|//foo\bar.html - http://a/b/c
 #   Failed test 'file:c|//foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------+-------------------------------------------------------+
-# | Elt|Got                                                       |Expected                                               |
-# +----+----------------------------------------------------------+-------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                       |canon,host,path,scheme,scheme_normalized               *
-# *   1|file:c%7C//foo%5Cbar.html,c%7C//foo%5Cbar.html,file,file  |file:///C://foo/bar.html,,/C://foo/bar.html,file,file  *
-# +----+----------------------------------------------------------+-------------------------------------------------------+
+# +----+--------------------------------------------------+-------------------------------------------------------+
+# | Elt|Got                                               |Expected                                               |
+# +----+--------------------------------------------------+-------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized               *
+# *   1|file:c|//foo\bar.html,c|//foo\bar.html,file,file  |file:///C://foo/bar.html,,/C://foo/bar.html,file,file  *
+# +----+--------------------------------------------------+-------------------------------------------------------+
 ok 1182 - file:c|//foo\bar.html - http://a/b/c idempotency
 not ok 1183 - // - file:///c:/foo/bar.html
 #   Failed test '// - file:///c:/foo/bar.html'
@@ -2277,12 +2277,12 @@ not ok 1200 - file:///test a/b/c - http://a/b/c
 #   Failed test 'file:///test a/b/c - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                             |Expected                                       |
-# +----+------------------------------------------------+-----------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized       *
-# *   1|file:///test%20a/b/c,///test%20a/b/c,file,file  |file:///test%20a/b/c,,/test%20a/b/c,file,file  *
-# +----+------------------------------------------------+-----------------------------------------------+
+# +----+--------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                         |Expected                                       |
+# +----+--------------------------------------------+-----------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized       *
+# *   1|file:///test a/b/c,///test a/b/c,file,file  |file:///test%20a/b/c,,/test%20a/b/c,file,file  *
+# +----+--------------------------------------------+-----------------------------------------------+
 ok 1201 - file:///test a/b/c - http://a/b/c idempotency
 not ok 1202 - file:///test%20a/b/c - http://a/b/c
 #   Failed test 'file:///test%20a/b/c - http://a/b/c'
@@ -2365,12 +2365,12 @@ not ok 1216 - file:%7Euser/path/to/file - file:%7Euser/path/to/file
 #   Failed test 'file:%7Euser/path/to/file - file:%7Euser/path/to/file'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                   |Expected                                                   |
-# +----+------------------------------------------------------+-----------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                   |canon,host,path,scheme,scheme_normalized                   *
-# *   1|file:~user/path/to/file,~user/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
-# +----+------------------------------------------------------+-----------------------------------------------------------+
+# +----+----------------------------------------------------------+-----------------------------------------------------------+
+# | Elt|Got                                                       |Expected                                                   |
+# +----+----------------------------------------------------------+-----------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                       |canon,host,path,scheme,scheme_normalized                   *
+# *   1|file:%7Euser/path/to/file,%7Euser/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
+# +----+----------------------------------------------------------+-----------------------------------------------------------+
 ok 1217 - file:%7Euser/path/to/file - file:%7Euser/path/to/file idempotency
 not ok 1218 - file:/~user/path/to/file - file:/~user/path/to/file
 #   Failed test 'file:/~user/path/to/file - file:/~user/path/to/file'
@@ -2387,12 +2387,12 @@ not ok 1220 - file:/%7Euser/path/to/file - file:/%7Euser/path/to/file
 #   Failed test 'file:/%7Euser/path/to/file - file:/%7Euser/path/to/file'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                     |Expected                                                   |
-# +----+--------------------------------------------------------+-----------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                     |canon,host,path,scheme,scheme_normalized                   *
-# *   1|file:/~user/path/to/file,/~user/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
-# +----+--------------------------------------------------------+-----------------------------------------------------------+
+# +----+------------------------------------------------------------+-----------------------------------------------------------+
+# | Elt|Got                                                         |Expected                                                   |
+# +----+------------------------------------------------------------+-----------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                         |canon,host,path,scheme,scheme_normalized                   *
+# *   1|file:/%7Euser/path/to/file,/%7Euser/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
+# +----+------------------------------------------------------------+-----------------------------------------------------------+
 ok 1221 - file:/%7Euser/path/to/file - file:/%7Euser/path/to/file idempotency
 not ok 1222 - file://~user/path/to/file - file://~user/path/to/file
 #   Failed test 'file://~user/path/to/file - file://~user/path/to/file'
@@ -2409,12 +2409,12 @@ not ok 1224 - file://%7Euser/path/to/file - file://%7Euser/path/to/file
 #   Failed test 'file://%7Euser/path/to/file - file://%7Euser/path/to/file'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                       |Expected                                                   |
-# +----+----------------------------------------------------------+-----------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                       |canon,host,path,scheme,scheme_normalized                   *
-# *   1|file://~user/path/to/file,//~user/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
-# +----+----------------------------------------------------------+-----------------------------------------------------------+
+# +----+--------------------------------------------------------------+-----------------------------------------------------------+
+# | Elt|Got                                                           |Expected                                                   |
+# +----+--------------------------------------------------------------+-----------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized                   *
+# *   1|file://%7Euser/path/to/file,//%7Euser/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
+# +----+--------------------------------------------------------------+-----------------------------------------------------------+
 ok 1225 - file://%7Euser/path/to/file - file://%7Euser/path/to/file idempotency
 not ok 1226 - file:///~user/path/to/file - file:///~user/path/to/file
 #   Failed test 'file:///~user/path/to/file - file:///~user/path/to/file'
@@ -2431,12 +2431,12 @@ not ok 1228 - file:///%7Euser/path/to/file - file:///%7Euser/path/to/file
 #   Failed test 'file:///%7Euser/path/to/file - file:///%7Euser/path/to/file'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                         |Expected                                                   |
-# +----+------------------------------------------------------------+-----------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                         |canon,host,path,scheme,scheme_normalized                   *
-# *   1|file:///~user/path/to/file,///~user/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
-# +----+------------------------------------------------------------+-----------------------------------------------------------+
+# +----+----------------------------------------------------------------+-----------------------------------------------------------+
+# | Elt|Got                                                             |Expected                                                   |
+# +----+----------------------------------------------------------------+-----------------------------------------------------------+
+# *   0|canon,path,scheme,scheme_normalized                             |canon,host,path,scheme,scheme_normalized                   *
+# *   1|file:///%7Euser/path/to/file,///%7Euser/path/to/file,file,file  |file:///~user/path/to/file,,/~user/path/to/file,file,file  *
+# +----+----------------------------------------------------------------+-----------------------------------------------------------+
 ok 1229 - file:///%7Euser/path/to/file - file:///%7Euser/path/to/file idempotency
 not ok 1230 - file:///::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D - file:///::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D
 #   Failed test 'file:///::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D - file:///::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D'
@@ -2453,12 +2453,12 @@ not ok 1232 - file://Folder Settings\folder.htt - file://Folder Settings\folder.
 #   Failed test 'file://Folder Settings\folder.htt - file://Folder Settings\folder.htt'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# | Elt|Got                                                                               |Expected                                                                      |
-# +----+----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                               |canon,path,scheme,scheme_normalized                                           |
-# *   1|file://Folder%20Settings%5Cfolder.htt,//Folder%20Settings%5Cfolder.htt,file,file  |file:///Folder%20Settings/folder.htt,/Folder%20Settings/folder.htt,file,file  *
-# +----+----------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+# +----+--------------------------------------------------------------------------+------------------------------------------------------------------------------+
+# | Elt|Got                                                                       |Expected                                                                      |
+# +----+--------------------------------------------------------------------------+------------------------------------------------------------------------------+
+# |   0|canon,path,scheme,scheme_normalized                                       |canon,path,scheme,scheme_normalized                                           |
+# *   1|file://Folder Settings\folder.htt,//Folder Settings\folder.htt,file,file  |file:///Folder%20Settings/folder.htt,/Folder%20Settings/folder.htt,file,file  *
+# +----+--------------------------------------------------------------------------+------------------------------------------------------------------------------+
 ok 1233 - file://Folder Settings\folder.htt - file://Folder Settings\folder.htt idempotency
 not ok 1234 - file://folder.htt - file://folder.htt
 #   Failed test 'file://folder.htt - file://folder.htt'
@@ -7025,27 +7025,9 @@ ok 5084 - JAVASCRIPT: - JAVASCRIPT:
 ok 5085 - JAVASCRIPT: - JAVASCRIPT: idempotency
 ok 5086 - javascript:void(0) - javascript:void(0)
 ok 5087 - javascript:void(0) - javascript:void(0) idempotency
-not ok 5088 - javascript:"" - javascript:""
-#   Failed test 'javascript:"" - javascript:""'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------+----------------------------------------+
-# | Elt|Got                                             |Expected                                |
-# +----+------------------------------------------------+----------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized             |canon,path,scheme,scheme_normalized     |
-# *   1|javascript:%22%22,%22%22,javascript,javascript  |javascript:"","",javascript,javascript  *
-# +----+------------------------------------------------+----------------------------------------+
+ok 5088 - javascript:"" - javascript:""
 ok 5089 - javascript:"" - javascript:"" idempotency
-not ok 5090 - javascript:"abc" - javascript:"abc"
-#   Failed test 'javascript:"abc" - javascript:"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------+----------------------------------------------+
-# | Elt|Got                                                   |Expected                                      |
-# +----+------------------------------------------------------+----------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                   |canon,path,scheme,scheme_normalized           |
-# *   1|javascript:%22abc%22,%22abc%22,javascript,javascript  |javascript:"abc","abc",javascript,javascript  *
-# +----+------------------------------------------------------+----------------------------------------------+
+ok 5090 - javascript:"abc" - javascript:"abc"
 ok 5091 - javascript:"abc" - javascript:"abc" idempotency
 ok 5092 - javascript:a?b - javascript:a?b
 ok 5093 - javascript:a?b - javascript:a?b idempotency
@@ -7053,49 +7035,13 @@ ok 5094 - javascript:a?b?c - javascript:a?b?c
 ok 5095 - javascript:a?b?c - javascript:a?b?c idempotency
 ok 5096 - javascript:a?b\#c - javascript:a?b\#c
 ok 5097 - javascript:a?b\#c - javascript:a?b\#c idempotency
-not ok 5098 - javascript:"abc\#def" - javascript:"abc\#def"
-#   Failed test 'javascript:"abc\#def" - javascript:"abc\#def"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------+------------------------------------------------------+
-# | Elt|Got                                                           |Expected                                              |
-# +----+--------------------------------------------------------------+------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                           |canon,path,scheme,scheme_normalized                   |
-# *   1|javascript:%22abc#def%22,%22abc#def%22,javascript,javascript  |javascript:"abc#def","abc#def",javascript,javascript  *
-# +----+--------------------------------------------------------------+------------------------------------------------------+
+ok 5098 - javascript:"abc\#def" - javascript:"abc\#def"
 ok 5099 - javascript:"abc\#def" - javascript:"abc\#def" idempotency
-not ok 5100 - javascript:"abc"\#def - javascript:"abc"\#def
-#   Failed test 'javascript:"abc"\#def - javascript:"abc"\#def'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------+------------------------------------------------------+
-# | Elt|Got                                                           |Expected                                              |
-# +----+--------------------------------------------------------------+------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                           |canon,path,scheme,scheme_normalized                   |
-# *   1|javascript:%22abc%22#def,%22abc%22#def,javascript,javascript  |javascript:"abc"#def,"abc"#def,javascript,javascript  *
-# +----+--------------------------------------------------------------+------------------------------------------------------+
+ok 5100 - javascript:"abc"\#def - javascript:"abc"\#def
 ok 5101 - javascript:"abc"\#def - javascript:"abc"\#def idempotency
-not ok 5102 - javascript:"abc\#def\#ghi" - javascript:"abc\#def\#ghi"
-#   Failed test 'javascript:"abc\#def\#ghi" - javascript:"abc\#def\#ghi"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------+--------------------------------------------------------------+
-# | Elt|Got                                                                   |Expected                                                      |
-# +----+----------------------------------------------------------------------+--------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                   |canon,path,scheme,scheme_normalized                           |
-# *   1|javascript:%22abc#def#ghi%22,%22abc#def#ghi%22,javascript,javascript  |javascript:"abc#def#ghi","abc#def#ghi",javascript,javascript  *
-# +----+----------------------------------------------------------------------+--------------------------------------------------------------+
+ok 5102 - javascript:"abc\#def\#ghi" - javascript:"abc\#def\#ghi"
 ok 5103 - javascript:"abc\#def\#ghi" - javascript:"abc\#def\#ghi" idempotency
-not ok 5104 - javascript:"abc?def" - javascript:"abc?def"
-#   Failed test 'javascript:"abc?def" - javascript:"abc?def"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------+------------------------------------------------------+
-# | Elt|Got                                                           |Expected                                              |
-# +----+--------------------------------------------------------------+------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                           |canon,path,scheme,scheme_normalized                   |
-# *   1|javascript:%22abc?def%22,%22abc?def%22,javascript,javascript  |javascript:"abc?def","abc?def",javascript,javascript  *
-# +----+--------------------------------------------------------------+------------------------------------------------------+
+ok 5104 - javascript:"abc?def" - javascript:"abc?def"
 ok 5105 - javascript:"abc?def" - javascript:"abc?def" idempotency
 ok 5106 - javascript://a - javascript://a
 ok 5107 - javascript://a - javascript://a idempotency
@@ -7107,164 +7053,36 @@ ok 5112 - javascript:?ab - javascript:?ab
 ok 5113 - javascript:?ab - javascript:?ab idempotency
 ok 5114 - javascript:\#ab - javascript:\#ab
 ok 5115 - javascript:\#ab - javascript:\#ab idempotency
-not ok 5116 - javascript:javascript:"abc" - javascript:javascript:"abc"
-#   Failed test 'javascript:javascript:"abc" - javascript:javascript:"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------+--------------------------------------------------------------------+
-# | Elt|Got                                                                         |Expected                                                            |
-# +----+----------------------------------------------------------------------------+--------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                         |canon,path,scheme,scheme_normalized                                 |
-# *   1|javascript:javascript:%22abc%22,javascript:%22abc%22,javascript,javascript  |javascript:javascript:"abc",javascript:"abc",javascript,javascript  *
-# +----+----------------------------------------------------------------------------+--------------------------------------------------------------------+
+ok 5116 - javascript:javascript:"abc" - javascript:javascript:"abc"
 ok 5117 - javascript:javascript:"abc" - javascript:javascript:"abc" idempotency
-not ok 5118 - javascript:123;%0A"abc" - javascript:123;%0A"abc"
-#   Failed test 'javascript:123;%0A"abc" - javascript:123;%0A"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                                 |Expected                                                    |
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                 |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:123;%0A%22abc%22,123;%0A%22abc%22,javascript,javascript  |javascript:123;%0A"abc",123;%0A"abc",javascript,javascript  *
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
+ok 5118 - javascript:123;%0A"abc" - javascript:123;%0A"abc"
 ok 5119 - javascript:123;%0A"abc" - javascript:123;%0A"abc" idempotency
-not ok 5120 - javascript:123;%0D"abc" - javascript:123;%0D"abc"
-#   Failed test 'javascript:123;%0D"abc" - javascript:123;%0D"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                                 |Expected                                                    |
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                 |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:123;%0D%22abc%22,123;%0D%22abc%22,javascript,javascript  |javascript:123;%0D"abc",123;%0D"abc",javascript,javascript  *
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
+ok 5120 - javascript:123;%0D"abc" - javascript:123;%0D"abc"
 ok 5121 - javascript:123;%0D"abc" - javascript:123;%0D"abc" idempotency
-not ok 5122 - javascript:123;%0D%0A"abc" - javascript:123;%0D%0A"abc"
-#   Failed test 'javascript:123;%0D%0A"abc" - javascript:123;%0D%0A"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------+------------------------------------------------------------------+
-# | Elt|Got                                                                       |Expected                                                          |
-# +----+--------------------------------------------------------------------------+------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                       |canon,path,scheme,scheme_normalized                               |
-# *   1|javascript:123;%0D%0A%22abc%22,123;%0D%0A%22abc%22,javascript,javascript  |javascript:123;%0D%0A"abc",123;%0D%0A"abc",javascript,javascript  *
-# +----+--------------------------------------------------------------------------+------------------------------------------------------------------+
+ok 5122 - javascript:123;%0D%0A"abc" - javascript:123;%0D%0A"abc"
 ok 5123 - javascript:123;%0D%0A"abc" - javascript:123;%0D%0A"abc" idempotency
-not ok 5124 - javascript:123;%09"abc" - javascript:123;%09"abc"
-#   Failed test 'javascript:123;%09"abc" - javascript:123;%09"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                                 |Expected                                                    |
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                 |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:123;%09%22abc%22,123;%09%22abc%22,javascript,javascript  |javascript:123;%09"abc",123;%09"abc",javascript,javascript  *
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
+ok 5124 - javascript:123;%09"abc" - javascript:123;%09"abc"
 ok 5125 - javascript:123;%09"abc" - javascript:123;%09"abc" idempotency
-not ok 5126 - javascript:123;%0B"abc" - javascript:123;%0B"abc"
-#   Failed test 'javascript:123;%0B"abc" - javascript:123;%0B"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                                 |Expected                                                    |
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                 |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:123;%0B%22abc%22,123;%0B%22abc%22,javascript,javascript  |javascript:123;%0B"abc",123;%0B"abc",javascript,javascript  *
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
+ok 5126 - javascript:123;%0B"abc" - javascript:123;%0B"abc"
 ok 5127 - javascript:123;%0B"abc" - javascript:123;%0B"abc" idempotency
-not ok 5128 - javascript:123;%0C"abc" - javascript:123;%0C"abc"
-#   Failed test 'javascript:123;%0C"abc" - javascript:123;%0C"abc"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                                 |Expected                                                    |
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                 |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:123;%0C%22abc%22,123;%0C%22abc%22,javascript,javascript  |javascript:123;%0C"abc",123;%0C"abc",javascript,javascript  *
-# +----+--------------------------------------------------------------------+------------------------------------------------------------+
+ok 5128 - javascript:123;%0C"abc" - javascript:123;%0C"abc"
 ok 5129 - javascript:123;%0C"abc" - javascript:123;%0C"abc" idempotency
-not ok 5130 - javascript:"abc%25def" - javascript:"abc%25def"
-#   Failed test 'javascript:"abc%25def" - javascript:"abc%25def"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------+----------------------------------------------------------+
-# | Elt|Got                                                               |Expected                                                  |
-# +----+------------------------------------------------------------------+----------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                               |canon,path,scheme,scheme_normalized                       |
-# *   1|javascript:%22abc%25def%22,%22abc%25def%22,javascript,javascript  |javascript:"abc%25def","abc%25def",javascript,javascript  *
-# +----+------------------------------------------------------------------+----------------------------------------------------------+
+ok 5130 - javascript:"abc%25def" - javascript:"abc%25def"
 ok 5131 - javascript:"abc%25def" - javascript:"abc%25def" idempotency
-not ok 5132 - javascript:"abc%0Adef" - javascript:"abc%0Adef"
-#   Failed test 'javascript:"abc%0Adef" - javascript:"abc%0Adef"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------+----------------------------------------------------------+
-# | Elt|Got                                                               |Expected                                                  |
-# +----+------------------------------------------------------------------+----------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                               |canon,path,scheme,scheme_normalized                       |
-# *   1|javascript:%22abc%0Adef%22,%22abc%0Adef%22,javascript,javascript  |javascript:"abc%0Adef","abc%0Adef",javascript,javascript  *
-# +----+------------------------------------------------------------------+----------------------------------------------------------+
+ok 5132 - javascript:"abc%0Adef" - javascript:"abc%0Adef"
 ok 5133 - javascript:"abc%0Adef" - javascript:"abc%0Adef" idempotency
-not ok 5134 - javascript:"abc\%0Adef" - javascript:"abc\%0Adef"
-#   Failed test 'javascript:"abc\%0Adef" - javascript:"abc\%0Adef"'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                                     |Expected                                                    |
-# +----+------------------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                     |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:%22abc%5C%0Adef%22,%22abc%5C%0Adef%22,javascript,javascript  |javascript:"abc\%0Adef","abc\%0Adef",javascript,javascript  *
-# +----+------------------------------------------------------------------------+------------------------------------------------------------+
+ok 5134 - javascript:"abc\%0Adef" - javascript:"abc\%0Adef"
 ok 5135 - javascript:"abc\%0Adef" - javascript:"abc\%0Adef" idempotency
-not ok 5136 - javascript:return false - javascript:return false
-#   Failed test 'javascript:return false - javascript:return false'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                             |Expected                                                    |
-# +----+----------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                             |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:return%20false,return%20false,javascript,javascript  |javascript:return false,return false,javascript,javascript  *
-# +----+----------------------------------------------------------------+------------------------------------------------------------+
+ok 5136 - javascript:return false - javascript:return false
 ok 5137 - javascript:return false - javascript:return false idempotency
-not ok 5138 - javascript:14 % 4 - javascript:14 % 4
-#   Failed test 'javascript:14 % 4 - javascript:14 % 4'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------+------------------------------------------------+
-# | Elt|Got                                                     |Expected                                        |
-# +----+--------------------------------------------------------+------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                     |canon,path,scheme,scheme_normalized             |
-# *   1|javascript:14%20%%204,14%20%%204,javascript,javascript  |javascript:14 % 4,14 % 4,javascript,javascript  *
-# +----+--------------------------------------------------------+------------------------------------------------+
+ok 5138 - javascript:14 % 4 - javascript:14 % 4
 ok 5139 - javascript:14 % 4 - javascript:14 % 4 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5140 - javascript: // 一 - javascript: // 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'javascript: // 一 - javascript: // 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------+----------------------------------------------------------+
-# | Elt|Got                                                                   |Expected                                                  |
-# +----+----------------------------------------------------------------------+----------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                   |canon,path,scheme,scheme_normalized                       |
-# *   1|javascript:%20//%20%E4%B8%80,%20//%20%E4%B8%80,javascript,javascript  |javascript: // \x{4e00}, // \u4e00,javascript,javascript  *
-# +----+----------------------------------------------------------------------+----------------------------------------------------------+
+ok 5140 - javascript: // 一 - javascript: // 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5141 - javascript: // 一 - javascript: // 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5142 - javascript: // \# 一 - javascript: // \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'javascript: // \# 一 - javascript: // \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                                           |Expected                                                    |
-# +----+------------------------------------------------------------------------------+------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                           |canon,path,scheme,scheme_normalized                         |
-# *   1|javascript:%20//%20#%20%E4%B8%80,%20//%20#%20%E4%B8%80,javascript,javascript  |javascript: // # \x{4e00}, // \u4e00,javascript,javascript  *
-# +----+------------------------------------------------------------------------------+------------------------------------------------------------+
+ok 5142 - javascript: // \# 一 - javascript: // \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5143 - javascript: // \# 一 - javascript: // \# 一 idempotency
 ok 5144 - JavaScript:Foo - JavaScript:Foo
@@ -7291,68 +7109,23 @@ ok 5160 - javascript:ab - javascript:ab
 ok 5161 - javascript:ab - javascript:ab idempotency
 ok 5162 - javascript:ab - javascript:ab
 ok 5163 - javascript:ab - javascript:ab idempotency
-not ok 5164 - javascript:a b - javascript:a b
-#   Failed test 'javascript:a b - javascript:a b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------+------------------------------------------+
-# | Elt|Got                                           |Expected                                  |
-# +----+----------------------------------------------+------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized           |canon,path,scheme,scheme_normalized       |
-# *   1|javascript:a%20b,a%20b,javascript,javascript  |javascript:a b,a b,javascript,javascript  *
-# +----+----------------------------------------------+------------------------------------------+
+ok 5164 - javascript:a b - javascript:a b
 ok 5165 - javascript:a b - javascript:a b idempotency
 ok 5166 - javascript:a!b - javascript:a!b
 ok 5167 - javascript:a!b - javascript:a!b idempotency
-not ok 5168 - javascript:a"b - javascript:a"b
-#   Failed test 'javascript:a"b - javascript:a"b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------+------------------------------------------+
-# | Elt|Got                                           |Expected                                  |
-# +----+----------------------------------------------+------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized           |canon,path,scheme,scheme_normalized       |
-# *   1|javascript:a%22b,a%22b,javascript,javascript  |javascript:a"b,a"b,javascript,javascript  *
-# +----+----------------------------------------------+------------------------------------------+
+ok 5168 - javascript:a"b - javascript:a"b
 ok 5169 - javascript:a"b - javascript:a"b idempotency
 ok 5170 - javascript:a$b - javascript:a$b
 ok 5171 - javascript:a$b - javascript:a$b idempotency
 ok 5172 - javascript:a0b - javascript:a0b
 ok 5173 - javascript:a0b - javascript:a0b idempotency
-not ok 5174 - javascript:a\b - javascript:a\b
-#   Failed test 'javascript:a\b - javascript:a\b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------+------------------------------------------+
-# | Elt|Got                                           |Expected                                  |
-# +----+----------------------------------------------+------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized           |canon,path,scheme,scheme_normalized       |
-# *   1|javascript:a%5Cb,a%5Cb,javascript,javascript  |javascript:a\b,a\b,javascript,javascript  *
-# +----+----------------------------------------------+------------------------------------------+
+ok 5174 - javascript:a\b - javascript:a\b
 ok 5175 - javascript:a\b - javascript:a\b idempotency
 ok 5176 - javascript:a]b - javascript:a]b
 ok 5177 - javascript:a]b - javascript:a]b idempotency
-not ok 5178 - javascript:a|b - javascript:a|b
-#   Failed test 'javascript:a|b - javascript:a|b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------+------------------------------------------+
-# | Elt|Got                                           |Expected                                  |
-# +----+----------------------------------------------+------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized           |canon,path,scheme,scheme_normalized       |
-# *   1|javascript:a%7Cb,a%7Cb,javascript,javascript  |javascript:a|b,a|b,javascript,javascript  *
-# +----+----------------------------------------------+------------------------------------------+
+ok 5178 - javascript:a|b - javascript:a|b
 ok 5179 - javascript:a|b - javascript:a|b idempotency
-not ok 5180 - javascript:a}b - javascript:a}b
-#   Failed test 'javascript:a}b - javascript:a}b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------+------------------------------------------+
-# | Elt|Got                                           |Expected                                  |
-# +----+----------------------------------------------+------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized           |canon,path,scheme,scheme_normalized       |
-# *   1|javascript:a%7Db,a%7Db,javascript,javascript  |javascript:a}b,a}b,javascript,javascript  *
-# +----+----------------------------------------------+------------------------------------------+
+ok 5180 - javascript:a}b - javascript:a}b
 ok 5181 - javascript:a}b - javascript:a}b idempotency
 ok 5182 - javascript:a~b - javascript:a~b
 ok 5183 - javascript:a~b - javascript:a~b idempotency
@@ -7414,29 +7187,11 @@ ok 5218 - javascript:a%20b - javascript:a%20b
 ok 5219 - javascript:a%20b - javascript:a%20b idempotency
 ok 5220 - javascript:a%22b - javascript:a%22b
 ok 5221 - javascript:a%22b - javascript:a%22b idempotency
-not ok 5222 - javascript:a%4ab - javascript:a%4ab
-#   Failed test 'javascript:a%4ab - javascript:a%4ab'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+----------------------------------------------+
-# | Elt|Got                                       |Expected                                      |
-# +----+------------------------------------------+----------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized       |canon,path,scheme,scheme_normalized           |
-# *   1|javascript:aJb,aJb,javascript,javascript  |javascript:a%4ab,a%4ab,javascript,javascript  *
-# +----+------------------------------------------+----------------------------------------------+
+ok 5222 - javascript:a%4ab - javascript:a%4ab
 ok 5223 - javascript:a%4ab - javascript:a%4ab idempotency
 ok 5224 - javascript:a%5Cb - javascript:a%5Cb
 ok 5225 - javascript:a%5Cb - javascript:a%5Cb idempotency
-not ok 5226 - javascript:a%7eb - javascript:a%7eb
-#   Failed test 'javascript:a%7eb - javascript:a%7eb'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+----------------------------------------------+
-# | Elt|Got                                       |Expected                                      |
-# +----+------------------------------------------+----------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized       |canon,path,scheme,scheme_normalized           |
-# *   1|javascript:a~b,a~b,javascript,javascript  |javascript:a%7eb,a%7eb,javascript,javascript  *
-# +----+------------------------------------------+----------------------------------------------+
+ok 5226 - javascript:a%7eb - javascript:a%7eb
 ok 5227 - javascript:a%7eb - javascript:a%7eb idempotency
 ok 5228 - javascript:a%7fb - javascript:a%7fb
 ok 5229 - javascript:a%7fb - javascript:a%7fb idempotency
@@ -7453,199 +7208,59 @@ ok 5239 - foo - javascript:alert(1)
 ok 5240 - ?foo - javascript:alert(1)
 ok 5241 - \#foo - javascript:alert(1)
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5242 - jscript:a % 55 // \# 一 - jscript:a % 55 // \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'jscript:a % 55 // \# 一 - jscript:a % 55 // \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-# | Elt|Got                                                                                      |Expected                                                             |
-# +----+-----------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                      |canon,path,scheme,scheme_normalized                                  |
-# *   1|jscript:a%20%%2055%20//%20#%20%E4%B8%80,a%20%%2055%20//%20#%20%E4%B8%80,jscript,jscript  |jscript:a % 55 // # %E4%B8%80,a % 55 // # %E4%B8%80,jscript,jscript  *
-# +----+-----------------------------------------------------------------------------------------+---------------------------------------------------------------------+
+ok 5242 - jscript:a % 55 // \# 一 - jscript:a % 55 // \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5243 - jscript:a % 55 // \# 一 - jscript:a % 55 // \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5244 - jscript:a % 55 // \# 一 " - jscript:a % 55 // \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'jscript:a % 55 // \# 一 " - jscript:a % 55 // \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-# | Elt|Got                                                                                                  |Expected                                                                 |
-# +----+-----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                                  |canon,path,scheme,scheme_normalized                                      |
-# *   1|jscript:a%20%%2055%20//%20#%20%E4%B8%80%20%22,a%20%%2055%20//%20#%20%E4%B8%80%20%22,jscript,jscript  |jscript:a % 55 // # %E4%B8%80 ",a % 55 // # %E4%B8%80 ",jscript,jscript  *
-# +----+-----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+ok 5244 - jscript:a % 55 // \# 一 " - jscript:a % 55 // \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5245 - jscript:a % 55 // \# 一 " - jscript:a % 55 // \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5246 - vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-# | Elt|Got                                                                                       |Expected                                                              |
-# +----+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                       |canon,path,scheme,scheme_normalized                                   |
-# *   1|vbscript:a%20%%2055%20'%20#%20%E4%B8%80,a%20%%2055%20'%20#%20%E4%B8%80,vbscript,vbscript  |vbscript:a % 55 ' # %E4%B8%80,a % 55 ' # %E4%B8%80,vbscript,vbscript  *
-# +----+------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+ok 5246 - vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5247 - vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5248 - vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-# | Elt|Got                                                                                                   |Expected                                                                  |
-# +----+------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                                   |canon,path,scheme,scheme_normalized                                       |
-# *   1|vbscript:a%20%%2055%20'%20#%20%E4%B8%80%20%22,a%20%%2055%20'%20#%20%E4%B8%80%20%22,vbscript,vbscript  |vbscript:a % 55 ' # %E4%B8%80 ",a % 55 ' # %E4%B8%80 ",vbscript,vbscript  *
-# +----+------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+ok 5248 - vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5249 - vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5250 - mocha:a % 55 // \# 一 - mocha:a % 55 // \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'mocha:a % 55 // \# 一 - mocha:a % 55 // \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------------------------+---------------------------------------------------------------+
-# | Elt|Got                                                                                |Expected                                                       |
-# +----+-----------------------------------------------------------------------------------+---------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                |canon,path,scheme,scheme_normalized                            |
-# *   1|mocha:a%20%%2055%20//%20#%20%E4%B8%80,a%20%%2055%20//%20#%20%E4%B8%80,mocha,mocha  |mocha:a % 55 // # %E4%B8%80,a % 55 // # %E4%B8%80,mocha,mocha  *
-# +----+-----------------------------------------------------------------------------------+---------------------------------------------------------------+
+ok 5250 - mocha:a % 55 // \# 一 - mocha:a % 55 // \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5251 - mocha:a % 55 // \# 一 - mocha:a % 55 // \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5252 - mocha:a % 55 // \# 一 " - mocha:a % 55 // \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'mocha:a % 55 // \# 一 " - mocha:a % 55 // \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-# | Elt|Got                                                                                            |Expected                                                           |
-# +----+-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                            |canon,path,scheme,scheme_normalized                                |
-# *   1|mocha:a%20%%2055%20//%20#%20%E4%B8%80%20%22,a%20%%2055%20//%20#%20%E4%B8%80%20%22,mocha,mocha  |mocha:a % 55 // # %E4%B8%80 ",a % 55 // # %E4%B8%80 ",mocha,mocha  *
-# +----+-----------------------------------------------------------------------------------------------+-------------------------------------------------------------------+
+ok 5252 - mocha:a % 55 // \# 一 " - mocha:a % 55 // \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5253 - mocha:a % 55 // \# 一 " - mocha:a % 55 // \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5254 - ecmascript:a % 55 // \# 一 - ecmascript:a % 55 // \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'ecmascript:a % 55 // \# 一 - ecmascript:a % 55 // \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# | Elt|Got                                                                                               |Expected                                                                      |
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                               |canon,path,scheme,scheme_normalized                                           |
-# *   1|ecmascript:a%20%%2055%20//%20#%20%E4%B8%80,a%20%%2055%20//%20#%20%E4%B8%80,ecmascript,ecmascript  |ecmascript:a % 55 // # %E4%B8%80,a % 55 // # %E4%B8%80,ecmascript,ecmascript  *
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+ok 5254 - ecmascript:a % 55 // \# 一 - ecmascript:a % 55 // \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5255 - ecmascript:a % 55 // \# 一 - ecmascript:a % 55 // \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5256 - ecmascript:a % 55 // \# 一 " - ecmascript:a % 55 // \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'ecmascript:a % 55 // \# 一 " - ecmascript:a % 55 // \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                           |Expected                                                                          |
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                                           |canon,path,scheme,scheme_normalized                                               |
-# *   1|ecmascript:a%20%%2055%20//%20#%20%E4%B8%80%20%22,a%20%%2055%20//%20#%20%E4%B8%80%20%22,ecmascript,ecmascript  |ecmascript:a % 55 // # %E4%B8%80 ",a % 55 // # %E4%B8%80 ",ecmascript,ecmascript  *
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+ok 5256 - ecmascript:a % 55 // \# 一 " - ecmascript:a % 55 // \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5257 - ecmascript:a % 55 // \# 一 " - ecmascript:a % 55 // \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5258 - livescript:a % 55 // \# 一 - livescript:a % 55 // \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'livescript:a % 55 // \# 一 - livescript:a % 55 // \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# | Elt|Got                                                                                               |Expected                                                                      |
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                               |canon,path,scheme,scheme_normalized                                           |
-# *   1|livescript:a%20%%2055%20//%20#%20%E4%B8%80,a%20%%2055%20//%20#%20%E4%B8%80,livescript,livescript  |livescript:a % 55 // # %E4%B8%80,a % 55 // # %E4%B8%80,livescript,livescript  *
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+ok 5258 - livescript:a % 55 // \# 一 - livescript:a % 55 // \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5259 - livescript:a % 55 // \# 一 - livescript:a % 55 // \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5260 - livescript:a % 55 // \# 一 " - livescript:a % 55 // \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'livescript:a % 55 // \# 一 " - livescript:a % 55 // \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                           |Expected                                                                          |
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                                           |canon,path,scheme,scheme_normalized                                               |
-# *   1|livescript:a%20%%2055%20//%20#%20%E4%B8%80%20%22,a%20%%2055%20//%20#%20%E4%B8%80%20%22,livescript,livescript  |livescript:a % 55 // # %E4%B8%80 ",a % 55 // # %E4%B8%80 ",livescript,livescript  *
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+ok 5260 - livescript:a % 55 // \# 一 " - livescript:a % 55 // \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5261 - livescript:a % 55 // \# 一 " - livescript:a % 55 // \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5262 - perlscript:a % 55 // \# 一 - perlscript:a % 55 // \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'perlscript:a % 55 // \# 一 - perlscript:a % 55 // \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# | Elt|Got                                                                                               |Expected                                                                      |
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                               |canon,path,scheme,scheme_normalized                                           |
-# *   1|perlscript:a%20%%2055%20//%20#%20%E4%B8%80,a%20%%2055%20//%20#%20%E4%B8%80,perlscript,perlscript  |perlscript:a % 55 // # %E4%B8%80,a % 55 // # %E4%B8%80,perlscript,perlscript  *
-# +----+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+ok 5262 - perlscript:a % 55 // \# 一 - perlscript:a % 55 // \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5263 - perlscript:a % 55 // \# 一 - perlscript:a % 55 // \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5264 - perlscript:a % 55 // \# 一 " - perlscript:a % 55 // \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'perlscript:a % 55 // \# 一 " - perlscript:a % 55 // \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                           |Expected                                                                          |
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                                           |canon,path,scheme,scheme_normalized                                               |
-# *   1|perlscript:a%20%%2055%20//%20#%20%E4%B8%80%20%22,a%20%%2055%20//%20#%20%E4%B8%80%20%22,perlscript,perlscript  |perlscript:a % 55 // # %E4%B8%80 ",a % 55 // # %E4%B8%80 ",perlscript,perlscript  *
-# +----+--------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+ok 5264 - perlscript:a % 55 // \# 一 " - perlscript:a % 55 // \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5265 - perlscript:a % 55 // \# 一 " - perlscript:a % 55 // \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5266 - unknownscript:a % 55 // \# 一 - unknownscript:a % 55 // \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'unknownscript:a % 55 // \# 一 - unknownscript:a % 55 // \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                        |Expected                                                                               |
-# +----+-----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                                        |canon,path,scheme,scheme_normalized                                                    |
-# *   1|unknownscript:a%20%%2055%20//%20#%20%E4%B8%80,a%20%%2055%20//%20#%20%E4%B8%80,unknownscript,unknownscript  |unknownscript:a % 55 // # %E4%B8%80,a % 55 // # %E4%B8%80,unknownscript,unknownscript  *
-# +----+-----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+ok 5266 - unknownscript:a % 55 // \# 一 - unknownscript:a % 55 // \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5267 - unknownscript:a % 55 // \# 一 - unknownscript:a % 55 // \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5268 - unknownscript:a % 55 // \# 一 " - unknownscript:a % 55 // \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'unknownscript:a % 55 // \# 一 " - unknownscript:a % 55 // \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                    |Expected                                                                                   |
-# +----+-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized                                                                                    |canon,path,scheme,scheme_normalized                                                        |
-# *   1|unknownscript:a%20%%2055%20//%20#%20%E4%B8%80%20%22,a%20%%2055%20//%20#%20%E4%B8%80%20%22,unknownscript,unknownscript  |unknownscript:a % 55 // # %E4%B8%80 ",a % 55 // # %E4%B8%80 ",unknownscript,unknownscript  *
-# +----+-----------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+
+ok 5268 - unknownscript:a % 55 // \# 一 " - unknownscript:a % 55 // \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5269 - unknownscript:a % 55 // \# 一 " - unknownscript:a % 55 // \# 一 " idempotency
 not ok 5270 - unknownscript://foo - unknownscript://foo
@@ -9657,7 +9272,16 @@ not ok 6696 - http://example.org/%7Euser - http://example.org/%7Euser
 # *   1|http://example.org/~user,example.org,/~user,http,http  |http://example.org/%7Euser,example.org,/~user,http,http  *
 # +----+-------------------------------------------------------+---------------------------------------------------------+
 ok 6697 - http://example.org/%7Euser - http://example.org/%7Euser idempotency
-ok 6698 - eXAMPLE://a/./b/../b/%63/%7bfoo%7d - eXAMPLE://a/./b/../b/%63/%7bfoo%7d
+not ok 6698 - eXAMPLE://a/./b/../b/%63/%7bfoo%7d - eXAMPLE://a/./b/../b/%63/%7bfoo%7d
+#   Failed test 'eXAMPLE://a/./b/../b/%63/%7bfoo%7d - eXAMPLE://a/./b/../b/%63/%7bfoo%7d'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+# | Elt|Got                                                                            |Expected                                                                   |
+# +----+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
+# |   0|canon,path,scheme,scheme_normalized                                            |canon,path,scheme,scheme_normalized                                        |
+# *   1|example://a/./b/../b/%63/%7bfoo%7d,//a/./b/../b/%63/%7bfoo%7d,example,example  |example://a/./b/../b/c/%7bfoo%7d,//a/./b/../b/c/%7bfoo%7d,example,example  *
+# +----+-------------------------------------------------------------------------------+---------------------------------------------------------------------------+
 ok 6699 - eXAMPLE://a/./b/../b/%63/%7bfoo%7d - eXAMPLE://a/./b/../b/%63/%7bfoo%7d idempotency
 ok 6700 - HtTp://a/./b/../b/%63/%7bfoo%7d - HtTp://a/./b/../b/%63/%7bfoo%7d
 ok 6701 - HtTp://a/./b/../b/%63/%7bfoo%7d - HtTp://a/./b/../b/%63/%7bfoo%7d idempotency
@@ -10682,16 +10306,7 @@ ok 7716 - data: text/plain ,abc - data: text/plain ,abc
 ok 7717 - data: text/plain ,abc - data: text/plain ,abc idempotency
 ok 7718 - data:TEXT/PLAIN,ABC - data:TEXT/PLAIN,ABC
 ok 7719 - data:TEXT/PLAIN,ABC - data:TEXT/PLAIN,ABC idempotency
-not ok 7720 - data:text\plain,abc - data:text\plain,abc
-#   Failed test 'data:text\plain,abc - data:text\plain,abc'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------+----------------------------------------------+
-# | Elt|Got                                               |Expected                                      |
-# +----+--------------------------------------------------+----------------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized               |canon,path,scheme,scheme_normalized           |
-# *   1|data:text%5Cplain,abc,text%5Cplain,abc,data,data  |data:text\plain,abc,text\plain,abc,data,data  *
-# +----+--------------------------------------------------+----------------------------------------------+
+ok 7720 - data:text\plain,abc - data:text\plain,abc
 ok 7721 - data:text\plain,abc - data:text\plain,abc idempotency
 ok 7722 - data:text/./plain,abc - data:text/./plain,abc
 ok 7723 - data:text/./plain,abc - data:text/./plain,abc idempotency
@@ -10817,29 +10432,10 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 ok 7838 - data:,一 - data:,一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 7839 - data:,一 - data:,一 idempotency
-not ok 7840 - data:,foo?bar=baz - data:,foo?bar=baz
-#   Failed test 'data:,foo?bar=baz - data:,foo?bar=baz'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+-------------------------------------------+
-# | Elt|Got                                       |Expected                                   |
-# +----+------------------------------------------+-------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized       |canon,path,query,scheme,scheme_normalized  *
-# *   1|data:,foo?bar=baz,,foo?bar=baz,data,data  |data:,foo?bar=baz,,foo,bar=baz,data,data   *
-# +----+------------------------------------------+-------------------------------------------+
+ok 7840 - data:,foo?bar=baz - data:,foo?bar=baz
 ok 7841 - data:,foo?bar=baz - data:,foo?bar=baz idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 7842 - data:,foo?bar=baz一 - data:,foo?bar=baz一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'data:,foo?bar=baz一 - data:,foo?bar=baz一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------+------------------------------------------------------------+
-# | Elt|Got                                                         |Expected                                                    |
-# +----+------------------------------------------------------------+------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                         |canon,path,query,scheme,scheme_normalized                   *
-# *   1|data:,foo?bar=baz%E4%B8%80,,foo?bar=baz%E4%B8%80,data,data  |data:,foo?bar=baz%E4%B8%80,,foo,bar=baz%E4%B8%80,data,data  *
-# +----+------------------------------------------------------------+------------------------------------------------------------+
+ok 7842 - data:,foo?bar=baz一 - data:,foo?bar=baz一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 7843 - data:,foo?bar=baz一 - data:,foo?bar=baz一 idempotency
 ok 7844 - data:,fo o - data:,fo o
@@ -10908,29 +10504,11 @@ ok 7902 - data:,fo:o - data:,fo:o
 ok 7903 - data:,fo:o - data:,fo:o idempotency
 ok 7904 - data:,fo;o - data:,fo;o
 ok 7905 - data:,fo;o - data:,fo;o idempotency
-not ok 7906 - data:,fo<o - data:,fo<o
-#   Failed test 'data:,fo<o - data:,fo<o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%3Co,,fo%3Co,data,data       |data:,fo<o,,fo<o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7906 - data:,fo<o - data:,fo<o
 ok 7907 - data:,fo<o - data:,fo<o idempotency
 ok 7908 - data:,fo=o - data:,fo=o
 ok 7909 - data:,fo=o - data:,fo=o idempotency
-not ok 7910 - data:,fo>o - data:,fo>o
-#   Failed test 'data:,fo>o - data:,fo>o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%3Eo,,fo%3Eo,data,data       |data:,fo>o,,fo>o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7910 - data:,fo>o - data:,fo>o
 ok 7911 - data:,fo>o - data:,fo>o idempotency
 ok 7912 - data:,fo@o - data:,fo@o
 ok 7913 - data:,fo@o - data:,fo@o idempotency
@@ -10938,79 +10516,25 @@ ok 7914 - data:,foAo - data:,foAo
 ok 7915 - data:,foAo - data:,foAo idempotency
 ok 7916 - data:,fo[o - data:,fo[o
 ok 7917 - data:,fo[o - data:,fo[o idempotency
-not ok 7918 - data:,fo\o - data:,fo\o
-#   Failed test 'data:,fo\o - data:,fo\o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%5Co,,fo%5Co,data,data       |data:,fo\o,,fo\o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7918 - data:,fo\o - data:,fo\o
 ok 7919 - data:,fo\o - data:,fo\o idempotency
 ok 7920 - data:,fo]o - data:,fo]o
 ok 7921 - data:,fo]o - data:,fo]o idempotency
-not ok 7922 - data:,fo^o - data:,fo^o
-#   Failed test 'data:,fo^o - data:,fo^o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%5Eo,,fo%5Eo,data,data       |data:,fo^o,,fo^o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7922 - data:,fo^o - data:,fo^o
 ok 7923 - data:,fo^o - data:,fo^o idempotency
 ok 7924 - data:,fo_o - data:,fo_o
 ok 7925 - data:,fo_o - data:,fo_o idempotency
-not ok 7926 - data:,fo`o - data:,fo`o
-#   Failed test 'data:,fo`o - data:,fo`o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%60o,,fo%60o,data,data       |data:,fo`o,,fo`o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7926 - data:,fo`o - data:,fo`o
 ok 7927 - data:,fo`o - data:,fo`o idempotency
 ok 7928 - data:,foao - data:,foao
 ok 7929 - data:,foao - data:,foao idempotency
 ok 7930 - data:,fozo - data:,fozo
 ok 7931 - data:,fozo - data:,fozo idempotency
-not ok 7932 - data:,fo{o - data:,fo{o
-#   Failed test 'data:,fo{o - data:,fo{o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%7Bo,,fo%7Bo,data,data       |data:,fo{o,,fo{o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7932 - data:,fo{o - data:,fo{o
 ok 7933 - data:,fo{o - data:,fo{o idempotency
-not ok 7934 - data:,fo|o - data:,fo|o
-#   Failed test 'data:,fo|o - data:,fo|o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%7Co,,fo%7Co,data,data       |data:,fo|o,,fo|o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7934 - data:,fo|o - data:,fo|o
 ok 7935 - data:,fo|o - data:,fo|o idempotency
-not ok 7936 - data:,fo}o - data:,fo}o
-#   Failed test 'data:,fo}o - data:,fo}o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo%7Do,,fo%7Do,data,data       |data:,fo}o,,fo}o,data,data           *
-# +----+-------------------------------------+-------------------------------------+
+ok 7936 - data:,fo}o - data:,fo}o
 ok 7937 - data:,fo}o - data:,fo}o idempotency
 ok 7938 - data:,fo~o - data:,fo~o
 ok 7939 - data:,fo~o - data:,fo~o idempotency
@@ -11052,42 +10576,15 @@ ok 7974 - data:,fo%25o - data:,fo%25o
 ok 7975 - data:,fo%25o - data:,fo%25o idempotency
 ok 7976 - data:,fo%26o - data:,fo%26o
 ok 7977 - data:,fo%26o - data:,fo%26o idempotency
-not ok 7978 - data:,fo%31o - data:,fo%31o
-#   Failed test 'data:,fo%31o - data:,fo%31o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fo1o,,fo1o,data,data           |data:,fo%31o,,fo%31o,data,data       *
-# +----+-------------------------------------+-------------------------------------+
+ok 7978 - data:,fo%31o - data:,fo%31o
 ok 7979 - data:,fo%31o - data:,fo%31o idempotency
 ok 7980 - data:,fo%40o - data:,fo%40o
 ok 7981 - data:,fo%40o - data:,fo%40o idempotency
-not ok 7982 - data:,fo%41o - data:,fo%41o
-#   Failed test 'data:,fo%41o - data:,fo%41o'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,foAo,,foAo,data,data           |data:,fo%41o,,fo%41o,data,data       *
-# +----+-------------------------------------+-------------------------------------+
+ok 7982 - data:,fo%41o - data:,fo%41o
 ok 7983 - data:,fo%41o - data:,fo%41o idempotency
 ok 7984 - data:,fo%50o - data:,fo%50o
 ok 7985 - data:,fo%50o - data:,fo%50o idempotency
-not ok 7986 - data:,fo%5ao - data:,fo%5ao
-#   Failed test 'data:,fo%5ao - data:,fo%5ao'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,foZo,,foZo,data,data           |data:,fo%5ao,,fo%5ao,data,data       *
-# +----+-------------------------------------+-------------------------------------+
+ok 7986 - data:,fo%5ao - data:,fo%5ao
 ok 7987 - data:,fo%5ao - data:,fo%5ao idempotency
 ok 7988 - data:,fo%5Bo - data:,fo%5Bo
 ok 7989 - data:,fo%5Bo - data:,fo%5Bo idempotency
@@ -11105,16 +10602,7 @@ ok 8000 - data:,fo%61o - data:,fo%61o
 ok 8001 - data:,fo%61o - data:,fo%61o idempotency
 ok 8002 - data:,fo%62o - data:,fo%62o
 ok 8003 - data:,fo%62o - data:,fo%62o idempotency
-not ok 8004 - data:,fo%7Ao - data:,fo%7Ao
-#   Failed test 'data:,fo%7Ao - data:,fo%7Ao'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------+
-# | Elt|Got                                  |Expected                             |
-# +----+-------------------------------------+-------------------------------------+
-# |   0|canon,path,scheme,scheme_normalized  |canon,path,scheme,scheme_normalized  |
-# *   1|data:,fozo,,fozo,data,data           |data:,fo%7Ao,,fo%7Ao,data,data       *
-# +----+-------------------------------------+-------------------------------------+
+ok 8004 - data:,fo%7Ao - data:,fo%7Ao
 ok 8005 - data:,fo%7Ao - data:,fo%7Ao idempotency
 ok 8006 - data:,fo%7bo - data:,fo%7bo
 ok 8007 - data:,fo%7bo - data:,fo%7bo idempotency
@@ -11134,16 +10622,7 @@ ok 8020 - data:,fo%Cdo - data:,fo%Cdo
 ok 8021 - data:,fo%Cdo - data:,fo%Cdo idempotency
 ok 8022 - data:,fo%FFo - data:,fo%FFo
 ok 8023 - data:,fo%FFo - data:,fo%FFo idempotency
-not ok 8024 - data:,?"a - data:,?"a
-#   Failed test 'data:,?"a - data:,?"a'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------------+
-# | Elt|Got                                  |Expected                                   |
-# +----+-------------------------------------+-------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized  |canon,path,query,scheme,scheme_normalized  *
-# *   1|data:,?%22a,,?%22a,data,data         |data:,?"a,,,"a,data,data                   *
-# +----+-------------------------------------+-------------------------------------------+
+ok 8024 - data:,?"a - data:,?"a
 ok 8025 - data:,?"a - data:,?"a idempotency
 ok 8026 - data://foo - data://foo
 ok 8027 - data://foo - data://foo idempotency
@@ -11197,4 +10676,4 @@ ok 8071 - http://suika.fam.cx:%380/ - http://suika.fam.cx:%380/
 ok 8072 - http://suika.fam.cx:8%30/ - http://suika.fam.cx:8%30/
 ok 8073 - http://suika.fam.cx:%38%30/ - http://suika.fam.cx:%38%30/
 1..8073
-# Looks like you failed 257 tests of 8073.
+# Looks like you failed 201 tests of 8073.

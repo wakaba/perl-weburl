@@ -174,15 +174,19 @@ javascript:14 % 4
 
 #data escaped
 javascript: // \u4e00
+#canon
+javascript: // %E4%B8%80
 #scheme javascript
 #path
- // \u4e00
+ // %E4%B8%80
 
 #data escaped
 javascript: // # \u4e00
+#canon
+javascript: // # %E4%B8%80
 #scheme javascript
 #path
- // \u4e00
+ // # %E4%B8%80
 
 #data
 JavaScript:Foo

@@ -904,21 +904,33 @@ sub canonicalize_url ($$;$) {
     }
   }
 
-  if ($IsHierarchicalScheme->{$parsed_url->{scheme}}) {
-    $parsed_url->{path} = '/'
-        if not defined $parsed_url->{path} or not length $parsed_url->{path};
-  }
-
-  if (defined $parsed_url->{path}) {
-    my $s = Encode::encode ('utf-8', $parsed_url->{path});
-    $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
-      sprintf '%%%02X', ord $1;
-    }ge;
-    $s =~ s{%(3[0-9]|[46][1-9A-Fa-f]|[57][0-9Aa]|2[DdEe]|5[Ff]|7[Ee])}{
-      pack 'C', hex $1;
-    }ge;
-    $parsed_url->{path} = $s;
-  }
+  PATH: {
+    if ($IsHierarchicalScheme->{$parsed_url->{scheme_normalized}}) {
+      $parsed_url->{path} = '/'
+          if not defined $parsed_url->{path} or not length $parsed_url->{path};
+    } elsif ($parsed_url->{scheme_normalized} eq 'mailto') {
+      #
+    } else {
+      ## Non-hierarchical scheme except for |mailto:|
+      my $s = Encode::encode ('utf-8', $parsed_url->{path});
+      $s =~ s{([^\x20-\x7E])}{
+        sprintf '%%%02X', ord $1;
+      }ge;
+      $parsed_url->{path} = $s;
+      last PATH;
+    }
+    
+    if (defined $parsed_url->{path}) {
+      my $s = Encode::encode ('utf-8', $parsed_url->{path});
+      $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
+        sprintf '%%%02X', ord $1;
+      }ge;
+      $s =~ s{%(3[0-9]|[46][1-9A-Fa-f]|[57][0-9Aa]|2[DdEe]|5[Ff]|7[Ee])}{
+        pack 'C', hex $1;
+      }ge;
+      $parsed_url->{path} = $s;
+    }
+  } # PATH
 
   if (defined $parsed_url->{query}) {
     my $charset = $charset || 'utf-8';
