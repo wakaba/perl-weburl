@@ -78,7 +78,8 @@
   var classes = [];
   var results = [];
   SAMI.Test.executeTestsByURL ('../data/' + fileName + '?' + Math.random (), {
-    data: {isPrefixed: true}
+    data: {isPrefixed: true},
+    path: {isPrefixed: true}
   }, function (test) {
     var originalURL = test.getField ('data');
     var baseURL = test.getFieldValue ('base');

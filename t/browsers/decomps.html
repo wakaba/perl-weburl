@@ -166,7 +166,8 @@
   var classes = [];
   var results = [];
   SAMI.Test.executeTestsByURL ('../data/' + fileName + '?' + Math.random (), {
-    data: {isPrefixed: true}
+    data: {isPrefixed: true},
+    path: {isPrefixed: true}
   }, function (test) {
     var originalURL = test.getField ('data');
     var baseURL = test.getFieldValue ('base');
@@ -236,7 +237,7 @@
       } else {
         expected.path = '';
       }
-      expected.query = '';
+      expected.query = expected.query == null ? '' : '?' + expected.query;
       expected.hostport = '';
     }
     expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
@@ -410,7 +411,7 @@
     }
   }
 
-  var testsetName = 'test-20110516';
+  var testsetName = 'url-canon-mailto-20110604';
   button.onclick = function () {
     if (!button.value) return;
     var url = 'http://suika.fam.cx/gate/test-results/list/' + testsetName;
