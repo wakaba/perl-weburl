@@ -10,6 +10,13 @@ our $IsHierarchicalScheme = {
   ftp => 1,
 };
 
+our $IsNonHierarchicalScheme = {
+  about => 1,
+  data => 1,
+  javascript => 1,
+  mailto => 1,
+};
+
 our $DefaultPort = {
   http => 80,
   https => 443,
@@ -75,7 +82,9 @@ sub parse_absolute_url ($$) {
   }
 
   if (defined $result->{scheme_normalized} and
-      $IsHierarchicalScheme->{$result->{scheme_normalized}}) {
+      ($IsHierarchicalScheme->{$result->{scheme_normalized}} or
+       (not $IsNonHierarchicalScheme->{$result->{scheme_normalized}} and
+        $input =~ m{^/}))) {
     $class->_find_authority_path_query_fragment (\$input => $result);
     if (defined $result->{authority}) {
       $class->_find_user_info_host_port (\($result->{authority}) => $result);
@@ -911,6 +920,7 @@ sub canonicalize_url ($$;$) {
       #
     } else {
       ## Non-hierarchical scheme except for |mailto:|
+      $parsed_url->{path} = '' unless defined $parsed_url->{path};
       my $s = Encode::encode ('utf-8', $parsed_url->{path});
       $s =~ s{([^\x20-\x7E])}{
         sprintf '%%%02X', ord $1;

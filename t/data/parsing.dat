@@ -42,15 +42,15 @@ HTTP://example.com/
 \u007Fhttp://test\u007F
 #scheme escaped
 \u007Fhttp
-#path escaped
-//test\u007F
+#host escaped
+test\u007F
 
 #data escaped
 \u0080http://test\u0080
 #scheme escaped
 \u0080http
-#path escaped
-//test\u0080
+#host escaped
+test\u0080
 
 #data
 :abc
@@ -444,12 +444,14 @@ http:#bar
 #data
 %D9%82%D9%87%D9%88%D8%A9://coffee.example/
 #scheme %D9%82%D9%87%D9%88%D8%A9
-#path //coffee.example/
+#host coffee.example
+#path /
 
 #data
 %D9%82%D9%87%D9%88%D8%a9://coffee.example/
 #scheme %D9%82%D9%87%D9%88%D8%a9
-#path //coffee.example/
+#host coffee.example
+#path /
 
 #data
 http://%D9%82%D9%87%D9%88%D8%A9@example/
@@ -482,12 +484,14 @@ http://user@[c@d]/
 #data
 about://user@
 #scheme about
-#path //user@
+#path
+//user@
 
 #data
 about://@
 #scheme about
-#path //@
+#path
+//@
 
 #data
 http://@[c@d]/
@@ -620,17 +624,25 @@ mid:a%25b@foo.example
 #data
 foo://example.com:8042/over/there?name=ferret#nose
 #scheme foo
-#path //example.com:8042/over/there?name=ferret#nose
+#host example.com
+#port 8042
+#path /over/there
+#query name=ferret
+#fragment nose
 
 #data
 eXAMPLE://a/./b/../b/%63/%7bfoo%7d
 #scheme eXAMPLE
-#path //a/./b/../b/%63/%7bfoo%7d
+#host a
+#path 
+/./b/../b/%63/%7bfoo%7d
 
 #data
 eXAMPLE://a/./b/../b/c/%7bfoo%7d
 #scheme eXAMPLE
-#path //a/./b/../b/c/%7bfoo%7d
+#host a
+#path
+/./b/../b/c/%7bfoo%7d
 
 #data
 ftp://cnn.example.com&story=breaking_news@10.0.0.1/top_story.htm

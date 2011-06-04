@@ -39,11 +39,21 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   Following schemes are /not/ hierarchical:
 
+    - about
     - data
     - javascript
     - mailto
 
   Whether the other schemes are hierarchical or not is /unknown/.
+
+  A URL is *hierarchical* if one of the following conditions is met:
+
+    - It's |scheme| is *hierarchical*, or
+
+    - Whether it's |scheme| is hierarchical or not is /unknown/ and
+      the URL is the |scheme| component followed by a U+003A COLON
+      character (:) followed by a U+002F SOLIDUS character (/)
+      followed by zero ore more characters.
 
 * Authority terminating characters
 
@@ -74,7 +84,10 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
 
   Preprocess the string /s/.
 
-  Apply url-spec's steps.
+  If /s/ is hierarchical, apply url-spec's steps for hierarchical
+  URLs.
+
+  Otherwise, apply url-spec's steps for non-hierarchical URLs.
 
 * Parsing a mailto: URL /s/
 
