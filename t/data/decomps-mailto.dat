@@ -348,14 +348,90 @@ mailto:foo@example%22
 #path foo@example%22
 
 #data
-mailto:foo@example%5a
+mailto:foo@example%23
 #scheme mailto
-#path foo@example%5a
+#path foo@example%23
+
+#data
+mailto:foo@example%24
+#scheme mailto
+#path foo@example%24
+
+#data
+mailto:foo@example%30
+#canon
+mailto:foo@example0
+#scheme mailto
+#path foo@example0
+
+#data
+mailto:foo@example%31
+#canon
+mailto:foo@example1
+#scheme mailto
+#path foo@example1
+
+#data
+mailto:foo@example%39
+#canon
+mailto:foo@example9
+#scheme mailto
+#path foo@example9
+
+#data
+mailto:foo@example%3F
+#scheme mailto
+#path foo@example%3F
+
+#data
+mailto:foo@example%40
+#scheme mailto
+#path foo@example%40
+
+#data
+mailto:foo@example%41
+#canon
+mailto:foo@exampleA
+#scheme mailto
+#path foo@exampleA
+
+#data
+mailto:foo@example%5a
+#canon
+mailto:foo@exampleZ
+#scheme mailto
+#path foo@exampleZ
+
+#data
+mailto:foo@example%5f
+#canon
+mailto:foo@example_
+#scheme mailto
+#path foo@example_
 
 #data
 mailto:foo@example%65
+#canon
+mailto:foo@examplee
 #scheme mailto
-#path foo@example%65
+#path foo@examplee
+
+#data
+mailto:foo@example%7d
+#scheme mailto
+#path foo@example%7d
+
+#data
+mailto:foo@example%7E
+#canon
+mailto:foo@example~
+#scheme mailto
+#path foo@example~
+
+#data
+mailto:foo@example%7f
+#scheme mailto
+#path foo@example%7f
 
 #data
 mailto:foo@example%Cd
@@ -394,8 +470,17 @@ mailto:fo..o@example.com
 
 #data
 mailto:foo@example#bar
+#canon
+mailto:foo@example%23bar
 #scheme mailto
-#path foo@example#bar
+#path foo@example%23bar
+
+#data
+mailto:foo@example#bar#baz
+#canon
+mailto:foo@example%23bar%23baz
+#scheme mailto
+#path foo@example%23bar%23baz
 
 #data
 mailto:%22not%40me%22@example.org
@@ -721,6 +806,15 @@ mailto:foo@bar?body=hoge%23foo
 #path foo@bar
 #query
 body=hoge%23foo
+
+#data
+mailto:foo@bar?body=hoge#foo#bar
+#canon
+mailto:foo@bar?body=hoge%23foo%23bar
+#scheme mailto
+#path foo@bar
+#query
+body=hoge%23foo%23bar
 
 #data
 mailto:foo@bar?body=hoge#foo&subject=foo

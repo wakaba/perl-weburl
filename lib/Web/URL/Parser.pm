@@ -912,7 +912,7 @@ sub canonicalize_url ($$;$) {
 
   if (defined $parsed_url->{path}) {
     my $s = Encode::encode ('utf-8', $parsed_url->{path});
-    $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
+    $s =~ s{([^\x21\x24-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
       sprintf '%%%02X', ord $1;
     }ge;
     $s =~ s{%(3[0-9]|[46][1-9A-Fa-f]|[57][0-9Aa]|2[DdEe]|5[Ff]|7[Ee])}{
@@ -938,7 +938,7 @@ sub canonicalize_url ($$;$) {
       $charset = 'utf-8';
     }
     my $s = Encode::encode ($charset, $parsed_url->{query});
-    $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x7E])}{
+    $s =~ s{([^\x21\x24-\x3B\x3D\x3F-\x7E])}{
       sprintf '%%%02X', ord $1;
     }ge;
     $parsed_url->{query} = $s;
