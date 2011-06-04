@@ -356,7 +356,7 @@ sub _remove_dot_segments ($$) {
   return $buf;
 } # _remove_dot_segments
 
-use Net::IDN::Nameprep;
+use Net::IDN::Nameprep ();
 use Net::LibIDN;
 
 sub encode_punycode ($) {

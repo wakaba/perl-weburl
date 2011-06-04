@@ -106,8 +106,7 @@ http://foo/bar
 #data
 http://foo;bar
 #scheme http
-#host foo
-#path ;bar
+#host foo;bar
 
 #data
 http://foo\bar
@@ -382,8 +381,8 @@ http://:080
 #data
 http://[foo;bar=a]:80
 #scheme http
-#host [foo
-#path ;bar=a]:80
+#host [foo;bar=a]
+#port 80
 
 #data
 http://:@bar
