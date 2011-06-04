@@ -24,6 +24,7 @@ decomps-authority-ipv6.dat    decomps-javascript.dat  decomps-scheme.dat
 decomps-authority.dat         decomps-mailto.dat      decomps.dat
 decomps-charsets.dat          decomps-path.dat
 decomps-data.dat              decomps-port.dat
+decomps-about.dat
 
 ));
 

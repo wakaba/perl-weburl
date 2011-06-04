@@ -661,6 +661,46 @@ unknownscript:a % 55 // # %E4%B8%80 "
 a % 55 // # %E4%B8%80 "
 
 #data
+mocha://foo
+#canon
+mocha://foo/
+#scheme mocha
+#host foo
+#path /
+
+#data
+livescript://foo
+#canon
+livescript://foo/
+#scheme livescript
+#host foo
+#path /
+
+#data
+ecmascript://foo
+#canon
+ecmascript://foo/
+#scheme ecmascript
+#host foo
+#path /
+
+#data
+vbscript://foo
+#canon
+vbscript://foo/
+#scheme vbscript
+#host foo
+#path /
+
+#data
+javascript1.1://foo
+#canon
+javascript1.1://foo/
+#scheme javascript1.1
+#host foo
+#path /
+
+#data
 unknownscript://foo
 #canon
 unknownscript://foo/
