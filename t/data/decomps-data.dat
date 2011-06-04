@@ -1245,12 +1245,12 @@ data:,
 #data
 ./foo/bar
 #base data:text/plain,abc
-#canon
+#invalid 1
 
 #data
 foo
 #base data:text/plain,abc
-#canon
+#invalid 1
 
 #data
 ,abc

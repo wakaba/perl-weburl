@@ -376,7 +376,7 @@ http:#abc
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 
 #data escaped
 ?foo\u000Abar#abc\u000Adef
@@ -385,9 +385,9 @@ foo\u000Abar
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 #fragment escaped
-abc\u000Adef
+abcdef
 
 #data escaped
 | #foo\u000Abar
@@ -397,7 +397,7 @@ abc\u000Adef
 #path /
 #query
 #fragment escaped
-foo\u000Abar
+foobar
 
 #note
 Following test cases have no applicable spec at the moment...

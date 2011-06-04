@@ -519,14 +519,30 @@ javascript:a%FFb
 #path a%FFb
 
 #data
+#base javascript:alert(1)
+#canon javascript:alert(1)
+#scheme javascript
+#path alert(1)
+
+#data
 ./foo/bar
 #base javascript:alert(1)
-#canon
+#invalid 1
 
 #data
 foo
 #base javascript:alert(1)
-#canon
+#invalid 1
+
+#data
+?foo
+#base javascript:alert(1)
+#invalid 1
+
+#data
+| #foo
+#base javascript:alert(1)
+#invalid 1
 
 #data escaped
 jscript:a % 55 // # \u4e00
@@ -639,3 +655,11 @@ unknownscript:a % 55 // # %E4%B8%80 "
 #scheme unknownscript
 #path escaped
 a % 55 // # %E4%B8%80 "
+
+#data
+unknownscript://foo
+#canon
+unknownscript://foo/
+#scheme unknownscript
+#host foo
+#path /

@@ -202,8 +202,7 @@ sub _resolve_relative_url ($$$) {
     return $url;
   }
 
-  # XXX non-hierarchical URL
-  if ($parsed_base_url->{scheme_normalized} eq 'mailto') {
+  if (not $IsHierarchicalScheme->{$parsed_base_url->{scheme_normalized}}) {
     return {invalid => 1};
   }
   

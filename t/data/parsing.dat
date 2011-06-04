@@ -702,7 +702,7 @@ http://hoge/?foo\u000Abar
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 
 #data escaped
 http://hoge/?foo\u000Abar#abc\u000Adef
@@ -710,9 +710,9 @@ http://hoge/?foo\u000Abar#abc\u000Adef
 #host hoge
 #path /
 #query escaped
-foo\u000Abar
+foobar
 #fragment escaped
-abc\u000Adef
+abcdef
 
 #data escaped
 http://hoge/#foo\u000Abar
@@ -720,7 +720,7 @@ http://hoge/#foo\u000Abar
 #host hoge
 #path /
 #fragment escaped
-foo\u000Abar
+foobar
 
 #data
 mailto:foo?bar#baz
@@ -764,3 +764,49 @@ mailto:?
 #scheme mailto
 #query
 #path
+
+#data
+javascript:
+#scheme javascript
+#path
+
+#data
+javascript:abc
+#scheme javascript
+#path abc
+
+#data
+javascript:a?b#c
+#scheme javascript
+#path
+a?b#c
+
+#data
+javascript:?abc
+#scheme javascript
+#path
+?abc
+
+#data
+javascript:#def
+#scheme javascript
+#path
+| #def
+
+#data
+ecmascript:a?b#c
+#scheme ecmascript
+#path
+a?b#c
+
+#data
+data:a?b#c
+#scheme data
+#path
+a?b#c
+
+#data
+unknown:a?b#c
+#scheme unknown
+#path
+a?b#c
