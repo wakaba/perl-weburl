@@ -61,6 +61,18 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
 
   Apply url-spec's steps.
 
+* Parsing a mailto: URL /s/
+
+  If /s/ contains a U+003F QUESTION MARK character (?), split /s/ by
+  the first such character into two parts.  The first part is the path
+  component of the URL and the second part is the query component of
+  the URL.  These components do not include the U+003F QUESTION MARK
+  character (?) used to split the string and might be empty strings.
+  The URL has no authority and fragment components.
+
+  Otherwise, /s/ is the path component of the URL.  The URL has no
+  authority, query, and fragment components.
+
 * Merge path
 
   Apply RFC 3986's steps, but use "slash character" definition instead

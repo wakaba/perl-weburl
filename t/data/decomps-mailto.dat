@@ -764,3 +764,14 @@ mailto:foo@bar
 #base
 mailto:foo@bar
 #invalid 1
+
+#data
+#base
+mailto:foo@bar
+#invalid 1
+
+#data escaped
+mail\u000Dto://hoge/foo@bar#baz
+#base
+http://foo/bar
+#canon

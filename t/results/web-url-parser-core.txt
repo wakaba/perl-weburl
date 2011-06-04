@@ -1,5 +1,3 @@
-Prototype mismatch: sub Web::URL::Parser::nameprep: none vs ($;%) at ../lib/Web/URL/Parser.pm line 511.
-Subroutine nameprep redefined at ../lib/Web/URL/Parser.pm line 472.
 # data/decomps-authority-domain.dat
 ok 1 - http://localhost/ - http://localhost/
 ok 2 - http://localhost/ - http://localhost/ idempotency
@@ -571,13 +569,13 @@ ok 476 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 477 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 478 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 479 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 498.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 498.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 498.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 502.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 502.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 502.
 ok 480 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 498.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 498.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 498.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 502.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 502.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 502.
 ok 481 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 482 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 483 - http://%00.com/ - http://%00.com/
@@ -1894,7 +1892,7 @@ not ok 1133 - C|/foo/bar - http://a/b/c
 ok 1134 - C|/foo/bar - http://a/b/c idempotency
 ok 1135 - /C|\foo\bar - http://a/b/c
 ok 1136 - /C|\foo\bar - http://a/b/c idempotency
-Use of uninitialized value $r_authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 264.
+Use of uninitialized value $r_authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 268.
 not ok 1137 - /C|\foo\bar - file:///b/c
 #   Failed test '/C|\foo\bar - file:///b/c'
 #   at _canon line 1.
@@ -4271,9 +4269,9 @@ ok 2803 - http://00000000000000000001/ - http://00000000000000000001/
 ok 2804 - http://00000000000000000001/ - http://00000000000000000001/ idempotency
 ok 2805 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/
 ok 2806 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 417.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 421.
 ok 2807 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 417.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 421.
 ok 2808 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ idempotency
 ok 2809 - http://000030052000001/ - http://000030052000001/
 ok 2810 - http://000030052000001/ - http://000030052000001/ idempotency
@@ -4283,9 +4281,9 @@ ok 2813 - http://0300.0250.00.01/ - http://0300.0250.00.01/
 ok 2814 - http://0300.0250.00.01/ - http://0300.0250.00.01/ idempotency
 ok 2815 - http://030052000001/ - http://030052000001/
 ok 2816 - http://030052000001/ - http://030052000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 417.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 421.
 ok 2817 - http://0X12C0a80001/ - http://0X12C0a80001/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 417.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 421.
 ok 2818 - http://0X12C0a80001/ - http://0X12C0a80001/ idempotency
 ok 2819 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/
 ok 2820 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/ idempotency
@@ -4311,9 +4309,9 @@ ok 2839 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/
 ok 2840 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/ idempotency
 ok 2841 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/
 ok 2842 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 417.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 421.
 ok 2843 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 417.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 421.
 ok 2844 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/ idempotency
 ok 2845 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/
 ok 2846 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/ idempotency
@@ -7788,13 +7786,13 @@ ok 5336 - http://@@@@@@@@ - http://@@@@@@@@
 ok 5337 - http://@@@@@@@@ - http://@@@@@@@@ idempotency
 ok 5338 - http://:@ - http://:@
 ok 5339 - http://:@ - http://:@ idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 379.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 383.
 ok 5340 - http://[] - http://[]
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 379.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 383.
 ok 5341 - http://[] - http://[] idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 379.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 383.
 ok 5342 - http://[]/ - http://[]/
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 379.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 383.
 ok 5343 - http://[]/ - http://[]/ idempotency
 ok 5344 - http://[?] - http://[?]
 ok 5345 - http://[?] - http://[?] idempotency
@@ -8319,302 +8317,64 @@ ok 5694 - mailto:/foo/bar - mailto:/foo/bar
 ok 5695 - mailto:/foo/bar - mailto:/foo/bar idempotency
 ok 5696 - mailto:/foo/../bar - mailto:/foo/../bar
 ok 5697 - mailto:/foo/../bar - mailto:/foo/../bar idempotency
-not ok 5698 - mailto:? - mailto:?
-#   Failed test 'mailto:? - mailto:?'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+-------------------------------------------+
-# | Elt|Got                                  |Expected                                   |
-# +----+-------------------------------------+-------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized  |canon,path,query,scheme,scheme_normalized  *
-# *   1|mailto:?,?,mailto,mailto             |mailto:?,,,mailto,mailto                   *
-# +----+-------------------------------------+-------------------------------------------+
+ok 5698 - mailto:? - mailto:?
 ok 5699 - mailto:? - mailto:? idempotency
-not ok 5700 - mailto:infobot@example.com?subject=current-issue - mailto:infobot@example.com?subject=current-issue
-#   Failed test 'mailto:infobot@example.com?subject=current-issue - mailto:infobot@example.com?subject=current-issue'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                       |Expected                                                                                                  |
-# +----+----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                       |canon,path,query,scheme,scheme_normalized                                                                 *
-# *   1|mailto:infobot@example.com?subject=current-issue,infobot@example.com?subject=current-issue,mailto,mailto  |mailto:infobot@example.com?subject=current-issue,infobot@example.com,subject=current-issue,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+ok 5700 - mailto:infobot@example.com?subject=current-issue - mailto:infobot@example.com?subject=current-issue
 ok 5701 - mailto:infobot@example.com?subject=current-issue - mailto:infobot@example.com?subject=current-issue idempotency
-not ok 5702 - mailto:infobot@example.com?Subject=current-issue - mailto:infobot@example.com?Subject=current-issue
-#   Failed test 'mailto:infobot@example.com?Subject=current-issue - mailto:infobot@example.com?Subject=current-issue'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                       |Expected                                                                                                  |
-# +----+----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                       |canon,path,query,scheme,scheme_normalized                                                                 *
-# *   1|mailto:infobot@example.com?Subject=current-issue,infobot@example.com?Subject=current-issue,mailto,mailto  |mailto:infobot@example.com?Subject=current-issue,infobot@example.com,Subject=current-issue,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------+
+ok 5702 - mailto:infobot@example.com?Subject=current-issue - mailto:infobot@example.com?Subject=current-issue
 ok 5703 - mailto:infobot@example.com?Subject=current-issue - mailto:infobot@example.com?Subject=current-issue idempotency
-not ok 5704 - mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E - mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E
-#   Failed test 'mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E - mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                                                 |Expected                                                                                                                                            |
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                                                 |canon,path,query,scheme,scheme_normalized                                                                                                           *
-# *   1|mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E,list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E,mailto,mailto  |mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E,list@example.org,In-Reply-To=%3C3469A91.D10AF4C@example.com%3E,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+ok 5704 - mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E - mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E
 ok 5705 - mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E - mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E idempotency
-not ok 5706 - mailto:joe@example.com?cc=bob@example.com?body=hello - mailto:joe@example.com?cc=bob@example.com?body=hello
-#   Failed test 'mailto:joe@example.com?cc=bob@example.com?body=hello - mailto:joe@example.com?cc=bob@example.com?body=hello'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                               |Expected                                                                                                          |
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                               |canon,path,query,scheme,scheme_normalized                                                                         *
-# *   1|mailto:joe@example.com?cc=bob@example.com?body=hello,joe@example.com?cc=bob@example.com?body=hello,mailto,mailto  |mailto:joe@example.com?cc=bob@example.com?body=hello,joe@example.com,cc=bob@example.com?body=hello,mailto,mailto  *
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
+ok 5706 - mailto:joe@example.com?cc=bob@example.com?body=hello - mailto:joe@example.com?cc=bob@example.com?body=hello
 ok 5707 - mailto:joe@example.com?cc=bob@example.com?body=hello - mailto:joe@example.com?cc=bob@example.com?body=hello idempotency
-not ok 5708 - mailto:majordomo@example.com?body=subscribe%20bamboo-l - mailto:majordomo@example.com?body=subscribe%20bamboo-l
-#   Failed test 'mailto:majordomo@example.com?body=subscribe%20bamboo-l - mailto:majordomo@example.com?body=subscribe%20bamboo-l'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                   |Expected                                                                                                              |
-# +----+----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                   |canon,path,query,scheme,scheme_normalized                                                                             *
-# *   1|mailto:majordomo@example.com?body=subscribe%20bamboo-l,majordomo@example.com?body=subscribe%20bamboo-l,mailto,mailto  |mailto:majordomo@example.com?body=subscribe%20bamboo-l,majordomo@example.com,body=subscribe%20bamboo-l,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+ok 5708 - mailto:majordomo@example.com?body=subscribe%20bamboo-l - mailto:majordomo@example.com?body=subscribe%20bamboo-l
 ok 5709 - mailto:majordomo@example.com?body=subscribe%20bamboo-l - mailto:majordomo@example.com?body=subscribe%20bamboo-l idempotency
-not ok 5710 - mailto:unlikely%3Faddress@example.com?blat=foop - mailto:unlikely%3Faddress@example.com?blat=foop
-#   Failed test 'mailto:unlikely%3Faddress@example.com?blat=foop - mailto:unlikely%3Faddress@example.com?blat=foop'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                     |Expected                                                                                                |
-# +----+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                     |canon,path,query,scheme,scheme_normalized                                                               *
-# *   1|mailto:unlikely%3Faddress@example.com?blat=foop,unlikely%3Faddress@example.com?blat=foop,mailto,mailto  |mailto:unlikely%3Faddress@example.com?blat=foop,unlikely%3Faddress@example.com,blat=foop,mailto,mailto  *
-# +----+--------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------+
+ok 5710 - mailto:unlikely%3Faddress@example.com?blat=foop - mailto:unlikely%3Faddress@example.com?blat=foop
 ok 5711 - mailto:unlikely%3Faddress@example.com?blat=foop - mailto:unlikely%3Faddress@example.com?blat=foop idempotency
-not ok 5712 - mailto:?to=foo@bar - mailto:?to=foo@bar
-#   Failed test 'mailto:?to=foo@bar - mailto:?to=foo@bar'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------+----------------------------------------------+
-# | Elt|Got                                           |Expected                                      |
-# +----+----------------------------------------------+----------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized           |canon,path,query,scheme,scheme_normalized     *
-# *   1|mailto:?to=foo@bar,?to=foo@bar,mailto,mailto  |mailto:?to=foo@bar,,to=foo@bar,mailto,mailto  *
-# +----+----------------------------------------------+----------------------------------------------+
+ok 5712 - mailto:?to=foo@bar - mailto:?to=foo@bar
 ok 5713 - mailto:?to=foo@bar - mailto:?to=foo@bar idempotency
-not ok 5714 - mailto:?to=foo@bar&to=hoge@foo - mailto:?to=foo@bar&to=hoge@foo
-#   Failed test 'mailto:?to=foo@bar&to=hoge@foo - mailto:?to=foo@bar&to=hoge@foo'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------+----------------------------------------------------------------------+
-# | Elt|Got                                                                   |Expected                                                              |
-# +----+----------------------------------------------------------------------+----------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                   |canon,path,query,scheme,scheme_normalized                             *
-# *   1|mailto:?to=foo@bar&to=hoge@foo,?to=foo@bar&to=hoge@foo,mailto,mailto  |mailto:?to=foo@bar&to=hoge@foo,,to=foo@bar&to=hoge@foo,mailto,mailto  *
-# +----+----------------------------------------------------------------------+----------------------------------------------------------------------+
+ok 5714 - mailto:?to=foo@bar&to=hoge@foo - mailto:?to=foo@bar&to=hoge@foo
 ok 5715 - mailto:?to=foo@bar&to=hoge@foo - mailto:?to=foo@bar&to=hoge@foo idempotency
-not ok 5716 - mailto:foo?bar@baz?subject=hoge - mailto:foo?bar@baz?subject=hoge
-#   Failed test 'mailto:foo?bar@baz?subject=hoge - mailto:foo?bar@baz?subject=hoge'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------+------------------------------------------------------------------------+
-# | Elt|Got                                                                     |Expected                                                                |
-# +----+------------------------------------------------------------------------+------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                     |canon,path,query,scheme,scheme_normalized                               *
-# *   1|mailto:foo?bar@baz?subject=hoge,foo?bar@baz?subject=hoge,mailto,mailto  |mailto:foo?bar@baz?subject=hoge,foo,bar@baz?subject=hoge,mailto,mailto  *
-# +----+------------------------------------------------------------------------+------------------------------------------------------------------------+
+ok 5716 - mailto:foo?bar@baz?subject=hoge - mailto:foo?bar@baz?subject=hoge
 ok 5717 - mailto:foo?bar@baz?subject=hoge - mailto:foo?bar@baz?subject=hoge idempotency
-not ok 5718 - mailto:user@example.org?subject=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9
-#   Failed test 'mailto:user@example.org?subject=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                         |Expected                                                                                    |
-# +----+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                         |canon,path,query,scheme,scheme_normalized                                                   *
-# *   1|mailto:user@example.org?subject=caf%C3%A9,user@example.org?subject=caf%C3%A9,mailto,mailto  |mailto:user@example.org?subject=caf%C3%A9,user@example.org,subject=caf%C3%A9,mailto,mailto  *
-# +----+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+ok 5718 - mailto:user@example.org?subject=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9
 ok 5719 - mailto:user@example.org?subject=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9 idempotency
-not ok 5720 - mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D - mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D
-#   Failed test 'mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D - mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                                                 |Expected                                                                                                                                            |
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                                                 |canon,path,query,scheme,scheme_normalized                                                                                                           *
-# *   1|mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D,user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D,mailto,mailto  |mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D,user@example.org,subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+ok 5720 - mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D - mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D
 ok 5721 - mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D - mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D idempotency
-not ok 5722 - mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
-#   Failed test 'mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                                                 |Expected                                                                                                                                            |
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                                                 |canon,path,query,scheme,scheme_normalized                                                                                                           *
-# *   1|mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,mailto,mailto  |mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,user@example.org,subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------+
+ok 5722 - mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
 ok 5723 - mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D idempotency
-not ok 5724 - mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?= - mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?=
-#   Failed test 'mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?= - mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?='
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                     |Expected                                                                                                                |
-# +----+------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                     |canon,path,query,scheme,scheme_normalized                                                                               *
-# *   1|mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?=,user@example.org?subject==?iso-8859-1?Q?caf%E9?=,mailto,mailto  |mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?=,user@example.org,subject==?iso-8859-1?Q?caf%E9?=,mailto,mailto  *
-# +----+------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+ok 5724 - mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?= - mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?=
 ok 5725 - mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?= - mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?= idempotency
-not ok 5726 - mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
-#   Failed test 'mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                                           |Expected                                                                                                                                      |
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                                           |canon,path,query,scheme,scheme_normalized                                                                                                     *
-# *   1|mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,mailto,mailto  |mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,user@example.org,body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+ok 5726 - mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
 ok 5727 - mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D - mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D idempotency
-not ok 5728 - mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9
-#   Failed test 'mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                       |Expected                                                                                                                  |
-# +----+--------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                       |canon,path,query,scheme,scheme_normalized                                                                                 *
-# *   1|mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9,user@example.org?subject=caf%C3%A9&body=caf%C3%A9,mailto,mailto  |mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9,user@example.org,subject=caf%C3%A9&body=caf%C3%A9,mailto,mailto  *
-# +----+--------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+
+ok 5728 - mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9
 ok 5729 - mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9 - mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5730 - mailto:user@example.org?subject=一 - mailto:user@example.org?subject=一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'mailto:user@example.org?subject=一 - mailto:user@example.org?subject=一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                         |Expected                                                                                    |
-# +----+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                         |canon,path,query,scheme,scheme_normalized                                                   *
-# *   1|mailto:user@example.org?subject=%E4%B8%80,user@example.org?subject=%E4%B8%80,mailto,mailto  |mailto:user@example.org?subject=%E4%B8%80,user@example.org,subject=%E4%B8%80,mailto,mailto  *
-# +----+--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+ok 5730 - mailto:user@example.org?subject=一 - mailto:user@example.org?subject=一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5731 - mailto:user@example.org?subject=一 - mailto:user@example.org?subject=一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5732 - mailto:user@example.org?一=a - mailto:user@example.org?一=a
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'mailto:user@example.org?一=a - mailto:user@example.org?一=a'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-# | Elt|Got                                                                             |Expected                                                                        |
-# +----+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                             |canon,path,query,scheme,scheme_normalized                                       *
-# *   1|mailto:user@example.org?%E4%B8%80=a,user@example.org?%E4%B8%80=a,mailto,mailto  |mailto:user@example.org?%E4%B8%80=a,user@example.org,%E4%B8%80=a,mailto,mailto  *
-# +----+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+ok 5732 - mailto:user@example.org?一=a - mailto:user@example.org?一=a
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5733 - mailto:user@example.org?一=a - mailto:user@example.org?一=a idempotency
-not ok 5734 - mailto:user@example.org?subject=%1B(BACXY%1B(Babx - mailto:user@example.org?subject=%1B(BACXY%1B(Babx
-#   Failed test 'mailto:user@example.org?subject=%1B(BACXY%1B(Babx - mailto:user@example.org?subject=%1B(BACXY%1B(Babx'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                         |Expected                                                                                                    |
-# +----+------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                         |canon,path,query,scheme,scheme_normalized                                                                   *
-# *   1|mailto:user@example.org?subject=%1B(BACXY%1B(Babx,user@example.org?subject=%1B(BACXY%1B(Babx,mailto,mailto  |mailto:user@example.org?subject=%1B(BACXY%1B(Babx,user@example.org,subject=%1B(BACXY%1B(Babx,mailto,mailto  *
-# +----+------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+ok 5734 - mailto:user@example.org?subject=%1B(BACXY%1B(Babx - mailto:user@example.org?subject=%1B(BACXY%1B(Babx
 ok 5735 - mailto:user@example.org?subject=%1B(BACXY%1B(Babx - mailto:user@example.org?subject=%1B(BACXY%1B(Babx idempotency
-not ok 5736 - mailto:user@example.org?subject=%81@%81A%9A%C1 - mailto:user@example.org?subject=%81@%81A%9A%C1
-#   Failed test 'mailto:user@example.org?subject=%81@%81A%9A%C1 - mailto:user@example.org?subject=%81@%81A%9A%C1'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                   |Expected                                                                                              |
-# +----+------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                   |canon,path,query,scheme,scheme_normalized                                                             *
-# *   1|mailto:user@example.org?subject=%81@%81A%9A%C1,user@example.org?subject=%81@%81A%9A%C1,mailto,mailto  |mailto:user@example.org?subject=%81@%81A%9A%C1,user@example.org,subject=%81@%81A%9A%C1,mailto,mailto  *
-# +----+------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------+
+ok 5736 - mailto:user@example.org?subject=%81@%81A%9A%C1 - mailto:user@example.org?subject=%81@%81A%9A%C1
 ok 5737 - mailto:user@example.org?subject=%81@%81A%9A%C1 - mailto:user@example.org?subject=%81@%81A%9A%C1 idempotency
-not ok 5738 - mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab - mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab
-#   Failed test 'mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab - mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                               |Expected                                                                                                          |
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                               |canon,path,query,scheme,scheme_normalized                                                                         *
-# *   1|mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab,user@example.org?subject=%A1%A1%DB%DA%A3%DFab,mailto,mailto  |mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab,user@example.org,subject=%A1%A1%DB%DA%A3%DFab,mailto,mailto  *
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
+ok 5738 - mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab - mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab
 ok 5739 - mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab - mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab idempotency
-not ok 5740 - mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO - mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO
-#   Failed test 'mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO - mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                                           |Expected                                                                                                                                      |
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                                           |canon,path,query,scheme,scheme_normalized                                                                                                     *
-# *   1|mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO,user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO,mailto,mailto  |mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO,user@%E7%B4%8D%E8%B1%86.example.org,subject=Test&body=NATTO,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+
+ok 5740 - mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO - mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO
 ok 5741 - mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO - mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO idempotency
-not ok 5742 - mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO - mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO
-#   Failed test 'mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO - mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                                 |Expected                                                                                                                            |
-# +----+------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                                 |canon,path,query,scheme,scheme_normalized                                                                                           *
-# *   1|mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO,%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO,mailto,mailto  |mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO,%E7%B4%8D%E8%B1%86@example.org,subject=Test&body=NATTO,mailto,mailto  *
-# +----+------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+ok 5742 - mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO - mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO
 ok 5743 - mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO - mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO idempotency
-not ok 5744 - mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO - mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO
-#   Failed test 'mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO - mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                             |Expected                                                                                                                        |
-# +----+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                             |canon,path,query,scheme,scheme_normalized                                                                                       *
-# *   1|mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO,user@xn--99zt52a.example.org?subject=Test&body=NATTO,mailto,mailto  |mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO,user@xn--99zt52a.example.org,subject=Test&body=NATTO,mailto,mailto  *
-# +----+--------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+ok 5744 - mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO - mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO
 ok 5745 - mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO - mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5746 - mailto:user@一.example.org?subject=Test&body=NATTO - mailto:user@一.example.org?subject=Test&body=NATTO
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'mailto:user@一.example.org?subject=Test&body=NATTO - mailto:user@一.example.org?subject=Test&body=NATTO'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                         |Expected                                                                                                                    |
-# +----+----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                                         |canon,path,query,scheme,scheme_normalized                                                                                   *
-# *   1|mailto:user@%E4%B8%80.example.org?subject=Test&body=NATTO,user@%E4%B8%80.example.org?subject=Test&body=NATTO,mailto,mailto  |mailto:user@%E4%B8%80.example.org?subject=Test&body=NATTO,user@%E4%B8%80.example.org,subject=Test&body=NATTO,mailto,mailto  *
-# +----+----------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+
+ok 5746 - mailto:user@一.example.org?subject=Test&body=NATTO - mailto:user@一.example.org?subject=Test&body=NATTO
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5747 - mailto:user@一.example.org?subject=Test&body=NATTO - mailto:user@一.example.org?subject=Test&body=NATTO idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5748 - mailto:一@example.org?subject=Test&body=NATTO - mailto:一@example.org?subject=Test&body=NATTO
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'mailto:一@example.org?subject=Test&body=NATTO - mailto:一@example.org?subject=Test&body=NATTO'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                               |Expected                                                                                                          |
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                                               |canon,path,query,scheme,scheme_normalized                                                                         *
-# *   1|mailto:%E4%B8%80@example.org?subject=Test&body=NATTO,%E4%B8%80@example.org?subject=Test&body=NATTO,mailto,mailto  |mailto:%E4%B8%80@example.org?subject=Test&body=NATTO,%E4%B8%80@example.org,subject=Test&body=NATTO,mailto,mailto  *
-# +----+------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+
+ok 5748 - mailto:一@example.org?subject=Test&body=NATTO - mailto:一@example.org?subject=Test&body=NATTO
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5749 - mailto:一@example.org?subject=Test&body=NATTO - mailto:一@example.org?subject=Test&body=NATTO idempotency
 not ok 5750 - mailto:\# - mailto:\#
@@ -8646,8 +8406,8 @@ not ok 5754 - mailto:foo\#bar@baz?subject=hoge - mailto:foo\#bar@baz?subject=hog
 # +----+------------------------------------------------------------------------+----------------------------------------------------------------------------+
 # | Elt|Got                                                                     |Expected                                                                    |
 # +----+------------------------------------------------------------------------+----------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                     |canon,path,query,scheme,scheme_normalized                                   *
-# *   1|mailto:foo#bar@baz?subject=hoge,foo#bar@baz?subject=hoge,mailto,mailto  |mailto:foo%23bar@baz?subject=hoge,foo%23bar@baz,subject=hoge,mailto,mailto  *
+# |   0|canon,path,query,scheme,scheme_normalized                               |canon,path,query,scheme,scheme_normalized                                   |
+# *   1|mailto:foo#bar@baz?subject=hoge,foo#bar@baz,subject=hoge,mailto,mailto  |mailto:foo%23bar@baz?subject=hoge,foo%23bar@baz,subject=hoge,mailto,mailto  *
 # +----+------------------------------------------------------------------------+----------------------------------------------------------------------------+
 ok 5755 - mailto:foo\#bar@baz?subject=hoge - mailto:foo\#bar@baz?subject=hoge idempotency
 not ok 5756 - mailto:foo@bar?body=hoge\#foo - mailto:foo@bar?body=hoge\#foo
@@ -8657,8 +8417,8 @@ not ok 5756 - mailto:foo@bar?body=hoge\#foo - mailto:foo@bar?body=hoge\#foo
 # +----+------------------------------------------------------------------+----------------------------------------------------------------------+
 # | Elt|Got                                                               |Expected                                                              |
 # +----+------------------------------------------------------------------+----------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                               |canon,path,query,scheme,scheme_normalized                             *
-# *   1|mailto:foo@bar?body=hoge#foo,foo@bar?body=hoge#foo,mailto,mailto  |mailto:foo@bar?body=hoge%23foo,foo@bar,body=hoge%23foo,mailto,mailto  *
+# |   0|canon,path,query,scheme,scheme_normalized                         |canon,path,query,scheme,scheme_normalized                             |
+# *   1|mailto:foo@bar?body=hoge#foo,foo@bar,body=hoge#foo,mailto,mailto  |mailto:foo@bar?body=hoge%23foo,foo@bar,body=hoge%23foo,mailto,mailto  *
 # +----+------------------------------------------------------------------+----------------------------------------------------------------------+
 ok 5757 - mailto:foo@bar?body=hoge\#foo - mailto:foo@bar?body=hoge\#foo idempotency
 not ok 5758 - mailto:foo@bar?body=hoge\#foo&subject=foo - mailto:foo@bar?body=hoge\#foo&subject=foo
@@ -8668,8 +8428,8 @@ not ok 5758 - mailto:foo@bar?body=hoge\#foo&subject=foo - mailto:foo@bar?body=ho
 # +----+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
 # | Elt|Got                                                                                       |Expected                                                                                      |
 # +----+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                                                       |canon,path,query,scheme,scheme_normalized                                                     *
-# *   1|mailto:foo@bar?body=hoge#foo&subject=foo,foo@bar?body=hoge#foo&subject=foo,mailto,mailto  |mailto:foo@bar?body=hoge%23foo&subject=foo,foo@bar,body=hoge%23foo&subject=foo,mailto,mailto  *
+# |   0|canon,path,query,scheme,scheme_normalized                                                 |canon,path,query,scheme,scheme_normalized                                                     |
+# *   1|mailto:foo@bar?body=hoge#foo&subject=foo,foo@bar,body=hoge#foo&subject=foo,mailto,mailto  |mailto:foo@bar?body=hoge%23foo&subject=foo,foo@bar,body=hoge%23foo&subject=foo,mailto,mailto  *
 # +----+------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
 ok 5759 - mailto:foo@bar?body=hoge\#foo&subject=foo - mailto:foo@bar?body=hoge\#foo&subject=foo idempotency
 not ok 5760 - //foo@bar - mailto:hoge@foobar
@@ -8683,7 +8443,7 @@ not ok 5760 - //foo@bar - mailto:hoge@foobar
 # *   1|mailto://foo@bar,//foo@bar,mailto,mailto  |1         *
 # +----+------------------------------------------+----------+
 ok 5761 - //foo@bar - mailto:hoge@foobar idempotency
-Use of uninitialized value $r_authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 264.
+Use of uninitialized value $r_authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 268.
 not ok 5762 - /foo/bar - mailto:hoge@foobar
 #   Failed test '/foo/bar - mailto:hoge@foobar'
 #   at _canon line 1.
@@ -8717,7 +8477,7 @@ not ok 5766 - foo - mailto:foo@bar
 # *   1|mailto:foo,foo,mailto,mailto         |1         *
 # +----+-------------------------------------+----------+
 ok 5767 - foo - mailto:foo@bar idempotency
-Use of uninitialized value $authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 280.
+Use of uninitialized value $authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 284.
 not ok 5768 - ?to=hoge@foo.bar - mailto:foo@bar
 #   Failed test '?to=hoge@foo.bar - mailto:foo@bar'
 #   at _canon line 1.
@@ -8725,11 +8485,11 @@ not ok 5768 - ?to=hoge@foo.bar - mailto:foo@bar
 # +----+--------------------------------------------------------------------------+----------+
 # | Elt|Got                                                                       |Expected  |
 # +----+--------------------------------------------------------------------------+----------+
-# *   0|canon,path,scheme,scheme_normalized                                       |invalid   *
-# *   1|mailto://foo@bar?to=hoge@foo.bar,//foo@bar?to=hoge@foo.bar,mailto,mailto  |1         *
+# *   0|canon,path,query,scheme,scheme_normalized                                 |invalid   *
+# *   1|mailto://foo@bar?to=hoge@foo.bar,//foo@bar,to=hoge@foo.bar,mailto,mailto  |1         *
 # +----+--------------------------------------------------------------------------+----------+
 ok 5769 - ?to=hoge@foo.bar - mailto:foo@bar idempotency
-Use of uninitialized value $authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 294.
+Use of uninitialized value $authority in concatenation (.) or string at ../lib/Web/URL/Parser.pm line 298.
 not ok 5770 - \#hoge - mailto:foo@bar
 #   Failed test '\#hoge - mailto:foo@bar'
 #   at _canon line 1.
@@ -8737,8 +8497,8 @@ not ok 5770 - \#hoge - mailto:foo@bar
 # +----+------------------------------------------------------+----------+
 # | Elt|Got                                                   |Expected  |
 # +----+------------------------------------------------------+----------+
-# *   0|canon,path,scheme,scheme_normalized                   |invalid   *
-# *   1|mailto://foo@bar?#hoge,//foo@bar?#hoge,mailto,mailto  |1         *
+# *   0|canon,path,query,scheme,scheme_normalized             |invalid   *
+# *   1|mailto://foo@bar?#hoge,//foo@bar,#hoge,mailto,mailto  |1         *
 # +----+------------------------------------------------------+----------+
 ok 5771 - \#hoge - mailto:foo@bar idempotency
 # data/decomps.dat
@@ -11049,4 +10809,4 @@ ok 7729 - http://suika.fam.cx:%380/ - http://suika.fam.cx:%380/
 ok 7730 - http://suika.fam.cx:8%30/ - http://suika.fam.cx:8%30/
 ok 7731 - http://suika.fam.cx:%38%30/ - http://suika.fam.cx:%38%30/
 1..7731
-# Looks like you failed 283 tests of 7731.
+# Looks like you failed 257 tests of 7731.

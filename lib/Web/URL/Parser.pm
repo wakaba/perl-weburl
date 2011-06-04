@@ -65,8 +65,12 @@ sub parse_absolute_url ($$) {
 
   if (defined $result->{scheme_normalized} and
       $result->{scheme_normalized} eq 'mailto') {
-    # XXX mailto: URL
-
+    if ($input =~ s{\?(.*)\z}{}s) {
+      $result->{query} = $1;
+    }
+    
+    $result->{path} = $input;
+    return $result;
   }
 
   if (defined $result->{scheme_normalized} and

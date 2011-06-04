@@ -721,3 +721,46 @@ http://hoge/#foo\u000Abar
 #path /
 #fragment escaped
 foo\u000Abar
+
+#data
+mailto:foo?bar#baz
+#scheme mailto
+#path foo
+#query
+bar#baz
+
+#data
+mailto://foo
+#scheme mailto
+#path
+//foo
+
+#data
+mailto://foo/bar
+#scheme mailto
+#path 
+//foo/bar
+
+#data
+mailto:/ab/
+#scheme mailto
+#path
+/ab/
+
+#data
+mailto:#foo
+#scheme mailto
+#path
+| #foo
+
+#data
+mailto:foo#bar
+#scheme mailto
+#path
+foo#bar
+
+#data
+mailto:?
+#scheme mailto
+#query
+#path
