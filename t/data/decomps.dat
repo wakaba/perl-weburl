@@ -393,7 +393,65 @@ mid:a%25b@foo.example
 #data
 foo://example.com:8042/over/there?name=ferret#nose
 #scheme foo
-#path //example.com:8042/over/there?name=ferret#nose
+#host example.com
+#port 8042
+#path /over/there
+#query name=ferret
+#fragment nose
+
+#data
+foo://bar
+#canon
+foo://bar/
+#scheme foo
+#host bar
+#path /
+
+#data
+foo:hoge?fuga#baz
+#scheme foo
+#path 
+hoge?fuga#baz
+
+#data
+foo:hoge?fuga#baz
+#base http://foo/
+#scheme foo
+#path 
+hoge?fuga#baz
+
+#data
+foo:/bar/baz
+#scheme foo
+#path /bar/baz
+
+#data
+foo:/bar/baz
+#base http://foo/
+#scheme foo
+#path /bar/baz
+
+#data
+hoge
+#base foo://bar/baz/foo
+#canon
+foo://bar/baz/hoge
+#scheme foo
+#host bar
+#path /baz/hoge
+
+#data
+hoge
+#base foo:/bar/baz/foo
+#canon
+foo:/bar/baz/hoge
+#scheme foo
+#path /bar/baz/hoge
+
+#data
+hoge
+#base foo:bar/baz
+#invalid 1
 
 #data escaped
 http://hoge/?foo\u000Abar
