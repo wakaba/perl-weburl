@@ -472,6 +472,14 @@ data:,fo%01o
 ,fo%01o
 
 #data escaped
+data:,fo\u0002o
+#canon
+data:,fo%02o
+#scheme data
+#path
+,fo%02o
+
+#data escaped
 data:,fo\u0008o
 #canon
 data:,fo%08o
@@ -528,6 +536,22 @@ data:,fo%0Eo
 ,fo%0Eo
 
 #data escaped
+data:,fo\u000fo
+#canon
+data:,fo%0Fo
+#scheme data
+#path
+,fo%0Fo
+
+#data escaped
+data:,fo\u001Bo
+#canon
+data:,fo%1Bo
+#scheme data
+#path
+,fo%1Bo
+
+#data escaped
 data:,fo\u001Fo
 #canon
 data:,fo%1Fo
@@ -576,6 +600,134 @@ data:,fo%o
 ,fo%o
 
 #data escaped
+data:,fo\u0026o
+#canon
+data:,fo&o
+#scheme data
+#path
+,fo&o
+
+#data escaped
+data:,fo\u0027o
+#canon
+data:,fo'o
+#scheme data
+#path
+,fo'o
+
+#data escaped
+data:,fo\u0028o
+#canon
+data:,fo(o
+#scheme data
+#path
+,fo(o
+
+#data escaped
+data:,fo\u0029o
+#canon
+data:,fo)o
+#scheme data
+#path
+,fo)o
+
+#data escaped
+data:,fo\u002ao
+#canon
+data:,fo*o
+#scheme data
+#path
+,fo*o
+
+#data escaped
+data:,fo\u002bo
+#canon
+data:,fo+o
+#scheme data
+#path
+,fo+o
+
+#data escaped
+data:,fo\u002co
+#canon
+data:,fo,o
+#scheme data
+#path
+,fo,o
+
+#data escaped
+data:,fo\u002do
+#canon
+data:,fo-o
+#scheme data
+#path
+,fo-o
+
+#data escaped
+data:,fo\u002eo
+#canon
+data:,fo.o
+#scheme data
+#path
+,fo.o
+
+#data escaped
+data:,fo\u002fo
+#canon
+data:,fo/o
+#scheme data
+#path
+,fo/o
+
+#data escaped
+data:,fo\u0030o
+#canon
+data:,fo0o
+#scheme data
+#path
+,fo0o
+
+#data escaped
+data:,fo\u003ao
+#canon
+data:,fo:o
+#scheme data
+#path
+,fo:o
+
+#data escaped
+data:,fo\u003bo
+#canon
+data:,fo;o
+#scheme data
+#path
+,fo;o
+
+#data escaped
+data:,fo\u003co
+#canon
+data:,fo<o
+#scheme data
+#path
+,fo<o
+
+#data escaped
+data:,fo\u003do
+#canon
+data:,fo=o
+#scheme data
+#path
+,fo=o
+
+#data escaped
+data:,fo\u003eo
+#canon
+data:,fo>o
+#scheme data
+#path
+,fo>o
+
+#data escaped
 data:,fo\u0040o
 #canon
 data:,fo@o
@@ -602,10 +754,10 @@ data:,fo[o
 #data escaped
 data:,fo\u005Co
 #canon
-data:,fo%5Co
+data:,fo\o
 #scheme data
 #path
-,fo%5Co
+,fo\o
 
 #data escaped
 data:,fo\u005Do
@@ -618,10 +770,10 @@ data:,fo]o
 #data escaped
 data:,fo\u005Eo
 #canon
-data:,fo%5Eo
+data:,fo^o
 #scheme data
 #path
-,fo%5Eo
+,fo^o
 
 #data escaped
 data:,fo\u005Fo
@@ -632,12 +784,52 @@ data:,fo_o
 ,fo_o
 
 #data escaped
-data:,fo\u007Bo
+data:,fo\u0060o
 #canon
-data:,fo%7Bo
+data:,fo`o
 #scheme data
 #path
-,fo%7Bo
+,fo`o
+
+#data escaped
+data:,fo\u0061o
+#canon
+data:,foao
+#scheme data
+#path
+,foao
+
+#data escaped
+data:,fo\u007ao
+#canon
+data:,fozo
+#scheme data
+#path
+,fozo
+
+#data escaped
+data:,fo\u007Bo
+#canon
+data:,fo{o
+#scheme data
+#path
+,fo{o
+
+#data escaped
+data:,fo\u007co
+#canon
+data:,fo|o
+#scheme data
+#path
+,fo|o
+
+#data escaped
+data:,fo\u007do
+#canon
+data:,fo}o
+#scheme data
+#path
+,fo}o
 
 #data escaped
 data:,fo\u007Eo
@@ -688,12 +880,60 @@ data:,fo%01o
 ,fo%01o
 
 #data escaped
+data:,fo%09o
+#canon
+data:,fo%09o
+#scheme data
+#path
+,fo%09o
+
+#data escaped
 data:,fo%0Ao
 #canon
 data:,fo%0Ao
 #scheme data
 #path
 ,fo%0Ao
+
+#data escaped
+data:,fo%0bo
+#canon
+data:,fo%0bo
+#scheme data
+#path
+,fo%0bo
+
+#data escaped
+data:,fo%0Co
+#canon
+data:,fo%0Co
+#scheme data
+#path
+,fo%0Co
+
+#data escaped
+data:,fo%0do
+#canon
+data:,fo%0do
+#scheme data
+#path
+,fo%0do
+
+#data escaped
+data:,fo%0eo
+#canon
+data:,fo%0eo
+#scheme data
+#path
+,fo%0eo
+
+#data escaped
+data:,fo%0Fo
+#canon
+data:,fo%0Fo
+#scheme data
+#path
+,fo%0Fo
 
 #data escaped
 data:,fo%20o
@@ -704,12 +944,60 @@ data:,fo%20o
 ,fo%20o
 
 #data escaped
+data:,fo%21o
+#canon
+data:,fo%21o
+#scheme data
+#path
+,fo%21o
+
+#data escaped
 data:,fo%22o
 #canon
 data:,fo%22o
 #scheme data
 #path
 ,fo%22o
+
+#data escaped
+data:,fo%23o
+#canon
+data:,fo%23o
+#scheme data
+#path
+,fo%23o
+
+#data escaped
+data:,fo%24o
+#canon
+data:,fo%24o
+#scheme data
+#path
+,fo%24o
+
+#data escaped
+data:,fo%25o
+#canon
+data:,fo%25o
+#scheme data
+#path
+,fo%25o
+
+#data escaped
+data:,fo%26o
+#canon
+data:,fo%26o
+#scheme data
+#path
+,fo%26o
+
+#data escaped
+data:,fo%31o
+#canon
+data:,fo%31o
+#scheme data
+#path
+,fo%31o
 
 #data escaped
 data:,fo%40o
@@ -720,12 +1008,124 @@ data:,fo%40o
 ,fo%40o
 
 #data escaped
+data:,fo%41o
+#canon
+data:,fo%41o
+#scheme data
+#path
+,fo%41o
+
+#data escaped
 data:,fo%50o
 #canon
 data:,foPo
 #scheme data
 #path
 ,foPo
+
+#data escaped
+data:,fo%5ao
+#canon
+data:,fo%5ao
+#scheme data
+#path
+,fo%5ao
+
+#data escaped
+data:,fo%5Bo
+#canon
+data:,fo%5Bo
+#scheme data
+#path
+,fo%5Bo
+
+#data escaped
+data:,fo%5Co
+#canon
+data:,fo%5Co
+#scheme data
+#path
+,fo%5Co
+
+#data escaped
+data:,fo%5Do
+#canon
+data:,fo%5Do
+#scheme data
+#path
+,fo%5Do
+
+#data escaped
+data:,fo%5Eo
+#canon
+data:,fo%5Eo
+#scheme data
+#path
+,fo%5Eo
+
+#data escaped
+data:,fo%5Fo
+#canon
+data:,fo_o
+#scheme data
+#path
+,fo_o
+
+#data escaped
+data:,fo%60o
+#canon
+data:,fo%60o
+#scheme data
+#path
+,fo%60o
+
+#data escaped
+data:,fo%61o
+#canon
+data:,foao
+#scheme data
+#path
+,foao
+
+#data escaped
+data:,fo%62o
+#canon
+data:,fobo
+#scheme data
+#path
+,fobo
+
+#data escaped
+data:,fo%7Ao
+#canon
+data:,fo%7Ao
+#scheme data
+#path
+,fo%7Ao
+
+#data escaped
+data:,fo%7bo
+#canon
+data:,fo%7bo
+#scheme data
+#path
+,fo%7bo
+
+#data escaped
+data:,fo%7co
+#canon
+data:,fo%7co
+#scheme data
+#path
+,fo%7co
+
+#data escaped
+data:,fo%7do
+#canon
+data:,fo%7do
+#scheme data
+#path
+,fo%7do
 
 #data escaped
 data:,fo%7Eo
@@ -742,6 +1142,14 @@ data:,fo%7Fo
 #scheme data
 #path
 ,fo%7Fo
+
+#data escaped
+data:,fo%80o
+#canon
+data:,fo%80o
+#scheme data
+#path
+,fo%80o
 
 #data escaped
 data:,fo%A0o
@@ -766,6 +1174,16 @@ data:,fo%FFo
 #scheme data
 #path
 ,fo%FFo
+
+#data escaped
+data:,?\u0022a
+#canon escaped
+data:,?\u0022a
+#scheme data
+#path 
+,
+#query escaped
+\u0022a
 
 #data
 data://foo
