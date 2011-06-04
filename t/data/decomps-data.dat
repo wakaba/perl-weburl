@@ -1,4 +1,3 @@
-
 #data
 data:
 #scheme data
@@ -112,9 +111,11 @@ data:TEXT/PLAIN,ABC
 
 #data
 data:text\plain,abc
-#canon data:text/plain,abc
+#canon 
+data:text\plain,abc
 #scheme data
-#path text/plain,abc
+#path 
+text\plain,abc
 
 #data
 data:text/./plain,abc
@@ -407,9 +408,11 @@ data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl%3Ec3QK
 #data
 data:text/plain,a
 bcde
+#canon
+data:text/plain,abcde
 #scheme data
 #path
-text/plain,a%0Abcde
+text/plain,abcde
 
 #data
 data:,Data%20was:%20'%%%%'
@@ -426,6 +429,401 @@ data:text/plain,abcdefg/ef#foo
 #scheme data
 #path text/plain,abcdefg/ef#foo
 
+#data escaped
+data:,\u4e00
+#canon
+data:,%E4%B8%80
+#scheme data
+#path
+,%E4%B8%80
+
+#data
+data:,foo?bar=baz
+#scheme data
+#path
+,foo
+#query
+bar=baz
+
+#data escaped
+data:,foo?bar=baz\u4e00
+#canon
+data:,foo?bar=baz%E4%B8%80
+#scheme data
+#path
+,foo
+#query
+bar=baz%E4%B8%80
+
+#data escaped
+data:,fo\u0000o
+#canon
+data:,fo%00o
+#scheme data
+#path
+,fo%00o
+
+#data escaped
+data:,fo\u0001o
+#canon
+data:,fo%01o
+#scheme data
+#path
+,fo%01o
+
+#data escaped
+data:,fo\u0008o
+#canon
+data:,fo%08o
+#scheme data
+#path
+,fo%08o
+
+#data escaped
+data:,fo\u0009o
+#canon
+data:,foo
+#scheme data
+#path
+,foo
+
+#data escaped
+data:,fo\u000ao
+#canon
+data:,foo
+#scheme data
+#path
+,foo
+
+#data escaped
+data:,fo\u000bo
+#canon
+data:,fo%0Bo
+#scheme data
+#path
+,fo%0Bo
+
+#data escaped
+data:,fo\u000Co
+#canon
+data:,fo%0Co
+#scheme data
+#path
+,fo%0Co
+
+#data escaped
+data:,fo\u000Do
+#canon
+data:,foo
+#scheme data
+#path
+,foo
+
+#data escaped
+data:,fo\u000Eo
+#canon
+data:,fo%0Eo
+#scheme data
+#path
+,fo%0Eo
+
+#data escaped
+data:,fo\u001Fo
+#canon
+data:,fo%1Fo
+#scheme data
+#path
+,fo%1Fo
+
+#data escaped
+data:,fo\u0020o
+#canon
+data:,fo%20o
+#scheme data
+#path
+,fo%20o
+
+#data escaped
+data:,fo\u0021o
+#canon
+data:,fo!o
+#scheme data
+#path
+,fo!o
+
+#data escaped
+data:,fo\u0022o
+#canon
+data:,fo%22o
+#scheme data
+#path
+,fo%22o
+
+#data escaped
+data:,fo\u0024o
+#canon
+data:,fo$o
+#scheme data
+#path
+,fo$o
+
+#data escaped
+data:,fo\u0025o
+#canon
+data:,fo%o
+#scheme data
+#path
+,fo%o
+
+#data escaped
+data:,fo\u0040o
+#canon
+data:,fo@o
+#scheme data
+#path
+,fo@o
+
+#data escaped
+data:,fo\u0041o
+#canon
+data:,foAo
+#scheme data
+#path
+,foAo
+
+#data escaped
+data:,fo\u005Bo
+#canon
+data:,fo[o
+#scheme data
+#path
+,fo[o
+
+#data escaped
+data:,fo\u005Co
+#canon
+data:,fo%5Co
+#scheme data
+#path
+,fo%5Co
+
+#data escaped
+data:,fo\u005Do
+#canon
+data:,fo]o
+#scheme data
+#path
+,fo]o
+
+#data escaped
+data:,fo\u005Eo
+#canon
+data:,fo%5Eo
+#scheme data
+#path
+,fo%5Eo
+
+#data escaped
+data:,fo\u005Fo
+#canon
+data:,fo_o
+#scheme data
+#path
+,fo_o
+
+#data escaped
+data:,fo\u007Bo
+#canon
+data:,fo%7Bo
+#scheme data
+#path
+,fo%7Bo
+
+#data escaped
+data:,fo\u007Eo
+#canon
+data:,fo~o
+#scheme data
+#path
+,fo~o
+
+#data escaped
+data:,fo\u007Fo
+#canon
+data:,fo%7Fo
+#scheme data
+#path
+,fo%7Fo
+
+#data escaped
+data:,fo\u0080o
+#canon
+data:,fo%C2%80o
+#scheme data
+#path
+,fo%C2%80o
+
+#data escaped
+data:,fo\u00FFo
+#canon
+data:,fo%C3%BFo
+#scheme data
+#path
+,fo%C3%BFo
+
+#data escaped
+data:,fo%00o
+#canon
+data:,fo%00o
+#scheme data
+#path
+,fo%00o
+
+#data escaped
+data:,fo%01o
+#canon
+data:,fo%01o
+#scheme data
+#path
+,fo%01o
+
+#data escaped
+data:,fo%0Ao
+#canon
+data:,fo%0Ao
+#scheme data
+#path
+,fo%0Ao
+
+#data escaped
+data:,fo%20o
+#canon
+data:,fo%20o
+#scheme data
+#path
+,fo%20o
+
+#data escaped
+data:,fo%22o
+#canon
+data:,fo%22o
+#scheme data
+#path
+,fo%22o
+
+#data escaped
+data:,fo%40o
+#canon
+data:,fo%40o
+#scheme data
+#path
+,fo%40o
+
+#data escaped
+data:,fo%50o
+#canon
+data:,foPo
+#scheme data
+#path
+,foPo
+
+#data escaped
+data:,fo%7Eo
+#canon
+data:,fo~o
+#scheme data
+#path
+,fo~o
+
+#data escaped
+data:,fo%7Fo
+#canon
+data:,fo%7Fo
+#scheme data
+#path
+,fo%7Fo
+
+#data escaped
+data:,fo%A0o
+#canon
+data:,fo%A0o
+#scheme data
+#path
+,fo%A0o
+
+#data escaped
+data:,fo%Cdo
+#canon
+data:,fo%Cdo
+#scheme data
+#path
+,fo%Cdo
+
+#data escaped
+data:,fo%FFo
+#canon
+data:,fo%FFo
+#scheme data
+#path
+,fo%FFo
+
+#data
+data://foo
+#scheme data
+#path
+//foo
+
+#data
+data:/foo/bar
+#scheme data
+#path
+/foo/bar
+
+#data
+#base
+data:,
+#canon
+data:,
+#scheme data
+#path
+,
+
+#data
+| #foo
+#base
+data:,
+#invalid 1
+
+#data
+foo
+#base
+data:,
+#invalid 1
+
+#data
+/foo
+#base
+data:,
+#invalid 1
+
+#data
+.
+#base
+data:,
+#invalid 1
+
+#data
+?foo
+#base
+data:,
+#invalid 1
+
+#data
+//foo
+#base
+data:,
+#invalid 1
+
 #data
 ./foo/bar
 #base data:text/plain,abc
@@ -435,3 +833,15 @@ data:text/plain,abcdefg/ef#foo
 foo
 #base data:text/plain,abc
 #canon
+
+#data
+,abc
+#base
+data:,
+#invalid 1
+
+#data
+text/html,hoge
+#base
+data:,
+#invalid 1

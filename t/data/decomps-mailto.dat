@@ -471,16 +471,16 @@ mailto:fo..o@example.com
 #data
 mailto:foo@example#bar
 #canon
-mailto:foo@example%23bar
+mailto:foo@example#bar
 #scheme mailto
-#path foo@example%23bar
+#path foo@example#bar
 
 #data
 mailto:foo@example#bar#baz
 #canon
-mailto:foo@example%23bar%23baz
+mailto:foo@example#bar#baz
 #scheme mailto
-#path foo@example%23bar%23baz
+#path foo@example#bar#baz
 
 #data
 mailto:%22not%40me%22@example.org
@@ -775,55 +775,55 @@ subject=Test&body=NATTO
 #data
 mailto:#
 #canon
-mailto:%23
+mailto:#
 #scheme mailto
 #path
-%23
+| #
 
 #data
 mailto:#foo
 #canon
-mailto:%23foo
+mailto:#foo
 #scheme mailto
 #path
-%23foo
+| #foo
 
 #data
 mailto:foo#bar@baz?subject=hoge
 #canon
-mailto:foo%23bar@baz?subject=hoge
+mailto:foo#bar@baz?subject=hoge
 #scheme mailto
 #path 
-foo%23bar@baz
+foo#bar@baz
 #query
 subject=hoge
 
 #data
 mailto:foo@bar?body=hoge#foo
 #canon
-mailto:foo@bar?body=hoge%23foo
+mailto:foo@bar?body=hoge#foo
 #scheme mailto
 #path foo@bar
 #query
-body=hoge%23foo
+body=hoge#foo
 
 #data
 mailto:foo@bar?body=hoge#foo#bar
 #canon
-mailto:foo@bar?body=hoge%23foo%23bar
+mailto:foo@bar?body=hoge#foo#bar
 #scheme mailto
 #path foo@bar
 #query
-body=hoge%23foo%23bar
+body=hoge#foo#bar
 
 #data
 mailto:foo@bar?body=hoge#foo&subject=foo
 #canon
-mailto:foo@bar?body=hoge%23foo&subject=foo
+mailto:foo@bar?body=hoge#foo&subject=foo
 #scheme mailto
 #path foo@bar
 #query
-body=hoge%23foo&subject=foo
+body=hoge#foo&subject=foo
 
 #data
 //foo@bar
@@ -888,7 +888,7 @@ mail\u000Dto://hoge/foo@bar#baz
 #base
 http://foo/bar
 #canon
-mailto://hoge/foo@bar%23baz
+mailto://hoge/foo@bar#baz
 #scheme mailto
 #path
-//hoge/foo@bar%23baz
+//hoge/foo@bar#baz

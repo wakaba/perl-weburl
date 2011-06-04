@@ -715,18 +715,18 @@ This algorithm returns either a string or the "fail" state.
   characters in the |path| component of /u/.
 
   Percent-encode characters in the |path| component of /u/, EXCEPT for
-  unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%), U+0026
-  (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B (+),
-  U+002D (,), U+002F (/), U+003A (:), U+003B (;), U+003D (=), U+0040
-  (@), U+005B ([), and U+005D (]), using encoding |UTF-8|.
+  unreserved characters, U+0021 (!), U+0023 (#), U+0024 ($), U+0025
+  (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*),
+  U+002B (+), U+002D (,), U+002F (/), U+003A (:), U+003B (;), U+003D
+  (=), U+0040 (@), U+005B ([), and U+005D (]), using encoding |UTF-8|.
 
   Percent-encode characters in the |query| component of /u/, EXCEPT
-  for unreserved characters, U+0021 (!), U+0024 ($), U+0025 (%),
-  U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002B
-  (+), U+002D (,), U+002F (/), U+003A (:), U+003B (;), U+003D (=),
-  U+0040 (@), U+005B ([), U+005D (]), U+005C (\), U+005E (^), U+0060
-  (`), U+007B ({), U+007C (|), and U+007D (}), using encoding
-  /encoding/.
+  for unreserved characters, U+0021 (!), U+0023 (#), U+0024 ($),
+  U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A
+  (*), U+002B (+), U+002D (,), U+002F (/), U+003A (:), U+003B (;),
+  U+003D (=), U+0040 (@), U+005B ([), U+005D (]), U+005C (\), U+005E
+  (^), U+0060 (`), U+007B ({), U+007C (|), and U+007D (}), using
+  encoding /encoding/.
 
   Percent-encode the following characters in the |fragment| component
   of /u/, using the UTF-8 encoding: U+0000 ... U+0020, U+0022 ("),
