@@ -40,6 +40,8 @@ sub _preprocess_input ($$) {
   ## Remove leading and trailing control characters.
   $_[1] =~ s{\A[\x00-\x20]+}{};
   $_[1] =~ s{[\x00-\x20]+\z}{};
+
+  $_[1] =~ s{[\x09\x0A\x0D]+}{}g;
 } # _preprocess_input
 
 sub parse_absolute_url ($$) {
@@ -573,6 +575,8 @@ sub label_to_ascii ($;%) {
   my $s = shift;
   my %args = @_;
   
+  $s =~ tr/\x09\x0A\x0D//d;
+
   if ($s =~ /[^\x00-\x7F]/) {
     $s = label_nameprep $s,
         allow_unassinged => $args{allow_unassigned},
@@ -606,8 +610,6 @@ use Char::Class::IDNBlacklist qw(InIDNBlacklistChars);
 
 sub to_ascii ($$) {
   my ($class, $s) = @_;
-
-  $s =~ tr/\x09\x0A\x0D//d;
 
   my $fallback = GECKO ? $s : undef;
   $fallback =~ tr/A-Z/a-z/ if defined $fallback;

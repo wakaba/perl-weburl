@@ -51,9 +51,9 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
       U+EFFFE, U+EFFFF, U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF
     - Non-Unicode characters
 
-  XXX maybe white space characters should be removed here.
-
   XXX and U+0000 -> U+FFFD. (?)
+
+  Remove characters U+0009, U+000A, and U+000D from /s/.
 
 * Parsing an absolute URL /s/
 
