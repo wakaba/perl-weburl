@@ -8,7 +8,6 @@ our $IsHierarchicalScheme = {
   http => 1,
   https => 1,
   ftp => 1,
-  ldap => 1,
 };
 
 our $DefaultPort = {

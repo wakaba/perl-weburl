@@ -315,6 +315,12 @@ ldap://[2001:db8::7]/c=GB?objectClass?one
 #query objectClass?one
 
 #data
+ldap:foobar?foo#bar
+#scheme ldap
+#path 
+foobar?foo#bar
+
+#data
 news:comp.infosystems.www.servers.unix
 #scheme news
 #path comp.infosystems.www.servers.unix
