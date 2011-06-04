@@ -744,6 +744,12 @@ mailto:hoge@foobar
 #invalid 1
 
 #data
+/foo/bar
+#base
+mailTO:hoge@foobar
+#invalid 1
+
+#data
 ./foo/bar
 #base mailto:foo@bar
 #invalid 1
@@ -768,10 +774,27 @@ mailto:foo@bar
 #data
 #base
 mailto:foo@bar
-#invalid 1
+#canon
+mailto:foo@bar
+#scheme mailto
+#path
+foo@bar
+
+#data
+#base
+mailTo:foo@bar
+#canon
+mailto:foo@bar
+#scheme mailto
+#path
+foo@bar
 
 #data escaped
 mail\u000Dto://hoge/foo@bar#baz
 #base
 http://foo/bar
 #canon
+mailto://hoge/foo@bar%23baz
+#scheme mailto
+#path
+//hoge/foo@bar%23baz

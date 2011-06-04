@@ -230,6 +230,17 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
   an absolute URL, and then remove dot-segments [RFC 3986] from the
   |path| component, if any.
 
+** Resolve as a relative URL
+
+  If relative-url is empty: follow url-spec's steps.
+
+  Otherwise, if base-url's |scheme| component is equal to |mailto|
+  (ASCII case-insensitive), return "invalid" and abort these steps.
+
+  XXX Other non-hierarchical URL schemes
+
+  Otherwise: follow url-spec's steps.
+
 ** Resolve as a scheme-relative URL
 
   Remove dot-segments from the |path| component.

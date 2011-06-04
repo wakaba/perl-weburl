@@ -165,7 +165,6 @@ sub _find_user_info_host_port ($$$) {
 sub resolve_url ($$$) {
   my ($class, $spec, $parsed_base_url) = @_;
 
-  ## NOTE: Not in the spec.
   if ($parsed_base_url->{invalid}) {
     return {invalid => 1};
   }
@@ -197,14 +196,17 @@ sub resolve_url ($$$) {
 sub _resolve_relative_url ($$$) {
   my ($class, $specref, $parsed_base_url) = @_;
 
-  # XXX non-hierarchical URL
-
   if ($$specref eq '') {
     my $url = {%$parsed_base_url};
     delete $url->{fragment};
     return $url;
   }
 
+  # XXX non-hierarchical URL
+  if ($parsed_base_url->{scheme_normalized} eq 'mailto') {
+    return {invalid => 1};
+  }
+  
   if ($$specref =~ m{\A[/\\][/\\]}) {
     ## Resolve as a scheme-relative URL
 
