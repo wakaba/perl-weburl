@@ -150,7 +150,8 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
   Replace any U+005C REVERSE SOLIDUS (\) character in /s/ by a U+002F
   SOLIDUS (/) character.
 
-  Apply RFC 3986's steps.
+  Apply RFC 3986's steps, but treate "%2E" and "%2e" in /s/ as if they
+  were U+002E FULL STOP characters (.).
 
 * IPv4 addresses
 

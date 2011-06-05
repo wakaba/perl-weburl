@@ -1,4 +1,3 @@
-
 #data
 .
 #base http://foo/a/b/c/d
@@ -1091,10 +1090,10 @@ http:.
 #data
 %2E/a/b/%2E%2E/%2e
 #base http://a/b/c/d;p?q
-#canon http://a/b/c/./a/b/../.
+#canon http://a/b/c/a/
 #scheme http
 #host a
-#path /b/c/./a/b/./.
+#path /b/c/a/
 
 #data
 http:

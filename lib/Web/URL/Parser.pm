@@ -251,11 +251,8 @@ sub _resolve_relative_url ($$$) {
     if ($r_path =~ s{\?(.*)\z}{}s) {
       $r_query = $1;
     }
-    if ($r_path =~ s{\A([^/\\?\#;]*)(?=[/\\?\#;])}{}) {
+    if ($r_path =~ s{\A([/\\]{2}[^/\\]*)}{}) {
       $r_authority = $1;
-    } else {
-      $r_authority = $r_path;
-      $r_path = undef;
     }
 
     if (defined $r_path) {
@@ -384,13 +381,13 @@ sub _remove_dot_segments ($$) {
   s{\\}{/}g;
   my $buf = '';
   L: while (length $_) {
-    next L if s/^\.\.?\///;
-    next L if s/^\/\.(?:\/|\z)/\//;
-    if (s/^\/\.\.(\/|\z)/\//) {
+    next L if s/^(?:\.|%2[Ee])(?:\.|%2[Ee])?\///;
+    next L if s/^\/(?:\.|%2[Ee])(?:\/|\z)/\//;
+    if (s/^\/(?:\.|%2[Ee])(?:\.|%2[Ee])(\/|\z)/\//) {
       $buf =~ s/\/?[^\/]*$//;
       next L;
     }
-    last Z if s/^\.\.?\z//;
+    last L if s/^(?:\.|%2[Ee])(?:\.|%2[Ee])?\z//;
     s{^(/?(?:(?!/).)*)}{}s;
     $buf .= $1;
   }
