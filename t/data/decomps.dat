@@ -296,12 +296,6 @@ http://example#%D9%82%D9%87%D9%88%D8%A9/
 #fragment %D9%82%D9%87%D9%88%D8%A9/
 
 #data
-ftp://ftp.is.co.za/rfc/rfc1808.txt
-#scheme ftp
-#host ftp.is.co.za
-#path /rfc/rfc1808.txt
-
-#data
 http://www.ietf.org/rfc/rfc2396.txt
 #scheme http
 #host www.ietf.org
@@ -478,28 +472,6 @@ http://hoge/#foo\u000Abar
 #path /
 #fragment escaped
 foobar
-
-#data
-ftp://foo/
-#canon ftp://foo/
-#scheme ftp
-#host foo
-#path /
-
-#data
-ftp://foo:21/
-#canon ftp://foo/
-#scheme ftp
-#host foo
-#path /
-
-#data
-ftp://foo:80/
-#canon ftp://foo:80/
-#scheme ftp
-#host foo
-#port 80
-#path /
 
 #data
 gopher://foo:70/
