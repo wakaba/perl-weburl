@@ -2388,7 +2388,7 @@ http://example.com/#a\u0100b
 #host example.com
 #path /
 #fragment escaped
-a\u010b
+a\u0100b
 
 #data escaped
 http://example.com/#a\uD800b

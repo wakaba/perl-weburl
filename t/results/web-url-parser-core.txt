@@ -4770,17 +4770,7 @@ ok 3507 - http://example.com/\#aþb - http://example.com/\#aþb idempotency
 ok 3508 - http://example.com/\#aÿb - http://example.com/\#aÿb
 ok 3509 - http://example.com/\#aÿb - http://example.com/\#aÿb idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 3510 - http://example.com/\#aÄ€b - http://example.com/\#aÄ€b
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'http://example.com/\#aÄ€b - http://example.com/\#aÄ€b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------------+------------------------------------------------------------------+
-# | Elt|Got                                                                |Expected                                                          |
-# +----+-------------------------------------------------------------------+------------------------------------------------------------------+
-# |   0|canon,fragment,host,path,scheme,scheme_normalized                  |canon,fragment,host,path,scheme,scheme_normalized                 |
-# *   1|http://example.com/#a\x{0100}b,a\x{0100}b,example.com,/,http,http  |http://example.com/#a\x{0100}b,a\x{010b},example.com,/,http,http  *
-# +----+-------------------------------------------------------------------+------------------------------------------------------------------+
+ok 3510 - http://example.com/\#aÄ€b - http://example.com/\#aÄ€b
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 3511 - http://example.com/\#aÄ€b - http://example.com/\#aÄ€b idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
@@ -10247,4 +10237,4 @@ ok 8440 - ftp:foobar - ftp://hoge/abc/def idempotency
 ok 8441 - ftp:foobar?a\#b - ftp://hoge/abc/def
 ok 8442 - ftp:foobar?a\#b - ftp://hoge/abc/def idempotency
 1..8442
-# Looks like you failed 109 tests of 8442.
+# Looks like you failed 108 tests of 8442.
