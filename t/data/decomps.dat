@@ -160,7 +160,11 @@ http://foo/bar
 
 #data
 http://foo;bar
-#invalid 1
+#canon
+http://foo%3Bbar/
+#scheme http
+#host foo%3Bbar
+#path /
 
 #data
 http://foo\bar

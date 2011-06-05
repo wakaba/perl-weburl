@@ -364,8 +364,10 @@ a\u003Ab.test
 
 #data escaped
 http://a\uFF1Bb.test/
-#invalid 1
+#canon
+http://a%3Bb.test/
 #scheme http
+#host a%3Bb.test
 #path /
 #gecko-not-invalid 1
 #gecko-canon escaped
@@ -1578,11 +1580,14 @@ http://a%3Ab.test/
 
 #data escaped
 http://a\u003bb.test/
-#invalid 1
+#canon
+http://a%3Bb.test/
 #scheme http
+#host a%3Bb.test
 #path /
 #chrome-invalid 1
 #chrome-canon http://a%3Bb.test/
+#ie-invalid 1
 #ie-canon escaped
 http://a\u003Bb.test/
 #ie-host escaped
@@ -1593,13 +1598,16 @@ a\u003Bb.test
 
 #data escaped
 http://a%3bb.test/
-#invalid 1
+#canon
+http://a%3Bb.test/
 #scheme http
+#host a%3Bb.test
 #path /
 #chrome-invalid 1
 #gecko-not-invalid 1
 #gecko-canon http://a%3bb.test/
 #gecko-host a%3bb.test
+#ie-invalid 1
 #ie-canon http://a%3bb.test/
 #ie-host a%3bb.test
 
@@ -2569,13 +2577,17 @@ http://xn--%2E-s18d/
 
 #data
 http://xn--;-s18d/
-#invalid 1
+#canon
+http://xn--%3B-s18d/
+#scheme http
+#host xn--%3B-s18d
+#path /
 #chrome-canon http://xn--%3B-s18d/
 
 #data
 http://xn--%3B-s18d/
-#invalid 1
 #scheme http
+#host xn--%3B-s18d
 #path /
 #chrome-invalid 1
 #gecko-not-invalid 1

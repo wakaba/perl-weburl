@@ -18,6 +18,7 @@ our $IsNonHierarchicalScheme = {
 };
 
 our $DefaultPort = {
+  ftp => 21,
   http => 80,
   https => 443,
 };
@@ -782,7 +783,7 @@ sub to_ascii ($$) {
   }
   
   if (THIS) {
-    if ($s =~ /[\x00\x25\x2F\x3B\x3F\x5C]/) {
+    if ($s =~ /[\x00\x25\x2F\x3F\x5C]/) {
       return undef;
     }
   } elsif (CHROME) {

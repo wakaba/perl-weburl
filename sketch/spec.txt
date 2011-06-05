@@ -55,6 +55,15 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
       character (:) followed by a U+002F SOLIDUS character (/)
       followed by zero ore more characters.
 
+* Port numbers
+
+/This section is non-normative./
+
+  URL scheme  Default port number  Reference
+  ftp         21                   [RFC 1738]
+  http        80                   [RFC 2616]
+  https       443                  [HTTPS]
+
 * Authority terminating characters
 
 Remove U+003B (;) from "authority terminating characters" [url-spec].
@@ -655,8 +664,7 @@ This algorithm returns either a string or the "fail" state.
   28. If /s/ contains one of the following characters, return
       /fallback/ and abort the CanonicalizeHost algorithm:
 
-      THIS: U+0000, U+002F (/), U+0025 (%), U+003B (;), U+003F (?), or
-      U+005C (\).
+      THIS: U+0000, U+002F (/), U+0025 (%), U+003F (?), or U+005C (\).
 
       CHROME: U+0000, ..., U+001F, U+0025 (%), U+002F (/), U+003A (:),
       U+003B (;), U+003F (?), U+005B ([), U+005C (\), U+005D (]),
