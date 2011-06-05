@@ -756,12 +756,12 @@ This algorithm returns either a string or the "fail" state.
 
     Otherwise, /u/ is invalid.  Abort the entire steps.
 
-  If the scheme of /u/ is hierarchical and /u/ does not have the
-  |path| component or the |path| component is the empty string, let
-  the |path| component be a U+002F SOLIDUS character (/).
+  If /u/ is hierarchical and /u/ does not have the |path| component or
+  the |path| component is the empty string, let the |path| component
+  be a U+002F SOLIDUS character (/).
 
-  If the scheme of /u/ is hierarchical, or if the |scheme| component
-  of /u/ is ASCII case-insensitively equal to |mailto|:
+  If /u/ is hierarchical, or if the |scheme| component of /u/ is ASCII
+  case-insensitively equal to |mailto|:
 
     Percent-decode percent-encoded representations of unreserved
     characters in the |path| component of /u/.

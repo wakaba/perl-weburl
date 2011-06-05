@@ -2057,9 +2057,10 @@ http://example.org/%7Euser
 
 #data
 eXAMPLE://a/./b/../b/%63/%7bfoo%7d
-#canon example://a/./b/../b/c/%7bfoo%7d
+#canon example://a/b/c/%7bfoo%7d
 #scheme example
-#path //a/./b/../b/c/%7bfoo%7d
+#host a
+#path /b/c/%7bfoo%7d
 
 #data
 HtTp://a/./b/../b/%63/%7bfoo%7d
@@ -2070,9 +2071,10 @@ HtTp://a/./b/../b/%63/%7bfoo%7d
 
 #data
 eXAMPLE://a/./b/../b/c/%7bfoo%7d
-#canon example://a/./b/../b/c/%7bfoo%7d
+#canon example://a/b/c/%7bfoo%7d
 #scheme example
-#path //a/./b/../b/c/%7bfoo%7d
+#host a
+#path /b/c/%7bfoo%7d
 
 #data
 HttP://a/./b/../b/c/%7bfoo%7d

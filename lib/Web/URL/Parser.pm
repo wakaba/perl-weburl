@@ -927,7 +927,7 @@ sub canonicalize_url ($$;$) {
   }
 
   PATH: {
-    if ($IsHierarchicalScheme->{$parsed_url->{scheme_normalized}}) {
+    if ($parsed_url->{is_hierarchical}) {
       $parsed_url->{path} = '/'
           if not defined $parsed_url->{path} or not length $parsed_url->{path};
     } elsif ($parsed_url->{scheme_normalized} eq 'mailto') {
