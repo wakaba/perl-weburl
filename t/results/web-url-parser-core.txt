@@ -575,13 +575,13 @@ ok 481 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 482 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 483 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 484 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 538.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 538.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 538.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 539.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 539.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 539.
 ok 485 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 538.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 538.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 538.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 539.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 539.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 539.
 ok 486 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 487 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 488 - http://%00.com/ - http://%00.com/
@@ -4084,9 +4084,9 @@ ok 2801 - http://00000000000000000001/ - http://00000000000000000001/
 ok 2802 - http://00000000000000000001/ - http://00000000000000000001/ idempotency
 ok 2803 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/
 ok 2804 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 457.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 458.
 ok 2805 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 457.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 458.
 ok 2806 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ idempotency
 ok 2807 - http://000030052000001/ - http://000030052000001/
 ok 2808 - http://000030052000001/ - http://000030052000001/ idempotency
@@ -4096,9 +4096,9 @@ ok 2811 - http://0300.0250.00.01/ - http://0300.0250.00.01/
 ok 2812 - http://0300.0250.00.01/ - http://0300.0250.00.01/ idempotency
 ok 2813 - http://030052000001/ - http://030052000001/
 ok 2814 - http://030052000001/ - http://030052000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 457.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 458.
 ok 2815 - http://0X12C0a80001/ - http://0X12C0a80001/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 457.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 458.
 ok 2816 - http://0X12C0a80001/ - http://0X12C0a80001/ idempotency
 ok 2817 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/
 ok 2818 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/ idempotency
@@ -4124,9 +4124,9 @@ ok 2837 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/
 ok 2838 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/ idempotency
 ok 2839 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/
 ok 2840 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 457.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 458.
 ok 2841 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 457.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 458.
 ok 2842 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/ idempotency
 ok 2843 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/
 ok 2844 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/ idempotency
@@ -7027,31 +7027,11 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5271 - jscript:a % 55 // \# 一 " - jscript:a % 55 // \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5272 - vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------+----------------------------------------------------------------------+
-# | Elt|Got                                                                     |Expected                                                              |
-# +----+------------------------------------------------------------------------+----------------------------------------------------------------------+
-# *   0|canon,fragment,path,scheme,scheme_normalized                            |canon,path,scheme,scheme_normalized                                   *
-# *   1|vbscript:a % 55 ' #%20\x{4e00},%20\x{4e00},a % 55 ' ,vbscript,vbscript  |vbscript:a % 55 ' # %E4%B8%80,a % 55 ' # %E4%B8%80,vbscript,vbscript  *
-# +----+------------------------------------------------------------------------+----------------------------------------------------------------------+
+ok 5272 - vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5273 - vbscript:a % 55 ' \# 一 - vbscript:a % 55 ' \# 一 idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 5274 - vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 "
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 "'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-# | Elt|Got                                                                                 |Expected                                                                  |
-# +----+------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
-# *   0|canon,fragment,path,scheme,scheme_normalized                                        |canon,path,scheme,scheme_normalized                                       *
-# *   1|vbscript:a % 55 ' #%20\x{4e00}%20%22,%20\x{4e00}%20%22,a % 55 ' ,vbscript,vbscript  |vbscript:a % 55 ' # %E4%B8%80 ",a % 55 ' # %E4%B8%80 ",vbscript,vbscript  *
-# +----+------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+ok 5274 - vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 "
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 5275 - vbscript:a % 55 ' \# 一 " - vbscript:a % 55 ' \# 一 " idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
@@ -7419,13 +7399,13 @@ ok 5485 - http://@@@@@@@@ - http://@@@@@@@@
 ok 5486 - http://@@@@@@@@ - http://@@@@@@@@ idempotency
 ok 5487 - http://:@ - http://:@
 ok 5488 - http://:@ - http://:@ idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 419.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 420.
 ok 5489 - http://[] - http://[]
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 419.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 420.
 ok 5490 - http://[] - http://[] idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 419.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 420.
 ok 5491 - http://[]/ - http://[]/
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 419.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 420.
 ok 5492 - http://[]/ - http://[]/ idempotency
 ok 5493 - http://[?] - http://[?]
 ok 5494 - http://[?] - http://[?] idempotency
@@ -10703,4 +10683,4 @@ ok 8362 - ftp:foobar - ftp://hoge/abc/def idempotency
 ok 8363 - ftp:foobar?a\#b - ftp://hoge/abc/def
 ok 8364 - ftp:foobar?a\#b - ftp://hoge/abc/def idempotency
 1..8364
-# Looks like you failed 169 tests of 8364.
+# Looks like you failed 167 tests of 8364.

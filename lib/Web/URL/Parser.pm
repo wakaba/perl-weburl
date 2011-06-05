@@ -16,6 +16,7 @@ our $IsNonHierarchicalScheme = {
   data => 1,
   javascript => 1,
   mailto => 1,
+  vbscript => 1,
 };
 
 our $DefaultPort = {

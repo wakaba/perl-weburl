@@ -687,10 +687,10 @@ ecmascript://foo/
 #data
 vbscript://foo
 #canon
-vbscript://foo/
+vbscript://foo
 #scheme vbscript
-#host foo
-#path /
+#path
+//foo
 
 #data
 javascript1.1://foo
