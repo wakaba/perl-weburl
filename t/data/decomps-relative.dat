@@ -1259,3 +1259,70 @@ bar/baz\../abc
 #scheme http
 #host foo
 #path /bar/abc
+
+#data
+http:
+#base
+https://foo/bar
+#canon
+http:
+#scheme http
+#path
+
+#data
+http:hoge
+#base
+https://foo/bar
+#canon
+http:hoge
+#scheme http
+#path hoge
+
+#data
+http:hoge/fuga
+#base
+https://foo/bar
+#canon
+http:hoge/fuga
+#scheme http
+#path hoge/fuga
+
+#data
+http:hoge?a#b
+#base
+https://foo/bar
+#canon
+http:hoge
+#scheme http
+#path hoge
+#query a
+#fragment b
+
+#data
+http:?hoge
+#base
+https://foo/bar
+#canon
+http:hoge
+#scheme http
+#path 
+#query hoge
+
+#data
+http:#hoge
+#base
+https://foo/bar
+#canon
+http:hoge
+#scheme http
+#path 
+#fragment hoge
+
+#data
+http:/hoge
+#base
+https://foo/bar
+#canon
+http:/hoge
+#scheme http
+#path /hoge

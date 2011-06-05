@@ -5,9 +5,10 @@ use Encode;
 require utf8;
 
 our $IsHierarchicalScheme = {
+  ftp => 1,
+  gopher => 1,
   http => 1,
   https => 1,
-  ftp => 1,
 };
 
 our $IsNonHierarchicalScheme = {
@@ -19,6 +20,7 @@ our $IsNonHierarchicalScheme = {
 
 our $DefaultPort = {
   ftp => 21,
+  gopher => 70,
   http => 80,
   https => 443,
 };

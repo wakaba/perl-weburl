@@ -126,13 +126,14 @@
   var button = document.getElementById ('submit-button');
 
   var isHierarchicalScheme = {
+    gopher: true,
     http: true,
     https: true,
     ftp: true,
-    ldap: true,
     file: true
   };
   var schemeDefaultPort = {
+    gopher: 70,
     http: 80,
     https: 443,
     ftp: 21

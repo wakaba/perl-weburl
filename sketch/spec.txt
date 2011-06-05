@@ -34,8 +34,12 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   Following schemes are *hierarchical*:
 
+    - ftp
+    - gopher
     - http
     - https
+    - Any other scheme defined as hierarchical by an applicable
+      specification
 
   Following schemes are /not/ hierarchical:
 
@@ -43,6 +47,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     - data
     - javascript
     - mailto
+    - Any other scheme defined as not hierarchical by an applicable
+      specification
 
   Whether the other schemes are hierarchical or not is /unknown/.
 
@@ -60,7 +66,9 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 /This section is non-normative./
 
   URL scheme  Default port number  Reference
+  ----------- -------------------- ----------
   ftp         21                   [RFC 1738]
+  gopher      70                   [RFC 4266]
   http        80                   [RFC 2616]
   https       443                  [HTTPS]
 

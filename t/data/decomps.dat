@@ -389,6 +389,23 @@ mid:a%25b@foo.example
 #path a%25b@foo.example
 
 #data
+mid://foo
+#canon
+mid://foo/
+#scheme mid
+#path /
+
+#data
+baz
+#base
+mid://foo/bar
+#canon
+mid://foo/baz
+#scheme mid
+#host foo
+#path /baz
+
+#data
 foo://example.com:8042/over/there?name=ferret#nose
 #scheme foo
 #host example.com
@@ -478,10 +495,38 @@ http://hoge/#foo\u000Abar
 foobar
 
 #data
+gopher://foo
+#canon
+gopher://foo/
+#scheme gopher
+#host foo
+#path /
+
+#data
 gopher://foo:70/
 #canon gopher://foo/
 #scheme gopher
 #host foo
+#path /
+
+#data
+gopher:abc
+#base
+gopher://foo/bar
+#canon
+gopher://foo/abc
+#scheme gopher
+#host foo
+#path /abc
+
+#data
+gopher:abc
+#base
+http://foo/bar
+#canon
+gopher://abc/
+#scheme gopher
+#host abc
 #path /
 
 #data
