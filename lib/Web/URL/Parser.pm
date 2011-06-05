@@ -85,7 +85,10 @@ sub parse_absolute_url ($$) {
       ($IsHierarchicalScheme->{$result->{scheme_normalized}} or
        (not $IsNonHierarchicalScheme->{$result->{scheme_normalized}} and
         $input =~ m{^/}))) {
-    $class->_find_authority_path_query_fragment (\$input => $result);
+    $result->{is_hierarchical} = 1;
+    $class->_find_authority_path_query_fragment
+        (\$input => $result,
+         is_hierarchical_scheme => $IsHierarchicalScheme->{$result->{scheme_normalized}});
     if (defined $result->{authority}) {
       $class->_find_user_info_host_port (\($result->{authority}) => $result);
       delete $result->{authority};
@@ -120,17 +123,19 @@ sub _find_scheme ($$) {
 } # _find_scheme
 
 sub _find_authority_path_query_fragment ($$$) {
-  my ($class, $inputref => $result) = @_;
+  my ($class, $inputref => $result, %args) = @_;
 
-  ## Slash characters
-  $$inputref =~ s{\A[/\\]+}{};
-
-  ## Authority terminating characters (including slash characters)
-  if ($$inputref =~ s{\A([^/\\?\#]*)(?=[/\\?\#])}{}) {
-    $result->{authority} = $1;
-  } else {
-    $result->{authority} = $$inputref; 
-    return;
+  if ($args{is_hierarchical_scheme} or $$inputref =~ m{\A[/\\]{2}}) {
+    ## Slash characters
+    $$inputref =~ s{\A[/\\]+}{};
+    
+    ## Authority terminating characters (including slash characters)
+    if ($$inputref =~ s{\A([^/\\?\#]*)(?=[/\\?\#])}{}) {
+      $result->{authority} = $1;
+    } else {
+      $result->{authority} = $$inputref; 
+      return;
+    }
   }
 
   if ($$inputref =~ s{\#(.*)\z}{}s) {
@@ -186,15 +191,16 @@ sub resolve_url ($$$) {
     return $class->_resolve_relative_url (\$spec, $parsed_base_url);
   }
 
-  if ($parsed_spec->{scheme_normalized} eq
-      $parsed_base_url->{scheme_normalized} and
-      $IsHierarchicalScheme->{$parsed_spec->{scheme_normalized}}) {
-    $spec = substr $spec, 1 + length $parsed_spec->{scheme};
-    return $class->_resolve_relative_url (\$spec, $parsed_base_url);
-  } elsif ($IsHierarchicalScheme->{$parsed_spec->{scheme_normalized}}) {
-    if (defined $parsed_spec->{path}) {
-      $parsed_spec->{path} = $class->_remove_dot_segments
-          ($parsed_spec->{path});
+  if ($parsed_spec->{is_hierarchical}) {
+    if ($parsed_spec->{scheme_normalized} eq
+        $parsed_base_url->{scheme_normalized}) {
+      $spec = substr $spec, 1 + length $parsed_spec->{scheme};
+      return $class->_resolve_relative_url (\$spec, $parsed_base_url);
+    } else {
+      if (defined $parsed_spec->{path}) {
+        $parsed_spec->{path} = $class->_remove_dot_segments
+            ($parsed_spec->{path});
+      }
     }
   }
 
@@ -210,7 +216,7 @@ sub _resolve_relative_url ($$$) {
     return $url;
   }
 
-  if (not $IsHierarchicalScheme->{$parsed_base_url->{scheme_normalized}}) {
+  unless ($parsed_base_url->{is_hierarchical}) {
     return {invalid => 1};
   }
   
@@ -251,6 +257,7 @@ sub _resolve_relative_url ($$$) {
   } elsif ($$specref =~ m{\A[/\\]}) {
     ## Resolve as an authority-relative URL
 
+    ## XXX unknown:/hoge/ + /foo/..//bar
 
     ## XXX It's still unclear how this resolution steps interact with
     ## |file| URL's resolution (which might have special processing
@@ -267,15 +274,22 @@ sub _resolve_relative_url ($$$) {
     }
     $r_path = $class->_remove_dot_segments ($r_path);
 
-    my $r_authority = $parsed_base_url->{host};
-    $r_authority .= ':' . $parsed_base_url->{port}
-        if defined $parsed_base_url->{port};
-    $r_authority = $parsed_base_url->{user} .
-        (defined $parsed_base_url->{password}
-           ? ':' . $parsed_base_url->{password}
-           : '') .
-        '@' . $r_authority if defined $parsed_base_url->{user};
-
+    my $r_authority = '';
+    if (defined $parsed_base_url->{host} or
+        defined $parsed_base_url->{port} or
+        defined $parsed_base_url->{user} or
+        defined $parsed_base_url->{password}) {
+      $r_authority = $parsed_base_url->{host}
+          if defined $parsed_base_url->{host};
+      $r_authority .= ':' . $parsed_base_url->{port}
+          if defined $parsed_base_url->{port};
+      $r_authority = $parsed_base_url->{user} .
+          (defined $parsed_base_url->{password}
+             ? ':' . $parsed_base_url->{password}
+             : '') .
+          '@' . $r_authority if defined $parsed_base_url->{user};
+      $r_authority = '//' . $r_authority;
+    }
     my $url = $parsed_base_url->{scheme} . ':' . $r_authority;
     $url .= $r_path if defined $r_path;
     $url .= '?' . $r_query if defined $r_query;

@@ -442,6 +442,24 @@ http:#bar
 #fragment bar
 
 #data
+http:/foo/bar?a#b
+#base
+ftp://hoge/fuga
+#scheme http
+#path /foo/bar
+#query a
+#fragment b
+
+#data
+http:hoge?a#b
+#base
+ftp://hoge/fuga
+#scheme http
+#path hoge
+#query a
+#fragment b
+
+#data
 %D9%82%D9%87%D9%88%D8%A9://coffee.example/
 #scheme %D9%82%D9%87%D9%88%D8%A9
 #host coffee.example
@@ -754,10 +772,26 @@ mailto://foo/bar
 //foo/bar
 
 #data
+mailto://foo/bar?a#b
+#scheme mailto
+#path 
+//foo/bar
+#query
+a#b
+
+#data
 mailto:/ab/
 #scheme mailto
 #path
 /ab/
+
+#data
+mailto:/ab/?a#b
+#scheme mailto
+#path
+/ab/
+#query
+a#b
 
 #data
 mailto:#foo
@@ -786,6 +820,23 @@ javascript:
 javascript:abc
 #scheme javascript
 #path abc
+
+#data
+javascript:/foo/bar
+#scheme javascript
+#path /foo/bar
+
+#data
+javascript:/foo/bar?a#b
+#scheme javascript
+#path 
+/foo/bar?a#b
+
+#data
+javascript://a/foo/bar?a#b
+#scheme javascript
+#path 
+//a/foo/bar?a#b
 
 #data
 javascript:a?b#c
@@ -818,7 +869,55 @@ data:a?b#c
 a?b#c
 
 #data
+data:/foo/bar
+#scheme data
+#path /foo/bar
+
+#data
+data:/foo/bar?a#b
+#scheme data
+#path 
+/foo/bar?a#b
+
+#data
+data://a/foo/bar
+#scheme data
+#path //a/foo/bar
+
+#data
+data://a/foo/bar?a#b
+#scheme data
+#path 
+//a/foo/bar?a#b
+
+#data
 unknown:a?b#c
 #scheme unknown
 #path
 a?b#c
+
+#data
+unknown:/foo/bar
+#scheme unknown
+#path /foo/bar
+
+#data
+unknown:/foo/bar?baz#hoge
+#scheme unknown
+#path /foo/bar
+#query baz
+#fragment hoge
+
+#data
+unknown://a/foo/bar
+#scheme unknown
+#host a
+#path /foo/bar
+
+#data
+unknown://a/foo/bar?baz#hoge
+#scheme unknown
+#host a
+#path /foo/bar
+#query baz
+#fragment hoge

@@ -89,7 +89,7 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
 
   Otherwise, apply url-spec's steps for non-hierarchical URLs.
 
-* Parsing a mailto: URL /s/
+** Parsing a mailto: URL /s/
 
   If /s/ contains a U+003F QUESTION MARK character (?), split /s/ by
   the first such character into two parts.  The first part is the path
@@ -100,6 +100,16 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
 
   Otherwise, /s/ is the path component of the URL.  The URL has no
   authority, query, and fragment components.
+
+** Finding the authority, path, query, and fragment of URL /s/
+
+  If the scheme of /s/ is hierarchical, or /s/ is the |scheme|
+  component followed by a U+003A COLON character (:) followed by two
+  or more "slash characters",
+
+    Follow url-spec's steps to find authority.
+
+  Follow url-spec's steps to find path, query, and fragment.
 
 * Merge path
 
@@ -251,21 +261,20 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
 
   Trim the control characters.
 
-  Apply url-spec's steps.
+  Apply url-spec's steps, reading "the shared scheme is hierarchical"
+  as "/relative-url/ is hierarchical".
 
   If the |scheme| components of resolved and base URLs differ, and if
-  the resolved URL's scheme is hierarchical, parse the resolved URL as
-  an absolute URL, and then remove dot-segments [RFC 3986] from the
+  the resolved URL is hierarchical, parse the resolved URL as an
+  absolute URL, and then remove dot-segments [RFC 3986] from the
   |path| component, if any.
 
 ** Resolve as a relative URL
 
   If relative-url is empty: follow url-spec's steps.
 
-  Otherwise, if base-url's |scheme| component is not hierarchical,
-  return "invalid" and abort these steps.
-
-  XXX Unknown non-hierarchical URL schemes
+  Otherwise, if /base-url/ is not hierarchical, return "invalid" and
+  abort these steps.
 
   Otherwise: follow url-spec's steps.
 
@@ -277,9 +286,21 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
 
 ** Resolve as a authority-relative URL
 
+  XXX These steps might have undesired side effect - consider
+  |/hoge/..//foo| resolved against |foo:/bar/baz|.
+
   Remove dot-segments from the |path| component.
 
-  Apply url-spec's steps.
+  If |base-url| does not have the |authority| component, let
+  /resolved-url/ be /base-url/'s scheme, followed by a U+003A COLON
+  character (:), followed by the |path| component, followed by a
+  U+003F QUESTION MARK character (?) and the |query| component if
+  there is the |query| component, followed by a U+0023 NUMBER SIGN
+  character (#) and the |fragment| component if there is the
+  |fragment| component.  The resolved URL is /resolved-url/ parsed as
+  an absolute URL.
+
+  Otherwise, apply url-spec's steps.
 
 ** Resolve as a path-relative URL
 
@@ -624,7 +645,7 @@ This algorithm returns either a string or the "fail" state.
     browsers canonicalize them differently and none of them could be
     considered as sane and idempotent.
 
-  26. THIS: Otherwise, if /s/ contains a U+0030 COLON character (:),
+  26. THIS: Otherwise, if /s/ contains a U+003A COLON character (:),
       return /fallback/ and abort the CanonicalizeHost algorithm.
 
   27. Invoke the rules for canonicalizing an IPv4 address with /s/.

@@ -71,8 +71,26 @@ ok 69 -  parse
 ok 70 -  parse
 ok 71 -  parse
 ok 72 -  parse
-ok 73 -  parse
-ok 74 -  parse
+not ok 73 -  parse
+#   Failed test ' parse'
+#   at _parse line 1.
+#   (in test::Web::URL::Parser->_parse)
+# +----+---------------------------------------------------+----------------------------------------------+
+# | Elt|Got                                                |Expected                                      |
+# +----+---------------------------------------------------+----------------------------------------------+
+# *   0|fragment,host,path,query,scheme,scheme_normalized  |fragment,path,query,scheme,scheme_normalized  *
+# *   1|b,foo,/bar,a,http,http                             |b,/foo/bar,a,http,http                        *
+# +----+---------------------------------------------------+----------------------------------------------+
+not ok 74 -  parse
+#   Failed test ' parse'
+#   at _parse line 1.
+#   (in test::Web::URL::Parser->_parse)
+# +----+---------------------------------------------------+----------------------------------------------+
+# | Elt|Got                                                |Expected                                      |
+# +----+---------------------------------------------------+----------------------------------------------+
+# *   0|fragment,host,path,query,scheme,scheme_normalized  |fragment,path,query,scheme,scheme_normalized  *
+# *   1|b,hoge,,a,http,http                                |b,hoge,a,http,http                            *
+# +----+---------------------------------------------------+----------------------------------------------+
 ok 75 -  parse
 ok 76 -  parse
 ok 77 -  parse
@@ -131,112 +149,128 @@ ok 129 -  parse
 ok 130 -  parse
 ok 131 -  parse
 ok 132 -  parse
+ok 133 -  parse
+ok 134 -  parse
+ok 135 -  parse
+ok 136 -  parse
+ok 137 -  parse
+ok 138 -  parse
+ok 139 -  parse
+ok 140 -  parse
+ok 141 -  parse
+ok 142 -  parse
+ok 143 -  parse
+ok 144 -  parse
+ok 145 -  parse
+ok 146 -  parse
+ok 147 -  parse
 # data/resolving.dat
-ok 133 -  - 
-ok 134 - foo/bar - non-absolute
-ok 135 - http://foo/bar - non-absolute
-ok 136 - \#foo - http://foo/bar
-ok 137 - \#foo - http://foo\#bar
-ok 138 - \#hoge - http://foo?bar
-ok 139 - \#hoge - http://foo:bar@baz:a/b?c\#d
-ok 140 - ?hoge - http://foo
-ok 141 - ?hoge - http://foo/bar
-ok 142 - ?hoge - http://foo/bar?baz
-ok 143 - ?hoge - http://foo/bar/?baz
-ok 144 - ?hoge\#fuga - http://foo
-ok 145 - ?hoge\#fuga - http://foo\#baz
-ok 146 - ?hoge - http://foo:bar@baz:a/b?c\#d
-ok 147 - //hoge - http://foo/bar
-ok 148 - //hoge/fuga?abc\#def - http://foo/bar
-ok 149 - //abc - http://a:b@c:d/e?f\#g
-ok 150 - //x:y@z:l/m?n\#o - http://a:b@c:d/e?f\#g
-ok 151 - //foo?bar - http://x/y/z\#a
-ok 152 - //foo/bar - http://
-ok 153 - //foo/bar - http:abc
-ok 154 - /foo/bar - http://a/b/c
-ok 155 - /foo/bar - http://a:b@c:d/e/f?g\#h
-ok 156 - /foo?bar - http://a/b/c
-ok 157 - /foo\#bar - http://a/b/c
-ok 158 - /foo?bar\#baz - http://a/b/c
-ok 159 - /foo?bar\#baz - http://
-ok 160 - http://foo/baz - http://foo/bar
-ok 161 - http://foo/baz - http://hoge/bar
-ok 162 - http:?foo - http://hoge/fuga
-ok 163 - http:?foo\#bar - http://hoge?fuga
-ok 164 - http:\#bar - http://hoge/fuga
-ok 165 - http:/foo/bar - http://hoge/fuga
-ok 166 - hTtP://foo/bar - http://hoo/aaa
-ok 167 - g:h - http://a/b/c/d;p?q
-ok 168 - /g - http://a/b/c/d;p?q
-ok 169 - //g - http://a/b/c/d;p?q
-ok 170 - ?y - http://a/b/c/d;p?q
-ok 171 - \#s - http://a/b/c/d;p?q
-ok 172 -  - http://a/b/c/d;p?q
-ok 173 -  - http://a/b/c/
-ok 174 -  - http://a/b/c/d;p?q\#s
-ok 175 - \# - http://a/b/c/d;p?q\#s
-ok 176 - \#t - http://a/b/c/d;p?q\#s
-ok 177 - /./g - http://a/b/c/d;p?q
-ok 178 - /../g - http://a/b/c/d;p?q
-ok 179 - http:\#abc - http://a/b/c/d;p?q
-ok 180 - ?foo
+ok 148 -  - 
+ok 149 - foo/bar - non-absolute
+ok 150 - http://foo/bar - non-absolute
+ok 151 - \#foo - http://foo/bar
+ok 152 - \#foo - http://foo\#bar
+ok 153 - \#hoge - http://foo?bar
+ok 154 - \#hoge - http://foo:bar@baz:a/b?c\#d
+ok 155 - ?hoge - http://foo
+ok 156 - ?hoge - http://foo/bar
+ok 157 - ?hoge - http://foo/bar?baz
+ok 158 - ?hoge - http://foo/bar/?baz
+ok 159 - ?hoge\#fuga - http://foo
+ok 160 - ?hoge\#fuga - http://foo\#baz
+ok 161 - ?hoge - http://foo:bar@baz:a/b?c\#d
+ok 162 - //hoge - http://foo/bar
+ok 163 - //hoge/fuga?abc\#def - http://foo/bar
+ok 164 - //abc - http://a:b@c:d/e?f\#g
+ok 165 - //x:y@z:l/m?n\#o - http://a:b@c:d/e?f\#g
+ok 166 - //foo?bar - http://x/y/z\#a
+ok 167 - //foo/bar - http://
+ok 168 - //foo/bar - http:abc
+ok 169 - /foo/bar - http://a/b/c
+ok 170 - /foo/bar - http://a:b@c:d/e/f?g\#h
+ok 171 - /foo?bar - http://a/b/c
+ok 172 - /foo\#bar - http://a/b/c
+ok 173 - /foo?bar\#baz - http://a/b/c
+ok 174 - /foo?bar\#baz - http://
+ok 175 - http://foo/baz - http://foo/bar
+ok 176 - http://foo/baz - http://hoge/bar
+ok 177 - http:?foo - http://hoge/fuga
+ok 178 - http:?foo\#bar - http://hoge?fuga
+ok 179 - http:\#bar - http://hoge/fuga
+ok 180 - http:/foo/bar - http://hoge/fuga
+ok 181 - hTtP://foo/bar - http://hoo/aaa
+ok 182 - g:h - http://a/b/c/d;p?q
+ok 183 - /g - http://a/b/c/d;p?q
+ok 184 - //g - http://a/b/c/d;p?q
+ok 185 - ?y - http://a/b/c/d;p?q
+ok 186 - \#s - http://a/b/c/d;p?q
+ok 187 -  - http://a/b/c/d;p?q
+ok 188 -  - http://a/b/c/
+ok 189 -  - http://a/b/c/d;p?q\#s
+ok 190 - \# - http://a/b/c/d;p?q\#s
+ok 191 - \#t - http://a/b/c/d;p?q\#s
+ok 192 - /./g - http://a/b/c/d;p?q
+ok 193 - /../g - http://a/b/c/d;p?q
+ok 194 - http:\#abc - http://a/b/c/d;p?q
+ok 195 - ?foo
 # bar - http://hoge/
-ok 181 - ?foo
+ok 196 - ?foo
 # bar\#abc
 # def - http://hoge/
-ok 182 - \#foo
+ok 197 - \#foo
 # bar - http://hoge/
-ok 183 - //dummy - http://dummy
-ok 184 - hoge - http://foo/bar/baz
-ok 185 - hoge?fuga - http://foo/bar
-ok 186 - ./foo - http://hoge/fuga
-ok 187 - ./foo\#bar - http://hoge/fuga
-ok 188 - ./foo - http://hoge/a/b
-ok 189 - ./foo - http://hoge/a/b/
-ok 190 - ../foo - http://hoge/a/b
-ok 191 - ../foo - http://hoge/a/b/c/
-ok 192 - foo/.. - http://hoge/a/b
-ok 193 - g - http://a/b/c/d;p?q
-ok 194 - ./g - http://a/b/c/d;p?q
-ok 195 - g/ - http://a/b/c/d;p?q
-ok 196 - g?y - http://a/b/c/d;p?q
-ok 197 - g\#s - http://a/b/c/d;p?q
-ok 198 - g?y\#s - http://a/b/c/d;p?q
-ok 199 - ;x - http://a/b/c/d;p?q
-ok 200 - g;x - http://a/b/c/d;p?q
-ok 201 - ;x?y\#s - http://a/b/c/d;p?q
-ok 202 - . - http://a/b/c/d;p?q
-ok 203 - ./ - http://a/b/c/d;p?q
-ok 204 - .. - http://a/b/c/d;p?q
-ok 205 - ../ - http://a/b/c/d;p?q
-ok 206 - ../g - http://a/b/c/d;p?q
-ok 207 - ../.. - http://a/b/c/d;p?q
-ok 208 - ../../ - http://a/b/c/d;p?q
-ok 209 - ../../g - http://a/b/c/d;p?q
-ok 210 - ../../.. - http://a/b/c/d;p?q
-ok 211 - ../../../ - http://a/b/c/d;p?q
-ok 212 - ../../../g - http://a/b/c/d;p?q
-ok 213 - ../../../.. - http://a/b/c/d;p?q
-ok 214 - ../../../../ - http://a/b/c/d;p?q
-ok 215 - ../../../../g - http://a/b/c/d;p?q
-ok 216 - g. - http://a/b/c/d;p?q
-ok 217 - .g - http://a/b/c/d;p?q
-ok 218 - g.. - http://a/b/c/d;p?q
-ok 219 - ..g - http://a/b/c/d;p?q
-ok 220 - ./../g - http://a/b/c/d;p?q
-ok 221 - ./g/. - http://a/b/c/d;p?q
-ok 222 - g/./h - http://a/b/c/d;p?q
-ok 223 - g/../h - http://a/b/c/d;p?q
-ok 224 - g;x=1/./y - http://a/b/c/d;p?q
-ok 225 - g;x=1/../y - http://a/b/c/d;p?q
-ok 226 - g?y/./x - http://a/b/c/d;p?q
-ok 227 - g?y/../x - http://a/b/c/d;p?q
-ok 228 - g\#s/./x - http://a/b/c/d;p?q
-ok 229 - g\#s/../x - http://a/b/c/d;p?q
-ok 230 - http:g - http://a/b/c/d;p?q
-ok 231 - http: - http://a/b/c/d;p?q
-ok 232 - http:. - http://a/b/c/d;p?q
-ok 233 - ./g:h - http://a/b/c/d;p?q
-ok 234 - ./a/b/c/./d/./e/../f/g - http://a/b/c/d;p?q
-ok 235 - %2E/a/b/%2E%2E/%2e - http://a/b/c/d;p?q
-1..235
+ok 198 - //dummy - http://dummy
+ok 199 - hoge - http://foo/bar/baz
+ok 200 - hoge?fuga - http://foo/bar
+ok 201 - ./foo - http://hoge/fuga
+ok 202 - ./foo\#bar - http://hoge/fuga
+ok 203 - ./foo - http://hoge/a/b
+ok 204 - ./foo - http://hoge/a/b/
+ok 205 - ../foo - http://hoge/a/b
+ok 206 - ../foo - http://hoge/a/b/c/
+ok 207 - foo/.. - http://hoge/a/b
+ok 208 - g - http://a/b/c/d;p?q
+ok 209 - ./g - http://a/b/c/d;p?q
+ok 210 - g/ - http://a/b/c/d;p?q
+ok 211 - g?y - http://a/b/c/d;p?q
+ok 212 - g\#s - http://a/b/c/d;p?q
+ok 213 - g?y\#s - http://a/b/c/d;p?q
+ok 214 - ;x - http://a/b/c/d;p?q
+ok 215 - g;x - http://a/b/c/d;p?q
+ok 216 - ;x?y\#s - http://a/b/c/d;p?q
+ok 217 - . - http://a/b/c/d;p?q
+ok 218 - ./ - http://a/b/c/d;p?q
+ok 219 - .. - http://a/b/c/d;p?q
+ok 220 - ../ - http://a/b/c/d;p?q
+ok 221 - ../g - http://a/b/c/d;p?q
+ok 222 - ../.. - http://a/b/c/d;p?q
+ok 223 - ../../ - http://a/b/c/d;p?q
+ok 224 - ../../g - http://a/b/c/d;p?q
+ok 225 - ../../.. - http://a/b/c/d;p?q
+ok 226 - ../../../ - http://a/b/c/d;p?q
+ok 227 - ../../../g - http://a/b/c/d;p?q
+ok 228 - ../../../.. - http://a/b/c/d;p?q
+ok 229 - ../../../../ - http://a/b/c/d;p?q
+ok 230 - ../../../../g - http://a/b/c/d;p?q
+ok 231 - g. - http://a/b/c/d;p?q
+ok 232 - .g - http://a/b/c/d;p?q
+ok 233 - g.. - http://a/b/c/d;p?q
+ok 234 - ..g - http://a/b/c/d;p?q
+ok 235 - ./../g - http://a/b/c/d;p?q
+ok 236 - ./g/. - http://a/b/c/d;p?q
+ok 237 - g/./h - http://a/b/c/d;p?q
+ok 238 - g/../h - http://a/b/c/d;p?q
+ok 239 - g;x=1/./y - http://a/b/c/d;p?q
+ok 240 - g;x=1/../y - http://a/b/c/d;p?q
+ok 241 - g?y/./x - http://a/b/c/d;p?q
+ok 242 - g?y/../x - http://a/b/c/d;p?q
+ok 243 - g\#s/./x - http://a/b/c/d;p?q
+ok 244 - g\#s/../x - http://a/b/c/d;p?q
+ok 245 - http:g - http://a/b/c/d;p?q
+ok 246 - http: - http://a/b/c/d;p?q
+ok 247 - http:. - http://a/b/c/d;p?q
+ok 248 - ./g:h - http://a/b/c/d;p?q
+ok 249 - ./a/b/c/./d/./e/../f/g - http://a/b/c/d;p?q
+ok 250 - %2E/a/b/%2E%2E/%2e - http://a/b/c/d;p?q
+1..250
+# Looks like you failed 2 tests of 250.

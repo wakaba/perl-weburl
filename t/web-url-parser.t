@@ -83,11 +83,11 @@ sub _parse : Tests {
       $result->{scheme_normalized} = $result->{scheme};
       $result->{scheme_normalized} =~ tr/A-Z/a-z/;
     }
+    my $actual = Web::URL::Parser->parse_absolute_url
+        ($test->{data}->[0]);
+    delete $actual->{is_hierarchical};
 #line 1 "_parse"
-    eq_or_diff
-        +Web::URL::Parser->parse_absolute_url
-            ($test->{data}->[0]),
-        $result;
+    eq_or_diff $actual, $result;
   }
 } # _parse
 
@@ -118,11 +118,12 @@ sub _resolve : Tests {
              : defined $test->{base}->[1]->[0]
                  ? $test->{base}->[1]->[0] : '';
     my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
+    my $actual = Web::URL::Parser->resolve_url
+        ($test->{data}->[0], $resolved_base_url);
+    delete $actual->{is_hierarchical};
 #line 1 "_resolve"
     eq_or_diff
-        +Web::URL::Parser->resolve_url
-            ($test->{data}->[0], $resolved_base_url),
-        $result,
+        $actual, $result,
         $test->{data}->[0] . ' - ' . $base_url;
   }
 } # _resolve
@@ -213,6 +214,7 @@ sub __canon {
     Web::URL::Parser->canonicalize_url ($resolved_url, $charset);
     my $url = Web::URL::Parser->serialize_url ($resolved_url);
     $resolved_url->{canon} = $url if defined $url;
+    delete $resolved_url->{is_hierarchical};
 #line 1 "_canon"
     eq_or_diff $resolved_url, $result,
         $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '');
