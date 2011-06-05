@@ -85,13 +85,11 @@ sub parse_absolute_url ($$) {
   }
 
   if (defined $result->{scheme_normalized} and
-      ($IsHierarchicalScheme->{$result->{scheme_normalized}} or
-       (not $IsNonHierarchicalScheme->{$result->{scheme_normalized}} and
-        $input =~ m{^/}))) {
+      not $IsNonHierarchicalScheme->{$result->{scheme_normalized}} and
+      $input =~ m{^/}) { # XXX
     $result->{is_hierarchical} = 1;
     $class->_find_authority_path_query_fragment
-        (\$input => $result,
-         is_hierarchical_scheme => $IsHierarchicalScheme->{$result->{scheme_normalized}});
+        (\$input => $result);
     if (defined $result->{authority}) {
       $class->_find_user_info_host_port (\($result->{authority}) => $result);
       delete $result->{authority};
@@ -128,7 +126,7 @@ sub _find_scheme ($$) {
 sub _find_authority_path_query_fragment ($$$) {
   my ($class, $inputref => $result, %args) = @_;
 
-  if ($args{is_hierarchical_scheme} or $$inputref =~ m{\A[/\\]{2}}) {
+  if ($$inputref =~ m{\A[/\\]{2}}) {
     ## Slash characters
     $$inputref =~ s{\A[/\\]+}{};
     
@@ -194,16 +192,17 @@ sub resolve_url ($$$) {
     return $class->_resolve_relative_url (\$spec, $parsed_base_url);
   }
 
+  if ($parsed_base_url->{is_hierarchical} and
+      $parsed_spec->{scheme_normalized} eq
+      $parsed_base_url->{scheme_normalized}) {
+    $spec = substr $spec, 1 + length $parsed_spec->{scheme};
+    return $class->_resolve_relative_url (\$spec, $parsed_base_url);
+  }
+
   if ($parsed_spec->{is_hierarchical}) {
-    if ($parsed_spec->{scheme_normalized} eq
-        $parsed_base_url->{scheme_normalized}) {
-      $spec = substr $spec, 1 + length $parsed_spec->{scheme};
-      return $class->_resolve_relative_url (\$spec, $parsed_base_url);
-    } else {
-      if (defined $parsed_spec->{path}) {
-        $parsed_spec->{path} = $class->_remove_dot_segments
-            ($parsed_spec->{path});
-      }
+    if (defined $parsed_spec->{path}) {
+      $parsed_spec->{path} = $class->_remove_dot_segments
+          ($parsed_spec->{path});
     }
   }
 

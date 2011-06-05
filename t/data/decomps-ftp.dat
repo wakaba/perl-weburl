@@ -372,20 +372,18 @@ ftp:hoge
 #base
 http://foo/bar/baz
 #canon
-ftp://hoge/
+ftp:hoge
 #scheme ftp
-#host hoge
-#path /
+#path hoge
 
 #data
 ftp:/hoge
 #base
 http://foo/bar/baz
 #canon
-ftp://hoge/
+ftp:/hoge
 #scheme ftp
-#host hoge
-#path /
+#path /hoge
 
 #data
 ftp://hoge
@@ -412,10 +410,9 @@ ftp:?hoge
 #base
 http://foo/bar/baz
 #canon 
-ftp:///?hoge
+ftp:?hoge
 #scheme ftp
-#host 
-#path /
+#path 
 #query hoge
 
 #data
@@ -423,8 +420,38 @@ ftp:#hoge
 #base
 http://foo/bar/baz
 #canon
-ftp:///#hoge
+ftp:#hoge
 #scheme ftp
-#host 
-#path /
+#path 
 #fragment hoge
+
+#data
+ftp:
+#base
+http://foo/
+#canon
+ftp:
+#scheme ftp
+#path
+
+#data
+ftp:foobar
+#base
+ftp://hoge/abc/def
+#canon
+ftp://hoge/abc/foobar
+#scheme ftp
+#host hoge
+#path /abc/foobar
+
+#data
+ftp:foobar?a#b
+#base
+ftp://hoge/abc/def
+#canon
+ftp://hoge/abc/foobar?a#b
+#scheme ftp
+#host hoge
+#path /abc/foobar
+#query a
+#fragment b

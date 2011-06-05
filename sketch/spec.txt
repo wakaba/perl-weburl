@@ -32,6 +32,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Hierarchicalness
 
+<!--
+
   Following schemes are *hierarchical*:
 
     - ftp
@@ -40,6 +42,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     - https
     - Any other scheme defined as hierarchical by an applicable
       specification
+
+-->
 
   Following schemes are /not/ hierarchical:
 
@@ -52,14 +56,10 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   Whether the other schemes are hierarchical or not is /unknown/.
 
-  A URL is *hierarchical* if one of the following conditions is met:
-
-    - It's |scheme| is *hierarchical*, or
-
-    - Whether it's |scheme| is hierarchical or not is /unknown/ and
-      the URL is the |scheme| component followed by a U+003A COLON
-      character (:) followed by a U+002F SOLIDUS character (/)
-      followed by zero ore more characters.
+  A URL is *hierarchical* if it's |scheme| is /not/ classified as "not
+  hierarchical" and the URL is the |scheme| component followed by a
+  U+003A COLON character (:) followed by a U+002F SOLIDUS character
+  (/) followed by zero ore more characters.
 
 * Port numbers
 
@@ -120,9 +120,8 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
 
 ** Finding the authority, path, query, and fragment of URL /s/
 
-  If the scheme of /s/ is hierarchical, or /s/ is the |scheme|
-  component followed by a U+003A COLON character (:) followed by two
-  or more "slash characters",
+  If /s/ is the |scheme| component followed by a U+003A COLON
+  character (:) followed by two or more "slash characters",
 
     Follow url-spec's steps to find authority.
 
@@ -279,12 +278,11 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
   Trim the control characters.
 
   Apply url-spec's steps, reading "the shared scheme is hierarchical"
-  as "/relative-url/ is hierarchical".
+  as "/base-url/ is hierarchical".
 
-  If the |scheme| components of resolved and base URLs differ, and if
-  the resolved URL is hierarchical, parse the resolved URL as an
-  absolute URL, and then remove dot-segments [RFC 3986] from the
-  |path| component, if any.
+  If the |scheme| components of /resolved-url/ and /base-url/ are
+  different and /resolved-url/ is hierarchical, remove dot-segments
+  [RFC 3986] from the |path| component of /resolved-url/, if any.
 
 ** Resolve as a relative URL
 

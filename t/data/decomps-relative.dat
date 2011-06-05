@@ -397,10 +397,7 @@ aa/%2E%2E/
 #data
 //foo/bar
 #base http:abc
-#canon http://foo/bar
-#scheme http
-#host foo
-#path /bar
+#invalid 1
 
 #data
 /foo/bar
@@ -1303,7 +1300,7 @@ http:?hoge
 #base
 https://foo/bar
 #canon
-http:hoge
+http:?hoge
 #scheme http
 #path 
 #query hoge
@@ -1313,7 +1310,7 @@ http:#hoge
 #base
 https://foo/bar
 #canon
-http:hoge
+http:#hoge
 #scheme http
 #path 
 #fragment hoge

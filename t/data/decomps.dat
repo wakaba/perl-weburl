@@ -393,6 +393,7 @@ mid://foo
 #canon
 mid://foo/
 #scheme mid
+#host foo
 #path /
 
 #data
@@ -524,10 +525,9 @@ gopher:abc
 #base
 http://foo/bar
 #canon
-gopher://abc/
+gopher:abc
 #scheme gopher
-#host abc
-#path /
+#path abc
 
 #data
 http://%25DOMAIN:foobar@foodomain.com/
