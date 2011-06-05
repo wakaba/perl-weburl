@@ -818,8 +818,8 @@ This algorithm returns either a string or the "fail" state.
   U+007D (}).
 
   Percent-encode the following characters in the |fragment| component
-  of /u/, using the UTF-8 encoding: U+0000 ... U+0020, U+0022 ("),
-  U+003C (<), U+003E (>), U+007F ... U+009F.
+  of /u/, using the UTF-8 encoding: U+0000 ... U+001F, U+007F
+  ... U+009F.
 
       NOTE: Non-ASCII characters other than C1 control characters are
       not percent-encoded here.  As a result, a canonicalized URL

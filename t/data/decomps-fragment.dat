@@ -390,11 +390,13 @@ http://example.com/#a\u001fb
 
 #data escaped
 http://example.com/#a\u0020b
-#canon http://example.com/#a%20b
+#canon 
+http://example.com/#a b
 #scheme http
 #host example.com
 #path /
-#fragment a%20b
+#fragment 
+a b
 
 #data escaped
 http://example.com/#a\u0021b
@@ -406,11 +408,13 @@ http://example.com/#a\u0021b
 
 #data escaped
 http://example.com/#a\u0022b
-#canon http://example.com/#a%22b
+#canon 
+http://example.com/#a"b
 #scheme http
 #host example.com
 #path /
-#fragment a%22b
+#fragment 
+a"b
 
 #data escaped
 http://example.com/#a\u0023b
@@ -614,11 +618,13 @@ http://example.com/#a\u003Bb
 
 #data escaped
 http://example.com/#a\u003Cb
-#canon http://example.com/#a%3Cb
+#canon 
+http://example.com/#a<b
 #scheme http
 #host example.com
 #path /
-#fragment a%3Cb
+#fragment 
+a<b
 
 #data escaped
 http://example.com/#a\u003Db
@@ -630,11 +636,13 @@ http://example.com/#a\u003Db
 
 #data escaped
 http://example.com/#a\u003Eb
-#canon http://example.com/#a%3Eb
+#canon 
+http://example.com/#a>b
 #scheme http
 #host example.com
 #path /
-#fragment a%3Eb
+#fragment 
+a>b
 
 #data escaped
 http://example.com/#a\u003Fb

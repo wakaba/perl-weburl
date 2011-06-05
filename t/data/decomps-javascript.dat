@@ -550,19 +550,23 @@ foo
 
 #data escaped
 jscript:a % 55 // # \u4e00
-#canon
-jscript:a % 55 // # %E4%B8%80
+#canon escaped
+jscript:a % 55 // # \u4e00
 #scheme jscript
 #path escaped
-a % 55 // # %E4%B8%80
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
 
 #data escaped
 jscript:a % 55 // # \u4e00 "
-#canon
-jscript:a % 55 // # %E4%B8%80 "
+#canon escaped
+jscript:a % 55 // # \u4e00 "
 #scheme jscript
 #path escaped
-a % 55 // # %E4%B8%80 "
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
 
 #data escaped
 vbscript:a % 55 ' # \u4e00
@@ -582,83 +586,103 @@ a % 55 ' # %E4%B8%80 "
 
 #data escaped
 mocha:a % 55 // # \u4e00
-#canon
-mocha:a % 55 // # %E4%B8%80
+#canon escaped
+mocha:a % 55 // # \u4e00
 #scheme mocha
 #path escaped
-a % 55 // # %E4%B8%80
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
 
 #data escaped
 mocha:a % 55 // # \u4e00 "
-#canon
-mocha:a % 55 // # %E4%B8%80 "
+#canon escaped
+mocha:a % 55 // # \u4e00 "
 #scheme mocha
 #path escaped
-a % 55 // # %E4%B8%80 "
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
 
 #data escaped
 ecmascript:a % 55 // # \u4e00
-#canon
-ecmascript:a % 55 // # %E4%B8%80
+#canon escaped
+ecmascript:a % 55 // # \u4e00
 #scheme ecmascript
 #path escaped
-a % 55 // # %E4%B8%80
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
 
 #data escaped
 ecmascript:a % 55 // # \u4e00 "
-#canon
-ecmascript:a % 55 // # %E4%B8%80 "
+#canon escaped
+ecmascript:a % 55 // # \u4e00 "
 #scheme ecmascript
 #path escaped
-a % 55 // # %E4%B8%80 "
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
 
 #data escaped
 livescript:a % 55 // # \u4e00
-#canon
-livescript:a % 55 // # %E4%B8%80
+#canon escaped
+livescript:a % 55 // # \u4e00
 #scheme livescript
 #path escaped
-a % 55 // # %E4%B8%80
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
 
 #data escaped
 livescript:a % 55 // # \u4e00 "
-#canon
-livescript:a % 55 // # %E4%B8%80 "
+#canon escaped
+livescript:a % 55 // # \u4e00 "
 #scheme livescript
 #path escaped
-a % 55 // # %E4%B8%80 "
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
 
 #data escaped
 perlscript:a % 55 // # \u4e00
-#canon
-perlscript:a % 55 // # %E4%B8%80
+#canon escaped
+perlscript:a % 55 // # \u4e00
 #scheme perlscript
 #path escaped
-a % 55 // # %E4%B8%80
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
 
 #data escaped
 perlscript:a % 55 // # \u4e00 "
-#canon
-perlscript:a % 55 // # %E4%B8%80 "
+#canon escaped
+perlscript:a % 55 // # \u4e00 "
 #scheme perlscript
 #path escaped
-a % 55 // # %E4%B8%80 "
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
 
 #data escaped
 unknownscript:a % 55 // # \u4e00
-#canon
-unknownscript:a % 55 // # %E4%B8%80
+#canon escaped
+unknownscript:a % 55 // # \u4e00
 #scheme unknownscript
 #path escaped
-a % 55 // # %E4%B8%80
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
 
 #data escaped
 unknownscript:a % 55 // # \u4e00 "
-#canon
-unknownscript:a % 55 // # %E4%B8%80 "
+#canon escaped
+unknownscript:a % 55 // # \u4e00 "
 #scheme unknownscript
 #path escaped
-a % 55 // # %E4%B8%80 "
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
 
 #data
 mocha://foo
@@ -691,6 +715,14 @@ vbscript://foo
 #scheme vbscript
 #path
 //foo
+
+#data
+jscript://foo
+#canon
+jscript://foo/
+#scheme jscript
+#host foo
+#path /
 
 #data
 javascript1.1://foo
