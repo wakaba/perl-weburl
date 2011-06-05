@@ -310,6 +310,15 @@ view-source:http://foo?bar#baz
 http://foo?bar#baz
 
 #data
+view-source://foo
+#base http://test/
+#canon
+view-source://foo/
+#scheme view-source
+#host foo
+#path /
+
+#data
 baz
 #base
 view-source:http://foo/bar

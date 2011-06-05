@@ -326,14 +326,62 @@ news:comp.infosystems.www.servers.unix
 #path comp.infosystems.www.servers.unix
 
 #data
+news:#foo
+#scheme news
+#path
+#fragment foo
+
+#data
+news://foo
+#canon
+news://foo/
+#scheme news
+#host foo
+#path /
+
+#data
+nntp:comp.infosystems.www.servers.unix
+#scheme nntp
+#path comp.infosystems.www.servers.unix
+
+#data
+nntp://foo
+#canon
+nntp://foo/
+#scheme nntp
+#host foo
+#path /
+
+#data
 tel:+1-816-555-1212
 #scheme tel
 #path +1-816-555-1212
 
 #data
+tel://foo
+#canon
+tel://foo/
+#scheme tel
+#host foo
+#path /
+
+#data
 urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 #scheme urn
 #path oasis:names:specification:docbook:dtd:xml:4.1.2
+
+#data
+urn:/foo
+#scheme urn
+#path /foo
+
+#data
+urn://foon
+#canon
+urn://foon/
+#scheme urn
+#host foon
+#path /
 
 #data
 jar:../lib/classes.jar!/META-INF/manifest.mf
@@ -407,6 +455,19 @@ mid://foo/baz
 #scheme mid
 #host foo
 #path /baz
+
+#data
+cid:foo@bar
+#scheme cid
+#path foo@bar
+
+#data
+cid://foo
+#canon
+cid://foo/
+#scheme cid
+#host foo
+#path /
 
 #data
 foo://example.com:8042/over/there?name=ferret#nose
@@ -627,12 +688,144 @@ https://foo:443/
 #path /
 
 #data
+https://foo
+#canon
+https://foo/
+#scheme https
+#host foo
+#path /
+
+#data
 https://foo:80/
 #canon https://foo:80/
 #scheme https
 #host foo
 #port 80
 #path /
+
+#data
+https:hoge
+#base
+http://foo/bar
+#canon
+https:hoge
+#scheme https
+#path hoge
+
+#data
+rtsp:foo#bar
+#scheme rtsp
+#path foo
+#fragment bar
+
+#data
+rtsp://foo
+#canon rtsp://foo/
+#scheme rtsp
+#host foo
+#path /
+
+#data
+sip:foo#bar
+#scheme sip
+#path foo
+#fragment bar
+
+#data
+sip://foo
+#canon sip://foo/
+#scheme sip
+#host foo
+#path /
+
+#data
+sip:foo@bar?subject=hoge
+#scheme sip
+#path foo@bar
+#query subject=hoge
+
+#data
+sip:foo@bar#baz
+#scheme sip
+#path foo@bar
+#fragment baz
+
+#data
+mms:foo#bar
+#scheme mms
+#path foo
+#fragment bar
+
+#data
+mms://foo
+#canon mms://foo/
+#scheme mms
+#host foo
+#path /
+
+#data
+telnet:foo#bar
+#scheme telnet
+#path foo
+#fragment bar
+
+#data
+telnet://foo
+#canon telnet://foo/
+#scheme telnet
+#host foo
+#path /
+
+#data
+xmpp:foo#bar
+#scheme xmpp
+#path foo
+#fragment bar
+
+#data
+xmpp://foo
+#canon xmpp://foo/
+#scheme xmpp
+#host foo
+#path /
+
+#data
+sms:foo#bar
+#scheme sms
+#path foo
+#fragment bar
+
+#data
+sms://foo
+#canon sms://foo/
+#scheme sms
+#host foo
+#path /
+
+#data
+smsto:foo#bar
+#scheme smsto
+#path foo
+#fragment bar
+
+#data
+smsto://foo
+#canon smsto://foo/
+#scheme smsto
+#host foo
+#path /
+
+#data
+ws:a?b
+#scheme ws
+#path a
+#query b
+
+#data:
+wss:a?b
+#scheme wss
+#path a
+#query b
 
 #data
 ws://foo:80/
@@ -685,3 +878,53 @@ wss://foo:80/
 #host foo
 #port 80
 #path /
+
+#data
+thismessage:
+#scheme thismessage
+#path
+
+#data
+thismessage:/
+#scheme thismessage
+#path /
+
+#data
+DAV:
+#canon
+dav:
+#scheme dav
+#path
+
+#data
+DAV:hoge
+#canon
+dav:hoge
+#scheme dav
+#path hoge
+
+#data
+DAV://foo
+#canon
+dav://foo/
+#scheme dav
+#host foo
+#path /
+
+#data
+cgi+://foo
+#canon
+cgi+://foo/
+#scheme cgi+
+#host foo
+#path /
+
+#data
+baz
+#base
+cgi+://foo/bar
+#canon
+cgi+://foo/baz
+#scheme cgi+
+#host foo
+#path /bar
