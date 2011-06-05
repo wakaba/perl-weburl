@@ -161,9 +161,7 @@ http://foo/bar
 #data
 //foo/bar
 #base http:abc
-#scheme http
-#host foo
-#path /bar
+#invalid 1
 
 #data
 /foo/bar

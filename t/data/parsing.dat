@@ -59,18 +59,17 @@ test\u0080
 #data
 http:
 #scheme http
-#host
+#path
 
 #data
 http:/
 #scheme http
-#host
+#path /
 
 #data
 http:/test/abc
 #scheme http
-#host test
-#path /abc
+#path /test/abc
 
 #data
 hTtP://test/
@@ -415,29 +414,28 @@ http://:::::@
 #data
 http:
 #scheme http
-#host
+#path
 
 #data
 http:abc
 #scheme http
-#host abc
+#path abc
 
 #data
 http:foo@bar
 #scheme http
-#user foo
-#host bar
+#path
+foo@bar
 
 #data
 http:foo/bar
 #scheme http
-#host foo
-#path /bar
+#path
+foo/bar
 
 #data
 http:#bar
 #scheme http
-#host
 #path
 #fragment bar
 

@@ -70,27 +70,27 @@ ok 68 -  parse
 ok 69 -  parse
 ok 70 -  parse
 ok 71 -  parse
-ok 72 -  parse
-not ok 73 -  parse
+not ok 72 -  parse
 #   Failed test ' parse'
 #   at _parse line 1.
 #   (in test::Web::URL::Parser->_parse)
-# +----+---------------------------------------------------+----------------------------------------------+
-# | Elt|Got                                                |Expected                                      |
-# +----+---------------------------------------------------+----------------------------------------------+
-# *   0|fragment,host,path,query,scheme,scheme_normalized  |fragment,path,query,scheme,scheme_normalized  *
-# *   1|b,foo,/bar,a,http,http                             |b,/foo/bar,a,http,http                        *
-# +----+---------------------------------------------------+----------------------------------------------+
+# +----+-------------------------------+----------------------------------------+
+# | Elt|Got                            |Expected                                |
+# +----+-------------------------------+----------------------------------------+
+# *   0|path,scheme,scheme_normalized  |fragment,path,scheme,scheme_normalized  *
+# *   1|#bar,http,http                 |bar,,http,http                          *
+# +----+-------------------------------+----------------------------------------+
+ok 73 -  parse
 not ok 74 -  parse
 #   Failed test ' parse'
 #   at _parse line 1.
 #   (in test::Web::URL::Parser->_parse)
-# +----+---------------------------------------------------+----------------------------------------------+
-# | Elt|Got                                                |Expected                                      |
-# +----+---------------------------------------------------+----------------------------------------------+
-# *   0|fragment,host,path,query,scheme,scheme_normalized  |fragment,path,query,scheme,scheme_normalized  *
-# *   1|b,hoge,,a,http,http                                |b,hoge,a,http,http                            *
-# +----+---------------------------------------------------+----------------------------------------------+
+# +----+-------------------------------+----------------------------------------------+
+# | Elt|Got                            |Expected                                      |
+# +----+-------------------------------+----------------------------------------------+
+# *   0|path,scheme,scheme_normalized  |fragment,path,query,scheme,scheme_normalized  *
+# *   1|hoge?a#b,http,http             |b,hoge,a,http,http                            *
+# +----+-------------------------------+----------------------------------------------+
 ok 75 -  parse
 ok 76 -  parse
 ok 77 -  parse

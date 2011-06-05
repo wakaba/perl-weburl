@@ -86,7 +86,7 @@ sub parse_absolute_url ($$) {
 
   if (defined $result->{scheme_normalized} and
       not $IsNonHierarchicalScheme->{$result->{scheme_normalized}} and
-      $input =~ m{^/}) { # XXX
+      $input =~ m{^[/\\]}) {
     $result->{is_hierarchical} = 1;
     $class->_find_authority_path_query_fragment
         (\$input => $result);

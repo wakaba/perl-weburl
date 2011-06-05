@@ -1860,7 +1860,7 @@ not ok 1133 - c:\foo\bar - http://a/b/c
 # | Elt|Got                                  |Expected                                   |
 # +----+-------------------------------------+-------------------------------------------+
 # *   0|canon,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized   *
-# *   1|c:\foo\bar,\foo\bar,c,c              |file:///C:/foo/bar,,/C:/foo/bar,file,file  *
+# *   1|c:/foo/bar,/foo/bar,c,c              |file:///C:/foo/bar,,/C:/foo/bar,file,file  *
 # +----+-------------------------------------+-------------------------------------------+
 ok 1134 - c:\foo\bar - http://a/b/c idempotency
 not ok 1135 - C|/foo/bar - http://a/b/c
@@ -7951,16 +7951,7 @@ ok 5995 - http://foo\bar - http://foo\bar
 ok 5996 - http://foo\bar - http://foo\bar idempotency
 ok 5997 - http:////foo/bar - http:////foo/bar
 ok 5998 - http:////foo/bar - http:////foo/bar idempotency
-not ok 5999 - http:\\foo\bar - http:\\foo\bar
-#   Failed test 'http:\\foo\bar - http:\\foo\bar'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------+------------------------------------------+
-# | Elt|Got                                  |Expected                                  |
-# +----+-------------------------------------+------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  *
-# *   1|http:\\foo\bar,\\foo\bar,http,http   |http://foo/bar,foo,/bar,http,http         *
-# +----+-------------------------------------+------------------------------------------+
+ok 5999 - http:\\foo\bar - http:\\foo\bar
 ok 6000 - http:\\foo\bar - http:\\foo\bar idempotency
 ok 6001 - http:/\/\/\foo\/bar - http:/\/\/\foo\/bar
 ok 6002 - http:/\/\/\foo\/bar - http:/\/\/\foo\/bar idempotency
@@ -8138,16 +8129,7 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 ok 6112 - http://www.google.com/asdf\#í € - http://www.google.com/asdf\#í € idempotency
 ok 6113 - http://www/foo%2Ehtml - http://www/foo%2Ehtml
 ok 6114 - http://www/foo%2Ehtml - http://www/foo%2Ehtml idempotency
-not ok 6115 - http:\\\\www.google.com\\foo - http:\\\\www.google.com\\foo
-#   Failed test 'http:\\\\www.google.com\\foo - http:\\\\www.google.com\\foo'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+----------------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                             |Expected                                                   |
-# +----+----------------------------------------------------------------+-----------------------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized                             |canon,host,path,scheme,scheme_normalized                   *
-# *   1|http:\\\\www.google.com\\foo,\\\\www.google.com\\foo,http,http  |http://www.google.com//foo,www.google.com,//foo,http,http  *
-# +----+----------------------------------------------------------------+-----------------------------------------------------------+
+ok 6115 - http:\\\\www.google.com\\foo - http:\\\\www.google.com\\foo
 ok 6116 - http:\\\\www.google.com\\foo - http:\\\\www.google.com\\foo idempotency
 ok 6117 - http://\\www.google.com\foo/ - http://\\www.google.com\foo/
 ok 6118 - http://\\www.google.com\foo/ - http://\\www.google.com\foo/ idempotency
@@ -10617,4 +10599,4 @@ ok 8362 - ftp:foobar - ftp://hoge/abc/def idempotency
 ok 8363 - ftp:foobar?a\#b - ftp://hoge/abc/def
 ok 8364 - ftp:foobar?a\#b - ftp://hoge/abc/def idempotency
 1..8364
-# Looks like you failed 161 tests of 8364.
+# Looks like you failed 159 tests of 8364.
