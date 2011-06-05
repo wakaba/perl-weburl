@@ -107,6 +107,17 @@ sub parse_absolute_url ($$) {
     return $result;
   }
 
+  if (defined $result->{scheme_normalized} and
+      not $IsNonHierarchicalScheme->{$result->{scheme_normalized}}) {
+    if ($input =~ s{\#(.*)\z}{}s) {
+      $result->{fragment} = $1;
+    }
+    
+    if ($input =~ s{\?(.*)\z}{}s) {
+      $result->{query} = $1;
+    }
+  }
+
   $result->{path} = $input;
   return $result;
 } # parse_absolute_url

@@ -1289,7 +1289,7 @@ http:hoge?a#b
 #base
 https://foo/bar
 #canon
-http:hoge
+http:hoge?a#b
 #scheme http
 #path hoge
 #query a

@@ -272,14 +272,16 @@ opera://foo/
 opera:blank?hoge
 #base http://test/
 #scheme opera
-#path blank?hoge
+#path blank
+#query hoge
 
 #data
 opera:blank#foo
 #base http://test/
 #scheme opera
 #path 
-blank#foo
+blank
+#fragment foo
 
 #data
 view-source:
@@ -533,7 +535,8 @@ resource://foo/bar
 #data
 resource:hoge?foo
 #scheme resource
-#path hoge?foo
+#path hoge
+#query foo
 
 #data
 resource://app/my_module.jsm

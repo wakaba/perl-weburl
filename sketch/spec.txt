@@ -104,7 +104,19 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
   If /s/ is hierarchical, apply url-spec's steps for hierarchical
   URLs.
 
-  Otherwise, apply url-spec's steps for non-hierarchical URLs.
+  Otherwise, if the scheme of /s/ is not hierarchical:
+
+    If /s/ contains a U+0023 NUMBER SIGN character (#), remove the
+    first such character and the following characters from /s/.  Let
+    the |fragment| component be the removed characters except for the
+    first character.
+
+    If /s/ contains a U+003F QUESTION MARK character (?), remove the
+    first such character and the following characters from /s/.  Let
+    the |query| component be the removed characters except for the
+    first character.
+
+  Let the |path| component be /s/.
 
 ** Parsing a mailto: URL /s/
 

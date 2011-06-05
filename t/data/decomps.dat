@@ -316,7 +316,9 @@ ldap://[2001:db8::7]/c=GB?objectClass?one
 ldap:foobar?foo#bar
 #scheme ldap
 #path 
-foobar?foo#bar
+foobar
+#query foo
+#fragment bar
 
 #data
 news:comp.infosystems.www.servers.unix
@@ -427,14 +429,18 @@ foo://bar/
 foo:hoge?fuga#baz
 #scheme foo
 #path 
-hoge?fuga#baz
+hoge
+#query fuga
+#fragment baz
 
 #data
 foo:hoge?fuga#baz
 #base http://foo/
 #scheme foo
 #path 
-hoge?fuga#baz
+hoge
+#query fuga
+#fragment baz
 
 #data
 foo:/bar/baz

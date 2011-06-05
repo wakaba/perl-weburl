@@ -858,7 +858,9 @@ javascript:#def
 ecmascript:a?b#c
 #scheme ecmascript
 #path
-a?b#c
+a
+#query b
+#fragment c
 
 #data
 data:a?b#c
@@ -892,7 +894,9 @@ data://a/foo/bar?a#b
 unknown:a?b#c
 #scheme unknown
 #path
-a?b#c
+a
+#query b
+#fragment c
 
 #data
 unknown:/foo/bar
