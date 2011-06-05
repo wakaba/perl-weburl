@@ -309,7 +309,9 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
   |fragment| component.  The resolved URL is /resolved-url/ parsed as
   an absolute URL.
 
-  Otherwise, apply url-spec's steps.
+  Otherwise, apply url-spec's steps.  Remove the U+003F QUESTION MARK
+  character (?) preceding the |query| component, if any, in case there
+  is no |query| component in /resolved-url/.
 
 ** Resolve as a path-relative URL
 

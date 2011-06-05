@@ -18,7 +18,6 @@ http://foo/bar
 #scheme http
 #host foo
 #path /bar
-#query
 #fragment foo
 
 #data
@@ -27,7 +26,6 @@ http://foo/bar
 #scheme http
 #host foo
 #path
-#query
 #fragment foo
 
 #data
@@ -255,7 +253,6 @@ http:#bar
 #scheme http
 #host hoge
 #path /fuga
-#query
 #fragment bar
 
 #data
@@ -395,7 +392,6 @@ abcdef
 #scheme http
 #host hoge
 #path /
-#query
 #fragment escaped
 foobar
 
@@ -435,7 +431,6 @@ hoge?fuga
 #scheme http
 #host hoge
 #path /foo
-#query
 #fragment bar
 
 #data
@@ -508,7 +503,6 @@ g#s
 #scheme http
 #host a
 #path /b/c/g
-#query
 #fragment s
 
 #data
@@ -733,7 +727,6 @@ g#s/./x
 #scheme http
 #host a
 #path /b/c/g
-#query
 #fragment s/./x
 
 #data
@@ -742,7 +735,6 @@ g#s/../x
 #scheme http
 #host a
 #path /b/c/g
-#query
 #fragment s/../x
 
 #data

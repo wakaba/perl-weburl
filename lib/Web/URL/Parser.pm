@@ -324,8 +324,7 @@ sub _resolve_relative_url ($$$) {
     return $class->parse_absolute_url
         ($parsed_base_url->{scheme} . '://' . $authority .
          (defined $parsed_base_url->{path} ? $parsed_base_url->{path} : '') .
-         # XXX This would not save existence of /query/ component
-         '?' . (defined $parsed_base_url->{query} ? $parsed_base_url->{query} : '') .
+         (defined $parsed_base_url->{query} ? '?' . $parsed_base_url->{query} : '') .
          $$specref);
   } else {
     ## Resolve as a path-relative URL
@@ -358,7 +357,6 @@ sub _resolve_relative_url ($$$) {
       delete $result->{query};
     }
     if (defined $r_fragment) {
-      $result->{query} = '' unless defined $result->{query}; # for consistency
       $result->{fragment} = $r_fragment;
     } else {
       delete $result->{fragment};
