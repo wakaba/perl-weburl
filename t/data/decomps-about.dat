@@ -260,6 +260,11 @@ opera:illegal-url-2
 #path illegal-url-2
 
 #data
+opera:/help/mail.html
+#scheme opera
+#path /help/mail.html
+
+#data
 opera://foo
 #canon
 opera://foo/
@@ -307,7 +312,9 @@ view-source:http://foo?bar#baz
 #base http://test/
 #scheme view-source
 #path
-http://foo?bar#baz
+http://foo
+#query bar
+#fragment baz
 
 #data
 view-source://foo
@@ -317,6 +324,28 @@ view-source://foo/
 #scheme view-source
 #host foo
 #path /
+
+#data
+view-source:http://[12:45::555]/
+#base http://foo/
+#canon
+view-source:http://[12:45::555]/
+#scheme view-source
+#path
+http://[12:45::555]/
+
+#data
+view-source:view-source:http://foo
+#baes http://foo/
+#scheme view-source
+#path
+view-source:http://foo
+
+#data
+view-source:telnet://foo/
+#scheme view-source
+#path
+telnet://foo/
 
 #data
 baz

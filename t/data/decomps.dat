@@ -429,6 +429,24 @@ jar:file://my/path/to/images.jar!/path/in/classpath/image.png
 #path file://my/path/to/images.jar!/path/in/classpath/image.png
 
 #data
+widget://beefdead/dahuts/sightings/alpes-francaises.svg
+#scheme widget
+#host beefdead
+#path
+/dahuts/sightings/alpes-francaises.svg
+
+#data
+widget:///secret-identities/marcoscaeres/batman.foaf
+#scheme widget
+#host
+#path /secret-identities/marcoscaeres/batman.foaf
+
+#data
+attachment:/41/headers.html
+#scheme attachment
+#path /41/headers.html
+
+#data
 mid:a%b@foo.example
 #scheme mid
 #path a%b@foo.example
@@ -468,6 +486,45 @@ cid://foo/
 #scheme cid
 #host foo
 #path /
+
+#data
+operaemail:/753/mail.xml
+#scheme operaemail
+#path /753/mail.xml
+
+#data
+mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename
+#canon
+mailbox:///C%7C/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename
+#scheme mailbox
+#host
+#path
+/C%7C/path/to/mailbox/Inbox
+#query number=7068581&part=1&type=application/octet-stream&filename=filename
+
+#data
+mhtml:file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht
+#scheme mhtml
+#path
+file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht
+
+#data
+mhtml:file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht!http://www.example.com/test.xml
+#scheme mhtml
+#path 
+file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht!http://www.example.com/test.xml
+
+#data
+mhtml:mid://00000180/!cid:008401c4ff13$c1fbc260$a5891b45@mycomputer
+#scheme mhtml
+#path
+mid://00000180/!cid:008401c4ff13$c1fbc260$a5891b45@mycomputer
+
+#data
+blob:550e8400-e29b-41d4-a716-446655440000#aboutABBA
+#scheme blob
+#path 550e8400-e29b-41d4-a716-446655440000
+#fragment aboutABBA
 
 #data
 foo://example.com:8042/over/there?name=ferret#nose
@@ -777,6 +834,87 @@ telnet://foo
 #path /
 
 #data
+telnet:foo@bar
+#scheme telnet
+#path foo@bar
+
+#data
+telnet://foo@bar:23/
+#canon
+telnet://foo@bar/
+#scheme telnet
+#user foo
+#host bar
+#path /
+
+#data
+tn3270:
+#base http://foo/
+#scheme tn3270
+#path
+
+#data
+tn3270://foo
+#base http://foo/
+#canon tn3270://foo/
+#scheme tn3270
+#path /
+
+#data
+tn3270://a:b@c:24/
+#base http://foo/
+#scheme tn3270
+#user a
+#password b
+#host c
+#port 24
+#path /
+
+#data
+tn3270://a:b@c:23/
+#base http://foo/
+#canon
+tn3270://a:b@c/
+#scheme tn3270
+#user a
+#password b
+#host c
+#path /
+
+#data
+tn3270://foo/a?b#c
+#scheme tn3270
+#host foo
+#path /a
+#query b
+#fragment c
+
+#data
+rlogin://foo
+#canon
+rlogin://foo/
+#scheme rlogin
+#host foo
+#path /
+
+#data
+rlogin://foo:513
+#canon
+rlogin://foo/
+#scheme rlogin
+#host foo
+#path /
+
+#data
+rlogin://foo@bar
+#canon
+rlogin://foo@bar/
+#scheme rlogin
+#user foo
+#host bar
+#path /
+
+#data
 xmpp:foo#bar
 #scheme xmpp
 #path foo
@@ -890,6 +1028,13 @@ thismessage:/
 #path /
 
 #data
+thismessage:/frog.jpg
+#scheme
+thismessage
+#path
+/frog.jpg
+
+#data
 DAV:
 #canon
 dav:
@@ -928,3 +1073,126 @@ cgi+://foo/baz
 #scheme cgi+
 #host foo
 #path /bar
+
+#data
+irc:
+#scheme irc
+#path
+
+#data
+irc://
+#canon irc:///
+#scheme irc
+#host
+#path /
+
+#data
+irc:///
+#scheme irc
+#host
+#path /
+
+#data
+irc://moznet
+#canon
+irc://moznet/
+#scheme irc
+#host moznet
+#path /
+
+#data
+irc://myserver/,isserver
+#scheme irc
+#host myserver
+#path /,isserver
+
+#data
+irc://myserver:6667/
+#canon
+irc://myserver/
+#scheme irc
+#host myserver
+#path /
+
+#data
+irc://irc.ircnet.net/#worldchat,ischannel
+#scheme irc
+#host irc.ircnet.net
+#path /
+#fragment worldchat,ischannel
+
+#data
+irc://irc.ircnet.net/%23worldchat,ischannel
+#scheme irc
+#host irc.ircnet.net
+#path
+/%23worldchat,ischannel
+
+#data
+irc://moznet/%26local
+#scheme irc
+#host moznet
+#path 
+/%26local
+
+#data
+irc://somenet/+modeless
+#scheme irc
+#host somenet
+#path 
+/+modeless
+
+#data
+irc:///mIRC
+#scheme irc
+#host
+#path /mIRC
+
+#data
+irc://moznet/mozbot,isnick?msg=uuid
+#scheme irc
+#host moznet
+#path
+/mozbot,isnick
+#query 
+msg=uuid
+
+#data
+irc://undernet/pickle%25butcher.id.au,isuser
+#scheme irc
+#host undernet
+#path
+/pickle%25butcher.id.au,isuser
+
+#data
+irc://:pass@irc.efnet.org:194/
+#scheme irc
+#user
+#password pass
+#host irc.efnet.org
+#port 194
+#path /
+
+#data
+irc://%C4%B0dil:g%C3%BCzel@irc.austnet.org/
+#scheme irc
+#user
+%C4%B0dil:g%C3%BCzel
+#host irc.austnet.org
+#path /
+
+#data
+irc://#centos@irc.freenode.net
+#canon
+irc:///#centos@irc.freenode.net
+#scheme irc
+#host
+#path /
+#fragment
+centos@irc.freenode.net
+
+#data
+irc:irc.freenode.net#microformats
+#scheme irc
+#path irc.freenode.net
+#fragment microformats

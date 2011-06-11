@@ -1322,3 +1322,47 @@ https://foo/bar
 http:/hoge
 #scheme http
 #path /hoge
+
+#data
+b
+#base
+http://foo.example/a/..
+#canon
+http://foo.example/b
+#scheme http
+#host foo.example
+#path /b
+
+#data
+b
+#base
+http://foo.example/a/../
+#canon
+http://foo.example/b
+#scheme http
+#host foo.example
+#path /b
+
+#data
+baz.html
+#base
+jar:http://foo/foo.jar!/foo/bar.html
+#invalid 1
+
+#data
+!/../bar.jar!/
+#base
+jar:http://foo/foo.jar!/foo/bar.html
+#invalid 1
+
+#data
+!/../foo.gif
+#base
+jar:http://foo/foo.jar!/foo/bar.html
+#invalid 1
+
+#data
+/bozo.html
+#base
+jar:http://foo/foo.jar!/foo/bar.html
+#invalid 1
