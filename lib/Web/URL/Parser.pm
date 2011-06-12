@@ -963,7 +963,7 @@ sub canonicalize_url ($$;$) {
   } # PATH
 
   if (defined $parsed_url->{query}) {
-    my $charset = $charset || 'utf-8';
+    my $charset = $parsed_url->{is_hierarchical} ? $charset || 'utf-8' : 'utf-8';
     if ($charset =~ /^
       utf-8|
       iso-8859-[0-9]+|
