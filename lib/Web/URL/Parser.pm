@@ -47,11 +47,9 @@ sub _preprocess_input ($$) {
     }
   }
 
-  ## Remove leading and trailing control characters.
-  $_[1] =~ s{\A[\x00-\x20]+}{};
-  $_[1] =~ s{[\x00-\x20]+\z}{};
-
   $_[1] =~ s{[\x09\x0A\x0D]+}{}g;
+  $_[1] =~ s{\A[\x0B\x0C\x20]+}{};
+  $_[1] =~ s{[\x0B\x0C\x20]+\z}{};
 } # _preprocess_input
 
 sub parse_absolute_url ($$) {

@@ -77,13 +77,13 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 Remove U+003B (;) from "authority terminating characters" [url-spec].
 
-* Preprocessing of a string /s/
+* Preprocessing
 
-  Remove leading or trailing control characters [url-spec]. XXX need
-  to study what browsers do once again.
+The *steps to preprocess a string /s/* is as follows:
 
-  Replace any character in the following range by a U+FFFD REPLACEMENT
-  CHARACTER: XXX This might be wrong.
+  1. Replace the following code points in /s/, i.e. surrogate code
+     points, noncharacter code points, and non-Unicode code points, by
+     U+FFFD REPLACEMENT CHARACTER characters:
 
     - U+D800 ... U+DFFF
     - U+FDD0 ... U+FDEF
@@ -92,15 +92,17 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
       U+7FFFE, U+7FFFF, U+8FFFE, U+8FFFF, U+9FFFE, U+9FFFF, U+AFFFE,
       U+AFFFF, U+BFFFE, U+BFFFF, U+CFFFE, U+CFFFF, U+DFFFE, U+DFFFF,
       U+EFFFE, U+EFFFF, U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF
-    - Non-Unicode characters
+    - Non-Unicode code points
 
-  XXX and U+0000 -> U+FFFD. (?)
+  2. Remove characters U+0009 CHARACTER TABULATION, U+000A LINE FEED,
+     and U+000D CARRIAGE RETURN, from /s/.
 
-  Remove characters U+0009, U+000A, and U+000D from /s/.
+  3. Remove characters U+000B LINE TABULATION, U+000C FORM FEED, and
+     U+0020 SPACE, at the beginning and the end of /s/.
 
 * Parsing an absolute URL /s/
 
-  Preprocess the string /s/.
+  Apply "the steps to preprocess a string" to /s/.
 
   If /s/ is hierarchical, apply url-spec's steps for hierarchical
   URLs.
@@ -287,7 +289,7 @@ Remove U+003B (;) from "authority terminating characters" [url-spec].
   If parsing the base URL results in "invalid", the resolved URL
   cannot be resolved.  Abort the steps.
 
-  Preprocess the resolved URL as /s/.
+  Apply "the steps to preprocess a string" to the resolved URL.
 
   Trim the control characters.
 

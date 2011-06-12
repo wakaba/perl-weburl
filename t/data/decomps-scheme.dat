@@ -382,6 +382,80 @@ a\U01000000b://foo/bar
 #host x
 #path /y/a%EF%BF%BDb://foo/bar
 
+#data escaped
+ht\u0001tp://foo/bar
+#base
+http://a/b
+#canon
+http://a/ht%01tp://foo/bar
+#scheme http
+#host a
+#path
+/ht%01tp://foo/bar
+
+#data escaped
+ht\u0009tp://foo:80
+#base
+http://a/b
+#canon
+http://foo/
+#scheme http
+#host foo
+#path /
+
+#data escaped
+ht\u000Atp://foo:80
+#base
+http://a/b
+#canon
+http://foo/
+#scheme http
+#host foo
+#path /
+
+#data escaped
+ht\u000Btp://foo:80
+#base
+http://a/b
+#canon
+http://a/ht%0Btp://foo:80
+#scheme http
+#host a
+#path 
+/ht%0Btp://foo:80
+
+#data escaped
+ht\u000Ctp://foo:80
+#base
+http://a/b
+#canon
+http://a/ht%0Ctp://foo:80
+#scheme http
+#host foo
+#path 
+/ht%0Ctp://foo:80
+
+#data escaped
+ht\u000Dtp://foo:80
+#base
+http://a/b
+#canon
+http://foo/
+#scheme http
+#host foo
+#path /
+
+#data escaped
+ht\u0085tp://foo:80
+#base
+http://a/b
+#canon
+http://a/ht%C2%85tp://foo:80
+#scheme http
+#host a
+#path
+/ht%C2%85tp://foo:80
+
 #data
 0120://foo/bar
 #base http://x/y/
