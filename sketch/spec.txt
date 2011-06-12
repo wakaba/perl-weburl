@@ -339,19 +339,28 @@ The *steps to preprocess a string /s/* is as follows:
 
   Apply RFC 3986 algorithm.
 
-* Percent-encode a character string /s/ using encoding /encoding/
+* Percent-encoding
 
-  XXX This might be wrong: Replace each character in the following
-  range in /s/ by a U+FFFD REPLACEMENT CHARACTER:
+The *steps to percent-encode a string /s/* is as follows:
 
-    - U+0000
+  1. Let /encoding/ be the character encoding used for the
+     percent-encoding.
 
-  Replace each character in /s/ which cannot be represented in
-  /encoding/ by a U+003F QUESTION MARK character (?).
+    NOTE: The /encoding/ has to be an ASCII-compatibile character
+    encoding [WA1].
 
-  Encode /s/ in encoding /encoding/.
+  2. Let /octets/ be the list of octets being percent-encoded.
 
-  Percent-encode non-unreserved octets in /s/.
+  3. Replace any code point in /s/ which cannot be represented in
+     /encoding/ by a U+003F QUESTION MARK character (?).
+
+  4. Encode /s/ using character encoding /encoding/.
+
+  5. Replace any octet in /s/ contained in /octets/ by the
+     percent-encoded [RFC 3986] form of the octet, using uppercase
+     digits.
+
+  6. Decode /s/ using character encoding /encoding/.
 
 * Domain name canonicalization
 
@@ -528,11 +537,11 @@ This algorithm returns either a string or the "fail" state.
        the "Prohibit" step of Nameprep [RFC 3491, RFC 3454], return
        /fallback/ and abort the CanonicalizeHost algorithm.
 
-  14. CHROME: Percent-encode following characters in /s/: U+0020,
-      U+0021 (!), U+0022 ("), U+0023 (#), U+0024 ($), U+0026 (&),
-      U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002C (,),
-      U+003C (<), U+003D (=), U+003E (>), U+0040 (@), U+005E (^),
-      U+0060 (`), U+007B ({), U+007C (|), and U+007D (}).
+  14. CHROME: *Percent-encode* /s/, with /encoding/ set to UTF-8 and
+      the following /octets/: 0x20 (space), 0x21 (!), 0x22 ("), 0x23
+      (#), 0x24 ($), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*),
+      0x2C (,), 0x3C (<), 0x3D (=), 0x3E (>), 0x40 (@), 0x5E (^), 0x60
+      (`), 0x7B ({), 0x7C (|), and 0x7D (}).
 
   15. Replace any label separator [RFC 3490] in /s/ by a U+002E FULL
       STOP character (.).
@@ -702,13 +711,14 @@ This algorithm returns either a string or the "fail" state.
       /fallback/ and abort the CanonicalizeHost algorithm: "%00" or
       "%" not followed by two hexadecimal digits.
 
-  30. Percent-encode following characters in /s/:
+  30. *Percent-encode* /s/, with /encoding/ set to UTF-8 and the
+      following /octets/:
 
-    THIS: U+0000-U+001F, U+0020, U+0021 (!), U+0022 ("), U+0023 (#),
-    U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((), U+0029
-    ()), U+002A (*), U+002C (,), U+002F (/), U+003B (;), U+003C (<),
-    U+003D (=), U+003E (>), U+003F (?), U+0040 (@), U+005C (\), U+005E
-    (^), U+0060 (`), U+007B ({), U+007C (|), U+007D (}), U+007F.
+    THIS: 0x00-0x1F, 0x20, 0x21 (!), 0x22 ("), 0x23 (#), 0x24 ($),
+    0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*), 0x2C
+    (,), 0x2F (/), 0x3B (;), 0x3C (<), 0x3D (=), 0x3E (>), 0x3F (?),
+    0x40 (@), 0x5C (\), 0x5E (^), 0x60 (`), 0x7B ({), 0x7C (|), 0x7D
+    (}), 0x7F.
 
         NOTE: These are ASCII characters not allowed in URLs,
         delimiter characters used before or after the |host|
@@ -716,15 +726,14 @@ This algorithm returns either a string or the "fail" state.
         ";", and "%".  Characters ":", "[", and "]", used to represent
         IPv6 addresses, are not percent-encoded here.
 
-    IE: U+0000-U+001F, U+0020, U+0022 ("), U+003C (<), U+003E (>),
-    U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|), U+007D
-    (}), U+007F.  Use lowercase letters to represent hexadeciamal
-    numbers.
+    IE: 0x00-0x1F, 0x20, 0x22 ("), 0x3C (<), 0x3E (>), 0x5C (\), 0x5E
+    (^), 0x60 (`), 0x7B ({), 0x7C (|), 0x7D (}), 0x7F.  Use lowercase
+    letters to represent hexadeciamal numbers.
 
-    CHROME: U+0020, U+0021 (!), U+0022 ("), U+0023 (#), U+0024 ($),
-    U+0026 (&), U+0027 ('), U+0028 ((), U+0029 ()), U+002A (*), U+002C
-    (,), U+003C (<), U+003D (=), U+003E (>), U+0040 (@), U+005E (^),
-    U+0060 (`), U+007B ({), U+007C (|), and U+007D (}).
+    CHROME: 0x20, 0x21 (!), 0x22 ("), 0x23 (#), 0x24 ($), 0x26 (&),
+    0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*), 0x2C (,), 0x3C (<), 0x3D
+    (=), 0x3E (>), 0x40 (@), 0x5E (^), 0x60 (`), 0x7B ({), 0x7C (|),
+    and 0x7D (}).
 
     GECKO: None.
 
@@ -745,15 +754,17 @@ This algorithm returns either a string or the "fail" state.
     |password| component, remove the |user| component (and following
     U+0040 COMMERCIAL AT character (@)).
 
-    Percent-encode characters in the |user| component of /u/, using
-    the UTF-8 characters, EXCEPT for unreserved characters, U+0021
-    (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028 ((),
-    U+0029 ()), U+002A (*), U+002B (+), and U+002D (,).
+    "Percent-encode" the |user| component of /u/, with /encoding/ set
+    to UTF-8 and /octets/ set to the octets EXCEPT for the octets for
+    the unreserved ASCII characters [RFC 3986], 0x21 (!), 0x24 ($),
+    0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*), 0x2B
+    (+), and 0x2D (,).
 
-    Percent-encode characters, in the |password| component of /u/, if
-    any, using the UTF-8 encoding, EXCEPT for unreserved characters,
-    U+0021 (!), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028
-    ((), U+0029 ()), U+002A (*), U+002B (+), and U+002D (,).
+    "Percent-encode" the |password| component of /u/, if any, with
+    /encoding/ set to UTF-8 and /octets/ set to the octets EXCEPT for
+    the octets for the unreserved ASCII characters [RFC 3986], 0x21
+    (!), 0x24 ($), 0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()),
+    0x2A (*), 0x2B (+), and 0x2D (,).
 
   If there is the |host| component, invoke the CanonicalizeHost
   algorithm with the |host| and then:
@@ -798,31 +809,34 @@ This algorithm returns either a string or the "fail" state.
     Percent-decode percent-encoded representations of unreserved
     characters in the |path| component of /u/.
 
-    Percent-encode characters in the |path| component of /u/, using
-    the UTF-8 encoding, EXCEPT for unreserved characters, U+0021 (!),
-    U+0023 (#), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028
-    ((), U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002F (/),
-    U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([), and
-    U+005D (]).
+    "Percent-encode" the |path| component of /u/, with /encoding/ set
+    to UTF-8 and /octets/ set to the octets EXCEPT for the octets for
+    the unreserved ASCII characters [RFC 3986], 0x21 (!), 0x23 (#),
+    0x24 ($), 0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A
+    (*), 0x2B (+), 0x2D (,), 0x2F (/), 0x3A (:), 0x3B (;), 0x3D (=),
+    0x40 (@), 0x5B ([), and 0x5D (]).
 
-  Otherwise, percent-encode characters in the |path| component of /u/,
-  using the UTF-8 encoding, EXCEPT for characters in the range U+0020
-  ... U+007E (inclusive).
+  Otherwise, "percent-encode" the |path| component of /u/, with
+  /encoding/ set to UTF-8 and /octets/ set to the octets 0x00-0x1F and
+  0x7F-0xFF (inclusive).
 
       NOTE: ASCII characters not allowed in URLs are not
       percent-encoded here.
 
-  Percent-encode characters in the |query| component of /u/, using
-  encoding /encoding/, EXCEPT for unreserved characters, U+0021 (!),
-  U+0023 (#), U+0024 ($), U+0025 (%), U+0026 (&), U+0027 ('), U+0028
-  ((), U+0029 ()), U+002A (*), U+002B (+), U+002D (,), U+002F (/),
-  U+003A (:), U+003B (;), U+003D (=), U+0040 (@), U+005B ([), U+005D
-  (]), U+005C (\), U+005E (^), U+0060 (`), U+007B ({), U+007C (|), and
-  U+007D (}).
+  "Percent-encode" the |query| component of /u/, with /encoding/, and
+  with /octets/ set to the octets EXCEPT for the octets for the
+  unreserved ASCII characters [RFC 3986], 0x21 (!), 0x23 (#), 0x24
+  ($), 0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*),
+  0x2B (+), 0x2D (,), 0x2F (/), 0x3A (:), 0x3B (;), 0x3D (=), 0x40
+  (@), 0x5B ([), 0x5D (]), 0x5C (\), 0x5E (^), 0x60 (`), 0x7B ({),
+  0x7C (|), and 0x7D (}).
 
-  Percent-encode the following characters in the |fragment| component
-  of /u/, using the UTF-8 encoding: U+0000 ... U+001F, U+007F
-  ... U+009F.
+  If there are characters in the range U+0080-U+009F (inclusive),
+  replace them by their "percent-encoded" representation (where
+  /encoding/ is set to UTF-8 and /octets/ is set to 0x80-0xFF
+  (inclusive)).  "Percent-encode" the |fragment| component of /u/,
+  with /encoding/ set to UTF-8 and /octets/ set to 0x00-0x1F
+  (inclusive) and 0x7F.
 
       NOTE: Non-ASCII characters other than C1 control characters are
       not percent-encoded here.  As a result, a canonicalized URL
