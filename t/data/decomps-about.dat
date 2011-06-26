@@ -581,3 +581,16 @@ resource://app/my_module.jsm
 #scheme resource
 #host app
 #path /my_module.jsm
+
+#data
+shell:My Pictures
+#canon
+shell:My%20Pictures
+#scheme shell
+#path My%20Pictures
+
+#data
+shell:windows\web\tip.htm
+#scheme shell
+#path
+windows\web\tip.htm

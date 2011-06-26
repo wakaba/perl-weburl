@@ -429,6 +429,15 @@ res:path/in/classpath/image.png
 #path path/in/classpath/image.png
 
 #data
+moz-icon://unknown?size=16
+#canon
+moz-icon://unknown/?size=16
+#scheme moz-icon
+#host unknown
+#path /
+#query size=16
+
+#data
 jar:file://my/path/to/images.jar!/path/in/classpath/image.png
 #scheme jar
 #path file://my/path/to/images.jar!/path/in/classpath/image.png
