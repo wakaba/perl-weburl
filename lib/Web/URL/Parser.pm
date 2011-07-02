@@ -96,12 +96,14 @@ sub parse_absolute_url ($$) {
       $result->{scheme} = 'file';
       $result->{scheme_normalized} = 'file';
     } else {
-      if ($input =~ s{^[/\\]{2,}([^/\\]*)}{}) {
+      if ($input =~ s{^[/\\]{2}([^/\\]*)}{}) {
         $result->{host} = $1;
         if ($result->{host} =~ s{^([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])?$}{}) {
           $result->{drive} = $1;
           delete $result->{host};
         }
+      } else {
+        $input =~ s{^[/\\]+}{/};
       }
       if (not defined $result->{drive} and
           $input =~ s{^[/\\]?([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?:\z|[/\\])}{}) {

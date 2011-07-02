@@ -153,7 +153,7 @@ The *steps to preprocess a string /s/* is as follows:
 
   Otherwise,
 
-    If the input begins with two or more "slash characters", followed
+    If the input begins with exactly two "slash characters", followed
     by a sequence of zero or more characters other than "slash
     characters" consume these characters and follow these substeps:
 
@@ -164,6 +164,9 @@ The *steps to preprocess a string /s/* is as follows:
       be the "drive letter" in the "drive specification".
 
       Otherwise, let the |host| component be /host/.
+
+    Otherwise, replace the sequence of one or more "slash characters"
+    at the begnining of the input by a U+002F SOLIDUS character (/).
 
     If the |drive| component is not specified yet and the input begins
     with a "slash character" followed by a "drive specification"
