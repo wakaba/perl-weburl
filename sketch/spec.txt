@@ -857,6 +857,12 @@ This algorithm returns either a string or the "fail" state.
     Otherwise, if the algorithm fails, /u/ is invalid.  Abort the
     entire steps.
 
+  Otherwise, if the |scheme| is equal to |file|, let the |host|
+  component be the empty string.
+
+  If the |scheme| is equal to |file| and the |host| component is equal
+  to |localhost|, let the |host| component be the empty string.
+
   If there is the |port| component in /u/:
 
     If the |port| component is the empty string, remove the |port|

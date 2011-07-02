@@ -275,10 +275,6 @@ sub _resolve_relative_url ($$$) {
   if ($$specref =~ m{\A[/\\][/\\]}) {
     ## Resolve as a scheme-relative URL
 
-    ## XXX It's still unclear how this resolution steps interact with
-    ## |file| URL's resolution (which might have special processing
-    ## rules in the parsing steps).
-
     my $r_authority;
     my $r_path = $$specref;
     my $r_query;
@@ -307,10 +303,6 @@ sub _resolve_relative_url ($$$) {
     ## Resolve as an authority-relative URL
 
     ## XXX unknown:/hoge/ + /foo/..//bar
-
-    ## XXX It's still unclear how this resolution steps interact with
-    ## |file| URL's resolution (which might have special processing
-    ## rules in the parsing steps).
 
     my $r_path = $$specref;
     my $r_query;
@@ -953,6 +945,12 @@ sub canonicalize_url ($$;$) {
       %$parsed_url = (invalid => 1);
       return $parsed_url;
     }
+    if ($parsed_url->{scheme_normalized} eq 'file' and
+        $parsed_url->{host} eq 'localhost') {
+      $parsed_url->{host} = '';
+    }
+  } elsif ($parsed_url->{scheme_normalized} eq 'file') {
+    $parsed_url->{host} = '';
   }
 
   if (defined $parsed_url->{port}) {
@@ -988,6 +986,10 @@ sub canonicalize_url ($$;$) {
       }ge;
       $parsed_url->{path} = $s;
       last PATH;
+    }
+
+    if (defined $parsed_url->{drive}) {
+      $parsed_url->{drive} =~ s{%([46][1-9A-Fa-f]|[57][0-9Aa])}{pack 'C', hex $1}ge;
     }
     
     if (defined $parsed_url->{path}) {

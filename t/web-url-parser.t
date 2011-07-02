@@ -215,6 +215,10 @@ sub __canon {
     my $url = Web::URL::Parser->serialize_url ($resolved_url);
     $resolved_url->{canon} = $url if defined $url;
     delete $resolved_url->{is_hierarchical};
+    if (defined $resolved_url->{drive}) {
+      $resolved_url->{path} = '/' . $resolved_url->{drive} . ':' . $resolved_url->{path};
+      delete $resolved_url->{drive};
+    }
 #line 1 "_canon"
     eq_or_diff $resolved_url, $result,
         $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '');

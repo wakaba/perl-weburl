@@ -1974,3 +1974,43 @@ file://abc/d:/
 #scheme file
 #host abc
 #path /d:/
+
+#data escaped
+file://loc\u0041lhost/cde/foo
+#canon
+file:///cde/foo
+#scheme file
+#host
+#path /cde/foo
+
+#data escaped
+file://loc\uFF21lhost/cde/foo
+#canon
+file:///cde/foo
+#scheme file
+#host
+#path /cde/foo
+
+#data escaped
+file://loc%41lhost/cde/foo
+#canon
+file:///cde/foo
+#scheme file
+#host
+#path /cde/foo
+
+#data escaped
+file://loc%EF%BD%81lhost/cde/foo
+#canon
+file:///cde/foo
+#scheme file
+#host
+#path /cde/foo
+
+#data escaped
+file://xn--loclhost-gf39b/cde/foo
+#canon
+file://xn--loclhost-gf39b/cde/foo
+#scheme file
+#host xn--loclhost-gf39b
+#path /cde/foo
