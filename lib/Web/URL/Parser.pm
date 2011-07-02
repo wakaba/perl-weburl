@@ -106,7 +106,7 @@ sub parse_absolute_url ($$) {
         $input =~ s{^[/\\]+}{/};
       }
       if (not defined $result->{drive} and
-          $input =~ s{^[/\\]?([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?:\z|[/\\])}{}) {
+          $input =~ s{^[/\\]?([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?=\z|[/\\])}{}) {
         $result->{drive} = $1;
       }
     }

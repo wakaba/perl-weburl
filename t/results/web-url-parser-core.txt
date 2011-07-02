@@ -1729,43 +1729,17 @@ not ok 1149 - file:c:/foo/bar.html - file:c:/foo/bar.html
 #   Failed test 'file:c:/foo/bar.html - file:c:/foo/bar.html'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                              |Expected                                             |
-# +----+-----------------------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                         |canon,host,path,scheme,scheme_normalized             |
-# *   1|file:///c:foo/c:/foo/bar.html,,/c:foo/c:/foo/bar.html,file,file  |file:///c:/foo/bar.html,,/c:/foo/bar.html,file,file  *
-# +----+-----------------------------------------------------------------+-----------------------------------------------------+
+# +----+-------------------------------------------------------------------+-----------------------------------------------------+
+# | Elt|Got                                                                |Expected                                             |
+# +----+-------------------------------------------------------------------+-----------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized             |
+# *   1|file:///c:/foo/c:/foo/bar.html,,/c:/foo/c:/foo/bar.html,file,file  |file:///c:/foo/bar.html,,/c:/foo/bar.html,file,file  *
+# +----+-------------------------------------------------------------------+-----------------------------------------------------+
 ok 1150 - file:c:/foo/bar.html - file:c:/foo/bar.html idempotency
-not ok 1151 - file:c:\foo\bar.html - http://a/b/c
-#   Failed test 'file:c:\foo\bar.html - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                |Expected                                             |
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized             |
-# *   1|file:///c:foo/bar.html,,/c:foo/bar.html,file,file  |file:///c:/foo/bar.html,,/c:/foo/bar.html,file,file  *
-# +----+---------------------------------------------------+-----------------------------------------------------+
+ok 1151 - file:c:\foo\bar.html - http://a/b/c
 ok 1152 - file:c:\foo\bar.html - http://a/b/c idempotency
-not ok 1153 - file:c:\\foo\\bar.html - http://a/b/c
-#   Failed test 'file:c:\\foo\\bar.html - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------+---------------------------------------------------------+
-# | Elt|Got                                                    |Expected                                                 |
-# +----+-------------------------------------------------------+---------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized                 |
-# *   1|file:///c:/foo//bar.html,,/c:/foo//bar.html,file,file  |file:///c://foo//bar.html,,/c://foo//bar.html,file,file  *
-# +----+-------------------------------------------------------+---------------------------------------------------------+
-not ok 1154 - file:c:\\foo\\bar.html - http://a/b/c idempotency
-#   Failed test 'file:c:\\foo\\bar.html - http://a/b/c idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-------------------------+--------------------------+
-# | Ln|Got                      |Expected                  |
-# +---+-------------------------+--------------------------+
-# *  1|file:///c:foo//bar.html  |file:///c:/foo//bar.html  *
-# +---+-------------------------+--------------------------+
+ok 1153 - file:c:\\foo\\bar.html - http://a/b/c
+ok 1154 - file:c:\\foo\\bar.html - http://a/b/c idempotency
 not ok 1155 - file:cd:\foo\bar - file:cd:\foo\bar
 #   Failed test 'file:cd:\foo\bar - file:cd:\foo\bar'
 #   at _canon line 1.
@@ -1813,32 +1787,15 @@ not ok 1163 - file:///c:/windows\system32%5Cdrivers/etc/hosts - file:///c:/windo
 #   Failed test 'file:///c:/windows\system32%5Cdrivers/etc/hosts - file:///c:/windows\system32%5Cdrivers/etc/hosts'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                |Expected                                                                                         |
-# +----+---------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                                                           |canon,host,path,scheme,scheme_normalized                                                         |
-# *   1|file:///c:windows/system32%5Cdrivers/etc/hosts,,/c:windows/system32%5Cdrivers/etc/hosts,file,file  |file:///c:/windows/system32/drivers/etc/hosts,,/c:/windows/system32/drivers/etc/hosts,file,file  *
-# +----+---------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+# +----+-----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+# | Elt|Got                                                                                                  |Expected                                                                                         |
+# +----+-----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized                                                             |canon,host,path,scheme,scheme_normalized                                                         |
+# *   1|file:///c:/windows/system32%5Cdrivers/etc/hosts,,/c:/windows/system32%5Cdrivers/etc/hosts,file,file  |file:///c:/windows/system32/drivers/etc/hosts,,/c:/windows/system32/drivers/etc/hosts,file,file  *
+# +----+-----------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------+
 ok 1164 - file:///c:/windows\system32%5Cdrivers/etc/hosts - file:///c:/windows\system32%5Cdrivers/etc/hosts idempotency
-not ok 1165 -   File:c|////foo\bar.html - http://a/b/c
-#   Failed test '  File:c|////foo\bar.html - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                      |Expected                                                   |
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                 |canon,host,path,scheme,scheme_normalized                   |
-# *   1|file:///c:///foo/bar.html,,/c:///foo/bar.html,file,file  |file:///c:////foo/bar.html,,/c:////foo/bar.html,file,file  *
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-not ok 1166 -   File:c|////foo\bar.html - http://a/b/c idempotency
-#   Failed test '  File:c|////foo\bar.html - http://a/b/c idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+--------------------------+---------------------------+
-# | Ln|Got                       |Expected                   |
-# +---+--------------------------+---------------------------+
-# *  1|file:///c://foo/bar.html  |file:///c:///foo/bar.html  *
-# +---+--------------------------+---------------------------+
+ok 1165 -   File:c|////foo\bar.html - http://a/b/c
+ok 1166 -   File:c|////foo\bar.html - http://a/b/c idempotency
 not ok 1167 - file://///somehost/someshare/afile.txt - file://///somehost/someshare/afile.txt
 #   Failed test 'file://///somehost/someshare/afile.txt - file://///somehost/someshare/afile.txt'
 #   at _canon line 1.
@@ -1869,16 +1826,7 @@ not ok 1170 - file:UNChost/path - http://a/b/c idempotency
 # +---+---------------------+---------------------+
 # *  1|file://unchost/path  |file://UNChost/path  *
 # +---+---------------------+---------------------+
-not ok 1171 - file:system32/hoge - file:///C:/foo/bar
-#   Failed test 'file:system32/hoge - file:///C:/foo/bar'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------+---------------------------------------------------------------+
-# | Elt|Got                                                          |Expected                                                       |
-# +----+-------------------------------------------------------------+---------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                     |canon,host,path,scheme,scheme_normalized                       |
-# *   1|file:///C:foo/system32/hoge,,/C:foo/system32/hoge,file,file  |file:///C:/foo/system32/hoge,,/C:/foo/system32/hoge,file,file  *
-# +----+-------------------------------------------------------------+---------------------------------------------------------------+
+ok 1171 - file:system32/hoge - file:///C:/foo/bar
 ok 1172 - file:system32/hoge - file:///C:/foo/bar idempotency
 not ok 1173 - file:system32/hoge - http://hoge/foo/bar
 #   Failed test 'file:system32/hoge - http://hoge/foo/bar'
@@ -1919,15 +1867,7 @@ ok 1182 - file:///c:\  - file:///c:\  idempotency
 ok 1183 - file:///x:\  - file:///x:\ 
 ok 1184 - file:///x:\  - file:///x:\  idempotency
 ok 1185 - c:\foo\bar - http://a/b/c
-not ok 1186 - c:\foo\bar - http://a/b/c idempotency
-#   Failed test 'c:\foo\bar - http://a/b/c idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-------------------+--------------------+
-# | Ln|Got                |Expected            |
-# +---+-------------------+--------------------+
-# *  1|file:///c:foo/bar  |file:///c:/foo/bar  *
-# +---+-------------------+--------------------+
+ok 1186 - c:\foo\bar - http://a/b/c idempotency
 not ok 1187 - C|/foo/bar - http://a/b/c
 #   Failed test 'C|/foo/bar - http://a/b/c'
 #   at _canon line 1.
@@ -1941,29 +1881,12 @@ not ok 1187 - C|/foo/bar - http://a/b/c
 ok 1188 - C|/foo/bar - http://a/b/c idempotency
 ok 1189 - /C|\foo\bar - http://a/b/c
 ok 1190 - /C|\foo\bar - http://a/b/c idempotency
-not ok 1191 - /C|\foo\bar - file:///C:/abc/def
-#   Failed test '/C|\foo\bar - file:///C:/abc/def'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+-------------------------------------------+
-# | Elt|Got                                       |Expected                                   |
-# +----+------------------------------------------+-------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized   |
-# *   1|file:///C:foo/bar,,/C:foo/bar,file,file   |file:///C:/foo/bar,,/C:/foo/bar,file,file  *
-# +----+------------------------------------------+-------------------------------------------+
+ok 1191 - /C|\foo\bar - file:///C:/abc/def
 ok 1192 - /C|\foo\bar - file:///C:/abc/def idempotency
 ok 1193 - //C|/foo/bar - http://a/b/c
 ok 1194 - //C|/foo/bar - http://a/b/c idempotency
 ok 1195 - //C|/foo/bar - file:///C:/foo/bar
-not ok 1196 - //C|/foo/bar - file:///C:/foo/bar idempotency
-#   Failed test '//C|/foo/bar - file:///C:/foo/bar idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-------------------+--------------------+
-# | Ln|Got                |Expected            |
-# +---+-------------------+--------------------+
-# *  1|file:///C:foo/bar  |file:///C:/foo/bar  *
-# +---+-------------------+--------------------+
+ok 1196 - //C|/foo/bar - file:///C:/foo/bar idempotency
 ok 1197 - //server/file - http://a/b/c
 ok 1198 - //server/file - http://a/b/c idempotency
 ok 1199 - //server/file - file:///C:/foo/bar
@@ -1991,12 +1914,12 @@ not ok 1203 - \\server\file - file:///C:/foo/bar
 #   Failed test '\\server\file - file:///C:/foo/bar'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-------------------------------------------+
-# | Elt|Got                                                |Expected                                   |
-# +----+---------------------------------------------------+-------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized   |
-# *   1|file:///C:foo/ver/file,,/C:foo/ver/file,file,file  |file://server/file,server,/file,file,file  *
-# +----+---------------------------------------------------+-------------------------------------------+
+# +----+-----------------------------------------------------+-------------------------------------------+
+# | Elt|Got                                                  |Expected                                   |
+# +----+-----------------------------------------------------+-------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized   |
+# *   1|file:///C:/foo/ver/file,,/C:/foo/ver/file,file,file  |file://server/file,server,/file,file,file  *
+# +----+-----------------------------------------------------+-------------------------------------------+
 ok 1204 - \\server\file - file:///C:/foo/bar idempotency
 ok 1205 - /\server/file - http://a/b/c
 ok 1206 - /\server/file - http://a/b/c idempotency
@@ -2038,16 +1961,7 @@ not ok 1215 - file:/\/\C:\\//foo\bar.html - http://a/b/c
 ok 1216 - file:/\/\C:\\//foo\bar.html - http://a/b/c idempotency
 ok 1217 - file:///foo/bar.txt - http://a/b/c
 ok 1218 - file:///foo/bar.txt - http://a/b/c idempotency
-not ok 1219 - file:///C:/windows///explorer.exe - file:///C:/windows///explorer.exe
-#   Failed test 'file:///C:/windows///explorer.exe - file:///C:/windows///explorer.exe'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------------+-------------------------------------------------------------------------+
-# | Elt|Got                                                                    |Expected                                                                 |
-# +----+-----------------------------------------------------------------------+-------------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                               |canon,host,path,scheme,scheme_normalized                                 |
-# *   1|file:///C:windows///explorer.exe,,/C:windows///explorer.exe,file,file  |file:///C:/windows///explorer.exe,,/C:/windows///explorer.exe,file,file  *
-# +----+-----------------------------------------------------------------------+-------------------------------------------------------------------------+
+ok 1219 - file:///C:/windows///explorer.exe - file:///C:/windows///explorer.exe
 ok 1220 - file:///C:/windows///explorer.exe - file:///C:/windows///explorer.exe idempotency
 not ok 1221 - FILE:/\/\7:\\//foo\bar.html - http://a/b/c
 #   Failed test 'FILE:/\/\7:\\//foo\bar.html - http://a/b/c'
@@ -2182,15 +2096,7 @@ not ok 1242 - ../D|/foo/ - file:///C:/
 # |   0|canon,host,path,scheme,scheme_normalized       |canon,host,path,scheme,scheme_normalized  |
 # *   1|file:///C:/D%7C/foo/,,/C:/D%7C/foo/,file,file  |file:///D:/foo/,,/D:/foo/,file,file       *
 # +----+-----------------------------------------------+------------------------------------------+
-not ok 1243 - ../D|/foo/ - file:///C:/ idempotency
-#   Failed test '../D|/foo/ - file:///C:/ idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+---------------------+----------------------+
-# | Ln|Got                  |Expected              |
-# +---+---------------------+----------------------+
-# *  1|file:///C:D%7C/foo/  |file:///C:/D%7C/foo/  *
-# +---+---------------------+----------------------+
+ok 1243 - ../D|/foo/ - file:///C:/ idempotency
 not ok 1244 - file:///C:/foo/../../../bar.html - http://a/b/c
 #   Failed test 'file:///C:/foo/../../../bar.html - http://a/b/c'
 #   at _canon line 1.
@@ -2201,72 +2107,18 @@ not ok 1244 - file:///C:/foo/../../../bar.html - http://a/b/c
 # |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized  |
 # *   1|file:///C:/bar.html,,/C:/bar.html,file,file  |file:///bar.html,,/bar.html,file,file     *
 # +----+---------------------------------------------+------------------------------------------+
-not ok 1245 - file:///C:/foo/../../../bar.html - http://a/b/c idempotency
-#   Failed test 'file:///C:/foo/../../../bar.html - http://a/b/c idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+--------------------+---------------------+
-# | Ln|Got                 |Expected             |
-# +---+--------------------+---------------------+
-# *  1|file:///C:bar.html  |file:///C:/bar.html  *
-# +---+--------------------+---------------------+
+ok 1245 - file:///C:/foo/../../../bar.html - http://a/b/c idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 1246 - file:///c:/foo/ä¸€ - http://a/b/c
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'file:///c:/foo/ä¸€ - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------+-------------------------------------------------------+
-# | Elt|Got                                                  |Expected                                               |
-# +----+-----------------------------------------------------+-------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized               |
-# *   1|file:///c:foo/%E4%B8%80,,/c:foo/%E4%B8%80,file,file  |file:///c:/foo/%E4%B8%80,,/c:/foo/%E4%B8%80,file,file  *
-# +----+-----------------------------------------------------+-------------------------------------------------------+
+ok 1246 - file:///c:/foo/ä¸€ - http://a/b/c
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 1247 - file:///c:/foo/ä¸€ - http://a/b/c idempotency
-not ok 1248 - file:///C:/foo/%E4%B8%80 - file:///C:/foo/%E4%B8%80
-#   Failed test 'file:///C:/foo/%E4%B8%80 - file:///C:/foo/%E4%B8%80'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------+-------------------------------------------------------+
-# | Elt|Got                                                  |Expected                                               |
-# +----+-----------------------------------------------------+-------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized               |
-# *   1|file:///C:foo/%E4%B8%80,,/C:foo/%E4%B8%80,file,file  |file:///C:/foo/%E4%B8%80,,/C:/foo/%E4%B8%80,file,file  *
-# +----+-----------------------------------------------------+-------------------------------------------------------+
+ok 1248 - file:///C:/foo/%E4%B8%80 - file:///C:/foo/%E4%B8%80
 ok 1249 - file:///C:/foo/%E4%B8%80 - file:///C:/foo/%E4%B8%80 idempotency
-not ok 1250 - file:///C:/foo/%81%40 - file:///C:/foo/%81%40
-#   Failed test 'file:///C:/foo/%81%40 - file:///C:/foo/%81%40'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+-------------------------------------------------+
-# | Elt|Got                                            |Expected                                         |
-# +----+-----------------------------------------------+-------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized       |canon,host,path,scheme,scheme_normalized         |
-# *   1|file:///C:foo/%81%40,,/C:foo/%81%40,file,file  |file:///C:/foo/%81%40,,/C:/foo/%81%40,file,file  *
-# +----+-----------------------------------------------+-------------------------------------------------+
+ok 1250 - file:///C:/foo/%81%40 - file:///C:/foo/%81%40
 ok 1251 - file:///C:/foo/%81%40 - file:///C:/foo/%81%40 idempotency
-not ok 1252 - file:///C:/foo`{}^ - file:///C:/foo`{}^
-#   Failed test 'file:///C:/foo`{}^ - file:///C:/foo`{}^'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                      |Expected                                                   |
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                 |canon,host,path,scheme,scheme_normalized                   |
-# *   1|file:///C:foo%60%7B%7D%5E,,/C:foo%60%7B%7D%5E,file,file  |file:///C:/foo%60%7B%7D%5E,,/C:/foo%60%7B%7D%5E,file,file  *
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
+ok 1252 - file:///C:/foo`{}^ - file:///C:/foo`{}^
 ok 1253 - file:///C:/foo`{}^ - file:///C:/foo`{}^ idempotency
-not ok 1254 - file:///C:/foo%5F%2Ebaz - file:///C:/foo%5F%2Ebaz
-#   Failed test 'file:///C:/foo%5F%2Ebaz - file:///C:/foo%5F%2Ebaz'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------+---------------------------------------------+
-# | Elt|Got                                        |Expected                                     |
-# +----+-------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
-# *   1|file:///C:foo_.baz,,/C:foo_.baz,file,file  |file:///C:/foo_.baz,,/C:/foo_.baz,file,file  *
-# +----+-------------------------------------------+---------------------------------------------+
+ok 1254 - file:///C:/foo%5F%2Ebaz - file:///C:/foo%5F%2Ebaz
 ok 1255 - file:///C:/foo%5F%2Ebaz - file:///C:/foo%5F%2Ebaz idempotency
 ok 1256 - file://foo/bar/../baz - file://foo/bar/../baz
 ok 1257 - file://foo/bar/../baz - file://foo/bar/../baz idempotency
@@ -2298,49 +2150,13 @@ not ok 1264 - file:/.%2Ffoo.txt - file:/.%2Ffoo.txt
 ok 1265 - file:/.%2Ffoo.txt - file:/.%2Ffoo.txt idempotency
 ok 1266 - file://foo/bar/%2E/baz - file://foo/bar/%2E/baz
 ok 1267 - file://foo/bar/%2E/baz - file://foo/bar/%2E/baz idempotency
-not ok 1268 - file:///C:/asdf\#Â - http://a/b/c
-#   Failed test 'file:///C:/asdf\#Â - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+---------------------------------------------------+
-# | Elt|Got                                                |Expected                                           |
-# +----+---------------------------------------------------+---------------------------------------------------+
-# |   0|canon,fragment,host,path,scheme,scheme_normalized  |canon,fragment,host,path,scheme,scheme_normalized  |
-# *   1|file:///C:asdf#\xc2,\xc2,,/C:asdf,file,file        |file:///C:/asdf#\xc2,\xc2,,/C:/asdf,file,file      *
-# +----+---------------------------------------------------+---------------------------------------------------+
+ok 1268 - file:///C:/asdf\#Â - http://a/b/c
 ok 1269 - file:///C:/asdf\#Â - http://a/b/c idempotency
-not ok 1270 - file:///c:/foo/?4e00 - http://a/b/c
-#   Failed test 'file:///c:/foo/?4e00 - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------+------------------------------------------------+
-# | Elt|Got                                             |Expected                                        |
-# +----+------------------------------------------------+------------------------------------------------+
-# |   0|canon,host,path,query,scheme,scheme_normalized  |canon,host,path,query,scheme,scheme_normalized  |
-# *   1|file:///c:foo/?4e00,,/c:foo/,4e00,file,file     |file:///c:/foo/?4e00,,/c:/foo/,4e00,file,file   *
-# +----+------------------------------------------------+------------------------------------------------+
+ok 1270 - file:///c:/foo/?4e00 - http://a/b/c
 ok 1271 - file:///c:/foo/?4e00 - http://a/b/c idempotency
-not ok 1272 - file:///c:/foo/?4e\#00 - http://a/b/c
-#   Failed test 'file:///c:/foo/?4e\#00 - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------+---------------------------------------------------------+
-# | Elt|Got                                                      |Expected                                                 |
-# +----+---------------------------------------------------------+---------------------------------------------------------+
-# |   0|canon,fragment,host,path,query,scheme,scheme_normalized  |canon,fragment,host,path,query,scheme,scheme_normalized  |
-# *   1|file:///c:foo/?4e#00,00,,/c:foo/,4e,file,file            |file:///c:/foo/?4e#00,00,,/c:/foo/,4e,file,file          *
-# +----+---------------------------------------------------------+---------------------------------------------------------+
+ok 1272 - file:///c:/foo/?4e\#00 - http://a/b/c
 ok 1273 - file:///c:/foo/?4e\#00 - http://a/b/c idempotency
-not ok 1274 - file:///c:/foo/\#4e?00 - http://a/b/c
-#   Failed test 'file:///c:/foo/\#4e?00 - http://a/b/c'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+---------------------------------------------------+
-# | Elt|Got                                                |Expected                                           |
-# +----+---------------------------------------------------+---------------------------------------------------+
-# |   0|canon,fragment,host,path,scheme,scheme_normalized  |canon,fragment,host,path,scheme,scheme_normalized  |
-# *   1|file:///c:foo/#4e?00,4e?00,,/c:foo/,file,file      |file:///c:/foo/#4e?00,4e?00,,/c:/foo/,file,file    *
-# +----+---------------------------------------------------+---------------------------------------------------+
+ok 1274 - file:///c:/foo/\#4e?00 - http://a/b/c
 ok 1275 - file:///c:/foo/\#4e?00 - http://a/b/c idempotency
 not ok 1276 - file:///c:/foo/\#4e00 - http://a/b/c
 #   Failed test 'file:///c:/foo/\#4e00 - http://a/b/c'
@@ -2350,41 +2166,23 @@ not ok 1276 - file:///c:/foo/\#4e00 - http://a/b/c
 # | Elt|Got                                                |Expected                                           |
 # +----+---------------------------------------------------+---------------------------------------------------+
 # |   0|canon,fragment,host,path,scheme,scheme_normalized  |canon,fragment,host,path,scheme,scheme_normalized  |
-# *   1|file:///c:foo/#4e00,4e00,,/c:foo/,file,file        |file:///c:/foo/#4e00,4e00,,/C:/foo/,file,file      *
+# *   1|file:///c:/foo/#4e00,4e00,,/c:/foo/,file,file      |file:///c:/foo/#4e00,4e00,,/C:/foo/,file,file      *
 # +----+---------------------------------------------------+---------------------------------------------------+
 ok 1277 - file:///c:/foo/\#4e00 - http://a/b/c idempotency
-not ok 1278 - file:///C:/Program Files/README.txt - file:///C:/Program Files/README.txt
-#   Failed test 'file:///C:/Program Files/README.txt - file:///C:/Program Files/README.txt'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-# | Elt|Got                                                                            |Expected                                                                         |
-# +----+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                                       |canon,host,path,scheme,scheme_normalized                                         |
-# *   1|file:///C:Program%20Files/README.txt,,/C:Program%20Files/README.txt,file,file  |file:///C:/Program%20Files/README.txt,,/C:/Program%20Files/README.txt,file,file  *
-# +----+-------------------------------------------------------------------------------+---------------------------------------------------------------------------------+
+ok 1278 - file:///C:/Program Files/README.txt - file:///C:/Program Files/README.txt
 ok 1279 - file:///C:/Program Files/README.txt - file:///C:/Program Files/README.txt idempotency
-not ok 1280 - file:///C:/Program  Files/README.txt - file:///C:/Program  Files/README.txt
-#   Failed test 'file:///C:/Program  Files/README.txt - file:///C:/Program  Files/README.txt'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                  |Expected                                                                               |
-# +----+-------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                                             |canon,host,path,scheme,scheme_normalized                                               |
-# *   1|file:///C:Program%20%20Files/README.txt,,/C:Program%20%20Files/README.txt,file,file  |file:///C:/Program%20%20Files/README.txt,,/C:/Program%20%20Files/README.txt,file,file  *
-# +----+-------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------+
+ok 1280 - file:///C:/Program  Files/README.txt - file:///C:/Program  Files/README.txt
 ok 1281 - file:///C:/Program  Files/README.txt - file:///C:/Program  Files/README.txt idempotency
 not ok 1282 - file:///C:/Example \#1/Test \#2.txt - file:///C:/Example \#1/Test \#2.txt
 #   Failed test 'file:///C:/Example \#1/Test \#2.txt - file:///C:/Example \#1/Test \#2.txt'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-# | Elt|Got                                                                        |Expected                                                                       |
-# +----+---------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-# |   0|canon,fragment,host,path,scheme,scheme_normalized                          |canon,fragment,host,path,scheme,scheme_normalized                              |
-# *   1|file:///C:Example%20#1/Test #2.txt,1/Test #2.txt,,/C:Example%20,file,file  |file:///C:/Example%20#1/Test%20#2.txt,1/Test #2.txt,,/C:/Example%20,file,file  *
-# +----+---------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+# +----+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+# | Elt|Got                                                                          |Expected                                                                       |
+# +----+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+# |   0|canon,fragment,host,path,scheme,scheme_normalized                            |canon,fragment,host,path,scheme,scheme_normalized                              |
+# *   1|file:///C:/Example%20#1/Test #2.txt,1/Test #2.txt,,/C:/Example%20,file,file  |file:///C:/Example%20#1/Test%20#2.txt,1/Test #2.txt,,/C:/Example%20,file,file  *
+# +----+-----------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 ok 1283 - file:///C:/Example \#1/Test \#2.txt - file:///C:/Example \#1/Test \#2.txt idempotency
 not ok 1284 - file:///home/me - http://a/b/c
 #   Failed test 'file:///home/me - http://a/b/c'
@@ -2401,32 +2199,24 @@ not ok 1286 - file:c:\foo\bar.html - http://a/b/c
 #   Failed test 'file:c:\foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                |Expected                                             |
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized             |
-# *   1|file:///c:foo/bar.html,,/c:foo/bar.html,file,file  |file:///C:/foo/bar.html,,/C:/foo/bar.html,file,file  *
-# +----+---------------------------------------------------+-----------------------------------------------------+
+# +----+-----------------------------------------------------+-----------------------------------------------------+
+# | Elt|Got                                                  |Expected                                             |
+# +----+-----------------------------------------------------+-----------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized             |
+# *   1|file:///c:/foo/bar.html,,/c:/foo/bar.html,file,file  |file:///C:/foo/bar.html,,/C:/foo/bar.html,file,file  *
+# +----+-----------------------------------------------------+-----------------------------------------------------+
 ok 1287 - file:c:\foo\bar.html - http://a/b/c idempotency
 not ok 1288 - file:c|//foo\bar.html - http://a/b/c
 #   Failed test 'file:c|//foo\bar.html - http://a/b/c'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------+-------------------------------------------------------+
-# | Elt|Got                                                  |Expected                                               |
-# +----+-----------------------------------------------------+-------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized             |canon,host,path,scheme,scheme_normalized               |
-# *   1|file:///c:/foo/bar.html,,/c:/foo/bar.html,file,file  |file:///C://foo/bar.html,,/C://foo/bar.html,file,file  *
-# +----+-----------------------------------------------------+-------------------------------------------------------+
-not ok 1289 - file:c|//foo\bar.html - http://a/b/c idempotency
-#   Failed test 'file:c|//foo\bar.html - http://a/b/c idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+------------------------+-------------------------+
-# | Ln|Got                     |Expected                 |
-# +---+------------------------+-------------------------+
-# *  1|file:///c:foo/bar.html  |file:///c:/foo/bar.html  *
-# +---+------------------------+-------------------------+
+# +----+-------------------------------------------------------+-------------------------------------------------------+
+# | Elt|Got                                                    |Expected                                               |
+# +----+-------------------------------------------------------+-------------------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized               |
+# *   1|file:///c://foo/bar.html,,/c://foo/bar.html,file,file  |file:///C://foo/bar.html,,/C://foo/bar.html,file,file  *
+# +----+-------------------------------------------------------+-------------------------------------------------------+
+ok 1289 - file:c|//foo\bar.html - http://a/b/c idempotency
 ok 1290 - // - file:///c:/foo/bar.html
 ok 1291 - // - file:///c:/foo/bar.html idempotency
 ok 1292 - /// - file:///c:/foo/bar.html
@@ -2613,93 +2403,21 @@ Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm lin
 # +---+--------------------+--------------------+
 # *  1|file://xn--4gq/abx  |file://xn--4gq\abx  *
 # +---+--------------------+--------------------+
-not ok 1339 - file:///C:/foo/bar/baz/. - file:///C:/foo/bar/baz/.
-#   Failed test 'file:///C:/foo/bar/baz/. - file:///C:/foo/bar/baz/.'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                |Expected                                             |
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized             |
-# *   1|file:///C:foo/bar/baz/,,/C:foo/bar/baz/,file,file  |file:///C:/foo/bar/baz/,,/C:/foo/bar/baz/,file,file  *
-# +----+---------------------------------------------------+-----------------------------------------------------+
+ok 1339 - file:///C:/foo/bar/baz/. - file:///C:/foo/bar/baz/.
 ok 1340 - file:///C:/foo/bar/baz/. - file:///C:/foo/bar/baz/. idempotency
-not ok 1341 - file:///C:/foo/bar/baz/.. - file:///C:/foo/bar/baz/..
-#   Failed test 'file:///C:/foo/bar/baz/.. - file:///C:/foo/bar/baz/..'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------+---------------------------------------------+
-# | Elt|Got                                        |Expected                                     |
-# +----+-------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
-# *   1|file:///C:foo/bar/,,/C:foo/bar/,file,file  |file:///C:/foo/bar/,,/C:/foo/bar/,file,file  *
-# +----+-------------------------------------------+---------------------------------------------+
+ok 1341 - file:///C:/foo/bar/baz/.. - file:///C:/foo/bar/baz/..
 ok 1342 - file:///C:/foo/bar/baz/.. - file:///C:/foo/bar/baz/.. idempotency
-not ok 1343 - file:///C:/foo/bar/baz/../abc - file:///C:/foo/bar/baz/../abc
-#   Failed test 'file:///C:/foo/bar/baz/../abc - file:///C:/foo/bar/baz/../abc'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------+---------------------------------------------------+
-# | Elt|Got                                              |Expected                                           |
-# +----+-------------------------------------------------+---------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized         |canon,host,path,scheme,scheme_normalized           |
-# *   1|file:///C:foo/bar/abc,,/C:foo/bar/abc,file,file  |file:///C:/foo/bar/abc,,/C:/foo/bar/abc,file,file  *
-# +----+-------------------------------------------------+---------------------------------------------------+
+ok 1343 - file:///C:/foo/bar/baz/../abc - file:///C:/foo/bar/baz/../abc
 ok 1344 - file:///C:/foo/bar/baz/../abc - file:///C:/foo/bar/baz/../abc idempotency
-not ok 1345 - file:///C:/foo/bar/baz/... - file:///C:/foo/bar/baz/...
-#   Failed test 'file:///C:/foo/bar/baz/... - file:///C:/foo/bar/baz/...'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                      |Expected                                                   |
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                 |canon,host,path,scheme,scheme_normalized                   |
-# *   1|file:///C:foo/bar/baz/...,,/C:foo/bar/baz/...,file,file  |file:///C:/foo/bar/baz/...,,/C:/foo/bar/baz/...,file,file  *
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
+ok 1345 - file:///C:/foo/bar/baz/... - file:///C:/foo/bar/baz/...
 ok 1346 - file:///C:/foo/bar/baz/... - file:///C:/foo/bar/baz/... idempotency
-not ok 1347 - file:///C:/foo/bar/baz/.../abc - file:///C:/foo/bar/baz/.../abc
-#   Failed test 'file:///C:/foo/bar/baz/.../abc - file:///C:/foo/bar/baz/.../abc'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------------------------+-------------------------------------------------------------------+
-# | Elt|Got                                                              |Expected                                                           |
-# +----+-----------------------------------------------------------------+-------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                         |canon,host,path,scheme,scheme_normalized                           |
-# *   1|file:///C:foo/bar/baz/.../abc,,/C:foo/bar/baz/.../abc,file,file  |file:///C:/foo/bar/baz/.../abc,,/C:/foo/bar/baz/.../abc,file,file  *
-# +----+-----------------------------------------------------------------+-------------------------------------------------------------------+
+ok 1347 - file:///C:/foo/bar/baz/.../abc - file:///C:/foo/bar/baz/.../abc
 ok 1348 - file:///C:/foo/bar/baz/.../abc - file:///C:/foo/bar/baz/.../abc idempotency
-not ok 1349 - file:///C:/foo/bar.txt. - file:///C:/foo/bar.txt.
-#   Failed test 'file:///C:/foo/bar.txt. - file:///C:/foo/bar.txt.'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                |Expected                                             |
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized             |
-# *   1|file:///C:foo/bar.txt.,,/C:foo/bar.txt.,file,file  |file:///C:/foo/bar.txt.,,/C:/foo/bar.txt.,file,file  *
-# +----+---------------------------------------------------+-----------------------------------------------------+
+ok 1349 - file:///C:/foo/bar.txt. - file:///C:/foo/bar.txt.
 ok 1350 - file:///C:/foo/bar.txt. - file:///C:/foo/bar.txt. idempotency
-not ok 1351 - file:///C:/foo/bar./baz - file:///C:/foo/bar./baz
-#   Failed test 'file:///C:/foo/bar./baz - file:///C:/foo/bar./baz'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                |Expected                                             |
-# +----+---------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized           |canon,host,path,scheme,scheme_normalized             |
-# *   1|file:///C:foo/bar./baz,,/C:foo/bar./baz,file,file  |file:///C:/foo/bar./baz,,/C:/foo/bar./baz,file,file  *
-# +----+---------------------------------------------------+-----------------------------------------------------+
+ok 1351 - file:///C:/foo/bar./baz - file:///C:/foo/bar./baz
 ok 1352 - file:///C:/foo/bar./baz - file:///C:/foo/bar./baz idempotency
-not ok 1353 - file:///C:/foo/bar /baz - file:///C:/foo/bar /baz
-#   Failed test 'file:///C:/foo/bar /baz - file:///C:/foo/bar /baz'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------+---------------------------------------------------------+
-# | Elt|Got                                                    |Expected                                                 |
-# +----+-------------------------------------------------------+---------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized                 |
-# *   1|file:///C:foo/bar%20/baz,,/C:foo/bar%20/baz,file,file  |file:///C:/foo/bar%20/baz,,/C:/foo/bar%20/baz,file,file  *
-# +----+-------------------------------------------------------+---------------------------------------------------------+
+ok 1353 - file:///C:/foo/bar /baz - file:///C:/foo/bar /baz
 ok 1354 - file:///C:/foo/bar /baz - file:///C:/foo/bar /baz idempotency
 ok 1355 - file:///cygdrive/c/windows/explorer.exe - file:///cygdrive/c/windows/explorer.exe
 ok 1356 - file:///cygdrive/c/windows/explorer.exe - file:///cygdrive/c/windows/explorer.exe idempotency
@@ -2888,38 +2606,11 @@ not ok 1408 - \\%3f\c:\windows - http://a/b/c
 # *   0|invalid  |canon,host,path,scheme,scheme_normalized   *
 # *   1|1        |file:///c:/windows,,/c:/windows,file,file  *
 # +----+---------+-------------------------------------------+
-not ok 1409 - \\%3f\c:\windows - file:///c:/win/a/b
-#   Failed test '\\%3f\c:\windows - file:///c:/win/a/b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+-------------------------------------------+
-# | Elt|Got                                       |Expected                                   |
-# +----+------------------------------------------+-------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized   |
-# *   1|file:///c:windows,,/c:windows,file,file   |file:///c:/windows,,/c:/windows,file,file  *
-# +----+------------------------------------------+-------------------------------------------+
+ok 1409 - \\%3f\c:\windows - file:///c:/win/a/b
 ok 1410 - \\%3f\c:\windows - file:///c:/win/a/b idempotency
-not ok 1411 - \\%3f\c:\windows%41 - file:///c:/win/a/b
-#   Failed test '\\%3f\c:\windows%41 - file:///c:/win/a/b'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------+---------------------------------------------+
-# | Elt|Got                                        |Expected                                     |
-# +----+-------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
-# *   1|file:///c:windowsA,,/c:windowsA,file,file  |file:///c:/windowsA,,/c:/windowsA,file,file  *
-# +----+-------------------------------------------+---------------------------------------------+
+ok 1411 - \\%3f\c:\windows%41 - file:///c:/win/a/b
 ok 1412 - \\%3f\c:\windows%41 - file:///c:/win/a/b idempotency
-not ok 1413 - file:///c:/windows%41 - file:///c:/windows%41
-#   Failed test 'file:///c:/windows%41 - file:///c:/windows%41'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------+---------------------------------------------+
-# | Elt|Got                                        |Expected                                     |
-# +----+-------------------------------------------+---------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized     |
-# *   1|file:///c:windowsA,,/c:windowsA,file,file  |file:///c:/windowsA,,/c:/windowsA,file,file  *
-# +----+-------------------------------------------+---------------------------------------------+
+ok 1413 - file:///c:/windows%41 - file:///c:/windows%41
 ok 1414 - file:///c:/windows%41 - file:///c:/windows%41 idempotency
 not ok 1415 - //%3F/c:/windows - http://a/b/c
 #   Failed test '//%3F/c:/windows - http://a/b/c'
@@ -2980,15 +2671,7 @@ not ok 1420 - file://%41:/foo/bar - file://%41:/foo/bar
 # |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized  |
 # *   1|file:///A:/foo/bar,,/A:/foo/bar,file,file  |file://a/foo/bar,a,/foo/bar,file,file     *
 # +----+-------------------------------------------+------------------------------------------+
-not ok 1421 - file://%41:/foo/bar - file://%41:/foo/bar idempotency
-#   Failed test 'file://%41:/foo/bar - file://%41:/foo/bar idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-------------------+--------------------+
-# | Ln|Got                |Expected            |
-# +---+-------------------+--------------------+
-# *  1|file:///A:foo/bar  |file:///A:/foo/bar  *
-# +---+-------------------+--------------------+
+ok 1421 - file://%41:/foo/bar - file://%41:/foo/bar idempotency
 not ok 1422 - file://%41b:/foo/bar - file://%41b:/foo/bar
 #   Failed test 'file://%41b:/foo/bar - file://%41b:/foo/bar'
 #   at _canon line 1.
@@ -3023,11 +2706,11 @@ not ok 1425 - \\.\c:\windows - http://a/b/c idempotency
 #   Failed test '\\.\c:\windows - http://a/b/c idempotency'
 #   at _canon_idempotent line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +---+--------------------+---------------------+
-# | Ln|Got                 |Expected             |
-# +---+--------------------+---------------------+
-# *  1|file://./c:windows  |file://./c:\windows  *
-# +---+--------------------+---------------------+
+# +---+---------------------+---------------------+
+# | Ln|Got                  |Expected             |
+# +---+---------------------+---------------------+
+# *  1|file://./c:/windows  |file://./c:\windows  *
+# +---+---------------------+---------------------+
 ok 1426 - //./c:/windows - http://a/b/c
 ok 1427 - //./c:/windows - http://a/b/c idempotency
 not ok 1428 - \\;\c:\windows - http://a/b/c
@@ -3044,11 +2727,11 @@ not ok 1429 - \\;\c:\windows - http://a/b/c idempotency
 #   Failed test '\\;\c:\windows - http://a/b/c idempotency'
 #   at _canon_idempotent line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +---+----------------------+-----------------------+
-# | Ln|Got                   |Expected               |
-# +---+----------------------+-----------------------+
-# *  1|file://%3B/c:windows  |file://%3B/c:\windows  *
-# +---+----------------------+-----------------------+
+# +---+-----------------------+-----------------------+
+# | Ln|Got                    |Expected               |
+# +---+-----------------------+-----------------------+
+# *  1|file://%3B/c:/windows  |file://%3B/c:\windows  *
+# +---+-----------------------+-----------------------+
 ok 1430 - //;/c:/windows - http://a/b/c
 ok 1431 - //;/c:/windows - http://a/b/c idempotency
 not ok 1432 - \\*\c:\windows - http://a/b/c
@@ -3065,11 +2748,11 @@ not ok 1433 - \\*\c:\windows - http://a/b/c idempotency
 #   Failed test '\\*\c:\windows - http://a/b/c idempotency'
 #   at _canon_idempotent line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +---+----------------------+-----------------------+
-# | Ln|Got                   |Expected               |
-# +---+----------------------+-----------------------+
-# *  1|file://%2A/c:windows  |file://%2A/c:\windows  *
-# +---+----------------------+-----------------------+
+# +---+-----------------------+-----------------------+
+# | Ln|Got                    |Expected               |
+# +---+-----------------------+-----------------------+
+# *  1|file://%2A/c:/windows  |file://%2A/c:\windows  *
+# +---+-----------------------+-----------------------+
 not ok 1434 - \\+\c:\windows - http://a/b/c
 #   Failed test '\\+\c:\windows - http://a/b/c'
 #   at _canon line 1.
@@ -3084,11 +2767,11 @@ not ok 1435 - \\+\c:\windows - http://a/b/c idempotency
 #   Failed test '\\+\c:\windows - http://a/b/c idempotency'
 #   at _canon_idempotent line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +---+--------------------+---------------------+
-# | Ln|Got                 |Expected             |
-# +---+--------------------+---------------------+
-# *  1|file://+/c:windows  |file://+/c:\windows  *
-# +---+--------------------+---------------------+
+# +---+---------------------+---------------------+
+# | Ln|Got                  |Expected             |
+# +---+---------------------+---------------------+
+# *  1|file://+/c:/windows  |file://+/c:\windows  *
+# +---+---------------------+---------------------+
 not ok 1436 - //*/c:/windows - http://a/b/c
 #   Failed test '//*/c:/windows - http://a/b/c'
 #   at _canon line 1.
@@ -3110,15 +2793,7 @@ not ok 1438 - \\.\com1 - file://a/b/c
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
 # *   1|file:///a:/b/om1,,/a:/b/om1,file,file     |file://./com1,.,/com1,file,file           *
 # +----+------------------------------------------+------------------------------------------+
-not ok 1439 - \\.\com1 - file://a/b/c idempotency
-#   Failed test '\\.\com1 - file://a/b/c idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-----------------+------------------+
-# | Ln|Got              |Expected          |
-# +---+-----------------+------------------+
-# *  1|file:///a:b/om1  |file:///a:/b/om1  *
-# +---+-----------------+------------------+
+ok 1439 - \\.\com1 - file://a/b/c idempotency
 ok 1440 - //./com1 - file://a/b/c
 ok 1441 - //./com1 - file://a/b/c idempotency
 ok 1442 - file:///C:windows/foo.txt - file:///C:/home/abc
@@ -3127,50 +2802,16 @@ ok 1444 - file:///C:../foo.txt - file:///C:/home/abc
 ok 1445 - file:///C:../foo.txt - file:///C:/home/abc idempotency
 ok 1446 - file:///foo:/bar - file:///foo:/bar
 ok 1447 - file:///foo:/bar - file:///foo:/bar idempotency
-not ok 1448 - file:///C:/bar/foo.txt... - file:///C:/home/abc
-#   Failed test 'file:///C:/bar/foo.txt... - file:///C:/home/abc'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------+---------------------------------------------------------+
-# | Elt|Got                                                    |Expected                                                 |
-# +----+-------------------------------------------------------+---------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized                 |
-# *   1|file:///C:bar/foo.txt...,,/C:bar/foo.txt...,file,file  |file:///C:/bar/foo.txt...,,/C:/bar/foo.txt...,file,file  *
-# +----+-------------------------------------------------------+---------------------------------------------------------+
+ok 1448 - file:///C:/bar/foo.txt... - file:///C:/home/abc
 ok 1449 - file:///C:/bar/foo.txt... - file:///C:/home/abc idempotency
-not ok 1450 - file:///C:/bar/foo.txt:abc - file:///C:/home/abc
-#   Failed test 'file:///C:/bar/foo.txt:abc - file:///C:/home/abc'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# | Elt|Got                                                      |Expected                                                   |
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                 |canon,host,path,scheme,scheme_normalized                   |
-# *   1|file:///C:bar/foo.txt:abc,,/C:bar/foo.txt:abc,file,file  |file:///C:/bar/foo.txt:abc,,/C:/bar/foo.txt:abc,file,file  *
-# +----+---------------------------------------------------------+-----------------------------------------------------------+
+ok 1450 - file:///C:/bar/foo.txt:abc - file:///C:/home/abc
 ok 1451 - file:///C:/bar/foo.txt:abc - file:///C:/home/abc idempotency
 ok 1452 - file:/fo%00/bar - file:/fo%00/bar
 ok 1453 - file:/fo%00/bar - file:/fo%00/bar idempotency
 ok 1454 - c:\windows\foo.txt - http://foo/bar
-not ok 1455 - c:\windows\foo.txt - http://foo/bar idempotency
-#   Failed test 'c:\windows\foo.txt - http://foo/bar idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+---------------------------+----------------------------+
-# | Ln|Got                        |Expected                    |
-# +---+---------------------------+----------------------------+
-# *  1|file:///c:windows/foo.txt  |file:///c:/windows/foo.txt  *
-# +---+---------------------------+----------------------------+
+ok 1455 - c:\windows\foo.txt - http://foo/bar idempotency
 ok 1456 - C:\windows\foo.txt - http://foo/bar
-not ok 1457 - C:\windows\foo.txt - http://foo/bar idempotency
-#   Failed test 'C:\windows\foo.txt - http://foo/bar idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+---------------------------+----------------------------+
-# | Ln|Got                        |Expected                    |
-# +---+---------------------------+----------------------------+
-# *  1|file:///C:windows/foo.txt  |file:///C:/windows/foo.txt  *
-# +---+---------------------------+----------------------------+
+ok 1457 - C:\windows\foo.txt - http://foo/bar idempotency
 not ok 1458 - c:\windows\foo.txt - file://foo/bar
 #   Failed test 'c:\windows\foo.txt - file://foo/bar'
 #   at _canon line 1.
@@ -3194,15 +2835,7 @@ not ok 1460 - 0:\windows\foo.txt - file://foo/bar
 # +----+-----------------------------------------+------------------------------------------+
 ok 1461 - 0:\windows\foo.txt - file://foo/bar idempotency
 ok 1462 - %41:\windows\foo.txt - file://foo/bar
-not ok 1463 - %41:\windows\foo.txt - file://foo/bar idempotency
-#   Failed test '%41:\windows\foo.txt - file://foo/bar idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+------------------------------+-------------------------------+
-# | Ln|Got                           |Expected                       |
-# +---+------------------------------+-------------------------------+
-# *  1|file://foo/A:windows/foo.txt  |file://foo/A:/windows/foo.txt  *
-# +---+------------------------------+-------------------------------+
+ok 1463 - %41:\windows\foo.txt - file://foo/bar idempotency
 not ok 1464 - +:\windows\foo.txt - file://foo/bar
 #   Failed test '+:\windows\foo.txt - file://foo/bar'
 #   at _canon line 1.
@@ -3226,15 +2859,7 @@ not ok 1468 - c:\windows\hoge?foo\#bar - c:\windows\hoge?foo\#bar
 # |   0|canon,fragment,host,path,query,scheme,scheme_normalized                          |canon,fragment,host,path,query,scheme,scheme_normalized              |
 # *   1|file:///c:/windows/ndows/hoge?foo#bar,bar,,/c:/windows/ndows/hoge,foo,file,file  |file:///c:/windows/hoge?foo#bar,bar,,/c:/windows/hoge,foo,file,file  *
 # +----+---------------------------------------------------------------------------------+---------------------------------------------------------------------+
-not ok 1469 - c:\windows\hoge?foo\#bar - c:\windows\hoge?foo\#bar idempotency
-#   Failed test 'c:\windows\hoge?foo\#bar - c:\windows\hoge?foo\#bar idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+--------------------------------------+---------------------------------------+
-# | Ln|Got                                   |Expected                               |
-# +---+--------------------------------------+---------------------------------------+
-# *  1|file:///c:windows/ndows/hoge?foo#bar  |file:///c:/windows/ndows/hoge?foo#bar  *
-# +---+--------------------------------------+---------------------------------------+
+ok 1469 - c:\windows\hoge?foo\#bar - c:\windows\hoge?foo\#bar idempotency
 not ok 1470 - c:\windows\hoge\#foo?bar - c:\windows\hoge\#foo?bar
 #   Failed test 'c:\windows\hoge\#foo?bar - c:\windows\hoge\#foo?bar'
 #   at _canon line 1.
@@ -3245,15 +2870,7 @@ not ok 1470 - c:\windows\hoge\#foo?bar - c:\windows\hoge\#foo?bar
 # |   0|canon,fragment,host,path,scheme,scheme_normalized                                |canon,fragment,host,path,scheme,scheme_normalized                    |
 # *   1|file:///c:/windows/ndows/hoge#foo?bar,foo?bar,,/c:/windows/ndows/hoge,file,file  |file:///c:/windows/hoge#foo?bar,foo?bar,,/c:/windows/hoge,file,file  *
 # +----+---------------------------------------------------------------------------------+---------------------------------------------------------------------+
-not ok 1471 - c:\windows\hoge\#foo?bar - c:\windows\hoge\#foo?bar idempotency
-#   Failed test 'c:\windows\hoge\#foo?bar - c:\windows\hoge\#foo?bar idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+--------------------------------------+---------------------------------------+
-# | Ln|Got                                   |Expected                               |
-# +---+--------------------------------------+---------------------------------------+
-# *  1|file:///c:windows/ndows/hoge#foo?bar  |file:///c:/windows/ndows/hoge#foo?bar  *
-# +---+--------------------------------------+---------------------------------------+
+ok 1471 - c:\windows\hoge\#foo?bar - c:\windows\hoge\#foo?bar idempotency
 not ok 1472 - \\\foo\bar\baz - http://foo/bar
 #   Failed test '\\\foo\bar\baz - http://foo/bar'
 #   at _canon line 1.
@@ -3510,15 +3127,7 @@ not ok 1508 - \\/abc - file://a/b
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
 # *   1|file:///a:/c,,/a:/c,file,file             |file:///abc,,/abc,file,file               *
 # +----+------------------------------------------+------------------------------------------+
-not ok 1509 - \\/abc - file://a/b idempotency
-#   Failed test '\\/abc - file://a/b idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-------------+--------------+
-# | Ln|Got          |Expected      |
-# +---+-------------+--------------+
-# *  1|file:///a:c  |file:///a:/c  *
-# +---+-------------+--------------+
+ok 1509 - \\/abc - file://a/b idempotency
 not ok 1510 - \\/abc - http://a/b
 #   Failed test '\\/abc - http://a/b'
 #   at _canon line 1.
@@ -3608,15 +3217,7 @@ not ok 1524 - \\abc;def - file://a/b
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
 # *   1|file:///a:/;def,,/a:/;def,file,file       |file://abc%3Bdef/,abc%3Bdef,/,file,file   *
 # +----+------------------------------------------+------------------------------------------+
-not ok 1525 - \\abc;def - file://a/b idempotency
-#   Failed test '\\abc;def - file://a/b idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+----------------+-----------------+
-# | Ln|Got             |Expected         |
-# +---+----------------+-----------------+
-# *  1|file:///a:;def  |file:///a:/;def  *
-# +---+----------------+-----------------+
+ok 1525 - \\abc;def - file://a/b idempotency
 not ok 1526 - \\ab\c?def - file://a/b
 #   Failed test '\\ab\c?def - file://a/b'
 #   at _canon line 1.
@@ -3627,15 +3228,7 @@ not ok 1526 - \\ab\c?def - file://a/b
 # |   0|canon,host,path,query,scheme,scheme_normalized  |canon,host,path,query,scheme,scheme_normalized  |
 # *   1|file:///a:/c?def,,/a:/c,def,file,file           |file://ab/c?def,ab,/c,def,file,file             *
 # +----+------------------------------------------------+------------------------------------------------+
-not ok 1527 - \\ab\c?def - file://a/b idempotency
-#   Failed test '\\ab\c?def - file://a/b idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-----------------+------------------+
-# | Ln|Got              |Expected          |
-# +---+-----------------+------------------+
-# *  1|file:///a:c?def  |file:///a:/c?def  *
-# +---+-----------------+------------------+
+ok 1527 - \\ab\c?def - file://a/b idempotency
 not ok 1528 - \\ab\c\#def - file://a/b
 #   Failed test '\\ab\c\#def - file://a/b'
 #   at _canon line 1.
@@ -3646,15 +3239,7 @@ not ok 1528 - \\ab\c\#def - file://a/b
 # |   0|canon,fragment,host,path,scheme,scheme_normalized  |canon,fragment,host,path,scheme,scheme_normalized  |
 # *   1|file:///a:/c#def,def,,/a:/c,file,file              |file://ab/c#def,def,ab,/c,file,file                *
 # +----+---------------------------------------------------+---------------------------------------------------+
-not ok 1529 - \\ab\c\#def - file://a/b idempotency
-#   Failed test '\\ab\c\#def - file://a/b idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-----------------+------------------+
-# | Ln|Got              |Expected          |
-# +---+-----------------+------------------+
-# *  1|file:///a:c#def  |file:///a:/c#def  *
-# +---+-----------------+------------------+
+ok 1529 - \\ab\c\#def - file://a/b idempotency
 not ok 1530 - \\ab\c;def - file://a/b
 #   Failed test '\\ab\c;def - file://a/b'
 #   at _canon line 1.
@@ -3665,15 +3250,7 @@ not ok 1530 - \\ab\c;def - file://a/b
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
 # *   1|file:///a:/c;def,,/a:/c;def,file,file     |file://ab/c;def,ab,/c;def,file,file       *
 # +----+------------------------------------------+------------------------------------------+
-not ok 1531 - \\ab\c;def - file://a/b idempotency
-#   Failed test '\\ab\c;def - file://a/b idempotency'
-#   at _canon_idempotent line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +---+-----------------+------------------+
-# | Ln|Got              |Expected          |
-# +---+-----------------+------------------+
-# *  1|file:///a:c;def  |file:///a:/c;def  *
-# +---+-----------------+------------------+
+ok 1531 - \\ab\c;def - file://a/b idempotency
 not ok 1532 - \\abc\c: - http://a/b
 #   Failed test '\\abc\c: - http://a/b'
 #   at _canon line 1.
@@ -11988,4 +11565,4 @@ ok 8937 - ftp:foobar - ftp://hoge/abc/def idempotency
 ok 8938 - ftp:foobar?a\#b - ftp://hoge/abc/def
 ok 8939 - ftp:foobar?a\#b - ftp://hoge/abc/def idempotency
 1..8939
-# Looks like you failed 239 tests of 8939.
+# Looks like you failed 190 tests of 8939.
