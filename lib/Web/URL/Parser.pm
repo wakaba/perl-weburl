@@ -292,6 +292,10 @@ sub _resolve_relative_url ($$$) {
     }
 
     if (defined $r_path) {
+      if ($parsed_base_url->{scheme_normalized} eq 'file') {
+        $r_path =~ s{%2[Ff]}{/}g;
+        $r_path =~ s{%5[Cc]}{\\}g;
+      }
       $r_path = $class->_remove_dot_segments ($r_path);
     }
 
@@ -314,6 +318,10 @@ sub _resolve_relative_url ($$$) {
     }
     if ($r_path =~ s{\?(.*)\z}{}s) {
       $r_query = $1;
+    }
+    if ($parsed_base_url->{scheme_normalized} eq 'file') {
+      $r_path =~ s{%2[Ff]}{/}g;
+      $r_path =~ s{%5[Cc]}{\\}g;
     }
     $r_path = $class->_remove_dot_segments ($r_path);
 
@@ -383,6 +391,10 @@ sub _resolve_relative_url ($$$) {
 
     my $result = {%$parsed_base_url};
     my $b_path = defined $parsed_base_url->{path} ? $parsed_base_url->{path} : '';
+    if ($parsed_base_url->{scheme_normalized} eq 'file') {
+      $b_path =~ s{%2[Ff]}{/}g;
+      $b_path =~ s{%5[Cc]}{\\}g;
+    }
     {
       ## Merge path (RFC 3986)
       if ($b_path eq '') {

@@ -396,6 +396,9 @@ The *steps to preprocess a string /s/* is as follows:
 
 ** Resolve as a scheme-relative URL
 
+  If the |scheme| is |file| (ASCII case-insensitive), percent-decode
+  |%2F| and |%5C| (ASCII case-insensitive) in the |path| component.
+
   Remove dot-segments from the |path| component.
 
   Apply url-spec's steps.
@@ -404,6 +407,9 @@ The *steps to preprocess a string /s/* is as follows:
 
   XXX These steps might have undesired side effect - consider
   |/hoge/..//foo| resolved against |foo:/bar/baz|.
+
+  If the |scheme| is |file| (ASCII case-insensitive), percent-decode
+  |%2F| and |%5C| (ASCII case-insensitive) in the |path| component.
 
   Remove dot-segments from the |path| component.
 
@@ -422,7 +428,10 @@ The *steps to preprocess a string /s/* is as follows:
 
 ** Resolve as a path-relative URL
 
-  Apply RFC 3986 algorithm.
+  If the |scheme| is |file| (ASCII case-insensitive), percent-decode
+  |%2F| and |%5C| (ASCII case-insensitive) in the |path| component.
+
+  Then, apply RFC 3986's algorithm.
 
 * Percent-encoding
 
