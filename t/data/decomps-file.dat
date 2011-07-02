@@ -173,6 +173,33 @@ file:///0%7C/
 /0%7C/
 
 #data escaped
+file://\u4e00/
+#canon
+file://xn--4gq/
+#scheme file
+#host
+xn--4gq
+#path /
+
+#data escaped
+file://\u4e00:/
+#canon
+file://xn--:-zn6a/
+#scheme file
+#host
+xn--:-zn6a
+#path /
+
+#data escaped
+file://\u4e00|/
+#canon
+file://xn--%7C-zn6a/
+#scheme file
+#host
+xn--%7C-zn6a
+#path /
+
+#data escaped
 file:///\u4e00:/
 #scheme file
 #host
@@ -210,6 +237,17 @@ file:///cd:/foo/bar
 #host
 #path
 /cd:/foo/bar
+
+#data
+file:cd:\foo\bar
+#base
+file:///a/b
+#canon
+file:///a/cd:/foo/bar
+#scheme file
+#host
+#path
+/a/cd:/foo/bar
 
 #data
 file:///c:%5Cwindows%5Cexplorer.exe
@@ -250,10 +288,10 @@ file://///somehost/someshare/afile.txt
 #data
 file:UNChost/path
 #base http://a/b/c
-#canon file:UNChost/path
+#canon file:///UNChost/path
 #scheme file
-#host
-#path UNChost/path
+#host 
+#path /UNChost/path
 
 #data
 file:system32/hoge
@@ -479,34 +517,59 @@ file://\\host\sharename\dir\file
 
 #data
 file://foo:bar@hoge:0/a/bc
+#canon
+file://foo:bar@hoge:0/a/bc
 #scheme file
-#user foo
-#password bar
-#host hoge
-#port 0
+#host foo:bar@hoge:0
 #path /a/bc
 
 #data
 file://foo:bar@hoge:80/a/bc
+#canon
+file://foo:bar@hoge:80/a/bc
 #scheme file
-#user foo
-#password bar
-#host hoge
-#port 80
+#host foo:bar@hoge:80
 #path /a/bc
 
 #data
 file://foo:bar@hoge:080/a/bc
+#canon
+file://foo:bar@hoge:080/a/bc
 #scheme file
-#user foo
-#password bar
-#host hoge
-#port 080
+#host foo:bar@hoge:080
+#path /a/bc
+
+#data
+\\foo:bar@hoge:080\a\bc
+#canon
+file://foo:bar@hoge:080/a/bc
+#scheme file
+#host foo:bar@hoge:080
 #path /a/bc
 
 #data
 file://foo:bar@hoge:xxx/a/bc
-#invalid 1
+#canon
+file://foo:bar@hoge:xxx/a/bc
+#scheme file
+#host foo:bar@hoge:xxx
+#path /a/bc
+
+#data
+\\foo:bar@hoge:xxx\a/bc
+#canon
+file://foo:bar@hoge:xxx/a/bc
+#scheme file
+#host foo:bar@hoge:xxx
+#path /a/bc
+
+#data
+file://foo%3Abar%40hoge%3Axxx/a/bc
+#canon
+file://foo:bar@hoge:xxx/a/bc
+#scheme file
+#host foo:bar@hoge:xxx
+#path /a/bc
 
 #data
 file://./backofficestorage/domain/MBX/username/Calendar
@@ -582,6 +645,8 @@ file:///C:/foo/%E4%B8%80
 
 #data
 file:///C:/foo/%81%40
+#canon
+file:///C:/foo/%81%40
 #scheme file
 #host
 #path
@@ -604,6 +669,54 @@ file:///C:/foo_.baz
 #host
 #path
 /C:/foo_.baz
+
+#data
+file://foo/bar/../baz
+#canon
+file://foo/baz
+#scheme file
+#host foo
+#path /baz
+
+#data
+file://foo/bar/%2E%2E/baz
+#canon
+file://foo/baz
+#scheme file
+#host foo
+#path /baz
+
+#data
+file://foo/bar/./baz
+#canon
+file://foo/bar/baz
+#scheme file
+#host foo
+#path /bar/baz
+
+#data
+file:/foo%2F
+#canon
+file:///foo/
+#scheme file
+#host 
+#path /foo/
+
+#data
+file:/.%2Ffoo.txt
+#canon
+file:///foo.txt
+#scheme file
+#host
+#path /foo.txt
+
+#data
+file://foo/bar/%2E/baz
+#canon
+file://foo/bar/baz
+#scheme file
+#host foo
+#path /bar/baz
 
 #data escaped
 file:///C:/asdf#\u00C2
@@ -767,8 +880,7 @@ file:c|//foo\bar.html
 #base file:///c:/foo/bar.html
 #canon file://foo@bar/
 #scheme file
-#user foo
-#host bar
+#host foo@bar
 #path /
 
 #data
@@ -782,28 +894,60 @@ file://foo:ab@bar/c:/bar/hoge
 
 #data
 file://foo:ab@bar/bar/hoge
+#canon
+file://foo:ab@bar/bar/hoge
 #scheme file
-#user foo
-#password ab
-#host bar
+#host foo:ab@bar
+#path
+/bar/hoge
+
+#data
+file://foo%3Aab%40bar/bar/hoge
+#canon
+file://foo:ab@bar/bar/hoge
+#scheme file
+#host foo:ab@bar
 #path
 /bar/hoge
 
 #data
 file://:@bar/c:/bar/hoge
 #canon
-file://bar/c:/bar/hoge
+file://:@bar/c:/bar/hoge
 #scheme file
-#host bar
+#host :@bar
+#path
+/c:/bar/hoge
+
+#data
+file://%3A%40bar/c:/bar/hoge
+#scheme file
+#host :@bar
+#path
+/c:/bar/hoge
+
+#data
+file://a%bar%3F/c:/bar/hoge
+#scheme file
+#host a%bar%3F
 #path
 /c:/bar/hoge
 
 #data
 \\foo@bar\hoge\hoga
 #canon
-file://foo%40bar/hoge/hoga
+file://foo@bar/hoge/hoga
 #scheme file
-#host foo%40bar
+#host foo@bar
+#path
+/hoge/hoga
+
+#data
+\\foo@bar:80\hoge\hoga
+#canon
+file://foo@bar:80/hoge/hoga
+#scheme file
+#host foo@bar:80
 #path
 /hoge/hoga
 
@@ -1033,10 +1177,10 @@ file://~user/path/to/file
 
 #data
 file://%7Euser/path/to/file
-#canon file:///~user/path/to/file
+#canon file://%7Euser/path/to/file
 #scheme file
-#host
-#path /~user/path/to/file
+#host %7Euser
+#path /path/to/file
 
 #data
 file:///~user/path/to/file
@@ -1125,10 +1269,11 @@ file:///c:/windows/
 #data
 file://///?/c:/windows/
 #canon
-file:///c:/windows/
+file:///?/c:/windows/
 #scheme file
 #host
-#path /c:/windows/
+#path /
+#query /c:/windows/
 
 #data
 \\?\c:\windows
@@ -1200,10 +1345,19 @@ file:///c:/windows/
 #data
 \\%3f\c:\windows%41
 #base file:///c:/win/a/b
-#canon file:///c:/windowsa
+#canon file:///c:/windowsA
 #scheme file
 #host
-#path /c:/windowsa
+#path /c:/windowsA
+
+#data
+file:///c:/windows%41
+#canon
+file:///c:/windowsA
+#scheme file
+#host
+#path
+/c:/windowsA
 
 #data
 //%3F/c:/windows
@@ -1216,18 +1370,52 @@ file:///c:/windows/
 #data
 \\%3F\host\windows
 #base http://a/b/c
-#canon file:///host/windows
+#canon file://%3F/host/windows
 #scheme file
-#host
+#host %3F
 #path /host/windows
+
+#data
+\\%41\host\windows
+#base http://a/b/c
+#canon file://a/host/windows
+#scheme file
+#host a
+#path /host/windows
+
+#data
+\\%41:\host\windows
+#base http://abc/b/c
+#canon file://a/host/windows
+#scheme file
+#host a
+#path /host/windows
+
+#data
+file://%41:/foo/bar
+#canon
+file://a/foo/bar
+#scheme file
+#host a
+#path
+/foo/bar
+
+#data
+file://%41b:/foo/bar
+#canon
+file://ab:/foo/bar
+#scheme file
+#host ab:
+#path
+/foo/bar
 
 #data
 //%3F/host/windows
 #base http://a/b/c
-#canon http://host/windows
+#canon http://%3F/host/windows
 #scheme http
-#host host
-#path /windows
+#host %3F
+#path /host/windows
 
 #data
 \\.\c:\windows
@@ -1304,18 +1492,18 @@ file:///c:/windows/
 #data
 file:///C:windows/foo.txt
 #base file:///C:/home/abc
-#canon file:///C:/windows/foo.txt
+#canon file:///C:windows/foo.txt
 #scheme file
 #host 
-#path /C:/windows/foo.txt
+#path /C:windows/foo.txt
 
 #data
 file:///C:../foo.txt
 #base file:///C:/home/abc
-#canon file:///C:/foo.txt
+#canon file:///C:../foo.txt
 #scheme file
 #host 
-#path /C:/foo.txt
+#path /C:../foo.txt
 
 #data
 file:///foo:/bar
@@ -1339,3 +1527,12 @@ file:///C:/bar/foo.txt:abc
 #scheme file
 #host 
 #path /C:/bar/foo.txt:abc
+
+#data
+file:/fo%00/bar
+#canon
+file:///fo%00/bar
+#scheme file
+#host
+#path
+/fo%00/bar
