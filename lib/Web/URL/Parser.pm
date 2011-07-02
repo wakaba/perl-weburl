@@ -30,7 +30,8 @@ sub _preprocess_input ($$) {
   if (utf8::is_utf8 ($_[1])) {
     ## Replace surrogate code points, noncharacters, and non-Unicode
     ## characters by U+FFFD REPLACEMENT CHARACTER, as they break
-    ## Perl's regular expression character class handling.
+    ## Perl's regular expression character class handling in some
+    ## versions of Perl.
     my $i = 0;
     pos ($_[1]) = $i;
     while (pos $_[1] < length $_[1]) {

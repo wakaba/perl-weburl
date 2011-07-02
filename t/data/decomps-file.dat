@@ -1536,3 +1536,74 @@ file:///fo%00/bar
 #host
 #path
 /fo%00/bar
+
+#data
+c:\windows\foo.txt
+#base
+http://foo/bar
+#canon
+file:///c:/windows/foo.txt
+#scheme file
+#host
+#path /c:/windows/foo.txt
+
+#data
+c:\windows\foo.txt
+#base
+file://foo/bar
+#canon
+file:///c:/windows/foo.txt
+#scheme file
+#host
+#path /c:/windows/foo.txt
+
+#data
+0:\windows\foo.txt
+#base
+file://foo/bar
+#scheme 0
+#host
+#path
+\windows\foo.txt
+
+#data
++:\windows\foo.txt
+#base
+file://foo/bar
+#scheme +
+#host
+#path
+\windows\foo.txt
+
+#data
+*:\windows\foo.txt
+#canon
+file://foo/*:/windows/foo.txt
+#base
+file://foo/bar
+#scheme file
+#host foo
+#path
+/*:/windows/foo.txt
+
+#data
+c:\windows\hoge?foo#bar
+#canon
+file:///c:/windows/hoge?foo#bar
+#scheme file
+#host
+#path
+/c:/windows/hoge
+#query foo
+#fragment bar
+
+#data
+c:\windows\hoge#foo?bar
+#canon
+file:///c:/windows/hoge#foo?bar
+#scheme file
+#host
+#path
+/c:/windows/hoge
+#fragment
+foo?bar
