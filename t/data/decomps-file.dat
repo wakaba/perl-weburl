@@ -1742,3 +1742,235 @@ file://foo/foo/bar/baz
 #scheme file
 #host foo
 #path /foo/bar/baz
+
+#data
+\\
+#base
+http://foo/bar
+#canon
+file:///
+#scheme file
+#host 
+#path /
+
+#data
+\\
+#base
+file://foo/bar
+#canon
+file:///
+#scheme file
+#host 
+#path /
+
+#data
+\\abc
+#base
+http://foo/bar
+#canon
+file://abc/
+#scheme file
+#host abc
+#path /
+
+#data
+\\abc
+#base
+file://foo/bar
+#canon
+file://abc/
+#scheme file
+#host abc
+#path /
+
+#data
+\\\abc
+#base
+http://foo/bar
+#canon
+file://abc/
+#scheme file
+#host abc
+#path /
+
+#data
+\\\abc
+#base
+file://foo/bar
+#canon
+file://abc/
+#scheme file
+#host abc
+#path /
+
+#data
+\\abc\
+#base
+http://foo/bar
+#canon
+file://abc/
+#scheme file
+#host abc
+#path /
+
+#data
+\\abc\
+#base
+file://foo/bar
+#canon
+file://abc/
+#scheme file
+#host abc
+#path /
+
+#data
+\\/abc
+#base
+file://a/b
+#canon
+file:///abc
+#scheme file
+#host 
+#path /abc
+
+#data
+\\/abc
+#base
+http://a/b
+#canon
+file:///abc
+#scheme file
+#host 
+#path /abc
+
+#data
+\/\abc
+#base
+file://a/b
+#canon
+file://a///abc
+#scheme file
+#host a
+#path ///abc
+
+#data
+\/\abc
+#base
+http://a/b
+#canon
+http://a///abc
+#scheme http
+#host a
+#path ///abc
+
+#data
+/\\abc
+#base
+file://a/b
+#canon
+file://a///abc
+#scheme file
+#host a
+#path ///abc
+
+#data
+/\\abc
+#base
+http://a/b
+#canon
+http://a///abc
+#scheme http
+#host a
+#path ///abc
+
+#data
+\\abc?def
+#base
+file://a/b
+#canon
+file://abc/?def
+#scheme file
+#host abc
+#path /
+#query def
+
+#data
+\\abc#def
+#base
+file://a/b
+#canon
+file://abc/#def
+#scheme file
+#host abc
+#path /
+#fragment def
+
+#data
+\\abc;def
+#base
+file://a/b
+#canon
+file://abc%3Bdef/
+#scheme file
+#host abc%3Bdef
+#path /
+
+#data
+\\ab\c?def
+#base
+file://a/b
+#canon
+file://ab/c?def
+#scheme file
+#host ab
+#path /c
+#query def
+
+#data
+\\ab\c#def
+#base
+file://a/b
+#canon
+file://ab/c#def
+#scheme file
+#host ab
+#path /c
+#fragment def
+
+#data
+\\ab\c;def
+#base
+file://a/b
+#canon
+file://ab/c;def
+#scheme file
+#host ab
+#path /c;def
+
+#data
+\\abc\c:
+#base
+http://a/b
+#canon
+file://abc/c:/
+#scheme file
+#host abc
+#path /c:/
+
+#data
+\\abc\c|
+#base
+http://a/b
+#canon
+file://abc/c:/
+#scheme file
+#host abc
+#path /c:/
+
+#data
+file://abc/d:
+#canon
+file://abc/d:/
+#scheme file
+#host abc
+#path /d:/

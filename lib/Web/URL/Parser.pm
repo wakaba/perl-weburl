@@ -59,6 +59,27 @@ sub parse_absolute_url ($$) {
 
   $class->_preprocess_input ($input);
 
+  if ($input =~ s{^\\{2,}([^/\\\?\#]*)}{}) {
+    $result->{host} = $1;
+    $result->{scheme} = 'file';
+    $result->{scheme_normalized} = 'file';
+    $result->{hierarchical} = 1;
+
+    if ($input =~ s{\#(.*)\z}{}s) {
+      $result->{fragment} = $1;
+    }
+    if ($input =~ s{\?(.*)\z}{}s) {
+      $result->{query} = $1;
+    }
+
+    if ($input =~ s{^[/\\]([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])?(?:\z|(?=[/\\]))}{}) {
+      $result->{drive} = $1;
+    }
+
+    $result->{path} = $input;
+    return $result;
+  }
+
   $class->_find_scheme (\$input => $result);
   return $result if $result->{invalid};
 
@@ -146,7 +167,7 @@ sub _find_scheme ($$) {
   if ($$inputref =~ s/^([^:]+)://) {
     $result->{scheme} = $1;
     $result->{scheme_normalized} = $result->{scheme};
-    $result->{scheme_normalized} =~ tr/A-Z/a-z/; # XXX percent-decode
+    $result->{scheme_normalized} =~ tr/A-Z/a-z/;
   } else {
     $result->{invalid} = 1;
   }

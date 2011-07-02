@@ -2,11 +2,13 @@ This document describes what the Web::URL::Parser module implements.
 This is just a description; it does not use strict language
 appropriate for specs.  It is built on the top of following specs:
 
-- url-spec <http://tools.ietf.org/html/draft-abarth-url-00>
-- WA1 URL
-- RFC 3986
+- [url-spec] URL parsing <http://tools.ietf.org/html/draft-abarth-url-00>
+- [WA1] Web Applications 1.0 <http://whatwg.org/c>
+- [RFC 3986] URI <http://tools.ietf.org/html/rfc3986>
 
   XXX <http://tools.ietf.org/html/draft-abarth-url-01>
+
+This document is WORK IN PROGRESS.
 
 * /encoding/
 
@@ -32,37 +34,21 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Hierarchicalness
 
-<!--
-
-  Following schemes are *hierarchical*:
-
-    - ftp
-    - gopher
-    - http
-    - https
-    - file
-    - Any other scheme defined as hierarchical by an applicable
-      specification
-
--->
-
-  Following schemes are /not/ hierarchical:
+  Following schemes are */not/ hierarchical*:
 
     - about
     - data
     - javascript
     - mailto
     - vbscript
-    - Any other scheme defined as not hierarchical by an applicable
-      specification
-
-  Whether the other schemes are hierarchical or not is /unknown/.
+    - Any other scheme defined as "not hierarchical" by an "applicable
+      specification"
 
   A URL is *hierarchical* if it's |scheme| is /not/ classified as "not
   hierarchical" and the URL is the |scheme| component followed by a
-  U+003A COLON character (:) followed by a slash character followed by
-  zero ore more characters, or if the |scheme| is "file" (ASCII
-  case-insensitive).
+  U+003A COLON character (:) followed by a "slash character" followed
+  by zero ore more characters, or if the |scheme| is |file| ("ASCII
+  case-insensitive").
 
 * Port numbers
 
@@ -78,7 +64,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
 * Authority terminating characters
 
-Remove U+003B (;) from "authority terminating characters" [url-spec].
+Remove U+003B (;) from the list of the "authority terminating
+characters" [url-spec].
 
 * Preprocessing
 
@@ -107,17 +94,20 @@ The *steps to preprocess a string /s/* is as follows:
 
   Apply "the steps to preprocess a string" to /s/.
 
-  Let /scheme/ be the URL scheme obtained by the steps to find a
-  scheme [url-spec].
+  If /s/ begins with two or more U+005C REVERSE SOLIDUS character (\),
+  follow the steps to "parse a UNC path /s/" and abort these steps.
 
-  If /scheme/ is equal to "file" (ASCII case-insensitive) or a
+  Let /scheme/ be the URL scheme obtained by the steps to "find a
+  scheme" [url-spec].
+
+  If /scheme/ is equal to |file| (ASCII case-insensitive) or a
   character in the range U+0041 ... U+005A and U+0061 ... U+007A,
-  follow the steps to parse a file: URL /s/ and abort these steps.
+  follow the steps to "parse a file: URL /s/" and abort these steps.
 
-  If /s/ is hierarchical, apply the steps for hierarchical URLs
+  If /s/ is "hierarchical", apply the steps for hierarchical URLs
   [url-spec].
 
-  Otherwise, if the scheme of /s/ is not hierarchical:
+  Otherwise, if the scheme of /s/ is not "hierarchical":
 
     If /s/ contains a U+0023 NUMBER SIGN character (#), remove the
     first such character and the following characters from /s/.  Let
@@ -197,6 +187,33 @@ The *steps to preprocess a string /s/* is as follows:
   A "drive suffix" is a U+003A COLON character (:) or U+007C VERTICAL
   LINE character (|), or its percent-encoded form (in the UTF-8
   encoding).
+
+** Parsing a UNC path /s/
+
+  Consume the U+005C REVERSE SOLIDUS characters (\) at the beginning of
+  /s/.
+
+  If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
+  such character and the following characters from /s/.  Let the
+  |fragment| component be the removed characters except for the first
+  character.
+
+  If /s/ contains a U+003F QUESTION MARK character (?), remove the
+  first such character and the following characters from /s/.  Let the
+  |query| component be the removed characters except for the first
+  character.
+  
+  Consume zero or more characters that are not "slash characters" at
+  the beginning of /s/.  Let the |host| component be the sequence of
+  consumeed characters.
+
+  If /s/ begins with a "slash character" followed by a "drive
+  specification" followed by the end of the string or a "slash
+  character", consume the first "slash character" and the "drive
+  specification".  Let the |drive| component be the "drive letter" in
+  the "drive specification".
+
+  Let the |path| component be the remaining /s/.
 
 ** Finding the authority, path, query, and fragment of URL /s/
 
