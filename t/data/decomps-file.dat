@@ -107,6 +107,20 @@ file:/c:/
 #path /c:/
 
 #data
+file:///%43:/
+#canon file:///C:/
+#scheme file
+#host 
+#path /C:/
+
+#data
+file:///%63:/
+#canon file:///c:/
+#scheme file
+#host 
+#path /c:/
+
+#data
 file:/cd:/
 #canon
 file:///cd:/
@@ -1548,6 +1562,16 @@ file:///c:/windows/foo.txt
 #path /c:/windows/foo.txt
 
 #data
+C:\windows\foo.txt
+#base
+http://foo/bar
+#canon
+file:///C:/windows/foo.txt
+#scheme file
+#host
+#path /C:/windows/foo.txt
+
+#data
 c:\windows\foo.txt
 #base
 file://foo/bar
@@ -1565,6 +1589,17 @@ file://foo/bar
 #host
 #path
 \windows\foo.txt
+
+#data
+%41:\windows\foo.txt
+#base
+file://foo/bar
+#canon
+file://foo/A:/windows/foo.txt
+#scheme file
+#host foo
+#path
+/A:/windows/foo.txt
 
 #data
 +:\windows\foo.txt
@@ -1607,3 +1642,103 @@ file:///c:/windows/hoge#foo?bar
 /c:/windows/hoge
 #fragment
 foo?bar
+
+#data
+\\\foo\bar\baz
+#base
+http://foo/bar
+#canon
+file://foo/bar/baz
+#scheme file
+#host foo
+#path /bar/baz
+
+#data
+\\\foo\bar\baz
+#base
+file://foo/bar
+#canon
+file://foo/bar/baz
+#scheme file
+#host foo
+#path /bar/baz
+
+#data
+\\\\foo\bar\baz
+#base
+http://foo/bar
+#canon
+file://foo/bar/baz
+#scheme file
+#host foo
+#path /bar/baz
+
+#data
+\\\\foo\bar\baz
+#base
+file://foo/bar
+#canon
+file://foo/bar/baz
+#scheme file
+#host foo
+#path /bar/baz
+
+#data
+\\\\foo\\bar\baz
+#base
+http://foo/bar
+#canon
+file://foo//bar/baz
+#scheme file
+#host foo
+#path //bar/baz
+
+#data
+\\\\foo\\bar\baz
+#base
+file://foo/bar
+#canon
+file://foo//bar/baz
+#scheme file
+#host foo
+#path //bar/baz
+
+#data
+\\\\foo\\bar\\baz
+#base
+http://foo/bar
+#canon
+file://foo//bar//baz
+#scheme file
+#host foo
+#path //bar//baz
+
+#data
+\\\\foo\\bar\\baz
+#base
+file://foo/bar
+#canon
+file://foo//bar//baz
+#scheme file
+#host foo
+#path //bar//baz
+
+#data
+\foo\bar\baz
+#base
+http://foo/bar
+#canon
+http://foo/foo/bar/baz
+#scheme http
+#host foo
+#path /foo/bar/baz
+
+#data
+\foo\bar\baz
+#base
+file://foo/bar
+#canon
+file://foo/foo/bar/baz
+#scheme file
+#host foo
+#path /foo/bar/baz

@@ -40,6 +40,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
     - gopher
     - http
     - https
+    - file
     - Any other scheme defined as hierarchical by an applicable
       specification
 
@@ -60,7 +61,8 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
   A URL is *hierarchical* if it's |scheme| is /not/ classified as "not
   hierarchical" and the URL is the |scheme| component followed by a
   U+003A COLON character (:) followed by a slash character followed by
-  zero ore more characters.
+  zero ore more characters, or if the |scheme| is "file" (ASCII
+  case-insensitive).
 
 * Port numbers
 
@@ -68,6 +70,7 @@ U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
 
   URL scheme  Default port number  Reference
   ----------- -------------------- ----------
+  file        (none)
   ftp         21                   [RFC 1738]
   gopher      70                   [RFC 4266]
   http        80                   [RFC 2616]
@@ -104,8 +107,15 @@ The *steps to preprocess a string /s/* is as follows:
 
   Apply "the steps to preprocess a string" to /s/.
 
-  If /s/ is hierarchical, apply url-spec's steps for hierarchical
-  URLs.
+  Let /scheme/ be the URL scheme obtained by the steps to find a
+  scheme [url-spec].
+
+  If /scheme/ is equal to "file" (ASCII case-insensitive) or a
+  character in the range U+0041 ... U+005A and U+0061 ... U+007A,
+  follow the steps to parse a file: URL /s/ and abort these steps.
+
+  If /s/ is hierarchical, apply the steps for hierarchical URLs
+  [url-spec].
 
   Otherwise, if the scheme of /s/ is not hierarchical:
 
@@ -132,6 +142,61 @@ The *steps to preprocess a string /s/* is as follows:
 
   Otherwise, /s/ is the path component of the URL.  The URL has no
   authority, query, and fragment components.
+
+** Parsing a file: URL /s/
+
+  If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
+  such character and the following characters from /s/.  Let the
+  |fragment| component be the removed characters except for the first
+  character.
+
+  If /s/ contains a U+003F QUESTION MARK character (?), remove the
+  first such character and the following characters from /s/.  Let the
+  |query| component be the removed characters except for the first
+  character.
+
+  If /scheme/ is a character,
+
+    Let the |drive| component be /scheme/.
+
+    Let the |scheme| component be "file".
+
+  Otherwise,
+
+    If the input begins with two or more "slash characters", followed
+    by a sequence of zero or more characters other than "slash
+    characters" consume these characters and follow these substeps:
+
+      Let /host/ be the sequence of characters other than "slash
+      characters".
+
+      If /host/ is a "drive specification", let the |drive| component
+      be the "drive letter" in the "drive specification".
+
+      Otherwise, let the |host| component be /host/.
+
+    If the |drive| component is not specified yet and the input begins
+    with a "slash character" followed by a "drive specification"
+    followed by the end of the input or a "slash character",
+
+      Consume the first "slash character" and the "drive
+      specification".
+
+      Let the |drive| component be the "drive letter" in the "drive
+      specification".
+
+    Let the |path| component be the remaining input.
+
+  A string is "drive specification" if it is a "drive letter"
+  optionally followed by a "drive suffix".
+
+  A "drive letter" is a character in the range U+0041 ... U+005A and
+  U+0061 ... U+007A, or its percent-encoded form (in the UTF-8
+  encoding).
+
+  A "drive suffix" is a U+003A COLON character (:) or U+007C VERTICAL
+  LINE character (|), or its percent-encoded form (in the UTF-8
+  encoding).
 
 ** Finding the authority, path, query, and fragment of URL /s/
 
@@ -875,6 +940,14 @@ This algorithm returns either a string or the "fail" state.
       Append a U+0040 COMMERCIAL AT (@) character to /s/.
 
     Append the |host| component, if any, to /s/.
+
+    If there is the |drive| component:
+
+      Append a U+002F SOLIDUS character (/) to /s/.
+
+      Append the |drive| component to /s/.
+
+      Append a U+003A COLON character (:) to /s/.
 
     If there is the |port| component (even if it is the empty string):
 
