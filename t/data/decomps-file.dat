@@ -309,6 +309,76 @@ file://///somehost/someshare/afile.txt
 #path /someshare/afile.txt
 
 #data
+file://localhost///somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file://localHost///somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file://///localhost/foo/bar
+#canon
+file:///foo/bar
+#scheme file
+#host
+#path /foo/bar
+
+#data
+file://///localhost///localhost/foo/bar
+#canon
+file:///foo/bar
+#scheme file
+#host
+#path /foo/bar
+
+#data
+file://///localhost/c:/foo/bar
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path /c:/foo/bar
+
+#data
+file://///localhost/c|/foo/bar
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path /c:/foo/bar
+
+#data escaped
+file://///localhost/localhost///\u4e00/foo/bar
+#canon
+file:///localhost///%E4%B8%80/foo/bar
+#scheme file
+#host 
+#path /localhost///%E4%B8%80/foo/bar
+
+#data escaped
+file://///localhost///localhost///\u4e00/foo/bar
+#canon
+file://xn--4gq/foo/bar
+#scheme file
+#host xn--4gq
+#path /foo/bar
+
+#data escaped
+file://///localhost///localhost///localhost///\u4e00/foo/bar
+#canon
+file://xn--4gq/foo/bar
+#scheme file
+#host xn--4gq
+#path /foo/bar
+
+#data
 file://////somehost/someshare/afile.txt
 #canon file://somehost/someshare/afile.txt
 #scheme file
@@ -362,7 +432,7 @@ file:///hoge///somehost/someshare/afile.txt
 #canon file:///hoge///somehost/someshare/afile.txt
 #scheme file
 #host 
-#path /hoge///someshare/afile.txt
+#path /hoge///somehost/someshare/afile.txt
 
 #data
 ///somehost/hoge
@@ -413,6 +483,27 @@ file://somehost/hoge
 #scheme file
 #host somehost
 #path /hoge
+
+#data escaped
+file://///s\uFF41mehost/someshare/afile.txt
+#canon file://samehost/someshare/afile.txt
+#scheme file
+#host samehost
+#path /someshare/afile.txt
+
+#data
+file://///SomeHost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data escaped
+file://///\u4e00/someshare/afile.txt
+#canon file://xn--4gq/someshare/afile.txt
+#scheme file
+#host xn--4gq
+#path /someshare/afile.txt
 
 #data
 file:UNChost/path
@@ -1042,18 +1133,18 @@ file:///home/me
 #data
 file:c:\foo\bar.html
 #base http://a/b/c
-#canon file:///C:/foo/bar.html
+#canon file:///c:/foo/bar.html
 #scheme file
 #host
-#path /C:/foo/bar.html
+#path /c:/foo/bar.html
 
 #data
 file:c|//foo\bar.html
 #base http://a/b/c
-#canon file:///C://foo/bar.html
+#canon file:///c://foo/bar.html
 #scheme file
 #host
-#path /C://foo/bar.html
+#path /c://foo/bar.html
 
 #data
 //
@@ -2229,3 +2320,48 @@ file://xn--loclhost-gf39b/cde/foo
 #scheme file
 #host xn--loclhost-gf39b
 #path /cde/foo
+
+#data
+file://%63:/foo/bar
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path
+/c:/foo/bar
+
+#data
+file://%43:/foo/bar
+#canon
+file:///C:/foo/bar
+#scheme file
+#host
+#path
+/C:/foo/bar
+
+#data
+file://%63|/foo/bar
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path
+/c:/foo/bar
+
+#data escaped
+file://\uFF43:/foo/bar
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path
+/c:/foo/bar
+
+#data escaped
+file://c\uFF1A/foo/bar
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path
+/c:/foo/bar

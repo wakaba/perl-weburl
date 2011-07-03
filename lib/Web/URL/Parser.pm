@@ -961,68 +961,106 @@ sub canonicalize_url ($$;$) {
     }
   }
 
-  if (defined $parsed_url->{host}) {
+  HOSTPATH: {
     my $orig_host = $parsed_url->{host};
-    $parsed_url->{host} = $class->to_ascii
-        ($parsed_url->{host}, $parsed_url->{scheme_normalized} eq 'file');
-    if (not defined $parsed_url->{host}) {
-      %$parsed_url = (invalid => 1);
-      return $parsed_url;
-    }
-    if ($parsed_url->{scheme_normalized} eq 'file' and
-        $parsed_url->{host} eq 'localhost') {
-      $parsed_url->{host} = '';
-    }
-  } elsif ($parsed_url->{scheme_normalized} eq 'file') {
-    $parsed_url->{host} = '';
-  }
-
-  if (defined $parsed_url->{port}) {
-    if (not length $parsed_url->{port}) {
-      delete $parsed_url->{port};
-    } elsif (not $parsed_url->{port} =~ /\A[0-9]+\z/) {
-      %$parsed_url = (invalid => 1);
-      return $parsed_url;
-    } elsif ($parsed_url->{port} > 65535) {
-      %$parsed_url = (invalid => 1);
-      return $parsed_url;
-    } else {
-      $parsed_url->{port} += 0;
-      my $default = $DefaultPort->{$parsed_url->{scheme_normalized}};
-      if (defined $default and $default == $parsed_url->{port}) {
-        delete $parsed_url->{port};
+    my $orig_path = $parsed_url->{path};
+    if ($parsed_url->{scheme_normalized} eq 'file') {
+      if (defined $parsed_url->{host} and
+          $parsed_url->{host} =~ m{\A(?:[A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])\z}) {
+        if (defined $parsed_url->{path}) {
+          $parsed_url->{path} = '/' . $parsed_url->{host} .
+              ($parsed_url->{path} =~ m{\A[/\\]} ? '' : '/') .
+              $parsed_url->{path};
+        } else {
+          $parsed_url->{path} = '/' . $parsed_url->{host} . '/';
+        }
+        $parsed_url->{host} = '';
+      } else {
+        if (not defined $parsed_url->{host} or
+            $parsed_url->{host} eq 'localhost') {
+          $parsed_url->{host} = '';
+        }
+        if (defined $parsed_url->{path}) {
+          if ($parsed_url->{host} eq '' and
+              $parsed_url->{path} =~ s{\A[/\\]{2,}([^/\\]*)}{}) {
+            $parsed_url->{host} = $1;
+          }
+          $parsed_url->{path} =~ s{\A[/\\]?([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:\|]|%3[Aa]|%7[Cc])(?:[/\\]|\z)}{
+            my $drive = $1;
+            $drive =~ s/%([0-9A-Fa-f]{2})/pack 'C', hex $1/ge;
+            '/' . $drive . ':/';
+          }e;
+        }
       }
     }
-  }
 
-  PATH: {
-    if ($parsed_url->{is_hierarchical}) {
-      $parsed_url->{path} = '/'
-          if not defined $parsed_url->{path} or not length $parsed_url->{path};
-    } elsif ($parsed_url->{scheme_normalized} eq 'mailto') {
-      #
-    } else {
-      ## Non-hierarchical scheme except for |mailto:|
-      $parsed_url->{path} = '' unless defined $parsed_url->{path};
-      my $s = Encode::encode ('utf-8', $parsed_url->{path});
-      $s =~ s{([^\x20-\x7E])}{
-        sprintf '%%%02X', ord $1;
-      }ge;
-      $parsed_url->{path} = $s;
-      last PATH;
+    if (defined $parsed_url->{host}) {
+      my $orig_host = $parsed_url->{host};
+      $parsed_url->{host} = $class->to_ascii
+          ($parsed_url->{host}, $parsed_url->{scheme_normalized} eq 'file');
+      if (not defined $parsed_url->{host}) {
+        %$parsed_url = (invalid => 1);
+        return $parsed_url;
+      }
+    }
+
+    if (defined $parsed_url->{port}) {
+      if (not length $parsed_url->{port}) {
+        delete $parsed_url->{port};
+      } elsif (not $parsed_url->{port} =~ /\A[0-9]+\z/) {
+        %$parsed_url = (invalid => 1);
+        return $parsed_url;
+      } elsif ($parsed_url->{port} > 65535) {
+        %$parsed_url = (invalid => 1);
+        return $parsed_url;
+      } else {
+        $parsed_url->{port} += 0;
+        my $default = $DefaultPort->{$parsed_url->{scheme_normalized}};
+        if (defined $default and $default == $parsed_url->{port}) {
+          delete $parsed_url->{port};
+        }
+      }
     }
     
-    if (defined $parsed_url->{path}) {
-      my $s = Encode::encode ('utf-8', $parsed_url->{path});
-      $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
-        sprintf '%%%02X', ord $1;
-      }ge;
-      $s =~ s{%(3[0-9]|[46][1-9A-Fa-f]|[57][0-9Aa]|2[DdEe]|5[Ff]|7[Ee])}{
-        pack 'C', hex $1;
-      }ge;
-      $parsed_url->{path} = $s;
+    PATH: {
+      if ($parsed_url->{is_hierarchical}) {
+        if (not defined $parsed_url->{path} or not length $parsed_url->{path}) {
+          $parsed_url->{path} = '/';
+        }
+      } elsif ($parsed_url->{scheme_normalized} eq 'mailto') {
+        #
+      } else {
+        ## Non-hierarchical scheme except for |mailto:|
+        $parsed_url->{path} = '' unless defined $parsed_url->{path};
+        my $s = Encode::encode ('utf-8', $parsed_url->{path});
+        $s =~ s{([^\x20-\x7E])}{
+          sprintf '%%%02X', ord $1;
+        }ge;
+        $parsed_url->{path} = $s;
+        last PATH;
+      }
+      
+      if (defined $parsed_url->{path}) {
+        my $s = Encode::encode ('utf-8', $parsed_url->{path});
+        $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
+          sprintf '%%%02X', ord $1;
+        }ge;
+        $s =~ s{%(3[0-9]|[46][1-9A-Fa-f]|[57][0-9Aa]|2[DdEe]|5[Ff]|7[Ee])}{
+          pack 'C', hex $1;
+        }ge;
+        $parsed_url->{path} = $s;
+      }
+    } # PATH
+
+    if ($parsed_url->{scheme_normalized} eq 'file') {
+      if (not defined $orig_host or
+          not defined $orig_path or
+          $orig_host ne $parsed_url->{host} or
+          $orig_path ne $parsed_url->{path}) {
+        redo HOSTPATH;
+      }
     }
-  } # PATH
+  } # HOSTPATH
 
   if (defined $parsed_url->{query}) {
     my $charset = $parsed_url->{is_hierarchical} ? $charset || 'utf-8' : 'utf-8';

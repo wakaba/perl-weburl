@@ -869,6 +869,50 @@ This algorithm returns either a string or the "fail" state.
     (!), 0x24 ($), 0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()),
     0x2A (*), 0x2B (+), and 0x2D (,).
 
+  HOSTPATH: Let /original-host/ be the |host| component of /u/.  Let
+  /original-path/ be the |path| component of /u/.  Note that these
+  component might be /missing/, which is different from the empty
+  string.
+
+  If the |scheme| component of /u/ is |file|:
+
+    If the |host| component of /u/ is a "drive specification":
+
+      Let the |path| component be a U+002F SOLIDUS character (/),
+      followed by the |host| component of /u/, followed by a U+002F
+      SOLIDUS character (/) if the original |path| component does not
+      begin with a "slash character" or the |path| component is
+      missing, followed by the original |path| component if any.
+
+      Let the |host| component be the empty string.
+
+    Otherwise:
+
+      If there is no |host| component in /u/ or the |host| component
+      of /u/ is equal to |localhost|, let the |host| component be the
+      empty string.
+
+      If there is the |path| component in /u/:
+
+        If the |host| component of /u/ is the empty string and the
+        |path| component of /u/ begins with two or more "slash
+        characters",
+
+          Remove those "slash characters" from the |path| component of
+          /u/.
+
+          Remove zero or more characters that are not "slash
+          characters" from the beginning of /u/.  Let the |host|
+          component of /u/ be the removed string.
+
+        If the |path| component of /u/ begins with an optional "slash
+        character" followed by a "drive specification" followed by a
+        "slash character" or the end of the string, replace them by a
+        U+002F SOLIDUS character (/) followed by the percent-decoded
+        (as a UTF-8 string) representation of the "drive letter" in
+        the "drive specification", followed by a U+003A COLON
+        character (:), followed by a U+002F SOLIDUS character (/).
+
   If there is the |host| component, invoke the CanonicalizeHost
   algorithm with the |host| and then:
 
@@ -877,12 +921,6 @@ This algorithm returns either a string or the "fail" state.
 
     Otherwise, if the algorithm fails, /u/ is invalid.  Abort the
     entire steps.
-
-  Otherwise, if the |scheme| is equal to |file|, let the |host|
-  component be the empty string.
-
-  If the |scheme| is equal to |file| and the |host| component is equal
-  to |localhost|, let the |host| component be the empty string.
 
   If there is the |port| component in /u/:
 
@@ -931,6 +969,11 @@ This algorithm returns either a string or the "fail" state.
 
       NOTE: ASCII characters not allowed in URLs are not
       percent-encoded here.
+
+  If the |scheme| component of /u/ is |file|, and if the |host|
+  component of /u/ is different from /original-host/, or the |path|
+  component of /u/ is different from /original-path/, then go to the
+  step labeled "HOSTPATH".
 
   If /u/ is "hierarchical", let /query-encoding/ be /encoding/.
   Otherwise, let /query-encoding/ be UTF-8.
