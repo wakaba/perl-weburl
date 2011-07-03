@@ -394,12 +394,18 @@ sub _resolve_relative_url ($$$) {
     }
 
     my $result = {%$parsed_base_url};
-    my $b_path = defined $parsed_base_url->{path} ? $parsed_base_url->{path} : '';
-    if ($parsed_base_url->{scheme_normalized} eq 'file') {
-      $b_path =~ s{%2[Ff]}{/}g;
-      $b_path =~ s{%5[Cc]}{\\}g;
+    my $b_path = defined $parsed_base_url->{path}
+        ? $parsed_base_url->{path} : '';
+    if ($result->{scheme_normalized} eq 'file') {
       $r_path =~ s{%2[Ff]}{/}g;
       $r_path =~ s{%5[Cc]}{\\}g;
+      if ($r_path =~ m{^(?:[A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?=\z|[/\\])}) {
+        $b_path = '';
+        delete $result->{drive};
+      } elsif (defined $result->{drive}) {
+        $b_path = '/' . $result->{drive} . ':' . $b_path;
+        delete $result->{drive};
+      }
     }
     {
       ## Merge path (RFC 3986)
@@ -411,6 +417,10 @@ sub _resolve_relative_url ($$$) {
       }
     }
     $result->{path} = $class->_remove_dot_segments ($r_path);
+    if ($result->{scheme_normalized} eq 'file' and
+        $result->{path} =~ s{^/([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?=\z|[/\\])}{}) {
+      $result->{drive} = $1;
+    }
     if (defined $r_query) {
       $result->{query} = $r_query;
     } else {

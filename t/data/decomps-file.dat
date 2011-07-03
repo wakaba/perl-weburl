@@ -215,6 +215,8 @@ xn--%7C-zn6a
 
 #data escaped
 file:///\u4e00:/
+#canon
+file:///%E4%B8%80:/
 #scheme file
 #host
 #path escaped

@@ -575,13 +575,13 @@ ok 481 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 482 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 483 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 484 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 586.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 586.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 586.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 596.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 596.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 596.
 ok 485 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 586.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 586.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 586.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 596.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 596.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 596.
 ok 486 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 487 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 488 - http://%00.com/ - http://%00.com/
@@ -1688,29 +1688,10 @@ ok 1148 - file://一|/ - file://一|/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 1149 - file://一|/ - file://一|/ idempotency
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-not ok 1150 - file:///一:/ - file:///一:/
-Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
-#   Failed test 'file:///一:/ - file:///一:/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------+--------------------------------------------+
-# | Elt|Got                                          |Expected                                    |
-# +----+---------------------------------------------+--------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized    |
-# *   1|file:///%E4%B8%80:/,,/%E4%B8%80:/,file,file  |file:///\x{4e00}:/,,/%E4%B8%80:/,file,file  *
-# +----+---------------------------------------------+--------------------------------------------+
+ok 1150 - file:///一:/ - file:///一:/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 ok 1151 - file:///一:/ - file:///一:/ idempotency
-not ok 1152 - file:c:/foo/bar.html - file:c:/foo/bar.html
-#   Failed test 'file:c:/foo/bar.html - file:c:/foo/bar.html'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------------+-----------------------------------------------------+
-# | Elt|Got                                                                |Expected                                             |
-# +----+-------------------------------------------------------------------+-----------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                           |canon,host,path,scheme,scheme_normalized             |
-# *   1|file:///c:/foo/c:/foo/bar.html,,/c:/foo/c:/foo/bar.html,file,file  |file:///c:/foo/bar.html,,/c:/foo/bar.html,file,file  *
-# +----+-------------------------------------------------------------------+-----------------------------------------------------+
+ok 1152 - file:c:/foo/bar.html - file:c:/foo/bar.html
 ok 1153 - file:c:/foo/bar.html - file:c:/foo/bar.html idempotency
 ok 1154 - file:c:\foo\bar.html - http://a/b/c
 ok 1155 - file:c:\foo\bar.html - http://a/b/c idempotency
@@ -1989,16 +1970,7 @@ not ok 1250 - file:filer/home\me - http://a/b/c
 # *   1|file://filer/home/me,,filer/home/me,file,file  |file:///filer/home/me,,/filer/home/me,file,file  *
 # +----+-----------------------------------------------+-------------------------------------------------+
 ok 1251 - file:filer/home\me - http://a/b/c idempotency
-not ok 1252 - ../D|/foo/ - file:///C:/
-#   Failed test '../D|/foo/ - file:///C:/'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------------+------------------------------------------+
-# | Elt|Got                                            |Expected                                  |
-# +----+-----------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized       |canon,host,path,scheme,scheme_normalized  |
-# *   1|file:///C:/D%7C/foo/,,/C:/D%7C/foo/,file,file  |file:///D:/foo/,,/D:/foo/,file,file       *
-# +----+-----------------------------------------------+------------------------------------------+
+ok 1252 - ../D|/foo/ - file:///C:/
 ok 1253 - ../D|/foo/ - file:///C:/ idempotency
 not ok 1254 - file:///C:/foo/../../../bar.html - http://a/b/c
 #   Failed test 'file:///C:/foo/../../../bar.html - http://a/b/c'
@@ -4729,9 +4701,9 @@ ok 3089 - http://00000000000000000001/ - http://00000000000000000001/
 ok 3090 - http://00000000000000000001/ - http://00000000000000000001/ idempotency
 ok 3091 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/
 ok 3092 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 505.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 515.
 ok 3093 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 505.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 515.
 ok 3094 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ idempotency
 ok 3095 - http://000030052000001/ - http://000030052000001/
 ok 3096 - http://000030052000001/ - http://000030052000001/ idempotency
@@ -4741,9 +4713,9 @@ ok 3099 - http://0300.0250.00.01/ - http://0300.0250.00.01/
 ok 3100 - http://0300.0250.00.01/ - http://0300.0250.00.01/ idempotency
 ok 3101 - http://030052000001/ - http://030052000001/
 ok 3102 - http://030052000001/ - http://030052000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 505.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 515.
 ok 3103 - http://0X12C0a80001/ - http://0X12C0a80001/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 505.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 515.
 ok 3104 - http://0X12C0a80001/ - http://0X12C0a80001/ idempotency
 ok 3105 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/
 ok 3106 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/ idempotency
@@ -4769,9 +4741,9 @@ ok 3125 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/
 ok 3126 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/ idempotency
 ok 3127 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/
 ok 3128 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 505.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 515.
 ok 3129 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 505.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 515.
 ok 3130 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/ idempotency
 ok 3131 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/
 ok 3132 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/ idempotency
@@ -7678,13 +7650,13 @@ ok 5799 - http://@@@@@@@@ - http://@@@@@@@@
 ok 5800 - http://@@@@@@@@ - http://@@@@@@@@ idempotency
 ok 5801 - http://:@ - http://:@
 ok 5802 - http://:@ - http://:@ idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 467.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 477.
 ok 5803 - http://[] - http://[]
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 467.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 477.
 ok 5804 - http://[] - http://[] idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 467.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 477.
 ok 5805 - http://[]/ - http://[]/
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 467.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 477.
 ok 5806 - http://[]/ - http://[]/ idempotency
 ok 5807 - http://[?] - http://[?]
 ok 5808 - http://[?] - http://[?] idempotency
@@ -11430,4 +11402,4 @@ ok 8956 - ftp:foobar - ftp://hoge/abc/def idempotency
 ok 8957 - ftp:foobar?a\#b - ftp://hoge/abc/def
 ok 8958 - ftp:foobar?a\#b - ftp://hoge/abc/def idempotency
 1..8958
-# Looks like you failed 173 tests of 8958.
+# Looks like you failed 170 tests of 8958.

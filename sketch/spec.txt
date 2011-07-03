@@ -434,11 +434,30 @@ The *steps to preprocess a string /s/* is as follows:
 
 ** Resolve as a path-relative URL
 
-  If the |scheme| of /base-url/ is |file| (ASCII case-insensitive),
-  percent-decode |%2F| and |%5C| (ASCII case-insensitive) in the
-  |path| component of /base-url/ and /resolved-url/.
+  If the |scheme| of /base-url/ is |file| (ASCII case-insensitive):
+  
+    Percent-decode |%2F| and |%5C| (ASCII case-insensitive) in the
+    |path| component of /resolved-url/.
+
+    If the first "path-segment" [XXX], if any, is a "drive
+    specification", let the |path| component of the /base-url/ be the
+    empty string.  Remove the |drive| component from the result URL.
+
+    Otherwise, if there is the |drive| component in the result URL,
+    let the |path| component of /base-url/ be a U+002F SOLIDUS
+    character (/) followed by the |drive| component followed by a
+    U+003A COLON character (:) followed by the original |path|
+    component.  Remove the |drive| component from the result URL.
 
   Then, apply the RFC 3986's algorithm to resolve a path-relative URL.
+
+  If the |scheme| of /base-url/ is |file| (ASCII case-insensitive):
+
+    If the first "path-segment" [XXX], if any, of the |path| component
+    of the result URL is a "drive specification", let the |drive|
+    component of the result URL be the "drive letter" of the "drive
+    specification" and remove the "path-segment" (and the preceding
+    U+002F SOLIDUS character (/)) from the |path| component.
 
 * Percent-encoding
 
