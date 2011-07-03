@@ -63,7 +63,7 @@ sub parse_absolute_url ($$) {
     $result->{host} = $1;
     $result->{scheme} = 'file';
     $result->{scheme_normalized} = 'file';
-    $result->{hierarchical} = 1;
+    $result->{is_hierarchical} = 1;
 
     if ($input =~ s{\#(.*)\z}{}s) {
       $result->{fragment} = $1;
@@ -114,8 +114,10 @@ sub parse_absolute_url ($$) {
     } else {
       $result->{path} = $input;
     }
-    $result->{path} = '/' . $result->{path}
-        if defined $result->{path} and not $result->{path} =~ m{\A[/\\]};
+    if (defined $result->{path}) {
+      $result->{path} = '/' . $result->{path}
+          unless $result->{path} =~ m{\A[/\\]};
+    }
     $result->{is_hierarchical} = 1;
     return $result;
   }

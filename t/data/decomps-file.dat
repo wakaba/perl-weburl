@@ -599,10 +599,10 @@ c:\foo\bar
 C|/foo/bar
 #base http://a/b/c
 #canon 
-http://a/b/C|/foo/bar
+http://a/b/C%7C/foo/bar
 #scheme http
 #host a
-#path /b/C|/foo/bar
+#path /b/C%7C/foo/bar
 
 #data
 /C|\foo\bar
@@ -671,10 +671,10 @@ file://ab/c:/foo/bar
 #base
 file://ab/cd/ef
 #canon
-file:///c:/foo/bar
+file://c/foo/bar
 #scheme file
-#host 
-#path /c:/foo/bar
+#host c
+#path /foo/bar
 
 #data
 /c/foo/bar
@@ -803,18 +803,66 @@ file:///c:/foo/bar
 #data
 file:c:foo/bar.html
 #base http://a/b/c
-#canon file:///c:/foo/bar.html
+#canon file:///c:foo/bar.html
 #scheme file
 #host
-#path /c:/foo/bar.html
+#path /c:foo/bar.html
 
 #data
 file:c:foo/bar.html
 #base file://aa/bb/cc
-#canon file:///c:/foo/bar.html
+#canon file://aa/bb/c:foo/bar.html
+#scheme file
+#host aa
+#path /bb/c:foo/bar.html
+
+#data
+file:/c:foo/bar.html
+#base http://a/b/c
+#canon file:///c:foo/bar.html
 #scheme file
 #host
-#path /c:/foo/bar.html
+#path /c:foo/bar.html
+
+#data
+file:/c:foo/bar.html
+#base file://aa/bb/cc
+#canon file://aa/c:foo/bar.html
+#scheme file
+#host aa
+#path /c:foo/bar.html
+
+#data
+file://c:foo/bar.html
+#base http://a/b/c
+#canon file://c:foo/bar.html
+#scheme file
+#host c:foo
+#path /bar.html
+
+#data
+file://c:foo/bar.html
+#base file://aa/bb/cc
+#canon file://c:foo/bar.html
+#scheme file
+#host c:foo
+#path /bar.html
+
+#data
+file:///c:foo/bar.html
+#base http://a/b/c
+#canon file:///c:foo/bar.html
+#scheme file
+#host
+#path /c:foo/bar.html
+
+#data
+file:///c:foo/bar.html
+#base file://aa/bb/cc
+#canon file:///c:foo/bar.html
+#scheme file
+#host
+#path /c:foo/bar.html
 
 #data
 file:/\/\C:\\//foo\bar.html
@@ -919,11 +967,11 @@ file://./backofficestorage/domain/MBX/username/Calendar
 #data escaped
 file:///Macintosh HD/\u4e00/test.html
 #canon escaped
-file:///Macintosh%20HD/\u4e00/test.html
+file:///Macintosh%20HD/%E4%B8%80/test.html
 #scheme file
 #host
 #path escaped
-/Macintosh%20HD/\u4e00/test.html
+/Macintosh%20HD/%E4%B8%80/test.html
 
 #data
 file:/Macintosh HD/Applications/
