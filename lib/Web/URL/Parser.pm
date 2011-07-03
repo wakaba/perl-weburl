@@ -72,10 +72,6 @@ sub parse_absolute_url ($$) {
       $result->{query} = $1;
     }
 
-    if ($input =~ s{^[/\\]([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])?(?:\z|(?=[/\\]))}{}) {
-      $result->{drive} = $1;
-    }
-
     $result->{path} = $input;
     return $result;
   }
@@ -84,33 +80,35 @@ sub parse_absolute_url ($$) {
   return $result if $result->{invalid};
 
   if (defined $result->{scheme_normalized} and
-      $result->{scheme_normalized} =~ /\A(?:[a-z]|file)\z/) {
+      $result->{scheme_normalized} =~ /\A[a-z]\z/) {
     if ($input =~ s{\#(.*)\z}{}s) {
       $result->{fragment} = $1;
     }
     if ($input =~ s{\?(.*)\z}{}s) {
       $result->{query} = $1;
     }
-    if (1 == length $result->{scheme_normalized}) {
-      $result->{drive} = $result->{scheme};
-      $result->{scheme} = 'file';
-      $result->{scheme_normalized} = 'file';
-    } else {
-      if ($input =~ s{^[/\\]{2}([^/\\]*)}{}) {
-        $result->{host} = $1;
-        if ($result->{host} =~ s{^([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])?$}{}) {
-          $result->{drive} = $1;
-          delete $result->{host};
-        }
-      } else {
-        $input =~ s{^[/\\]+}{/};
-      }
-      if (not defined $result->{drive} and
-          $input =~ s{^[/\\]?([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?=\z|[/\\])}{}) {
-        $result->{drive} = $1;
-      }
-    }
     $result->{path} = $input;
+    $result->{is_hierarchical} = 1;
+    return $result;
+  }
+
+  if (defined $result->{scheme_normalized} and
+      $result->{scheme_normalized} eq 'file') {
+    if ($input =~ s{\#(.*)\z}{}s) {
+      $result->{fragment} = $1;
+    }
+    if ($input =~ s{\?(.*)\z}{}s) {
+      $result->{query} = $1;
+    }
+    if ($input =~ s{\A[/\\]{3}(?![/\\])}{/}) {
+      $result->{host} = '';
+      $result->{path} = $input;
+    } elsif ($input =~ s{\A[/\\]{2,}([^/\\]*)}{}) {
+      $result->{host} = $1;
+      $result->{path} = $input;
+    } else {
+      $result->{path} = $input;
+    }
     $result->{is_hierarchical} = 1;
     return $result;
   }
@@ -401,10 +399,6 @@ sub _resolve_relative_url ($$$) {
       $r_path =~ s{%5[Cc]}{\\}g;
       if ($r_path =~ m{^(?:[A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?=\z|[/\\])}) {
         $b_path = '';
-        delete $result->{drive};
-      } elsif (defined $result->{drive}) {
-        $b_path = '/' . $result->{drive} . ':' . $b_path;
-        delete $result->{drive};
       }
     }
     {
@@ -417,10 +411,6 @@ sub _resolve_relative_url ($$$) {
       }
     }
     $result->{path} = $class->_remove_dot_segments ($r_path);
-    if ($result->{scheme_normalized} eq 'file' and
-        $result->{path} =~ s{^/([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?=\z|[/\\])}{}) {
-      $result->{drive} = $1;
-    }
     if (defined $r_query) {
       $result->{query} = $r_query;
     } else {
@@ -1021,10 +1011,6 @@ sub canonicalize_url ($$;$) {
       $parsed_url->{path} = $s;
       last PATH;
     }
-
-    if (defined $parsed_url->{drive}) {
-      $parsed_url->{drive} =~ s{%([46][1-9A-Fa-f]|[57][0-9Aa])}{pack 'C', hex $1}ge;
-    }
     
     if (defined $parsed_url->{path}) {
       my $s = Encode::encode ('utf-8', $parsed_url->{path});
@@ -1097,7 +1083,6 @@ sub serialize_url ($$) {
       $u .= ':' . $parsed_url->{port};
     }
   }
-  $u .= '/' . $parsed_url->{drive} . ':' if defined $parsed_url->{drive};
   $u .= $parsed_url->{path} if defined $parsed_url->{path};
   if (defined $parsed_url->{query}) {
     $u .= '?' . $parsed_url->{query};

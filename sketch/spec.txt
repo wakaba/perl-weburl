@@ -100,9 +100,12 @@ The *steps to preprocess a string /s/* is as follows:
   Let /scheme/ be the URL scheme obtained by the steps to "find a
   scheme" [url-spec].
 
-  If /scheme/ is equal to |file| (ASCII case-insensitive) or a
-  character in the range U+0041 ... U+005A and U+0061 ... U+007A,
-  follow the steps to "parse a file: URL /s/" and abort these steps.
+  If /scheme/ is a character in the range U+0041 ... U+005A and U+0061
+  ... U+007A, follow the steps to "parse a drive URL /s/" and abort
+  these steps.
+
+  If /scheme/ is equal to |file| (ASCII case-insensitive), follow the
+  steps to "parse a file: URL /s/" and abort these steps.
 
   If /s/ is "hierarchical", apply the steps for hierarchical URLs
   [url-spec].
@@ -133,6 +136,20 @@ The *steps to preprocess a string /s/* is as follows:
   Otherwise, /s/ is the path component of the URL.  The URL has no
   authority, query, and fragment components.
 
+** Parsing a drive URL /s/
+
+  If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
+  such character and the following characters from /s/.  Let the
+  |fragment| component be the removed characters except for the first
+  character.
+
+  If /s/ contains a U+003F QUESTION MARK character (?), remove the
+  first such character and the following characters from /s/.  Let the
+  |query| component be the removed characters except for the first
+  character.
+
+  Let /path/ be the remaining /s/.
+
 ** Parsing a file: URL /s/
 
   If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
@@ -145,51 +162,25 @@ The *steps to preprocess a string /s/* is as follows:
   |query| component be the removed characters except for the first
   character.
 
-  If /scheme/ is a character,
+  If the input begins with exactly three "slash characters":
 
-    Let the |drive| component be /scheme/.
+    Consume the "slash characters".
 
-    Let the |scheme| component be "file".
+    Let the |host| component be the empty string.
 
-  Otherwise,
+    Let the |path| component be a U+002F SOLIDUS character (/)
+    followed by the remaining input.
 
-    If the input begins with exactly two "slash characters", followed
-    by a sequence of zero or more characters other than "slash
-    characters" consume these characters and follow these substeps:
+  Otherwise, if the input begins with two or more "slash characters":
 
-      Let /host/ be the sequence of characters other than "slash
-      characters".
+    Consume the "slash characters".
 
-      If /host/ is a "drive specification", let the |drive| component
-      be the "drive letter" in the "drive specification".
-
-      Otherwise, let the |host| component be /host/.
-
-    Otherwise, replace the sequence of one or more "slash characters"
-    at the begnining of the input by a U+002F SOLIDUS character (/).
-
-    If the |drive| component is not specified yet and the input begins
-    with a "slash character" followed by a "drive specification"
-    followed by the end of the input or a "slash character",
-
-      Consume the first "slash character" and the "drive
-      specification".
-
-      Let the |drive| component be the "drive letter" in the "drive
-      specification".
+    Consume zero or more characters that are not "slash characters".
+    Let the |host| component be the consumed string.
 
     Let the |path| component be the remaining input.
 
-  A string is "drive specification" if it is a "drive letter"
-  optionally followed by a "drive suffix".
-
-  A "drive letter" is a character in the range U+0041 ... U+005A and
-  U+0061 ... U+007A, or its percent-encoded form (in the UTF-8
-  encoding).
-
-  A "drive suffix" is a U+003A COLON character (:) or U+007C VERTICAL
-  LINE character (|), or its percent-encoded form (in the UTF-8
-  encoding).
+  Otherwise, let the |path| component be the input string.
 
 ** Parsing a UNC path /s/
 
@@ -208,13 +199,7 @@ The *steps to preprocess a string /s/* is as follows:
   
   Consume zero or more characters that are not "slash characters" at
   the beginning of /s/.  Let the |host| component be the sequence of
-  consumeed characters.
-
-  If /s/ begins with a "slash character" followed by a "drive
-  specification" followed by the end of the string or a "slash
-  character", consume the first "slash character" and the "drive
-  specification".  Let the |drive| component be the "drive letter" in
-  the "drive specification".
+  consumed characters.
 
   Let the |path| component be the remaining /s/.
 
@@ -239,6 +224,19 @@ The *steps to preprocess a string /s/* is as follows:
 
   Apply RFC 3986's steps, but treate "%2E" and "%2e" in /s/ as if they
   were U+002E FULL STOP characters (.).
+
+* Drive specifications
+
+  A string is "drive specification" if it is a "drive letter"
+  optionally followed by a "drive suffix".
+
+  A "drive letter" is a character in the range U+0041 ... U+005A and
+  U+0061 ... U+007A, or its percent-encoded form (in the UTF-8
+  encoding).
+
+  A "drive suffix" is a U+003A COLON character (:) or U+007C VERTICAL
+  LINE character (|), or its percent-encoded form (in the UTF-8
+  encoding).
 
 * IPv4 addresses
 
@@ -439,25 +437,7 @@ The *steps to preprocess a string /s/* is as follows:
     Percent-decode |%2F| and |%5C| (ASCII case-insensitive) in the
     |path| component of /resolved-url/.
 
-    If the first "path-segment" [XXX], if any, is a "drive
-    specification", let the |path| component of the /base-url/ be the
-    empty string.  Remove the |drive| component from the result URL.
-
-    Otherwise, if there is the |drive| component in the result URL,
-    let the |path| component of /base-url/ be a U+002F SOLIDUS
-    character (/) followed by the |drive| component followed by a
-    U+003A COLON character (:) followed by the original |path|
-    component.  Remove the |drive| component from the result URL.
-
   Then, apply the RFC 3986's algorithm to resolve a path-relative URL.
-
-  If the |scheme| of /base-url/ is |file| (ASCII case-insensitive):
-
-    If the first "path-segment" [XXX], if any, of the |path| component
-    of the result URL is a "drive specification", let the |drive|
-    component of the result URL be the "drive letter" of the "drive
-    specification" and remove the "path-segment" (and the preceding
-    U+002F SOLIDUS character (/)) from the |path| component.
 
 * Percent-encoding
 
@@ -1004,14 +984,6 @@ This algorithm returns either a string or the "fail" state.
       Append a U+0040 COMMERCIAL AT (@) character to /s/.
 
     Append the |host| component, if any, to /s/.
-
-    If there is the |drive| component:
-
-      Append a U+002F SOLIDUS character (/) to /s/.
-
-      Append the |drive| component to /s/.
-
-      Append a U+003A COLON character (:) to /s/.
 
     If there is the |port| component (even if it is the empty string):
 

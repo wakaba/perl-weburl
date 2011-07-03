@@ -295,11 +295,124 @@ file:///c:/windows\system32%5Cdrivers/etc/hosts
 #path /c:////foo/bar.html
 
 #data
+file:////somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
 file://///somehost/someshare/afile.txt
 #canon file://somehost/someshare/afile.txt
 #scheme file
 #host somehost
 #path /someshare/afile.txt
+
+#data
+file://////somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file:///////somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file:////////somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file://///////somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file:\\\\\\somehost/someshare/afile.txt
+#canon file://somehost/someshare/afile.txt
+#scheme file
+#host somehost
+#path /someshare/afile.txt
+
+#data
+file://hoge///somehost/someshare/afile.txt
+#canon file://hoge///somehost/someshare/afile.txt
+#scheme file
+#host hoge
+#path ///somehost/someshare/afile.txt
+
+#data
+file://hoge//somehost/someshare/afile.txt
+#canon file://hoge//somehost/someshare/afile.txt
+#scheme file
+#host hoge
+#path //somehost/someshare/afile.txt
+
+#data
+file:///hoge///somehost/someshare/afile.txt
+#canon file:///hoge///somehost/someshare/afile.txt
+#scheme file
+#host 
+#path /hoge///someshare/afile.txt
+
+#data
+///somehost/hoge
+#base
+file:///c:/def
+#canon
+file:///somehost/hoge
+#scheme file
+#host 
+#path /somehost/hoge
+
+#data
+////somehost/hoge
+#base
+file:///c:/def
+#canon
+file://somehost/hoge
+#scheme file
+#host somehost
+#path /hoge
+
+#data
+/////somehost/hoge
+#base
+file:///c:/def
+#canon
+file://somehost/hoge
+#scheme file
+#host somehost
+#path /hoge
+
+#data
+//////somehost/hoge
+#base
+file:///c:/def
+#canon
+file://somehost/hoge
+#scheme file
+#host somehost
+#path /hoge
+
+#data
+///////somehost/hoge
+#base
+file:///c:/def
+#canon
+file://somehost/hoge
+#scheme file
+#host somehost
+#path /hoge
 
 #data
 file:UNChost/path
@@ -420,6 +533,106 @@ http://a/b/C|/foo/bar
 #scheme file
 #host
 #path /C:/foo/bar
+
+#data
+//c:/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file:///c:/foo/bar
+#scheme file
+#host 
+#path /c:/foo/bar
+
+#data
+//C:/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file:///C:/foo/bar
+#scheme file
+#host 
+#path /C:/foo/bar
+
+#data
+/c:/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file://ab/c:/foo/bar
+#scheme file
+#host ab
+#path /c:/foo/bar
+
+#data
+//c/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file:///c:/foo/bar
+#scheme file
+#host 
+#path /c:/foo/bar
+
+#data
+/c/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file://ab/c/foo/bar
+#scheme file
+#host ab
+#path /c/foo/bar
+
+#data
+/c/foo/bar
+#base
+file:///cd/ef
+#canon
+file:///c/foo/bar
+#scheme file
+#host 
+#path /c/foo/bar
+
+#data
+///c:/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file:///c:/foo/bar
+#scheme file
+#host 
+#path /c:/foo/bar
+
+#data
+//c:/foo/bar
+#base
+file:///cd/ef
+#canon
+file:///c:/foo/bar
+#scheme file
+#host 
+#path /c:/foo/bar
+
+#data
+////c:/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file:///c:/foo/bar
+#scheme file
+#host 
+#path /c:/foo/bar
+
+#data
+/////c:/foo/bar
+#base
+file://ab/cd/ef
+#canon
+file:///c:/foo/bar
+#scheme file
+#host 
+#path /c:/foo/bar
 
 #data
 //server/file
