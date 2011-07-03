@@ -87,7 +87,12 @@ sub parse_absolute_url ($$) {
     if ($input =~ s{\?(.*)\z}{}s) {
       $result->{query} = $1;
     }
-    $result->{path} = $input;
+    $result->{path} = '/' . $result->{scheme} . ':';
+    $result->{path} .= '/' unless $input =~ m{\A[/\\]};
+    $result->{path} .= $input;
+    $result->{scheme} = 'file';
+    $result->{scheme_normalized} = 'file';
+    $result->{host} = '';
     $result->{is_hierarchical} = 1;
     return $result;
   }
@@ -109,6 +114,8 @@ sub parse_absolute_url ($$) {
     } else {
       $result->{path} = $input;
     }
+    $result->{path} = '/' . $result->{path}
+        if defined $result->{path} and not $result->{path} =~ m{\A[/\\]};
     $result->{is_hierarchical} = 1;
     return $result;
   }
@@ -245,7 +252,7 @@ sub resolve_url ($$$) {
   if ($parsed_base_url->{is_hierarchical} and
       $parsed_spec->{scheme_normalized} eq
       $parsed_base_url->{scheme_normalized}) {
-    $spec = substr $spec, 1 + length $parsed_spec->{scheme};
+    $spec =~ s{\A\Q@{[$parsed_spec->{scheme}]}\E:}{};
     return $class->_resolve_relative_url (\$spec, $parsed_base_url);
   }
 

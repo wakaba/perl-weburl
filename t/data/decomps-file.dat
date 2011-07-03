@@ -247,6 +247,8 @@ file:c:\\foo\\bar.html
 
 #data
 file:cd:\foo\bar
+#base
+http://foo/bar
 #canon
 file:///cd:/foo/bar
 #scheme file
@@ -256,14 +258,23 @@ file:///cd:/foo/bar
 
 #data
 file:cd:\foo\bar
-#base
-file:///a/b
 #canon
-file:///a/cd:/foo/bar
+file:///cd:/foo/cd:/foo/bar
 #scheme file
 #host
 #path
-/a/cd:/foo/bar
+/cd:/foo/cd:/foo/bar
+
+#data
+file:cd:\foo\bar
+#base
+file:///aa/bb
+#canon
+file:///aa/cd:/foo/bar
+#scheme file
+#host
+#path
+/aa/cd:/foo/bar
 
 #data
 file:///c:%5Cwindows%5Cexplorer.exe
@@ -792,10 +803,18 @@ file:///c:/foo/bar
 #data
 file:c:foo/bar.html
 #base http://a/b/c
-#canon file:///C:/foo/bar.html
+#canon file:///c:/foo/bar.html
 #scheme file
 #host
-#path /C:/foo/bar.html
+#path /c:/foo/bar.html
+
+#data
+file:c:foo/bar.html
+#base file://aa/bb/cc
+#canon file:///c:/foo/bar.html
+#scheme file
+#host
+#path /c:/foo/bar.html
 
 #data
 file:/\/\C:\\//foo\bar.html
@@ -1948,6 +1967,36 @@ file:///c:/windows/hoge#foo?bar
 /c:/windows/hoge
 #fragment
 foo?bar
+
+#data
+c:
+#base
+file://foo/bar/baz
+#canon
+file:///c:/
+#scheme file
+#host
+#path /c:/
+
+#data
+c:foo/bar
+#base
+file://xyz/abc/def
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path /c:/foo/bar
+
+#data
+c:foo/bar
+#base
+http://xyz/abc/def
+#canon
+file:///c:/foo/bar
+#scheme file
+#host
+#path /c:/foo/bar
 
 #data
 \\\foo\bar\baz

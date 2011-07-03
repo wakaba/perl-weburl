@@ -101,8 +101,8 @@ The *steps to preprocess a string /s/* is as follows:
   scheme" [url-spec].
 
   If /scheme/ is a character in the range U+0041 ... U+005A and U+0061
-  ... U+007A, follow the steps to "parse a drive URL /s/" and abort
-  these steps.
+  ... U+007A, follow the steps to "parse a drive URL" with current /s/
+  and /drive/ set to /scheme/ and abort these steps.
 
   If /scheme/ is equal to |file| (ASCII case-insensitive), follow the
   steps to "parse a file: URL /s/" and abort these steps.
@@ -136,7 +136,9 @@ The *steps to preprocess a string /s/* is as follows:
   Otherwise, /s/ is the path component of the URL.  The URL has no
   authority, query, and fragment components.
 
-** Parsing a drive URL /s/
+** Parsing a drive URL
+
+Parse a drive URL with /s/ and /scheme/:
 
   If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
   such character and the following characters from /s/.  Let the
@@ -148,7 +150,23 @@ The *steps to preprocess a string /s/* is as follows:
   |query| component be the removed characters except for the first
   character.
 
-  Let /path/ be the remaining /s/.
+  Let the |path| component be the concatenation of the following
+  substrings in order:
+
+    1. A U+002F SOLIDUS character (/).
+
+    2. /scheme/.
+
+    3. A U+003A COLON character (:).
+
+    4. A U+002F SOLIDUS character (/) if /s/ does not begin with a
+       "slash character".
+
+    5. /s/.
+
+  Let the |scheme| component be |file|.
+
+  Let the |host| component be the empty string.
 
 ** Parsing a file: URL /s/
 
@@ -181,6 +199,9 @@ The *steps to preprocess a string /s/* is as follows:
     Let the |path| component be the remaining input.
 
   Otherwise, let the |path| component be the input string.
+
+  If the |path| component does not begin with a "slash character",
+  prepend a U+002F SOLIDUS character (/) to the |path| component.
 
 ** Parsing a UNC path /s/
 
