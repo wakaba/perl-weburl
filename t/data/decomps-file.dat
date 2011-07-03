@@ -1158,7 +1158,7 @@ file:///c:/foo/#4e00
 #scheme file
 #host
 #path escaped
-/C:/foo/
+/c:/foo/
 #fragment 4e00
 
 #data
@@ -1182,7 +1182,7 @@ file:///C:/Program%20%20Files/README.txt
 #data
 file:///C:/Example #1/Test #2.txt
 #canon
-file:///C:/Example%20#1/Test%20#2.txt
+file:///C:/Example%20#1/Test #2.txt
 #scheme file
 #host
 #path
@@ -1195,6 +1195,7 @@ file:///home/me
 #base http://a/b/c
 #canon file:///home/me
 #scheme file
+#host
 #path /home/me
 
 #data
@@ -1250,16 +1251,16 @@ file:c|//foo\bar.html
 #base file:///c:/foo/bar.html
 #canon file://test:80/
 #scheme file
-#host test
-#port 80
+#host 
+test:80
 #path /
 
 #data
 //localhost
 #base file:///c:/foo/bar.html
-#canon file://localhost/
+#canon file:///
 #scheme file
-#host localhost
+#host
 #path /
 
 #data
@@ -1273,9 +1274,8 @@ file:c|//foo\bar.html
 #data
 file://foo:ab@bar/c:/bar/hoge
 #scheme file
-#user foo
-#password ab
-#host bar
+#host
+foo:ab@bar
 #path
 /c:/bar/hoge
 
@@ -1308,17 +1308,17 @@ file://:@bar/c:/bar/hoge
 
 #data
 file://%3A%40bar/c:/bar/hoge
+#canon
+file://:@bar/c:/bar/hoge
 #scheme file
-#host :@bar
+#host
+:@bar
 #path
 /c:/bar/hoge
 
 #data
 file://a%bar%3F/c:/bar/hoge
-#scheme file
-#host a%bar%3F
-#path
-/c:/bar/hoge
+#invalid 1
 
 #data
 \\foo@bar\hoge\hoga
@@ -1436,11 +1436,7 @@ file:///test%a/b/c
 
 #data
 \\test%a\b\c
-#canon
-file://test%25a/b/c
-#scheme file
-#host test%25a
-#path /b/c
+#invalid 1
 
 #data escaped
 \u005c\u005c\u4e00\u005cabx
@@ -1536,6 +1532,7 @@ http://foo/bar
 
 #data
 file:%7Euser/path/to/file
+#base http://foo/bar
 #canon file:///~user/path/to/file
 #scheme file
 #host
@@ -1564,9 +1561,9 @@ file://~user/path/to/file
 
 #data
 file://%7Euser/path/to/file
-#canon file://%7Euser/path/to/file
+#canon file://~user/path/to/file
 #scheme file
-#host %7Euser
+#host ~user
 #path /path/to/file
 
 #data
@@ -1628,12 +1625,14 @@ file:///$lib/foo/bar
 #data
 file:///cgi-bin/foo.cgi
 #scheme file
+#host
 #path
 /cgi-bin/foo.cgi
 
 #data
 file:///cgi-bin/foo.cgi?foo=bar
 #scheme file
+#host
 #path
 /cgi-bin/foo.cgi
 #query
@@ -1642,6 +1641,7 @@ foo=bar
 #data
 file:///?/c:/windows/
 #scheme file
+#host
 #path /
 #query /c:/windows/
 
