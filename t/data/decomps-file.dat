@@ -1706,6 +1706,39 @@ file:///?/c:/windows/
 #query /host/windows
 
 #data
+file://aa?bb/cc/dd
+#base file:///aaa/bbb
+#canon
+file://aa/?bb/cc/dd
+#scheme file
+#host aa
+#path /
+#query
+bb/cc/dd
+
+#data
+\\aa?bb\cc\dd
+#base file:///aaa/bbb
+#canon
+file://aa/?bb\cc\dd
+#scheme file
+#host aa
+#path /
+#query
+bb\cc\dd
+
+#data
+\\?bb\cc\dd
+#base file:///aaa/bbb
+#canon
+file:///?bb\cc\dd
+#scheme file
+#host 
+#path /
+#query
+bb\cc\dd
+
+#data
 \\%3F\c:\windows
 #base http://a/b/c
 #canon file:///c:/windows
