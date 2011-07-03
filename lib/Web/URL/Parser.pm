@@ -171,7 +171,7 @@ sub parse_absolute_url ($$) {
 sub _find_scheme ($$) {
   my ($class, $inputref => $result) = @_;
 
-  if ($$inputref =~ s/^([^:]+)://) {
+  if ($$inputref =~ s/\A([A-Za-z0-9_.+-]+)://) {
     $result->{scheme} = $1;
     $result->{scheme_normalized} = $result->{scheme};
     $result->{scheme_normalized} =~ tr/A-Z/a-z/;
@@ -243,9 +243,9 @@ sub resolve_url ($$$) {
   $class->_preprocess_input ($spec);
 
   my $parsed_spec = $class->parse_absolute_url ($spec);
-  if ($parsed_spec->{invalid} or
-      ## Valid scheme characters
-      $parsed_spec->{scheme} =~ /[^A-Za-z0-9_.+-]/) {
+  if ($parsed_spec->{invalid} #or
+      #$parsed_spec->{scheme} =~ /[^A-Za-z0-9_.+-]/ # Redundant
+  ) {
     return $class->_resolve_relative_url (\$spec, $parsed_base_url);
   }
 

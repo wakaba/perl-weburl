@@ -35,22 +35,15 @@ HTTP://example.com/
 
 #data escaped
 \u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020http://test\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020
-#scheme http
-#host test
+#invalid 1
 
 #data escaped
 \u007Fhttp://test\u007F
-#scheme escaped
-\u007Fhttp
-#host escaped
-test\u007F
+#invalid 1
 
 #data escaped
 \u0080http://test\u0080
-#scheme escaped
-\u0080http
-#host escaped
-test\u0080
+#invalid 1
 
 #data
 :abc
@@ -79,8 +72,7 @@ hTtP://test/
 
 #data
 /::ab
-#scheme /
-#path :ab
+#invalid 1
 
 #data
 http://foo#bar
@@ -459,15 +451,11 @@ ftp://hoge/fuga
 
 #data
 %D9%82%D9%87%D9%88%D8%A9://coffee.example/
-#scheme %D9%82%D9%87%D9%88%D8%A9
-#host coffee.example
-#path /
+#invalid 1
 
 #data
 %D9%82%D9%87%D9%88%D8%a9://coffee.example/
-#scheme %D9%82%D9%87%D9%88%D8%a9
-#host coffee.example
-#path /
+#invalid 1
 
 #data
 http://%D9%82%D9%87%D9%88%D8%A9@example/

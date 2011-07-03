@@ -268,9 +268,9 @@ hTtP://foo/bar
 #path /bar
 
 #data
-g:h
+gg:h
 #base http://a/b/c/d;p?q
-#scheme g
+#scheme gg
 #path h
 
 #data
@@ -776,4 +776,4 @@ http:.
 #base http://a/b/c/d;p?q
 #scheme http
 #host a
-#path /b/c/%2E/a/b/%2E%2E/%2e
+#path /b/c/a/

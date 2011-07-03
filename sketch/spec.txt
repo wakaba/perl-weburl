@@ -97,8 +97,8 @@ The *steps to preprocess a string /s/* is as follows:
   If /s/ begins with two or more U+005C REVERSE SOLIDUS character (\),
   follow the steps to "parse a UNC path /s/" and abort these steps.
 
-  Let /scheme/ be the URL scheme obtained by the steps to "find a
-  scheme" [url-spec].
+  Follow the "steps to find the scheme".  Let /scheme/ be the result,
+  if any.
 
   If /scheme/ is a character in the range U+0041 ... U+005A and U+0061
   ... U+007A, follow the steps to "parse a drive URL" with current /s/
@@ -223,6 +223,16 @@ Parse a drive URL with /s/ and /scheme/:
   consumed characters.
 
   Let the |path| component be the remaining /s/.
+
+** Finding the scheme
+
+The *steps to find the scheme* is as follow:
+
+  If the string begins with one or more "valid scheme characters"
+  followed by a U+003A COLON character (:), find the scheme, as
+  described in Section 3.1. of the URL parsing spec [url-spec].
+
+  Otherwise, the URL is invalid.  Abort these steps.
 
 ** Finding the authority, path, query, and fragment of URL /s/
 

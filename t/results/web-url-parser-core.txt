@@ -575,13 +575,13 @@ ok 481 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 482 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 483 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 484 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 592.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 592.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 592.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 593.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 593.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 593.
 ok 485 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 592.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 592.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 592.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 593.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 593.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 593.
 ok 486 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 487 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 488 - http://%00.com/ - http://%00.com/
@@ -4520,9 +4520,9 @@ ok 3179 - http://00000000000000000001/ - http://00000000000000000001/
 ok 3180 - http://00000000000000000001/ - http://00000000000000000001/ idempotency
 ok 3181 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/
 ok 3182 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 511.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 512.
 ok 3183 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 511.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 512.
 ok 3184 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ idempotency
 ok 3185 - http://000030052000001/ - http://000030052000001/
 ok 3186 - http://000030052000001/ - http://000030052000001/ idempotency
@@ -4532,9 +4532,9 @@ ok 3189 - http://0300.0250.00.01/ - http://0300.0250.00.01/
 ok 3190 - http://0300.0250.00.01/ - http://0300.0250.00.01/ idempotency
 ok 3191 - http://030052000001/ - http://030052000001/
 ok 3192 - http://030052000001/ - http://030052000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 511.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 512.
 ok 3193 - http://0X12C0a80001/ - http://0X12C0a80001/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 511.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 512.
 ok 3194 - http://0X12C0a80001/ - http://0X12C0a80001/ idempotency
 ok 3195 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/
 ok 3196 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/ idempotency
@@ -4560,9 +4560,9 @@ ok 3215 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/
 ok 3216 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/ idempotency
 ok 3217 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/
 ok 3218 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 511.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 512.
 ok 3219 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 511.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 512.
 ok 3220 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/ idempotency
 ok 3221 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/
 ok 3222 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/ idempotency
@@ -7469,13 +7469,13 @@ ok 5889 - http://@@@@@@@@ - http://@@@@@@@@
 ok 5890 - http://@@@@@@@@ - http://@@@@@@@@ idempotency
 ok 5891 - http://:@ - http://:@
 ok 5892 - http://:@ - http://:@ idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 473.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 474.
 ok 5893 - http://[] - http://[]
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 473.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 474.
 ok 5894 - http://[] - http://[] idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 473.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 474.
 ok 5895 - http://[]/ - http://[]/
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 473.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 474.
 ok 5896 - http://[]/ - http://[]/ idempotency
 ok 5897 - http://[?] - http://[?]
 ok 5898 - http://[?] - http://[?] idempotency

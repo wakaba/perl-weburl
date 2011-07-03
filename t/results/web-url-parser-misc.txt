@@ -181,7 +181,7 @@ ok 178 - http:?foo\#bar - http://hoge?fuga
 ok 179 - http:\#bar - http://hoge/fuga
 ok 180 - http:/foo/bar - http://hoge/fuga
 ok 181 - hTtP://foo/bar - http://hoo/aaa
-ok 182 - g:h - http://a/b/c/d;p?q
+ok 182 - gg:h - http://a/b/c/d;p?q
 ok 183 - /g - http://a/b/c/d;p?q
 ok 184 - //g - http://a/b/c/d;p?q
 ok 185 - ?y - http://a/b/c/d;p?q
