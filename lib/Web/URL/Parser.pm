@@ -253,6 +253,10 @@ sub resolve_url ($$$) {
 
   if ($parsed_spec->{is_hierarchical}) {
     if (defined $parsed_spec->{path}) {
+      if ($parsed_spec->{scheme_normalized} eq 'file') {
+        $parsed_spec->{path} =~ s{%2[Ff]}{/}g;
+        $parsed_spec->{path} =~ s{%5[Cc]}{\\}g;
+      }
       $parsed_spec->{path} = $class->_remove_dot_segments
           ($parsed_spec->{path});
     }
@@ -394,6 +398,8 @@ sub _resolve_relative_url ($$$) {
     if ($parsed_base_url->{scheme_normalized} eq 'file') {
       $b_path =~ s{%2[Ff]}{/}g;
       $b_path =~ s{%5[Cc]}{\\}g;
+      $r_path =~ s{%2[Ff]}{/}g;
+      $r_path =~ s{%5[Cc]}{\\}g;
     }
     {
       ## Merge path (RFC 3986)
@@ -684,8 +690,8 @@ sub label_to_ascii ($;%) {
 use Web::DomainName::IDNEnabled;
 use Char::Class::IDNBlacklist qw(InIDNBlacklistChars);
 
-sub to_ascii ($$) {
-  my ($class, $s) = @_;
+sub to_ascii ($$$) {
+  my ($class, $s, $is_file) = @_;
 
   my $fallback = GECKO ? $s : undef;
   $fallback =~ tr/A-Z/a-z/ if defined $fallback;
@@ -831,7 +837,9 @@ sub to_ascii ($$) {
     my $t = canonicalize_ipv6_addr substr $s, 1, -2 + length $s;
     return '[' . $t . ']' if defined $t;
   } elsif (THIS) {
-    return undef if $s =~ /:/;
+    unless ($is_file) {
+      return undef if $s =~ /:/;
+    }
   }
   
   if (THIS) {
@@ -849,9 +857,10 @@ sub to_ascii ($$) {
   }
 
   if (THIS) {
-    $s =~ s{([\x00-\x2A\x2C\x2F\x3B-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
+    $s =~ s{([\x00-\x2A\x2C\x2F\x3B-\x3F\x5C\x5E\x60\x7B-\x7D\x7F])}{
       sprintf '%%%02X', ord $1;
     }ge;
+    $s =~ s{\@}{%40}g unless $is_file;
   } elsif (IE) {
     $s =~ s{([\x00-\x20\x22\x3C\x3E\x5C\x5E\x60\x7B-\x7D\x7F])}{
       sprintf '%%%02x', ord $1;
@@ -954,7 +963,8 @@ sub canonicalize_url ($$;$) {
 
   if (defined $parsed_url->{host}) {
     my $orig_host = $parsed_url->{host};
-    $parsed_url->{host} = $class->to_ascii ($parsed_url->{host});
+    $parsed_url->{host} = $class->to_ascii
+        ($parsed_url->{host}, $parsed_url->{scheme_normalized} eq 'file');
     if (not defined $parsed_url->{host}) {
       %$parsed_url = (invalid => 1);
       return $parsed_url;

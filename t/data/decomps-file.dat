@@ -132,18 +132,18 @@ file:///cd:/
 #data
 file://cd:
 #canon
-file://cd/
+file://cd:/
 #scheme file
-#host cd
+#host cd:
 #path
 /
 
 #data
 file://cd:/
 #canon
-file://cd/
+file://cd:/
 #scheme file
-#host cd
+#host cd:
 #path
 /
 

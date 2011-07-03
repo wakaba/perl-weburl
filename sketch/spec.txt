@@ -382,8 +382,14 @@ The *steps to preprocess a string /s/* is as follows:
   as "/base-url/ is hierarchical".
 
   If the |scheme| components of /resolved-url/ and /base-url/ are
-  different and /resolved-url/ is hierarchical, remove dot-segments
-  [RFC 3986] from the |path| component of /resolved-url/, if any.
+  different, /resolved-url/ is "hierarchical", and /resolved-url/ has
+  the |path| component:
+
+    If the |scheme| is |file| (ASCII case-insensitive), percent-decode
+    |%2F| and |%5C| (ASCII case-insensitive) in the |path| component.
+
+    "Remove dot-segments" [RFC 3986] from the |path| component of
+    /resolved-url/.
 
 ** Resolve as a relative URL
 
@@ -413,7 +419,7 @@ The *steps to preprocess a string /s/* is as follows:
 
   Remove dot-segments from the |path| component.
 
-  If |base-url| does not have the |authority| component, let
+  If /base-url/ does not have the |authority| component, let
   /resolved-url/ be /base-url/'s scheme, followed by a U+003A COLON
   character (:), followed by the |path| component, followed by a
   U+003F QUESTION MARK character (?) and the |query| component if
@@ -428,10 +434,11 @@ The *steps to preprocess a string /s/* is as follows:
 
 ** Resolve as a path-relative URL
 
-  If the |scheme| is |file| (ASCII case-insensitive), percent-decode
-  |%2F| and |%5C| (ASCII case-insensitive) in the |path| component.
+  If the |scheme| of /base-url/ is |file| (ASCII case-insensitive),
+  percent-decode |%2F| and |%5C| (ASCII case-insensitive) in the
+  |path| component of /base-url/ and /resolved-url/.
 
-  Then, apply RFC 3986's algorithm.
+  Then, apply the RFC 3986's algorithm to resolve a path-relative URL.
 
 * Percent-encoding
 
@@ -575,7 +582,8 @@ returns either a string or the "fail" state.
 
 This algorithm returns either a string or the "fail" state.
 
-  1. Let /s/ be the given string.
+  1. Let /s/ be the given string.  Let /scheme/ be the |scheme|
+     component of the URL in which /s/ occurs.
 
   2. Remove U+0009 CHARACTER TABULATION character, U+000A LINE FEED
      character, and U+000D CARRIAGE RETURN character from /s/.
@@ -781,7 +789,8 @@ This algorithm returns either a string or the "fail" state.
     browsers canonicalize them differently and none of them could be
     considered as sane and idempotent.
 
-  26. THIS: Otherwise, if /s/ contains a U+003A COLON character (:),
+  26. THIS: Otherwise, if /s/ contains a U+003A COLON character (:)
+      and /scheme/ is different from |file| (ASCII case-insensitive),
       return /fallback/ and abort the CanonicalizeHost algorithm.
 
   27. Invoke the rules for canonicalizing an IPv4 address with /s/.
@@ -811,14 +820,15 @@ This algorithm returns either a string or the "fail" state.
     THIS: 0x00-0x1F, 0x20, 0x21 (!), 0x22 ("), 0x23 (#), 0x24 ($),
     0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*), 0x2C
     (,), 0x2F (/), 0x3B (;), 0x3C (<), 0x3D (=), 0x3E (>), 0x3F (?),
-    0x40 (@), 0x5C (\), 0x5E (^), 0x60 (`), 0x7B ({), 0x7C (|), 0x7D
-    (}), 0x7F.
+    0x5C (\), 0x5E (^), 0x60 (`), 0x7B ({), 0x7C (|), 0x7D (}), 0x7F.
+    In addition, 0x40 (@) if /scheme/ is different from |file| (ASCII
+    case-insensitive).
 
         NOTE: These are ASCII characters not allowed in URLs,
         delimiter characters used before or after the |host|
-        component, characters percent-encoded in Chrome (See Step 27),
-        ";", and "%".  Characters ":", "[", and "]", used to represent
-        IPv6 addresses, are not percent-encoded here.
+        component, characters percent-encoded in Chrome (See Step 28),
+        ";", and "%".  Characters ":", "[", and "]", which are used to
+        represent IPv6 addresses, are not percent-encoded here.
 
     IE: 0x00-0x1F, 0x20, 0x22 ("), 0x3C (<), 0x3E (>), 0x5C (\), 0x5E
     (^), 0x60 (`), 0x7B ({), 0x7C (|), 0x7D (}), 0x7F.  Use lowercase
