@@ -407,6 +407,10 @@ sub _resolve_relative_url ($$$) {
       $r_path =~ s{%2[Ff]}{/}g;
       $r_path =~ s{%5[Cc]}{\\}g;
       if ($r_path =~ m{^(?:[A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:|]|%3[Aa]|%7[Cc])(?=\z|[/\\])}) {
+        delete $result->{user};
+        delete $result->{password};
+        delete $result->{host};
+        delete $result->{port};
         $b_path = '';
       }
     }

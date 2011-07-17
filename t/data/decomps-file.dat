@@ -2021,6 +2021,16 @@ file:///C:/windows/foo.txt
 #path /C:/windows/foo.txt
 
 #data
+file:c:\windows\foo.txt
+#base
+file://foo/bar
+#canon
+file:///c:/windows/foo.txt
+#scheme file
+#host
+#path /c:/windows/foo.txt
+
+#data
 c:\windows\foo.txt
 #base
 file://foo/bar
@@ -2044,9 +2054,9 @@ file://foo/bar
 #base
 file://foo/bar
 #canon
-file://foo/A:/windows/foo.txt
+file:///A:/windows/foo.txt
 #scheme file
-#host foo
+#host 
 #path
 /A:/windows/foo.txt
 

@@ -468,6 +468,14 @@ The *steps to find the scheme* is as follow:
     Percent-decode |%2F| and |%5C| (ASCII case-insensitive) in the
     |path| component of /resolved-url/.
 
+    If the |path| component of /resolved-url/ begins with the "drive
+    specification":
+
+      Remove the |path| component from /base-url/.
+
+      Remove |user|, |password|, |host|, and |port| components from
+      /resolved-url/.
+
   Then, apply the RFC 3986's algorithm to resolve a path-relative URL.
 
 * Percent-encoding
