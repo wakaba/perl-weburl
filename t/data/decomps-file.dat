@@ -2042,12 +2042,13 @@ file:///c:/windows/foo.txt
 
 #data
 0:\windows\foo.txt
+#canon
+0:/windows/foo.txt
 #base
 file://foo/bar
 #scheme 0
-#host
 #path
-\windows\foo.txt
+/windows/foo.txt
 
 #data
 %41:\windows\foo.txt
@@ -2062,12 +2063,13 @@ file:///A:/windows/foo.txt
 
 #data
 +:\windows\foo.txt
+#canon
++:/windows/foo.txt
 #base
 file://foo/bar
 #scheme +
-#host
 #path
-\windows\foo.txt
+/windows/foo.txt
 
 #data
 *:\windows\foo.txt
@@ -2117,10 +2119,10 @@ c:foo/bar
 #base
 file://xyz/abc/def
 #canon
-file:///c:/foo/bar
+file://xyz/c:foo/bar
 #scheme file
-#host
-#path /c:/foo/bar
+#host xyz
+#path /c:foo/bar
 
 #data
 c:foo/bar

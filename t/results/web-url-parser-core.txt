@@ -2146,29 +2146,11 @@ ok 1586 - file:c:\windows\foo.txt - file://foo/bar
 ok 1587 - file:c:\windows\foo.txt - file://foo/bar idempotency
 ok 1588 - c:\windows\foo.txt - file://foo/bar
 ok 1589 - c:\windows\foo.txt - file://foo/bar idempotency
-not ok 1590 - 0:\windows\foo.txt - file://foo/bar
-#   Failed test '0:\windows\foo.txt - file://foo/bar'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------+------------------------------------------+
-# | Elt|Got                                      |Expected                                  |
-# +----+-----------------------------------------+------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized      |canon,host,path,scheme,scheme_normalized  *
-# *   1|0:/windows/foo.txt,/windows/foo.txt,0,0  |0:\windows\foo.txt,,\windows\foo.txt,0,0  *
-# +----+-----------------------------------------+------------------------------------------+
+ok 1590 - 0:\windows\foo.txt - file://foo/bar
 ok 1591 - 0:\windows\foo.txt - file://foo/bar idempotency
 ok 1592 - %41:\windows\foo.txt - file://foo/bar
 ok 1593 - %41:\windows\foo.txt - file://foo/bar idempotency
-not ok 1594 - +:\windows\foo.txt - file://foo/bar
-#   Failed test '+:\windows\foo.txt - file://foo/bar'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-----------------------------------------+------------------------------------------+
-# | Elt|Got                                      |Expected                                  |
-# +----+-----------------------------------------+------------------------------------------+
-# *   0|canon,path,scheme,scheme_normalized      |canon,host,path,scheme,scheme_normalized  *
-# *   1|+:/windows/foo.txt,/windows/foo.txt,+,+  |+:\windows\foo.txt,,\windows\foo.txt,+,+  *
-# +----+-----------------------------------------+------------------------------------------+
+ok 1594 - +:\windows\foo.txt - file://foo/bar
 ok 1595 - +:\windows\foo.txt - file://foo/bar idempotency
 ok 1596 - *:\windows\foo.txt - file://foo/bar
 ok 1597 - *:\windows\foo.txt - file://foo/bar idempotency
@@ -2182,12 +2164,12 @@ not ok 1604 - c:foo/bar - file://xyz/abc/def
 #   Failed test 'c:foo/bar - file://xyz/abc/def'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------+-------------------------------------------+
-# | Elt|Got                                                    |Expected                                   |
-# +----+-------------------------------------------------------+-------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized   |
-# *   1|file://xyz/abc/c:foo/bar,xyz,/abc/c:foo/bar,file,file  |file:///c:/foo/bar,,/c:/foo/bar,file,file  *
-# +----+-------------------------------------------------------+-------------------------------------------+
+# +----+-------------------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                                    |Expected                                       |
+# +----+-------------------------------------------------------+-----------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized       |
+# *   1|file://xyz/abc/c:foo/bar,xyz,/abc/c:foo/bar,file,file  |file://xyz/c:foo/bar,xyz,/c:foo/bar,file,file  *
+# +----+-------------------------------------------------------+-----------------------------------------------+
 ok 1605 - c:foo/bar - file://xyz/abc/def idempotency
 ok 1606 - c:foo/bar - http://xyz/abc/def
 ok 1607 - c:foo/bar - http://xyz/abc/def idempotency
@@ -10565,4 +10547,4 @@ ok 9083 - ftp:foobar - ftp://hoge/abc/def idempotency
 ok 9084 - ftp:foobar?a\#b - ftp://hoge/abc/def
 ok 9085 - ftp:foobar?a\#b - ftp://hoge/abc/def idempotency
 1..9085
-# Looks like you failed 59 tests of 9085.
+# Looks like you failed 57 tests of 9085.
