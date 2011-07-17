@@ -578,13 +578,13 @@ ok 483 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 484 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 485 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 486 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 599.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 599.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 599.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 567.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 567.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 567.
 ok 487 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 599.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 599.
-Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 599.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 567.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 567.
+Unicode character 0xfdd0 is illegal at ../lib/Web/URL/Parser.pm line 567.
 ok 488 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 489 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 490 - http://%00.com/ - http://%00.com/
@@ -2164,27 +2164,18 @@ not ok 1604 - c:foo/bar - file://xyz/abc/def
 #   Failed test 'c:foo/bar - file://xyz/abc/def'
 #   at _canon line 1.
 #   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------+-----------------------------------------------+
-# | Elt|Got                                                    |Expected                                       |
-# +----+-------------------------------------------------------+-----------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized               |canon,host,path,scheme,scheme_normalized       |
-# *   1|file://xyz/abc/c:foo/bar,xyz,/abc/c:foo/bar,file,file  |file://xyz/c:foo/bar,xyz,/c:foo/bar,file,file  *
-# +----+-------------------------------------------------------+-----------------------------------------------+
+# +----+-------------------------------------------+-----------------------------------------------+
+# | Elt|Got                                        |Expected                                       |
+# +----+-------------------------------------------+-----------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized   |canon,host,path,scheme,scheme_normalized       |
+# *   1|file:///c:/foo/bar,,/c:/foo/bar,file,file  |file://xyz/c:foo/bar,xyz,/c:foo/bar,file,file  *
+# +----+-------------------------------------------+-----------------------------------------------+
 ok 1605 - c:foo/bar - file://xyz/abc/def idempotency
 ok 1606 - c:foo/bar - http://xyz/abc/def
 ok 1607 - c:foo/bar - http://xyz/abc/def idempotency
 ok 1608 - \\\foo\bar\baz - http://foo/bar
 ok 1609 - \\\foo\bar\baz - http://foo/bar idempotency
-not ok 1610 - \\\foo\bar\baz - file://foo/bar
-#   Failed test '\\\foo\bar\baz - file://foo/bar'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------+-------------------------------------------+
-# | Elt|Got                                          |Expected                                   |
-# +----+---------------------------------------------+-------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized     |canon,host,path,scheme,scheme_normalized   |
-# *   1|file:///foo/bar/baz,,/foo/bar/baz,file,file  |file://foo/bar/baz,foo,/bar/baz,file,file  *
-# +----+---------------------------------------------+-------------------------------------------+
+ok 1610 - \\\foo\bar\baz - file://foo/bar
 ok 1611 - \\\foo\bar\baz - file://foo/bar idempotency
 ok 1612 - \\\\foo\bar\baz - http://foo/bar
 ok 1613 - \\\\foo\bar\baz - http://foo/bar idempotency
@@ -2212,16 +2203,7 @@ ok 1634 - \\abc - file://foo/bar
 ok 1635 - \\abc - file://foo/bar idempotency
 ok 1636 - \\\abc - http://foo/bar
 ok 1637 - \\\abc - http://foo/bar idempotency
-not ok 1638 - \\\abc - file://foo/bar
-#   Failed test '\\\abc - file://foo/bar'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|file:///abc,,/abc,file,file               |file://abc/,abc,/,file,file               *
-# +----+------------------------------------------+------------------------------------------+
+ok 1638 - \\\abc - file://foo/bar
 ok 1639 - \\\abc - file://foo/bar idempotency
 ok 1640 - \\abc\ - http://foo/bar
 ok 1641 - \\abc\ - http://foo/bar idempotency
@@ -2250,7 +2232,7 @@ not ok 1650 - \/\abc - http://a/b
 # | Elt|Got                                       |Expected                                  |
 # +----+------------------------------------------+------------------------------------------+
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://abc/,abc,/,http,http               |http://a///abc,a,///abc,http,http         *
+# *   1|http:///abc,,/abc,http,http               |http://a///abc,a,///abc,http,http         *
 # +----+------------------------------------------+------------------------------------------+
 ok 1651 - \/\abc - http://a/b idempotency
 not ok 1652 - /\\abc - file://a/b
@@ -2272,7 +2254,7 @@ not ok 1654 - /\\abc - http://a/b
 # | Elt|Got                                       |Expected                                  |
 # +----+------------------------------------------+------------------------------------------+
 # |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|http://abc/,abc,/,http,http               |http://a///abc,a,///abc,http,http         *
+# *   1|http:///abc,,/abc,http,http               |http://a///abc,a,///abc,http,http         *
 # +----+------------------------------------------+------------------------------------------+
 ok 1655 - /\\abc - http://a/b idempotency
 ok 1656 - \\abc?def - file://a/b
@@ -3880,9 +3862,9 @@ ok 3216 - http://00000000000000000001/ - http://00000000000000000001/
 ok 3217 - http://00000000000000000001/ - http://00000000000000000001/ idempotency
 ok 3218 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/
 ok 3219 - http://0000000000000300.0x00000000000000fF.00000000000000001/ - http://0000000000000300.0x00000000000000fF.00000000000000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 518.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 486.
 ok 3220 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 518.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 486.
 ok 3221 - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ - http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/ idempotency
 ok 3222 - http://000030052000001/ - http://000030052000001/
 ok 3223 - http://000030052000001/ - http://000030052000001/ idempotency
@@ -3892,9 +3874,9 @@ ok 3226 - http://0300.0250.00.01/ - http://0300.0250.00.01/
 ok 3227 - http://0300.0250.00.01/ - http://0300.0250.00.01/ idempotency
 ok 3228 - http://030052000001/ - http://030052000001/
 ok 3229 - http://030052000001/ - http://030052000001/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 518.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 486.
 ok 3230 - http://0X12C0a80001/ - http://0X12C0a80001/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 518.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 486.
 ok 3231 - http://0X12C0a80001/ - http://0X12C0a80001/ idempotency
 ok 3232 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/
 ok 3233 - http://0xC0.0Xa8.0x0.0x1/ - http://0xC0.0Xa8.0x0.0x1/ idempotency
@@ -3920,9 +3902,9 @@ ok 3252 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/
 ok 3253 - http://0xFFFFFFFF/ - http://0xFFFFFFFF/ idempotency
 ok 3254 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/
 ok 3255 - http://0x0FFFFFFFF/ - http://0x0FFFFFFFF/ idempotency
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 518.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 486.
 ok 3256 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/
-Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 518.
+Hexadecimal number > 0xffffffff non-portable at ../lib/Web/URL/Parser.pm line 486.
 ok 3257 - http://0xFFFFFFFFF/ - http://0xFFFFFFFFF/ idempotency
 ok 3258 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/
 ok 3259 - http://0xFFFFFFFF.0/ - http://0xFFFFFFFF.0/ idempotency
@@ -5742,7 +5724,7 @@ not ok 5012 - /foo?bar\#baz - http://
 # | Elt|Got                                                      |Expected                                                 |
 # +----+---------------------------------------------------------+---------------------------------------------------------+
 # |   0|canon,fragment,host,path,query,scheme,scheme_normalized  |canon,fragment,host,path,query,scheme,scheme_normalized  |
-# *   1|http://foo/?bar#baz,baz,foo,/,bar,http,http              |http:///foo?bar#baz,baz,foo,,bar,http,http               *
+# *   1|http:///foo?bar#baz,baz,,/foo,bar,http,http              |http:///foo?bar#baz,baz,foo,,bar,http,http               *
 # +----+---------------------------------------------------------+---------------------------------------------------------+
 ok 5013 - /foo?bar\#baz - http:// idempotency
 ok 5014 - http://foo/baz - http://foo/bar
@@ -6773,9 +6755,27 @@ ok 5904 - http://foo\#bar/baz - http://foo\#bar/baz
 ok 5905 - http://foo\#bar/baz - http://foo\#bar/baz idempotency
 ok 5906 - http://foo?bar/baz - http://foo?bar/baz
 ok 5907 - http://foo?bar/baz - http://foo?bar/baz idempotency
-ok 5908 - http:///foo - http:///foo
+not ok 5908 - http:///foo - http:///foo
+#   Failed test 'http:///foo - http:///foo'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+------------------------------------------+------------------------------------------+
+# | Elt|Got                                       |Expected                                  |
+# +----+------------------------------------------+------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
+# *   1|http:///foo,,/foo,http,http               |http://foo/,foo,/,http,http               *
+# +----+------------------------------------------+------------------------------------------+
 ok 5909 - http:///foo - http:///foo idempotency
-ok 5910 - http:///foo/ - http:///foo/
+not ok 5910 - http:///foo/ - http:///foo/
+#   Failed test 'http:///foo/ - http:///foo/'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+------------------------------------------+------------------------------------------+
+# | Elt|Got                                       |Expected                                  |
+# +----+------------------------------------------+------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
+# *   1|http:///foo/,,/foo/,http,http             |http://foo/,foo,/,http,http               *
+# +----+------------------------------------------+------------------------------------------+
 ok 5911 - http:///foo/ - http:///foo/ idempotency
 ok 5912 - http:///?bar - http:///?bar
 ok 5913 - http:///?bar - http:///?bar idempotency
@@ -6795,13 +6795,13 @@ ok 5926 - http://@@@@@@@@ - http://@@@@@@@@
 ok 5927 - http://@@@@@@@@ - http://@@@@@@@@ idempotency
 ok 5928 - http://:@ - http://:@
 ok 5929 - http://:@ - http://:@ idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 480.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 448.
 ok 5930 - http://[] - http://[]
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 480.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 448.
 ok 5931 - http://[] - http://[] idempotency
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 480.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 448.
 ok 5932 - http://[]/ - http://[]/
-Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 480.
+Use of uninitialized value $l in split at ../lib/Web/URL/Parser.pm line 448.
 ok 5933 - http://[]/ - http://[]/ idempotency
 ok 5934 - http://[?] - http://[?]
 ok 5935 - http://[?] - http://[?] idempotency
@@ -7549,16 +7549,7 @@ ok 6515 - jar:file://my/path/to/images.jar!/path/in/classpath/image.png - jar:fi
 ok 6516 - jar:file://my/path/to/images.jar!/path/in/classpath/image.png - jar:file://my/path/to/images.jar!/path/in/classpath/image.png idempotency
 ok 6517 - widget://beefdead/dahuts/sightings/alpes-francaises.svg - widget://beefdead/dahuts/sightings/alpes-francaises.svg
 ok 6518 - widget://beefdead/dahuts/sightings/alpes-francaises.svg - widget://beefdead/dahuts/sightings/alpes-francaises.svg idempotency
-not ok 6519 - widget:///secret-identities/marcoscaeres/batman.foaf - widget:///secret-identities/marcoscaeres/batman.foaf
-#   Failed test 'widget:///secret-identities/marcoscaeres/batman.foaf - widget:///secret-identities/marcoscaeres/batman.foaf'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                            |Expected                                                                                                         |
-# +----+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized                                                                       |canon,host,path,scheme,scheme_normalized                                                                         |
-# *   1|widget://secret-identities/marcoscaeres/batman.foaf,secret-identities,/marcoscaeres/batman.foaf,widget,widget  |widget:///secret-identities/marcoscaeres/batman.foaf,,/secret-identities/marcoscaeres/batman.foaf,widget,widget  *
-# +----+---------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+
+ok 6519 - widget:///secret-identities/marcoscaeres/batman.foaf - widget:///secret-identities/marcoscaeres/batman.foaf
 ok 6520 - widget:///secret-identities/marcoscaeres/batman.foaf - widget:///secret-identities/marcoscaeres/batman.foaf idempotency
 ok 6521 - attachment:/41/headers.html - attachment:/41/headers.html
 ok 6522 - attachment:/41/headers.html - attachment:/41/headers.html idempotency
@@ -7576,16 +7567,7 @@ ok 6533 - cid://foo - cid://foo
 ok 6534 - cid://foo - cid://foo idempotency
 ok 6535 - operaemail:/753/mail.xml - operaemail:/753/mail.xml
 ok 6536 - operaemail:/753/mail.xml - operaemail:/753/mail.xml idempotency
-not ok 6537 - mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename - mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename
-#   Failed test 'mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename - mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                                                                                                                           |Expected                                                                                                                                                                                                                        |
-# +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-# |   0|canon,host,path,query,scheme,scheme_normalized                                                                                                                                                                                |canon,host,path,query,scheme,scheme_normalized                                                                                                                                                                                  |
-# *   1|mailbox://c%7C/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename,c%7C,/path/to/mailbox/Inbox,number=7068581&part=1&type=application/octet-stream&filename=filename,mailbox,mailbox  |mailbox:///C%7C/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename,,/C%7C/path/to/mailbox/Inbox,number=7068581&part=1&type=application/octet-stream&filename=filename,mailbox,mailbox  *
-# +----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+ok 6537 - mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename - mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename
 ok 6538 - mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename - mailbox:///C|/path/to/mailbox/Inbox?number=7068581&part=1&type=application/octet-stream&filename=filename idempotency
 ok 6539 - mhtml:file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht - mhtml:file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht
 ok 6540 - mhtml:file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht - mhtml:file://C:\Documents%20and%20Settings\user\Local%20Settings\Temp\test.mht idempotency
@@ -7885,16 +7867,7 @@ ok 6708 - irc://moznet/%26local - irc://moznet/%26local
 ok 6709 - irc://moznet/%26local - irc://moznet/%26local idempotency
 ok 6710 - irc://somenet/+modeless - irc://somenet/+modeless
 ok 6711 - irc://somenet/+modeless - irc://somenet/+modeless idempotency
-not ok 6712 - irc:///mIRC - irc:///mIRC
-#   Failed test 'irc:///mIRC - irc:///mIRC'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+------------------------------------------+------------------------------------------+
-# | Elt|Got                                       |Expected                                  |
-# +----+------------------------------------------+------------------------------------------+
-# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
-# *   1|irc://mirc/,mirc,/,irc,irc                |irc:///mIRC,,/mIRC,irc,irc                *
-# +----+------------------------------------------+------------------------------------------+
+ok 6712 - irc:///mIRC - irc:///mIRC
 ok 6713 - irc:///mIRC - irc:///mIRC idempotency
 ok 6714 - irc://moznet/mozbot,isnick?msg=uuid - irc://moznet/mozbot,isnick?msg=uuid
 ok 6715 - irc://moznet/mozbot,isnick?msg=uuid - irc://moznet/mozbot,isnick?msg=uuid idempotency
@@ -10403,16 +10376,7 @@ not ok 8964 - res://foo\bar - res://foo\bar
 ok 8965 - res://foo\bar - res://foo\bar idempotency
 ok 8966 - resource:/res/forms.css - resource:/res/forms.css
 ok 8967 - resource:/res/forms.css - resource:/res/forms.css idempotency
-not ok 8968 - resource:///res/builtin/htmlBindings.xml\#inputFieldsBase - resource:///res/builtin/htmlBindings.xml\#inputFieldsBase
-#   Failed test 'resource:///res/builtin/htmlBindings.xml\#inputFieldsBase - resource:///res/builtin/htmlBindings.xml\#inputFieldsBase'
-#   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
-# +----+-------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
-# | Elt|Got                                                                                                                      |Expected                                                                                                                   |
-# +----+-------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
-# |   0|canon,fragment,host,path,scheme,scheme_normalized                                                                        |canon,fragment,host,path,scheme,scheme_normalized                                                                          |
-# *   1|resource://res/builtin/htmlBindings.xml#inputFieldsBase,inputFieldsBase,res,/builtin/htmlBindings.xml,resource,resource  |resource:///res/builtin/htmlBindings.xml#inputFieldsBase,inputFieldsBase,,/res/builtin/htmlBindings.xml,resource,resource  *
-# +----+-------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+
+ok 8968 - resource:///res/builtin/htmlBindings.xml\#inputFieldsBase - resource:///res/builtin/htmlBindings.xml\#inputFieldsBase
 ok 8969 - resource:///res/builtin/htmlBindings.xml\#inputFieldsBase - resource:///res/builtin/htmlBindings.xml\#inputFieldsBase idempotency
 ok 8970 - resource://foo/bar - resource://foo/bar
 ok 8971 - resource://foo/bar - resource://foo/bar idempotency
@@ -10482,7 +10446,16 @@ ok 9018 - ftp://foo//bar//baz - ftp://foo//bar//baz
 ok 9019 - ftp://foo//bar//baz - ftp://foo//bar//baz idempotency
 ok 9020 - ftp://foo/bar/../baz - ftp://foo/bar/../baz
 ok 9021 - ftp://foo/bar/../baz - ftp://foo/bar/../baz idempotency
-ok 9022 - ftp:///foo/bar - ftp:///foo/bar
+not ok 9022 - ftp:///foo/bar - ftp:///foo/bar
+#   Failed test 'ftp:///foo/bar - ftp:///foo/bar'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+------------------------------------------+------------------------------------------+
+# | Elt|Got                                       |Expected                                  |
+# +----+------------------------------------------+------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
+# *   1|ftp:///foo/bar,,/foo/bar,ftp,ftp          |ftp://foo/bar,foo,/bar,ftp,ftp            *
+# +----+------------------------------------------+------------------------------------------+
 ok 9023 - ftp:///foo/bar - ftp:///foo/bar idempotency
 ok 9024 - ftp://hoge\bar\baz - ftp://hoge\bar\baz
 ok 9025 - ftp://hoge\bar\baz - ftp://hoge\bar\baz idempotency
@@ -10534,7 +10507,16 @@ ok 9070 - ftp:/hoge - http://foo/bar/baz
 ok 9071 - ftp:/hoge - http://foo/bar/baz idempotency
 ok 9072 - ftp://hoge - http://foo/bar/baz
 ok 9073 - ftp://hoge - http://foo/bar/baz idempotency
-ok 9074 - ftp:///hoge - http://foo/bar/baz
+not ok 9074 - ftp:///hoge - http://foo/bar/baz
+#   Failed test 'ftp:///hoge - http://foo/bar/baz'
+#   at _canon line 1.
+#   (in test::Web::URL::Parser->_canon_core)
+# +----+------------------------------------------+------------------------------------------+
+# | Elt|Got                                       |Expected                                  |
+# +----+------------------------------------------+------------------------------------------+
+# |   0|canon,host,path,scheme,scheme_normalized  |canon,host,path,scheme,scheme_normalized  |
+# *   1|ftp:///hoge,,/hoge,ftp,ftp                |ftp://hoge/,hoge,/,ftp,ftp                *
+# +----+------------------------------------------+------------------------------------------+
 ok 9075 - ftp:///hoge - http://foo/bar/baz idempotency
 ok 9076 - ftp:?hoge - http://foo/bar/baz
 ok 9077 - ftp:?hoge - http://foo/bar/baz idempotency
@@ -10547,4 +10529,4 @@ ok 9083 - ftp:foobar - ftp://hoge/abc/def idempotency
 ok 9084 - ftp:foobar?a\#b - ftp://hoge/abc/def
 ok 9085 - ftp:foobar?a\#b - ftp://hoge/abc/def idempotency
 1..9085
-# Looks like you failed 57 tests of 9085.
+# Looks like you failed 55 tests of 9085.
