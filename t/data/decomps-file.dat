@@ -1689,6 +1689,14 @@ file:///?/c:/windows/
 #path /c:/windows
 
 #data
+file://///%3F/c:
+#canon
+file:///c:/
+#scheme file
+#host
+#path /c:/
+
+#data
 \\?\host\windows
 #base http://a/b/c
 #canon file://%3F/host/windows

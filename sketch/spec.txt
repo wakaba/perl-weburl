@@ -830,7 +830,7 @@ This algorithm returns either a string or the "fail" state.
   28. If /s/ contains one of the following characters, return
       /fallback/ and abort the CanonicalizeHost algorithm:
 
-      THIS: U+0000, U+002F (/), U+0025 (%), U+003F (?), or U+005C (\).
+      THIS: U+0000, U+002F (/), U+0025 (%), or U+005C (\).
 
       CHROME: U+0000, ..., U+001F, U+0025 (%), U+002F (/), U+003A (:),
       U+003B (;), U+003F (?), U+005B ([), U+005C (\), U+005D (]),
@@ -938,11 +938,16 @@ This algorithm returns either a string or the "fail" state.
 
         If the |path| component of /u/ begins with an optional "slash
         character" followed by a "drive specification" followed by a
-        "slash character" or the end of the string, replace them by a
-        U+002F SOLIDUS character (/) followed by the percent-decoded
-        (as a UTF-8 string) representation of the "drive letter" in
-        the "drive specification", followed by a U+003A COLON
-        character (:), followed by a U+002F SOLIDUS character (/).
+        "slash character" or the end of the string:
+
+          Replace them by a U+002F SOLIDUS character (/) followed by
+          the percent-decoded (as a UTF-8 string) representation of
+          the "drive letter" in the "drive specification", followed by
+          a U+003A COLON character (:), followed by a U+002F SOLIDUS
+          character (/).
+
+          If the |host| component of /u/ is equal to "%3F", let the
+          |host| component of /u/ be the empty string.
 
   If there is the |host| component, invoke the CanonicalizeHost
   algorithm with the |host| and then:

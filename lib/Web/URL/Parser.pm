@@ -852,7 +852,7 @@ sub to_ascii ($$$) {
   }
   
   if (THIS) {
-    if ($s =~ /[\x00\x25\x2F\x3F\x5C]/) {
+    if ($s =~ /[\x00\x25\x2F\x5C]/) {
       return undef;
     }
   } elsif (CHROME) {
@@ -997,6 +997,9 @@ sub canonicalize_url ($$;$) {
           $parsed_url->{path} =~ s{\A[/\\]?([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:\|]|%3[Aa]|%7[Cc])(?:[/\\]|\z)}{
             my $drive = $1;
             $drive =~ s/%([0-9A-Fa-f]{2})/pack 'C', hex $1/ge;
+            if ($parsed_url->{host} eq '%3F') {
+              $parsed_url->{host} = '';
+            }
             '/' . $drive . ':/';
           }e;
         }

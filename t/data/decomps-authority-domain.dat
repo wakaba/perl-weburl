@@ -416,8 +416,10 @@ a\u003Eb.test
 
 #data escaped
 http://a\uFF1Fb.test/
-#invalid 1
+#canon
+http://a%3Fb.test/
 #scheme http
+#host a%3Fb.test
 #path /
 #gecko-not-invalid 1
 #gecko-canon escaped
@@ -1693,8 +1695,10 @@ http://a%3eb.test/
 
 #data escaped
 http://a%3fb.test/
-#invalid 1
+#canon
+http://a%3Fb.test/
 #scheme http
+#host a%3Fb.test
 #path /
 #chrome-invalid 1
 #ie-invalid 1
