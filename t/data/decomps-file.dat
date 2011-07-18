@@ -2119,10 +2119,10 @@ c:foo/bar
 #base
 file://xyz/abc/def
 #canon
-file://xyz/c:foo/bar
+file:///c:/foo/bar
 #scheme file
-#host xyz
-#path /c:foo/bar
+#host
+#path /c:/foo/bar
 
 #data
 c:foo/bar
@@ -2339,40 +2339,40 @@ file:///abc
 #base
 file://a/b
 #canon
-file://a///abc
+file:///abc
 #scheme file
-#host a
-#path ///abc
+#host 
+#path /abc
 
 #data
 \/\abc
 #base
 http://a/b
 #canon
-http://a///abc
+http:///abc
 #scheme http
-#host a
-#path ///abc
+#host 
+#path /abc
 
 #data
 /\\abc
 #base
 file://a/b
 #canon
-file://a///abc
+file:///abc
 #scheme file
-#host a
-#path ///abc
+#host 
+#path /abc
 
 #data
 /\\abc
 #base
 http://a/b
 #canon
-http://a///abc
+http:///abc
 #scheme http
-#host a
-#path ///abc
+#host 
+#path /abc
 
 #data
 \\abc?def

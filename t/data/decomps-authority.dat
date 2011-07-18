@@ -111,17 +111,17 @@ http://foo?bar/baz
 
 #data
 http:///foo
-#canon http://foo/
+#canon http:///foo
 #scheme http
-#host foo
-#path /
+#host 
+#path /foo
 
 #data
 http:///foo/
-#canon http://foo/
+#canon http:///foo/
 #scheme http
-#host foo
-#path /
+#host 
+#path /foo/
 
 #data
 http:///?bar
@@ -413,7 +413,7 @@ http://a%40b@foo/
 http://a%41b@foo/
 #canon http://a%41b@foo/
 #scheme http
-#user a%00b
+#user a%41b
 #host foo
 #path /
 
@@ -451,9 +451,9 @@ http://a%dcb@foo/
 
 #data escaped
 http://a\u0000b@foo/
-#canon http://a%EF%BF%BDb@foo/
+#canon http://a%00b@foo/
 #scheme http
-#user a%EF%BF%BDb
+#user a%00b
 #host foo
 #path /
 
@@ -722,7 +722,7 @@ http://x:a%41b@foo/
 #canon http://x:a%41b@foo/
 #scheme http
 #user x
-#password a%00b
+#password a%41b
 #host foo
 #path /
 
@@ -764,10 +764,10 @@ http://x:a%dcb@foo/
 
 #data escaped
 http://x:a\u0000b@foo/
-#canon http://x:a%EF%BF%BDb@foo/
+#canon http://x:a%00b@foo/
 #scheme http
 #user x
-#password a%EF%BF%BDb
+#password a%00b
 #host foo
 #path /
 

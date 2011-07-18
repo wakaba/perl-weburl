@@ -77,7 +77,7 @@ sub parse_absolute_url ($$) {
   }
 
   ## Find the scheme
-  if ($input =~ s/\A([A-Za-z0-9_.+-]+)://) {
+  if ($input =~ s/\A([A-Za-z0-9.+-]+)://) {
     $result->{scheme} = $1;
     $result->{scheme_normalized} = $result->{scheme};
     $result->{scheme_normalized} =~ tr/A-Z/a-z/;

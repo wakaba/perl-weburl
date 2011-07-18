@@ -15,10 +15,10 @@ http://example.com/foo\u0009bar
 
 #data escaped
 http://example.com/foo\u0009\u0091
-#canon http://example.com/foo%C2%91%91
+#canon http://example.com/foo%C2%91
 #scheme http
 #host example.com
-#path /foo%C2%91%91
+#path /foo%C2%91
 
 #data escaped
 http://example.com/foo%09%C2%91%91
@@ -2058,6 +2058,8 @@ http://example.org/~user
 
 #data
 http://example.org/%7Euser
+#canon
+http://example.org/~user
 #scheme http
 #host example.org
 #path /~user

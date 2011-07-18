@@ -455,8 +455,8 @@ aa/%2E%2E/
 #base http://
 #canon http:///foo?bar#baz
 #scheme http
-#host foo
-#path 
+#host 
+#path /foo
 #query bar
 #fragment baz
 
@@ -521,11 +521,21 @@ hTtP://foo/bar
 #path /bar
 
 #data
+gg:h
+#base http://a/b/c/d;p?q
+#canon gg:h
+#scheme gg
+#path h
+
+#data
 g:h
 #base http://a/b/c/d;p?q
-#canon g:h
-#scheme g
-#path h
+#canon
+file:///g:/h
+#scheme file
+#host
+#path 
+/g:/h
 
 #data
 /g
@@ -1326,12 +1336,12 @@ http:/hoge
 #data
 b
 #base
-http://foo.example/a/..
+http://foo.example/a/...
 #canon
-http://foo.example/b
+http://foo.example/a/b
 #scheme http
 #host foo.example
-#path /b
+#path /a/b
 
 #data
 b

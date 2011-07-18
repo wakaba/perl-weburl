@@ -585,9 +585,10 @@ resource://app/my_module.jsm
 #data
 shell:My Pictures
 #canon
-shell:My%20Pictures
+shell:My Pictures
 #scheme shell
-#path My%20Pictures
+#path 
+My Pictures
 
 #data
 shell:windows\web\tip.htm

@@ -133,12 +133,12 @@ http://www.example.com/#%F0%90%8C%80ss
 #data escaped
 http://example.com/#a\u0000b
 #canon escaped
-http://example.com/#a\uFFFDb
+http://example.com/#a%00b
 #scheme http
 #host example.com
 #path /
 #fragment escaped
-a\uFFFDb
+a%00b
 
 #data escaped
 http://example.com/#a\u0001b
@@ -2412,7 +2412,7 @@ http://example.com/#a\uFFFD\uFFFDb
 #fragment escaped
 a\U000103FFb
 #fragment8 escaped
-#a\uFFFD\uFFFDb
+a\uFFFD\uFFFDb
 
 #data escaped
 http://example.com/#a\uF000b

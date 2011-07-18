@@ -1,10 +1,10 @@
 #data escaped
 a\u0000b://foo/bar
 #base http://x/y/
-#canon http://x/y/a%EF%BF%BDb://foo/bar
+#canon http://x/y/a%00b://foo/bar
 #scheme http
 #host x
-#path /y/a%EF%BF%BDb://foo/bar
+#path /y/a%00b://foo/bar
 
 #data escaped
 a\u0001b://foo/bar
@@ -431,7 +431,7 @@ http://a/b
 #canon
 http://a/ht%0Ctp://foo:80
 #scheme http
-#host foo
+#host a
 #path 
 /ht%0Ctp://foo:80
 

@@ -164,10 +164,10 @@ ftp://foo/baz
 #data
 ftp:///foo/bar
 #canon
-ftp://foo/bar
+ftp:///foo/bar
 #scheme ftp
-#host foo
-#path /bar
+#host 
+#path /foo/bar
 
 #data
 ftp://hoge\bar\baz
@@ -400,10 +400,10 @@ ftp:///hoge
 #base
 http://foo/bar/baz
 #canon
-ftp://hoge/
+ftp:///hoge
 #scheme ftp
-#host hoge
-#path /
+#host 
+#path /hoge
 
 #data
 ftp:?hoge
