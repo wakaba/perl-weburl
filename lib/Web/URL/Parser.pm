@@ -24,6 +24,11 @@ our $DefaultPort = {
   gopher => 70,
   http => 80,
   https => 443,
+  telnet => 23,
+  tn3270 => 23,
+  rlogin => 513,
+  ws => 80,
+  wss => 443,
 };
 
 sub _preprocess_input ($$) {

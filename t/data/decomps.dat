@@ -52,22 +52,21 @@ HTTP://example.com/
 \u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000A\u000B\u000C\u000D\u000E\u000F\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001A\u001B\u001C\u001D\u001E\u001F\u0020http://test\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000A\u000B\u000C\u000D\u000E\u000F\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001A\u001B\u001C\u001D\u001E\u001F\u0020
 #base http://foo/bar
 #canon
-http://foo/%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%
-17%18%19%1A%1B%1C%1D%1E%1F%20http://test%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F
+http://foo/%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F%20http://test%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F
 #scheme http
 #host foo
 #path
-/%00%01%02%03%04%05%06%07%08%10%11%12%13%14%15%16%17%18%19%20http://test/foo%00%01%02%03%04%05%06%07%08%10%11%12%13%14%15%16%17%18%19
+/%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F%20http://test%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F
 
 #data escaped
 \u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000A\u000B\u000C\u000D\u000E\u000F\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001A\u001B\u001C\u001D\u001E\u001F\u0020htest/foo\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u000A\u000B\u000C\u000D\u000E\u000F\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001A\u001B\u001C\u001D\u001E\u001F\u0020
 #base http://foo/bar
 #canon
-http://foo/%00%01%02%03%04%05%06%07%08%10%11%12%13%14%15%16%17%18%19%20htest/foo%00%01%02%03%04%05%06%07%08%10%11%12%13%14%15%16%17%18%19
+http://foo/%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F%20htest/foo%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F
 #scheme http
 #host foo
 #path
-/%00%01%02%03%04%05%06%07%08%10%11%12%13%14%15%16%17%18%19%20htest/foo%00%01%02%03%04%05%06%07%08%10%11%12%13%14%15%16%17%18%19
+/%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F%20htest/foo%00%01%02%03%04%05%06%07%08%0B%0C%0E%0F%10%11%12%13%14%15%16%17%18%19%1A%1B%1C%1D%1E%1F
 
 #data escaped
 \u007Fhttp://test\u007F
@@ -260,13 +259,7 @@ http://@[c@d]/
 
 #data
 http://a:b@[c@d:4]:3/
-#canon http://a:b%40%5Bc@d%3A4]:3/
-#scheme http
-#user a
-#password b%40%5Bc
-#host d%3A4]
-#port 3
-#path /
+#invalid 1
 
 #data
 http://a:b@:3/
@@ -609,6 +602,8 @@ hoge
 
 #data escaped
 http://hoge/?foo\u000Abar
+#canon
+http://hoge/?foobar
 #scheme http
 #host hoge
 #path /
@@ -617,6 +612,8 @@ foobar
 
 #data escaped
 http://hoge/?foo\u000Abar#abc\u000Adef
+#canon
+http://hoge/?foobar#abcdef
 #scheme http
 #host hoge
 #path /
@@ -627,6 +624,8 @@ abcdef
 
 #data escaped
 http://hoge/#foo\u000Abar
+#canon
+http://hoge/#foobar
 #scheme http
 #host hoge
 #path /
@@ -872,6 +871,7 @@ tn3270://foo
 #base http://foo/
 #canon tn3270://foo/
 #scheme tn3270
+#host foo
 #path /
 
 #data
@@ -1086,7 +1086,7 @@ cgi+://foo/bar
 cgi+://foo/baz
 #scheme cgi+
 #host foo
-#path /bar
+#path /baz
 
 #data
 irc:
@@ -1121,11 +1121,75 @@ irc://myserver/,isserver
 #path /,isserver
 
 #data
-irc://myserver:6667/
+irc://myserver:6666/
 #canon
-irc://myserver/
+irc://myserver:6666/
 #scheme irc
 #host myserver
+#port 6666
+#path /
+
+#data
+irc://myserver:6667/
+#canon
+irc://myserver:6667/
+#scheme irc
+#host myserver
+#port 6667
+#path /
+
+#data
+irc://myserver:6668/
+#canon
+irc://myserver:6668/
+#scheme irc
+#host myserver
+#port 6668
+#path /
+
+#data
+irc://myserver:6669/
+#canon
+irc://myserver:6669/
+#scheme irc
+#host myserver
+#port 6669
+#path /
+
+#data
+irc://myserver:194/
+#canon
+irc://myserver:194/
+#scheme irc
+#host myserver
+#port 194
+#path /
+
+#data
+irc://myserver:994/
+#canon
+irc://myserver:994/
+#scheme irc
+#host myserver
+#port 994
+#path /
+
+#data
+ircs://myserver:994/
+#canon
+ircs://myserver:994/
+#scheme ircs
+#host myserver
+#port 994
+#path /
+
+#data
+ircs://myserver:6667
+#canon
+ircs://myserver:6667/
+#scheme ircs
+#host myserver
+#port 6667
 #path /
 
 #data
@@ -1191,7 +1255,9 @@ irc://:pass@irc.efnet.org:194/
 irc://%C4%B0dil:g%C3%BCzel@irc.austnet.org/
 #scheme irc
 #user
-%C4%B0dil:g%C3%BCzel
+%C4%B0dil
+#password
+g%C3%BCzel
 #host irc.austnet.org
 #path /
 
@@ -1241,7 +1307,7 @@ C:\WINDOWS\Help\compfldr.chm::/CHM=compfldr.chm META=a_vz_ovrvw;a_CF_adding;a_CF
 #data
 hcp://system/blurbs/windows_newsgroups.htm
 #scheme hcp
-#authority system
+#host system
 #path 
 /blurbs/windows_newsgroups.htm
 
@@ -1256,9 +1322,11 @@ topic=MS-ITS%3A%2525HELP_LOCATION%2525%5Carticle.chm%3A%3A/asa_intro.htm
 
 #data
 ms-help://MS.Dexplore.v90.en/dv_dexplore/html/096a57a9-1a6d-40b1-be00-48be8d409d72.htm
+#canon
+ms-help://ms.dexplore.v90.en/dv_dexplore/html/096a57a9-1a6d-40b1-be00-48be8d409d72.htm
 #scheme ms-help
 #host
-MS.Dexplore.v90.en
+ms.dexplore.v90.en
 #path
 /dv_dexplore/html/096a57a9-1a6d-40b1-be00-48be8d409d72.htm
 
@@ -1564,7 +1632,12 @@ http://test/%EF%BB%BFhttp://foo/
 #data escaped
 \uFFFEhttp://foo/
 #base http://test/
-#invalid 1
+#canon escaped
+http://test/%EF%BF%BDhttp://foo/
+#scheme http
+#host test
+#path
+/%EF%BF%BDhttp://foo/
 
 #data escaped
 http://foo/\u200Ebar

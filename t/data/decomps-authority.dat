@@ -273,11 +273,7 @@ http://foo:0
 
 #data
 http://foo:80:98
-#canon http://foo%3A80:98/
-#scheme http
-#host foo%3A80
-#port 98
-#path /
+#invalid 1
 
 #data
 http://foo:
@@ -288,10 +284,7 @@ http://foo:
 
 #data
 http://foo::
-#canon http://foo%3A/
-#scheme http
-#host foo%3A
-#path /
+#invalid 1
 
 #data
 http://foo:/
@@ -309,19 +302,11 @@ http://[foo:80
 
 #data
 http://[1:2:4
-#canon http://[1%3A2:4/
-#scheme http
-#host [1%3A2
-#port 4
-#path /
+#invalid 1
 
 #data
 http://[1:2:3/4:5]
-#canon http://[1%3A2:3/4:5]
-#scheme http
-#host [1%3A2
-#port 3
-#path /4:5]
+#invalid 1
 
 #data
 http://:080
@@ -339,10 +324,10 @@ http://foo:080/
 
 #data
 http://[foo;bar=a]:80
-#canon http://[foo/;bar=a]:80
+#canon http://[foo%3Bbar%3Da]/
 #scheme http
-#host [foo
-#path /;bar=a%5D:80
+#host [foo%3Bbar%3Da]
+#path /
 
 #data
 http://:@bar
@@ -1029,14 +1014,8 @@ http://foo\uFF1A80/
 
 #data
 http://foo%3A80/
-#canon http://foo%3A80/
-#scheme http
-#host foo%3A80
-#path /
+#invalid 1
 
 #data escaped
 http://foo\uFF053A80/
-#canon http://foo%3A80/
-#scheme http
-#host foo%3A80
-#path /
+#invalid 1

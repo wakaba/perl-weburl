@@ -274,9 +274,8 @@ about:foo@bar?\u4E00\u4E01
 #canon escaped
 about:foo@bar?%E4%B8%80%E4%B8%81
 #scheme about
-#path foo@bar
-#query escaped
-%E4%B8%80%E4%B8%81
+#path 
+foo@bar?%E4%B8%80%E4%B8%81
 
 #data escaped
 unknown:foo@bar?\u4E00\u4E01
