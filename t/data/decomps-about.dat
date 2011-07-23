@@ -523,33 +523,34 @@ res://foo/hoge
 
 #data
 res://C:\WINDOWS\system32\shdoclc.dll/dnserror
+#canon
+res://c/WINDOWS/system32/shdoclc.dll/dnserror
 #base
 http://foo/
 #scheme res
-#host
-C:\WINDOWS\system32\shdoclc.dll
+#host c
 #path
-/dnserror
+/WINDOWS/system32/shdoclc.dll/dnserror
 
 #data
 res://C:\WINDOWS\system32\shdocpe.dll/security.htm#subID=BSW;677
+#canon
+res://c/WINDOWS/system32/shdocpe.dll/security.htm#subID=BSW;677
 #base http://foo/
 #scheme res
-#host
-C:\WINDOWS\system32\shdocpe.dll
+#host c
 #path
-/security.htm
+/WINDOWS/system32/shdocpe.dll/security.htm
 #fragment
 subID=BSW;677
 
 #data
 res://foo\bar
 #canon
-res://foo\bar/
+res://foo/bar
 #scheme res
-#host
-foo\bar
-#path /
+#host foo
+#path /bar
 
 #data
 resource:/res/forms.css

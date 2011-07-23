@@ -1019,3 +1019,48 @@ http://foo%3A80/
 #data escaped
 http://foo\uFF053A80/
 #invalid 1
+
+#data
+http://c:\windows\system32/hoge/fuga
+#canon
+http://c/windows/system32/hoge/fuga
+#scheme http
+#host c
+#path
+/windows/system32/hoge/fuga
+
+#data
+https://c:\windows\system32/hoge/fuga
+#canon
+https://c/windows/system32/hoge/fuga
+#scheme https
+#host c
+#path
+/windows/system32/hoge/fuga
+
+#data
+ftp://c:\windows\system32/hoge/fuga
+#canon
+ftp://c/windows/system32/hoge/fuga
+#scheme ftp
+#host c
+#path
+/windows/system32/hoge/fuga
+
+#data
+telnet://c:\windows\system32/hoge/fuga
+#canon
+telnet://c/windows/system32/hoge/fuga
+#scheme telnet
+#host c
+#path
+/windows/system32/hoge/fuga
+
+#data
+unknown://c:\windows\system32/hoge/fuga
+#canon
+unknown://c/windows/system32/hoge/fuga
+#scheme unknown
+#host c
+#path
+/windows/system32/hoge/fuga

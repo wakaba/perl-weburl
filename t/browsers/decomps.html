@@ -230,7 +230,7 @@
     }
     if (expected.url == null) expected.url = originalURL;
     var schemeNormalized = (expected.scheme || '').toLowerCase ();
-    if (isHierarchicalScheme[schemeNormalized]) {
+    if (isHierarchicalScheme[schemeNormalized] || originalURL.match (/^[^:/]+:\//)) {
       expected.host = expected.host || '';
       expected.port = expected.port || '';
       expected.path = expected.path || '';
