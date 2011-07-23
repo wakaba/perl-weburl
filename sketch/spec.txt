@@ -10,69 +10,54 @@ appropriate for specs.  It is built on the top of following specs:
 
 This document is WORK IN PROGRESS.
 
-* /encoding/
+* Character classes
 
-If the character encoding specified as /encoding/ is not an
-ASCII-compatible character encoding [WA1], /encoding/ MUST be set to
-UTF-8 instead.
+** Unreserved characters
 
-* Unreserved characters
+An *unreserved character* is a character that is "unreserved" [RFC 3986].
 
-The *unreserved characters* are the following characters: U+002D (-),
-U+002E (.), U+0030 (0) to U+0039 (9), U+0041 (A) to U+005A (Z), U+005F
-(_), U+0061 (a) to U+007A (z), and U+007E (~).
+  Note. That is, U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9),
+  U+0041 (A) to U+005A (Z), U+005F (_), U+0061 (a) to U+007A (z), and
+  U+007E (~).
 
-A *non-unreserved octet* is an octet that does not represent an
-unreserved character when the octet is interpreted as a US-ASCII
+A *non-unreserved octet* is an octet that does /not/ represent an
+"unreserved character" if the octet is interpreted as a US-ASCII
 character.
 
-* Valid scheme characters
+** Valid scheme characters
 
-The *valid scheme characters* [url-spec] are the following characters:
-U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9), U+0041
-(A) to U+005A (Z), and U+0061 (a) to U+007A (z).
+A *valid scheme character* [url-spec] is one of the following
+characters: U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039
+(9), U+0041 (A) to U+005A (Z), and U+0061 (a) to U+007A (z).
+
+** Authority terminating characters
+
+An *authority terminating character* [url-spec] is either a "slash
+charcter", U+003F (?), or U+0023 (#).
+
+  Note. U+003B (;) is /not/ an "auuthority terminating characters".
 
 * Hierarchicalness
 
-  Following schemes are */not/ hierarchical*:
+Following schemes ("ASCII case-insensitive") are */not/ hierarchical*:
 
-    - about
-    - data
-    - javascript
-    - mailto
-    - vbscript
+  - about
+  - data
+  - javascript
+  - mailto
+  - vbscript
 
-  A URL is *hierarchical* if it's |scheme| is /not/ classified as "not
-  hierarchical" and the URL is the |scheme| component followed by a
-  U+003A COLON character (:) followed by a "slash character" followed
-  by zero ore more characters, if the |scheme| is |file| ("ASCII
-  case-insensitive"), or if the URL is marked as *hierarchical*.
+A URL is *hierarchical* if one of following conditions are met:
 
-* Port numbers
+  - The scheme of the URL is /not/ classified as "not
+    hierarchical" and the URL is the |scheme| component followed by a
+    U+003A COLON character (:) followed by a "slash character" followed by
+    zero ore more characters,
 
-/This section is non-normative./
+  - The |scheme| component of the URL is "ASCII case-insensitively"
+    equal to |file|, or
 
-  URL scheme  Default port number  Reference
-  ----------- -------------------- ----------
-  file        (none)
-  ftp         21                   [RFC 1738]
-  gopher      70                   [RFC 4266]
-  http        80                   [RFC 2616]
-  https       443                  [HTTPS]
-  telnet      23                   [RFC 4248]
-  tn3270      23                   [RFC 6270]
-  rlogin      513                  [draft-yevstifeyev-rlogin-uri]
-  ws          80                   [draft-ietf-hybi-thewebsocketprotocol]
-  wss         443                  [draft-ietf-hybi-thewebsocketprotocol]
-
-  Note. Two different user agents might canonicalize the same URL in
-  two different ways if one supports a URL scheme such that it knows
-  the default port for the URL scheme but the other does not.
-
-* Authority terminating characters
-
-Remove U+003B (;) from the list of the "authority terminating
-characters" [url-spec].
+  - The URL is marked as /hierarchical/.
 
 * Preprocessing
 
@@ -264,161 +249,6 @@ The *steps to find the scheme* is as follow:
 
   Follow url-spec's steps to find path, query, and fragment.
 
-* Merge path
-
-  Apply RFC 3986's steps, but use "slash character" definition instead
-  of "/" character for comparison.
-
-* Remove dot-segments from a string /s/
-
-  Replace any U+005C REVERSE SOLIDUS (\) character in /s/ by a U+002F
-  SOLIDUS (/) character.
-
-  Apply RFC 3986's steps, but treate "%2E" and "%2e" in /s/ as if they
-  were U+002E FULL STOP characters (.).
-
-* Drive specifications
-
-  A string is "drive specification" if it is a "drive letter"
-  optionally followed by a "drive suffix".
-
-  A "drive letter" is a character in the range U+0041 ... U+005A and
-  U+0061 ... U+007A, or its percent-encoded form (in the UTF-8
-  encoding).
-
-  A "drive suffix" is a U+003A COLON character (:) or U+007C VERTICAL
-  LINE character (|), or its percent-encoded form (in the UTF-8
-  encoding).
-
-* IPv4 addresses
-
-  A string /s/ is an IPv4 address if one of the following conditions
-  is met:
-
-    - Four numbers concatenated by a U+002E FULL STOP character (.),
-      where all numbers are greater than or equal to zero (0) and less
-      than or eqaul to 255 (0xFF).
-
-    - Three numbers concatenated by a U+002E FULL STOP character (.),
-      where first two numbers are greater than or equal to zero (0)
-      and less than or eqaul to 255 (0xFF) and the last number is
-      greater than or equal to zero (0) and less than or equal to
-      65535 (0xFFFF).
-
-    - Two numbers concatenated by a U+002E FULL STOP character (.),
-      where the first number is greater than or equal to zero (0) and
-      less than or eqaul to 255 (0xFF) and the last number is greater
-      than or equal to zero (0) and less than or equal to 16777215
-      (0xFFFFFF).
-
-    - A number which is greater than or equal to zero (0) and less
-      than or equal to 4294967295 (0xFFFFFFFF).
-
-  In this definition, numbers are represented in the form of one of
-  the following character sequences:
-
-    - A U+0030 DIGIT ZERO character (0), followed by U+0058 LATIN
-      CAPITAL LETTER X character (X) or U+0078 LATIN SMALL LETTER X
-      character (x), followed by zero or more hexadecimal digits,
-      i.e. characters in the range U+0030 ... U+0039, U+0041
-      ... U+0046, and U+0061 ... U+0066.  The value of this number is
-      represented by the hexadecimal digits in the sequence.  If no
-      hexadecimal digit is contained, the value of the number is zero
-      (0).
-
-    - A U+0030 DIGIT ZERO character (0), followed by zero or more
-      octal digits, i.e. characters in the range U+0030 ... U+0037.
-      The value of this number is represented by the octal digits in
-      the sequence.
-
-    - Characters in the range U+0031 ... U+0039, followed by zero or
-      more characters in the range U+0030 ... U+0039.  The value of
-      this number is represented by the characters in the sequence,
-      interpreted as decimal number.
-
-  The rules for canonicalizing an IPv4 address are given in the
-  following algorithm, which return an IPv4 address in its canonical
-  form, or the "fail" state:
-
-    1. Let /s/ be the given string.
-
-    2. Let /addr/ be a 32-bit unsigned number.  In the following
-       steps, the notation /addr[i]/ represents the /i/-th bit of
-       /addr/, where /addr[0]/ is the least significant bit and
-       /addr[31]/ is the most significant bit of the number.  In this
-       context, a bit sequence /addr[i + j - 1]/ ... /addr[i]/ can be
-       interpreted as a /j/-bit unsigned number, where /addr[i + j -
-       1]/ is the most significant bit.
-
-    3. If /s/ is an IPv4 address with four numbers, let /addr[31]/
-       ... /addr[24]/ be the first number, let /addr[23]/
-       ... /addr[16]/ be the second number, let /addr[15]/
-       ... /addr[8]/ be the third number, and let /addr[7]/
-       ... /addr[0]/ be the last number.
-
-    4. Otherwise, if /s/ is an IPv4 address with three numbers, let
-       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
-       ... /addr[16]/ be the second number, and let /addr[15]/
-       ... /addr[0]/ be the last number.
-
-    5. Otherwise, if /s/ is an IPv4 address with two numbers, let
-       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
-       ... /addr[0]/ be the last number.
-
-    6. Otherwise, if /s/ is an IPv4 address with a number, let /addr/
-       be the number.
-
-    7. Otherwise, return "fail" and abort these steps.
-
-    8. Return a string consist of the following substrings, in this
-       order:
-
-         1. The number /addr[31]/ ... /addr[24]/
-
-         2. A U+002E FULL STOP character (.)
-
-         3. The number /addr[23]/ ... /addr[16]/
-
-         4. A U+002E FULL STOP character (.)
-
-         5. The number /addr[15]/ ... /addr[8]/
-
-         6. A U+002E FULL STOP character (.)
-
-         7. The number /addr[7]/ ... /addr[0]/
-
-       Numbers are represented by decimal digits, i.e. characters in
-       the range U+0030 ... U+0039, in the shortest form.
-
-      NOTE: This definition of IPv4 addresses originally come from the
-      UNIX |inet_addr()| function
-      <http://pubs.opengroup.org/onlinepubs/9699919799/functions/inet_addr.html>
-      [POSIX].
-
-* IPv6 addresses
-
-  The rules for canonicalizing an IPv6 address are given in the
-  following algorithm, which return an IPv6 address in its canonical
-  form, or the "fail" state:
-
-    1. Let /s/ be the given string.
-
-    2. If /s/ matches to the |IPv6address| production rule [RFC 3986]
-       using the modified |IPv4address| production rule:
-
-      IPv4address = octet "." octet "." octet "." octet
-      octet = dec-octet / "00" DIGIT / "0" DIGIT DIGIT
-
-       ... then, /s/ can be interpreted as an IPv6 address.  Return
-       the canonical representation of the IPv6 address and abort
-       these steps.
-
-    3. Otherwise, return "fail" and abort these steps.
-
-  The canonical representation of an IPv6 address is the textual
-  representation of the IPv6 address conforming to the recommendation
-  for the IPv6 text representation as described in RFC 5952 Section 4.
-
 * Resolution
 
 The *steps to resolve a URL", given a string /s/ relative and a parsed
@@ -595,6 +425,19 @@ The "steps to resolve a relative URL", given parsed URLs
 
   7. Return /resolved-url/.
 
+** Merge path
+
+  Apply RFC 3986's steps, but use "slash character" definition instead
+  of "/" character for comparison.
+
+** Remove dot-segments from a string /s/
+
+  Replace any U+005C REVERSE SOLIDUS (\) character in /s/ by a U+002F
+  SOLIDUS (/) character.
+
+  Apply RFC 3986's steps, but treate "%2E" and "%2e" in /s/ as if they
+  were U+002E FULL STOP characters (.).
+
 * Percent-encoding
 
 The *steps to percent-encode a string /s/* is as follows:
@@ -618,7 +461,151 @@ The *steps to percent-encode a string /s/* is as follows:
 
   6. Decode /s/ using character encoding /encoding/.
 
-* Domain name canonicalization
+* Authority
+
+** Drive specifications
+
+  A string is "drive specification" if it is a "drive letter"
+  optionally followed by a "drive suffix".
+
+  A "drive letter" is a character in the range U+0041 ... U+005A and
+  U+0061 ... U+007A, or its percent-encoded form (in the UTF-8
+  encoding).
+
+  A "drive suffix" is a U+003A COLON character (:) or U+007C VERTICAL
+  LINE character (|), or its percent-encoded form (in the UTF-8
+  encoding).
+
+** IPv4 addresses
+
+  A string /s/ is an IPv4 address if one of the following conditions
+  is met:
+
+    - Four numbers concatenated by a U+002E FULL STOP character (.),
+      where all numbers are greater than or equal to zero (0) and less
+      than or eqaul to 255 (0xFF).
+
+    - Three numbers concatenated by a U+002E FULL STOP character (.),
+      where first two numbers are greater than or equal to zero (0)
+      and less than or eqaul to 255 (0xFF) and the last number is
+      greater than or equal to zero (0) and less than or equal to
+      65535 (0xFFFF).
+
+    - Two numbers concatenated by a U+002E FULL STOP character (.),
+      where the first number is greater than or equal to zero (0) and
+      less than or eqaul to 255 (0xFF) and the last number is greater
+      than or equal to zero (0) and less than or equal to 16777215
+      (0xFFFFFF).
+
+    - A number which is greater than or equal to zero (0) and less
+      than or equal to 4294967295 (0xFFFFFFFF).
+
+  In this definition, numbers are represented in the form of one of
+  the following character sequences:
+
+    - A U+0030 DIGIT ZERO character (0), followed by U+0058 LATIN
+      CAPITAL LETTER X character (X) or U+0078 LATIN SMALL LETTER X
+      character (x), followed by zero or more hexadecimal digits,
+      i.e. characters in the range U+0030 ... U+0039, U+0041
+      ... U+0046, and U+0061 ... U+0066.  The value of this number is
+      represented by the hexadecimal digits in the sequence.  If no
+      hexadecimal digit is contained, the value of the number is zero
+      (0).
+
+    - A U+0030 DIGIT ZERO character (0), followed by zero or more
+      octal digits, i.e. characters in the range U+0030 ... U+0037.
+      The value of this number is represented by the octal digits in
+      the sequence.
+
+    - Characters in the range U+0031 ... U+0039, followed by zero or
+      more characters in the range U+0030 ... U+0039.  The value of
+      this number is represented by the characters in the sequence,
+      interpreted as decimal number.
+
+  The rules for canonicalizing an IPv4 address are given in the
+  following algorithm, which return an IPv4 address in its canonical
+  form, or the "fail" state:
+
+    1. Let /s/ be the given string.
+
+    2. Let /addr/ be a 32-bit unsigned number.  In the following
+       steps, the notation /addr[i]/ represents the /i/-th bit of
+       /addr/, where /addr[0]/ is the least significant bit and
+       /addr[31]/ is the most significant bit of the number.  In this
+       context, a bit sequence /addr[i + j - 1]/ ... /addr[i]/ can be
+       interpreted as a /j/-bit unsigned number, where /addr[i + j -
+       1]/ is the most significant bit.
+
+    3. If /s/ is an IPv4 address with four numbers, let /addr[31]/
+       ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[16]/ be the second number, let /addr[15]/
+       ... /addr[8]/ be the third number, and let /addr[7]/
+       ... /addr[0]/ be the last number.
+
+    4. Otherwise, if /s/ is an IPv4 address with three numbers, let
+       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[16]/ be the second number, and let /addr[15]/
+       ... /addr[0]/ be the last number.
+
+    5. Otherwise, if /s/ is an IPv4 address with two numbers, let
+       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[0]/ be the last number.
+
+    6. Otherwise, if /s/ is an IPv4 address with a number, let /addr/
+       be the number.
+
+    7. Otherwise, return "fail" and abort these steps.
+
+    8. Return a string consist of the following substrings, in this
+       order:
+
+         1. The number /addr[31]/ ... /addr[24]/
+
+         2. A U+002E FULL STOP character (.)
+
+         3. The number /addr[23]/ ... /addr[16]/
+
+         4. A U+002E FULL STOP character (.)
+
+         5. The number /addr[15]/ ... /addr[8]/
+
+         6. A U+002E FULL STOP character (.)
+
+         7. The number /addr[7]/ ... /addr[0]/
+
+       Numbers are represented by decimal digits, i.e. characters in
+       the range U+0030 ... U+0039, in the shortest form.
+
+      NOTE: This definition of IPv4 addresses originally come from the
+      UNIX |inet_addr()| function
+      <http://pubs.opengroup.org/onlinepubs/9699919799/functions/inet_addr.html>
+      [POSIX].
+
+** IPv6 addresses
+
+  The rules for canonicalizing an IPv6 address are given in the
+  following algorithm, which return an IPv6 address in its canonical
+  form, or the "fail" state:
+
+    1. Let /s/ be the given string.
+
+    2. If /s/ matches to the |IPv6address| production rule [RFC 3986]
+       using the modified |IPv4address| production rule:
+
+      IPv4address = octet "." octet "." octet "." octet
+      octet = dec-octet / "00" DIGIT / "0" DIGIT DIGIT
+
+       ... then, /s/ can be interpreted as an IPv6 address.  Return
+       the canonical representation of the IPv6 address and abort
+       these steps.
+
+    3. Otherwise, return "fail" and abort these steps.
+
+  The canonical representation of an IPv6 address is the textual
+  representation of the IPv6 address conforming to the recommendation
+  for the IPv6 text representation as described in RFC 5952 Section 4.
+
+** Domain name canonicalization
 
 Domain name canonicalization is apparently a disaster zone - five
 major browsers do completely different canonicalization and there is
@@ -691,7 +678,7 @@ returns either a string or the "fail" state.
      point which is contained in the table of unassigned code points
      as of Unicode 3.2.0 (See Appendix A.1 of RFC 3454) [STRINGPREP].
 
-  7. Apply /s/ the following variant of NFKC [Unicode]:
+  7. Apply /s/ the following variant of NFKC [UNICODE]:
 
     THIS: Latest version of Unicode (including Corrigendum #3,
     Corrigendum #4, and Corrigendum #5).
@@ -1000,6 +987,33 @@ This algorithm returns either a string or the "fail" state.
     GECKO: None.
 
   31. Return /s/.
+
+** Port numbers
+
+/This section is non-normative./
+
+  URL scheme  Default port number  Reference
+  ----------- -------------------- ----------
+  file        (none)
+  ftp         21                   [RFC 1738]
+  gopher      70                   [RFC 4266]
+  http        80                   [RFC 2616]
+  https       443                  [HTTPS]
+  telnet      23                   [RFC 4248]
+  tn3270      23                   [RFC 6270]
+  rlogin      513                  [draft-yevstifeyev-rlogin-uri]
+  ws          80                   [draft-ietf-hybi-thewebsocketprotocol]
+  wss         443                  [draft-ietf-hybi-thewebsocketprotocol]
+
+  Note. Two different user agents might canonicalize the same URL in
+  two different ways if one supports a URL scheme such that it knows
+  the default port for the URL scheme but the other does not.
+
+* /encoding/
+
+If the character encoding specified as /encoding/ is not an
+ASCII-compatible character encoding [WA1], /encoding/ MUST be set to
+UTF-8 instead.
 
 * Canonicalize a string /u/ by encoding /encoding/
 
