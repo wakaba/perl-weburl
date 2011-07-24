@@ -1,20 +1,36 @@
-This document describes what the Web::URL::Parser module implements.
-This is just a description; it does not use strict language
-appropriate for specs.  It is built on the top of following specs:
+URL Parsing, Resolution, and Canonicalization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- [url-spec] URL parsing <http://tools.ietf.org/html/draft-abarth-url-00>
+This document describes how the |Web::URL::Parser| module parses,
+resolves, and canonicalizes URLs, in English.  It is just a
+description of the implementation; it's not a formal spec and not so
+strict as conformance requirements in modern Web specs.
+
+This document is WORK IN PROGRESS.
+
+You are granted a license to use, reproduce and create derivative
+works of this document.
+
+* URL specs
+
+At the time of writing there is no spec which completely describes
+what browsers do (or should do) for URLs.  However, following specs
+include incomplete descriptions of URL processing rules and are used
+as basis of this document:
+
+- [url-spec] URL parsing <http://tools.ietf.org/html/draft-abarth-url-01>
 - [WA1] Web Applications 1.0 <http://whatwg.org/c>
 - [RFC 3986] URI <http://tools.ietf.org/html/rfc3986>
 
-  XXX <http://tools.ietf.org/html/draft-abarth-url-01>
-
-This document is WORK IN PROGRESS.
+This document will be obsolete once a single Web-compatible URL
+parsing spec is published...
 
 * Character classes
 
 ** Unreserved characters
 
-An *unreserved character* is a character that is "unreserved" [RFC 3986].
+An *unreserved character* is a character that is "unreserved" [RFC
+3986].
 
   Note. That is, U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9),
   U+0041 (A) to U+005A (Z), U+005F (_), U+0061 (a) to U+007A (z), and
@@ -35,7 +51,7 @@ characters: U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039
 An *authority terminating character* [url-spec] is either a "slash
 charcter", U+003F (?), or U+0023 (#).
 
-  Note. U+003B (;) is /not/ an "auuthority terminating characters".
+  Note.  U+003B (;) is /not/ an "auuthority terminating characters".
 
 * Parsed URL
 
@@ -77,8 +93,8 @@ The *steps to preprocess a string* is as follows:
   1. Let /s/ be the given string.
 
   2. Scan /s/ and replace any code point in the following ranges,
-     i.e. surrogate, noncharacter, and non-Unicode code points, by a
-     U+FFFD REPLACEMENT CHARACTER character:
+     i.e. surrogate, noncharacter [UNICODE], and non-Unicode code
+     points, by a U+FFFD REPLACEMENT CHARACTER character:
 
     - U+D800 ... U+DFFF
     - U+FDD0 ... U+FDEF
@@ -533,6 +549,9 @@ follows:
   8. Decode /s/ by /encoding/.
 
     Note. At this point, /s/ is a string of characters.
+
+Encoding and decoding MUST be done in a manner consistent with other
+parts of the Web platform [WA1] [WEBENCODINGS].
 
 * Authority
 
@@ -1084,7 +1103,12 @@ This algorithm returns either a string or the "fail" state.
   two different ways if one supports a URL scheme such that it knows
   the default port for the URL scheme but the other does not.
 
-* Canonicalize a string /u/ by encoding /encoding/
+* Canonicalization
+
+The *steps to canonicalize a URL*, invoked with a "parsed URL" /u/ and
+a character encoding /encoding/, is as follows:
+
+  If /u/ is /invalid/, return /u/ and abort these steps.
 
   If there is the |scheme| component in /u/, replace the component by
   the same string converted to ASCII lowercase [WA1].
@@ -1220,7 +1244,7 @@ This algorithm returns either a string or the "fail" state.
   /encoding/ set to UTF-8 and /octets/ set to the octets 0x00-0x1F and
   0x7F-0xFF (inclusive).
 
-      NOTE: ASCII characters not allowed in URLs are not
+      Note. ASCII characters not allowed in URLs are not
       percent-encoded here.
 
   If the |scheme| component of /u/ is |file|, and if the |host|
@@ -1246,60 +1270,66 @@ This algorithm returns either a string or the "fail" state.
   with /encoding/ set to UTF-8 and /octets/ set to 0x00-0x1F
   (inclusive) and 0x7F.
 
-      NOTE: Non-ASCII characters other than C1 control characters are
+      Note. Non-ASCII characters other than C1 control characters are
       not percent-encoded here.  As a result, a canonicalized URL
       might contain non-ASCII characters in its |fragment| component.
 
-* Serialization of parsed URL
+* Serialization
 
-  If the parsed URL is /invalid/, abort these steps.
+The *steps to serialize a parsed URL" is as follows:
+
+  Let /u/ be the given parsed URL.
+
+  If /u/ is /invalid/, return nothing and abort these steps.
 
   Let /s/ be the empty string.
 
-  Append the |scheme| component to /s/.
+  Append /s/ the |scheme| component of /u/.
 
-  Append a U+003A COLON (:) character to /s/.
+  Append /s/ a U+003A COLON character (:).
 
   If there is at least one of |user|, |password|, |host|, and |port|
-  components (even if it is the empty string):
+  components of /u/ (even if it is the empty string):
 
-    Append |//| (two U+002F SOLIDUS (/) characters) to /s/.
+    Append /s/ |//| (two U+002F SOLIDUS characters (/)).
 
-    If there is at least one of |user| and |password| component (even
-    if it is the empty string):
+    If there is at least one of |user| and |password| component of /u/
+    (even if it is the empty string):
 
-      Append the |user| component, if any, to /s/.
+      Append /s/ the |user| component of /u/, if any.
 
-      If there is the |password| component (even if it is the empty
-      string):
+      If there is the |password| component of /u/ (even if it is the
+      empty string):
 
-        Append a U+003A COLON (:) character to /s/.
+        Append /s/ a U+003A COLON character (:).
 
-        Append the |password| component to /s/.
+        Append the |password| component of /u/ to /s/.
 
-      Append a U+0040 COMMERCIAL AT (@) character to /s/.
+      Append /s/ a U+0040 COMMERCIAL AT character (@).
 
-    Append the |host| component, if any, to /s/.
+    Append /s/ the |host| component of /u/, if any.
 
-    If there is the |port| component (even if it is the empty string):
+    If there is the |port| component of /u/ (even if it is the empty
+    string):
 
-      Append a U+003A COLON (:) character to /s/.
+      Append /s/ a U+003A COLON character (:).
 
-      Append the |port| component to /s/.
+      Append /s/ the |port| component of /u/.
 
-  Append the |path| component, if any, to /s/.
+  Append /s/ the |path| component of /u/, if any.
 
-  If there is the |query| component (even if it is the empty string):
-
-    Append a U+003F QUESTION MARK (?) character to /s/.
-
-    Append the |query| component to /s/.
-
-  If there is the |fragment| component (even if it is the empty
+  If there is the |query| component of /u/ (even if it is the empty
   string):
 
-    Append a U+0023 NUMBER SIGN (#) character to /s/.
+    Append /s/ a U+003F QUESTION MARK character (?).
 
-    Append the |fragment| component to /s/.
+    Append /s/ the |query| component of /u/ to /s/.
+
+  If there is the |fragment| component of /u/ (even if it is the empty
+  string):
+
+    Append /s/ a U+0023 NUMBER SIGN character (#).
+
+    Append /s/ the |fragment| component of /u/.
 
   Return /s/.
