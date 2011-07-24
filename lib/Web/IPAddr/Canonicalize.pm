@@ -122,3 +122,12 @@ sub canonicalize_ipv6_addr ($) {
 } # canonicalize_ipv6_addr
 
 1;
+
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

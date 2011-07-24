@@ -1,0 +1,47 @@
+=head1 NAME
+
+Web::IPAddr::Canonicalize - Canonicalize IPv4 and IPv6 addresses
+
+=head1 SYNOPSIS
+
+  use Web::IPAddr::Canonicalize;
+  print canonicalize_ipv4_addr $ipv4_addr;
+  print canonicalize_ipv6_addr $ipv6_addr;
+
+=head1 DESCRIPTION
+
+The C<Web::IPAddr::Canonicalize> module exports two functions to
+canonicalize IP addresses as Web browsers do.
+
+=head1 FUNCTIONS
+
+=over 4
+
+=item $result = canonicalize_ipv4_addr $input
+
+Canonicalize the input string as an IPv4 address.  If the input is not
+an IPv4 address, C<undef> is returned.
+
+=item $result = canonicalize_ipv6_addr $input
+
+Canonicalize the input string as an IPv6 address.  If the input is not
+an IPv6 address, C<undef> is returned.
+
+=back
+
+=head1 SEE ALSO
+
+sketch/spec.txt.
+
+=head1 AUTHOR
+
+Wakaba <w@suika.fam.cx>.
+
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
