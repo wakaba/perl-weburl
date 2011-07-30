@@ -2,7 +2,7 @@ package Web::DomainName::Canonicalize;
 use strict;
 use warnings;
 our $VERSION = '1.0';
-use Encode;
+use Web::Encoding;
 use Char::Prop::Unicode::BidiClass;
 use Unicode::Normalize;
 use Unicode::Stringprep;
@@ -138,9 +138,9 @@ sub canonicalize_url_host ($;%) {
 
   return undef if $s =~ m{^%5[Bb]};
 
-  $s = Encode::encode ('utf-8', $s);
+  $s = encode_web_utf8 $s;
   $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
-  $s = Encode::decode ('utf-8', $s); # XXX error-handling
+  $s = decode_web_utf8 $s;
 
   $s = canonicalize_domain_name $s;
   return undef unless defined $s;

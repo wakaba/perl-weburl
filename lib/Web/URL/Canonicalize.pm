@@ -2,8 +2,8 @@ package Web::URL::Canonicalize;
 use strict;
 use warnings;
 our $VERSION = '1.0';
-use Encode;
 require utf8;
+use Web::Encoding;
 use Web::DomainName::Canonicalize;
 use Exporter::Lite;
 
@@ -449,7 +449,7 @@ sub canonicalize_parsed_url ($;$) {
     if (not length $parsed_url->{password}) {
       delete $parsed_url->{password};
     } else {
-      my $s = Encode::encode ('utf-8', $parsed_url->{password});
+      my $s = encode_web_utf8 $parsed_url->{password};
       $s =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5F\x61-\x7A\x7E])}{
         sprintf '%%%02X', ord $1;
       }ge;
@@ -461,7 +461,7 @@ sub canonicalize_parsed_url ($;$) {
     if (not length $parsed_url->{user}) {
       delete $parsed_url->{user} unless defined $parsed_url->{password};
     } else {
-      my $s = Encode::encode ('utf-8', $parsed_url->{user});
+      my $s = encode_web_utf8 $parsed_url->{user};
       $s =~ s{([^\x21\x24-\x2E\x30-\x39\x41-\x5A\x5F\x61-\x7A\x7E])}{
         sprintf '%%%02X', ord $1;
       }ge;
@@ -546,7 +546,7 @@ sub canonicalize_parsed_url ($;$) {
       } else {
         ## Non-hierarchical scheme except for |mailto:|
         $parsed_url->{path} = '' unless defined $parsed_url->{path};
-        my $s = Encode::encode ('utf-8', $parsed_url->{path});
+        my $s = encode_web_utf8 $parsed_url->{path};
         $s =~ s{([^\x20-\x7E])}{
           sprintf '%%%02X', ord $1;
         }ge;
@@ -555,7 +555,7 @@ sub canonicalize_parsed_url ($;$) {
       }
       
       if (defined $parsed_url->{path}) {
-        my $s = Encode::encode ('utf-8', $parsed_url->{path});
+        my $s = encode_web_utf8 $parsed_url->{path};
         $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x5B\x5D\x5F\x61-\x7A\x7E])}{
           sprintf '%%%02X', ord $1;
         }ge;
@@ -588,21 +588,8 @@ sub canonicalize_parsed_url ($;$) {
 
   if (defined $parsed_url->{query}) {
     my $charset = $parsed_url->{is_hierarchical} ? $charset || 'utf-8' : 'utf-8';
-    if ($charset =~ /^
-      utf-8|
-      iso-8859-[0-9]+|
-      us-ascii|
-      shift_jis|
-      euc-jp|
-      windows-[0-9]+|
-      iso-2022-[0-9a-zA-Z-]+|
-      hz-gb-2312
-    $/xi) { # XXX Web Encodings
-      #
-    } else {
-      $charset = 'utf-8';
-    }
-    my $s = Encode::encode ($charset, $parsed_url->{query});
+    $charset = (is_ascii_compat_charset_name $charset) ? $charset : 'utf-8';
+    my $s = encode_web_charset ($charset, $parsed_url->{query});
     $s =~ s{([^\x21\x23-\x3B\x3D\x3F-\x7E])}{
       sprintf '%%%02X', ord $1;
     }ge;
@@ -614,7 +601,7 @@ sub canonicalize_parsed_url ($;$) {
       join '',
           map { sprintf '%%%02X', ord $_ }
           split //,
-          Encode::encode 'utf-8', $1;
+          encode_web_utf8 $1;
     }ge;
   }
 
