@@ -18,7 +18,7 @@ results/a: web-url-parser.t ../lib/Web/URL/Parser.pm data/*.dat
 	-TEST_BROWSER=ie TEST_METHOD=_canon_a perl $< &> results/web-url-parser-a-ie.txt
 
 results/web-url-parser-core.txt: web-url-parser.t \
-  ../lib/Web/URL/Parser.pm \
+  ../lib/Web/URL/Parser.pm ../lib/Web/DomainName/Canonicalize.pm \
   data/*.dat
 	-TEST_BROWSER=this TEST_METHOD=_canon_core perl $< &> $@
 

@@ -578,13 +578,13 @@ ok 483 - http://%EF%BD%98%EF%BD%8E--4kq.net/ - http://%EF%BD%98%EF%BD%8E--4kq.ne
 ok 484 - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/ - http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 ok 485 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/
 ok 486 - http://%E4%B8%80%E4%BA%8C--4kq.net/ - http://%E4%B8%80%E4%BA%8C--4kq.net/ idempotency
-Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 99.
-Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 99.
-Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 99.
+Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 70.
+Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 70.
+Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 70.
 ok 487 - http://%ef%b7%90zyx.com/ - http://%ef%b7%90zyx.com/
-Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 99.
-Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 99.
-Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 99.
+Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 70.
+Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 70.
+Unicode character 0xfdd0 is illegal at ../lib/Web/DomainName/Canonicalize.pm line 70.
 ok 488 - http://%EF%B7%90zyx.com/ - http://%EF%B7%90zyx.com/
 ok 489 - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/ - http://%ef%bc%85%ef%bc%90%ef%bc%90.com/
 ok 490 - http://%00.com/ - http://%00.com/
