@@ -1,4 +1,4 @@
-package Web::URL::Parser;
+package Web::URL::Canonicalize;
 use strict;
 use warnings;
 our $VERSION = '1.0';

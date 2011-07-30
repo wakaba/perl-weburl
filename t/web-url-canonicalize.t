@@ -1,4 +1,4 @@
-package test::Web::URL::Parser;
+package test::Web::URL::Canonicalize;
 use strict;
 use warnings;
 use Path::Class;
@@ -8,7 +8,7 @@ use lib file (__FILE__)->dir->parent->subdir ('modules', 'charclass', 'lib')->st
 use base qw(Test::Class);
 use Test::Differences;
 use Test::HTCT::Parser;
-use Web::URL::Parser;
+use Web::URL::Canonicalize;
 
 binmode STDOUT, ':encoding(utf8)';
 binmode STDERR, ':encoding(utf8)';
@@ -83,7 +83,7 @@ sub _parse : Tests {
       $result->{scheme_normalized} = $result->{scheme};
       $result->{scheme_normalized} =~ tr/A-Z/a-z/;
     }
-    my $actual = Web::URL::Parser->parse_absolute_url
+    my $actual = Web::URL::Canonicalize->parse_absolute_url
         ($test->{data}->[0]);
     delete $actual->{is_hierarchical};
 #line 1 "_parse"
@@ -117,8 +117,8 @@ sub _resolve : Tests {
              ? $test->{base}->[0]
              : defined $test->{base}->[1]->[0]
                  ? $test->{base}->[1]->[0] : '';
-    my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
-    my $actual = Web::URL::Parser->resolve_url
+    my $resolved_base_url = Web::URL::Canonicalize->parse_absolute_url ($base_url);
+    my $actual = Web::URL::Canonicalize->resolve_url
         ($test->{data}->[0], $resolved_base_url);
     delete $actual->{is_hierarchical};
 #line 1 "_resolve"
@@ -208,11 +208,11 @@ sub __canon {
     $base_url = $test->{data}->[0] unless length $base_url;
     $result->{canon} = $test->{data}->[0]
         if not defined $result->{canon} and not $result->{invalid};
-    my $resolved_base_url = Web::URL::Parser->parse_absolute_url ($base_url);
-    my $resolved_url = Web::URL::Parser->resolve_url
+    my $resolved_base_url = Web::URL::Canonicalize->parse_absolute_url ($base_url);
+    my $resolved_url = Web::URL::Canonicalize->resolve_url
         ($test->{data}->[0], $resolved_base_url);
-    Web::URL::Parser->canonicalize_url ($resolved_url, $charset);
-    my $url = Web::URL::Parser->serialize_url ($resolved_url);
+    Web::URL::Canonicalize->canonicalize_url ($resolved_url, $charset);
+    my $url = Web::URL::Canonicalize->serialize_url ($resolved_url);
     $resolved_url->{canon} = $url if defined $url;
     delete $resolved_url->{is_hierarchical};
     if (defined $resolved_url->{drive}) {
@@ -224,10 +224,10 @@ sub __canon {
         $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '');
 
     if ($BROWSER eq 'this' and defined $url) {
-      my $resolved_url2 = Web::URL::Parser->resolve_url
+      my $resolved_url2 = Web::URL::Canonicalize->resolve_url
           ($url, $resolved_base_url);
-      Web::URL::Parser->canonicalize_url ($resolved_url2, $charset);
-      my $url2 = Web::URL::Parser->serialize_url ($resolved_url2);
+      Web::URL::Canonicalize->canonicalize_url ($resolved_url2, $charset);
+      my $url2 = Web::URL::Canonicalize->serialize_url ($resolved_url2);
 #line 1 "_canon_idempotent"
       eq_or_diff $url2, $url,
           $test->{data}->[0] . ' - ' . $base_url . ($charset ? ' - ' . $charset : '') . ' idempotency';

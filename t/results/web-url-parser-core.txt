@@ -1260,7 +1260,7 @@ not ok 896 - http://a🄀b/ - http://a🄀b/
 Wide character in print at /usr/lib/perl5/vendor_perl/5.10.1/Test/Builder.pm line 1759.
 #   Failed test 'http://a🄀b/ - http://a🄀b/'
 #   at _canon line 1.
-#   (in test::Web::URL::Parser->_canon_core)
+#   (in test::Web::URL::Canonicalize->_canon_core)
 # +----+-----------------------------------------------+------------------------------------------+
 # | Elt|Got                                            |Expected                                  |
 # +----+-----------------------------------------------+------------------------------------------+
