@@ -1376,3 +1376,68 @@ jar:http://foo/foo.jar!/foo/bar.html
 #base
 jar:http://foo/foo.jar!/foo/bar.html
 #invalid 1
+
+#data
+/foo/..//bar
+#base
+unknown:/hoge/
+#canon
+unknown:/.//bar
+#scheme unknown
+#path /.//bar
+
+#data
+unknown:/.//bar
+#scheme unknown
+#path /.//bar
+
+#data
+/foo/..//bar
+#base
+file:/hoge/
+#canon
+file:///.//bar
+#scheme file
+#host
+#path /.//bar
+
+#data
+file:///.//bar
+#scheme file
+#host
+#path /.//bar
+
+#data
+unknown:///.//bar
+#scheme unknown
+#host
+#path /.//bar
+
+#data
+/foo/..///bar
+#base
+unknown:/hoge/
+#canon
+unknown:/.///bar
+#scheme unknown
+#path /.///bar
+
+#data
+/foo/..///bar
+#base
+file:/hoge/
+#canon
+file://bar/
+#scheme file
+#host bar
+#path /
+
+#data
+about://hoge
+#scheme about
+#path //hoge
+
+#data
+data://hoge
+#scheme data
+#path //hoge

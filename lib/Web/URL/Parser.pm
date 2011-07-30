@@ -329,9 +329,6 @@ sub _resolve_relative_url ($$$) {
   } elsif (defined $parsed_spec->{path} and
            $parsed_spec->{path} =~ m{^[/\\]}) {
     ## Resolve as an authority-relative URL
-
-    ## XXX unknown:/hoge/ + /foo/..//bar
-
     my $r_path = $parsed_spec->{path};
     if ($parsed_base_url->{scheme_normalized} eq 'file') {
       $r_path =~ s{%2[Ff]}{/}g;
@@ -856,7 +853,7 @@ sub canonicalize_url ($$;$) {
         }
         if (defined $parsed_url->{path}) {
           if ($parsed_url->{host} eq '' and
-              $parsed_url->{path} =~ s{\A[/\\]{2,}([^/\\]*)}{}) {
+              $parsed_url->{path} =~ s{\A[/\\]{3,}([^/\\]*)}{}) {
             $parsed_url->{host} = $1;
           }
           $parsed_url->{path} =~ s{\A[/\\]?([A-Za-z]|%[46][1-9A-Fa-f]|%[57][0-9Aa])(?:[:\|]|%3[Aa]|%7[Cc])(?:[/\\]|\z)}{
@@ -940,6 +937,16 @@ sub canonicalize_url ($$;$) {
       }
     }
   } # HOSTPATH
+
+  if (defined $parsed_url->{path} and
+      $parsed_url->{path} =~ m{^//} and
+      not $IsNonHierarchicalScheme->{$parsed_url->{scheme_normalized}} and
+      not (defined $parsed_url->{user} or
+           defined $parsed_url->{password} or
+           defined $parsed_url->{port} or
+           (defined $parsed_url->{host} and length $parsed_url->{host}))) {
+    $parsed_url->{path} = '/.' . $parsed_url->{path};
+  }
 
   if (defined $parsed_url->{query}) {
     my $charset = $parsed_url->{is_hierarchical} ? $charset || 'utf-8' : 'utf-8';

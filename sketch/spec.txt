@@ -1161,7 +1161,7 @@ a character encoding /encoding/, is as follows:
       If there is the |path| component in /u/:
 
         If the |host| component of /u/ is the empty string and the
-        |path| component of /u/ begins with two or more "slash
+        |path| component of /u/ begins with three or more "slash
         characters",
 
           Remove those "slash characters" from the |path| component of
@@ -1251,6 +1251,21 @@ a character encoding /encoding/, is as follows:
   component of /u/ is different from /original-host/, or the |path|
   component of /u/ is different from /original-path/, then go to the
   step labeled "HOSTPATH".
+
+  If the |scheme| component of /u/ is "/not/ hierarchical":
+
+    If there is the |path| component in /u/ and it begins with two or
+    more U+002F SOLIDUS characters (/):
+
+      If there is no |authority| component in /u/, or if there is only
+      empty |host| component in the |authority| component in /u/,
+      prepend "/." (a U+002F SOLIDUS character (/) followed by a
+      U+002E FULL STOP character (.)) to the |path| component of /u/.
+
+        Note. Although this step introduces a non-normalized "."
+        path-segment, it is necessary to prevent the |path| component
+        prefixed by two or more "slash characters" such that its
+        serialization would be parsed as the |authority| component.
 
   If /u/ is "hierarchical", let /query-encoding/ be /encoding/.
   Otherwise, let /query-encoding/ be UTF-8.
