@@ -1,0 +1,66 @@
+=head1 NAME
+
+Web::DomainName::Punycode - A wrapper for Punycode encoding and decoding
+
+=head1 SYNOPSIS
+
+  use Web::DomainName::Punycode;
+  $out = encode_punycode $in;
+  $out = decode_punycode $in;
+
+=head1 DESCRIPTION
+
+The C<Web::DomainName::Punycode> module provides functions to encode and
+decode Punycode.
+
+Although there are a number of Punycode implementations written in
+Perl, they are broken or badly designed (see "Implementation" section
+of <http://suika.fam.cx/~wakaba/wiki/sw/n/Punycode>).
+
+This module is a wrapper of L<Net::LibIDN> at the moment.
+
+=head1 FUNCTIONS
+
+This module exports two functions:
+
+=over 4
+
+=item $out = encode_punycode $in
+
+Encode the given string.  It returns the Punycode-encoded
+representation, i.e. a string of ASCII characters.  If the input
+cannot be encoded, C<undef> is returned.
+
+=item $out = decode_punycode $in
+
+Decode the given string.  It returns the Punycode-decoded
+representation, i.e. a string of Unicode characters.  If the input
+cannot be decoded, e.g. because the input is not a Punycode-encoded
+string, C<undef> is returned.
+
+=back
+
+=head1 SEE ALSO
+
+RFC 3492, I<Punycode: A Bootstring encoding of Unicode for
+Internationalized Domain Names in Applications (IDNA)>, March 2003.
+<http://tools.ietf.org/html/rfc3492>.
+
+SuikaWiki:Punycode <http://suika.fam.cx/~wakaba/wiki/sw/n/Punycode>.
+
+L<Net::LibIDN>.
+
+GNU IDN Library - Libidn <http://www.gnu.org/s/libidn/>.
+
+=head1 AUTHOR
+
+Wakaba <w@suika.fam.cx>.
+
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

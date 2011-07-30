@@ -48,4 +48,13 @@ sub is_ascii_compat_charset_name ($) {
   }
 } # is_ascii_compat_charset_name
 
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
 1;

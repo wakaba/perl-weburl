@@ -1,0 +1,94 @@
+=head1 NAME
+
+Web::URL::Canonicalize - Canonicalize URLs as Web browsers do
+
+=head1 SYNOPSIS
+
+  use Web::URL::Canonicalize;
+  $canon_url = url_to_canon_url $url, $canon_base_url, $charset;
+
+=head1 DESCRIPTION
+
+The C<Web::URL::Canonicalize> module parses, resolves, and
+canonicalizes URLs as Web browsers do.
+
+Web browsers canonicalize URLs in many places.  For example, a
+relative URL specified in the C<href> attribute of an C<a> element is
+resolved against the base URL and then canonicalized such that some
+set of characters are percent-encoded if they has not yet.
+
+URL parsing, resolving, and canonicalizing rules are too complex and
+sometimes vary across browsers.  This module is trying to imitate
+their behavior as far as possible.  However, emulating a particular
+browser is not a goal.  The canonicalization algorithm implemented by
+this module is different from any browser.  If you are interested in
+how they differ, please run C<t/browsers/decomps.html>.
+
+=head1 FUNCTIONS
+
+This module exports a function by default:
+
+=over 4
+
+=item $canon_url = url_to_canon_url $url, $canon_base_url, $charset
+
+Canonicalize a URL.
+
+The first argument, C<$url>, is the URL to be canonicalized, as a
+character string.  It can be any string.  This argument is required.
+
+The second argument, C<$canon_base_url>, is the base URL used for the
+resolution of the URL.  This argument is optional, as base URL is not
+always given (consider a URL given as a command-line argument to a
+program).  If specified, the base URL B<must> be in its canonical
+form.  The result returned by this function with non-canonical base
+URL might be different from the result with canonical base URL.
+
+The third argument, C<$charset>, is the character encoding used to
+percent-encode non-ASCII characters in the C<query> component, if any.
+This argument is optional; C<UTF-8> is the default.  The character
+encoding of the document in which the URL is embedded should be
+specified in most cases.
+
+The function returns the canonicalized URL, as a character string.  If
+the given URL does not have the canonical form (e.g. because the URL
+has invalid host name, or because a relative URL is specified but the
+base URL is a C<mailto:> URL), C<undef> is returned.
+
+The canonicalized URL, if any, is always an absolute URL.  It is not
+always a conforming RFC 3986 URI reference.  It might contain space
+characters.  It might contain non-ASCII characters.
+
+=back
+
+Additionally, following functions can be exported if necessary (and if
+you understand what they do): C<parse_url>, C<resolve_url>.
+C<canonicalize_parsed_url>, and C<serialize_parsed_url>.
+
+=head1 TEST CASES
+
+There are several thousands of test cases under the directory
+C<t/data/>.
+
+=head1 SEE ALSO
+
+Tentative spec for URL canonicalization C<sketch/spec.txt>.
+
+L<Web::IPAddr::Canonicalize>.
+
+L<Web::DomainName::Canonicalize>.
+
+L<Web::Encoding>.
+
+=head1 AUTHOR
+
+Wakaba <w@suika.fam.cx>.
+
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

@@ -15,6 +15,8 @@ canonicalize IP addresses as Web browsers do.
 
 =head1 FUNCTIONS
 
+This module exports two functions:
+
 =over 4
 
 =item $result = canonicalize_ipv4_addr $input
@@ -31,7 +33,9 @@ an IPv6 address, C<undef> is returned.
 
 =head1 SEE ALSO
 
-sketch/spec.txt.
+Tentative spec for URL canonicalization C<sketch/spec.txt>.
+
+L<Web::DomainName::Canonicalize>.
 
 =head1 AUTHOR
 

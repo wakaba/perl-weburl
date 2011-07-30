@@ -1,0 +1,64 @@
+=head1 NAME
+
+Web::DomainName::Canonicalize - Domain name canonicalization
+
+=head1 SYNOPSIS
+
+  use Web::DomainName::Canonicalize;
+  $out = canonicalize_domain_name $in;
+  $out = canonicalize_url_host $in;
+
+=head1 DESCRIPTION
+
+The C<Web::DomainName::Canonicalize> module provides functions to
+convert domain names into their canonical representations, as Web
+browsers do.
+
+=head1 FUNCTIONS
+
+This module exports two functions:
+
+=over 4
+
+=item $out = canonicalize_domain_name $in
+
+Canonicalize a domain name, i.e. dotted labels.  The input might
+contain non-ASCII characters; they would be Punycode-encoded by the
+function.  If the input has no canonical representation (i.e. the
+input contains a character that cannot be used in domain names) the
+function returns C<undef>.  Note that the function might still return
+a non-C<undef> value when the domain name is invalid but it has a
+canonical representation.
+
+Input is considered as a domain name; no IP address canonicalization
+is performed.
+
+=item $out = canonicalize_url_host $in
+
+Canonicalize the C<host> component of a URL.  In addition to
+C<canonicalize_domain_name>, percent-encoding and -decoding, IP
+address canonicalization, and detection of some additional invalid
+characters are performed.  If the input has no canonical
+representation (such that the URL is invalid), the function returns
+C<undef>.
+
+=back
+
+=head1 SEE ALSO
+
+Tentative spec for URL canonicalization C<sketch/spec.txt>.
+
+L<Web::IPAddr::Canonicalize>.
+
+=head1 AUTHOR
+
+Wakaba <w@suika.fam.cx>.
+
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

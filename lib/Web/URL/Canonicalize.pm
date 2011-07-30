@@ -655,4 +655,13 @@ sub url_to_canon_url ($;$$) {
   return serialize_parsed_url canonicalize_parsed_url $url, $_[2];
 } # url_to_canon_url
 
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
 1;

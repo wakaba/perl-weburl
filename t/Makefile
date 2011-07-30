@@ -39,3 +39,5 @@ results/web-url-parser-misc.txt: web-url-canonicalize.t \
 
 test:
 	prove *.t
+
+## License: Public Domain.

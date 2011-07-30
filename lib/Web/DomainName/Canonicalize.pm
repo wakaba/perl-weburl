@@ -93,6 +93,7 @@ sub _nameprep_bidi ($) {
 
 sub canonicalize_domain_name ($) {
   my $s = $_[0];
+  return undef unless defined $s;
 
   my $need_punycode = $s =~ /[^\x00-\x7F]/;
 
@@ -135,6 +136,7 @@ sub canonicalize_domain_name ($) {
 
 sub canonicalize_url_host ($;%) {
   my ($s, %args) = @_;
+  return undef unless defined $s;
 
   return undef if $s =~ m{^%5[Bb]};
 
@@ -164,6 +166,15 @@ sub canonicalize_url_host ($;%) {
 
   return $s;
 } # canonicalize_url_host
+
+=head1 LICENSE
+
+Copyright 2011 Wakaba <w@suika.fam.cx>.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
 
 1;
 
