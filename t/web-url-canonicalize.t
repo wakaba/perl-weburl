@@ -6,9 +6,11 @@ use lib file (__FILE__)->dir->parent->subdir ('lib')->stringify;
 use lib file (__FILE__)->dir->parent->subdir ('modules', 'testdataparser', 'lib')->stringify;
 use lib file (__FILE__)->dir->parent->subdir ('modules', 'charclass', 'lib')->stringify;
 use base qw(Test::Class);
+use Test::More;
 use Test::Differences;
 use Test::HTCT::Parser;
 use Web::URL::Canonicalize qw(
+  url_to_canon_url
   parse_url resolve_url canonicalize_parsed_url serialize_parsed_url
 );
 
@@ -244,6 +246,37 @@ sub _canon_bc : Tests {
 sub _canon_a : Tests {
   __canon @decomps_data_a_f;
 }
+
+sub _url_to_canon_url : Test(23) {
+  for (
+    [undef, undef, undef, undef],
+    [q<http://foo/bar>, undef, undef, q<http://foo/bar>],
+    [q<baz>, q<http://foo/bar>, undef, q<http://foo/baz>],
+    [q<hoge>, q<mailto:foo>, undef, undef],
+    [qq<abc\x{4e90}>, q<http://foo/>, undef, q<http://foo/abc%E4%BA%90>],
+    [qq<??>, q<http://foo/>, undef, q<http://foo/??>],
+    [qq<?\x{5050}>, q<http://hoge>, undef, q<http://hoge/?%E5%81%90>],
+    [qq<?\x{5050}>, q<http://hoge>, 'utf-8', q<http://hoge/?%E5%81%90>],
+    [qq<?\x{5050}>, q<http://hoge>, 'iso-8859-1', q<http://hoge/??>],
+    [qq<?\x{5050}>, q<http://hoge>, 'euc-jp', q<http://hoge/?%D0%F4>],
+    [q<#>, undef, undef, undef],
+    [q<foo>, q<bar>, undef, undef],
+    [q<data:foo#bar>, undef, undef, q<data:foo#bar>],
+    [q<../../baz>, q<http://hoge/a/b/c/d/e/../../>, undef, q<http://hoge/a/baz>],
+    [q<../../baz>, q<http://hoge/a/b/c/d/e/../..>, undef, q<http://hoge/a/b/baz>],
+    [q<../../baz>, q<http://hoge/a/b/c/>, undef, q<http://hoge/a/baz>],
+    [q<../../../abc>, q<file://c:/windows/>, undef, q<file:///c:/abc>],
+    [q<../../../abc>, q<file:///c:/windows/>, undef, q<file:///abc>],
+    [q<http://foo/bar/./baz/..>, undef, undef, q<http://foo/bar/>],
+    [q<file://c:/windows\\>, undef, undef, q<file:///c:/windows/>],
+    [q<file://c:/windows\\>, q<file:///>, undef, q<file:///c:/windows/>],
+    [q<http://hoge/a/b/c/d/e/../..>, undef, undef, q<http://hoge/a/b/c/>],
+    [q<http://hoge/a/b/c/d/e/../../>, undef, undef, q<http://hoge/a/b/c/>],
+  ) {
+    my $canon = url_to_canon_url $_->[0], $_->[1], $_->[2];
+    is $canon, $_->[3];
+  }
+} # _url_to_canon_url
 
 __PACKAGE__->runtests;
 
