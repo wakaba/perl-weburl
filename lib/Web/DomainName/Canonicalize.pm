@@ -2,7 +2,12 @@ package Web::DomainName::Canonicalize;
 use strict;
 use warnings;
 our $VERSION = '1.0';
+use Encode;
+use Char::Prop::Unicode::BidiClass;
+use Unicode::Normalize;
+use Unicode::Stringprep;
 use Web::IPAddr::Canonicalize;
+use Web::DomainName::Punycode qw(encode_punycode);
 use Exporter::Lite;
 
 our @EXPORT = qw(
@@ -10,29 +15,14 @@ our @EXPORT = qw(
   canonicalize_url_host
 );
 
-use Net::LibIDN;
-use Encode;
-
-sub encode_punycode ($) {
-  # XXX
-  return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_encode $_[0], 'utf-8' };
-} # encode_punycode
-
-sub decode_punycode ($) {
-  # XXX
-  return eval { Encode::decode 'utf-8', Net::LibIDN::idn_punycode_decode $_[0], 'utf-8' };
-} # decode_punycode
-
-use Unicode::Normalize;
-use Unicode::Stringprep;
-*nameprepmapping = Unicode::Stringprep->new
+*_nameprep_mapping = Unicode::Stringprep->new
     (3.2,
      [\@Unicode::Stringprep::Mapping::B1,
       \@Unicode::Stringprep::Mapping::B2],
      '',
      [],
      0, 0);
-*nameprepprohibited = Unicode::Stringprep->new
+*_nameprep_prohibited = Unicode::Stringprep->new
     (3.2,
      [],
      '',
@@ -46,36 +36,33 @@ use Unicode::Stringprep;
       \@Unicode::Stringprep::Prohibited::C8,
       \@Unicode::Stringprep::Prohibited::C9],
      0, 0);
-*nameprepunassigned = Unicode::Stringprep->new
+*_nameprep_unassigned = Unicode::Stringprep->new
     (3.2,
      [],
      '',
      [],
      0, 1);
-use Char::Prop::Unicode::BidiClass;
 
-sub nameprep ($;%) {
-  my $label = shift;
-  my %args = @_;
+sub _nameprep ($) {
+  my $label = $_[0];
+  local $@;
   
   $label =~ tr{\x{2F868}\x{2F874}\x{2F91F}\x{2F95F}\x{2F9BF}}
       {\x{36FC}\x{5F53}\x{243AB}\x{7AEE}\x{45D7}};
-  $label = nameprepmapping ($label);
+  $label = _nameprep_mapping ($label);
 
-  my $has_unassigned = not defined eval { nameprepunassigned ($label); 1 };
+  my $has_unassigned = not eval { _nameprep_unassigned ($label); 1 };
   $label = NFKC ($label);
   if ($has_unassigned) {
-    $label = nameprepmapping ($label);
+    $label = _nameprep_mapping ($label);
     $label = NFKC $label;
   }
   
-  if (not defined eval { nameprepprohibited ($label); 1 }) {
-    return undef;
-  }
+  return undef if not eval { _nameprep_prohibited ($label); 1 };
   return $label;
-} # nameprep
+} # _nameprep
 
-sub nameprep_bidi ($) {
+sub _nameprep_bidi ($) {
   my $label = shift;
 
   my @char = split //, $label;
@@ -102,14 +89,14 @@ sub nameprep_bidi ($) {
   }
   
   return $label;
-} # nameprep_bidi
+} # _nameprep_bidi
 
 sub canonicalize_domain_name ($) {
   my $s = $_[0];
 
   my $need_punycode = $s =~ /[^\x00-\x7F]/;
 
-  $s = nameprep $s;
+  $s = _nameprep $s;
   return undef unless defined $s;
 
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
@@ -123,12 +110,12 @@ sub canonicalize_domain_name ($) {
     @label = map {
         my $label = $_;
 
-        $label = nameprep_bidi $label;
+        $label = _nameprep_bidi $label;
         return undef unless defined $label;
 
         if ($label =~ /[^\x00-\x7F]/) {
           return undef if $label =~ /^xn--/;
-          $label = eval { encode_punycode $label };
+          $label = encode_punycode $label;
           return undef unless defined $label;
           $label = 'xn--' . $label;
           return undef if length $label > 63;
