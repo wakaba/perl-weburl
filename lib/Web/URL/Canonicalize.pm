@@ -5,6 +5,11 @@ our $VERSION = '1.0';
 use Encode;
 require utf8;
 use Web::DomainName::Canonicalize;
+use Exporter::Lite;
+
+our @EXPORT_OK = qw(
+  parse_url resolve_url canonicalize_parsed_url serialize_parsed_url
+);
 
 our $IsHierarchicalScheme = {
   ftp => 1,
@@ -33,38 +38,97 @@ our $DefaultPort = {
   wss => 443,
 };
 
-sub _preprocess_input ($$) {
-  if (utf8::is_utf8 ($_[1])) {
+# ------ Parsing ------
+
+sub _preprocess_input ($) {
+  if (utf8::is_utf8 ($_[0])) {
     ## Replace surrogate code points, noncharacters, and non-Unicode
     ## characters by U+FFFD REPLACEMENT CHARACTER, as they break
     ## Perl's regular expression character class handling in some
     ## versions of Perl.
     my $i = 0;
-    pos ($_[1]) = $i;
-    while (pos $_[1] < length $_[1]) {
-      my $code = ord substr $_[1], pos ($_[1]), 1;
+    pos ($_[0]) = $i;
+    while (pos $_[0] < length $_[0]) {
+      my $code = ord substr $_[0], pos ($_[0]), 1;
       if ((0xD800 <= $code and $code <= 0xDFFF) or
           (0xFDD0 <= $code and $code <= 0xFDEF) or
           ($code % 0x10000) == 0xFFFE or
           ($code % 0x10000) == 0xFFFF or
           $code > 0x10FFFF
       ) {
-        substr ($_[1], pos ($_[1]), 1) = "\x{FFFD}";
+        substr ($_[0], pos ($_[0]), 1) = "\x{FFFD}";
       }
-      pos ($_[1])++;
+      pos ($_[0])++;
     }
   }
 
-  $_[1] =~ s{[\x09\x0A\x0D]+}{}g;
-  $_[1] =~ s{\A[\x0B\x0C\x20]+}{};
-  $_[1] =~ s{[\x0B\x0C\x20]+\z}{};
+  $_[0] =~ s{[\x09\x0A\x0D]+}{}g;
+  $_[0] =~ s{\A[\x0B\x0C\x20]+}{};
+  $_[0] =~ s{[\x0B\x0C\x20]+\z}{};
 } # _preprocess_input
 
-sub parse_absolute_url ($$) {
-  my ($class, $input) = @_;
+sub _find_authority_path_query_fragment ($$) {
+  my ($inputref => $result, %args) = @_;
+
+  if ($$inputref =~ m{\A[/\\]{3}(?![/\\])}) {
+    ## Slash characters
+    $$inputref =~ s{\A[/\\]{2}}{};
+    $result->{authority} = '';
+  } elsif ($$inputref =~ m{\A[/\\]{2}}) {
+    ## Slash characters
+    $$inputref =~ s{\A[/\\]+}{};
+    
+    ## Authority terminating characters (including slash characters)
+    if ($$inputref =~ s{\A([^/\\?\#]*)(?=[/\\?\#])}{}) {
+      $result->{authority} = $1;
+    } else {
+      $result->{authority} = $$inputref; 
+      return;
+    }
+  }
+
+  if ($$inputref =~ s{\#(.*)\z}{}s) {
+    $result->{fragment} = $1;
+  }
+
+  if ($$inputref =~ s{\?(.*)\z}{}s) {
+    $result->{query} = $1;
+  }
+
+  $result->{path} = $$inputref;
+} # _find_authority_path_query_fragment
+
+sub _find_user_info_host_port ($$) {
+  my ($inputref => $result) = @_;
+  my $input = $$inputref;
+  if ($input =~ s/\@([^\@]*)\z//) {
+    $result->{user_info} = $input;
+    $input = $1;
+  }
+  
+  unless ($input =~ /:/) {
+    $result->{host} = $input;
+    return;
+  }
+
+  if ($input =~ /\A\[/ and
+      $input =~ /\][^\]:]*\z/) {
+    $result->{host} = $input;
+    return;
+  }
+
+  if ($input =~ s/:([^:]*)\z//) {
+    $result->{port} = $1;
+  }
+
+  $result->{host} = $input;
+} # _find_user_info_host_port
+
+sub parse_url ($) {
+  my $input = $_[0];
   my $result = {};
 
-  $class->_preprocess_input ($input);
+  _preprocess_input $input;
 
   if ($input =~ s{^\\{2,}([^/\\\?\#]*)}{}) {
     $result->{host} = $1;
@@ -146,10 +210,9 @@ sub parse_absolute_url ($$) {
        not $IsNonHierarchicalScheme->{$result->{scheme_normalized}} and
        $input =~ m{^[/\\]})) {
     $result->{is_hierarchical} = 1;
-    $class->_find_authority_path_query_fragment
-        (\$input => $result);
+    _find_authority_path_query_fragment \$input => $result;
     if (defined $result->{authority}) {
-      $class->_find_user_info_host_port (\($result->{authority}) => $result);
+      _find_user_info_host_port \($result->{authority}) => $result;
       delete $result->{authority} unless $result->{invalid};
     }
     if (defined $result->{user_info}) {
@@ -178,116 +241,31 @@ sub parse_absolute_url ($$) {
 
   $result->{path} = $input;
   return $result;
-} # parse_absolute_url
+} # parse_url
 
-sub _find_authority_path_query_fragment ($$$) {
-  my ($class, $inputref => $result, %args) = @_;
+# ------ Resolution ------
 
-  if ($$inputref =~ m{\A[/\\]{3}(?![/\\])}) {
-    ## Slash characters
-    $$inputref =~ s{\A[/\\]{2}}{};
-    $result->{authority} = '';
-  } elsif ($$inputref =~ m{\A[/\\]{2}}) {
-    ## Slash characters
-    $$inputref =~ s{\A[/\\]+}{};
-    
-    ## Authority terminating characters (including slash characters)
-    if ($$inputref =~ s{\A([^/\\?\#]*)(?=[/\\?\#])}{}) {
-      $result->{authority} = $1;
-    } else {
-      $result->{authority} = $$inputref; 
-      return;
+sub _remove_dot_segments ($) {
+  ## Removing dot-segments (RFC 3986)
+  local $_ = $_[0];
+  s{\\}{/}g;
+  my $buf = '';
+  L: while (length $_) {
+    next L if s/^(?:\.|%2[Ee])(?:\.|%2[Ee])?\///;
+    next L if s/^\/(?:\.|%2[Ee])(?:\/|\z)/\//;
+    if (s/^\/(?:\.|%2[Ee])(?:\.|%2[Ee])(\/|\z)/\//) {
+      $buf =~ s/\/?[^\/]*$//;
+      next L;
     }
+    last L if s/^(?:\.|%2[Ee])(?:\.|%2[Ee])?\z//;
+    s{^(/?(?:(?!/).)*)}{}s;
+    $buf .= $1;
   }
+  return $buf;
+} # _remove_dot_segments
 
-  if ($$inputref =~ s{\#(.*)\z}{}s) {
-    $result->{fragment} = $1;
-  }
-
-  if ($$inputref =~ s{\?(.*)\z}{}s) {
-    $result->{query} = $1;
-  }
-
-  $result->{path} = $$inputref;
-} # _find_authority_path_query_fragment
-
-sub _find_user_info_host_port ($$$) {
-  my ($class, $inputref => $result) = @_;
-  my $input = $$inputref;
-  if ($input =~ s/\@([^\@]*)\z//) {
-    $result->{user_info} = $input;
-    $input = $1;
-  }
-  
-  unless ($input =~ /:/) {
-    $result->{host} = $input;
-    return;
-  }
-
-  if ($input =~ /\A\[/ and
-      $input =~ /\][^\]:]*\z/) {
-    $result->{host} = $input;
-    return;
-  }
-
-  if ($input =~ s/:([^:]*)\z//) {
-    $result->{port} = $1;
-  }
-
-  $result->{host} = $input;
-} # _find_user_info_host_port
-
-sub resolve_url ($$$) {
-  my ($class, $spec, $parsed_base_url) = @_;
-
-  if ($parsed_base_url->{invalid}) {
-    return {invalid => 1};
-  }
-
-  $class->_preprocess_input ($spec);
-
-  if ($spec eq '') {
-    my $url = {%$parsed_base_url};
-    delete $url->{fragment};
-    return $url;
-  }
-
-  my $parsed_spec = $class->parse_absolute_url ($spec);
-  if ($parsed_spec->{invalid}) { # No scheme
-    return $class->_resolve_relative_url ($parsed_spec, $parsed_base_url);
-  }
-
-  if ($parsed_base_url->{is_hierarchical} and
-      $parsed_spec->{scheme_normalized} eq
-      $parsed_base_url->{scheme_normalized}) {
-    if ((not defined $parsed_spec->{path} or
-         not length $parsed_spec->{path}) and
-        not defined $parsed_spec->{host} and
-        not defined $parsed_spec->{query} and
-        not defined $parsed_spec->{fragment}) {
-      my $url = {%$parsed_base_url};
-      delete $url->{fragment};
-      return $url;
-    }
-    return $class->_resolve_relative_url ($parsed_spec, $parsed_base_url);
-  }
-
-  if ($parsed_spec->{is_hierarchical}) {
-    if (defined $parsed_spec->{path}) {
-      if ($parsed_spec->{scheme_normalized} eq 'file') {
-        $parsed_spec->{path} =~ s{%2[Ff]}{/}g;
-        $parsed_spec->{path} =~ s{%5[Cc]}{\\}g;
-      }
-      $parsed_spec->{path} = $class->_remove_dot_segments
-          ($parsed_spec->{path});
-    }
-  }
-
-  return $parsed_spec;
-} # resolve_url
-
-sub _resolve_relative_url ($$$) {
-  my ($class, $parsed_spec, $parsed_base_url) = @_;
+sub _resolve_relative_url ($$) {
+  my ($parsed_spec, $parsed_base_url) = @_;
 
   unless ($parsed_base_url->{is_hierarchical}) {
     return {invalid => 1};
@@ -311,7 +289,7 @@ sub _resolve_relative_url ($$$) {
         $r_path =~ s{%2[Ff]}{/}g;
         $r_path =~ s{%5[Cc]}{\\}g;
       }
-      $r_path = $class->_remove_dot_segments ($r_path);
+      $r_path = _remove_dot_segments $r_path;
     }
 
     if ($parsed_base_url->{scheme_normalized} eq 'file') {
@@ -334,7 +312,7 @@ sub _resolve_relative_url ($$$) {
       $r_path =~ s{%2[Ff]}{/}g;
       $r_path =~ s{%5[Cc]}{\\}g;
     }
-    $r_path = $class->_remove_dot_segments ($r_path);
+    $r_path = _remove_dot_segments $r_path;
 
     my $url = {%$parsed_base_url};
     for (qw(query fragment)) {
@@ -401,32 +379,63 @@ sub _resolve_relative_url ($$$) {
         $r_path = $b_path . $r_path;
       }
     }
-    $url->{path} = $class->_remove_dot_segments ($r_path);
+    $url->{path} = _remove_dot_segments $r_path;
     return $url;
   }
 } # _resolve_relative_url
 
-sub _remove_dot_segments ($$) {
-  ## Removing dot-segments (RFC 3986)
-  local $_ = $_[1];
-  s{\\}{/}g;
-  my $buf = '';
-  L: while (length $_) {
-    next L if s/^(?:\.|%2[Ee])(?:\.|%2[Ee])?\///;
-    next L if s/^\/(?:\.|%2[Ee])(?:\/|\z)/\//;
-    if (s/^\/(?:\.|%2[Ee])(?:\.|%2[Ee])(\/|\z)/\//) {
-      $buf =~ s/\/?[^\/]*$//;
-      next L;
-    }
-    last L if s/^(?:\.|%2[Ee])(?:\.|%2[Ee])?\z//;
-    s{^(/?(?:(?!/).)*)}{}s;
-    $buf .= $1;
-  }
-  return $buf;
-} # _remove_dot_segments
+sub resolve_url ($$) {
+  my ($spec, $parsed_base_url) = @_;
 
-sub canonicalize_url ($$;$) {
-  my ($class, $parsed_url, $charset) = @_;
+  if ($parsed_base_url->{invalid}) {
+    return {invalid => 1};
+  }
+
+  _preprocess_input $spec;
+
+  if ($spec eq '') {
+    my $url = {%$parsed_base_url};
+    delete $url->{fragment};
+    return $url;
+  }
+
+  my $parsed_spec = parse_url $spec;
+  if ($parsed_spec->{invalid}) { # No scheme
+    return _resolve_relative_url $parsed_spec, $parsed_base_url;
+  }
+
+  if ($parsed_base_url->{is_hierarchical} and
+      $parsed_spec->{scheme_normalized} eq
+      $parsed_base_url->{scheme_normalized}) {
+    if ((not defined $parsed_spec->{path} or
+         not length $parsed_spec->{path}) and
+        not defined $parsed_spec->{host} and
+        not defined $parsed_spec->{query} and
+        not defined $parsed_spec->{fragment}) {
+      my $url = {%$parsed_base_url};
+      delete $url->{fragment};
+      return $url;
+    }
+    return _resolve_relative_url $parsed_spec, $parsed_base_url;
+  }
+
+  if ($parsed_spec->{is_hierarchical}) {
+    if (defined $parsed_spec->{path}) {
+      if ($parsed_spec->{scheme_normalized} eq 'file') {
+        $parsed_spec->{path} =~ s{%2[Ff]}{/}g;
+        $parsed_spec->{path} =~ s{%5[Cc]}{\\}g;
+      }
+      $parsed_spec->{path} = _remove_dot_segments $parsed_spec->{path};
+    }
+  }
+
+  return $parsed_spec;
+} # resolve_url
+
+# ------ Canonicalization ------
+
+sub canonicalize_parsed_url ($;$) {
+  my ($parsed_url, $charset) = @_;
 
   return $parsed_url if $parsed_url->{invalid};
 
@@ -606,11 +615,12 @@ sub canonicalize_url ($$;$) {
   }
 
   return $parsed_url;
-} # canonicalize_url
+} # canonicalize_parsed_url
 
-sub serialize_url ($$) {
-  my ($class, $parsed_url) = @_;
+# ------ Serialization ------
 
+sub serialize_parsed_url ($) {
+  my $parsed_url = $_[0];
   return undef if $parsed_url->{invalid};
 
   my $u = $parsed_url->{scheme} . ':';
@@ -640,6 +650,6 @@ sub serialize_url ($$) {
     $u .= '#' . $parsed_url->{fragment};
   }
   return $u;
-} # serialize_url
+} # serialize_parsed_url
 
 1;
