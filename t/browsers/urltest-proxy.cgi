@@ -35,3 +35,5 @@ if ($q =~ /^c=([^&]+)&u=([^&]+)&b=([^&]+)$/) {
 } else {
   print "Status: 404 Not found\n\n";
 }
+
+## License: Public Domain.
