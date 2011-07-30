@@ -6,13 +6,9 @@ use Web::IPAddr::Canonicalize;
 use Exporter::Lite;
 
 our @EXPORT = qw(
+  canonicalize_domain_name
   canonicalize_url_host
 );
-
-sub canonicalize_url_host ($;%) {
-  my %args = @_[1..$#_];
-  return to_ascii($_[0], $args{is_file});
-} # canonicalize_url_host
 
 use Net::LibIDN;
 use Encode;
@@ -108,27 +104,17 @@ sub nameprep_bidi ($) {
   return $label;
 } # nameprep_bidi
 
-sub to_ascii ($$) {
-  my ($s, $is_file) = @_;
-
-  my $fallback = undef;
-
-  return undef if $s =~ m{^%5[Bb]};
-
-  $s = Encode::encode ('utf-8', $s);
-  $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
-  $s = Encode::decode ('utf-8', $s); # XXX error-handling
+sub canonicalize_domain_name ($) {
+  my $s = $_[0];
 
   my $need_punycode = $s =~ /[^\x00-\x7F]/;
 
-  my $has_root_dot;
-  
   $s = nameprep $s;
-  return $fallback unless defined $s;
+  return undef unless defined $s;
 
   $s =~ tr/\x{3002}\x{FF0E}\x{FF61}/.../;
 
-  $has_root_dot = 1 if $s =~ s/[.]\z//;
+  my $has_root_dot = $s =~ s/[.]\z//;
 
   my @label = split /\./, $s, -1;
   @label = ('') unless @label;
@@ -138,14 +124,14 @@ sub to_ascii ($$) {
         my $label = $_;
 
         $label = nameprep_bidi $label;
-        return $fallback unless defined $label;
+        return undef unless defined $label;
 
         if ($label =~ /[^\x00-\x7F]/) {
           return undef if $label =~ /^xn--/;
           $label = eval { encode_punycode $label };
-          return $fallback unless defined $label;
+          return undef unless defined $label;
           $label = 'xn--' . $label;
-          return $fallback if length $label > 63;
+          return undef if length $label > 63;
         } else {
           return undef if $label eq '';
           return undef if length $label > 63;
@@ -156,30 +142,41 @@ sub to_ascii ($$) {
 
   push @label, '' if $has_root_dot;
   $s = join '.', @label;
+  
+  return $s;
+} # canonicalize_domain_name
 
+sub canonicalize_url_host ($;%) {
+  my ($s, %args) = @_;
+
+  return undef if $s =~ m{^%5[Bb]};
+
+  $s = Encode::encode ('utf-8', $s);
+  $s =~ s{%([0-9A-Fa-f]{2})}{pack 'C', hex $1}ge;
+  $s = Encode::decode ('utf-8', $s); # XXX error-handling
+
+  $s = canonicalize_domain_name $s;
+  return undef unless defined $s;
+  
   if ($s =~ /\A\[/ and $s =~ /\]\z/) {
     my $t = canonicalize_ipv6_addr substr $s, 1, -2 + length $s;
     return '[' . $t . ']' if defined $t;
   } else {
-    unless ($is_file) {
-      return undef if $s =~ /:/;
-    }
+    return undef if not $args{is_file} and $s =~ /:/;
   }
 
   my $ipv4 = canonicalize_ipv4_addr $s;
   return $ipv4 if defined $ipv4;
   
-  if ($s =~ /[\x00\x25\x2F\x5C]/) {
-    return undef;
-  }
+  return undef if $s =~ /[\x00\x25\x2F\x5C]/;
 
   $s =~ s{([\x00-\x2A\x2C\x2F\x3B-\x3F\x5C\x5E\x60\x7B-\x7D\x7F])}{
     sprintf '%%%02X', ord $1;
   }ge;
-  $s =~ s{\@}{%40}g unless $is_file;
-  
+  $s =~ s{\@}{%40}g unless $args{is_file};
+
   return $s;
-} # to_ascii
+} # canonicalize_url_host
 
 1;
 
