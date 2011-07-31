@@ -15817,15 +15817,16 @@ a\u003Ab
 
 #data escaped
 http://a\uFE14b/
-#invalid 1
-#scheme http
-#path /
-#chrome-not-invalid 1
+#canon escaped
+http://a%3Bb/
+#host escaped
+a%3Bb
 #chrome-canon escaped
 http://xn--ab-j82n/
+#scheme http
 #chrome-host escaped
 xn--ab-j82n
-#gecko-not-invalid 1
+#path /
 #gecko-canon escaped
 http://a\u003Bb/
 #gecko-host escaped
@@ -15860,15 +15861,16 @@ a\u0021b
 
 #data escaped
 http://a\uFE16b/
-#invalid 1
-#scheme http
-#path /
-#chrome-not-invalid 1
+#canon escaped
+http://a%3Fb/
+#host escaped
+a%3Fb
 #chrome-canon escaped
 http://xn--ab-p82n/
+#scheme http
 #chrome-host escaped
 xn--ab-p82n
-#gecko-not-invalid 1
+#path /
 #gecko-canon escaped
 http://a\u003Fb/
 #gecko-host escaped
@@ -16342,9 +16344,9 @@ xn--ab-ub3n
 #data escaped
 http://a\uFE47b/
 #canon escaped
-http://a%5Bb/
+http://a\u005Bb/
 #host escaped
-a%5Bb
+a\u005Bb
 #chrome-canon escaped
 http://xn--ab-wd3n/
 #scheme http
@@ -16364,9 +16366,9 @@ a\u005Bb
 #data escaped
 http://a\uFE48b/
 #canon escaped
-http://a%5Db/
+http://a\u005Db/
 #host escaped
-a%5Db
+a\u005Db
 #chrome-canon escaped
 http://xn--ab-zd3n/
 #scheme http

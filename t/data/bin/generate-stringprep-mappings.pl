@@ -328,7 +328,7 @@ a\u003Ab
 #ie-invalid 1
 
 };
-      } elsif ($v == 0xFE14 and not $args{pe_input}) {
+      } elsif (0 and $v == 0xFE14 and not $args{pe_input}) {
         print $file q{#data escaped
 http://a\uFE14b/
 #invalid 1
@@ -351,7 +351,7 @@ a\u003Bb
 #ie-invalid 1
 
 };
-      } elsif ($v == 0xFE16 and not $args{pe_input}) {
+      } elsif (0 and $v == 0xFE16 and not $args{pe_input}) {
         print $file q{#data escaped
 http://a\uFE16b/
 #invalid 1
@@ -462,7 +462,7 @@ http://%s/
                 if $host =~ /[^\x00-\x7F]/;
             $host =~ tr/A-Z/a-z/;
 
-            $host =~ s{([\x00-\x2A\x2C\x2F\x3A-\x40\x5B-\x5E\x60\x7B-\x7D\x7F])}{
+            $host =~ s{([\x00-\x2A\x2C\x2F\x3A-\x40\x5C\x5E\x60\x7B-\x7D\x7F])}{
               sprintf '%%%02X', ord $1;
             }ge;
           }
