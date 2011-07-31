@@ -86,7 +86,7 @@ http://foo/bar
 #base http://foo
 #scheme http
 #host foo
-#path 
+#path
 #query hoge
 #fragment fuga
 
@@ -95,7 +95,7 @@ http://foo/bar
 #base http://foo#baz
 #scheme http
 #host foo
-#path 
+#path
 #query hoge
 #fragment fuga
 
@@ -115,6 +115,7 @@ http://foo/bar
 #base http://foo/bar
 #scheme http
 #host hoge
+#path
 
 #data
 //hoge/fuga?abc#def
@@ -130,6 +131,7 @@ http://foo/bar
 #base http://a:b@c:d/e?f#g
 #scheme http
 #host abc
+#path
 
 #data
 //x:y@z:l/m?n#o
@@ -209,8 +211,8 @@ http://foo/bar
 /foo?bar#baz
 #base http://
 #scheme http
-#host foo
-#path 
+#host
+#path /foo
 #query bar
 #fragment baz
 
@@ -285,6 +287,7 @@ gg:h
 #base http://a/b/c/d;p?q
 #scheme http
 #host g
+#path
 
 #data
 ?y
@@ -400,6 +403,7 @@ Following test cases have no applicable spec at the moment...
 #base http://dummy
 #scheme http
 #host dummy
+#path
 
 #data
 hoge

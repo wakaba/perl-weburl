@@ -1,20 +1,24 @@
 #data
 #invalid 1
+#path
 
 #data
 http://
 #scheme http
 #host 
+#path
 
 #data
 HTTP://
 #scheme HTTP
 #host
+#path
 
 #data
 http://www.example.com
 #scheme http
 #host www.example.com
+#path
 
 #data
 http://www.example.com/
@@ -32,22 +36,30 @@ HTTP://example.com/
 \u0020\u0020http://test\u0020\u0020
 #scheme http
 #host test
+#path
 
 #data escaped
 \u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020http://test\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0009\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020
 #invalid 1
+#path escaped
+\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u0020http://test\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\u0008\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019
 
 #data escaped
 \u007Fhttp://test\u007F
 #invalid 1
+#path escaped
+\u007Fhttp://test\u007F
 
 #data escaped
 \u0080http://test\u0080
 #invalid 1
+#path escaped
+\u0080http://test\u0080
 
 #data
 :abc
 #invalid 1
+#path :abc
 
 #data
 http:
@@ -73,6 +85,8 @@ hTtP://test/
 #data
 /::ab
 #invalid 1
+#path
+/::ab
 
 #data
 http://foo#bar
@@ -98,6 +112,7 @@ http://foo/bar
 http://foo;bar
 #scheme http
 #host foo;bar
+#path
 
 #data
 http://foo\bar
@@ -197,26 +212,27 @@ http://foo?bar/baz
 #data
 http:///foo
 #scheme http
-#host foo
+#host 
+#path /foo
 
 #data
 http:///foo/
 #scheme http
-#host foo
-#path /
+#host 
+#path /foo/
 
 #data
 http:///?bar
 #scheme http
 #host
-#path
+#path /
 #query bar
 
 #data
 http:///#bar
 #scheme http
 #host
-#path
+#path /
 #fragment bar
 
 #data
@@ -231,6 +247,7 @@ http://a@b@c
 #scheme http
 #user a@b
 #host c
+#path
 
 #data
 http://a:b@c
@@ -238,6 +255,7 @@ http://a:b@c
 #user a
 #password b
 #host c
+#path
 
 #data
 http://a@b@c:d@e
@@ -245,6 +263,7 @@ http://a@b@c:d@e
 #user a@b@c
 #password d
 #host e
+#path
 
 #data
 http://@/
@@ -258,6 +277,7 @@ http://@@@@@@@@
 #scheme http
 #user @@@@@@@
 #host
+#path
 
 #data
 http://:@
@@ -265,11 +285,13 @@ http://:@
 #user
 #password
 #host
+#path
 
 #data
 http://[]
 #scheme http
 #host []
+#path
 
 #data
 http://[]/
@@ -307,35 +329,41 @@ http://[\]
 http://[:]
 #scheme http
 #host [:]
+#path
 
 #data
 http://[:80]
 #scheme http
 #host [:80]
+#path
 
 #data
 http://foo:80
 #scheme http
 #host foo
 #port 80
+#path
 
 #data
 http://foo:80:98
 #scheme http
 #host foo:80
 #port 98
+#path
 
 #data
 http://foo:
 #scheme http
 #host foo
 #port
+#path
 
 #data
 http://foo::
 #scheme http
 #host foo:
 #port 
+#path
 
 #data
 http://foo:/
@@ -349,12 +377,14 @@ http://[foo:80
 #scheme http
 #host [foo
 #port 80
+#path
 
 #data
 http://[1:2:4
 #scheme http
 #host [1:2
 #port 4
+#path
 
 #data
 http://[1:2:3/4:5]
@@ -368,12 +398,14 @@ http://:080
 #scheme http
 #host
 #port 080
+#path
 
 #data
 http://[foo;bar=a]:80
 #scheme http
 #host [foo;bar=a]
 #port 80
+#path
 
 #data
 http://:@bar
@@ -381,6 +413,7 @@ http://:@bar
 #user
 #password
 #host bar
+#path
 
 #data
 http://abc:@
@@ -388,6 +421,7 @@ http://abc:@
 #user abc
 #password
 #host
+#path
 
 #data
 http://ab:c:de@
@@ -395,6 +429,7 @@ http://ab:c:de@
 #user ab
 #password c:de
 #host
+#path
 
 #data
 http://:::::@
@@ -402,6 +437,7 @@ http://:::::@
 #user
 #password ::::
 #host
+#path
 
 #data
 http:
@@ -452,10 +488,14 @@ ftp://hoge/fuga
 #data
 %D9%82%D9%87%D9%88%D8%A9://coffee.example/
 #invalid 1
+#path
+%D9%82%D9%87%D9%88%D8%A9://coffee.example/
 
 #data
 %D9%82%D9%87%D9%88%D8%a9://coffee.example/
 #invalid 1
+#path
+%D9%82%D9%87%D9%88%D8%a9://coffee.example/
 
 #data
 http://%D9%82%D9%87%D9%88%D8%A9@example/
@@ -659,12 +699,14 @@ ftp://cnn.example.com&story=breaking_news@10.0.0.1/top_story.htm
 http://r%C3%A9sum%C3%A9.example.org
 #scheme http
 #host r%C3%A9sum%C3%A9.example.org
+#path
 
 #data escaped
 http://r\u00E9sum\u00E9.example.org
 #scheme http
 #host escaped
 r\u00E9sum\u00E9.example.org
+#path
 
 #data escaped
 http://www.example.org/red%09ros\u00E9#red

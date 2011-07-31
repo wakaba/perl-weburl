@@ -87,6 +87,7 @@ sub _find_authority_path_query_fragment ($$) {
       $result->{authority} = $1;
     } else {
       $result->{authority} = $$inputref; 
+      $result->{path} = '';
       return;
     }
   }
@@ -294,6 +295,7 @@ sub _resolve_relative_url ($$) {
         $r_path =~ s{%5[Cc]}{\\}g;
       }
       $r_path = _remove_dot_segments $r_path;
+      $url->{path} = $r_path;
     }
 
     if ($parsed_base_url->{scheme_normalized} eq 'file') {
@@ -306,7 +308,6 @@ sub _resolve_relative_url ($$) {
       }
     }
 
-    $url->{path} = $r_path;
     return $url;
   } elsif (defined $parsed_spec->{path} and
            $parsed_spec->{path} =~ m{^[/\\]}) {
