@@ -51,7 +51,7 @@ characters: U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039
 An *authority terminating character* [url-spec] is either a "slash
 charcter", U+003F (?), or U+0023 (#).
 
-  Note.  U+003B (;) is /not/ an "auuthority terminating characters".
+  Note.  U+003B (;) is /not/ an "authority terminating characters".
 
 * Parsed URL
 
@@ -1318,7 +1318,7 @@ The *steps to serialize a parsed URL" is as follows:
 
         Append /s/ a U+003A COLON character (:).
 
-        Append the |password| component of /u/ to /s/.
+        Append /s/ the |password| component of /u/.
 
       Append /s/ a U+0040 COMMERCIAL AT character (@).
 
@@ -1338,7 +1338,7 @@ The *steps to serialize a parsed URL" is as follows:
 
     Append /s/ a U+003F QUESTION MARK character (?).
 
-    Append /s/ the |query| component of /u/ to /s/.
+    Append /s/ the |query| component of /u/.
 
   If there is the |fragment| component of /u/ (even if it is the empty
   string):
