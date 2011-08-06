@@ -17,7 +17,9 @@ Although there are a number of Punycode implementations written in
 Perl, they are broken or badly designed (see "Implementation" section
 of <http://suika.fam.cx/~wakaba/wiki/sw/n/Punycode>).
 
-This module is a wrapper of L<Net::LibIDN> at the moment.
+This module is a wrapper of L<Net::LibIDN> (an XS module with
+dependency on GNU LibIDN) or L<URI::_punycode> (a pure-Perl module,
+included in the L<URI> package), one of them selected automatically.
 
 =head1 FUNCTIONS
 
@@ -48,9 +50,9 @@ Internationalized Domain Names in Applications (IDNA)>, March 2003.
 
 SuikaWiki:Punycode <http://suika.fam.cx/~wakaba/wiki/sw/n/Punycode>.
 
-L<Net::LibIDN>.
+L<Net::LibIDN>.  GNU IDN Library - Libidn <http://www.gnu.org/s/libidn/>.
 
-GNU IDN Library - Libidn <http://www.gnu.org/s/libidn/>.
+L<URI::_punycode>.
 
 =head1 AUTHOR
 
