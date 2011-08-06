@@ -1,4 +1,4 @@
-package test::Web::DomainName::Punycode;
+package test::Web::DomainName::Punycode::netlibidn;
 use strict;
 use warnings;
 use Path::Class;
@@ -7,18 +7,14 @@ use Test::More;
 
 BEGIN {
   no warnings 'once';
-  undef $Web::DomainName::Punycode::RequestedModule;
+  $Web::DomainName::Punycode::RequestedModule = 'Net::LibIDN';
   require (file (__FILE__)->dir->file ('web-domainname-punycode-common.pl'));
 }
 
 use base qw(test::Web::DomainName::Punycode::common);
 
 sub _module : Test(1) {
-  if (eval q{ use Net::LibIDN; 1 }) {
-    is $Web::DomainName::Punycode::UsedModule, 'Net::LibIDN';
-  } else {
-    is $Web::DomainName::Punycode::UsedModule, 'URI::_punycode';
-  }
+  is $Web::DomainName::Punycode::UsedModule, 'Net::LibIDN';
 } # _module
 
 __PACKAGE__->runtests;
