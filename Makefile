@@ -1,6 +1,6 @@
 HARUSAME = harusame
 POD2HTML = pod2html --css "http://suika.fam.cx/www/style/html/pod.css" \
-  --htmlroot "../../../"
+  --htmlroot "../.."
 SED = sed
 
 all: doc/README.ja.html doc/README.en.html \

@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>lib/Web/URL/Canonicalize.pm</title>
+<title>Web::URL::Canonicalize - Canonicalize URLs as Web browsers do</title>
 <link rel="stylesheet" href="http://suika.fam.cx/www/style/html/pod.css" type="text/css" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel=author href="#author">
@@ -17,6 +17,13 @@
 
 <ul>
 
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#test_cases">TEST CASES</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
 	<li><a href="#license">LICENSE</a></li>
 </ul>
 
@@ -26,6 +33,88 @@
 
 <p>
 </p>
+<h1><a name="name">NAME</a></h1>
+<p>Web::URL::Canonicalize - Canonicalize URLs as Web browsers do</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  use Web::URL::Canonicalize;
+  $canon_url = url_to_canon_url $url, $canon_base_url, $charset;</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Web::URL::Canonicalize</code> module parses, resolves, and
+canonicalizes URLs as Web browsers do.</p>
+<p>Web browsers canonicalize URLs in many places.  For example, a
+relative URL specified in the <code>href</code> attribute of an <code>a</code> element is
+resolved against the base URL and then canonicalized such that some
+set of characters are percent-encoded if they has not yet.</p>
+<p>URL parsing, resolving, and canonicalizing rules are too complex and
+sometimes vary across browsers.  This module is trying to imitate
+their behavior as far as possible.  However, emulating a particular
+browser is not a goal.  The canonicalization algorithm implemented by
+this module is different from any browser.  If you are interested in
+how they differ, please run <code>t/browsers/decomps.html</code>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module exports a function by default:</p>
+<dl>
+<dt><strong><a name="_canon_url" class="item">$canon_url = url_to_canon_url $url, $canon_base_url, $charset</a></strong></dt>
+
+<dd>
+<p>Canonicalize a URL.</p>
+<p>The first argument, <code>$url</code>, is the URL to be canonicalized, as a
+character string.  It can be any string.  This argument is required.</p>
+<p>The second argument, <code>$canon_base_url</code>, is the base URL used for the
+resolution of the URL.  This argument is optional, as base URL is not
+always given (consider a URL given as a command-line argument to a
+program).  If specified, the base URL <strong>must</strong> be in its canonical
+form.  The result returned by this function with non-canonical base
+URL might be different from the result with canonical base URL.</p>
+<p>The third argument, <code>$charset</code>, is the character encoding used to
+percent-encode non-ASCII characters in the <code>query</code> component, if any.
+This argument is optional; <code>UTF-8</code> is the default.  The character
+encoding of the document in which the URL is embedded should be
+specified in most cases.</p>
+<p>The function returns the canonicalized URL, as a character string.  If
+the given URL does not have the canonical form (e.g. because the URL
+has invalid host name, or because a relative URL is specified but the
+base URL is a <code>mailto:</code> URL), <code>undef</code> is returned.</p>
+<p>The canonicalized URL, if any, is always an absolute URL.  It is not
+always a conforming <a href="http://www.ietf.org/rfc/rfc3986.txt" class="rfc">RFC 3986</a> URI reference.  It might contain space
+characters.  It might contain non-ASCII characters.</p>
+</dd>
+</dl>
+<p>Additionally, following functions can be exported if necessary (and if
+you understand what they do): <code>parse_url</code>, <code>resolve_url</code>.
+<code>canonicalize_parsed_url</code>, and <code>serialize_parsed_url</code>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="test_cases">TEST CASES</a></h1>
+<p>There are several thousands of test cases under the directory
+<code>t/data/</code>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p>Tentative spec for URL canonicalization <code>sketch/spec.txt</code>.</p>
+<p><a href="../../Web/IPAddr/Canonicalize.html">the Web::IPAddr::Canonicalize manpage</a>.</p>
+<p><a href="../../Web/DomainName/Canonicalize.html">the Web::DomainName::Canonicalize manpage</a>.</p>
+<p><a href="../../Web/Encoding.html">the Web::Encoding manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
+<p>
+</p>
+<hr />
 <h1><a name="license">LICENSE</a></h1>
 <p>Copyright 2011 Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
 <p>This library is free software; you can redistribute it and/or modify
