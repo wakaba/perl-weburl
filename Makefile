@@ -1,11 +1,11 @@
 HARUSAME = harusame
 
-all: README.ja.html README.en.html
+all: doc/README.ja.html doc/README.en.html
 
-README.en.html: README.html.src
+doc/README.en.html: doc/README.html.src
 	$(HARUSAME) --lang en < $< > $@
 
-README.ja.html: README.html.src
+doc/README.ja.html: doc/README.html.src
 	$(HARUSAME) --lang ja < $< > $@
 
 ## License: Public Domain.
