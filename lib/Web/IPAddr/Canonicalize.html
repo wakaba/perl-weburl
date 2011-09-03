@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Web::IPAddr::Canonicalize - Canonicalize IPv4 and IPv6 addresses</title>
+<link rel="stylesheet" href="http://suika.fam.cx/www/style/html/pod.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel=author href="#author">
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<p><a name="__index__"></a></p>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#license">LICENSE</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Web::IPAddr::Canonicalize - Canonicalize IPv4 and IPv6 addresses</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  use Web::IPAddr::Canonicalize;
+  print canonicalize_ipv4_addr $ipv4_addr;
+  print canonicalize_ipv6_addr $ipv6_addr;</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Web::IPAddr::Canonicalize</code> module exports two functions to
+canonicalize IP addresses as Web browsers do.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module exports two functions:</p>
+<dl>
+<dt><strong><a name="_result" class="item">$result = canonicalize_ipv4_addr $input</a></strong></dt>
+
+<dd>
+<p>Canonicalize the input string as an IPv4 address.  If the input is not
+an IPv4 address, <code>undef</code> is returned.</p>
+</dd>
+<dt><strong>$result = canonicalize_ipv6_addr $input</strong></dt>
+
+<dd>
+<p>Canonicalize the input string as an IPv6 address.  If the input is not
+an IPv6 address, <code>undef</code> is returned.</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p>Tentative spec for URL canonicalization <code>sketch/spec.txt</code>.</p>
+<p><a href="../../..//Web/DomainName/Canonicalize.html">the Web::DomainName::Canonicalize manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
+<p>
+</p>
+<hr />
+<h1><a name="license">LICENSE</a></h1>
+<p>Copyright 2011 Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
+<p>This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.</p>
+
+</body>
+
+</html>

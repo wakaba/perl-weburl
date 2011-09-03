@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <title data-lang-content=title>Web::URL::Canonicalize - Perl URL Canonicalizer</title>
 <link rel=stylesheet href="http://suika.fam.cx/www/style/html/xhtml">
+<base href="../">
 
 <h1 data-lang-container id=title>
   <span lang=en><code>Web::URL::Canonicalize</code> - Perl URL Canonicalizer</span>
@@ -14,10 +15,10 @@
 </h1>
 
 <ul>
-<li><code>Web::URL::Canonicalize</code> (<code>lib/Web/URL/Canonicalize.pm</code>)
-<li><code>Web::DomainName::Canonicalize</code> (<code>lib/Web/DomainName/Canonicalize.pm</code>)
-<li><code>Web::DomainName::IDNEnabled</code> (<code>lib/Web/DomainName/IDNEnabled.pm</code>)
-<li><code>Web::IPAddr::Canonicalize</code> (<code>lib/IPAddr/Canonicalize.pm</code>)
+<li><a href="lib/Web/URL/Canonicalize.html"><code>Web::URL::Canonicalize</code></a>
+<li><a href="lib/Web/DomainName/Canonicalize.html"><code>Web::DomainName::Canonicalize</code></a>
+<li><a href="lib/Web/DomainName/IDNEnabled.html"><code>Web::DomainName::IDNEnabled</code></a>
+<li><a href="lib/Web/IPAddr/Canonicalize.html"><code>Web::IPAddr::Canonicalize</code></a>
 </ul>
 </section>
 
@@ -93,6 +94,20 @@
 <li><code class=uri>&lt;<a href="https://github.com/wakaba/perl-weburl">https://github.com/wakaba/perl-weburl</a>></code>
 <li><code class=uri>&lt;<a href="http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree">http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree</a>></code>
 </ul>
+</section>
+
+<section id=related>
+<h1 data-lang-container>
+  <span lang=en>Related projects</span>
+  <span lang=ja>関連するもの</span>
+</h1>
+
+<ul>
+<li><a href="http://suika.fam.cx/gate/git/wi/perl/webutils.git/tree/HEAD:/lib/URL"><code>URL::PercentEncode</code></a>
+(<a href="http://suika.fam.cx/gate/git/wi/perl/webutils.git/blob_plain/HEAD:/lib/URL/PercentEncode.html">Document</a>)
+<li><a href="http://suika.fam.cx/www/markup/html/whatpm/readme">Whatpm &mdash; Perl modules for Web hypertext application technologies (beta)</a>
+</ul>
+
 </section>
 
 <section id=author>
