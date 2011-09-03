@@ -8,6 +8,7 @@
   <span lang=en><code>Web::URL::Canonicalize</code> - Perl URL 正準化器</span>
 </h1>
 
+<div class="fig example">
 <pre class=perl><code class=perl>  use Web::URL::Canonicalize;
   $url = '//テスト.example?ほげ#ふが';
   $canon_base_url = 'https://foo.test/';
@@ -15,6 +16,7 @@
   $canon_url = <mark>url_to_canon_url</mark> $url, $canon_base_url, $charset;
   is $canon_url, 'https://xn--zckzah.example/?%A4%DB%A4%B2#ふが';
 </code></pre>
+</div>
 
 <section id=modules>
 <h1 data-lang-container>
