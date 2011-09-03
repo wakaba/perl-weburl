@@ -4,6 +4,15 @@
 
 </head><body><h1 data-lang-container="" id="title"><span lang="en"><code>Web::URL::Canonicalize</code> - Perl URL Canonicalizer</span></h1>
 
+<pre class="perl">
+<code class="perl">  use Web::URL::Canonicalize;
+  $url = '//テスト.example?ほげ#ふが';
+  $canon_base_url = 'https://foo.test/';
+  $charset = 'euc-jp';
+  $canon_url = <mark>url_to_canon_url</mark> $url, $canon_base_url, $charset;
+  is $canon_url, 'https://xn--zckzah.example/?%A4%DB%A4%B2#ふが';
+</code></pre>
+
 <section id="modules">
 <h1 data-lang-container=""><span lang="ja">Perl モジュール</span></h1>
 
