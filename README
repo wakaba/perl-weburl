@@ -6,7 +6,7 @@ Web::URL::Canonicalize - Perl URL Canonicalizer
 - Web::URL::Canonicalize (lib/Web/URL/Canonicalize.pm)
 - Web::DomainName::Canonicalize (lib/Web/DomainName/Canonicalize.pm)
 - Web::DomainName::IDNEnabled (lib/Web/DomainName/IDNEnabled.pm)
-- Web::IPAddr::Canonicalize (lib/IPAddr/Canonicalize)
+- Web::IPAddr::Canonicalize (lib/IPAddr/Canonicalize.pm)
 
 * Spec
 

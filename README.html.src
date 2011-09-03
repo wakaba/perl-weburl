@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<title data-lang-content=title>Web::URL::Canonicalize - Perl URL Canonicalizer</title>
+<link rel=stylesheet href="http://suika.fam.cx/www/style/html/xhtml">
+
+<h1 data-lang-container id=title>
+  <span lang=en><code>Web::URL::Canonicalize</code> - Perl URL Canonicalizer</span>
+  <span lang=en><code>Web::URL::Canonicalize</code> - Perl URL 正準化器</span>
+</h1>
+
+<section id=modules>
+<h1 data-lang-container>
+  <span lang=en>Perl modules</span>
+  <span lang=ja>Perl モジュール</span>
+</h1>
+
+<ul>
+<li><code>Web::URL::Canonicalize</code> (<code>lib/Web/URL/Canonicalize.pm</code>)
+<li><code>Web::DomainName::Canonicalize</code> (<code>lib/Web/DomainName/Canonicalize.pm</code>)
+<li><code>Web::DomainName::IDNEnabled</code> (<code>lib/Web/DomainName/IDNEnabled.pm</code>)
+<li><code>Web::IPAddr::Canonicalize</code> (<code>lib/IPAddr/Canonicalize.pm</code>)
+</ul>
+</section>
+
+<section id=spec>
+<h1 data-lang-container>
+  <span lang=en>Spec</span>
+  <span lang=ja>仕様</span>
+</h1>
+
+<ul>
+<li><a href="sketch/spec.txt"><code>sketch/spec.txt</code></a>
+</ul>
+</section>
+
+<section id=tests>
+<h1 data-lang-container>
+  <span lang=en>Tests</span>
+  <span lang=ja>テスト</span>
+</h1>
+
+<ul>
+<li><a href="t/data/"><code>t/data/*.dat</code></a> - 
+<span data-lang-container>
+  <span lang=en>URL canonicalization tests</span>
+  <span lang=ja>URL 正準化テスト</span>
+</span>
+<li><a href="t/data/generated/"><code>t/data/generated/*.dat</code></a> - 
+<span data-lang-container>
+  <span lang=en>IDN in URL canonicalization tests</span>
+  <span lang=ja>URL 中の IDN の正準化テスト</span>
+</span>
+</ul>
+
+<ul>
+<li><a href="t/"><code>t/*.t</code></a> - 
+<span data-lang-container>
+  <span lang=en>Test harnesses for Perl modules</span>
+  <span lang=ja>Perl モジュールのテスト</span>
+</span>
+<li><a href="t/browsers/"><code>t/browsers/*.html</code></a> - 
+<span data-lang-container>
+  <span lang=en>Test harnesses for testing your browser</span>
+  <span lang=ja>利用中の Web ブラウザーのテスト</span>
+</span>
+</ul>
+
+<section id=test-browser-results>
+<h1 data-lang-container>
+  <span lang=en>Test results of browsers</span>
+  <span lang=ja>Web ブラウザーのテスト結果</span>
+</h1>
+
+<ul>
+<li><a href="http://suika.fam.cx/gate/test-results/list/url-canon-20110731/all">URL canonicalization tests (about 5000)</a>
+<li><a href="http://suika.fam.cx/gate/test-results/list/url-canon-20110731-charsets/all">Query character encoding tests (28)</a>
+<li><a href="http://suika.fam.cx/gate/test-results/list/url-canon-20110731-idn/all">IDN canonicalization tests (about 14000)</a>
+</ul>
+</section>
+
+</section>
+
+<section id=distrib>
+<h1 data-lang-container>
+  <span lang=en>Distribution</span>
+  <span lang=ja>配布</span>
+</h1>
+
+<p data-lang-container>
+  <span lang=en>Latest version of these files are available from Git repositories:</span>
+  <span lang=ja>最新版は Git リポジトリーから入手できます。</span>
+
+<ul>
+<li><code class=uri>&lt;<a href="https://github.com/wakaba/perl-weburl">https://github.com/wakaba/perl-weburl</a>></code>
+<li><code class=uri>&lt;<a href="http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree">http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree</a>></code>
+</ul>
+</section>
+
+<section id=author>
+<h1 data-lang-container>
+  <span lang=en>Author</span>
+  <span lang=ja>著者</span>
+</h1>
+
+<p data-lang-container>
+  <span lang=en>Wakaba <code class=mail>&lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>></code>.</span>
+  <span lang=ja>わかば <code class=mail>&lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>></code>。</span>
+</section>
+
+<section id=license>
+<h1>License</h1>
+
+<p>You can use, modify, or distribute these files.  See license terms for
+these files for more information.
+</section>
