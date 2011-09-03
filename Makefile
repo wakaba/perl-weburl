@@ -7,7 +7,8 @@ all: doc/README.ja.html doc/README.en.html \
   lib/Web/URL/Canonicalize.html \
   lib/Web/IPAddr/Canonicalize.html \
   lib/Web/DomainName/Canonicalize.html \
-  lib/Web/DomainName/IDNEnabled.html
+  lib/Web/DomainName/IDNEnabled.html \
+  lib/Web/Encoding.html
 
 doc/README.en.html: doc/README.html.src
 	$(HARUSAME) --lang en < $< > $@
