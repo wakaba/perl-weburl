@@ -1295,58 +1295,65 @@ a character encoding /encoding/, is as follows:
 
 The *steps to serialize a parsed URL" is as follows:
 
-  Let /u/ be the given parsed URL.
+  1. Let /u/ be the "parsed URL" to serialize.
 
-  If /u/ is /invalid/, return nothing and abort these steps.
+  2. If /u/ is /invalid/, return nothing and abort these steps.  (An
+     invalid URL cannot be serialized.)
 
-  Let /s/ be the empty string.
+  3. Let /s/ be the empty string.
 
-  Append /s/ the |scheme| component of /u/.
+  4. Append the |scheme| component of /u/ to /s/.
 
-  Append /s/ a U+003A COLON character (:).
+  5. Append a U+003A COLON character (:) to /s/.
 
-  If there is at least one of |user|, |password|, |host|, and |port|
-  components of /u/ (even if it is the empty string):
+  6. If /u/ contains one or more of |user|, |password|, |host|, and
+     |port| components (even if it is equal to the empty string):
 
-    Append /s/ |//| (two U+002F SOLIDUS characters (/)).
+    1. Append a U+002F SOLIDUS character (/) to /s/.
 
-    If there is at least one of |user| and |password| component of /u/
-    (even if it is the empty string):
+    2. Append another U+002F SOLIDUS character (/) to /s/.
 
-      Append /s/ the |user| component of /u/, if any.
+    3. If /u/ contains one or both of |user| and |password| components
+       (even if it is equal to the empty string):
 
-      If there is the |password| component of /u/ (even if it is the
-      empty string):
+      1. Append the |user| component of /u/, if any, to /s/.
 
-        Append /s/ a U+003A COLON character (:).
+      2. If /u/ contains the |password| component (even if it is equal
+         to the empty string):
 
-        Append /s/ the |password| component of /u/.
+        1. Append a U+003A COLON character (:) to /s/.
 
-      Append /s/ a U+0040 COMMERCIAL AT character (@).
+        2. Append the |password| component of /u/ to /s/.
 
-    Append /s/ the |host| component of /u/, if any.
+      3. Append a U+0040 COMMERCIAL AT character (@) to /s/.
 
-    If there is the |port| component of /u/ (even if it is the empty
-    string):
+    4. Append the |host| component of /u/, if any, to /s/.
 
-      Append /s/ a U+003A COLON character (:).
+    5. If /u/ contains the |port| component (even if it is equal to
+       the empty string):
 
-      Append /s/ the |port| component of /u/.
+      1. Append a U+003A COLON character (:) to /s/.
 
-  Append /s/ the |path| component of /u/, if any.
+      2. Append the |port| component of /u/ to /s/.
 
-  If there is the |query| component of /u/ (even if it is the empty
-  string):
+  7. Append the |path| component of /u/, if any, to /s/.
 
-    Append /s/ a U+003F QUESTION MARK character (?).
+  8. If /u/ contains the |query| component of /u/ (even if it is equal
+     to the empty string):
 
-    Append /s/ the |query| component of /u/.
+    1. Append a U+003F QUESTION MARK character (?) to /s/.
 
-  If there is the |fragment| component of /u/ (even if it is the empty
-  string):
+    2. Append the |query| component of /u/ to /s/.
 
-    Append /s/ a U+0023 NUMBER SIGN character (#).
+  9. If /u/ contains the |fragment| component (even if it is equal to
+     the empty string):
 
-    Append /s/ the |fragment| component of /u/.
+    1. Append a U+0023 NUMBER SIGN character (#) to /s/.
 
-  Return /s/.
+    2. Append the |fragment| component of /u/ to /s/.
+
+  10. Return /s/.
+
+    Note.  The returned string might or might not contain non-ASCII
+    characters or ASCII characters not allowed in URLs.  It might or
+    might not be a conforming URL.
