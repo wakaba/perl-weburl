@@ -7407,3 +7407,27 @@ xn--xb-8tb
 http://x\u0301b/
 #ie-host escaped
 x\u0301b
+
+#data escaped
+http://x\u0CF1y/
+#canon escaped
+http://xn--xy-b2h/
+#scheme http
+#host xn--xy-b2h
+#path /
+
+#data escaped
+http://x\u0CF2y/
+#canon escaped
+http://xn--xy-e2h/
+#scheme http
+#host xn--xy-e2h
+#path /
+
+#data escaped
+http://x\u19DAy/
+#canon escaped
+http://xn--xy-l5p/
+#scheme http
+#host xn--xy-l5p
+#path /
