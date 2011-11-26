@@ -14,6 +14,14 @@ use Web::URL::Canonicalize qw(
   parse_url resolve_url canonicalize_parsed_url serialize_parsed_url
 );
 
+use Data::Dumper;
+$Data::Dumper::Useqq = 1;
+sub Data::Dumper::qquote {
+  my $s = shift;
+  $s =~ s/([^\x20\x21-\x26\x28-\x5B\x5D-\x7E])/sprintf '\x{%02X}', ord $1/ge;
+  return q<"> . $s . q<">;
+} # Data::Dumper::qquote
+
 binmode STDOUT, ':encoding(utf8)';
 binmode STDERR, ':encoding(utf8)';
 
