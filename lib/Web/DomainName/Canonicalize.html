@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Web::DomainName::Canonicalize - Domain name canonicalization</title>
+<link rel="stylesheet" href="http://suika.fam.cx/www/style/html/pod.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel=author href="#author">
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<p><a name="__index__"></a></p>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#functions">FUNCTIONS</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#license">LICENSE</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Web::DomainName::Canonicalize - Domain name canonicalization</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  use Web::DomainName::Canonicalize;
+  $out = canonicalize_domain_name $in;
+  $out = canonicalize_url_host $in;</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Web::DomainName::Canonicalize</code> module provides functions to
+convert domain names into their canonical representations, as Web
+browsers do.</p>
+<p>
+</p>
+<hr />
+<h1><a name="functions">FUNCTIONS</a></h1>
+<p>This module exports two functions:</p>
+<dl>
+<dt><strong><a name="_out" class="item">$out = canonicalize_domain_name $in</a></strong></dt>
+
+<dd>
+<p>Canonicalize a domain name, i.e. dotted labels.  The input might
+contain non-ASCII characters; they would be Punycode-encoded by the
+function.  If the input has no canonical representation (i.e. the
+input contains a character that cannot be used in domain names) the
+function returns <code>undef</code>.  Note that the function might still return
+a non-<code>undef</code> value when the domain name is invalid but it has a
+canonical representation.</p>
+<p>Input is considered as a domain name; no IP address canonicalization
+is performed.</p>
+</dd>
+<dt><strong>$out = canonicalize_url_host $in</strong></dt>
+
+<dd>
+<p>Canonicalize the <code>host</code> component of a URL.  In addition to
+<code>canonicalize_domain_name</code>, percent-encoding and -decoding, IP
+address canonicalization, and detection of some additional invalid
+characters are performed.  If the input has no canonical
+representation (such that the URL is invalid), the function returns
+<code>undef</code>.</p>
+</dd>
+</dl>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p>Tentative spec for URL canonicalization <code>sketch/spec.txt</code>.</p>
+<p><a href="../../Web/IPAddr/Canonicalize.html">the Web::IPAddr::Canonicalize manpage</a>.</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
+<p>
+</p>
+<hr />
+<h1><a name="license">LICENSE</a></h1>
+<p>Copyright 2011 Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
+<p>This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.</p>
+
+</body>
+
+</html>

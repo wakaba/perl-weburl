@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="ja"><head><title data-lang-content="title" lang="en">Web::URL::Canonicalize - Perl URL Canonicalizer</title>
+<link href="http://suika.fam.cx/www/style/html/xhtml" rel="stylesheet">
+<base href="../">
+
+</head><body><h1 data-lang-container="" id="title"><span lang="en"><code>Web::URL::Canonicalize</code> - Perl URL Canonicalizer</span></h1>
+
+<div class="fig example">
+<pre class="perl">
+<code class="perl">  use Web::URL::Canonicalize;
+  $url = '//テスト.example?ほげ#ふが';
+  $canon_base_url = 'https://foo.test/';
+  $charset = 'euc-jp';
+  $canon_url = <mark>url_to_canon_url</mark> $url, $canon_base_url, $charset;
+  is $canon_url, 'https://xn--zckzah.example/?%A4%DB%A4%B2#ふが';
+</code></pre>
+</div>
+
+<section id="modules">
+<h1 data-lang-container=""><span lang="ja">Perl モジュール</span></h1>
+
+<ul>
+<li><a href="lib/Web/URL/Canonicalize.html"><code>Web::URL::Canonicalize</code></a>
+</li><li><a href="lib/Web/DomainName/Canonicalize.html"><code>Web::DomainName::Canonicalize</code></a>
+</li><li><a href="lib/Web/DomainName/IDNEnabled.html"><code>Web::DomainName::IDNEnabled</code></a>
+</li><li><a href="lib/Web/IPAddr/Canonicalize.html"><code>Web::IPAddr::Canonicalize</code></a>
+</li></ul>
+</section>
+
+<section id="spec">
+<h1 data-lang-container=""><span lang="ja">仕様</span></h1>
+
+<ul>
+<li><a href="sketch/spec.txt"><code>sketch/spec.txt</code></a>
+</li></ul>
+</section>
+
+<section id="tests">
+<h1 data-lang-container=""><span lang="ja">テスト</span></h1>
+
+<ul>
+<li><a href="t/data/"><code>t/data/*.dat</code></a> - 
+<span data-lang-container=""><span lang="ja">URL 正準化テスト</span></span>
+</li><li><a href="t/data/generated/"><code>t/data/generated/*.dat</code></a> - 
+<span data-lang-container=""><span lang="ja">URL 中の IDN の正準化テスト</span></span>
+</li></ul>
+
+<ul>
+<li><a href="t/"><code>t/*.t</code></a> - 
+<span data-lang-container=""><span lang="ja">Perl モジュールのテスト</span></span>
+</li><li><a href="t/browsers/"><code>t/browsers/*.html</code></a> - 
+<span data-lang-container=""><span lang="ja">利用中の Web ブラウザーのテスト</span></span>
+</li></ul>
+
+<section id="test-browser-results">
+<h1 data-lang-container=""><span lang="ja">Web ブラウザーのテスト結果</span></h1>
+
+<ul>
+<li><a href="http://suika.fam.cx/gate/test-results/list/url-canon-20110731/all">URL canonicalization tests (about 5000)</a>
+</li><li><a href="http://suika.fam.cx/gate/test-results/list/url-canon-20110731-charsets/all">Query character encoding tests (28)</a>
+</li><li><a href="http://suika.fam.cx/gate/test-results/list/url-canon-20110731-idn/all">IDN canonicalization tests (about 14000)</a>
+</li></ul>
+</section>
+
+</section>
+
+<section id="distrib">
+<h1 data-lang-container=""><span lang="ja">配布</span></h1>
+
+<p data-lang-container=""><span lang="ja">最新版は Git リポジトリーから入手できます。</span></p><ul>
+<li><code class="uri">&lt;<a href="https://github.com/wakaba/perl-weburl">https://github.com/wakaba/perl-weburl</a>&gt;</code>
+</li><li><code class="uri">&lt;<a href="http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree">http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree</a>&gt;</code>
+</li></ul>
+</section>
+
+<section id="related">
+<h1 data-lang-container=""><span lang="ja">関連するもの</span></h1>
+
+<ul>
+<li><a href="http://suika.fam.cx/gate/git/wi/perl/webutils.git/tree/HEAD:/lib/URL"><code>URL::PercentEncode</code></a>
+(<a href="http://suika.fam.cx/gate/git/wi/perl/webutils.git/blob_plain/HEAD:/lib/URL/PercentEncode.html">Document</a>)
+</li><li><a href="http://suika.fam.cx/www/markup/html/whatpm/readme">Whatpm — Perl modules for Web hypertext application technologies (beta)</a>
+</li></ul>
+
+</section>
+
+<section id="author">
+<h1 data-lang-container=""><span lang="ja">著者</span></h1>
+
+<p data-lang-container=""><span lang="ja">わかば <code class="mail">&lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;</code>。</span></p></section>
+
+<section id="license">
+<h1>License</h1>
+
+<p>You can use, modify, or distribute these files.  See license terms for
+these files for more information.
+</p></section>
+
+<footer>
+[<a href="doc/README.ja" hreflang="ja" lang="ja" rel="alternate">日本語</a>
+<a href="doc/README.en" hreflang="en" lang="en" rel="alternate">English</a>]
+</footer></body></html>

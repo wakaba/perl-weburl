@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Web::DomainName::IDNEnabled - List of IDN-enabled TLDs</title>
+<link rel="stylesheet" href="http://suika.fam.cx/www/style/html/pod.css" type="text/css" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel=author href="#author">
+</head>
+
+<body>
+
+
+<!-- INDEX BEGIN -->
+<div name="index">
+<p><a name="__index__"></a></p>
+
+<ul>
+
+	<li><a href="#name">NAME</a></li>
+	<li><a href="#synopsis">SYNOPSIS</a></li>
+	<li><a href="#description">DESCRIPTION</a></li>
+	<li><a href="#variable">VARIABLE</a></li>
+	<li><a href="#see_also">SEE ALSO</a></li>
+	<li><a href="#author">AUTHOR</a></li>
+	<li><a href="#license">LICENSE</a></li>
+</ul>
+
+<hr name="index" />
+</div>
+<!-- INDEX END -->
+
+<p>
+</p>
+<h1><a name="name">NAME</a></h1>
+<p>Web::DomainName::IDNEnabled - List of IDN-enabled TLDs</p>
+<p>
+</p>
+<hr />
+<h1><a name="synopsis">SYNOPSIS</a></h1>
+<pre>
+  use Web::DomainName::IDNEnabled;
+  ok $Web::DomainName::IDNEnabled::TLDs-&gt;{jp};
+  ng $Web::DomainName::IDNEnabled::TLDs-&gt;{fr};</pre>
+<p>
+</p>
+<hr />
+<h1><a name="description">DESCRIPTION</a></h1>
+<p>The <code>Web::DomainName::IDNEnabled</code> module provides a list of IDN-enabled
+TLDs.  It contains TLDs listed in the <em>IDN-enabled TLDs</em> (as of
+2011-05-05) maintained by the Mozilla project.</p>
+<p>
+</p>
+<hr />
+<h1><a name="variable">VARIABLE</a></h1>
+<p>The module defines a variable: <code>$Web::DomainName::IDNEnabled::TLDs</code>.  It
+is a hash reference.  Keys of the hash are IDN-enabled TLDs in
+lowercase and is encoded in Punycode if necessary.  Values for
+existing keys are always true.</p>
+<p>
+</p>
+<hr />
+<h1><a name="see_also">SEE ALSO</a></h1>
+<p>IDN-enabled TLDs
+&lt;http://www.mozilla.org/projects/security/tld-idn-policy-list.html&gt;.</p>
+<p>&lt;http://mxr.mozilla.org/mozilla-central/source/modules/libpref/src/init/all.js&gt;.
+(Search for &quot;network.IDN.whitelist.&quot;.)</p>
+<p>
+</p>
+<hr />
+<h1><a name="author">AUTHOR</a></h1>
+<p>Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
+<p>The <code>Web::DomainName::IDNEnabled</code> module contains data extracted from
+files maintained by the Mozilla project.</p>
+<p>
+</p>
+<hr />
+<h1><a name="license">LICENSE</a></h1>
+<p>Copyright 2011 Wakaba &lt;<a href="mailto:w@suika.fam.cx">w@suika.fam.cx</a>&gt;.</p>
+<p>This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.</p>
+
+</body>
+
+</html>
