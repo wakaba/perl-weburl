@@ -10,8 +10,7 @@ our @EXPORT = qw(encode_punycode decode_punycode);
 our $RequestedModule ||= '';
 our $UsedModule;
 
-if ($RequestedModule eq 'Net::LibIDN' or
-    (not $RequestedModule and eval q{ use Net::LibIDN; 1 })) {
+if ($RequestedModule eq 'Net::LibIDN') {
   eval q{
     use Net::LibIDN;
 
