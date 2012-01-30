@@ -6,7 +6,7 @@ use Test::More;
 use Web::DomainName::Punycode;
 use Encode;
 
-my $SupportLong = $Web::DomainName::Punycode::UsedModule eq 'URI::_punycode';
+my $SupportLong = $Web::DomainName::Punycode::UsedModule =~ /URI::_punycode/;
 
 sub _encode_punycode : Test(19) {
   for (
@@ -68,7 +68,7 @@ sub _decode_punycode : Test(23) {
 
 =head1 LICENSE
 
-Copyright 2011 Wakaba <w@suika.fam.cx>.
+Copyright 2011-2012 Wakaba <w@suika.fam.cx>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
