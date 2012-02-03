@@ -10,7 +10,7 @@ use Test::More;
 use Test::Differences;
 use Test::HTCT::Parser;
 use Web::URL::Canonicalize qw(
-  url_to_canon_url
+  url_to_canon_url url_to_canon_parsed_url
   parse_url resolve_url canonicalize_parsed_url serialize_parsed_url
 );
 
@@ -285,6 +285,13 @@ sub _url_to_canon_url : Test(23) {
     is $canon, $_->[3];
   }
 } # _url_to_canon_url
+
+sub _url_to_canon_parsed_url : Test(1) {
+    my $canon = url_to_canon_parsed_url q<http://foo/bar?>;
+    eq_or_diff $canon, {scheme => 'http', host => 'foo', path => q</bar>,
+                        query => '', is_hierarchical => 1,
+                        scheme_normalized => 'http'};
+}
 
 __PACKAGE__->runtests;
 

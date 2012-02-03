@@ -10,6 +10,7 @@ use Exporter::Lite;
 our @EXPORT = qw(url_to_canon_url);
 
 our @EXPORT_OK = qw(
+  url_to_canon_parsed_url
   parse_url resolve_url canonicalize_parsed_url serialize_parsed_url
 );
 
@@ -655,6 +656,16 @@ sub url_to_canon_url ($;$$) {
   $url = resolve_url $_[0], $base_url;
   return serialize_parsed_url canonicalize_parsed_url $url, $_[2];
 } # url_to_canon_url
+
+## The second argument, the base URL, should be specified; if
+## specified, it must be a canonicalized URL.  Otherwise the
+## canonicalization process might return an incorrect result.
+sub url_to_canon_parsed_url ($;$$) {
+  my $url;
+  my $base_url = parse_url (defined $_[1] ? $_[1] : $_[0]);
+  $url = resolve_url $_[0], $base_url;
+  return canonicalize_parsed_url $url, $_[2];
+} # url_to_canon_parsed_url
 
 =head1 LICENSE
 
