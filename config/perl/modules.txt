@@ -1,0 +1,8 @@
+Carp
+Encode
+Exporter::Lite
+Data::Dumper
+Net::LibIDN
+Unicode::Normalize
+Unicode::Stringprep
+URI::_punycode
