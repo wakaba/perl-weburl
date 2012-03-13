@@ -19361,9 +19361,9 @@ xn--ab-uj52a
 #data escaped
 http://a\U0001F100b/
 #canon escaped
-http://xn--ab-xj52a/
+http://a0.b/
 #host escaped
-xn--ab-xj52a
+a0.b
 #chrome-canon escaped
 http://xn--ab-xj52a/
 #scheme http
@@ -19383,9 +19383,9 @@ xn--ab-xj52a
 #data escaped
 http://a\U0001F101b/
 #canon escaped
-http://xn--ab-0j52a/
+http://a0%2Cb/
 #host escaped
-xn--ab-0j52a
+a0%2Cb
 #chrome-canon escaped
 http://xn--ab-0j52a/
 #scheme http
@@ -19405,9 +19405,9 @@ xn--ab-0j52a
 #data escaped
 http://a\U0001F102b/
 #canon escaped
-http://xn--ab-3j52a/
+http://a1%2Cb/
 #host escaped
-xn--ab-3j52a
+a1%2Cb
 #chrome-canon escaped
 http://xn--ab-3j52a/
 #scheme http
@@ -19427,9 +19427,9 @@ xn--ab-3j52a
 #data escaped
 http://a\U0001F103b/
 #canon escaped
-http://xn--ab-6j52a/
+http://a2%2Cb/
 #host escaped
-xn--ab-6j52a
+a2%2Cb
 #chrome-canon escaped
 http://xn--ab-6j52a/
 #scheme http
@@ -19449,9 +19449,9 @@ xn--ab-6j52a
 #data escaped
 http://a\U0001F104b/
 #canon escaped
-http://xn--ab-9j52a/
+http://a3%2Cb/
 #host escaped
-xn--ab-9j52a
+a3%2Cb
 #chrome-canon escaped
 http://xn--ab-9j52a/
 #scheme http
@@ -19471,9 +19471,9 @@ xn--ab-9j52a
 #data escaped
 http://a\U0001F105b/
 #canon escaped
-http://xn--ab-dk52a/
+http://a4%2Cb/
 #host escaped
-xn--ab-dk52a
+a4%2Cb
 #chrome-canon escaped
 http://xn--ab-dk52a/
 #scheme http
@@ -19493,9 +19493,9 @@ xn--ab-dk52a
 #data escaped
 http://a\U0001F106b/
 #canon escaped
-http://xn--ab-gk52a/
+http://a5%2Cb/
 #host escaped
-xn--ab-gk52a
+a5%2Cb
 #chrome-canon escaped
 http://xn--ab-gk52a/
 #scheme http
@@ -19515,9 +19515,9 @@ xn--ab-gk52a
 #data escaped
 http://a\U0001F107b/
 #canon escaped
-http://xn--ab-jk52a/
+http://a6%2Cb/
 #host escaped
-xn--ab-jk52a
+a6%2Cb
 #chrome-canon escaped
 http://xn--ab-jk52a/
 #scheme http
@@ -19537,9 +19537,9 @@ xn--ab-jk52a
 #data escaped
 http://a\U0001F108b/
 #canon escaped
-http://xn--ab-mk52a/
+http://a7%2Cb/
 #host escaped
-xn--ab-mk52a
+a7%2Cb
 #chrome-canon escaped
 http://xn--ab-mk52a/
 #scheme http
@@ -19559,9 +19559,9 @@ xn--ab-mk52a
 #data escaped
 http://a\U0001F109b/
 #canon escaped
-http://xn--ab-pk52a/
+http://a8%2Cb/
 #host escaped
-xn--ab-pk52a
+a8%2Cb
 #chrome-canon escaped
 http://xn--ab-pk52a/
 #scheme http
@@ -19581,9 +19581,9 @@ xn--ab-pk52a
 #data escaped
 http://a\U0001F10Ab/
 #canon escaped
-http://xn--ab-sk52a/
+http://a9%2Cb/
 #host escaped
-xn--ab-sk52a
+a9%2Cb
 #chrome-canon escaped
 http://xn--ab-sk52a/
 #scheme http
@@ -19713,9 +19713,9 @@ xn--ab-7k52a
 #data escaped
 http://a\U0001F110b/
 #canon escaped
-http://xn--ab-bl52a/
+http://a%28a%29b/
 #host escaped
-xn--ab-bl52a
+a%28a%29b
 #chrome-canon escaped
 http://xn--ab-bl52a/
 #scheme http
@@ -19735,9 +19735,9 @@ xn--ab-bl52a
 #data escaped
 http://a\U0001F111b/
 #canon escaped
-http://xn--ab-el52a/
+http://a%28b%29b/
 #host escaped
-xn--ab-el52a
+a%28b%29b
 #chrome-canon escaped
 http://xn--ab-el52a/
 #scheme http
@@ -19757,9 +19757,9 @@ xn--ab-el52a
 #data escaped
 http://a\U0001F112b/
 #canon escaped
-http://xn--ab-hl52a/
+http://a%28c%29b/
 #host escaped
-xn--ab-hl52a
+a%28c%29b
 #chrome-canon escaped
 http://xn--ab-hl52a/
 #scheme http
@@ -19779,9 +19779,9 @@ xn--ab-hl52a
 #data escaped
 http://a\U0001F113b/
 #canon escaped
-http://xn--ab-kl52a/
+http://a%28d%29b/
 #host escaped
-xn--ab-kl52a
+a%28d%29b
 #chrome-canon escaped
 http://xn--ab-kl52a/
 #scheme http
@@ -19801,9 +19801,9 @@ xn--ab-kl52a
 #data escaped
 http://a\U0001F114b/
 #canon escaped
-http://xn--ab-nl52a/
+http://a%28e%29b/
 #host escaped
-xn--ab-nl52a
+a%28e%29b
 #chrome-canon escaped
 http://xn--ab-nl52a/
 #scheme http
@@ -19823,9 +19823,9 @@ xn--ab-nl52a
 #data escaped
 http://a\U0001F115b/
 #canon escaped
-http://xn--ab-ql52a/
+http://a%28f%29b/
 #host escaped
-xn--ab-ql52a
+a%28f%29b
 #chrome-canon escaped
 http://xn--ab-ql52a/
 #scheme http
@@ -19845,9 +19845,9 @@ xn--ab-ql52a
 #data escaped
 http://a\U0001F116b/
 #canon escaped
-http://xn--ab-tl52a/
+http://a%28g%29b/
 #host escaped
-xn--ab-tl52a
+a%28g%29b
 #chrome-canon escaped
 http://xn--ab-tl52a/
 #scheme http
@@ -19867,9 +19867,9 @@ xn--ab-tl52a
 #data escaped
 http://a\U0001F117b/
 #canon escaped
-http://xn--ab-wl52a/
+http://a%28h%29b/
 #host escaped
-xn--ab-wl52a
+a%28h%29b
 #chrome-canon escaped
 http://xn--ab-wl52a/
 #scheme http
@@ -19889,9 +19889,9 @@ xn--ab-wl52a
 #data escaped
 http://a\U0001F118b/
 #canon escaped
-http://xn--ab-zl52a/
+http://a%28i%29b/
 #host escaped
-xn--ab-zl52a
+a%28i%29b
 #chrome-canon escaped
 http://xn--ab-zl52a/
 #scheme http
@@ -19911,9 +19911,9 @@ xn--ab-zl52a
 #data escaped
 http://a\U0001F119b/
 #canon escaped
-http://xn--ab-2l52a/
+http://a%28j%29b/
 #host escaped
-xn--ab-2l52a
+a%28j%29b
 #chrome-canon escaped
 http://xn--ab-2l52a/
 #scheme http
@@ -19933,9 +19933,9 @@ xn--ab-2l52a
 #data escaped
 http://a\U0001F11Ab/
 #canon escaped
-http://xn--ab-5l52a/
+http://a%28k%29b/
 #host escaped
-xn--ab-5l52a
+a%28k%29b
 #chrome-canon escaped
 http://xn--ab-5l52a/
 #scheme http
@@ -19955,9 +19955,9 @@ xn--ab-5l52a
 #data escaped
 http://a\U0001F11Bb/
 #canon escaped
-http://xn--ab-8l52a/
+http://a%28l%29b/
 #host escaped
-xn--ab-8l52a
+a%28l%29b
 #chrome-canon escaped
 http://xn--ab-8l52a/
 #scheme http
@@ -19977,9 +19977,9 @@ xn--ab-8l52a
 #data escaped
 http://a\U0001F11Cb/
 #canon escaped
-http://xn--ab-cm52a/
+http://a%28m%29b/
 #host escaped
-xn--ab-cm52a
+a%28m%29b
 #chrome-canon escaped
 http://xn--ab-cm52a/
 #scheme http
@@ -19999,9 +19999,9 @@ xn--ab-cm52a
 #data escaped
 http://a\U0001F11Db/
 #canon escaped
-http://xn--ab-fm52a/
+http://a%28n%29b/
 #host escaped
-xn--ab-fm52a
+a%28n%29b
 #chrome-canon escaped
 http://xn--ab-fm52a/
 #scheme http
@@ -20021,9 +20021,9 @@ xn--ab-fm52a
 #data escaped
 http://a\U0001F11Eb/
 #canon escaped
-http://xn--ab-im52a/
+http://a%28o%29b/
 #host escaped
-xn--ab-im52a
+a%28o%29b
 #chrome-canon escaped
 http://xn--ab-im52a/
 #scheme http
@@ -20043,9 +20043,9 @@ xn--ab-im52a
 #data escaped
 http://a\U0001F11Fb/
 #canon escaped
-http://xn--ab-lm52a/
+http://a%28p%29b/
 #host escaped
-xn--ab-lm52a
+a%28p%29b
 #chrome-canon escaped
 http://xn--ab-lm52a/
 #scheme http
@@ -20065,9 +20065,9 @@ xn--ab-lm52a
 #data escaped
 http://a\U0001F120b/
 #canon escaped
-http://xn--ab-om52a/
+http://a%28q%29b/
 #host escaped
-xn--ab-om52a
+a%28q%29b
 #chrome-canon escaped
 http://xn--ab-om52a/
 #scheme http
@@ -20087,9 +20087,9 @@ xn--ab-om52a
 #data escaped
 http://a\U0001F121b/
 #canon escaped
-http://xn--ab-rm52a/
+http://a%28r%29b/
 #host escaped
-xn--ab-rm52a
+a%28r%29b
 #chrome-canon escaped
 http://xn--ab-rm52a/
 #scheme http
@@ -20109,9 +20109,9 @@ xn--ab-rm52a
 #data escaped
 http://a\U0001F122b/
 #canon escaped
-http://xn--ab-um52a/
+http://a%28s%29b/
 #host escaped
-xn--ab-um52a
+a%28s%29b
 #chrome-canon escaped
 http://xn--ab-um52a/
 #scheme http
@@ -20131,9 +20131,9 @@ xn--ab-um52a
 #data escaped
 http://a\U0001F123b/
 #canon escaped
-http://xn--ab-xm52a/
+http://a%28t%29b/
 #host escaped
-xn--ab-xm52a
+a%28t%29b
 #chrome-canon escaped
 http://xn--ab-xm52a/
 #scheme http
@@ -20153,9 +20153,9 @@ xn--ab-xm52a
 #data escaped
 http://a\U0001F124b/
 #canon escaped
-http://xn--ab-0m52a/
+http://a%28u%29b/
 #host escaped
-xn--ab-0m52a
+a%28u%29b
 #chrome-canon escaped
 http://xn--ab-0m52a/
 #scheme http
@@ -20175,9 +20175,9 @@ xn--ab-0m52a
 #data escaped
 http://a\U0001F125b/
 #canon escaped
-http://xn--ab-3m52a/
+http://a%28v%29b/
 #host escaped
-xn--ab-3m52a
+a%28v%29b
 #chrome-canon escaped
 http://xn--ab-3m52a/
 #scheme http
@@ -20197,9 +20197,9 @@ xn--ab-3m52a
 #data escaped
 http://a\U0001F126b/
 #canon escaped
-http://xn--ab-6m52a/
+http://a%28w%29b/
 #host escaped
-xn--ab-6m52a
+a%28w%29b
 #chrome-canon escaped
 http://xn--ab-6m52a/
 #scheme http
@@ -20219,9 +20219,9 @@ xn--ab-6m52a
 #data escaped
 http://a\U0001F127b/
 #canon escaped
-http://xn--ab-9m52a/
+http://a%28x%29b/
 #host escaped
-xn--ab-9m52a
+a%28x%29b
 #chrome-canon escaped
 http://xn--ab-9m52a/
 #scheme http
@@ -20241,9 +20241,9 @@ xn--ab-9m52a
 #data escaped
 http://a\U0001F128b/
 #canon escaped
-http://xn--ab-dn52a/
+http://a%28y%29b/
 #host escaped
-xn--ab-dn52a
+a%28y%29b
 #chrome-canon escaped
 http://xn--ab-dn52a/
 #scheme http
@@ -20263,9 +20263,9 @@ xn--ab-dn52a
 #data escaped
 http://a\U0001F129b/
 #canon escaped
-http://xn--ab-gn52a/
+http://a%28z%29b/
 #host escaped
-xn--ab-gn52a
+a%28z%29b
 #chrome-canon escaped
 http://xn--ab-gn52a/
 #scheme http
@@ -20285,9 +20285,9 @@ xn--ab-gn52a
 #data escaped
 http://a\U0001F12Ab/
 #canon escaped
-http://xn--ab-jn52a/
+http://xn--asb-b13bg/
 #host escaped
-xn--ab-jn52a
+xn--asb-b13bg
 #chrome-canon escaped
 http://xn--ab-jn52a/
 #scheme http
@@ -20307,9 +20307,9 @@ xn--ab-jn52a
 #data escaped
 http://a\U0001F12Bb/
 #canon escaped
-http://xn--ab-mn52a/
+http://acb/
 #host escaped
-xn--ab-mn52a
+acb
 #chrome-canon escaped
 http://xn--ab-mn52a/
 #scheme http
@@ -20329,9 +20329,9 @@ xn--ab-mn52a
 #data escaped
 http://a\U0001F12Cb/
 #canon escaped
-http://xn--ab-pn52a/
+http://arb/
 #host escaped
-xn--ab-pn52a
+arb
 #chrome-canon escaped
 http://xn--ab-pn52a/
 #scheme http
@@ -20351,9 +20351,9 @@ xn--ab-pn52a
 #data escaped
 http://a\U0001F12Db/
 #canon escaped
-http://xn--ab-sn52a/
+http://acdb/
 #host escaped
-xn--ab-sn52a
+acdb
 #chrome-canon escaped
 http://xn--ab-sn52a/
 #scheme http
@@ -20373,9 +20373,9 @@ xn--ab-sn52a
 #data escaped
 http://a\U0001F12Eb/
 #canon escaped
-http://xn--ab-vn52a/
+http://awzb/
 #host escaped
-xn--ab-vn52a
+awzb
 #chrome-canon escaped
 http://xn--ab-vn52a/
 #scheme http
@@ -20417,9 +20417,9 @@ xn--ab-yn52a
 #data escaped
 http://a\U0001F130b/
 #canon escaped
-http://xn--ab-1n52a/
+http://aab/
 #host escaped
-xn--ab-1n52a
+aab
 #chrome-canon escaped
 http://xn--ab-1n52a/
 #scheme http
@@ -20439,9 +20439,9 @@ xn--ab-1n52a
 #data escaped
 http://a\U0001F131b/
 #canon escaped
-http://xn--ab-4n52a/
+http://abb/
 #host escaped
-xn--ab-4n52a
+abb
 #chrome-canon escaped
 http://xn--ab-4n52a/
 #scheme http
@@ -20461,9 +20461,9 @@ xn--ab-4n52a
 #data escaped
 http://a\U0001F132b/
 #canon escaped
-http://xn--ab-7n52a/
+http://acb/
 #host escaped
-xn--ab-7n52a
+acb
 #chrome-canon escaped
 http://xn--ab-7n52a/
 #scheme http
@@ -20483,9 +20483,9 @@ xn--ab-7n52a
 #data escaped
 http://a\U0001F133b/
 #canon escaped
-http://xn--ab-bo52a/
+http://adb/
 #host escaped
-xn--ab-bo52a
+adb
 #chrome-canon escaped
 http://xn--ab-bo52a/
 #scheme http
@@ -20505,9 +20505,9 @@ xn--ab-bo52a
 #data escaped
 http://a\U0001F134b/
 #canon escaped
-http://xn--ab-eo52a/
+http://aeb/
 #host escaped
-xn--ab-eo52a
+aeb
 #chrome-canon escaped
 http://xn--ab-eo52a/
 #scheme http
@@ -20527,9 +20527,9 @@ xn--ab-eo52a
 #data escaped
 http://a\U0001F135b/
 #canon escaped
-http://xn--ab-ho52a/
+http://afb/
 #host escaped
-xn--ab-ho52a
+afb
 #chrome-canon escaped
 http://xn--ab-ho52a/
 #scheme http
@@ -20549,9 +20549,9 @@ xn--ab-ho52a
 #data escaped
 http://a\U0001F136b/
 #canon escaped
-http://xn--ab-ko52a/
+http://agb/
 #host escaped
-xn--ab-ko52a
+agb
 #chrome-canon escaped
 http://xn--ab-ko52a/
 #scheme http
@@ -20571,9 +20571,9 @@ xn--ab-ko52a
 #data escaped
 http://a\U0001F137b/
 #canon escaped
-http://xn--ab-no52a/
+http://ahb/
 #host escaped
-xn--ab-no52a
+ahb
 #chrome-canon escaped
 http://xn--ab-no52a/
 #scheme http
@@ -20593,9 +20593,9 @@ xn--ab-no52a
 #data escaped
 http://a\U0001F138b/
 #canon escaped
-http://xn--ab-qo52a/
+http://aib/
 #host escaped
-xn--ab-qo52a
+aib
 #chrome-canon escaped
 http://xn--ab-qo52a/
 #scheme http
@@ -20615,9 +20615,9 @@ xn--ab-qo52a
 #data escaped
 http://a\U0001F139b/
 #canon escaped
-http://xn--ab-to52a/
+http://ajb/
 #host escaped
-xn--ab-to52a
+ajb
 #chrome-canon escaped
 http://xn--ab-to52a/
 #scheme http
@@ -20637,9 +20637,9 @@ xn--ab-to52a
 #data escaped
 http://a\U0001F13Ab/
 #canon escaped
-http://xn--ab-wo52a/
+http://akb/
 #host escaped
-xn--ab-wo52a
+akb
 #chrome-canon escaped
 http://xn--ab-wo52a/
 #scheme http
@@ -20659,9 +20659,9 @@ xn--ab-wo52a
 #data escaped
 http://a\U0001F13Bb/
 #canon escaped
-http://xn--ab-zo52a/
+http://alb/
 #host escaped
-xn--ab-zo52a
+alb
 #chrome-canon escaped
 http://xn--ab-zo52a/
 #scheme http
@@ -20681,9 +20681,9 @@ xn--ab-zo52a
 #data escaped
 http://a\U0001F13Cb/
 #canon escaped
-http://xn--ab-2o52a/
+http://amb/
 #host escaped
-xn--ab-2o52a
+amb
 #chrome-canon escaped
 http://xn--ab-2o52a/
 #scheme http
@@ -20703,9 +20703,9 @@ xn--ab-2o52a
 #data escaped
 http://a\U0001F13Db/
 #canon escaped
-http://xn--ab-5o52a/
+http://anb/
 #host escaped
-xn--ab-5o52a
+anb
 #chrome-canon escaped
 http://xn--ab-5o52a/
 #scheme http
@@ -20725,9 +20725,9 @@ xn--ab-5o52a
 #data escaped
 http://a\U0001F13Eb/
 #canon escaped
-http://xn--ab-8o52a/
+http://aob/
 #host escaped
-xn--ab-8o52a
+aob
 #chrome-canon escaped
 http://xn--ab-8o52a/
 #scheme http
@@ -20747,9 +20747,9 @@ xn--ab-8o52a
 #data escaped
 http://a\U0001F13Fb/
 #canon escaped
-http://xn--ab-cp52a/
+http://apb/
 #host escaped
-xn--ab-cp52a
+apb
 #chrome-canon escaped
 http://xn--ab-cp52a/
 #scheme http
@@ -20769,9 +20769,9 @@ xn--ab-cp52a
 #data escaped
 http://a\U0001F140b/
 #canon escaped
-http://xn--ab-fp52a/
+http://aqb/
 #host escaped
-xn--ab-fp52a
+aqb
 #chrome-canon escaped
 http://xn--ab-fp52a/
 #scheme http
@@ -20791,9 +20791,9 @@ xn--ab-fp52a
 #data escaped
 http://a\U0001F141b/
 #canon escaped
-http://xn--ab-ip52a/
+http://arb/
 #host escaped
-xn--ab-ip52a
+arb
 #chrome-canon escaped
 http://xn--ab-ip52a/
 #scheme http
@@ -20813,9 +20813,9 @@ xn--ab-ip52a
 #data escaped
 http://a\U0001F142b/
 #canon escaped
-http://xn--ab-lp52a/
+http://asb/
 #host escaped
-xn--ab-lp52a
+asb
 #chrome-canon escaped
 http://xn--ab-lp52a/
 #scheme http
@@ -20835,9 +20835,9 @@ xn--ab-lp52a
 #data escaped
 http://a\U0001F143b/
 #canon escaped
-http://xn--ab-op52a/
+http://atb/
 #host escaped
-xn--ab-op52a
+atb
 #chrome-canon escaped
 http://xn--ab-op52a/
 #scheme http
@@ -20857,9 +20857,9 @@ xn--ab-op52a
 #data escaped
 http://a\U0001F144b/
 #canon escaped
-http://xn--ab-rp52a/
+http://aub/
 #host escaped
-xn--ab-rp52a
+aub
 #chrome-canon escaped
 http://xn--ab-rp52a/
 #scheme http
@@ -20879,9 +20879,9 @@ xn--ab-rp52a
 #data escaped
 http://a\U0001F145b/
 #canon escaped
-http://xn--ab-up52a/
+http://avb/
 #host escaped
-xn--ab-up52a
+avb
 #chrome-canon escaped
 http://xn--ab-up52a/
 #scheme http
@@ -20901,9 +20901,9 @@ xn--ab-up52a
 #data escaped
 http://a\U0001F146b/
 #canon escaped
-http://xn--ab-xp52a/
+http://awb/
 #host escaped
-xn--ab-xp52a
+awb
 #chrome-canon escaped
 http://xn--ab-xp52a/
 #scheme http
@@ -20923,9 +20923,9 @@ xn--ab-xp52a
 #data escaped
 http://a\U0001F147b/
 #canon escaped
-http://xn--ab-0p52a/
+http://axb/
 #host escaped
-xn--ab-0p52a
+axb
 #chrome-canon escaped
 http://xn--ab-0p52a/
 #scheme http
@@ -20945,9 +20945,9 @@ xn--ab-0p52a
 #data escaped
 http://a\U0001F148b/
 #canon escaped
-http://xn--ab-3p52a/
+http://ayb/
 #host escaped
-xn--ab-3p52a
+ayb
 #chrome-canon escaped
 http://xn--ab-3p52a/
 #scheme http
@@ -20967,9 +20967,9 @@ xn--ab-3p52a
 #data escaped
 http://a\U0001F149b/
 #canon escaped
-http://xn--ab-6p52a/
+http://azb/
 #host escaped
-xn--ab-6p52a
+azb
 #chrome-canon escaped
 http://xn--ab-6p52a/
 #scheme http
@@ -20989,9 +20989,9 @@ xn--ab-6p52a
 #data escaped
 http://a\U0001F14Ab/
 #canon escaped
-http://xn--ab-9p52a/
+http://ahvb/
 #host escaped
-xn--ab-9p52a
+ahvb
 #chrome-canon escaped
 http://xn--ab-9p52a/
 #scheme http
@@ -21011,9 +21011,9 @@ xn--ab-9p52a
 #data escaped
 http://a\U0001F14Bb/
 #canon escaped
-http://xn--ab-dq52a/
+http://amvb/
 #host escaped
-xn--ab-dq52a
+amvb
 #chrome-canon escaped
 http://xn--ab-dq52a/
 #scheme http
@@ -21033,9 +21033,9 @@ xn--ab-dq52a
 #data escaped
 http://a\U0001F14Cb/
 #canon escaped
-http://xn--ab-gq52a/
+http://asdb/
 #host escaped
-xn--ab-gq52a
+asdb
 #chrome-canon escaped
 http://xn--ab-gq52a/
 #scheme http
@@ -21055,9 +21055,9 @@ xn--ab-gq52a
 #data escaped
 http://a\U0001F14Db/
 #canon escaped
-http://xn--ab-jq52a/
+http://assb/
 #host escaped
-xn--ab-jq52a
+assb
 #chrome-canon escaped
 http://xn--ab-jq52a/
 #scheme http
@@ -21077,9 +21077,9 @@ xn--ab-jq52a
 #data escaped
 http://a\U0001F14Eb/
 #canon escaped
-http://xn--ab-mq52a/
+http://appvb/
 #host escaped
-xn--ab-mq52a
+appvb
 #chrome-canon escaped
 http://xn--ab-mq52a/
 #scheme http
@@ -21099,9 +21099,9 @@ xn--ab-mq52a
 #data escaped
 http://a\U0001F14Fb/
 #canon escaped
-http://xn--ab-pq52a/
+http://awcb/
 #host escaped
-xn--ab-pq52a
+awcb
 #chrome-canon escaped
 http://xn--ab-pq52a/
 #scheme http

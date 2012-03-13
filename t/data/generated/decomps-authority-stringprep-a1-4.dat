@@ -1,9 +1,9 @@
 #data escaped
 http://a\u209Cb/
 #canon escaped
-http://xn--ab-veu/
+http://atb/
 #host escaped
-xn--ab-veu
+atb
 #chrome-canon escaped
 http://xn--ab-veu/
 #scheme http
@@ -1343,9 +1343,9 @@ xn--ab-7tu
 #data escaped
 http://a\u2150b/
 #canon escaped
-http://xn--ab-buu/
+http://xn--a17b-1g7a/
 #host escaped
-xn--ab-buu
+xn--a17b-1g7a
 #chrome-canon escaped
 http://xn--ab-buu/
 #scheme http
@@ -1365,9 +1365,9 @@ xn--ab-buu
 #data escaped
 http://a\u2151b/
 #canon escaped
-http://xn--ab-euu/
+http://xn--a19b-1g7a/
 #host escaped
-xn--ab-euu
+xn--a19b-1g7a
 #chrome-canon escaped
 http://xn--ab-euu/
 #scheme http
@@ -1387,9 +1387,9 @@ xn--ab-euu
 #data escaped
 http://a\u2152b/
 #canon escaped
-http://xn--ab-huu/
+http://xn--a110b-e33b/
 #host escaped
-xn--ab-huu
+xn--a110b-e33b
 #chrome-canon escaped
 http://xn--ab-huu/
 #scheme http
@@ -1519,9 +1519,9 @@ xn--ab-3yu
 #data escaped
 http://a\u2189b/
 #canon escaped
-http://xn--ab-6yu/
+http://xn--a03b-1g7a/
 #host escaped
-xn--ab-6yu
+xn--a03b-1g7a
 #chrome-canon escaped
 http://xn--ab-6yu/
 #scheme http
