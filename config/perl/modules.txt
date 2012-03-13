@@ -3,6 +3,10 @@ Encode
 Exporter::Lite
 Data::Dumper
 Net::LibIDN
+Path::Class
+Test::Class
+Test::Differences
+Test::More
 Unicode::Normalize
 Unicode::Stringprep
 URI::_punycode
