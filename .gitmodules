@@ -1,6 +1,6 @@
 [submodule "modules/testdataparser"]
 	path = modules/testdataparser
-	url = git@github.com:wakaba/testdataparser.git
+	url = git://github.com/wakaba/testdataparser.git
 [submodule "modules/charclass"]
 	path = modules/charclass
 	url = git://github.com/wakaba/perl-charclass.git
