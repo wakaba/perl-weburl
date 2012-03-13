@@ -293,6 +293,12 @@ sub _url_to_canon_parsed_url : Test(1) {
                         scheme_normalized => 'http'};
 }
 
+sub _resolve_url_undef_input : Test(1) {
+  my $base_url = parse_url q<http://foo/bar>;
+  my $parsed = resolve_url undef, $base_url;
+  eq_or_diff $parsed, {invalid => 1};
+} # _resolve_url_undef_input
+
 __PACKAGE__->runtests;
 
 =head1 LICENSE

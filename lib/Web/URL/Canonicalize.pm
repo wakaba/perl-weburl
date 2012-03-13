@@ -393,7 +393,7 @@ sub _resolve_relative_url ($$) {
 sub resolve_url ($$) {
   my ($spec, $parsed_base_url) = @_;
 
-  if ($parsed_base_url->{invalid}) {
+  if (not defined $spec or $parsed_base_url->{invalid}) {
     return {invalid => 1};
   }
 
