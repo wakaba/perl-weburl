@@ -21847,9 +21847,9 @@ xn--ab-ufb
 #data escaped
 http://a\u2095b/
 #canon escaped
-http://xn--ab-9du/
+http://ahb/
 #host escaped
-xn--ab-9du
+ahb
 #chrome-canon escaped
 http://xn--ab-9du/
 #scheme http
@@ -21869,9 +21869,9 @@ xn--ab-9du
 #data escaped
 http://a\u2096b/
 #canon escaped
-http://xn--ab-deu/
+http://akb/
 #host escaped
-xn--ab-deu
+akb
 #chrome-canon escaped
 http://xn--ab-deu/
 #scheme http
@@ -21891,9 +21891,9 @@ xn--ab-deu
 #data escaped
 http://a\u2097b/
 #canon escaped
-http://xn--ab-geu/
+http://alb/
 #host escaped
-xn--ab-geu
+alb
 #chrome-canon escaped
 http://xn--ab-geu/
 #scheme http
@@ -21913,9 +21913,9 @@ xn--ab-geu
 #data escaped
 http://a\u2098b/
 #canon escaped
-http://xn--ab-jeu/
+http://amb/
 #host escaped
-xn--ab-jeu
+amb
 #chrome-canon escaped
 http://xn--ab-jeu/
 #scheme http
@@ -21935,9 +21935,9 @@ xn--ab-jeu
 #data escaped
 http://a\u2099b/
 #canon escaped
-http://xn--ab-meu/
+http://anb/
 #host escaped
-xn--ab-meu
+anb
 #chrome-canon escaped
 http://xn--ab-meu/
 #scheme http
@@ -21957,9 +21957,9 @@ xn--ab-meu
 #data escaped
 http://a\u209Ab/
 #canon escaped
-http://xn--ab-peu/
+http://apb/
 #host escaped
-xn--ab-peu
+apb
 #chrome-canon escaped
 http://xn--ab-peu/
 #scheme http
@@ -21979,9 +21979,9 @@ xn--ab-peu
 #data escaped
 http://a\u209Bb/
 #canon escaped
-http://xn--ab-seu/
+http://asb/
 #host escaped
-xn--ab-seu
+asb
 #chrome-canon escaped
 http://xn--ab-seu/
 #scheme http

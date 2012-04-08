@@ -2,6 +2,9 @@ HARUSAME = harusame
 POD2HTML = pod2html --css "http://suika.fam.cx/www/style/html/pod.css" \
   --htmlroot "../.."
 SED = sed
+PERL_VERSION = latest
+PERL_PATH = $(abspath local/perlbrew/perls/perl-$(PERL_VERSION)/bin)
+PROVE = prove
 
 PERL = perl
 PERL_VERSION = latest

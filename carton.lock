@@ -2,12 +2,17 @@
    "modules" : {
       "Algorithm::Diff" : {
          "dist" : "Algorithm-Diff-1.1902",
+<<<<<<< HEAD
+=======
+         "module" : "Algorithm::Diff",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "unknown",
             "author" : [
                "unknown"
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
             "license" : [
                "unknown"
@@ -1294,12 +1299,21 @@
             "generated_by" : "ExtUtils::MakeMaker version 6.59, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
             "license" : [
                "perl_5"
+=======
+            "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+            "license" : [
+               "unknown"
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             ],
             "meta-spec" : {
                "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
                "version" : "2"
             },
+<<<<<<< HEAD
             "name" : "Module-Load",
+=======
+            "name" : "Algorithm-Diff",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "no_index" : {
                "directory" : [
                   "t",
@@ -1318,6 +1332,7 @@
                   }
                },
                "runtime" : {
+<<<<<<< HEAD
                   "requires" : {
                      "Test::More" : 0
                   }
@@ -1351,6 +1366,38 @@
             ],
             "dynamic_config" : 0,
             "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "version" : "1.1902"
+         },
+         "name" : "Algorithm::Diff",
+         "pathname" : "T/TY/TYEMQ/Algorithm-Diff-1.1902.tar.gz",
+         "provides" : {
+            "Algorithm::Diff" : {
+               "file" : "Algorithm/Diff.pm",
+               "version" : "1.1902"
+            },
+            "Algorithm::DiffOld" : {
+               "file" : "Algorithm/DiffOld.pm",
+               "version" : "1.1"
+            }
+         },
+         "version" : "1.1902"
+      },
+      "MRO::Compat" : {
+         "dist" : "MRO-Compat-0.11",
+         "module" : "MRO::Compat",
+         "mymeta" : {
+            "abstract" : "mro::* interface compatibility for Perls < 5.9.5",
+            "author" : [
+               "Brandon L. Black, <blblack@gmail.com>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Module::Install version 0.91, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "perl_5"
             ],
@@ -1358,11 +1405,19 @@
                "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
                "version" : "2"
             },
+<<<<<<< HEAD
             "name" : "Module-Load-Conditional",
             "no_index" : {
                "directory" : [
                   "t",
                   "inc"
+=======
+            "name" : "MRO-Compat",
+            "no_index" : {
+               "directory" : [
+                  "inc",
+                  "t"
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
                ]
             },
             "prereqs" : {
@@ -1373,11 +1428,16 @@
                },
                "configure" : {
                   "requires" : {
+<<<<<<< HEAD
                      "ExtUtils::MakeMaker" : 0
+=======
+                     "ExtUtils::MakeMaker" : "6.42"
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
                   }
                },
                "runtime" : {
                   "requires" : {
+<<<<<<< HEAD
                      "Locale::Maketext::Simple" : 0,
                      "Module::CoreList" : "2.22",
                      "Module::Load" : "0.11",
@@ -1469,13 +1529,51 @@
       },
       "Net::LibIDN" : {
          "dist" : "Net-LibIDN-0.12",
+=======
+                     "ExtUtils::MakeMaker" : "6.42",
+                     "Test::More" : "0.47"
+                  }
+               }
+            },
+            "provides" : {
+               "MRO::Compat" : {
+                  "file" : "lib/MRO/Compat.pm",
+                  "version" : "0.11"
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "license" : [
+                  "http://dev.perl.org/licenses/"
+               ]
+            },
+            "version" : "0.11"
+         },
+         "name" : "MRO::Compat",
+         "pathname" : "F/FL/FLORA/MRO-Compat-0.11.tar.gz",
+         "provides" : {
+            "MRO::Compat" : {
+               "file" : "MRO/Compat.pm",
+               "version" : "0.11"
+            }
+         },
+         "version" : "0.11"
+      },
+      "Net::LibIDN" : {
+         "dist" : "Net-LibIDN-0.12",
+         "module" : "Net::LibIDN",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "unknown",
             "author" : [
                "unknown"
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "ExtUtils::MakeMaker version 6.30_01, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+            "generated_by" : "ExtUtils::MakeMaker version 6.30_01, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "unknown"
             ],
@@ -1507,6 +1605,7 @@
                "version" : "0.12"
             }
          },
+<<<<<<< HEAD
          "target" : "Net::LibIDN",
          "version" : "0.12"
       },
@@ -1629,13 +1728,24 @@
       },
       "Path::Class" : {
          "dist" : "Path-Class-0.25",
+=======
+         "version" : "0.12"
+      },
+      "Path::Class" : {
+         "dist" : "Path-Class-0.25",
+         "module" : "Path::Class",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "Cross-platform path specification manipulation",
             "author" : [
                "Ken Williams <kwilliams@cpan.org>"
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+            "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "perl_5"
             ],
@@ -1704,6 +1814,7 @@
                "version" : "0.25"
             },
             "Path::Class::File" : {
+<<<<<<< HEAD
                "file" : "Path/Class/File.pm",
                "version" : "0.25"
             }
@@ -1788,6 +1899,17 @@
       },
       "Sub::Uplevel" : {
          "dist" : "Sub-Uplevel-0.24",
+=======
+               "file" : "Path/Class/File.pm",
+               "version" : "0.25"
+            }
+         },
+         "version" : "0.25"
+      },
+      "Sub::Uplevel" : {
+         "dist" : "Sub-Uplevel-0.24",
+         "module" : "Sub::Uplevel",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "apparently run a function in a higher stack frame",
             "author" : [
@@ -1795,7 +1917,11 @@
                "David Golden <dagolden@cpan.org>"
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+            "generated_by" : "Dist::Zilla version 4.300005, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "perl_5"
             ],
@@ -1864,18 +1990,29 @@
                "version" : "0.24"
             }
          },
+<<<<<<< HEAD
          "target" : "Sub::Uplevel",
+=======
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "version" : "0.24"
       },
       "Test::Class" : {
          "dist" : "Test-Class-0.36",
+<<<<<<< HEAD
+=======
+         "module" : "Test::Class",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "Easily create test classes in an xUnit/JUnit style",
             "author" : [
                "Adrian Howard <adrianh@quietstars.com>, Curtis \"Ovid\" Poe, <ovid at cpan.org>, Mark Morgan <makk384@gmail.com>."
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+            "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "perl_5"
             ],
@@ -1950,18 +2087,29 @@
                "version" : "0.34"
             }
          },
+<<<<<<< HEAD
          "target" : "Test::Class",
+=======
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "version" : "0.36"
       },
       "Test::Differences" : {
          "dist" : "Test-Differences-0.61",
+<<<<<<< HEAD
+=======
+         "module" : "Test::Differences",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "Test strings and data structures and show differences if not ok",
             "author" : [
                "Curtis \"Ovid\" Poe <ovid@cpan.org>"
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+            "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "perl_5"
             ],
@@ -2009,18 +2157,29 @@
                "version" : "0.61"
             }
          },
+<<<<<<< HEAD
          "target" : "Test::Differences",
+=======
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "version" : "0.61"
       },
       "Test::Exception" : {
          "dist" : "Test-Exception-0.31",
+<<<<<<< HEAD
+=======
+         "module" : "Test::Exception",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "Test exception based code",
             "author" : [
                "Adrian Howard <adrianh@quietstars.com>"
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+            "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "perl_5"
             ],
@@ -2068,6 +2227,7 @@
                "version" : "0.31"
             }
          },
+<<<<<<< HEAD
          "target" : "Test::Exception",
          "version" : "0.31"
       },
@@ -2192,13 +2352,24 @@
       },
       "Text::Diff" : {
          "dist" : "Text-Diff-1.41",
+=======
+         "version" : "0.31"
+      },
+      "Text::Diff" : {
+         "dist" : "Text-Diff-1.41",
+         "module" : "Text::Diff",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
          "mymeta" : {
             "abstract" : "Perform diffs on files and record sets",
             "author" : [
                "Adam Kennedy <adamk@cpan.org>"
             ],
             "dynamic_config" : 0,
+<<<<<<< HEAD
             "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.112150",
+=======
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120630, CPAN::Meta::Converter version 2.112150",
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
             "license" : [
                "perl_5"
             ],
@@ -2258,6 +2429,7 @@
                "version" : "1.41"
             }
          },
+<<<<<<< HEAD
          "target" : "Text::Diff",
          "version" : "1.41"
       },
@@ -2613,6 +2785,9 @@
          },
          "target" : "version",
          "version" : "0.97"
+=======
+         "version" : "1.41"
+>>>>>>> 9cf1cb961f24d8d397cc24a99f8dd7515efa5107
       }
    },
    "version" : "0.9"
