@@ -28,5 +28,11 @@ $root_d->subdir ('t', 'data')->recurse (callback => sub {
         'Test::Differences' => 0,
         'Test::HTCT::Parser' => 0,
     },
+    urls => {
+        git => {
+            GitHub => q<https://github.com/wakaba/perl-weburl>,
+            Suika => q<http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree>,
+        },
+    },
 };
 

@@ -12,5 +12,11 @@
     t_req_modules => {
 
     },
+    urls => {
+        git => {
+            GitHub => q<https://github.com/wakaba/perl-weburl>,
+            Suika => q<http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree>,
+        },
+    },
 };
 
