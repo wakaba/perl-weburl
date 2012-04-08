@@ -81,6 +81,12 @@ local/wakaba-packages: always
 	git clone "git@github.com:wakaba/packages.git" $@ || (cd $@ && git pull)
 	cd $@ && git submodule update --init
 
+## ------ Auto update of data ------
+
+dataautoupdate:
+	cd lib/Web/DomainName && $(MAKE) clean all
+	git add lib/Web/DomainName/IDNEnabled.pm
+
 always:
 
 ## License: Public Domain.
