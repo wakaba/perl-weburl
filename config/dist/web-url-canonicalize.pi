@@ -1,0 +1,32 @@
+use Path::Class;
+my $root_d = file (__FILE__)->dir->parent->parent;
+
+my @test_data_file_name;
+$root_d->subdir ('t', 'data')->recurse (callback => sub {
+  return unless -f $_[0];
+  push @test_data_file_name, $_[0]->relative($root_d)->stringify;
+});
+
+{
+    main_module_name => 'Web::URL::Canonicalize',
+    file_names => [qw(
+        lib/Web/URL/Canonicalize.pm
+        lib/Web/URL/Canonicalize.pod
+        t/web-url-canonicalize.t
+        config/dist/web-url-canonicalize.pi
+    ), @test_data_file_name],
+    req_modules => {
+        'Exporter::Lite' => 0,
+        'Web::DomainName::Canonicalize' => 0,
+        'Web::Encoding' => 0,
+    },
+    t_req_modules => {
+        'Data::Dumper' => 0,
+        'Path::Class' => 0,
+        'Test::Class' => 0,
+        'Test::More' => 0,
+        'Test::Differences' => 0,
+        'Test::HTCT::Parser' => 0,
+    },
+};
+

@@ -1,0 +1,16 @@
+{
+    main_module_name => 'Web::Encoding',
+    file_names => [qw(
+        lib/Web/Encoding.pm
+        lib/Web/Encoding.pod
+        config/dist/web-encoding.pi
+    )],
+    req_modules => {
+        'Encode' => 0,
+        'Exporter::Lite' => 0,
+    },
+    t_req_modules => {
+
+    },
+};
+

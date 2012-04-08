@@ -1,0 +1,15 @@
+{
+    main_module_name => 'Web::IPAddr::Canonicalize',
+    file_names => [qw(
+        lib/Web/IPAddr/Canonicalize.pm
+        lib/Web/IPAddr/Canonicalize.pod
+        config/dist/web-ipaddr-canonicalize.pi
+    )],
+    req_modules => {
+        'Exporter::Lite' => 0,
+    },
+    t_req_modules => {
+        
+    },
+};
+

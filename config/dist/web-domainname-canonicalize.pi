@@ -1,0 +1,24 @@
+{
+    main_module_name => 'Web::DomainName::Canonicalize',
+    file_names => [qw(
+        lib/Web/DomainName/Canonicalize.pm
+        lib/Web/DomainName/Canonicalize.pod
+        config/dist/web-domainname-canonicalize.pi
+    )],
+    req_modules => {
+        'Encode' => 0,
+        'Exporter::Lite' => 0,
+        'Char::Prop::Unicode::BidiClass' => 0,
+        'Unicode::Normalize' => 0,
+        'Unicode::Stringprep' => 0,
+        'Web::Encoding' => 0,
+        'Web::IPAddr::Canonicalize' => 0,
+        'Web::DomainName::Punycode' => 0,
+    },
+    t_req_modules => {
+        'Path::Class' => 0,
+        'Test::Class' => 0,
+        'Test::More' => 0,
+    },
+};
+

@@ -1,0 +1,13 @@
+Encode
+Exporter::Lite
+Unicode::Normalize
+Unicode::Stringprep
+
+Net::LibIDN
+URI::_punycode
+
+Data::Dumper
+Path::Class
+Test::Class
+Test::Differences
+Test::More
