@@ -87,7 +87,7 @@ local/wakaba-packages: always
 ## ------ Auto update of data ------
 
 dataautoupdate:
-	cd lib/Web/DomainName && $(MAKE) clean all
+	cd lib/Web/DomainName && $(MAKE) clean-for-update && $(MAKE) all
 	git add lib/Web/DomainName/IDNEnabled.pm
 
 always:

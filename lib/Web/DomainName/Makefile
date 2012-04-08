@@ -9,4 +9,7 @@ mozilla-pref.js:
 clean:
 	rm -f mozilla-pref.js
 
+clean-for-update: clean
+	rm -f IDNEnabled.pm
+
 ## License: Public Domain.
