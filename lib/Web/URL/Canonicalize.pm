@@ -6,6 +6,7 @@ require utf8;
 use Web::Encoding;
 use Web::DomainName::Canonicalize;
 use Exporter::Lite;
+no warnings 'utf8';
 
 our @EXPORT = qw(url_to_canon_url);
 
