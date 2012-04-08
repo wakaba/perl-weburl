@@ -23,7 +23,7 @@ all: config/perl/libs.txt \
 
 Makefile-setupenv: Makefile.setupenv
 	make --makefile Makefile.setupenv setupenv-update \
-            SETUPENV_MIN_REVISION=20120329
+            SETUPENV_MIN_REVISION=20120330
 
 Makefile.setupenv:
 	wget -O $@ https://raw.github.com/wakaba/perl-setupenv/master/Makefile.setupenv
