@@ -56,7 +56,10 @@ test: safetest
 
 test-deps: carton-install config/perl/libs.txt
 
-safetest: test-deps show-unicore-version safetest-main
+safetest: test-deps show-perl-version show-unicore-version safetest-main
+
+show-perl-version:
+	$(PERL_ENV) perl -v
 
 show-unicore-version: config/perl/libs.txt
 	echo "Unicode version of Perl $(PERL_VERSION) is..."
