@@ -99,7 +99,7 @@ Web::DomainName::IDNEnabled - List of IDN-enabled TLDs
 
 The C<Web::DomainName::IDNEnabled> module provides a list of IDN-enabled
 TLDs.  It contains TLDs listed in the I<IDN-enabled TLDs> (as of
-2012-04-10) maintained by the Mozilla project.
+2012-04-11) maintained by the Mozilla project.
 
 =head1 VARIABLE
 
