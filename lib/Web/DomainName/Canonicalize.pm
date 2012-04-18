@@ -1,6 +1,7 @@
 package Web::DomainName::Canonicalize;
 use strict;
 use warnings;
+no warnings 'utf8';
 our $VERSION = '1.0';
 use Web::Encoding;
 use Char::Prop::Unicode::BidiClass;

@@ -6,6 +6,8 @@ $Data::Dumper::Sortkeys = 1;
 
 my $tlds = {};
 
+my $timestamp = [stat $ARGV[0]]->[9];
+
 while (<>) {
   if (m{pref\("network.IDN.whitelist.([0-9a-zA-Z-]+)", true\)}) {
     $tlds->{lc $1} = 1;
@@ -13,8 +15,8 @@ while (<>) {
 }
 
 print q{package Web::DomainName::IDNEnabled;
-$VERSION = '1.0.}.time.q{';
-$TIMESTAMP = }.time.q{;
+our $VERSION = '1.0.}.$timestamp.q{';
+$TIMESTAMP = }.$timestamp.q{;
 
 ## This module is automatically generated.  Don't edit!
 
@@ -66,7 +68,7 @@ files maintained by the Mozilla project.
 
 =head1 LICENSE
 
-Copyright 2011 Wakaba <w@suika.fam.cx>.
+Copyright 2011-2012 Wakaba <w@suika.fam.cx>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

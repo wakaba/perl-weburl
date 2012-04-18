@@ -22,6 +22,12 @@ sub Data::Dumper::qquote {
   return q<"> . $s . q<">;
 } # Data::Dumper::qquote
 
+use Test::Builder;
+my $builder = Test::More->builder;
+binmode $builder->output,         ":utf8";
+binmode $builder->failure_output, ":utf8";
+binmode $builder->todo_output,    ":utf8";
+
 binmode STDOUT, ':encoding(utf8)';
 binmode STDERR, ':encoding(utf8)';
 
@@ -292,6 +298,12 @@ sub _url_to_canon_parsed_url : Test(1) {
                         query => '', is_hierarchical => 1,
                         scheme_normalized => 'http'};
 }
+
+sub _resolve_url_undef_input : Test(1) {
+  my $base_url = parse_url q<http://foo/bar>;
+  my $parsed = resolve_url undef, $base_url;
+  eq_or_diff $parsed, {invalid => 1};
+} # _resolve_url_undef_input
 
 __PACKAGE__->runtests;
 

@@ -1,0 +1,31 @@
+{
+    main_module_name => 'Web::DomainName::Punycode',
+    file_names => [qw(
+        lib/Web/DomainName/Punycode.pm
+        lib/Web/DomainName/Punycode.pod
+        t/web-domainname-punycode.t
+        t/web-domainname-punycode-common.pl
+        t/web-domainname-punycode-netlibidn.t
+        t/web-domainname-punycode-uripunycode.t
+        config/dist/web-domainname-punycode.pi
+    )],
+    req_modules => {
+        'Exporter::Lite' => 0,
+
+        ## One of:
+        'Net::LibIDN' => 0,
+        'URI::_punycode' => 0,
+    },
+    t_req_modules => {
+        'Path::Class' => 0,
+        'Test::Class' => 0,
+        'Test::More' => 0,
+    },
+    urls => {
+        git => {
+            GitHub => q<https://github.com/wakaba/perl-weburl>,
+            Suika => q<http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree>,
+        },
+    },
+};
+

@@ -1,0 +1,23 @@
+{
+    main_module_name => 'Web::DomainName::IDNEnabled',
+    file_names => [qw(
+        lib/Web/DomainName/IDNEnabled.pm
+        t/web-domainname-idnenabled.t
+        config/dist/web-domainname-idnebabled.pi
+    )],
+    req_modules => {
+
+    },
+    t_req_modules => {
+        'Path::Class' => 0,
+        'Test::Class' => 0,
+        'Test::More' => 0,
+    },
+    urls => {
+        git => {
+            GitHub => q<https://github.com/wakaba/perl-weburl>,
+            Suika => q<http://suika.fam.cx/gate/git/wi/web/perl-weburl.git/tree>,
+        },
+    },
+};
+

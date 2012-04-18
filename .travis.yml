@@ -1,0 +1,12 @@
+perl:
+  - "5.14"
+before_install: git submodule update --init
+install: "make local-perl test-deps PERL_VERSION=5.14.2"
+script: "make test PERL_VERSION=5.14.2"
+notifications:
+  email:
+    - wakaba.5081@gmail.com
+  irc:
+    channels:
+      - "suika.fam.cx#mechanize"
+    use_notice: true
