@@ -6,8 +6,6 @@ $Data::Dumper::Sortkeys = 1;
 
 my $tlds = {};
 
-my $timestamp = [stat $ARGV[0]]->[9];
-
 while (<>) {
   if (m{pref\("network.IDN.whitelist.([0-9a-zA-Z-]+)", true\)}) {
     $tlds->{lc $1} = 1;
@@ -15,8 +13,7 @@ while (<>) {
 }
 
 print q{package Web::DomainName::IDNEnabled;
-our $VERSION = '1.0.}.$timestamp.q{';
-$TIMESTAMP = }.$timestamp.q{;
+our $VERSION = '1.1';
 
 ## This module is automatically generated.  Don't edit!
 
@@ -35,14 +32,13 @@ Web::DomainName::IDNEnabled - List of IDN-enabled TLDs
 
   use Web::DomainName::IDNEnabled;
   ok $Web::DomainName::IDNEnabled::TLDs->{jp};
-  ng $Web::DomainName::IDNEnabled::TLDs->{fr};
+  ng $Web::DomainName::IDNEnabled::TLDs->{arpa};
 
 =head1 DESCRIPTION
 
-The C<Web::DomainName::IDNEnabled> module provides a list of IDN-enabled
-TLDs.  It contains TLDs listed in the I<IDN-enabled TLDs> (as of
-}.(sprintf '%04d-%02d-%02d', [gmtime]->[5] + 1900, [gmtime]->[4] + 1,
-[gmtime]->[3]).q{) maintained by the Mozilla project.
+The C<Web::DomainName::IDNEnabled> module provides the list of
+IDN-enabled TLDs, which is same as the list of the I<IDN-enabled TLDs>
+maintained by the Mozilla project.
 
 =head1 VARIABLE
 
