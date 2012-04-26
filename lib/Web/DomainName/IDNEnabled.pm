@@ -1,6 +1,6 @@
 package Web::DomainName::IDNEnabled;
-our $VERSION = '1.0.1335334720';
-$TIMESTAMP = 1335334720;
+our $VERSION = '1.0.1335421358';
+$TIMESTAMP = 1335421358;
 
 ## This module is automatically generated.  Don't edit!
 
@@ -21,6 +21,7 @@ $VAR1 = {
           'ee' => 1,
           'es' => 1,
           'fi' => 1,
+          'fr' => 1,
           'gr' => 1,
           'hu' => 1,
           'il' => 1,
@@ -40,16 +41,20 @@ $VAR1 = {
           'nz' => 1,
           'org' => 1,
           'pl' => 1,
+          'pm' => 1,
           'pr' => 1,
+          're' => 1,
           'se' => 1,
           'sh' => 1,
           'si' => 1,
           'tel' => 1,
+          'tf' => 1,
           'th' => 1,
           'tm' => 1,
           'tw' => 1,
           'ua' => 1,
           'vn' => 1,
+          'wf' => 1,
           'xn--0zwm56d' => 1,
           'xn--11b5bs3a9aj6g' => 1,
           'xn--80akhbyknj4f' => 1,
@@ -81,7 +86,8 @@ $VAR1 = {
           'xn--wgbh1c' => 1,
           'xn--wgbl6a' => 1,
           'xn--xkc2al3hye2a' => 1,
-          'xn--zckzah' => 1
+          'xn--zckzah' => 1,
+          'yt' => 1
         };
 
 
@@ -99,7 +105,7 @@ Web::DomainName::IDNEnabled - List of IDN-enabled TLDs
 
 The C<Web::DomainName::IDNEnabled> module provides a list of IDN-enabled
 TLDs.  It contains TLDs listed in the I<IDN-enabled TLDs> (as of
-2012-04-25) maintained by the Mozilla project.
+2012-04-26) maintained by the Mozilla project.
 
 =head1 VARIABLE
 
