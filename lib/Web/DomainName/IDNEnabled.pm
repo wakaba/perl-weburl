@@ -1,6 +1,5 @@
 package Web::DomainName::IDNEnabled;
-our $VERSION = '1.0.1335421358';
-$TIMESTAMP = 1335421358;
+our $VERSION = '1.1';
 
 ## This module is automatically generated.  Don't edit!
 
@@ -99,13 +98,13 @@ Web::DomainName::IDNEnabled - List of IDN-enabled TLDs
 
   use Web::DomainName::IDNEnabled;
   ok $Web::DomainName::IDNEnabled::TLDs->{jp};
-  ng $Web::DomainName::IDNEnabled::TLDs->{fr};
+  ng $Web::DomainName::IDNEnabled::TLDs->{arpa};
 
 =head1 DESCRIPTION
 
-The C<Web::DomainName::IDNEnabled> module provides a list of IDN-enabled
-TLDs.  It contains TLDs listed in the I<IDN-enabled TLDs> (as of
-2012-04-26) maintained by the Mozilla project.
+The C<Web::DomainName::IDNEnabled> module provides the list of
+IDN-enabled TLDs, which is same as the list of the I<IDN-enabled TLDs>
+maintained by the Mozilla project.
 
 =head1 VARIABLE
 
