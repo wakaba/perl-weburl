@@ -1,3 +1,14 @@
+!!!                                 !!!
+!!! THIS GIT REPOSITORY IS OBSOLETE !!!
+!!!                                 !!!
+
+New repositories are:
+
+  Test cases: <https://github.com/wakaba/tests-web-url>
+  Perl implementation: <https://github.com/wakaba/perl-web-url>
+
+
+
 Web::URL::Canonicalize - Perl URL Canonicalizer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
