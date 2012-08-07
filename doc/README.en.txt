@@ -5,7 +5,11 @@
 New repositories are:
 
   Test cases: <https://github.com/wakaba/tests-web-url>
-  Perl implementation: <https://github.com/wakaba/perl-web-url>
+  Perl implementation:
+    Web::URL, Web::DomainName, Web::IPAddr
+        <https://github.com/wakaba/perl-web-url>
+    Web::Encoding
+        <https://github.com/wakaba/perl-web-encodings>
 
 
 
